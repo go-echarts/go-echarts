@@ -23,6 +23,26 @@ func (opt *InitOptions) SetDefault() {
 	}
 }
 
+type BaseOptions struct {
+	LabelOptions
+	LegendOptions
+}
+
+func (opt *BaseOptions) SetDefault() {
+	opt.LabelOptions.SetDefault()
+	opt.LegendOptions.SetDefault()
+}
+
+type RectOptions struct {
+	XAxisOptions
+	YAxisOptions
+}
+
+func (opt *RectOptions) SetDefault() {
+	opt.XAxisOptions.SetDefault()
+	opt.YAxisOptions.SetDefault()
+}
+
 type LegendOptions struct {
 	Show   bool   `json:"show" default:"true"`
 	Left   string `json:"left,omitempty"`

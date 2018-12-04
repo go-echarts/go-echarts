@@ -8,17 +8,13 @@ import (
 )
 
 type BarOptions struct {
-	LabelOptions
-	LegendOptions
-	XAxisOptions
-	YAxisOptions
+	BaseOptions
+	RectOptions
 }
 
 func (opt *BarOptions) SetDefault() {
-	opt.LabelOptions.SetDefault()
-	opt.LegendOptions.SetDefault()
-	opt.XAxisOptions.SetDefault()
-	opt.YAxisOptions.SetDefault()
+	opt.BaseOptions.SetDefault()
+	opt.RectOptions.SetDefault()
 }
 
 type Bar struct {

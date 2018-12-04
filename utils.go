@@ -1,7 +1,6 @@
 package geocharts
 
 import (
-	"fmt"
 	"reflect"
 	"strconv"
 )
@@ -23,7 +22,6 @@ func SetDefaultValue(ptr interface{}) error {
 
 	for i := 0; i < t.NumField(); i++ {
 		//如果没有 `default` tag 则不作处理
-		fmt.Println(t.Field(i).Tag.Get("default"))
 		if defaultVal := t.Field(i).Tag.Get("default"); defaultVal != "" {
 			setField(elem.Field(i), defaultVal)
 		}
