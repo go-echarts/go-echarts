@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ .PageTitle }}</title>
+    <script src="https://cdn.bootcss.com/echarts/4.2.0-rc.2/echarts.min.js"></script>
+</head>
+<body>
+<div id="main" style="width:{{ .InitOptions.Width }};height:{{ .InitOptions.Height }};"></div>
+<script type="text/javascript">
+    let myChart = echarts.init(document.getElementById('main'));
+    let option = {
+        title: {
+            text: {{ .InitOptions.Title }},
+            subtext: {{ .InitOptions.SubTitle }}
+        },
+        tooltip: {},
+        legend: {{ .LegendOptions }},
+        xAxis: {
+            data: {{ .XValue }}
+        },
+        yAxis: {},
+        label: {
+            show:{{ .LabelOptions.Show }}
+        },
+        series: [
+        {{ range .Series }}
+        {{- . }},
+        {{ end -}}
+        ]
+    };
+    myChart.setOption(option);
+</script>
+</body>
+</html>
