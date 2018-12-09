@@ -1,17 +1,15 @@
 package geocharts
 
-type Scatter struct {
-	InitOptions
-	RectOptions
-	Series []Series
+import "io"
 
-	HasXYAxis bool
+type Scatter struct {
+	RectChart
 }
 
-func NewScatter(opt InitOptions) *Scatter {
+//工厂函数，生成 `Scatter` 实例
+func NewScatter() *Scatter {
 	scatter := new(Scatter)
-	scatter.InitOptions = opt
-	scatter.InitOptions.SetDefault()
+	scatter.setDefault()
 	scatter.HasXYAxis = true
 	return scatter
 }
@@ -22,23 +20,18 @@ func (scatter *Scatter) setDefault() {
 }
 
 func (scatter *Scatter) AddXAxis(xAxis interface{}) *Scatter {
-	scatter.XAxisOptions.Data = xAxis
+	scatter.xAxisData = xAxis
 	return scatter
 }
 
-func (scatter *Scatter) AddYAxis(name string, yAxis interface{}) *Scatter {
-	scatter.Series = append(scatter.Series, Series{Name: name, Type: SCATTER, Data: yAxis})
+func (scatter *Scatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Scatter {
+	series := Series{Name: name, Type: SCATTER, Data: yAxis}
+	series.setSingleSeriesOptions(options...)
+	scatter.SeriesList = append(scatter.SeriesList, series)
 	return scatter
 }
 
-func (scatter *Scatter) SetGlobalConfig(options ...interface{}) *Scatter {
-	scatter.RectOptions.setRectGlobalConfig(options...)
-	return scatter
-}
-
-func (scatter *Scatter) Render(saveFile string) {
-	for i := 0; i < len(scatter.Series); i++ {
-		scatter.Series[i].LabelOptions = scatter.LabelOptions
-	}
-	RenderChart(scatter, saveFile)
+func (scatter *Scatter) Render(w io.Writer) {
+	scatter.XAxisOptions.Data = scatter.xAxisData
+	RenderChart(scatter, w)
 }

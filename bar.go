@@ -1,14 +1,16 @@
 package geocharts
 
-type Bar struct {
-	InitOptions
-	RectOptions
-	Series []Series
+import (
+	"io"
+)
 
-	HasXYAxis bool
-	xAxisData interface{}
+type Bar struct {
+	// 是否翻转 XY 轴
+	IsXYReversal bool
+	RectChart
 }
 
+//工厂函数，生成 `Bar` 实例
 func NewBar() *Bar {
 	bar := new(Bar)
 	bar.setDefault()
@@ -28,36 +30,17 @@ func (bar *Bar) AddXAxis(xAxis interface{}) *Bar {
 
 func (bar *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Bar {
 	series := Series{Name: name, Type: BAR, Data: yAxis}
-	for i := 0; i < len(options); i++ {
-		option := options[i]
-		switch option.(type) {
-		case LabelOptions:
-			series.LabelOptions = option.(LabelOptions)
-		}
-	}
-	bar.Series = append(bar.Series, series)
+	series.setSingleSeriesOptions(options...)
+	bar.SeriesList = append(bar.SeriesList, series)
 	return bar
 }
 
-func (bar *Bar) SetGlobalConfig(options ...interface{}) *Bar {
-	bar.RectOptions.setRectGlobalConfig(options...)
-	return bar
-}
-
-func (bar *Bar) SetSeriesConfig(options ...interface{}) *Bar {
-	for i := 0; i < len(bar.Series); i++ {
-		for j := 0; j < len(options); j++ {
-			option := options[j]
-			switch option.(type) {
-			case LabelOptions:
-				bar.Series[i].LabelOptions = option.(LabelOptions)
-			}
-		}
-	}
-	return bar
-}
-
-func (bar *Bar) Render(saveFile string) {
+func (bar *Bar) Render(w io.Writer) {
 	bar.XAxisOptions.Data = bar.xAxisData
-	RenderChart(bar, saveFile)
+	// XY 轴翻转
+	if bar.IsXYReversal {
+		bar.YAxisOptions.Data = bar.xAxisData
+		bar.XAxisOptions.Data = nil
+	}
+	RenderChart(bar, w)
 }

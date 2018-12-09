@@ -1,16 +1,18 @@
 package geocharts
 
+import "io"
+
 type Pie struct {
 	InitOptions
 	BaseOptions
-	Series []Series
+	SeriesList
 
 	HasXYAxis bool
 }
 
-func NewPie(opt InitOptions) *Pie {
+//工厂函数，生成 `Pie` 实例
+func NewPie() *Pie {
 	pie := new(Pie)
-	pie.InitOptions = opt
 	pie.setDefault()
 	pie.HasXYAxis = false
 	return pie
@@ -21,7 +23,7 @@ func (pie *Pie) setDefault() {
 	pie.BaseOptions.SetDefault()
 }
 
-func (pie *Pie) Add(name string, data map[string]interface{}) {
+func (pie *Pie) Add(name string, data map[string]interface{}, options ...interface{}) *Pie{
 	type pieData struct {
 		Name  string      `json:"name"`
 		Value interface{} `json:"value"`
@@ -30,12 +32,12 @@ func (pie *Pie) Add(name string, data map[string]interface{}) {
 	for k, v := range data {
 		pd = append(pd, pieData{k, v})
 	}
-	pie.Series = append(pie.Series, Series{Name: name, Type: PIE, Data: pd})
+	series := Series{Name: name, Type: PIE, Data: pd}
+	series.setSingleSeriesOptions(options...)
+	pie.SeriesList = append(pie.SeriesList, series)
+	return pie
 }
 
-func (pie *Pie) Render(saveFile string) {
-	for i := 0; i < len(pie.Series); i++ {
-		pie.Series[i].LabelOptions = pie.LabelOptions
-	}
-	RenderChart(pie, saveFile)
+func (pie *Pie) Render(w io.Writer) {
+	RenderChart(pie, w)
 }

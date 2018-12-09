@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>{{ .PageTitle }}</title>
-    <script src="https://cdn.bootcss.com/echarts/4.2.0-rc.2/echarts.min.js"></script>
+    <script src="{{ .JSHost }}/echarts.min.js"></script>
 </head>
 <body>
 <div id="main" style="width:{{ .InitOptions.Width }};height:{{ .InitOptions.Height }};"></div>
@@ -20,7 +20,7 @@
         yAxis: {{ .YAxisOptions }},
     {{end}}
         series: [
-        {{ range .Series }}
+        {{ range .SeriesList }}
         {{- . }},
         {{ end -}}
         ]

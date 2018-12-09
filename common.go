@@ -1,8 +1,9 @@
 package geocharts
 
 const (
-	BAR     = "bar"
-	LINE    = "line"
-	SCATTER = "scatter"
-	PIE     = "pie"
+	BAR           = "bar"
+	EFFECTSCATTER = "effectScatter"
+	LINE          = "line"
+	SCATTER       = "scatter"
+	PIE           = "pie"
 )

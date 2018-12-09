@@ -1,16 +1,14 @@
 package geocharts
 
-type Line struct {
-	InitOptions
-	RectOptions
-	Series []Series
+import "io"
 
-	HasXYAxis bool
+type Line struct {
+	RectChart
 }
 
-func NewLine(opt InitOptions) *Line {
+//工厂函数，生成 `Line` 实例
+func NewLine() *Line {
 	line := new(Line)
-	line.InitOptions = opt
 	line.setDefault()
 	line.HasXYAxis = true
 	return line
@@ -22,23 +20,18 @@ func (line *Line) setDefault() {
 }
 
 func (line *Line) AddXAxis(xAxis interface{}) *Line {
-	line.XAxisOptions.Data = xAxis
+	line.xAxisData = xAxis
 	return line
 }
 
-func (line *Line) AddYAxis(name string, yAxis interface{}) *Line {
-	line.Series = append(line.Series, Series{Name:name, Type:LINE, Data:yAxis})
+func (line *Line) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Line {
+	series := Series{Name: name, Type: LINE, Data: yAxis}
+	series.setSingleSeriesOptions(options...)
+	line.SeriesList = append(line.SeriesList, series)
 	return line
 }
 
-func (line *Line) SetGlobalConfig(options ...interface{}) *Line{
-	line.RectOptions.setRectGlobalConfig(options...)
-	return line
-}
-
-func (line *Line) Render(saveFile string) {
-	for i := 0; i < len(line.Series); i++ {
-		line.Series[i].LabelOptions = line.LabelOptions
-	}
-	RenderChart(line, saveFile)
+func (line *Line) Render(w io.Writer) {
+	line.XAxisOptions.Data = line.xAxisData
+	RenderChart(line, w)
 }
