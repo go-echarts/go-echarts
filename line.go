@@ -1,74 +1,44 @@
 package geocharts
 
-import (
-	"github.com/gobuffalo/packr"
-	"html/template"
-	"log"
-	"os"
-)
-
-type LineOptions struct {
-	BaseOptions
-	RectOptions
-}
-
-func (opt *LineOptions) SetDefault() {
-	opt.BaseOptions.SetDefault()
-	opt.RectOptions.SetDefault()
-}
-
 type Line struct {
 	InitOptions
-	BarOptions
-	XValue interface{}
+	RectOptions
 	Series []Series
+
+	HasXYAxis bool
 }
 
 func NewLine(opt InitOptions) *Line {
 	line := new(Line)
 	line.InitOptions = opt
-	line.InitOptions.SetDefault()
+	line.setDefault()
+	line.HasXYAxis = true
 	return line
 }
 
+func (line *Line) setDefault() {
+	line.InitOptions.SetDefault()
+	line.BaseOptions.SetDefault()
+}
+
 func (line *Line) AddXAxis(xAxis interface{}) *Line {
-	line.XValue = xAxis
+	line.XAxisOptions.Data = xAxis
 	return line
 }
 
 func (line *Line) AddYAxis(name string, yAxis interface{}) *Line {
-	line.Series = append(line.Series, Series{name, "line", yAxis})
+	line.Series = append(line.Series, Series{Name:name, Type:LINE, Data:yAxis})
 	return line
 }
 
-func (line *Line) SetConfig(options ...interface{}) *Line {
-	for i := 0; i < len(options); i++ {
-		option := options[i]
-		switch option.(type) {
-		case LabelOptions:
-			line.LabelOptions = option.(LabelOptions)
-		case LegendOptions:
-			line.LegendOptions = option.(LegendOptions)
-		case XAxisOptions:
-			line.XAxisOptions = option.(XAxisOptions)
-		case YAxisOptions:
-			line.YAxisOptions = option.(YAxisOptions)
-		}
-	}
+func (line *Line) SetGlobalConfig(options ...interface{}) *Line{
+	line.RectOptions.setRectGlobalConfig(options...)
 	return line
 }
 
 func (line *Line) Render(saveFile string) {
-	box := packr.NewBox("./templates")
-	htmlContent, err := box.FindString("index.html")
-	t, err := template.New("").Parse(htmlContent)
-	if err != nil {
-		log.Println(err)
+	for i := 0; i < len(line.Series); i++ {
+		line.Series[i].LabelOptions = line.LabelOptions
 	}
-
-	newFile, err := os.Create(saveFile)
-	if err != nil {
-		log.Println(err)
-	}
-	t.Execute(newFile, line)
+	RenderChart(line, saveFile)
 }

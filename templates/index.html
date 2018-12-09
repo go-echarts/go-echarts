@@ -10,19 +10,15 @@
 <script type="text/javascript">
     let myChart = echarts.init(document.getElementById('main'));
     let option = {
-        title: {
-            text: {{ .InitOptions.Title }},
-            subtext: {{ .InitOptions.SubTitle }}
-        },
-        tooltip: {},
+        title: {{ .TitleOptions }},
+        tooltip: {{ .TooltipOptions }},
         legend: {{ .LegendOptions }},
-        xAxis: {
-            data: {{ .XValue }}
-        },
-        yAxis: {},
-        label: {
-            show:{{ .LabelOptions.Show }}
-        },
+    {{- if .HasXYAxis }}
+        xAxis: {{ .XAxisOptions }},
+    {{end}}
+    {{- if .HasXYAxis }}
+        yAxis: {{ .YAxisOptions }},
+    {{end}}
         series: [
         {{ range .Series }}
         {{- . }},
