@@ -1,7 +1,5 @@
 package geocharts
 
-import "io"
-
 type Scatter struct {
 	RectChart
 }
@@ -29,9 +27,4 @@ func (scatter *Scatter) AddYAxis(name string, yAxis interface{}, options ...inte
 	series.setSingleSeriesOptions(options...)
 	scatter.SeriesList = append(scatter.SeriesList, series)
 	return scatter
-}
-
-func (scatter *Scatter) Render(w io.Writer) {
-	scatter.XAxisOptions.Data = scatter.xAxisData
-	RenderChart(scatter, w)
 }

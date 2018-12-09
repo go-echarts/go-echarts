@@ -42,5 +42,6 @@ func (bar *Bar) Render(w io.Writer) {
 		bar.YAxisOptions.Data = bar.xAxisData
 		bar.XAxisOptions.Data = nil
 	}
+	bar.SetDefault()
 	RenderChart(bar, w)
 }

@@ -5,9 +5,9 @@ import (
 )
 
 type XAxisOptions struct {
-	Name string      `json:"name"`
+	Name string      `json:"name,omitempty"`
 	Show bool        `json:"show,omitempty"`
-	Data interface{} `json:"data"`
+	Data interface{} `json:"data,omitempty"`
 }
 
 func (opt *XAxisOptions) SetDefault() {
@@ -16,7 +16,7 @@ func (opt *XAxisOptions) SetDefault() {
 }
 
 type YAxisOptions struct {
-	Name string      `json:"name"`
+	Name string      `json:"name,omitempty"`
 	Show bool        `json:"show,omitempty"`
 	Data interface{} `json:"data,omitempty"`
 }
@@ -52,6 +52,8 @@ func (rect *RectOptions) setRectGlobalConfig(options ...interface{}) {
 		switch option.(type) {
 		case InitOptions:
 			rect.InitOptions = option.(InitOptions)
+		case TitleOptions:
+			rect.TitleOptions = option.(TitleOptions)
 		case LegendOptions:
 			rect.LegendOptions = option.(LegendOptions)
 		case XAxisOptions:
@@ -63,7 +65,6 @@ func (rect *RectOptions) setRectGlobalConfig(options ...interface{}) {
 }
 
 type RectChart struct {
-	InitOptions
 	RectOptions
 	SeriesList
 	MarketLine
@@ -84,6 +85,7 @@ func (rc *RectChart) SetSeriesConfig(options ...interface{}) *RectChart {
 
 func (rc *RectChart) Render(w io.Writer) {
 	rc.XAxisOptions.Data = rc.xAxisData
+	rc.SetDefault()
 	RenderChart(rc, w)
 }
 

@@ -52,7 +52,9 @@ func setField(field reflect.Value, defaultVal string) {
 	switch field.Kind() {
 	// string 类型
 	case reflect.String:
-		field.Set(reflect.ValueOf(defaultVal).Convert(field.Type()))
+		if field.String() == "" {
+			field.Set(reflect.ValueOf(defaultVal).Convert(field.Type()))
+		}
 	// bool 类型
 	case reflect.Bool:
 		if val, err := strconv.ParseBool(defaultVal); err == nil {

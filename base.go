@@ -3,19 +3,19 @@ package geocharts
 // 标题组件配置项
 type TitleOptions struct {
 	// 主标题
-	Title string `json:"text"`
+	Title string `json:"text,omitempty"`
 	// 主标题样式配置项
-	TitleStyle TextStyle
+	TitleStyle *TextStyle `json:"textStyle,omitempty"`
 	// 副标题
-	Subtitle string `json:"subtext"`
+	Subtitle string `json:"subtext,omitempty"`
 	// 副标题样式配置项
-	SubtitleStyle TextStyle
+	SubtitleStyle *TextStyle `json:"subtextStyle,omitempty"`
 	// 主标题文本超链接
-	Link string `json:"link"`
+	Link string `json:"link,omitempty"`
 	// 指定窗口打开主标题超链接
 	// 'self' 当前窗口打开
 	// 'blank' 新窗口打开
-	Target string `json:"target"`
+	Target string `json:"target,omitempty"`
 	// grid 组件离容器上侧的距离。
 	// top 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比，也可以是 'top', 'middle', 'bottom'。
 	// 如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐
@@ -45,9 +45,7 @@ type InitOptions struct {
 	// 容器 ID，用于渲染标识
 	ContainerID string `default:"main"`
 	// JS host 地址
-	JSHost      string `default:"https://cdn.bootcss.com/echarts/4.1.0"`
-	// 标题组件配置项
-	TitleOptions
+	JSHost string `default:"https://cdn.bootcss.com/echarts/4.1.0"`
 }
 
 // 为 InitOptions 设置字段默认值
@@ -109,6 +107,8 @@ type BaseOptions struct {
 	LegendOptions
 	// 提示框组件配置项
 	TooltipOptions
+	// 标题组件配置项
+	TitleOptions
 }
 
 // 为 BaseOptions 设置默认值

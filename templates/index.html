@@ -15,10 +15,10 @@
         legend: {{ .LegendOptions }},
     {{- if .HasXYAxis }}
         xAxis: {{ .XAxisOptions }},
-    {{end}}
+    {{- end }}
     {{- if .HasXYAxis }}
         yAxis: {{ .YAxisOptions }},
-    {{end}}
+    {{- end }}
         series: [
         {{ range .SeriesList }}
         {{- . }},

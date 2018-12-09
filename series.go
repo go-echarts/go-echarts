@@ -16,21 +16,26 @@ func (opt *LabelOptions) SetDefault() {
 // Series 配置项
 type Series struct {
 	// series 名称
-	Name string `json:"name"`
+	Name string `json:"name,omitempty"`
 	// series 类型
 	Type string `json:"type"`
 	// series 数据项
-	Data         interface{} `json:"data"`
-	LabelOptions `json:"label"`
+	Data                 interface{} `json:"data"`
+	LabelOptions         `json:"label"`
+	*RippleEffectOptions `json:"rippleEffect,omitempty"`
 }
 
 // 设置 Series 配置项
-func (series *Series) setSingleSeriesOptions(options ...interface{}){
+func (series *Series) setSingleSeriesOptions(options ...interface{}) {
 	for i := 0; i < len(options); i++ {
 		option := options[i]
 		switch option.(type) {
 		case LabelOptions:
 			series.LabelOptions = option.(LabelOptions)
+		case RippleEffectOptions:
+			tmp := new(RippleEffectOptions)
+			*tmp = option.(RippleEffectOptions)
+			series.RippleEffectOptions = tmp
 		}
 	}
 }
@@ -47,6 +52,10 @@ func (sl *SeriesList) setSeriesOptions(options ...interface{}) {
 			switch option.(type) {
 			case LabelOptions:
 				tsl[i].LabelOptions = option.(LabelOptions)
+			case RippleEffectOptions:
+				tmp := new(RippleEffectOptions)
+				*tmp = option.(RippleEffectOptions)
+				tsl[i].RippleEffectOptions = tmp
 			}
 		}
 	}
