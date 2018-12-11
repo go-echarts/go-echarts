@@ -14,15 +14,10 @@ type Bar struct {
 //工厂函数，生成 `Bar` 实例
 func NewBar() *Bar {
 	bar := new(Bar)
-	bar.setDefault()
+	bar.InitOptions.SetDefault()
 	bar.HasXYAxis = true
 	bar.ContainerID = genChartID()
 	return bar
-}
-
-func (bar *Bar) setDefault() {
-	bar.InitOptions.SetDefault()
-	bar.RectOptions.SetDefault()
 }
 
 func (bar *Bar) AddXAxis(xAxis interface{}) *Bar {
@@ -44,7 +39,7 @@ func (bar *Bar) Render(w ...io.Writer) {
 		bar.YAxisOptions.Data = bar.xAxisData
 		bar.XAxisOptions.Data = nil
 	}
-	bar.SetDefault()
+	bar.InitOptions.SetDefault()
 	bar.InitOptions.ValidateID()
 
 	var b bytes.Buffer

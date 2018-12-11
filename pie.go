@@ -16,15 +16,10 @@ type Pie struct {
 //工厂函数，生成 `Pie` 实例
 func NewPie() *Pie {
 	pie := new(Pie)
-	pie.setDefault()
+	pie.InitOptions.SetDefault()
 	pie.HasXYAxis = false
 	pie.ContainerID = genChartID()
 	return pie
-}
-
-func (pie *Pie) setDefault() {
-	pie.InitOptions.SetDefault()
-	pie.BaseOptions.SetDefault()
 }
 
 func (pie *Pie) Add(name string, data map[string]interface{}, options ...interface{}) *Pie {
@@ -43,7 +38,7 @@ func (pie *Pie) Add(name string, data map[string]interface{}, options ...interfa
 }
 
 func (pie *Pie) Render(w ...io.Writer) {
-	pie.setDefault()
+	pie.InitOptions.SetDefault()
 	pie.InitOptions.ValidateID()
 
 	var b bytes.Buffer

@@ -83,12 +83,6 @@ type LegendOptions struct {
 	Bottom string `json:"bottom,omitempty"`
 }
 
-// 为 LegendOptions 设置字段默认值
-func (opt *LegendOptions) SetDefault() {
-	err := SetDefaultValue(opt);
-	checkError(err)
-}
-
 // 提示框组件配置项
 type TooltipOptions struct {
 	// 是否显示提示框
@@ -98,12 +92,6 @@ type TooltipOptions struct {
 	// 'axis': 坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
 	// 'none': 什么都不触发。
 	Trigger string `json:"trigger,omitempty"`
-}
-
-// 为 TooltipOptions 设置字段默认值
-func (opt *TooltipOptions) SetDefault() {
-	err := SetDefaultValue(opt);
-	checkError(err)
 }
 
 // 所有图表都拥有的基本配置项
@@ -116,13 +104,6 @@ type BaseOptions struct {
 	TooltipOptions
 	// 标题组件配置项
 	TitleOptions
-}
-
-// 为 BaseOptions 设置默认值
-func (opt *BaseOptions) SetDefault() {
-	opt.InitOptions.SetDefault()
-	opt.LegendOptions.SetDefault()
-	opt.TooltipOptions.SetDefault()
 }
 
 // 字体样式配置项

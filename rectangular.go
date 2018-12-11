@@ -32,19 +32,9 @@ type XYOptions struct {
 	YAxisOptions
 }
 
-func (opt *XYOptions) SetDefault() {
-	opt.XAxisOptions.SetDefault()
-	opt.YAxisOptions.SetDefault()
-}
-
 type RectOptions struct {
 	BaseOptions
 	XYOptions
-}
-
-func (rect *RectOptions) SetDefault() {
-	rect.BaseOptions.SetDefault()
-	rect.XAxisOptions.SetDefault()
 }
 
 func (rect *RectOptions) setRectGlobalConfig(options ...interface{}) {
@@ -86,7 +76,7 @@ func (rc *RectChart) SetSeriesConfig(options ...interface{}) *RectChart {
 
 func (rc *RectChart) Render(w ...io.Writer) {
 	rc.XAxisOptions.Data = rc.xAxisData
-	rc.SetDefault()
+	rc.InitOptions.SetDefault()
 	rc.InitOptions.ValidateID()
 
 	var b bytes.Buffer
