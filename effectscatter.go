@@ -1,4 +1,4 @@
-package geocharts
+package goecharts
 
 type EffectScatter struct {
 	RectChart

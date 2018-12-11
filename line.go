@@ -1,4 +1,4 @@
-package geocharts
+package goecharts
 
 type Line struct {
 	RectChart
@@ -9,6 +9,7 @@ func NewLine() *Line {
 	line := new(Line)
 	line.setDefault()
 	line.HasXYAxis = true
+	line.ContainerID = genChartID()
 	return line
 }
 

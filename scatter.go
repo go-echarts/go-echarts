@@ -1,4 +1,4 @@
-package geocharts
+package goecharts
 
 type Scatter struct {
 	RectChart
@@ -9,6 +9,7 @@ func NewScatter() *Scatter {
 	scatter := new(Scatter)
 	scatter.setDefault()
 	scatter.HasXYAxis = true
+	scatter.ContainerID = genChartID()
 	return scatter
 }
 

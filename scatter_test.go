@@ -1,1 +1,1 @@
-package geocharts
+package goecharts

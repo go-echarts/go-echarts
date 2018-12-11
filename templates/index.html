@@ -6,11 +6,12 @@
     <script src="{{ .JSHost }}/echarts.min.js"></script>
 </head>
 <body>
-<div id="main" style="width:{{ .InitOptions.Width }};height:{{ .InitOptions.Height }};"></div>
+
+<div id="{{ .ContainerID }}" style="width:{{ .InitOptions.Width }};height:{{ .InitOptions.Height }};"></div>
 <script type="text/javascript">
-    let myChart = echarts.init(document.getElementById('main'));
-    let option = {
-        title: {{ .TitleOptions }},
+    let myChart__x__{{ .ContainerID }}__x__ = echarts.init(document.getElementById('{{ .ContainerID }}'));
+    let option__x__{{ .ContainerID }}__x__  = {
+        title: {{ .TitleOptions  }},
         tooltip: {{ .TooltipOptions }},
         legend: {{ .LegendOptions }},
     {{- if .HasXYAxis }}
@@ -25,7 +26,7 @@
         {{ end -}}
         ]
     };
-    myChart.setOption(option);
+    myChart__x__{{ .ContainerID }}__x__.setOption(option__x__{{ .ContainerID }}__x__);
 </script>
 </body>
 </html>

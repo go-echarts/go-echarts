@@ -1,23 +1,47 @@
-package geocharts
+package goecharts
 
 import (
+	"bytes"
 	"github.com/gobuffalo/packr"
 	"html/template"
 	"io"
 	"log"
 	"reflect"
+	"regexp"
 	"strconv"
+	"time"
 )
 
 // 渲染图表
-func RenderChart(chart interface{}, w io.Writer) {
+func renderChart(chart interface{}, w ...io.Writer) {
 	box := packr.NewBox("./templates")
 	htmlContent, err := box.FindString("index.html")
 	t, err := template.New("").Parse(htmlContent)
 	if err != nil {
 		log.Println(err)
 	}
-	t.Execute(w, chart)
+	// 支持多 writer 渲染
+	for i := 0; i < len(w); i++ {
+		t.Execute(w[i], chart)
+	}
+}
+
+// 生成图表 ID
+func genChartID() string {
+	return strconv.FormatInt(time.Now().UTC().UnixNano(), 10)
+}
+
+
+// 过滤替换渲染结果
+func replaceRender(b bytes.Buffer) []byte {
+	// __x__ 与模板占位符相匹配
+	pat, err := regexp.Compile(`(__x__")|("__x__)`)
+	if err != nil {
+		log.Println(err)
+	}
+	// 替换并转为 []byte 类型
+	res := []byte(pat.ReplaceAllString(b.String(), "_x_"))
+	return res
 }
 
 // 为结构体设置默认值

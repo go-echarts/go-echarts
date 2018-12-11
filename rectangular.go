@@ -1,6 +1,7 @@
-package geocharts
+package goecharts
 
 import (
+	"bytes"
 	"io"
 )
 
@@ -83,10 +84,17 @@ func (rc *RectChart) SetSeriesConfig(options ...interface{}) *RectChart {
 	return rc
 }
 
-func (rc *RectChart) Render(w io.Writer) {
+func (rc *RectChart) Render(w ...io.Writer) {
 	rc.XAxisOptions.Data = rc.xAxisData
 	rc.SetDefault()
-	RenderChart(rc, w)
+	rc.InitOptions.ValidateID()
+
+	var b bytes.Buffer
+	renderChart(rc, &b)
+	res := replaceRender(b)
+	for i := 0; i < len(w); i++ {
+		w[i].Write(res)
+	}
 }
 
 type marketLineData struct {

@@ -1,6 +1,9 @@
-package geocharts
+package goecharts
 
-import "io"
+import (
+	"bytes"
+	"io"
+)
 
 type Pie struct {
 	InitOptions
@@ -15,6 +18,7 @@ func NewPie() *Pie {
 	pie := new(Pie)
 	pie.setDefault()
 	pie.HasXYAxis = false
+	pie.ContainerID = genChartID()
 	return pie
 }
 
@@ -23,7 +27,7 @@ func (pie *Pie) setDefault() {
 	pie.BaseOptions.SetDefault()
 }
 
-func (pie *Pie) Add(name string, data map[string]interface{}, options ...interface{}) *Pie{
+func (pie *Pie) Add(name string, data map[string]interface{}, options ...interface{}) *Pie {
 	type pieData struct {
 		Name  string      `json:"name"`
 		Value interface{} `json:"value"`
@@ -38,6 +42,14 @@ func (pie *Pie) Add(name string, data map[string]interface{}, options ...interfa
 	return pie
 }
 
-func (pie *Pie) Render(w io.Writer) {
-	RenderChart(pie, w)
+func (pie *Pie) Render(w ...io.Writer) {
+	pie.setDefault()
+	pie.InitOptions.ValidateID()
+
+	var b bytes.Buffer
+	renderChart(pie, &b)
+	res := replaceRender(b)
+	for i := 0; i < len(w); i++ {
+		w[i].Write(res)
+	}
 }

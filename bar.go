@@ -1,6 +1,7 @@
-package geocharts
+package goecharts
 
 import (
+	"bytes"
 	"io"
 )
 
@@ -15,6 +16,7 @@ func NewBar() *Bar {
 	bar := new(Bar)
 	bar.setDefault()
 	bar.HasXYAxis = true
+	bar.ContainerID = genChartID()
 	return bar
 }
 
@@ -35,7 +37,7 @@ func (bar *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{})
 	return bar
 }
 
-func (bar *Bar) Render(w io.Writer) {
+func (bar *Bar) Render(w ...io.Writer) {
 	bar.XAxisOptions.Data = bar.xAxisData
 	// XY 轴翻转
 	if bar.IsXYReversal {
@@ -43,5 +45,12 @@ func (bar *Bar) Render(w io.Writer) {
 		bar.XAxisOptions.Data = nil
 	}
 	bar.SetDefault()
-	RenderChart(bar, w)
+	bar.InitOptions.ValidateID()
+
+	var b bytes.Buffer
+	renderChart(bar, &b)
+	res := replaceRender(b)
+	for i := 0; i < len(w); i++ {
+		w[i].Write(res)
+	}
 }

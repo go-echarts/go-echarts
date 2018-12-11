@@ -1,4 +1,4 @@
-package geocharts
+package goecharts
 
 // 图形上的文本标签配置项
 type LabelOptions struct {

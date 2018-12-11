@@ -1,4 +1,4 @@
-package geocharts
+package goecharts
 
 // 标题组件配置项
 type TitleOptions struct {
@@ -43,7 +43,7 @@ type InitOptions struct {
 	// 画布高度
 	Height string `default:"500px"`
 	// 容器 ID，用于渲染标识
-	ContainerID string `default:"main"`
+	ContainerID string
 	// JS host 地址
 	JSHost string `default:"https://cdn.bootcss.com/echarts/4.1.0"`
 }
@@ -52,6 +52,13 @@ type InitOptions struct {
 func (opt *InitOptions) SetDefault() {
 	err := SetDefaultValue(opt)
 	checkError(err)
+}
+
+// 确保 ContainerID 不为空且唯一
+func (opt *InitOptions) ValidateID() {
+	if opt.ContainerID == "" {
+		opt.ContainerID = genChartID()
+	}
 }
 
 // 图例组件配置项
