@@ -1,9 +1,9 @@
 package goecharts
 
 const (
-	BAR           = "bar"
-	EFFECTSCATTER = "effectScatter"
-	LINE          = "line"
-	SCATTER       = "scatter"
-	PIE           = "pie"
+	barType           = "bar"
+	effectScatterType = "effectScatter"
+	lineType          = "line"
+	scatterType       = "scatter"
+	pieType           = "pie"
 )

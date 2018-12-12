@@ -16,9 +16,7 @@ type Pie struct {
 //工厂函数，生成 `Pie` 实例
 func NewPie() *Pie {
 	pie := new(Pie)
-	pie.InitOptions.SetDefault()
 	pie.HasXYAxis = false
-	pie.ContainerID = genChartID()
 	return pie
 }
 
@@ -31,15 +29,14 @@ func (pie *Pie) Add(name string, data map[string]interface{}, options ...interfa
 	for k, v := range data {
 		pd = append(pd, pieData{k, v})
 	}
-	series := Series{Name: name, Type: PIE, Data: pd}
+	series := Series{Name: name, Type: pieType, Data: pd}
 	series.setSingleSeriesOptions(options...)
 	pie.SeriesList = append(pie.SeriesList, series)
 	return pie
 }
 
 func (pie *Pie) Render(w ...io.Writer) {
-	pie.InitOptions.SetDefault()
-	pie.InitOptions.ValidateID()
+	pie.validateInitOpt()
 
 	var b bytes.Buffer
 	renderChart(pie, &b)

@@ -42,23 +42,29 @@ type InitOptions struct {
 	Width string `default:"800px"`
 	// 画布高度
 	Height string `default:"500px"`
-	// 容器 ID，用于渲染标识
-	ContainerID string
+	// 图表 ID，是图表唯一标识
+	ChartID string
 	// JS host 地址
 	JSHost string `default:"https://cdn.bootcss.com/echarts/4.1.0"`
 }
 
 // 为 InitOptions 设置字段默认值
-func (opt *InitOptions) SetDefault() {
-	err := SetDefaultValue(opt)
+func (opt *InitOptions) setDefault() {
+	err := setDefaultValue(opt)
 	checkError(err)
 }
 
 // 确保 ContainerID 不为空且唯一
-func (opt *InitOptions) ValidateID() {
-	if opt.ContainerID == "" {
-		opt.ContainerID = genChartID()
+func (opt *InitOptions) checkID() {
+	if opt.ChartID == "" {
+		opt.ChartID = genChartID()
 	}
+}
+
+// 验证初始化参数，确保图形能够得到正确渲染
+func (opt *InitOptions) validateInitOpt() {
+	opt.setDefault()
+	opt.checkID()
 }
 
 // 图例组件配置项

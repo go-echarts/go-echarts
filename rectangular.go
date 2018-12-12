@@ -5,26 +5,24 @@ import (
 	"io"
 )
 
+// X 轴配置项
 type XAxisOptions struct {
-	Name string      `json:"name,omitempty"`
-	Show bool        `json:"show,omitempty"`
+	// X 轴名称
+	Name string `json:"name,omitempty"`
+	// 是否显示 X 轴
+	Show bool `json:"show,omitempty"`
+	// X 轴数据项
 	Data interface{} `json:"data,omitempty"`
 }
 
-func (opt *XAxisOptions) SetDefault() {
-	err := SetDefaultValue(opt);
-	checkError(err)
-}
-
+// Y 轴配置项
 type YAxisOptions struct {
-	Name string      `json:"name,omitempty"`
-	Show bool        `json:"show,omitempty"`
+	// Y 轴名称
+	Name string `json:"name,omitempty"`
+	// 是否显示 Y 轴
+	Show bool `json:"show,omitempty"`
+	// Y 轴数据项
 	Data interface{} `json:"data,omitempty"`
-}
-
-func (opt *YAxisOptions) SetDefault() {
-	err := SetDefaultValue(opt);
-	checkError(err)
 }
 
 type XYOptions struct {
@@ -74,10 +72,14 @@ func (rc *RectChart) SetSeriesConfig(options ...interface{}) *RectChart {
 	return rc
 }
 
+func (rc *RectChart) Validate() {
+	rc.XAxisOptions.Data = rc.xAxisData
+	rc.validateInitOpt()
+}
+
 func (rc *RectChart) Render(w ...io.Writer) {
 	rc.XAxisOptions.Data = rc.xAxisData
-	rc.InitOptions.SetDefault()
-	rc.InitOptions.ValidateID()
+	rc.Validate()
 
 	var b bytes.Buffer
 	renderChart(rc, &b)
@@ -87,6 +89,7 @@ func (rc *RectChart) Render(w ...io.Writer) {
 	}
 }
 
+//TODO:设计 markLine&markPoint 接口
 type marketLineData struct {
 	Name string `json:"name"`
 	Type string `json:"type"`

@@ -6,31 +6,51 @@ import (
 	"html/template"
 	"io"
 	"log"
+	"math/rand"
 	"reflect"
 	"regexp"
 	"strconv"
 	"time"
 )
 
+const (
+	LETTER_BYTES    = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	LETTER_IDX_BITS = 6
+	LETTER_IDX_MASK = 1<<LETTER_IDX_BITS - 1 // All 1-bits, as many as letterIdxBits
+	LETTER_IDX_MAX  = 63 / LETTER_IDX_BITS
+	CHART_SIZE      = 12
+)
+
+// TODO: template must
 // 渲染图表
-func renderChart(chart interface{}, w ...io.Writer) {
+func renderChart(chart interface{}, w io.Writer) {
 	box := packr.NewBox("./templates")
 	htmlContent, err := box.FindString("index.html")
 	t, err := template.New("").Parse(htmlContent)
 	if err != nil {
 		log.Println(err)
 	}
-	// 支持多 writer 渲染
-	for i := 0; i < len(w); i++ {
-		t.Execute(w[i], chart)
-	}
+	t.Execute(w, chart)
 }
 
-// 生成图表 ID
+var seed = rand.NewSource(time.Now().UnixNano())
+
+// 生成唯一且随机的图表 ID
 func genChartID() string {
-	return strconv.FormatInt(time.Now().UTC().UnixNano(), 10)
+	b := make([]byte, CHART_SIZE)
+	for i, cache, remain := CHART_SIZE-1, seed.Int63(), LETTER_IDX_MAX; i >= 0; {
+		if remain == 0 {
+			cache, remain = seed.Int63(), LETTER_IDX_MAX
+		}
+		if idx := int(cache & LETTER_IDX_MASK); idx < len(LETTER_BYTES) {
+			b[i] = LETTER_BYTES[idx]
+			i--
+		}
+		cache >>= LETTER_IDX_BITS
+		remain--
+	}
+	return string(b)
 }
-
 
 // 过滤替换渲染结果
 func replaceRender(b bytes.Buffer) []byte {
@@ -46,7 +66,7 @@ func replaceRender(b bytes.Buffer) []byte {
 
 // 为结构体设置默认值
 // 部分代码参考 https://github.com/mcuadros/go-defaults
-func SetDefaultValue(ptr interface{}) error {
+func setDefaultValue(ptr interface{}) error {
 	var err error
 	//需要参数为指针类型，指针才能改变值
 	if reflect.TypeOf(ptr).Kind() != reflect.Ptr {
@@ -79,7 +99,7 @@ func setField(field reflect.Value, defaultVal string) {
 		if field.String() == "" {
 			field.Set(reflect.ValueOf(defaultVal).Convert(field.Type()))
 		}
-	// bool 类型
+		// bool 类型
 	case reflect.Bool:
 		if val, err := strconv.ParseBool(defaultVal); err == nil {
 			field.Set(reflect.ValueOf(val).Convert(field.Type()))

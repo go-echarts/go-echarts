@@ -14,24 +14,36 @@ type Bar struct {
 //工厂函数，生成 `Bar` 实例
 func NewBar() *Bar {
 	bar := new(Bar)
-	bar.InitOptions.SetDefault()
 	bar.HasXYAxis = true
-	bar.ContainerID = genChartID()
 	return bar
 }
 
+// 提供 X 轴数据
 func (bar *Bar) AddXAxis(xAxis interface{}) *Bar {
 	bar.xAxisData = xAxis
 	return bar
 }
 
+// 提供 Y 轴数据
 func (bar *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Bar {
-	series := Series{Name: name, Type: BAR, Data: yAxis}
+	series := Series{Name: name, Type: barType, Data: yAxis}
 	series.setSingleSeriesOptions(options...)
 	bar.SeriesList = append(bar.SeriesList, series)
 	return bar
 }
 
+// 对图形配置做最后的验证，确保能够正确渲染
+func (bar *Bar) Validate() {
+	bar.XAxisOptions.Data = bar.xAxisData
+	// XY 轴翻转
+	if bar.IsXYReversal {
+		bar.YAxisOptions.Data = bar.xAxisData
+		bar.XAxisOptions.Data = nil
+	}
+	bar.validateInitOpt()
+}
+
+// 渲染图表，支持多 io.Writer
 func (bar *Bar) Render(w ...io.Writer) {
 	bar.XAxisOptions.Data = bar.xAxisData
 	// XY 轴翻转
@@ -39,8 +51,8 @@ func (bar *Bar) Render(w ...io.Writer) {
 		bar.YAxisOptions.Data = bar.xAxisData
 		bar.XAxisOptions.Data = nil
 	}
-	bar.InitOptions.SetDefault()
-	bar.InitOptions.ValidateID()
+
+	bar.Validate()
 
 	var b bytes.Buffer
 	renderChart(bar, &b)

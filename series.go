@@ -2,14 +2,14 @@ package goecharts
 
 // 图形上的文本标签配置项
 type LabelOptions struct {
-	Show     bool   `json:"show" default:"false"`
+	Show     bool   `json:"show,omitempty"`
+	Color    string `json:"color,omitempty"`
 	Position string `json:"position" default:"top"`
-	Color    string `json:"color"`
 }
 
 // 为 LabelOptions 设置字段默认值
 func (opt *LabelOptions) SetDefault() {
-	err := SetDefaultValue(opt);
+	err := setDefaultValue(opt);
 	checkError(err)
 }
 
@@ -60,3 +60,5 @@ func (sl *SeriesList) setSeriesOptions(options ...interface{}) {
 		}
 	}
 }
+
+//TODO:全局颜色列表
