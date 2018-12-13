@@ -14,14 +14,15 @@ import (
 )
 
 const (
-	LETTER_BYTES    = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	LETTER_IDX_BITS = 6
-	LETTER_IDX_MASK = 1<<LETTER_IDX_BITS - 1 // All 1-bits, as many as letterIdxBits
-	LETTER_IDX_MAX  = 63 / LETTER_IDX_BITS
-	CHART_SIZE      = 12
+	letterBytes   = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+	letterIdxBits = 6                    // 6 bits to represent a letter index
+	letterIdxMask = 1<<letterIdxBits - 1 // All 1-bits, as many as letterIdxBits
+	letterIdxMax  = 63 / letterIdxBits   // # of letter indices fitting in 63 bits
+	chartIdSize   = 12
 )
 
 // TODO: template must
+// TODO: template 复用
 // 渲染图表
 func renderChart(chart interface{}, w io.Writer) {
 	box := packr.NewBox("./templates")
@@ -37,16 +38,16 @@ var seed = rand.NewSource(time.Now().UnixNano())
 
 // 生成唯一且随机的图表 ID
 func genChartID() string {
-	b := make([]byte, CHART_SIZE)
-	for i, cache, remain := CHART_SIZE-1, seed.Int63(), LETTER_IDX_MAX; i >= 0; {
+	b := make([]byte, chartIdSize)
+	for i, cache, remain := chartIdSize-1, seed.Int63(), letterIdxMax; i >= 0; {
 		if remain == 0 {
-			cache, remain = seed.Int63(), LETTER_IDX_MAX
+			cache, remain = seed.Int63(), letterIdxMax
 		}
-		if idx := int(cache & LETTER_IDX_MASK); idx < len(LETTER_BYTES) {
-			b[i] = LETTER_BYTES[idx]
+		if idx := int(cache & letterIdxMask); idx < len(letterBytes) {
+			b[i] = letterBytes[idx]
 			i--
 		}
-		cache >>= LETTER_IDX_BITS
+		cache >>= letterIdxBits
 		remain--
 	}
 	return string(b)

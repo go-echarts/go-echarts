@@ -4,13 +4,7 @@ package goecharts
 type LabelOptions struct {
 	Show     bool   `json:"show,omitempty"`
 	Color    string `json:"color,omitempty"`
-	Position string `json:"position" default:"top"`
-}
-
-// 为 LabelOptions 设置字段默认值
-func (opt *LabelOptions) SetDefault() {
-	err := setDefaultValue(opt);
-	checkError(err)
+	Position string `json:"position,omitempty"`
 }
 
 // Series 配置项

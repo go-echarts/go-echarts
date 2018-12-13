@@ -72,14 +72,14 @@ func (rc *RectChart) SetSeriesConfig(options ...interface{}) *RectChart {
 	return rc
 }
 
-func (rc *RectChart) Validate() {
+func (rc *RectChart) verifyOpts() {
 	rc.XAxisOptions.Data = rc.xAxisData
-	rc.validateInitOpt()
+	rc.verifyInitOpt()
 }
 
 func (rc *RectChart) Render(w ...io.Writer) {
 	rc.XAxisOptions.Data = rc.xAxisData
-	rc.Validate()
+	rc.verifyOpts()
 
 	var b bytes.Buffer
 	renderChart(rc, &b)

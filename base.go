@@ -62,7 +62,7 @@ func (opt *InitOptions) checkID() {
 }
 
 // 验证初始化参数，确保图形能够得到正确渲染
-func (opt *InitOptions) validateInitOpt() {
+func (opt *InitOptions) verifyInitOpt() {
 	opt.setDefault()
 	opt.checkID()
 }

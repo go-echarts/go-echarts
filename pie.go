@@ -35,9 +35,11 @@ func (pie *Pie) Add(name string, data map[string]interface{}, options ...interfa
 	return pie
 }
 
-func (pie *Pie) Render(w ...io.Writer) {
-	pie.validateInitOpt()
+func (pie *Pie) verifyOpts() {
+	pie.verifyInitOpt()
+}
 
+func (pie *Pie) Render(w ...io.Writer) {
 	var b bytes.Buffer
 	renderChart(pie, &b)
 	res := replaceRender(b)

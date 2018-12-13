@@ -33,14 +33,14 @@ func (bar *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{})
 }
 
 // 对图形配置做最后的验证，确保能够正确渲染
-func (bar *Bar) Validate() {
+func (bar *Bar) verifyOpts() {
 	bar.XAxisOptions.Data = bar.xAxisData
 	// XY 轴翻转
 	if bar.IsXYReversal {
 		bar.YAxisOptions.Data = bar.xAxisData
 		bar.XAxisOptions.Data = nil
 	}
-	bar.validateInitOpt()
+	bar.verifyInitOpt()
 }
 
 // 渲染图表，支持多 io.Writer
@@ -52,11 +52,12 @@ func (bar *Bar) Render(w ...io.Writer) {
 		bar.XAxisOptions.Data = nil
 	}
 
-	bar.Validate()
+	bar.verifyOpts()
 
 	var b bytes.Buffer
 	renderChart(bar, &b)
 	res := replaceRender(b)
+	// 只渲染第一次
 	for i := 0; i < len(w); i++ {
 		w[i].Write(res)
 	}

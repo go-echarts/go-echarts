@@ -21,11 +21,13 @@ func NewEffectScatter() *EffectScatter {
 	return es
 }
 
+// 提供 X 轴数据
 func (es *EffectScatter) AddXAxis(xAxis interface{}) *EffectScatter {
 	es.xAxisData = xAxis
 	return es
 }
 
+// 提供 Y 轴数据
 func (es *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *EffectScatter {
 	series := Series{Name: name, Type: effectScatterType, Data: yAxis}
 	series.setSingleSeriesOptions(options...)

@@ -9,7 +9,7 @@ import (
 )
 
 type verifier interface {
-	Validate()
+	verifyOpts()
 }
 
 type Page struct {
@@ -30,7 +30,7 @@ func (page *Page) Add(charts ...verifier) *Page {
 		log.Println("Please make sure len(charts) > 0")
 	}
 	for i := 0; i < len(charts); i++ {
-		charts[i].Validate()
+		charts[i].verifyOpts()
 		page.Charts = append(page.Charts, charts[i])
 
 	}
@@ -40,7 +40,7 @@ func (page *Page) Add(charts ...verifier) *Page {
 func (page *Page) Render(w ...io.Writer) {
 	page.setDefault()
 	var b bytes.Buffer
-	renderChart1(page, &b)
+	renderPage(page, &b)
 	res := replaceRender(b)
 	for i := 0; i < len(w); i++ {
 		w[i].Write(res)
@@ -48,7 +48,7 @@ func (page *Page) Render(w ...io.Writer) {
 }
 
 // 渲染图表
-func renderChart1(chart interface{}, w io.Writer) {
+func renderPage(chart interface{}, w io.Writer) {
 	box := packr.NewBox("./templates")
 	htmlContent, err := box.FindString("page.html")
 	t, err := template.New("").Parse(htmlContent)

@@ -11,11 +11,13 @@ func NewScatter() *Scatter {
 	return scatter
 }
 
+// 提供 X 轴数据
 func (scatter *Scatter) AddXAxis(xAxis interface{}) *Scatter {
 	scatter.xAxisData = xAxis
 	return scatter
 }
 
+// 提供 Y 轴数据
 func (scatter *Scatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Scatter {
 	series := Series{Name: name, Type: scatterType, Data: yAxis}
 	series.setSingleSeriesOptions(options...)
