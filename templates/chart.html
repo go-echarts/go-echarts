@@ -24,7 +24,8 @@
         {{ range .SeriesList }}
         {{- . }},
         {{ end -}}
-        ]
+        ],
+        color: {{ .ColorList }}
     };
     myChart__x__{{ .ChartID }}__x__.setOption(option__x__{{ .ChartID }}__x__);
 </script>

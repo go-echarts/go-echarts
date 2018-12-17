@@ -1,0 +1,24 @@
+{{- define "base" }}
+<div id="{{ .ChartID }}" style="width:{{ .InitOptions.Width }};height:{{ .InitOptions.Height }};"></div>
+<script type="text/javascript">
+    let myChart__x__{{ .ChartID }}__x__ = echarts.init(document.getElementById('{{ .ChartID }}'));
+    let option__x__{{ .ChartID }}__x__  = {
+        title: {{ .TitleOptions  }},
+        tooltip: {{ .TooltipOptions }},
+        legend: {{ .LegendOptions }},
+    {{- if .HasXYAxis }}
+        xAxis: {{ .XAxisOptions }},
+    {{- end }}
+    {{- if .HasXYAxis }}
+        yAxis: {{ .YAxisOptions }},
+    {{- end }}
+        series: [
+        {{ range .SeriesList }}
+        {{- . }},
+        {{ end -}}
+        ],
+        color: {{ .ColorList }}
+    };
+    myChart__x__{{ .ChartID }}__x__.setOption(option__x__{{ .ChartID }}__x__);
+</script>
+{{ end }}
