@@ -15,7 +15,7 @@ type Series struct {
 	Type string `json:"type"`
 	// series 数据项
 	Data                 interface{} `json:"data"`
-	LabelOptions         `json:"label"`
+	LabelOptions         `json:"label,omitempty"`
 	*RippleEffectOptions `json:"rippleEffect,omitempty"`
 }
 
@@ -54,5 +54,3 @@ func (sl *SeriesList) setSeriesOptions(options ...interface{}) {
 		}
 	}
 }
-
-//TODO:全局颜色列表

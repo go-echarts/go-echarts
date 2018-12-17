@@ -17,6 +17,7 @@ type Pie struct {
 func NewPie() *Pie {
 	pie := new(Pie)
 	pie.HasXYAxis = false
+	pie.initSeriesColors()
 	return pie
 }
 
@@ -32,6 +33,12 @@ func (pie *Pie) Add(name string, data map[string]interface{}, options ...interfa
 	series := Series{Name: name, Type: pieType, Data: pd}
 	series.setSingleSeriesOptions(options...)
 	pie.SeriesList = append(pie.SeriesList, series)
+	pie.setColor(options...)
+	return pie
+}
+
+func (pie *Pie) SetGlobalConfig(options ...interface{}) *Pie {
+	pie.BaseOptions.setRectGlobalConfig(options...)
 	return pie
 }
 
@@ -40,8 +47,12 @@ func (pie *Pie) verifyOpts() {
 }
 
 func (pie *Pie) Render(w ...io.Writer) {
+
+	pie.insertSeriesColors(pie.appendColor)
+	pie.verifyOpts()
+
 	var b bytes.Buffer
-	renderChart(pie, &b)
+	renderChart(pie, &b, "chart")
 	res := replaceRender(b)
 	for i := 0; i < len(w); i++ {
 		w[i].Write(res)

@@ -8,6 +8,7 @@ type Scatter struct {
 func NewScatter() *Scatter {
 	scatter := new(Scatter)
 	scatter.HasXYAxis = true
+	scatter.initSeriesColors()
 	return scatter
 }
 
@@ -22,5 +23,6 @@ func (scatter *Scatter) AddYAxis(name string, yAxis interface{}, options ...inte
 	series := Series{Name: name, Type: scatterType, Data: yAxis}
 	series.setSingleSeriesOptions(options...)
 	scatter.SeriesList = append(scatter.SeriesList, series)
+	scatter.setColor(options...)
 	return scatter
 }

@@ -100,6 +100,11 @@ type TooltipOptions struct {
 	Trigger string `json:"trigger,omitempty"`
 }
 
+// 全局颜色配置项
+type ColorOptions struct {
+	Color []string
+}
+
 // 所有图表都拥有的基本配置项
 type BaseOptions struct {
 	// 图形初始化配置项
@@ -110,6 +115,56 @@ type BaseOptions struct {
 	TooltipOptions
 	// 标题组件配置项
 	TitleOptions
+	// 全局颜色列表
+	ColorList []string
+	// 追加全局颜色列表
+	appendColor []string
+}
+
+// 设置全局颜色
+func (opt *BaseOptions) setColor(options ...interface{}) {
+	for i := 0; i < len(options); i++ {
+		option := options[i]
+		switch option.(type) {
+		case ColorOptions:
+			opt.appendColor = append(opt.appendColor, option.(ColorOptions).Color...)
+		}
+	}
+}
+
+// 初始化全局颜色列表
+func (opt *BaseOptions) initSeriesColors() {
+	opt.ColorList = []string{
+		"#c23531", "#2f4554", "#61a0a8", "#d48265", "#91c7ae", "#749f83",
+		"#ca8622", "#bda29a", "#6e7074", "#546570", "#c4ccd3"}
+}
+
+// 插入颜色到颜色列表首部
+func (opt *BaseOptions) insertSeriesColors(s []string) {
+	// 翻转颜色列表
+	tmpCl := reverseSlice(s)
+	// 颜色追加至首部
+	for i := 0; i < len(tmpCl); i++ {
+		opt.ColorList = append(opt.ColorList, "")
+		copy(opt.ColorList[1:], opt.ColorList[0:])
+		opt.ColorList[0] = tmpCl[i]
+	}
+}
+
+func (opt *BaseOptions) setRectGlobalConfig(options ...interface{}) {
+	for i := 0; i < len(options); i++ {
+		option := options[i]
+		switch option.(type) {
+		case InitOptions:
+			opt.InitOptions = option.(InitOptions)
+		case TitleOptions:
+			opt.TitleOptions = option.(TitleOptions)
+		case LegendOptions:
+			opt.LegendOptions = option.(LegendOptions)
+		case ColorOptions:
+			opt.insertSeriesColors(option.(ColorOptions).Color)
+		}
+	}
 }
 
 // 字体样式配置项

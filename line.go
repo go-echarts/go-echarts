@@ -8,6 +8,7 @@ type Line struct {
 func NewLine() *Line {
 	line := new(Line)
 	line.HasXYAxis = true
+	line.initSeriesColors()
 	return line
 }
 
@@ -22,5 +23,6 @@ func (line *Line) AddYAxis(name string, yAxis interface{}, options ...interface{
 	series := Series{Name: name, Type: lineType, Data: yAxis}
 	series.setSingleSeriesOptions(options...)
 	line.SeriesList = append(line.SeriesList, series)
+	line.setColor(options...)
 	return line
 }

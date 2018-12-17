@@ -30,27 +30,26 @@ type XYOptions struct {
 	YAxisOptions
 }
 
+func (opt *XYOptions) setRectGlobalConfig(options ...interface{}) {
+	for i := 0; i < len(options); i++ {
+		option := options[i]
+		switch option.(type) {
+		case XAxisOptions:
+			opt.XAxisOptions = option.(XAxisOptions)
+		case YAxisOptions:
+			opt.YAxisOptions = option.(YAxisOptions)
+		}
+	}
+}
+
 type RectOptions struct {
 	BaseOptions
 	XYOptions
 }
 
 func (rect *RectOptions) setRectGlobalConfig(options ...interface{}) {
-	for i := 0; i < len(options); i++ {
-		option := options[i]
-		switch option.(type) {
-		case InitOptions:
-			rect.InitOptions = option.(InitOptions)
-		case TitleOptions:
-			rect.TitleOptions = option.(TitleOptions)
-		case LegendOptions:
-			rect.LegendOptions = option.(LegendOptions)
-		case XAxisOptions:
-			rect.XAxisOptions = option.(XAxisOptions)
-		case YAxisOptions:
-			rect.YAxisOptions = option.(YAxisOptions)
-		}
-	}
+	rect.BaseOptions.setRectGlobalConfig(options)
+	rect.XYOptions.setRectGlobalConfig(options)
 }
 
 type RectChart struct {
@@ -82,7 +81,7 @@ func (rc *RectChart) Render(w ...io.Writer) {
 	rc.verifyOpts()
 
 	var b bytes.Buffer
-	renderChart(rc, &b)
+	renderChart(rc, &b, "chart")
 	res := replaceRender(b)
 	for i := 0; i < len(w); i++ {
 		w[i].Write(res)

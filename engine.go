@@ -21,19 +21,18 @@ const (
 	chartIdSize   = 12
 )
 
-// TODO: template must
-// TODO: template 复用
 // 渲染图表
-func renderChart(chart interface{}, w io.Writer) {
+func renderChart(chart interface{}, w io.Writer, name string) {
 	box := packr.NewBox("./templates")
-	htmlContent, err := box.FindString("index.html")
-	t, err := template.New("").Parse(htmlContent)
-	if err != nil {
-		log.Println(err)
-	}
-	t.Execute(w, chart)
+	baseHtml, err := box.FindString("base.html")
+	chartHtml, err := box.FindString(name + ".html")
+	checkError(err)
+	tpl := template.Must(template.New("").Parse(baseHtml))
+	tpl = template.Must(tpl.Parse(chartHtml))
+	tpl.ExecuteTemplate(w, name, chart)
 }
 
+// 随机种子
 var seed = rand.NewSource(time.Now().UnixNano())
 
 // 生成唯一且随机的图表 ID

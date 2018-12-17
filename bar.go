@@ -15,6 +15,7 @@ type Bar struct {
 func NewBar() *Bar {
 	bar := new(Bar)
 	bar.HasXYAxis = true
+	bar.initSeriesColors()
 	return bar
 }
 
@@ -29,6 +30,7 @@ func (bar *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{})
 	series := Series{Name: name, Type: barType, Data: yAxis}
 	series.setSingleSeriesOptions(options...)
 	bar.SeriesList = append(bar.SeriesList, series)
+	bar.setColor(options...)
 	return bar
 }
 
@@ -52,10 +54,11 @@ func (bar *Bar) Render(w ...io.Writer) {
 		bar.XAxisOptions.Data = nil
 	}
 
+	bar.insertSeriesColors(bar.appendColor)
 	bar.verifyOpts()
 
 	var b bytes.Buffer
-	renderChart(bar, &b)
+	renderChart(bar, &b, "chart")
 	res := replaceRender(b)
 	// 只渲染第一次
 	for i := 0; i < len(w); i++ {
