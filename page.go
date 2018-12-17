@@ -35,6 +35,7 @@ func (page *Page) Add(charts ...verifier) *Page {
 	return page
 }
 
+// 渲染图表，支持多 io.Writer
 func (page *Page) Render(w ...io.Writer) {
 	page.setDefault()
 	var b bytes.Buffer

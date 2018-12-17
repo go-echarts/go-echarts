@@ -151,7 +151,8 @@ func (opt *BaseOptions) insertSeriesColors(s []string) {
 	}
 }
 
-func (opt *BaseOptions) setRectGlobalConfig(options ...interface{}) {
+// 设置 BaseOptions 全局配置项
+func (opt *BaseOptions) setBaseGlobalConfig(options ...interface{}) {
 	for i := 0; i < len(options); i++ {
 		option := options[i]
 		switch option.(type) {

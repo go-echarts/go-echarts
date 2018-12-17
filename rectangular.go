@@ -25,12 +25,14 @@ type YAxisOptions struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
+// XY 轴配置项
 type XYOptions struct {
 	XAxisOptions
 	YAxisOptions
 }
 
-func (opt *XYOptions) setRectGlobalConfig(options ...interface{}) {
+// 设置 XYOptions 全局配置项
+func (opt *XYOptions) setXYGlobalConfig(options ...interface{}) {
 	for i := 0; i < len(options); i++ {
 		option := options[i]
 		switch option.(type) {
@@ -47,9 +49,10 @@ type RectOptions struct {
 	XYOptions
 }
 
+// 设置 RectOptions 全局配置项
 func (rect *RectOptions) setRectGlobalConfig(options ...interface{}) {
-	rect.BaseOptions.setRectGlobalConfig(options)
-	rect.XYOptions.setRectGlobalConfig(options)
+	rect.BaseOptions.setBaseGlobalConfig(options)
+	rect.XYOptions.setXYGlobalConfig(options)
 }
 
 type RectChart struct {

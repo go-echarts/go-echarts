@@ -38,7 +38,7 @@ func (pie *Pie) Add(name string, data map[string]interface{}, options ...interfa
 }
 
 func (pie *Pie) SetGlobalConfig(options ...interface{}) *Pie {
-	pie.BaseOptions.setRectGlobalConfig(options...)
+	pie.BaseOptions.setBaseGlobalConfig(options...)
 	return pie
 }
 
@@ -46,6 +46,7 @@ func (pie *Pie) verifyOpts() {
 	pie.verifyInitOpt()
 }
 
+// 渲染图表，支持多 io.Writer
 func (pie *Pie) Render(w ...io.Writer) {
 
 	pie.insertSeriesColors(pie.appendColor)
