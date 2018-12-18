@@ -5,10 +5,10 @@ type Line struct {
 }
 
 //工厂函数，生成 `Line` 实例
-func NewLine() *Line {
+func NewLine(routers ...HttpRouter) *Line {
 	line := new(Line)
 	line.HasXYAxis = true
-	line.initSeriesColors()
+	line.init(routers...)
 	return line
 }
 

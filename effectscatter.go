@@ -15,10 +15,10 @@ type RippleEffectOptions struct {
 }
 
 //工厂函数，生成 `Scatter` 实例
-func NewEffectScatter() *EffectScatter {
+func NewEffectScatter(routers ...HttpRouter) *EffectScatter {
 	es := new(EffectScatter)
 	es.HasXYAxis = true
-	es.initSeriesColors()
+	es.init(routers...)
 	return es
 }
 

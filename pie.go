@@ -14,10 +14,10 @@ type Pie struct {
 }
 
 //工厂函数，生成 `Pie` 实例
-func NewPie() *Pie {
+func NewPie(routers ...HttpRouter) *Pie {
 	pie := new(Pie)
 	pie.HasXYAxis = false
-	pie.initSeriesColors()
+	pie.init(routers...)
 	return pie
 }
 

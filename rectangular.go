@@ -51,8 +51,8 @@ type RectOptions struct {
 
 // 设置 RectOptions 全局配置项
 func (rect *RectOptions) setRectGlobalConfig(options ...interface{}) {
-	rect.BaseOptions.setBaseGlobalConfig(options)
-	rect.XYOptions.setXYGlobalConfig(options)
+	rect.BaseOptions.setBaseGlobalConfig(options...)
+	rect.XYOptions.setXYGlobalConfig(options...)
 }
 
 type RectChart struct {

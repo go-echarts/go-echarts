@@ -4,12 +4,23 @@
 <head>
     <meta charset="utf-8">
     <title>{{ .PageTitle }}</title>
-    <script src="{{ .JSHost }}/echarts.min.js"></script>
+    <script src="{{ .JSHost }}/echarts/4.1.0/echarts.min.js"></script>
+    <link href="{{ .JSHost }}/bulma/0.7.2/css/bulma.min.css" rel="stylesheet">
 </head>
 <body>
 {{- range .Charts }}
     {{ template "base" .}}
 {{- end }}
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .item {
+        margin: auto;
+    }
+</style>
 </body>
 </html>
 {{ end }}

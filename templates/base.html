@@ -1,11 +1,22 @@
 {{- define "base" }}
-<div id="{{ .ChartID }}" style="width:{{ .InitOptions.Width }};height:{{ .InitOptions.Height }};"></div>
+<div class="container">
+    <div class="item" id="{{ .ChartID }}"
+         style="width:{{ .InitOptions.Width }};height:{{ .InitOptions.Height }};"></div>
+</div>
 <script type="text/javascript">
     let myChart__x__{{ .ChartID }}__x__ = echarts.init(document.getElementById('{{ .ChartID }}'));
-    let option__x__{{ .ChartID }}__x__  = {
+    let option__x__{{ .ChartID }}__x__ = {
         title: {{ .TitleOptions  }},
         tooltip: {{ .TooltipOptions }},
         legend: {{ .LegendOptions }},
+        toolbox: {
+            feature: {
+                dataZoom: {},
+                dataView: {},
+                restore: {},
+                saveAsImage: {}
+            }
+        },
     {{- if .HasXYAxis }}
         xAxis: {{ .XAxisOptions }},
     {{- end }}

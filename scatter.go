@@ -5,10 +5,10 @@ type Scatter struct {
 }
 
 //工厂函数，生成 `Scatter` 实例
-func NewScatter() *Scatter {
+func NewScatter(routers ...HttpRouter) *Scatter {
 	scatter := new(Scatter)
 	scatter.HasXYAxis = true
-	scatter.initSeriesColors()
+	scatter.init(routers...)
 	return scatter
 }
 

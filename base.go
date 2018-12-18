@@ -45,7 +45,7 @@ type InitOptions struct {
 	// 图表 ID，是图表唯一标识
 	ChartID string
 	// JS host 地址
-	JSHost string `default:"https://cdn.bootcss.com/echarts/4.1.0"`
+	JSHost string `default:"https://cdn.bootcss.com"`
 }
 
 // 为 InitOptions 设置字段默认值
@@ -105,6 +105,11 @@ type ColorOptions struct {
 	Color []string
 }
 
+type HttpRouter struct {
+	Url  string
+	Text string
+}
+
 // 所有图表都拥有的基本配置项
 type BaseOptions struct {
 	// 图形初始化配置项
@@ -119,6 +124,13 @@ type BaseOptions struct {
 	ColorList []string
 	// 追加全局颜色列表
 	appendColor []string
+	HttpRouters
+}
+
+type HttpRouters []HttpRouter
+
+func (hr HttpRouters) Len() int {
+	return len(hr)
 }
 
 // 设置全局颜色
@@ -137,6 +149,14 @@ func (opt *BaseOptions) initSeriesColors() {
 	opt.ColorList = []string{
 		"#c23531", "#2f4554", "#61a0a8", "#d48265", "#91c7ae", "#749f83",
 		"#ca8622", "#bda29a", "#6e7074", "#546570", "#c4ccd3"}
+}
+
+//
+func (opt *BaseOptions) init(routers ...HttpRouter) {
+	for i := 0; i < len(routers); i++ {
+		opt.HttpRouters = append(opt.HttpRouters, routers[i])
+	}
+	opt.initSeriesColors()
 }
 
 // 插入颜色到颜色列表首部
@@ -167,6 +187,9 @@ func (opt *BaseOptions) setBaseGlobalConfig(options ...interface{}) {
 		}
 	}
 }
+
+//TODO: dataZoom
+//TODO: visualMap
 
 // 字体样式配置项
 type TextStyle struct {

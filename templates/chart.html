@@ -4,10 +4,31 @@
 <head>
     <meta charset="utf-8">
     <title>{{ .PageTitle }}</title>
-    <script src="{{ .JSHost }}/echarts.min.js"></script>
+    <script src="{{ .JSHost }}/echarts/4.1.0/echarts.min.js"></script>
+    <link href="{{ .JSHost }}/bulma/0.7.2/css/bulma.min.css" rel="stylesheet">
 </head>
 <body>
+<div class="select" style="margin-left: 10px; margin-top:10px">
+{{- if gt .HttpRouters.Len 0}}
+    <select onchange="window.location.href=this.options[this.selectedIndex].value">
+    {{- range .HttpRouters }}
+        <option value="{{ .Url }}">{{ .Text }}</option>
+    {{- end }}
+    </select>
+{{- end -}}
+</div>
 {{- template "base" . }}
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .item {
+        margin: auto;
+    }
+</style>
 </body>
 </html>
 {{ end }}

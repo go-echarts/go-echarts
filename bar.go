@@ -12,10 +12,10 @@ type Bar struct {
 }
 
 //工厂函数，生成 `Bar` 实例
-func NewBar() *Bar {
+func NewBar(routers ...HttpRouter) *Bar {
 	bar := new(Bar)
 	bar.HasXYAxis = true
-	bar.initSeriesColors()
+	bar.init(routers...)
 	return bar
 }
 
