@@ -58,7 +58,6 @@ func (rect *RectOptions) setRectGlobalConfig(options ...interface{}) {
 type RectChart struct {
 	RectOptions
 	SeriesList
-	MarketLine
 
 	HasXYAxis bool
 	xAxisData interface{}
@@ -89,16 +88,4 @@ func (rc *RectChart) Render(w ...io.Writer) {
 	for i := 0; i < len(w); i++ {
 		w[i].Write(res)
 	}
-}
-
-//TODO:设计 markLine&markPoint 接口
-type marketLineData struct {
-	Name string `json:"name"`
-	Type string `json:"type"`
-}
-
-type MarketLine struct {
-	Data       []marketLineData `json:"data"`
-	Symbol     string           `json:"symbol,omitempty"`
-	SymbolSize string           `json:"symbolSize,omitempty"`
 }
