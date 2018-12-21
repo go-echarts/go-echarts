@@ -6,9 +6,9 @@ import (
 )
 
 type Pie struct {
-	InitOptions
-	BaseOptions
-	SeriesList
+	InitOpts
+	BaseOpts
+	Series
 
 	HasXYAxis bool
 }
@@ -30,15 +30,15 @@ func (pie *Pie) Add(name string, data map[string]interface{}, options ...interfa
 	for k, v := range data {
 		pd = append(pd, pieData{k, v})
 	}
-	series := Series{Name: name, Type: pieType, Data: pd}
-	series.setSingleSeriesOptions(options...)
-	pie.SeriesList = append(pie.SeriesList, series)
+	series := singleSeries{Name: name, Type: pieType, Data: pd}
+	series.setSingleSeriesOpts(options...)
+	pie.Series = append(pie.Series, series)
 	pie.setColor(options...)
 	return pie
 }
 
 func (pie *Pie) SetGlobalConfig(options ...interface{}) *Pie {
-	pie.BaseOptions.setBaseGlobalConfig(options...)
+	pie.BaseOpts.setBaseGlobalConfig(options...)
 	return pie
 }
 

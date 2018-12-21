@@ -6,7 +6,7 @@ import (
 )
 
 // X 轴配置项
-type XAxisOptions struct {
+type XAxisOpts struct {
 	// X 轴名称
 	Name string `json:"name,omitempty"`
 	// 是否显示 X 轴
@@ -16,7 +16,7 @@ type XAxisOptions struct {
 }
 
 // Y 轴配置项
-type YAxisOptions struct {
+type YAxisOpts struct {
 	// Y 轴名称
 	Name string `json:"name,omitempty"`
 	// 是否显示 Y 轴
@@ -26,38 +26,38 @@ type YAxisOptions struct {
 }
 
 // XY 轴配置项
-type XYOptions struct {
-	XAxisOptions
-	YAxisOptions
+type XYOpts struct {
+	XAxisOpts
+	YAxisOpts
 }
 
 // 设置 XYOptions 全局配置项
-func (opt *XYOptions) setXYGlobalConfig(options ...interface{}) {
+func (opt *XYOpts) setXYGlobalConfig(options ...interface{}) {
 	for i := 0; i < len(options); i++ {
 		option := options[i]
 		switch option.(type) {
-		case XAxisOptions:
-			opt.XAxisOptions = option.(XAxisOptions)
-		case YAxisOptions:
-			opt.YAxisOptions = option.(YAxisOptions)
+		case XAxisOpts:
+			opt.XAxisOpts = option.(XAxisOpts)
+		case YAxisOpts:
+			opt.YAxisOpts = option.(YAxisOpts)
 		}
 	}
 }
 
 type RectOptions struct {
-	BaseOptions
-	XYOptions
+	BaseOpts
+	XYOpts
 }
 
 // 设置 RectOptions 全局配置项
 func (rect *RectOptions) setRectGlobalConfig(options ...interface{}) {
-	rect.BaseOptions.setBaseGlobalConfig(options...)
-	rect.XYOptions.setXYGlobalConfig(options...)
+	rect.BaseOpts.setBaseGlobalConfig(options...)
+	rect.XYOpts.setXYGlobalConfig(options...)
 }
 
 type RectChart struct {
 	RectOptions
-	SeriesList
+	Series
 
 	HasXYAxis bool
 	xAxisData interface{}
@@ -69,17 +69,17 @@ func (rc *RectChart) SetGlobalConfig(options ...interface{}) *RectChart {
 }
 
 func (rc *RectChart) SetSeriesConfig(options ...interface{}) *RectChart {
-	rc.SeriesList.setSeriesOptions(options...)
+	rc.Series.setAllSeriesOpts(options...)
 	return rc
 }
 
 func (rc *RectChart) verifyOpts() {
-	rc.XAxisOptions.Data = rc.xAxisData
+	rc.XAxisOpts.Data = rc.xAxisData
 	rc.verifyInitOpt()
 }
 
 func (rc *RectChart) Render(w ...io.Writer) {
-	rc.XAxisOptions.Data = rc.xAxisData
+	rc.XAxisOpts.Data = rc.xAxisData
 	rc.verifyOpts()
 
 	var b bytes.Buffer

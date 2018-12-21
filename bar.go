@@ -27,31 +27,31 @@ func (bar *Bar) AddXAxis(xAxis interface{}) *Bar {
 
 // 提供 Y 轴数据
 func (bar *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Bar {
-	series := Series{Name: name, Type: barType, Data: yAxis}
-	series.setSingleSeriesOptions(options...)
-	bar.SeriesList = append(bar.SeriesList, series)
+	series := singleSeries{Name: name, Type: barType, Data: yAxis}
+	series.setSingleSeriesOpts(options...)
+	bar.Series = append(bar.Series, series)
 	bar.setColor(options...)
 	return bar
 }
 
 // 对图形配置做最后的验证，确保能够正确渲染
 func (bar *Bar) verifyOpts() {
-	bar.XAxisOptions.Data = bar.xAxisData
+	bar.XAxisOpts.Data = bar.xAxisData
 	// XY 轴翻转
 	if bar.IsXYReversal {
-		bar.YAxisOptions.Data = bar.xAxisData
-		bar.XAxisOptions.Data = nil
+		bar.YAxisOpts.Data = bar.xAxisData
+		bar.XAxisOpts.Data = nil
 	}
 	bar.verifyInitOpt()
 }
 
 // 渲染图表，支持多 io.Writer
 func (bar *Bar) Render(w ...io.Writer) {
-	bar.XAxisOptions.Data = bar.xAxisData
+	bar.XAxisOpts.Data = bar.xAxisData
 	// XY 轴翻转
 	if bar.IsXYReversal {
-		bar.YAxisOptions.Data = bar.xAxisData
-		bar.XAxisOptions.Data = nil
+		bar.YAxisOpts.Data = bar.xAxisData
+		bar.XAxisOpts.Data = nil
 	}
 
 	bar.insertSeriesColors(bar.appendColor)

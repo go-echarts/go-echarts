@@ -5,7 +5,7 @@ type EffectScatter struct {
 }
 
 // 涟漪特效配置项
-type RippleEffectOptions struct {
+type RippleEffectOpts struct {
 	// 动画的周期，秒数
 	Period float32 `json:"period,omitempty" default:"4"`
 	// 动画中波纹的最大缩放比例
@@ -30,9 +30,9 @@ func (es *EffectScatter) AddXAxis(xAxis interface{}) *EffectScatter {
 
 // 提供 Y 轴数据
 func (es *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *EffectScatter {
-	series := Series{Name: name, Type: effectScatterType, Data: yAxis}
-	series.setSingleSeriesOptions(options...)
-	es.SeriesList = append(es.SeriesList, series)
+	series := singleSeries{Name: name, Type: effectScatterType, Data: yAxis}
+	series.setSingleSeriesOpts(options...)
+	es.Series = append(es.Series, series)
 	es.setColor(options...)
 	return es
 }

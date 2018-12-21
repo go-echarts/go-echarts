@@ -1,14 +1,14 @@
 package goecharts
 
 // 图形上的文本标签配置项
-type LabelTextOptions struct {
+type LabelTextOpts struct {
 	Show     bool   `json:"show,omitempty"`
 	Color    string `json:"color,omitempty"`
 	Position string `json:"position,omitempty"`
 }
 
 // MarkLine 配置项
-type MarkPointOptions struct {
+type MarkPointOpts struct {
 	Data []interface{} `json:"data,omitempty"`
 	MarkPointStyle
 }
@@ -36,7 +36,7 @@ type MPNameCoord struct {
 }
 
 // MarkLine 配置项
-type MarkLineOptions struct {
+type MarkLineOpts struct {
 	Data []interface{} `json:"data,omitempty"`
 	MarkLineStyle
 }
@@ -82,23 +82,22 @@ type MLNameCoords struct {
 }
 
 // Series 配置项
-type Series struct {
+type singleSeries struct {
 	// series 名称
 	Name string `json:"name,omitempty"`
 	// series 类型
 	Type string `json:"type"`
 	// series 数据项
 	Data                 interface{} `json:"data"`
-	LabelTextOptions     `json:"label,omitempty"`
-	MarkLineOptions      `json:"markLine,omitempty"`
-	MarkPointOptions     `json:"markPoint,omitempty"`
-	*RippleEffectOptions `json:"rippleEffect,omitempty"`
+	LabelTextOpts     `json:"label,omitempty"`
+	MarkLineOpts      `json:"markLine,omitempty"`
+	MarkPointOpts     `json:"markPoint,omitempty"`
+	*RippleEffectOpts `json:"rippleEffect,omitempty"`
 }
 
 // 设置 Series 配置项
-func (series *Series) setSingleSeriesOptions(options ...interface{}) {
-
-	// 方法内部大写 struct 类型不会对外暴露
+func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
+	// 实际 MarkLevel Name Coordinates 结构
 	type MLNameCoord struct {
 		Name  string        `json:"name,omitempty"`
 		Coord []interface{} `json:"coord"`
@@ -107,62 +106,50 @@ func (series *Series) setSingleSeriesOptions(options ...interface{}) {
 	for i := 0; i < len(options); i++ {
 		option := options[i]
 		switch option.(type) {
-		case LabelTextOptions:
-			series.LabelTextOptions = option.(LabelTextOptions)
-		case RippleEffectOptions:
-			tmp := new(RippleEffectOptions)
-			*tmp = option.(RippleEffectOptions)
-			series.RippleEffectOptions = tmp
+		case LabelTextOpts:
+			s.LabelTextOpts = option.(LabelTextOpts)
+		case RippleEffectOpts:
+			tmp := new(RippleEffectOpts)
+			*tmp = option.(RippleEffectOpts)
+			s.RippleEffectOpts = tmp
 
 			// MarkLine 配置项
 		case MLNameType:
-			series.MarkLineOptions.Data = append(series.MarkLineOptions.Data, option.(MLNameType))
+			s.MarkLineOpts.Data = append(s.MarkLineOpts.Data, option.(MLNameType))
 		case MLNameXAxis:
-			series.MarkLineOptions.Data = append(series.MarkLineOptions.Data, option.(MLNameXAxis))
+			s.MarkLineOpts.Data = append(s.MarkLineOpts.Data, option.(MLNameXAxis))
 		case MLNameYAxis:
-			series.MarkLineOptions.Data = append(series.MarkLineOptions.Data, option.(MLNameYAxis))
+			s.MarkLineOpts.Data = append(s.MarkLineOpts.Data, option.(MLNameYAxis))
 		case MLNameCoords:
 			m := option.(MLNameCoords)
-			series.MarkLineOptions.Data = append(
-				series.MarkLineOptions.Data, []MLNameCoord{{Name: m.Name, Coord: m.Coord0}, {Coord: m.Coord1}})
+			s.MarkLineOpts.Data = append(
+				s.MarkLineOpts.Data, []MLNameCoord{{Name: m.Name, Coord: m.Coord0}, {Coord: m.Coord1}})
 		case MarkLineStyle:
-			series.MarkLineOptions.MarkLineStyle = option.(MarkLineStyle)
+			s.MarkLineOpts.MarkLineStyle = option.(MarkLineStyle)
 
 			// MarkPoint 配置项
 		case MPNameType:
-			series.MarkPointOptions.Data = append(series.MarkPointOptions.Data, option.(MPNameType))
+			s.MarkPointOpts.Data = append(s.MarkPointOpts.Data, option.(MPNameType))
 		case MPNameCoord:
-			series.MarkPointOptions.Data = append(series.MarkPointOptions.Data, option.(MPNameCoord))
+			s.MarkPointOpts.Data = append(s.MarkPointOpts.Data, option.(MPNameCoord))
 		case MarkPointStyle:
-			series.MarkPointOptions.MarkPointStyle = option.(MarkPointStyle)
+			s.MarkPointOpts.MarkPointStyle = option.(MarkPointStyle)
 		}
 	}
 }
 
-// Series 列表
-type SeriesList []Series
+// 设置 Series 配置项
+func (s *singleSeries) setSingleSeriesOpts(options ...interface{}) {
+	s.switchSeriesOpts(options...)
+}
 
-// TODO: 两个 setSeriesOptions 整合
-// TODO: MarkLine&MarkPoint StyleOptions
+// Series 列表
+type Series []singleSeries
 
 // 设置 SeriesList 配置项
-func (sl *SeriesList) setSeriesOptions(options ...interface{}) {
-	tsl := *sl
+func (series *Series) setAllSeriesOpts(options ...interface{}) {
+	tsl := *series
 	for i := 0; i < len(tsl); i++ {
-		for j := 0; j < len(options); j++ {
-			option := options[j]
-			switch option.(type) {
-			case LabelTextOptions:
-				tsl[i].LabelTextOptions = option.(LabelTextOptions)
-			case RippleEffectOptions:
-				tmp := new(RippleEffectOptions)
-				*tmp = option.(RippleEffectOptions)
-				tsl[i].RippleEffectOptions = tmp
-			case MarkLineStyle:
-				tsl[i].MarkLineOptions.MarkLineStyle = option.(MarkLineStyle)
-			case MarkPointStyle:
-				tsl[i].MarkPointOptions.MarkPointStyle = option.(MarkPointStyle)
-			}
-		}
+		tsl[i].switchSeriesOpts(options...)
 	}
 }

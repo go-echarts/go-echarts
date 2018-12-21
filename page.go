@@ -11,14 +11,14 @@ type verifier interface {
 }
 
 type Page struct {
-	InitOptions
+	InitOpts
 	Charts []interface{}
 }
 
 //工厂函数，生成 `Bar` 实例
 func NewPage() *Page {
 	page := new(Page)
-	page.InitOptions.setDefault()
+	page.InitOpts.setDefault()
 	return page
 }
 

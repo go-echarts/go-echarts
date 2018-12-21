@@ -1,7 +1,7 @@
 package goecharts
 
 // 标题组件配置项
-type TitleOptions struct {
+type TitleOpts struct {
 	// 主标题
 	Title string `json:"text,omitempty"`
 	// 主标题样式配置项
@@ -35,7 +35,7 @@ type TitleOptions struct {
 }
 
 // 图形初始化配置项
-type InitOptions struct {
+type InitOpts struct {
 	// 生成的 HTML 页面标题
 	PageTitle string `default:"Awesome go-echarts"`
 	// 画布宽度
@@ -49,26 +49,26 @@ type InitOptions struct {
 }
 
 // 为 InitOptions 设置字段默认值
-func (opt *InitOptions) setDefault() {
+func (opt *InitOpts) setDefault() {
 	err := setDefaultValue(opt)
 	checkError(err)
 }
 
 // 确保 ContainerID 不为空且唯一
-func (opt *InitOptions) checkID() {
+func (opt *InitOpts) checkID() {
 	if opt.ChartID == "" {
 		opt.ChartID = genChartID()
 	}
 }
 
 // 验证初始化参数，确保图形能够得到正确渲染
-func (opt *InitOptions) verifyInitOpt() {
+func (opt *InitOpts) verifyInitOpt() {
 	opt.setDefault()
 	opt.checkID()
 }
 
 // 图例组件配置项
-type LegendOptions struct {
+type LegendOpts struct {
 	// 是否显示图例
 	Show bool `json:"show,omitempty"`
 	// 图例组件离容器左侧的距离。
@@ -90,7 +90,7 @@ type LegendOptions struct {
 }
 
 // 提示框组件配置项
-type TooltipOptions struct {
+type TooltipOpts struct {
 	// 是否显示提示框
 	Show bool `json:"show,omitempty"`
 	// 触发类型。
@@ -101,7 +101,7 @@ type TooltipOptions struct {
 }
 
 // 全局颜色配置项
-type ColorOptions struct {
+type ColorOpts struct {
 	Color []string
 }
 
@@ -111,19 +111,20 @@ type HttpRouter struct {
 }
 
 // 所有图表都拥有的基本配置项
-type BaseOptions struct {
+type BaseOpts struct {
 	// 图形初始化配置项
-	InitOptions
+	InitOpts
 	// 图例组件配置项
-	LegendOptions
+	LegendOpts
 	// 提示框组件配置项
-	TooltipOptions
+	TooltipOpts
 	// 标题组件配置项
-	TitleOptions
+	TitleOpts
 	// 全局颜色列表
 	ColorList []string
 	// 追加全局颜色列表
 	appendColor []string
+	// 路由列表
 	HttpRouters
 }
 
@@ -134,25 +135,25 @@ func (hr HttpRouters) Len() int {
 }
 
 // 设置全局颜色
-func (opt *BaseOptions) setColor(options ...interface{}) {
+func (opt *BaseOpts) setColor(options ...interface{}) {
 	for i := 0; i < len(options); i++ {
 		option := options[i]
 		switch option.(type) {
-		case ColorOptions:
-			opt.appendColor = append(opt.appendColor, option.(ColorOptions).Color...)
+		case ColorOpts:
+			opt.appendColor = append(opt.appendColor, option.(ColorOpts).Color...)
 		}
 	}
 }
 
 // 初始化全局颜色列表
-func (opt *BaseOptions) initSeriesColors() {
+func (opt *BaseOpts) initSeriesColors() {
 	opt.ColorList = []string{
 		"#c23531", "#2f4554", "#61a0a8", "#d48265", "#91c7ae", "#749f83",
 		"#ca8622", "#bda29a", "#6e7074", "#546570", "#c4ccd3"}
 }
 
 //
-func (opt *BaseOptions) init(routers ...HttpRouter) {
+func (opt *BaseOpts) init(routers ...HttpRouter) {
 	for i := 0; i < len(routers); i++ {
 		opt.HttpRouters = append(opt.HttpRouters, routers[i])
 	}
@@ -160,7 +161,7 @@ func (opt *BaseOptions) init(routers ...HttpRouter) {
 }
 
 // 插入颜色到颜色列表首部
-func (opt *BaseOptions) insertSeriesColors(s []string) {
+func (opt *BaseOpts) insertSeriesColors(s []string) {
 	// 翻转颜色列表
 	tmpCl := reverseSlice(s)
 	// 颜色追加至首部
@@ -172,18 +173,18 @@ func (opt *BaseOptions) insertSeriesColors(s []string) {
 }
 
 // 设置 BaseOptions 全局配置项
-func (opt *BaseOptions) setBaseGlobalConfig(options ...interface{}) {
+func (opt *BaseOpts) setBaseGlobalConfig(options ...interface{}) {
 	for i := 0; i < len(options); i++ {
 		option := options[i]
 		switch option.(type) {
-		case InitOptions:
-			opt.InitOptions = option.(InitOptions)
-		case TitleOptions:
-			opt.TitleOptions = option.(TitleOptions)
-		case LegendOptions:
-			opt.LegendOptions = option.(LegendOptions)
-		case ColorOptions:
-			opt.insertSeriesColors(option.(ColorOptions).Color)
+		case InitOpts:
+			opt.InitOpts = option.(InitOpts)
+		case TitleOpts:
+			opt.TitleOpts = option.(TitleOpts)
+		case LegendOpts:
+			opt.LegendOpts = option.(LegendOpts)
+		case ColorOpts:
+			opt.insertSeriesColors(option.(ColorOpts).Color)
 		}
 	}
 }

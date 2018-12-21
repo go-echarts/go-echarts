@@ -2,7 +2,6 @@ package goecharts
 
 import (
 	"bytes"
-	"github.com/gobuffalo/packr"
 	"html/template"
 	"io"
 	"log"
@@ -11,6 +10,8 @@ import (
 	"regexp"
 	"strconv"
 	"time"
+
+	"github.com/gobuffalo/packr"
 )
 
 const (

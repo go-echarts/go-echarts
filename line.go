@@ -20,9 +20,9 @@ func (line *Line) AddXAxis(xAxis interface{}) *Line {
 
 // 提供 Y 轴数据
 func (line *Line) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Line {
-	series := Series{Name: name, Type: lineType, Data: yAxis}
-	series.setSingleSeriesOptions(options...)
-	line.SeriesList = append(line.SeriesList, series)
+	series := singleSeries{Name: name, Type: lineType, Data: yAxis}
+	series.setSingleSeriesOpts(options...)
+	line.Series = append(line.Series, series)
 	line.setColor(options...)
 	return line
 }

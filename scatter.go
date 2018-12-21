@@ -20,9 +20,9 @@ func (scatter *Scatter) AddXAxis(xAxis interface{}) *Scatter {
 
 // 提供 Y 轴数据
 func (scatter *Scatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Scatter {
-	series := Series{Name: name, Type: scatterType, Data: yAxis}
-	series.setSingleSeriesOptions(options...)
-	scatter.SeriesList = append(scatter.SeriesList, series)
+	series := singleSeries{Name: name, Type: scatterType, Data: yAxis}
+	series.setSingleSeriesOpts(options...)
+	scatter.Series = append(scatter.Series, series)
 	scatter.setColor(options...)
 	return scatter
 }
