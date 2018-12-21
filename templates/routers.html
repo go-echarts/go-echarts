@@ -1,0 +1,11 @@
+{{- define "routers" }}
+<div class="select" style="margin-left: 10px; margin-top:10px">
+{{- if gt .HttpRouters.Len 0}}
+    <select onchange="window.location.href=this.options[this.selectedIndex].value">
+    {{- range .HttpRouters }}
+        <option value="{{ .Url }}">{{ .Text }}</option>
+    {{- end }}
+    </select>
+{{- end -}}
+</div>
+{{- end }}

@@ -22,15 +22,11 @@ func NewPie(routers ...HttpRouter) *Pie {
 }
 
 func (pie *Pie) Add(name string, data map[string]interface{}, options ...interface{}) *Pie {
-	type pieData struct {
-		Name  string      `json:"name"`
-		Value interface{} `json:"value"`
-	}
-	pd := make([]pieData, 0)
+	nvs := make([]nameValueItem, 0)
 	for k, v := range data {
-		pd = append(pd, pieData{k, v})
+		nvs = append(nvs, nameValueItem{k, v})
 	}
-	series := singleSeries{Name: name, Type: pieType, Data: pd}
+	series := singleSeries{Name: name, Type: pieType, Data: nvs}
 	series.setSingleSeriesOpts(options...)
 	pie.Series = append(pie.Series, series)
 	pie.setColor(options...)

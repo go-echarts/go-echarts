@@ -1,14 +1,14 @@
 {{- define "base" }}
 <div class="container">
     <div class="item" id="{{ .ChartID }}"
-         style="width:{{ .InitOptions.Width }};height:{{ .InitOptions.Height }};"></div>
+         style="width:{{ .InitOpts.Width }};height:{{ .InitOpts.Height }};"></div>
 </div>
 <script type="text/javascript">
     let myChart__x__{{ .ChartID }}__x__ = echarts.init(document.getElementById('{{ .ChartID }}'));
     let option__x__{{ .ChartID }}__x__ = {
-        title: {{ .TitleOptions  }},
-        tooltip: {{ .TooltipOptions }},
-        legend: {{ .LegendOptions }},
+        title: {{ .TitleOpts  }},
+        tooltip: {{ .TooltipOpts }},
+        legend: {{ .LegendOpts }},
         toolbox: {
             feature: {
                 dataZoom: {},
@@ -18,11 +18,11 @@
             }
         },
     {{- if .HasXYAxis }}
-        xAxis: {{ .XAxisOptions }},
-        yAxis: {{ .YAxisOptions }},
+        xAxis: {{ .XAxisOpts }},
+        yAxis: {{ .YAxisOpts }},
     {{- end }}
         series: [
-        {{ range .SeriesList }}
+        {{ range .Series }}
         {{- . }},
         {{ end -}}
         ],

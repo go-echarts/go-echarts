@@ -9,9 +9,11 @@ type Bar struct {
 	// 是否翻转 XY 轴
 	IsXYReversal bool
 	RectChart
+
+	HasXYAxis bool
 }
 
-//工厂函数，生成 `Bar` 实例
+// 工厂函数，生成 `Bar` 实例
 func NewBar(routers ...HttpRouter) *Bar {
 	bar := new(Bar)
 	bar.HasXYAxis = true

@@ -26,11 +26,13 @@ const (
 func renderChart(chart interface{}, w io.Writer, name string) {
 	box := packr.NewBox("./templates")
 	headerHtml, err := box.FindString("header.html")
+	routersHtml, err := box.FindString("routers.html")
 	baseHtml, err := box.FindString("base.html")
 	chartHtml, err := box.FindString(name + ".html")
 	checkError(err)
 	tpl := template.Must(template.New("").Parse(headerHtml))
 	tpl = template.Must(tpl.Parse(baseHtml))
+	tpl = template.Must(tpl.Parse(routersHtml))
 	tpl = template.Must(tpl.Parse(chartHtml))
 	tpl.ExecuteTemplate(w, name, chart)
 }

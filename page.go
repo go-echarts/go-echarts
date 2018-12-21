@@ -13,12 +13,16 @@ type verifier interface {
 type Page struct {
 	InitOpts
 	Charts []interface{}
+
+	HttpRouters
 }
 
 //工厂函数，生成 `Bar` 实例
-func NewPage() *Page {
+func NewPage(routers ...HttpRouter) *Page {
 	page := new(Page)
-	page.InitOpts.setDefault()
+	for i := 0; i < len(routers); i++ {
+		page.HttpRouters = append(page.HttpRouters, routers[i])
+	}
 	return page
 }
 
@@ -37,7 +41,7 @@ func (page *Page) Add(charts ...verifier) *Page {
 
 // 渲染图表，支持多 io.Writer
 func (page *Page) Render(w ...io.Writer) {
-	page.setDefault()
+	page.InitOpts.setDefault()
 	var b bytes.Buffer
 	renderChart(page, &b, "page")
 	res := replaceRender(b)

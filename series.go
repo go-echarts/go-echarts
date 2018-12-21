@@ -92,7 +92,7 @@ type singleSeries struct {
 	LabelTextOpts     `json:"label,omitempty"`
 	MarkLineOpts      `json:"markLine,omitempty"`
 	MarkPointOpts     `json:"markPoint,omitempty"`
-	*RippleEffectOpts `json:"rippleEffect,omitempty"`
+	RippleEffectOpts `json:"rippleEffect,omitempty"`
 }
 
 // 设置 Series 配置项
@@ -109,9 +109,7 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 		case LabelTextOpts:
 			s.LabelTextOpts = option.(LabelTextOpts)
 		case RippleEffectOpts:
-			tmp := new(RippleEffectOpts)
-			*tmp = option.(RippleEffectOpts)
-			s.RippleEffectOpts = tmp
+			s.RippleEffectOpts = option.(RippleEffectOpts)
 
 			// MarkLine 配置项
 		case MLNameType:
@@ -138,7 +136,7 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 	}
 }
 
-// 设置 Series 配置项
+// 设置 singleSeries 配置项
 func (s *singleSeries) setSingleSeriesOpts(options ...interface{}) {
 	s.switchSeriesOpts(options...)
 }
@@ -146,7 +144,7 @@ func (s *singleSeries) setSingleSeriesOpts(options ...interface{}) {
 // Series 列表
 type Series []singleSeries
 
-// 设置 SeriesList 配置项
+// 设置 Series 配置项
 func (series *Series) setAllSeriesOpts(options ...interface{}) {
 	tsl := *series
 	for i := 0; i < len(tsl); i++ {
