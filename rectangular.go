@@ -5,26 +5,6 @@ import (
 	"io"
 )
 
-// X 轴配置项
-type XAxisOpts struct {
-	// X 轴名称
-	Name string `json:"name,omitempty"`
-	// 是否显示 X 轴
-	Show bool `json:"show,omitempty"`
-	// X 轴数据项
-	Data interface{} `json:"data,omitempty"`
-}
-
-// Y 轴配置项
-type YAxisOpts struct {
-	// Y 轴名称
-	Name string `json:"name,omitempty"`
-	// 是否显示 Y 轴
-	Show bool `json:"show,omitempty"`
-	// Y 轴数据项
-	Data interface{} `json:"data,omitempty"`
-}
-
 // XY 轴配置项
 type XYOpts struct {
 	XAxisOpts
@@ -44,40 +24,46 @@ func (opt *XYOpts) setXYGlobalConfig(options ...interface{}) {
 	}
 }
 
-type RectOptions struct {
+// 直角坐标系配置项
+type RectOpts struct {
 	BaseOpts
 	XYOpts
 }
 
 // 设置 RectOptions 全局配置项
-func (rect *RectOptions) setRectGlobalConfig(options ...interface{}) {
+func (rect *RectOpts) setRectGlobalConfig(options ...interface{}) {
 	rect.BaseOpts.setBaseGlobalConfig(options...)
 	rect.XYOpts.setXYGlobalConfig(options...)
 }
 
+// 直角坐标系图表
 type RectChart struct {
-	RectOptions
+	RectOpts
 	Series
 
 	HasXYAxis bool
 	xAxisData interface{}
 }
 
+// RectChart 设置全局配置项
 func (rc *RectChart) SetGlobalConfig(options ...interface{}) *RectChart {
-	rc.RectOptions.setRectGlobalConfig(options...)
+	rc.RectOpts.setRectGlobalConfig(options...)
 	return rc
 }
 
+// RectChart 设置 series 配置项
 func (rc *RectChart) SetSeriesConfig(options ...interface{}) *RectChart {
 	rc.Series.setAllSeriesOpts(options...)
 	return rc
 }
 
+// RectChart 校验器
 func (rc *RectChart) verifyOpts() {
 	rc.XAxisOpts.Data = rc.xAxisData
 	rc.verifyInitOpt()
 }
 
+// RectChart 渲染图表
 func (rc *RectChart) Render(w ...io.Writer) {
 	rc.XAxisOpts.Data = rc.xAxisData
 	rc.verifyOpts()

@@ -17,6 +17,12 @@
                 saveAsImage: {}
             }
         },
+    {{- if gt .DataZoomOptsList.Len 0 }}
+        dataZoom:{{ .DataZoomOptsList }},
+    {{- end }}
+    {{- if gt .VisualMapOptsList.Len 0 }}
+        visualMap:{{ .VisualMapOptsList }},
+    {{- end }}
     {{- if .HasXYAxis }}
         xAxis: {{ .XAxisOpts }},
         yAxis: {{ .YAxisOpts }},
