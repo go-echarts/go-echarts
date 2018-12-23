@@ -37,6 +37,15 @@ func renderChart(chart interface{}, w io.Writer, name string) {
 	tpl.ExecuteTemplate(w, name, chart)
 }
 
+func renderToWriter(chart interface{}, renderName string, w ...io.Writer) {
+	var b bytes.Buffer
+	renderChart(chart, &b, renderName)
+	res := replaceRender(b)
+	for i := 0; i < len(w); i++ {
+		w[i].Write(res)
+	}
+}
+
 // 随机种子
 var seed = rand.NewSource(time.Now().UnixNano())
 

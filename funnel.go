@@ -1,7 +1,6 @@
 package goecharts
 
 import (
-	"bytes"
 	"io"
 )
 
@@ -47,11 +46,5 @@ func (funnel *Funnel) Render(w ...io.Writer) {
 
 	funnel.insertSeriesColors(funnel.appendColor)
 	funnel.verifyOpts()
-
-	var b bytes.Buffer
-	renderChart(funnel, &b, "chart")
-	res := replaceRender(b)
-	for i := 0; i < len(w); i++ {
-		w[i].Write(res)
-	}
+	renderToWriter(funnel, "chart", w...)
 }

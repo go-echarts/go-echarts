@@ -1,7 +1,6 @@
 package goecharts
 
 import (
-	"bytes"
 	"io"
 )
 
@@ -67,11 +66,5 @@ func (rc *RectChart) verifyOpts() {
 func (rc *RectChart) Render(w ...io.Writer) {
 	rc.XAxisOpts.Data = rc.xAxisData
 	rc.verifyOpts()
-
-	var b bytes.Buffer
-	renderChart(rc, &b, "chart")
-	res := replaceRender(b)
-	for i := 0; i < len(w); i++ {
-		w[i].Write(res)
-	}
+	renderToWriter(rc, "chart", w...)
 }

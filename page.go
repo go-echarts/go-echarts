@@ -1,7 +1,6 @@
 package goecharts
 
 import (
-	"bytes"
 	"io"
 	"log"
 )
@@ -42,10 +41,5 @@ func (page *Page) Add(charts ...verifier) *Page {
 // 渲染图表，支持多 io.Writer
 func (page *Page) Render(w ...io.Writer) {
 	page.InitOpts.setDefault()
-	var b bytes.Buffer
-	renderChart(page, &b, "page")
-	res := replaceRender(b)
-	for i := 0; i < len(w); i++ {
-		w[i].Write(res)
-	}
+	renderToWriter(page, "page", w...)
 }

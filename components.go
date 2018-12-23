@@ -124,7 +124,8 @@ type VisualMapOpts struct {
 	// 指定手柄对应数值的位置。range 应在 min max 范围内
 	Range []float32 `json:"range,omitempty"`
 	// 两端的文本，如 ['High', 'Low']
-	Text []string `json:"text,omitempty"`
+	Text      []string `json:"text,omitempty"`
+	VMInRange `json:"inRange,omitempty"`
 }
 
 type VisualMapOptsList []VisualMapOpts
@@ -132,6 +133,15 @@ type VisualMapOptsList []VisualMapOpts
 // Len() 用于 template 方法
 func (vm VisualMapOptsList) Len() int {
 	return len(vm)
+}
+
+type VMInRange struct {
+	Color      []string `json:"color,omitempty"`
+	Symbol     string   `json:"symbol,omitempty"`
+	SymbolSize float32  `json:"symbolSize,omitempty"`
+}
+
+type VMOutRange struct {
 }
 
 // X 轴配置项组件

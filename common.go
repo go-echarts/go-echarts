@@ -7,6 +7,7 @@ const (
 	scatterType       = "scatter"
 	pieType           = "pie"
 	funnelType        = "funnel"
+	mapType           = "map"
 )
 
 // Name-Value 数据项

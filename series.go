@@ -88,10 +88,10 @@ type singleSeries struct {
 	// series 类型
 	Type string `json:"type"`
 	// series 数据项
-	Data                 interface{} `json:"data"`
-	LabelTextOpts     `json:"label,omitempty"`
-	MarkLineOpts      `json:"markLine,omitempty"`
-	MarkPointOpts     `json:"markPoint,omitempty"`
+	Data             interface{} `json:"data"`
+	LabelTextOpts    `json:"label,omitempty"`
+	MarkLineOpts     `json:"markLine,omitempty"`
+	MarkPointOpts    `json:"markPoint,omitempty"`
 	RippleEffectOpts `json:"rippleEffect,omitempty"`
 }
 

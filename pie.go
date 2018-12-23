@@ -1,7 +1,6 @@
 package goecharts
 
 import (
-	"bytes"
 	"io"
 )
 
@@ -44,14 +43,7 @@ func (pie *Pie) verifyOpts() {
 
 // 渲染图表，支持多 io.Writer
 func (pie *Pie) Render(w ...io.Writer) {
-
 	pie.insertSeriesColors(pie.appendColor)
 	pie.verifyOpts()
-
-	var b bytes.Buffer
-	renderChart(pie, &b, "chart")
-	res := replaceRender(b)
-	for i := 0; i < len(w); i++ {
-		w[i].Write(res)
-	}
+	renderToWriter(pie, "chart", w...)
 }
