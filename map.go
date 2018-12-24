@@ -5,7 +5,6 @@ import (
 )
 
 type Map struct {
-	InitOpts
 	BaseOpts
 	Series MapSeries
 

@@ -4,7 +4,7 @@
          style="width:{{ .InitOpts.Width }};height:{{ .InitOpts.Height }};"></div>
 </div>
 <script type="text/javascript">
-    let myChart__x__{{ .ChartID }}__x__ = echarts.init(document.getElementById('{{ .ChartID }}'));
+    let myChart__x__{{ .ChartID }}__x__ = echarts.init(document.getElementById('{{ .ChartID }}'), "{{ .Theme }}");
     let option__x__{{ .ChartID }}__x__ = {
         title: {{ .TitleOpts  }},
         tooltip: {{ .TooltipOpts }},
@@ -32,7 +32,9 @@
         {{- . }},
         {{ end -}}
         ],
+    {{- if eq .Theme "white" }}
         color: {{ .ColorList }}
+    {{- end }}
     };
     myChart__x__{{ .ChartID }}__x__.setOption(option__x__{{ .ChartID }}__x__);
 </script>

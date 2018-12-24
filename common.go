@@ -8,6 +8,9 @@ const (
 	pieType           = "pie"
 	funnelType        = "funnel"
 	mapType           = "map"
+
+	echartsJS = "echarts.min.js"
+	bulmaCSS  = "bulma.min.css"
 )
 
 // Name-Value 数据项

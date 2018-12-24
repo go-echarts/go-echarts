@@ -5,7 +5,6 @@ import (
 )
 
 type Funnel struct {
-	InitOpts
 	BaseOpts
 	Series
 

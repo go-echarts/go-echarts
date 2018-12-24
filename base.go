@@ -12,6 +12,8 @@ type InitOpts struct {
 	ChartID string
 	// 静态资源 host 地址
 	AssetsHost string `default:"http://chenjiandongx.com/go-echarts-assets/assets/"`
+	// 图表主题
+	Theme string `default:"white"`
 }
 
 type AssetsOpts struct {
@@ -20,8 +22,8 @@ type AssetsOpts struct {
 }
 
 func (opt *AssetsOpts) initAssetsOpts() {
-	opt.JSAssets = []string{"echarts.min.js"}
-	opt.CSSAssets = []string{"bulma.min.css"}
+	opt.JSAssets = []string{echartsJS}
+	opt.CSSAssets = []string{bulmaCSS}
 }
 
 func (opt *AssetsOpts) appendJsAssets(asset string) {
@@ -171,6 +173,9 @@ func (opt *BaseOpts) setBaseGlobalConfig(options ...interface{}) {
 		switch option.(type) {
 		case InitOpts:
 			opt.InitOpts = option.(InitOpts)
+			if opt.InitOpts.Theme != "" {
+				opt.JSAssets = append(opt.JSAssets, opt.Theme+".js")
+			}
 		case TitleOpts:
 			opt.TitleOpts = option.(TitleOpts)
 		case LegendOpts:

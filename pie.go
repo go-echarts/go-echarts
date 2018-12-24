@@ -5,7 +5,6 @@ import (
 )
 
 type Pie struct {
-	InitOpts
 	BaseOpts
 	Series
 
