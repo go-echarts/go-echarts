@@ -9,6 +9,7 @@ func NewLine(routers ...HttpRouter) *Line {
 	line := new(Line)
 	line.HasXYAxis = true
 	line.init(routers...)
+	line.initAssetsOpts()
 	return line
 }
 

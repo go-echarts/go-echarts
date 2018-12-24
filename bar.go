@@ -18,6 +18,7 @@ func NewBar(routers ...HttpRouter) *Bar {
 	bar := new(Bar)
 	bar.HasXYAxis = true
 	bar.init(routers...)
+	bar.initAssetsOpts()
 	return bar
 }
 
@@ -45,6 +46,7 @@ func (bar *Bar) verifyOpts() {
 		bar.XAxisOpts.Data = nil
 	}
 	bar.verifyInitOpt()
+	bar.verifyAssets(bar.AssetsHost)
 }
 
 // 渲染图表，支持多 io.Writer

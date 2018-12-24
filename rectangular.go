@@ -60,6 +60,7 @@ func (rc *RectChart) SetSeriesConfig(options ...interface{}) *RectChart {
 func (rc *RectChart) verifyOpts() {
 	rc.XAxisOpts.Data = rc.xAxisData
 	rc.verifyInitOpt()
+	rc.verifyAssets(rc.AssetsHost)
 }
 
 // RectChart 渲染图表

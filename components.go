@@ -125,6 +125,7 @@ type VisualMapOpts struct {
 	Range []float32 `json:"range,omitempty"`
 	// 两端的文本，如 ['High', 'Low']
 	Text      []string `json:"text,omitempty"`
+	// TODO: 指针？
 	VMInRange `json:"inRange,omitempty"`
 }
 

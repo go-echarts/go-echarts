@@ -2,8 +2,11 @@
 <head>
     <meta charset="utf-8">
     <title>{{ .PageTitle }}</title>
-    <script src="{{ .JSHost }}/echarts/4.1.0/echarts.min.js"></script>
-    <script src="https://echarts-maps.github.io/echarts-countries-js/echarts-countries-js/china.js"></script>
-    <link href="{{ .JSHost }}/bulma/0.7.2/css/bulma.min.css" rel="stylesheet">
+{{- range .JSAssets }}
+    <script src="{{ . }}"></script>
+{{- end }}
+{{- range .CSSAssets }}
+    <link href="{{ . }}" rel="stylesheet">
+{{- end }}
 </head>
 {{ end }}

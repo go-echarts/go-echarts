@@ -17,6 +17,7 @@ func NewFunnel(routers ...HttpRouter) *Funnel {
 	funnel := new(Funnel)
 	funnel.HasXYAxis = false
 	funnel.init(routers...)
+	funnel.initAssetsOpts()
 	return funnel
 }
 
@@ -39,6 +40,7 @@ func (funnel *Funnel) SetGlobalConfig(options ...interface{}) *Funnel {
 
 func (funnel *Funnel) verifyOpts() {
 	funnel.verifyInitOpt()
+	funnel.verifyAssets(funnel.AssetsHost)
 }
 
 // 渲染图表，支持多 io.Writer

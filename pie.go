@@ -17,6 +17,7 @@ func NewPie(routers ...HttpRouter) *Pie {
 	pie := new(Pie)
 	pie.HasXYAxis = false
 	pie.init(routers...)
+	pie.initAssetsOpts()
 	return pie
 }
 
@@ -39,6 +40,7 @@ func (pie *Pie) SetGlobalConfig(options ...interface{}) *Pie {
 
 func (pie *Pie) verifyOpts() {
 	pie.verifyInitOpt()
+	pie.verifyAssets(pie.AssetsHost)
 }
 
 // 渲染图表，支持多 io.Writer

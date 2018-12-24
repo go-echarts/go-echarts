@@ -9,6 +9,7 @@ func NewScatter(routers ...HttpRouter) *Scatter {
 	scatter := new(Scatter)
 	scatter.HasXYAxis = true
 	scatter.init(routers...)
+	scatter.initAssetsOpts()
 	return scatter
 }
 

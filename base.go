@@ -10,8 +10,57 @@ type InitOpts struct {
 	Height string `default:"500px"`
 	// 图表 ID，是图表唯一标识
 	ChartID string
-	// JS host 地址
-	JSHost string `default:"https://cdn.bootcss.com"`
+	// 静态资源 host 地址
+	AssetsHost string `default:"http://chenjiandongx.com/go-echarts-assets/assets/"`
+}
+
+type AssetsOpts struct {
+	JSAssets  []string
+	CSSAssets []string
+}
+
+func (opt *AssetsOpts) initAssetsOpts() {
+	opt.JSAssets = []string{"echarts.min.js"}
+	opt.CSSAssets = []string{"bulma.min.css"}
+}
+
+func (opt *AssetsOpts) appendJsAssets(asset string) {
+	opt.JSAssets = append(opt.JSAssets, asset)
+}
+
+func (opt *AssetsOpts) yieldAssets() ([]string, []string) {
+	return opt.JSAssets, opt.CSSAssets
+}
+
+func (opt *AssetsOpts) jsIn(jsRef string) bool {
+	isIn := false
+	for i := 0; i < len(opt.JSAssets); i++ {
+		if opt.JSAssets[i] == jsRef {
+			isIn = true
+			break
+		}
+	}
+	return isIn
+}
+
+func (opt *AssetsOpts) cssIn(cssRef string) bool {
+	isIn := false
+	for i := 0; i < len(opt.CSSAssets); i++ {
+		if opt.CSSAssets[i] == cssRef {
+			isIn = true
+			break
+		}
+	}
+	return isIn
+}
+
+func (opt *AssetsOpts) verifyAssets(host string) {
+	for i := 0; i < len(opt.JSAssets); i++ {
+		opt.JSAssets[i] = host + opt.JSAssets[i]
+	}
+	for j := 0; j < len(opt.CSSAssets); j++ {
+		opt.CSSAssets[j] = host + opt.CSSAssets[j]
+	}
 }
 
 // 为 InitOptions 设置字段默认值
@@ -36,7 +85,7 @@ func (opt *InitOpts) verifyInitOpt() {
 // Http 路由
 type HttpRouter struct {
 	// 路由 URL
-	Url  string
+	Url string
 	// 路由显示文字
 	Text string
 }
@@ -65,6 +114,7 @@ type BaseOpts struct {
 	// 标题组件配置项
 	TitleOpts
 	// 全局颜色列表
+	AssetsOpts
 	ColorList []string
 	// 追加全局颜色列表
 	appendColor []string
