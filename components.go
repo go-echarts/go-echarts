@@ -124,7 +124,7 @@ type VisualMapOpts struct {
 	// 指定手柄对应数值的位置。range 应在 min max 范围内
 	Range []float32 `json:"range,omitempty"`
 	// 两端的文本，如 ['High', 'Low']
-	Text      []string `json:"text,omitempty"`
+	Text []string `json:"text,omitempty"`
 	// TODO: 设置 default
 	VMInRange `json:"inRange,omitempty"`
 }

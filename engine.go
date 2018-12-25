@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"html/template"
 	"io"
-	"log"
 	"math/rand"
 	"reflect"
 	"regexp"
@@ -24,22 +23,42 @@ const (
 
 // 渲染图表
 func renderChart(chart interface{}, w io.Writer, name string) error {
-	box := packr.NewBox("./templates")
-	headerHtml, err := box.FindString("header.html")
-	routersHtml, err := box.FindString("routers.html")
-	baseHtml, err := box.FindString("base.html")
-	chartHtml, err := box.FindString(name + ".html")
+	fileNames := []string{"header.html", "routers.html", "base.html", name + ".html"}
+	contents, err := extractTplContents(fileNames...)
 	if err != nil {
 		return err
 	}
-	tpl := template.Must(template.New("").Parse(headerHtml))
-	tpl = template.Must(tpl.Parse(routersHtml))
-	tpl = template.Must(tpl.Parse(baseHtml))
-	tpl = template.Must(tpl.Parse(chartHtml))
+	tpl := template.Must(template.New("").Parse(contents[0]))
+	mustTpl(tpl, contents[1:]...)
 	if err = tpl.ExecuteTemplate(w, name, chart); err != nil {
 		return err
 	}
 	return nil
+}
+
+func mustTpl(tpl *template.Template, html ...string) *template.Template {
+	for i := 0; i < len(html); i++ {
+		tpl = template.Must(tpl.Parse(html[i]))
+	}
+	return tpl
+}
+
+func extractTplContents(fileNames ...string) ([]string, error) {
+	box := packr.NewBox("./templates")
+
+	contents := make([]string, 0)
+	var (
+		content string
+		err     error
+	)
+	for i := 0; i < len(fileNames); i++ {
+		content, err = box.FindString(fileNames[i])
+		if err != nil {
+			return []string{}, err
+		}
+		contents = append(contents, content)
+	}
+	return contents, nil
 }
 
 func renderToWriter(chart interface{}, renderName string, w ...io.Writer) error {
@@ -77,13 +96,29 @@ func genChartID() string {
 // 过滤替换渲染结果
 func replaceRender(b bytes.Buffer) []byte {
 	// __x__ 与模板占位符相匹配
-	pat, err := regexp.Compile(`(__x__")|("__x__)`)
-	if err != nil {
-		log.Println(err)
-	}
+	idPat, _ := regexp.Compile(`(__x__")|("__x__)`)
 	// 替换并转为 []byte 类型
-	res := []byte(pat.ReplaceAllString(b.String(), "_x_"))
+	content := idPat.ReplaceAllString(b.String(), "_x_")
+	unusedObj := []string{
+		`,"inRange":{}`,
+		`,"label":{}`,
+		`,"markLine":{}`,
+		`,"markPoint":{}`,
+		`,"rippleEffect":{}`,
+	}
+	res := []byte(removeUnusedObj(content, unusedObj...))
 	return res
+}
+
+// 移除无用的 JSON object
+// 另一种解决方案是使用 *struct
+func removeUnusedObj(content string, pat ...string) string {
+	c := content
+	for i := 0; i < len(pat); i++ {
+		p, _ := regexp.Compile(pat[i])
+		c = p.ReplaceAllString(c, "")
+	}
+	return c
 }
 
 // 为结构体设置默认值

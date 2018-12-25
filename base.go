@@ -108,9 +108,7 @@ func (hr HttpRouters) Len() int {
 }
 
 // 全局颜色配置项
-type ColorOpts struct {
-	Color []string
-}
+type ColorOpts []string
 
 // 所有图表都拥有的基本配置项
 type BaseOpts struct {
@@ -142,7 +140,7 @@ func (opt *BaseOpts) setColor(options ...interface{}) {
 		option := options[i]
 		switch option.(type) {
 		case ColorOpts:
-			opt.appendColor = append(opt.appendColor, option.(ColorOpts).Color...)
+			opt.appendColor = append(opt.appendColor, option.(ColorOpts)...)
 		}
 	}
 }
@@ -189,7 +187,7 @@ func (opt *BaseOpts) setBaseGlobalConfig(options ...interface{}) {
 		case LegendOpts:
 			opt.LegendOpts = option.(LegendOpts)
 		case ColorOpts:
-			opt.insertSeriesColors(option.(ColorOpts).Color)
+			opt.insertSeriesColors(option.(ColorOpts))
 		case DataZoomOpts:
 			opt.DataZoomOptsList = append(opt.DataZoomOptsList, option.(DataZoomOpts))
 		case VisualMapOpts:
