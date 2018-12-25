@@ -57,15 +57,15 @@ func (rc *RectChart) SetSeriesConfig(options ...interface{}) *RectChart {
 }
 
 // RectChart 校验器
-func (rc *RectChart) verifyOpts() {
+func (rc *RectChart) validateOpts() {
 	rc.XAxisOpts.Data = rc.xAxisData
-	rc.verifyInitOpt()
-	rc.verifyAssets(rc.AssetsHost)
+	rc.validateInitOpt()
+	rc.validateAssets(rc.AssetsHost)
 }
 
 // RectChart 渲染图表
 func (rc *RectChart) Render(w ...io.Writer) {
 	rc.XAxisOpts.Data = rc.xAxisData
-	rc.verifyOpts()
+	rc.validateOpts()
 	renderToWriter(rc, "chart", w...)
 }

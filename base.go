@@ -56,7 +56,7 @@ func (opt *AssetsOpts) cssIn(cssRef string) bool {
 	return isIn
 }
 
-func (opt *AssetsOpts) verifyAssets(host string) {
+func (opt *AssetsOpts) validateAssets(host string) {
 	for i := 0; i < len(opt.JSAssets); i++ {
 		opt.JSAssets[i] = host + opt.JSAssets[i]
 	}
@@ -79,7 +79,7 @@ func (opt *InitOpts) checkID() {
 }
 
 // 验证初始化参数，确保图形能够得到正确渲染
-func (opt *InitOpts) verifyInitOpt() {
+func (opt *InitOpts) validateInitOpt() {
 	opt.setDefault()
 	opt.checkID()
 }
@@ -174,6 +174,7 @@ func (opt *BaseOpts) setBaseGlobalConfig(options ...interface{}) {
 		case InitOpts:
 			opt.InitOpts = option.(InitOpts)
 			if opt.InitOpts.Theme != "" {
+				// TODO: themes 前缀
 				opt.JSAssets = append(opt.JSAssets, opt.Theme+".js")
 			}
 		case TitleOpts:

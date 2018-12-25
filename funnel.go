@@ -37,15 +37,15 @@ func (funnel *Funnel) SetGlobalConfig(options ...interface{}) *Funnel {
 	return funnel
 }
 
-func (funnel *Funnel) verifyOpts() {
-	funnel.verifyInitOpt()
-	funnel.verifyAssets(funnel.AssetsHost)
+func (funnel *Funnel) validateOpts() {
+	funnel.validateInitOpt()
+	funnel.validateAssets(funnel.AssetsHost)
 }
 
 // 渲染图表，支持多 io.Writer
 func (funnel *Funnel) Render(w ...io.Writer) {
 
 	funnel.insertSeriesColors(funnel.appendColor)
-	funnel.verifyOpts()
+	funnel.validateOpts()
 	renderToWriter(funnel, "chart", w...)
 }

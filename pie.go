@@ -37,14 +37,14 @@ func (pie *Pie) SetGlobalConfig(options ...interface{}) *Pie {
 	return pie
 }
 
-func (pie *Pie) verifyOpts() {
-	pie.verifyInitOpt()
-	pie.verifyAssets(pie.AssetsHost)
+func (pie *Pie) validateOpts() {
+	pie.validateInitOpt()
+	pie.validateAssets(pie.AssetsHost)
 }
 
 // 渲染图表，支持多 io.Writer
 func (pie *Pie) Render(w ...io.Writer) {
 	pie.insertSeriesColors(pie.appendColor)
-	pie.verifyOpts()
+	pie.validateOpts()
 	renderToWriter(pie, "chart", w...)
 }

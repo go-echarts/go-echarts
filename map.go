@@ -19,6 +19,7 @@ func NewMap(mapType string, routers ...HttpRouter) *Map {
 	m.HasXYAxis = false
 	m.init(routers...)
 	m.initAssetsOpts()
+	// TODO: maps 前缀
 	m.JSAssets = append(m.JSAssets, mapType+".js")
 	return m
 }
@@ -50,14 +51,14 @@ func (m *Map) SetGlobalConfig(options ...interface{}) *Map {
 	return m
 }
 
-func (m *Map) verifyOpts() {
-	m.verifyInitOpt()
-	m.verifyAssets(m.AssetsHost)
+func (m *Map) validateOpts() {
+	m.validateInitOpt()
+	m.validateAssets(m.AssetsHost)
 }
 
 // 渲染图表，支持多 io.Writer
 func (m *Map) Render(w ...io.Writer) {
 	m.insertSeriesColors(m.appendColor)
-	m.verifyOpts()
+	m.validateOpts()
 	renderToWriter(m, "chart", w...)
 }

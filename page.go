@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-type verifier interface {
-	verifyOpts()
+type validator interface {
+	validateOpts()
 	yieldAssets() ([]string, []string)
 }
 
@@ -30,12 +30,12 @@ func NewPage(routers ...HttpRouter) *Page {
 }
 
 // 新增 Page 图表，支持一次接收多个 Chart
-func (page *Page) Add(charts ...verifier) *Page {
+func (page *Page) Add(charts ...validator) *Page {
 	if len(charts) < 1 {
-		log.Println("Please make sure charts length > 0")
+		log.Println("Charts should length > 0")
 	}
 	for i := 0; i < len(charts); i++ {
-		charts[i].verifyOpts()
+		charts[i].validateOpts()
 		jsList, cssList := charts[i].yieldAssets()
 		page.extractJSAssets(jsList)
 		page.extractCSSAssets(cssList)
@@ -71,6 +71,6 @@ func (page *Page) extractCSSAssets(cssList []string) {
 // 渲染图表，支持多 io.Writer
 func (page *Page) Render(w ...io.Writer) {
 	page.InitOpts.setDefault()
-	page.verifyAssets(page.AssetsHost)
+	page.validateAssets(page.AssetsHost)
 	renderToWriter(page, "page", w...)
 }
