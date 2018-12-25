@@ -56,8 +56,11 @@ func (m *Map) validateOpts() {
 }
 
 // 渲染图表，支持多 io.Writer
-func (m *Map) Render(w ...io.Writer) {
+func (m *Map) Render(w ...io.Writer) error {
 	m.insertSeriesColors(m.appendColor)
 	m.validateOpts()
-	renderToWriter(m, "chart", w...)
+	if err := renderToWriter(m, "chart", w...); err != nil {
+		return err
+	}
+	return nil
 }

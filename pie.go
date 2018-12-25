@@ -43,8 +43,11 @@ func (pie *Pie) validateOpts() {
 }
 
 // 渲染图表，支持多 io.Writer
-func (pie *Pie) Render(w ...io.Writer) {
+func (pie *Pie) Render(w ...io.Writer) error {
 	pie.insertSeriesColors(pie.appendColor)
 	pie.validateOpts()
-	renderToWriter(pie, "chart", w...)
+	if err := renderToWriter(pie, "chart", w...); err != nil {
+		return err
+	}
+	return nil
 }

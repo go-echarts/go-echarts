@@ -43,8 +43,11 @@ func (funnel *Funnel) validateOpts() {
 }
 
 // 渲染图表，支持多 io.Writer
-func (funnel *Funnel) Render(w ...io.Writer) {
+func (funnel *Funnel) Render(w ...io.Writer) error {
 	funnel.insertSeriesColors(funnel.appendColor)
 	funnel.validateOpts()
-	renderToWriter(funnel, "chart", w...)
+	if err := renderToWriter(funnel, "chart", w...); err != nil {
+		return err
+	}
+	return nil
 }

@@ -19,7 +19,7 @@ func (line *Line) AddXAxis(xAxis interface{}) *Line {
 	return line
 }
 
-// 提供 Y 轴数据
+// 提供 Y 轴数据及 Series 配置项
 func (line *Line) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Line {
 	series := singleSeries{Name: name, Type: lineType, Data: yAxis}
 	series.setSingleSeriesOpts(options...)

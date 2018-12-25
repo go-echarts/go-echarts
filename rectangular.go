@@ -64,8 +64,11 @@ func (rc *RectChart) validateOpts() {
 }
 
 // RectChart 渲染图表
-func (rc *RectChart) Render(w ...io.Writer) {
+func (rc *RectChart) Render(w ...io.Writer) error {
 	rc.XAxisOpts.Data = rc.xAxisData
 	rc.validateOpts()
-	renderToWriter(rc, "chart", w...)
+	if err := renderToWriter(rc, "chart", w...); err != nil {
+		return err
+	}
+	return nil
 }

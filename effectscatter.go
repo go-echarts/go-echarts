@@ -32,7 +32,7 @@ func (es *EffectScatter) AddXAxis(xAxis interface{}) *EffectScatter {
 	return es
 }
 
-// 提供 Y 轴数据
+// 提供 Y 轴数据及 Series 配置项
 func (es *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *EffectScatter {
 	series := singleSeries{Name: name, Type: effectScatterType, Data: yAxis}
 	series.setSingleSeriesOpts(options...)

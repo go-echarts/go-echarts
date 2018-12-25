@@ -50,7 +50,7 @@ func (bar *Bar) validateOpts() {
 }
 
 // 渲染图表，支持多 io.Writer
-func (bar *Bar) Render(w ...io.Writer) {
+func (bar *Bar) Render(w ...io.Writer) error {
 	bar.XAxisOpts.Data = bar.xAxisData
 	// XY 轴翻转
 	if bar.IsXYReversal {
@@ -62,9 +62,12 @@ func (bar *Bar) Render(w ...io.Writer) {
 	bar.validateOpts()
 
 	var b bytes.Buffer
-	renderChart(bar, &b, "chart")
+	if err := renderChart(bar, &b, "chart"); err != nil {
+		return err
+	}
 	res := replaceRender(b)
 	for i := 0; i < len(w); i++ {
 		w[i].Write(res)
 	}
+	return nil
 }

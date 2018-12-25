@@ -23,27 +23,35 @@ const (
 )
 
 // 渲染图表
-func renderChart(chart interface{}, w io.Writer, name string) {
+func renderChart(chart interface{}, w io.Writer, name string) error {
 	box := packr.NewBox("./templates")
 	headerHtml, err := box.FindString("header.html")
 	routersHtml, err := box.FindString("routers.html")
 	baseHtml, err := box.FindString("base.html")
 	chartHtml, err := box.FindString(name + ".html")
-	checkError(err)
+	if err != nil {
+		return err
+	}
 	tpl := template.Must(template.New("").Parse(headerHtml))
-	tpl = template.Must(tpl.Parse(baseHtml))
 	tpl = template.Must(tpl.Parse(routersHtml))
+	tpl = template.Must(tpl.Parse(baseHtml))
 	tpl = template.Must(tpl.Parse(chartHtml))
-	tpl.ExecuteTemplate(w, name, chart)
+	if err = tpl.ExecuteTemplate(w, name, chart); err != nil {
+		return err
+	}
+	return nil
 }
 
-func renderToWriter(chart interface{}, renderName string, w ...io.Writer) {
+func renderToWriter(chart interface{}, renderName string, w ...io.Writer) error {
 	var b bytes.Buffer
-	renderChart(chart, &b, renderName)
+	if err := renderChart(chart, &b, renderName); err != nil {
+		return err
+	}
 	res := replaceRender(b)
 	for i := 0; i < len(w); i++ {
 		w[i].Write(res)
 	}
+	return nil
 }
 
 // 随机种子

@@ -19,7 +19,7 @@ func (scatter *Scatter) AddXAxis(xAxis interface{}) *Scatter {
 	return scatter
 }
 
-// 提供 Y 轴数据
+// 提供 Y 轴数据及 Series 配置项
 func (scatter *Scatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Scatter {
 	series := singleSeries{Name: name, Type: scatterType, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
