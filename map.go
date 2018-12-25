@@ -19,8 +19,7 @@ func NewMap(mapType string, routers ...HttpRouter) *Map {
 	m.HasXYAxis = false
 	m.init(routers...)
 	m.initAssetsOpts()
-	// TODO: maps 前缀
-	m.JSAssets = append(m.JSAssets, mapType+".js")
+	m.JSAssets = append(m.JSAssets, "maps/"+mapType+".js")
 	return m
 }
 

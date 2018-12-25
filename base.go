@@ -174,8 +174,7 @@ func (opt *BaseOpts) setBaseGlobalConfig(options ...interface{}) {
 		case InitOpts:
 			opt.InitOpts = option.(InitOpts)
 			if opt.InitOpts.Theme != "" {
-				// TODO: themes 前缀
-				opt.JSAssets = append(opt.JSAssets, opt.Theme+".js")
+				opt.JSAssets = append(opt.JSAssets, "themes/"+opt.Theme+".js")
 			}
 		case TitleOpts:
 			opt.TitleOpts = option.(TitleOpts)
