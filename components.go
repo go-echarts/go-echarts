@@ -78,6 +78,29 @@ type TextStyle struct {
 	FontSize int `json:"fontSize,omitempty"`
 }
 
+type LineStyleOpts struct {
+	// 线的颜色
+	Color string `json:"color,omitempty"`
+	// 线的宽度
+	// 默认 1
+	Width float32 `json:"width,omitempty"`
+	// 线的类型，可选 "solid", "dashed", "dotted"
+	// 默认 "solid"
+	Type string `json:"type,omitempty"`
+	// 线的透明度。支持从 0 到 1 的数字，为 0 时不绘制线
+	Opacity float32 `json:"opacity,omitempty"`
+	// 线的曲度，支持从 0 到 1 的值，值越大曲度越大
+	// 默认 0
+	Curveness float32 `json:"curveness,omitempty"`
+}
+
+type AreaStyleOpts struct {
+	// 填充区域的颜色
+	Color string `json:"color,omitempty"`
+	// 填充区域的透明度。支持从 0 到 1 的数字，为 0 时不填充区域
+	Opacity float32 `json:"opacity,omitempty"`
+}
+
 // 区域缩放组件配置项
 type DataZoomOpts struct {
 	// 缩放类型，可选 "inside", "slider"
@@ -125,7 +148,7 @@ type VisualMapOpts struct {
 	Range []float32 `json:"range,omitempty"`
 	// 两端的文本，如 ['High', 'Low']
 	Text []string `json:"text,omitempty"`
-	// TODO: 设置 default
+	// 定义在选中范围中的视觉元素
 	VMInRange `json:"inRange,omitempty"`
 }
 

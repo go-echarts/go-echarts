@@ -104,6 +104,8 @@ func replaceRender(b bytes.Buffer) []byte {
 		`,"label":{}`,
 		`,"markLine":{}`,
 		`,"markPoint":{}`,
+		`,"areaStyle":{}`,
+		`,"lineStyle":{}`,
 		`,"rippleEffect":{}`,
 	}
 	res := []byte(removeUnusedObj(content, unusedObj...))

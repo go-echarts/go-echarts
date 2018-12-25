@@ -9,8 +9,13 @@ type Bar struct {
 	// 是否翻转 XY 轴
 	IsXYReversal bool
 	RectChart
+	BarChartOpts
 
 	HasXYAxis bool
+}
+
+type BarChartOpts struct {
+	Stack string `json:"stack,omitempty"`
 }
 
 // 工厂函数，生成 `Bar` 实例

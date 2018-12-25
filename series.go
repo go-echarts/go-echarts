@@ -93,6 +93,8 @@ type singleSeries struct {
 	MarkLineOpts     `json:"markLine,omitempty"`
 	MarkPointOpts    `json:"markPoint,omitempty"`
 	RippleEffectOpts `json:"rippleEffect,omitempty"`
+	LineStyleOpts    `json:"lineStyle,omitempty"`
+	AreaStyleOpts    `json:"areaStyle,omitempty"`
 }
 
 // 设置 Series 配置项
@@ -110,6 +112,10 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 			s.LabelTextOpts = option.(LabelTextOpts)
 		case RippleEffectOpts:
 			s.RippleEffectOpts = option.(RippleEffectOpts)
+		case LineStyleOpts:
+			s.LineStyleOpts = option.(LineStyleOpts)
+		case AreaStyleOpts:
+			s.AreaStyleOpts = option.(AreaStyleOpts)
 
 			// MarkLine 配置项
 		case MLNameType:
