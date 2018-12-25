@@ -16,24 +16,29 @@ type InitOpts struct {
 	Theme string `default:"white"`
 }
 
+// 静态资源配置项
 type AssetsOpts struct {
 	JSAssets  []string
 	CSSAssets []string
 }
 
+// 初始化静态资源配置项
 func (opt *AssetsOpts) initAssetsOpts() {
 	opt.JSAssets = []string{echartsJS}
 	opt.CSSAssets = []string{bulmaCSS}
 }
 
+// 追加 js 资源
 func (opt *AssetsOpts) appendJsAssets(asset string) {
 	opt.JSAssets = append(opt.JSAssets, asset)
 }
 
+// 返回资源列表
 func (opt *AssetsOpts) yieldAssets() ([]string, []string) {
 	return opt.JSAssets, opt.CSSAssets
 }
 
+// 判断 js 资源是否在列表中
 func (opt *AssetsOpts) jsIn(jsRef string) bool {
 	isIn := false
 	for i := 0; i < len(opt.JSAssets); i++ {
@@ -45,6 +50,7 @@ func (opt *AssetsOpts) jsIn(jsRef string) bool {
 	return isIn
 }
 
+// 判断 css 资源是否在列表中
 func (opt *AssetsOpts) cssIn(cssRef string) bool {
 	isIn := false
 	for i := 0; i < len(opt.CSSAssets); i++ {
@@ -56,6 +62,7 @@ func (opt *AssetsOpts) cssIn(cssRef string) bool {
 	return isIn
 }
 
+// 校验静态资源配置项，追加 host
 func (opt *AssetsOpts) validateAssets(host string) {
 	for i := 0; i < len(opt.JSAssets); i++ {
 		opt.JSAssets[i] = host + opt.JSAssets[i]
@@ -115,8 +122,9 @@ type BaseOpts struct {
 	TooltipOpts
 	// 标题组件配置项
 	TitleOpts
-	// 全局颜色列表
+	// 静态资源配置项
 	AssetsOpts
+	// 全局颜色列表
 	ColorList []string
 	// 追加全局颜色列表
 	appendColor []string
@@ -146,8 +154,8 @@ func (opt *BaseOpts) initSeriesColors() {
 		"#ca8622", "#bda29a", "#6e7074", "#546570", "#c4ccd3"}
 }
 
-// 初始化 BaseOpts 操作
-func (opt *BaseOpts) init(routers ...HttpRouter) {
+// 初始化 BaseOpts
+func (opt *BaseOpts) initBaseOpts(routers ...HttpRouter) {
 	for i := 0; i < len(routers); i++ {
 		opt.HttpRouters = append(opt.HttpRouters, routers[i])
 	}

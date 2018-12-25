@@ -8,7 +8,7 @@ type Line struct {
 func NewLine(routers ...HttpRouter) *Line {
 	line := new(Line)
 	line.HasXYAxis = true
-	line.init(routers...)
+	line.initBaseOpts(routers...)
 	line.initAssetsOpts()
 	return line
 }

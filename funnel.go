@@ -15,7 +15,7 @@ type Funnel struct {
 func NewFunnel(routers ...HttpRouter) *Funnel {
 	funnel := new(Funnel)
 	funnel.HasXYAxis = false
-	funnel.init(routers...)
+	funnel.initBaseOpts(routers...)
 	funnel.initAssetsOpts()
 	return funnel
 }
@@ -44,7 +44,6 @@ func (funnel *Funnel) validateOpts() {
 
 // 渲染图表，支持多 io.Writer
 func (funnel *Funnel) Render(w ...io.Writer) {
-
 	funnel.insertSeriesColors(funnel.appendColor)
 	funnel.validateOpts()
 	renderToWriter(funnel, "chart", w...)

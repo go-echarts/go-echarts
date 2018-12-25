@@ -3,9 +3,9 @@ package goecharts
 import (
 	"io"
 	"log"
-	"strings"
 )
 
+// 校验器接口
 type validator interface {
 	validateOpts()
 	yieldAssets() ([]string, []string)
@@ -25,7 +25,6 @@ func NewPage(routers ...HttpRouter) *Page {
 	for i := 0; i < len(routers); i++ {
 		page.HttpRouters = append(page.HttpRouters, routers[i])
 	}
-	page.initAssetsOpts()
 	return page
 }
 
@@ -33,6 +32,7 @@ func NewPage(routers ...HttpRouter) *Page {
 func (page *Page) Add(charts ...validator) *Page {
 	if len(charts) < 1 {
 		log.Println("Charts should length > 0")
+		return page
 	}
 	for i := 0; i < len(charts); i++ {
 		charts[i].validateOpts()
@@ -44,26 +44,20 @@ func (page *Page) Add(charts ...validator) *Page {
 	return page
 }
 
+// 提取 js 引用
 func (page *Page) extractJSAssets(jsList []string) {
 	for i := 0; i < len(jsList); i++ {
-		js := strings.Split(jsList[i], "/")
-		if len(js) < 1 {
-			continue
-		}
-		if !page.AssetsOpts.jsIn(js[len(js)-1]) {
-			page.JSAssets = append(page.JSAssets, js[len(js)-1])
+		if !page.AssetsOpts.jsIn(jsList[i]) {
+			page.JSAssets = append(page.JSAssets, jsList[i])
 		}
 	}
 }
 
+// 提取 css 引用
 func (page *Page) extractCSSAssets(cssList []string) {
 	for i := 0; i < len(cssList); i++ {
-		css := strings.Split(cssList[i], "/")
-		if len(css) < 1 {
-			continue
-		}
-		if !page.AssetsOpts.cssIn(css[len(css)-1]) {
-			page.CSSAssets = append(page.CSSAssets, css[len(css)-1])
+		if !page.AssetsOpts.cssIn(cssList[i]) {
+			page.CSSAssets = append(page.CSSAssets, cssList[i])
 		}
 	}
 }
@@ -71,6 +65,5 @@ func (page *Page) extractCSSAssets(cssList []string) {
 // 渲染图表，支持多 io.Writer
 func (page *Page) Render(w ...io.Writer) {
 	page.InitOpts.setDefault()
-	page.validateAssets(page.AssetsHost)
 	renderToWriter(page, "page", w...)
 }

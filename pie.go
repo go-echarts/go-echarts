@@ -15,7 +15,7 @@ type Pie struct {
 func NewPie(routers ...HttpRouter) *Pie {
 	pie := new(Pie)
 	pie.HasXYAxis = false
-	pie.init(routers...)
+	pie.initBaseOpts(routers...)
 	pie.initAssetsOpts()
 	return pie
 }

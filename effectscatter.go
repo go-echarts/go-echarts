@@ -21,7 +21,7 @@ type RippleEffectOpts struct {
 func NewEffectScatter(routers ...HttpRouter) *EffectScatter {
 	es := new(EffectScatter)
 	es.HasXYAxis = true
-	es.init(routers...)
+	es.initBaseOpts(routers...)
 	es.initAssetsOpts()
 	return es
 }

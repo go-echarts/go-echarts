@@ -17,7 +17,7 @@ type Bar struct {
 func NewBar(routers ...HttpRouter) *Bar {
 	bar := new(Bar)
 	bar.HasXYAxis = true
-	bar.init(routers...)
+	bar.initBaseOpts(routers...)
 	bar.initAssetsOpts()
 	return bar
 }
@@ -28,7 +28,7 @@ func (bar *Bar) AddXAxis(xAxis interface{}) *Bar {
 	return bar
 }
 
-// 提供 Y 轴数据
+// 提供 Y 轴数据及 Series 配置项
 func (bar *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Bar {
 	series := singleSeries{Name: name, Type: barType, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
@@ -64,7 +64,6 @@ func (bar *Bar) Render(w ...io.Writer) {
 	var b bytes.Buffer
 	renderChart(bar, &b, "chart")
 	res := replaceRender(b)
-	// 只渲染第一次
 	for i := 0; i < len(w); i++ {
 		w[i].Write(res)
 	}
