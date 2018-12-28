@@ -9,8 +9,6 @@ import (
 	"regexp"
 	"strconv"
 	"time"
-
-	"github.com/gobuffalo/packr"
 )
 
 const (
@@ -23,42 +21,24 @@ const (
 
 // 渲染图表
 func renderChart(chart interface{}, w io.Writer, name string) error {
-	fileNames := []string{"header.html", "routers.html", "base.html", name + ".html"}
-	contents, err := extractTplContents(fileNames...)
-	if err != nil {
-		return err
+	contents := []string{headerTpl, routerTpl, baseTpl}
+	if name == "chart" {
+		contents = append(contents, chartTpl)
+	} else if name == "page" {
+		contents = append(contents, pageTpl)
 	}
 	tpl := template.Must(template.New("").Parse(contents[0]))
 	mustTpl(tpl, contents[1:]...)
-	if err = tpl.ExecuteTemplate(w, name, chart); err != nil {
+	if err := tpl.ExecuteTemplate(w, name, chart); err != nil {
 		return err
 	}
 	return nil
 }
 
-func mustTpl(tpl *template.Template, html ...string) *template.Template {
+func mustTpl(tpl *template.Template, html ...string) {
 	for i := 0; i < len(html); i++ {
 		tpl = template.Must(tpl.Parse(html[i]))
 	}
-	return tpl
-}
-
-func extractTplContents(fileNames ...string) ([]string, error) {
-	box := packr.NewBox("./templates")
-
-	contents := make([]string, 0)
-	var (
-		content string
-		err     error
-	)
-	for i := 0; i < len(fileNames); i++ {
-		content, err = box.FindString(fileNames[i])
-		if err != nil {
-			return []string{}, err
-		}
-		contents = append(contents, content)
-	}
-	return contents, nil
 }
 
 func renderToWriter(chart interface{}, renderName string, w ...io.Writer) error {
@@ -107,6 +87,7 @@ func replaceRender(b bytes.Buffer) []byte {
 		`,"areaStyle":{}`,
 		`,"lineStyle":{}`,
 		`,"rippleEffect":{}`,
+		//`toolbox: {},`,
 	}
 	res := []byte(removeUnusedObj(content, unusedObj...))
 	return res

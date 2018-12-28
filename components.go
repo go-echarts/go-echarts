@@ -67,6 +67,17 @@ type TooltipOpts struct {
 	Trigger string `json:"trigger,omitempty"`
 }
 
+// 工具箱组件配置项
+//type ToolBoxOpts struct {
+//	Show bool `json:"show,omitempty"`
+//	Feature TBFeatureOpts
+//
+//}
+//
+//type TBFeatureOpts struct {
+//	SaveAsImage struct{} `json:"saveAsImage,omitempty"`
+//}
+
 // 字体样式配置项
 type TextStyle struct {
 	// 文字字体颜色

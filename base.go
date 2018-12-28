@@ -118,6 +118,8 @@ type BaseOpts struct {
 	LegendOpts
 	// 提示框组件配置项
 	TooltipOpts
+	// 工具箱组件配置项
+	//ToolBoxOpts
 	// 标题组件配置项
 	TitleOpts
 	// 静态资源配置项
@@ -132,6 +134,8 @@ type BaseOpts struct {
 	DataZoomOptsList
 	// 视觉映射组件配置项列表
 	VisualMapOptsList
+
+	IsShowToolBox bool
 }
 
 // 设置全局颜色

@@ -37,9 +37,22 @@ func (bar *Bar) AddXAxis(xAxis interface{}) *Bar {
 func (bar *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Bar {
 	series := singleSeries{Name: name, Type: barType, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
+	if ok, opt := bar.isBarChartOpts(options...); ok {
+		series.Stack = opt.Stack
+	}
 	bar.Series = append(bar.Series, series)
 	bar.setColor(options...)
 	return bar
+}
+
+func (bar *Bar) isBarChartOpts(options ...interface{}) (bool, BarChartOpts) {
+	for i := 0; i < len(options); i++ {
+		switch options[i].(type) {
+		case BarChartOpts:
+			return true, options[i].(BarChartOpts)
+		}
+	}
+	return false, BarChartOpts{}
 }
 
 // 对图形配置做最后的验证，确保能够正确渲染
