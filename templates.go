@@ -42,6 +42,10 @@ var baseTpl = `
         title: {{ .TitleOpts  }},
         tooltip: {{ .TooltipOpts }},
         legend: {{ .LegendOpts }},
+		geo: {{ .GeoOpts }},
+	{{- if .ToolboxOpts.Show }}
+		toolbox: {{ .ToolboxOpts }},
+	{{- end }}
     {{- if gt .DataZoomOptsList.Len 0 }}
         dataZoom:{{ .DataZoomOptsList }},
     {{- end }}

@@ -93,16 +93,12 @@ func (opt *InitOpts) validateInitOpt() {
 
 // Http 路由
 type HttpRouter struct {
-	// 路由 URL
-	Url string
-	// 路由显示文字
-	Text string
+	Url  string // 路由 URL
+	Text string // 路由显示文字
 }
 
-// Http 路由列表
 type HttpRouters []HttpRouter
 
-// Len() 用于 template 方法
 func (hr HttpRouters) Len() int {
 	return len(hr)
 }
@@ -112,30 +108,19 @@ type ColorOpts []string
 
 // 所有图表都拥有的基本配置项
 type BaseOpts struct {
-	// 图形初始化配置项
-	InitOpts
-	// 图例组件配置项
-	LegendOpts
-	// 提示框组件配置项
-	TooltipOpts
-	// 工具箱组件配置项
-	//ToolBoxOpts
-	// 标题组件配置项
-	TitleOpts
-	// 静态资源配置项
-	AssetsOpts
-	// 全局颜色列表
-	ColorList []string
-	// 追加全局颜色列表
-	appendColor []string
-	// 路由列表
-	HttpRouters
-	// 区域缩放组件配置项列表
-	DataZoomOptsList
-	// 视觉映射组件配置项列表
-	VisualMapOptsList
-
-	IsShowToolBox bool
+	InitOpts                   // 图形初始化配置项
+	LegendOpts                 // 图例组件配置项
+	TooltipOpts                // 提示框组件配置项
+	ToolboxOpts                // 工具箱组件配置项
+	TitleOpts                  // 标题组件配置项
+	AssetsOpts                 // 静态资源配置项
+	ColorList         []string // 全局颜色列表
+	appendColor       []string // 追加全局颜色列表
+	HttpRouters                // 路由列表
+	DataZoomOptsList           // 区域缩放组件配置项列表
+	VisualMapOptsList          // 视觉映射组件配置项列表
+	GeoOpts                    // 地理坐标系组件配置项
+	HasXYAxis         bool     // 图形是否拥有 XY 轴
 }
 
 // 设置全局颜色
@@ -166,8 +151,7 @@ func (opt *BaseOpts) initBaseOpts(routers ...HttpRouter) {
 
 // 插入颜色到颜色列表首部
 func (opt *BaseOpts) insertSeriesColors(s []string) {
-	// 翻转颜色列表
-	tmpCl := reverseSlice(s)
+	tmpCl := reverseSlice(s) // 翻转颜色列表
 	// 颜色追加至首部
 	for i := 0; i < len(tmpCl); i++ {
 		opt.ColorList = append(opt.ColorList, "")
@@ -188,6 +172,8 @@ func (opt *BaseOpts) setBaseGlobalConfig(options ...interface{}) {
 			}
 		case TitleOpts:
 			opt.TitleOpts = option.(TitleOpts)
+		case ToolboxOpts:
+			opt.ToolboxOpts = option.(ToolboxOpts)
 		case LegendOpts:
 			opt.LegendOpts = option.(LegendOpts)
 		case ColorOpts:

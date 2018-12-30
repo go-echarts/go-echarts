@@ -68,15 +68,17 @@ type TooltipOpts struct {
 }
 
 // 工具箱组件配置项
-//type ToolBoxOpts struct {
-//	Show bool `json:"show,omitempty"`
-//	Feature TBFeatureOpts
-//
-//}
-//
-//type TBFeatureOpts struct {
-//	SaveAsImage struct{} `json:"saveAsImage,omitempty"`
-//}
+type ToolboxOpts struct {
+	Show      bool `json:"show"`
+	TBFeature `json:"feature"`
+}
+
+type TBFeature struct {
+	SaveAsImage struct{} `json:"saveAsImage"`
+	DataZoom    struct{} `json:"dataZoom"`
+	DataView    struct{} `json:"dataView"`
+	Restore     struct{} `json:"restore"`
+}
 
 // 字体样式配置项
 type TextStyle struct {
@@ -139,7 +141,6 @@ type DataZoomOpts struct {
 
 type DataZoomOptsList []DataZoomOpts
 
-// Len() 用于 template 方法
 func (dz DataZoomOptsList) Len() int {
 	return len(dz)
 }
@@ -165,7 +166,6 @@ type VisualMapOpts struct {
 
 type VisualMapOptsList []VisualMapOpts
 
-// Len() 用于 template 方法
 func (vm VisualMapOptsList) Len() int {
 	return len(vm)
 }
@@ -174,9 +174,6 @@ type VMInRange struct {
 	Color      []string `json:"color,omitempty"`
 	Symbol     string   `json:"symbol,omitempty"`
 	SymbolSize float32  `json:"symbolSize,omitempty"`
-}
-
-type VMOutRange struct {
 }
 
 // X 轴配置项组件
@@ -197,4 +194,10 @@ type YAxisOpts struct {
 	Show bool `json:"show,omitempty"`
 	// Y 轴数据项
 	Data interface{} `json:"data,omitempty"`
+}
+
+// 地理坐标系组件配置项
+type GeoOpts struct {
+	Map  string `json:"map"`
+	Roam bool   `json:"roam"`
 }

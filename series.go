@@ -87,9 +87,14 @@ type singleSeries struct {
 	Name string `json:"name,omitempty"`
 	// series 类型
 	Type string `json:"type"`
-	// series 数据项
 
-	Stack            string      `json:"stack,omitempty"`
+	Stack      string `json:"stack,omitempty"`
+	XAxisIndex int    `json:"xAxisIndex,omitempty"`
+	YAxisIndex int    `json:"yAxisIndex,omitempty"`
+
+	CoordSystem string `json:"coordinateSystem"`
+
+	// series 数据项
 	Data             interface{} `json:"data"`
 	LabelTextOpts    `json:"label,omitempty"`
 	MarkLineOpts     `json:"markLine,omitempty"`
@@ -119,7 +124,7 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 		case AreaStyleOpts:
 			s.AreaStyleOpts = option.(AreaStyleOpts)
 
-		//case BarChartOpts:
+			//case BarChartOpts:
 
 			// MarkLine 配置项
 		case MLNameType:

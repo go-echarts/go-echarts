@@ -4,6 +4,12 @@ type EffectScatter struct {
 	RectChart
 }
 
+// EffectScatter series options
+type EffectScatterChartOpts struct {
+	XAxisIndex int
+	YAxisIndex int
+}
+
 // 涟漪特效配置项
 type RippleEffectOpts struct {
 	// 动画的周期，秒数
@@ -19,24 +25,24 @@ type RippleEffectOpts struct {
 
 //工厂函数，生成 `Scatter` 实例
 func NewEffectScatter(routers ...HttpRouter) *EffectScatter {
-	es := new(EffectScatter)
-	es.HasXYAxis = true
-	es.initBaseOpts(routers...)
-	es.initAssetsOpts()
-	return es
+	esChart := new(EffectScatter)
+	esChart.HasXYAxis = true
+	esChart.initBaseOpts(routers...)
+	esChart.initAssetsOpts()
+	return esChart
 }
 
 // 提供 X 轴数据
-func (es *EffectScatter) AddXAxis(xAxis interface{}) *EffectScatter {
-	es.xAxisData = xAxis
-	return es
+func (c *EffectScatter) AddXAxis(xAxis interface{}) *EffectScatter {
+	c.xAxisData = xAxis
+	return c
 }
 
 // 提供 Y 轴数据及 Series 配置项
-func (es *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *EffectScatter {
-	series := singleSeries{Name: name, Type: effectScatterType, Data: yAxis}
+func (c *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *EffectScatter {
+	series := singleSeries{Name: name, Type: "effectScatter", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
-	es.Series = append(es.Series, series)
-	es.setColor(options...)
-	return es
+	c.Series = append(c.Series, series)
+	c.setColor(options...)
+	return c
 }

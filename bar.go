@@ -6,46 +6,50 @@ import (
 )
 
 type Bar struct {
-	// 是否翻转 XY 轴
-	IsXYReversal bool
 	RectChart
 	BarChartOpts
-
-	HasXYAxis bool
 }
 
+// Bar series options
 type BarChartOpts struct {
-	Stack string `json:"stack,omitempty"`
+	Stack        string
+	XAxisIndex   int
+	YAxisIndex   int
+	IsXYReversal bool
 }
 
 // 工厂函数，生成 `Bar` 实例
 func NewBar(routers ...HttpRouter) *Bar {
-	bar := new(Bar)
-	bar.HasXYAxis = true
-	bar.initBaseOpts(routers...)
-	bar.initAssetsOpts()
-	return bar
+	barChart := new(Bar)
+	barChart.HasXYAxis = true
+	barChart.initBaseOpts(routers...)
+	barChart.initAssetsOpts()
+	return barChart
 }
 
 // 提供 X 轴数据
-func (bar *Bar) AddXAxis(xAxis interface{}) *Bar {
-	bar.xAxisData = xAxis
-	return bar
+func (c *Bar) AddXAxis(xAxis interface{}) *Bar {
+	c.xAxisData = xAxis
+	return c
 }
 
 // 提供 Y 轴数据及 Series 配置项
-func (bar *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Bar {
-	series := singleSeries{Name: name, Type: barType, Data: yAxis}
+func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Bar {
+	series := singleSeries{Name: name, Type: "bar", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
-	if ok, opt := bar.isBarChartOpts(options...); ok {
+
+	if ok, opt := c.isSelfChartOpts(options...); ok {
 		series.Stack = opt.Stack
+		series.XAxisIndex = opt.XAxisIndex
+		series.YAxisIndex = opt.YAxisIndex
 	}
-	bar.Series = append(bar.Series, series)
-	bar.setColor(options...)
-	return bar
+
+	c.Series = append(c.Series, series)
+	c.setColor(options...)
+	return c
 }
 
-func (bar *Bar) isBarChartOpts(options ...interface{}) (bool, BarChartOpts) {
+func (c *Bar) isSelfChartOpts(options ...interface{}) (bool, BarChartOpts) {
 	for i := 0; i < len(options); i++ {
 		switch options[i].(type) {
 		case BarChartOpts:
@@ -56,31 +60,23 @@ func (bar *Bar) isBarChartOpts(options ...interface{}) (bool, BarChartOpts) {
 }
 
 // 对图形配置做最后的验证，确保能够正确渲染
-func (bar *Bar) validateOpts() {
-	bar.XAxisOpts.Data = bar.xAxisData
+func (c *Bar) validateOpts() {
+	c.XAxisOpts.Data = c.xAxisData
 	// XY 轴翻转
-	if bar.IsXYReversal {
-		bar.YAxisOpts.Data = bar.xAxisData
-		bar.XAxisOpts.Data = nil
+	if c.IsXYReversal {
+		c.YAxisOpts.Data = c.xAxisData
+		c.XAxisOpts.Data = nil
 	}
-	bar.validateInitOpt()
-	bar.validateAssets(bar.AssetsHost)
+	c.validateInitOpt()
+	c.validateAssets(c.AssetsHost)
 }
 
-// 渲染图表，支持多 io.Writer
-func (bar *Bar) Render(w ...io.Writer) error {
-	bar.XAxisOpts.Data = bar.xAxisData
-	// XY 轴翻转
-	if bar.IsXYReversal {
-		bar.YAxisOpts.Data = bar.xAxisData
-		bar.XAxisOpts.Data = nil
-	}
-
-	bar.insertSeriesColors(bar.appendColor)
-	bar.validateOpts()
+func (c *Bar) Render(w ...io.Writer) error {
+	c.insertSeriesColors(c.appendColor)
+	c.validateOpts()
 
 	var b bytes.Buffer
-	if err := renderChart(bar, &b, "chart"); err != nil {
+	if err := renderChart(c, &b, "chart"); err != nil {
 		return err
 	}
 	res := replaceRender(b)

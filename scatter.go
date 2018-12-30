@@ -4,26 +4,26 @@ type Scatter struct {
 	RectChart
 }
 
-//工厂函数，生成 `Scatter` 实例
+// 工厂函数，生成 `Scatter` 实例
 func NewScatter(routers ...HttpRouter) *Scatter {
-	scatter := new(Scatter)
-	scatter.HasXYAxis = true
-	scatter.initBaseOpts(routers...)
-	scatter.initAssetsOpts()
-	return scatter
+	scatterChart := new(Scatter)
+	scatterChart.HasXYAxis = true
+	scatterChart.initBaseOpts(routers...)
+	scatterChart.initAssetsOpts()
+	return scatterChart
 }
 
 // 提供 X 轴数据
-func (scatter *Scatter) AddXAxis(xAxis interface{}) *Scatter {
-	scatter.xAxisData = xAxis
-	return scatter
+func (c *Scatter) AddXAxis(xAxis interface{}) *Scatter {
+	c.xAxisData = xAxis
+	return c
 }
 
 // 提供 Y 轴数据及 Series 配置项
-func (scatter *Scatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Scatter {
-	series := singleSeries{Name: name, Type: scatterType, Data: yAxis}
+func (c *Scatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Scatter {
+	series := singleSeries{Name: name, Type: "scatter", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
-	scatter.Series = append(scatter.Series, series)
-	scatter.setColor(options...)
-	return scatter
+	c.Series = append(c.Series, series)
+	c.setColor(options...)
+	return c
 }

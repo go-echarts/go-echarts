@@ -7,46 +7,43 @@ import (
 type Funnel struct {
 	BaseOpts
 	Series
-
-	HasXYAxis bool
 }
 
 // 工厂函数，生成 `Funnel` 实例
 func NewFunnel(routers ...HttpRouter) *Funnel {
-	funnel := new(Funnel)
-	funnel.HasXYAxis = false
-	funnel.initBaseOpts(routers...)
-	funnel.initAssetsOpts()
-	return funnel
+	funnelChart := new(Funnel)
+	funnelChart.HasXYAxis = false
+	funnelChart.initBaseOpts(routers...)
+	funnelChart.initAssetsOpts()
+	return funnelChart
 }
 
-func (funnel *Funnel) Add(name string, data map[string]interface{}, options ...interface{}) *Funnel {
+func (c *Funnel) Add(name string, data map[string]interface{}, options ...interface{}) *Funnel {
 	nvs := make([]nameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, nameValueItem{k, v})
 	}
-	series := singleSeries{Name: name, Type: funnelType, Data: nvs}
+	series := singleSeries{Name: name, Type: "funnel", Data: nvs}
 	series.setSingleSeriesOpts(options...)
-	funnel.Series = append(funnel.Series, series)
-	funnel.setColor(options...)
-	return funnel
+	c.Series = append(c.Series, series)
+	c.setColor(options...)
+	return c
 }
 
-func (funnel *Funnel) SetGlobalConfig(options ...interface{}) *Funnel {
-	funnel.BaseOpts.setBaseGlobalConfig(options...)
-	return funnel
+func (c *Funnel) SetGlobalConfig(options ...interface{}) *Funnel {
+	c.BaseOpts.setBaseGlobalConfig(options...)
+	return c
 }
 
-func (funnel *Funnel) validateOpts() {
-	funnel.validateInitOpt()
-	funnel.validateAssets(funnel.AssetsHost)
+func (c *Funnel) validateOpts() {
+	c.validateInitOpt()
+	c.validateAssets(c.AssetsHost)
 }
 
-// 渲染图表，支持多 io.Writer
-func (funnel *Funnel) Render(w ...io.Writer) error {
-	funnel.insertSeriesColors(funnel.appendColor)
-	funnel.validateOpts()
-	if err := renderToWriter(funnel, "chart", w...); err != nil {
+func (c *Funnel) Render(w ...io.Writer) error {
+	c.insertSeriesColors(c.appendColor)
+	c.validateOpts()
+	if err := renderToWriter(c, "chart", w...); err != nil {
 		return err
 	}
 	return nil

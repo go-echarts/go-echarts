@@ -8,19 +8,18 @@ type Map struct {
 	BaseOpts
 	Series MapSeries
 
-	HasXYAxis bool
-	mapType   string
+	mapType string
 }
 
 // 工厂函数，生成 `Map` 实例
 func NewMap(mapType string, routers ...HttpRouter) *Map {
-	m := new(Map)
-	m.mapType = mapType
-	m.HasXYAxis = false
-	m.initBaseOpts(routers...)
-	m.initAssetsOpts()
-	m.JSAssets = append(m.JSAssets, "maps/"+mapType+".js")
-	return m
+	mapChart := new(Map)
+	mapChart.mapType = mapType
+	mapChart.HasXYAxis = false
+	mapChart.initBaseOpts(routers...)
+	mapChart.initAssetsOpts()
+	mapChart.JSAssets = append(mapChart.JSAssets, "maps/"+mapType+".js")
+	return mapChart
 }
 
 type singleMapSeries struct {
@@ -31,35 +30,35 @@ type singleMapSeries struct {
 
 type MapSeries []singleMapSeries
 
-func (m *Map) Add(name string, data map[string]interface{}, options ...interface{}) *Map {
+func (c *Map) Add(name string, data map[string]interface{}, options ...interface{}) *Map {
 	nvs := make([]nameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, nameValueItem{k, v})
 	}
 	series := singleMapSeries{
-		singleSeries: singleSeries{Name: name, Type: mapType, Data: nvs},
-		MapType:      m.mapType}
+		singleSeries: singleSeries{Name: name, Type: "map", Data: nvs},
+		MapType:      c.mapType,
+	}
 	series.setSingleSeriesOpts(options...)
-	m.Series = append(m.Series, series)
-	m.setColor(options...)
-	return m
+	c.Series = append(c.Series, series)
+	c.setColor(options...)
+	return c
 }
 
-func (m *Map) SetGlobalConfig(options ...interface{}) *Map {
-	m.BaseOpts.setBaseGlobalConfig(options...)
-	return m
+func (c *Map) SetGlobalConfig(options ...interface{}) *Map {
+	c.BaseOpts.setBaseGlobalConfig(options...)
+	return c
 }
 
-func (m *Map) validateOpts() {
-	m.validateInitOpt()
-	m.validateAssets(m.AssetsHost)
+func (c *Map) validateOpts() {
+	c.validateInitOpt()
+	c.validateAssets(c.AssetsHost)
 }
 
-// 渲染图表，支持多 io.Writer
-func (m *Map) Render(w ...io.Writer) error {
-	m.insertSeriesColors(m.appendColor)
-	m.validateOpts()
-	if err := renderToWriter(m, "chart", w...); err != nil {
+func (c *Map) Render(w ...io.Writer) error {
+	c.insertSeriesColors(c.appendColor)
+	c.validateOpts()
+	if err := renderToWriter(c, "chart", w...); err != nil {
 		return err
 	}
 	return nil

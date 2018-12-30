@@ -62,7 +62,6 @@ func (page *Page) extractCSSAssets(cssList []string) {
 	}
 }
 
-// 渲染图表，支持多 io.Writer
 func (page *Page) Render(w ...io.Writer) error {
 	page.InitOpts.setDefault()
 	if err := renderToWriter(page, "page", w...); err != nil {
