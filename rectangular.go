@@ -40,7 +40,6 @@ type RectChart struct {
 	RectOpts
 	Series
 
-	HasXYAxis bool
 	xAxisData interface{}
 }
 

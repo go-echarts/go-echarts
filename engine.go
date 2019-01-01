@@ -78,7 +78,7 @@ func replaceRender(b bytes.Buffer) []byte {
 	// __x__ 与模板占位符相匹配
 	idPat, _ := regexp.Compile(`(__x__")|("__x__)`)
 	// 替换并转为 []byte 类型
-	content := idPat.ReplaceAllString(b.String(), "_x_")
+	content := idPat.ReplaceAllString(b.String(), "")
 	unusedObj := []string{
 		`,"inRange":{}`,
 		`,"label":{}`,
@@ -87,7 +87,7 @@ func replaceRender(b bytes.Buffer) []byte {
 		`,"areaStyle":{}`,
 		`,"lineStyle":{}`,
 		`,"rippleEffect":{}`,
-		//`toolbox: {},`,
+		`geo: {},`,
 	}
 	res := []byte(removeUnusedObj(content, unusedObj...))
 	return res

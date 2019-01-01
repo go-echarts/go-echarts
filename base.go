@@ -108,19 +108,20 @@ type ColorOpts []string
 
 // 所有图表都拥有的基本配置项
 type BaseOpts struct {
-	InitOpts                   // 图形初始化配置项
-	LegendOpts                 // 图例组件配置项
-	TooltipOpts                // 提示框组件配置项
-	ToolboxOpts                // 工具箱组件配置项
-	TitleOpts                  // 标题组件配置项
-	AssetsOpts                 // 静态资源配置项
-	ColorList         []string // 全局颜色列表
-	appendColor       []string // 追加全局颜色列表
-	HttpRouters                // 路由列表
-	DataZoomOptsList           // 区域缩放组件配置项列表
-	VisualMapOptsList          // 视觉映射组件配置项列表
-	GeoOpts                    // 地理坐标系组件配置项
-	HasXYAxis         bool     // 图形是否拥有 XY 轴
+	InitOpts             // 图形初始化配置项
+	LegendOpts           // 图例组件配置项
+	TooltipOpts          // 提示框组件配置项
+	ToolboxOpts          // 工具箱组件配置项
+	TitleOpts            // 标题组件配置项
+	AssetsOpts           // 静态资源配置项
+	ColorList   []string // 全局颜色列表
+	appendColor []string // 追加全局颜色列表
+	HttpRouters          // 路由列表
+	DataZoomOptsList     // 区域缩放组件配置项列表
+	VisualMapOptsList    // 视觉映射组件配置项列表
+	GeoOpts              // 地理坐标系组件配置项
+
+	HasXYAxis bool // 图形是否拥有 XY 轴
 }
 
 // 设置全局颜色
@@ -174,6 +175,8 @@ func (opt *BaseOpts) setBaseGlobalConfig(options ...interface{}) {
 			opt.TitleOpts = option.(TitleOpts)
 		case ToolboxOpts:
 			opt.ToolboxOpts = option.(ToolboxOpts)
+		case TooltipOpts:
+			opt.TooltipOpts = option.(TooltipOpts)
 		case LegendOpts:
 			opt.LegendOpts = option.(LegendOpts)
 		case ColorOpts:

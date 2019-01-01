@@ -92,7 +92,7 @@ type singleSeries struct {
 	XAxisIndex int    `json:"xAxisIndex,omitempty"`
 	YAxisIndex int    `json:"yAxisIndex,omitempty"`
 
-	CoordSystem string `json:"coordinateSystem"`
+	CoordSystem string `json:"coordinateSystem,omitempty"`
 
 	// series 数据项
 	Data             interface{} `json:"data"`

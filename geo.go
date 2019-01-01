@@ -44,9 +44,16 @@ func (c *Geo) SetGlobalConfig(options ...interface{}) *Geo {
 	return c
 }
 
+func (c *Geo) validateGeoFormatter() {
+	if c.TooltipOpts.Formatter == "" {
+		c.TooltipOpts.Formatter = FuncOpts(geoFormatter)
+	}
+}
+
 func (c *Geo) validateOpts() {
 	c.validateInitOpt()
 	c.validateAssets(c.AssetsHost)
+	c.validateGeoFormatter()
 }
 
 func (c *Geo) Render(w ...io.Writer) error {
