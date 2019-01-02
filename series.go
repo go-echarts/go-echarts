@@ -50,6 +50,9 @@ type MarkLineStyle struct {
 	SymbolSize float32  `json:"symbolSize,omitempty"`
 }
 
+// TODO: 可配置项均已 Opts 结尾
+// TODO: 抽象 symbol 结构体
+
 // MarkLine 数据 Name-Type
 type MLNameType struct {
 	// 标记线名称
@@ -84,6 +87,21 @@ type MLNameCoords struct {
 	Coord1 []interface{}
 }
 
+type ItemStyleOpts struct {
+	// 图形的颜色
+	// Kline 图中为 阳线图形颜色
+	Color string `json:"color,omitempty"`
+	// Kline 图中为 阴线图形颜色
+	Color0 string `json:"color0,omitempty"`
+	// 图形的描边颜色
+	// Kline 途中为 阳线图形的描边颜色
+	BorderColor string `json:"borderColor,omitempty"`
+	// Kline 途中为 阴线图形的描边颜色
+	BorderColor0 string `json:"borderColor0,omitempty"`
+	// 图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形
+	Opacity float32 `json:"opacity,omitempty"`
+}
+
 // Series 配置项
 type singleSeries struct {
 	// series 名称
@@ -99,6 +117,7 @@ type singleSeries struct {
 
 	// series 数据项
 	Data             interface{} `json:"data"`
+	ItemStyleOpts    `json:"itemStyle,omitempty"`
 	LabelTextOpts    `json:"label,omitempty"`
 	MarkLineOpts     `json:"markLine,omitempty"`
 	MarkPointOpts    `json:"markPoint,omitempty"`
@@ -126,8 +145,6 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 			s.LineStyleOpts = option.(LineStyleOpts)
 		case AreaStyleOpts:
 			s.AreaStyleOpts = option.(AreaStyleOpts)
-
-			//case BarChartOpts:
 
 			// MarkLine 配置项
 		case MLNameType:

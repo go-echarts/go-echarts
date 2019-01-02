@@ -220,6 +220,15 @@ type XAxisOpts struct {
 	Show bool `json:"show,omitempty"`
 	// X 轴数据项
 	Data interface{} `json:"data,omitempty"`
+	// X 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，
+	// 最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
+	// 在类目轴中无效
+	SplitNumber int `json:"splitNumber,omitempty"`
+	// 只在数值轴中（type: 'value'）有效。
+	// 是否是脱离 0 值比例。设置成 true 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。
+	// 在设置 min 和 max 之后该配置项无效
+	// 默认为 false
+	Scale bool `json:"scale,omitempty"`
 }
 
 // Y 轴配置项组件
@@ -230,6 +239,15 @@ type YAxisOpts struct {
 	Show bool `json:"show,omitempty"`
 	// Y 轴数据项
 	Data interface{} `json:"data,omitempty"`
+	// Y 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，
+	// 最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
+	// 在类目轴中无效
+	SplitNumber int `json:"splitNumber,omitempty"`
+	// 只在数值轴中（type: 'value'）有效。
+	// 是否是脱离 0 值比例。设置成 true 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。
+	// 在设置 min 和 max 之后该配置项无效
+	// 默认为 false
+	Scale bool `json:"scale,omitempty"`
 }
 
 // 地理坐标系组件配置项
