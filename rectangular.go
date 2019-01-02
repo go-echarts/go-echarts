@@ -49,12 +49,6 @@ func (rc *RectChart) SetGlobalConfig(options ...interface{}) *RectChart {
 	return rc
 }
 
-// RectChart 设置 series 配置项
-func (rc *RectChart) SetSeriesConfig(options ...interface{}) *RectChart {
-	rc.Series.setAllSeriesOpts(options...)
-	return rc
-}
-
 // RectChart 校验器
 func (rc *RectChart) validateOpts() {
 	rc.XAxisOpts.Data = rc.xAxisData

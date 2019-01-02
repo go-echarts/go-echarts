@@ -64,7 +64,7 @@ type TooltipOpts struct {
 	// 'item': 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
 	// 'axis': 坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
 	// 'none': 什么都不触发。
-	Trigger   string `json:"trigger,omitempty"`
+	Trigger string `json:"trigger,omitempty"`
 	// 1, 字符串模板
 	// 模板变量有 {a}, {b}，{c}，{d}，{e}，分别表示系列名，数据名，数据值等。
 	// 在 trigger 为 'axis' 的时候，会有多个系列的数据，此时可以通过 {a0}, {a1}, {a2}
@@ -96,15 +96,20 @@ type TooltipOpts struct {
 
 // 工具箱组件配置项
 type ToolboxOpts struct {
+	// 是否显示工具栏组件
 	Show      bool `json:"show"`
 	TBFeature `json:"feature"`
 }
 
 type TBFeature struct {
+	// 保存为图片
 	SaveAsImage struct{} `json:"saveAsImage"`
-	DataZoom    struct{} `json:"dataZoom"`
-	DataView    struct{} `json:"dataView"`
-	Restore     struct{} `json:"restore"`
+	// 数据区域缩放。目前只支持直角坐标系的缩放
+	DataZoom struct{} `json:"dataZoom"`
+	// 数据视图工具，可以展现当前图表所用的数据，编辑后可以动态更新
+	DataView struct{} `json:"dataView"`
+	// 配置项还原
+	Restore struct{} `json:"restore"`
 }
 
 // 字体样式配置项
@@ -198,9 +203,13 @@ func (vm VisualMapOptsList) Len() int {
 }
 
 type VMInRange struct {
-	Color      []string `json:"color,omitempty"`
-	Symbol     string   `json:"symbol,omitempty"`
-	SymbolSize float32  `json:"symbolSize,omitempty"`
+	// 图元的颜色
+	Color []string `json:"color,omitempty"`
+	// 图元的图形类别
+	// 可选 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	Symbol string `json:"symbol,omitempty"`
+	// 图元的大小
+	SymbolSize float32 `json:"symbolSize,omitempty"`
 }
 
 // X 轴配置项组件
@@ -229,6 +238,8 @@ type GeoOpts struct {
 	Roam bool   `json:"roam,omitempty"`
 }
 
+// 处理 function 类型配置项
+// TODO: 处理 \n
 func FuncOpts(fn string) string {
 	return "__x__" + fn + "__x__"
 }

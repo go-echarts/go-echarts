@@ -15,7 +15,10 @@ type MarkPointOpts struct {
 
 // MarkPoint 风格配置项
 type MarkPointStyle struct {
-	Symbol     string  `json:"symbol,omitempty"`
+	// 图元的图形类别
+	// 可选 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	Symbol string `json:"symbol,omitempty"`
+	// 图元的大小
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 }
 
@@ -23,7 +26,7 @@ type MarkPointStyle struct {
 type MPNameType struct {
 	// 标记点名称
 	Name string `json:"name"`
-	// 内置类型，可选"average", "min", "max"
+	// 内置类型，可选 "average", "min", "max"
 	Type string `json:"type"`
 }
 
@@ -160,7 +163,7 @@ func (s *singleSeries) setSingleSeriesOpts(options ...interface{}) {
 type Series []singleSeries
 
 // 设置 Series 配置项
-func (series *Series) setAllSeriesOpts(options ...interface{}) {
+func (series *Series) SetSeriesConfig(options ...interface{}) {
 	tsl := *series
 	for i := 0; i < len(tsl); i++ {
 		tsl[i].switchSeriesOpts(options...)
