@@ -2,19 +2,38 @@ package goecharts
 
 // 图形上的文本标签配置项
 type LabelTextOpts struct {
-	Show     bool   `json:"show,omitempty"`
-	Color    string `json:"color,omitempty"`
+	// 是否显示标签
+	Show bool `json:"show,omitempty"`
+	// 文字的颜色
+	Color string `json:"color,omitempty"`
+	// 标签的位置
+	// 通过相对的百分比或者绝对像素值表示标签相对于图形包围盒左上角的位置。示例：
+	// 绝对的像素值	position: [10, 10],
+	// 相对的百分比	position: ['50%', '50%']
+	// 'top'
+	// 'left'
+	// 'right'
+	// 'bottom'
+	// 'inside'
+	// 'insideLeft'
+	// 'insideRight'
+	// 'insideTop'
+	// 'insideBottom'
+	// 'insideTopLeft'
+	// 'insideBottomLeft'
+	// 'insideTopRight'
+	// 'insideBottomRight'
 	Position string `json:"position,omitempty"`
 }
 
 // MarkLine 配置项
 type MarkPointOpts struct {
 	Data []interface{} `json:"data,omitempty"`
-	MarkPointStyle
+	MPStyleOpts
 }
 
 // MarkPoint 风格配置项
-type MarkPointStyle struct {
+type MPStyleOpts struct {
 	// 图元的图形类别
 	// 可选 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
 	Symbol string `json:"symbol,omitempty"`
@@ -23,7 +42,7 @@ type MarkPointStyle struct {
 }
 
 // MarkPoint 数据 Name-Type
-type MPNameType struct {
+type MPNameTypeItem struct {
 	// 标记点名称
 	Name string `json:"name"`
 	// 内置类型，可选 "average", "min", "max"
@@ -31,7 +50,7 @@ type MPNameType struct {
 }
 
 // MarkPoint 数据 Name-Coordinates
-type MPNameCoord struct {
+type MPNameCoordItem struct {
 	// 标记点名称
 	Name string `json:"name"`
 	// 标记点坐标
@@ -41,28 +60,28 @@ type MPNameCoord struct {
 // MarkLine 配置项
 type MarkLineOpts struct {
 	Data []interface{} `json:"data,omitempty"`
-	MarkLineStyle
+	MLStyleOpts
 }
 
 // MarkLine 风格配置项
-type MarkLineStyle struct {
-	Symbol     []string `json:"symbol,omitempty"`
-	SymbolSize float32  `json:"symbolSize,omitempty"`
+type MLStyleOpts struct {
+	// 图元的图形类别
+	// 可选 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	Symbol []string `json:"symbol,omitempty"`
+	// 图元的大小
+	SymbolSize float32 `json:"symbolSize,omitempty"`
 }
 
-// TODO: 可配置项均已 Opts 结尾
-// TODO: 抽象 symbol 结构体
-
 // MarkLine 数据 Name-Type
-type MLNameType struct {
+type MLNameTypeItem struct {
 	// 标记线名称
 	Name string `json:"name"`
-	// 内置类型，可选"average", "min", "max"
+	// 内置类型，可选 "average", "min", "max"
 	Type string `json:"type"`
 }
 
 // MarkLine 数据 Name-YAxis
-type MLNameYAxis struct {
+type MLNameYAxisItem struct {
 	// 标记线名称
 	Name string `json:"name"`
 	// Y 轴数据
@@ -70,7 +89,7 @@ type MLNameYAxis struct {
 }
 
 // MarkLine 数据 Name-XAxis
-type MLNameXAxis struct {
+type MLNameXAxisItem struct {
 	// 标记线名称
 	Name string `json:"name"`
 	// X 轴数据
@@ -78,7 +97,7 @@ type MLNameXAxis struct {
 }
 
 // MarkLine 数据 Name-Coordinates
-type MLNameCoords struct {
+type MLNameCoordItem struct {
 	// 标记线名称
 	Name string
 	// 标记线起始坐标
@@ -116,7 +135,9 @@ type singleSeries struct {
 	CoordSystem string `json:"coordinateSystem,omitempty"`
 
 	// series 数据项
-	Data             interface{} `json:"data"`
+	Data interface{} `json:"data"`
+
+	// series options
 	ItemStyleOpts    `json:"itemStyle,omitempty"`
 	LabelTextOpts    `json:"label,omitempty"`
 	MarkLineOpts     `json:"markLine,omitempty"`
@@ -147,26 +168,26 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 			s.AreaStyleOpts = option.(AreaStyleOpts)
 
 			// MarkLine 配置项
-		case MLNameType:
-			s.MarkLineOpts.Data = append(s.MarkLineOpts.Data, option.(MLNameType))
-		case MLNameXAxis:
-			s.MarkLineOpts.Data = append(s.MarkLineOpts.Data, option.(MLNameXAxis))
-		case MLNameYAxis:
-			s.MarkLineOpts.Data = append(s.MarkLineOpts.Data, option.(MLNameYAxis))
-		case MLNameCoords:
-			m := option.(MLNameCoords)
+		case MLNameTypeItem:
+			s.MarkLineOpts.Data = append(s.MarkLineOpts.Data, option.(MLNameTypeItem))
+		case MLNameXAxisItem:
+			s.MarkLineOpts.Data = append(s.MarkLineOpts.Data, option.(MLNameXAxisItem))
+		case MLNameYAxisItem:
+			s.MarkLineOpts.Data = append(s.MarkLineOpts.Data, option.(MLNameYAxisItem))
+		case MLNameCoordItem:
+			m := option.(MLNameCoordItem)
 			s.MarkLineOpts.Data = append(
 				s.MarkLineOpts.Data, []MLNameCoord{{Name: m.Name, Coord: m.Coord0}, {Coord: m.Coord1}})
-		case MarkLineStyle:
-			s.MarkLineOpts.MarkLineStyle = option.(MarkLineStyle)
+		case MLStyleOpts:
+			s.MarkLineOpts.MLStyleOpts = option.(MLStyleOpts)
 
 			// MarkPoint 配置项
-		case MPNameType:
-			s.MarkPointOpts.Data = append(s.MarkPointOpts.Data, option.(MPNameType))
-		case MPNameCoord:
-			s.MarkPointOpts.Data = append(s.MarkPointOpts.Data, option.(MPNameCoord))
-		case MarkPointStyle:
-			s.MarkPointOpts.MarkPointStyle = option.(MarkPointStyle)
+		case MPNameTypeItem:
+			s.MarkPointOpts.Data = append(s.MarkPointOpts.Data, option.(MPNameTypeItem))
+		case MPNameCoordItem:
+			s.MarkPointOpts.Data = append(s.MarkPointOpts.Data, option.(MPNameCoordItem))
+		case MPStyleOpts:
+			s.MarkPointOpts.MPStyleOpts = option.(MPStyleOpts)
 		}
 	}
 }
