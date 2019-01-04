@@ -5,7 +5,7 @@ type Kline struct {
 }
 
 //工厂函数，生成 `Kline` 实例
-func NewKLine(routers ...HttpRouter) *Kline {
+func NewKLine(routers ...HTTPRouter) *Kline {
 	klineChart := new(Kline)
 	klineChart.HasXYAxis = true
 	klineChart.initBaseOpts(routers...)

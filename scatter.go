@@ -5,7 +5,7 @@ type Scatter struct {
 }
 
 // 工厂函数，生成 `Scatter` 实例
-func NewScatter(routers ...HttpRouter) *Scatter {
+func NewScatter(routers ...HTTPRouter) *Scatter {
 	scatterChart := new(Scatter)
 	scatterChart.HasXYAxis = true
 	scatterChart.initBaseOpts(routers...)

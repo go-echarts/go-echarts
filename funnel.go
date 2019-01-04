@@ -10,7 +10,7 @@ type Funnel struct {
 }
 
 // 工厂函数，生成 `Funnel` 实例
-func NewFunnel(routers ...HttpRouter) *Funnel {
+func NewFunnel(routers ...HTTPRouter) *Funnel {
 	funnelChart := new(Funnel)
 	funnelChart.HasXYAxis = false
 	funnelChart.initBaseOpts(routers...)
@@ -43,8 +43,5 @@ func (c *Funnel) validateOpts() {
 func (c *Funnel) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	if err := renderToWriter(c, "chart", w...); err != nil {
-		return err
-	}
-	return nil
+	return renderToWriter(c, "chart", w...)
 }

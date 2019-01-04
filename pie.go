@@ -10,7 +10,7 @@ type Pie struct {
 }
 
 //工厂函数，生成 `Pie` 实例
-func NewPie(routers ...HttpRouter) *Pie {
+func NewPie(routers ...HTTPRouter) *Pie {
 	pieChart := new(Pie)
 	pieChart.HasXYAxis = false
 	pieChart.initBaseOpts(routers...)
@@ -43,8 +43,5 @@ func (c *Pie) validateOpts() {
 func (c *Pie) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	if err := renderToWriter(c, "chart", w...); err != nil {
-		return err
-	}
-	return nil
+	return renderToWriter(c, "chart", w...)
 }

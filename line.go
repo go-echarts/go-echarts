@@ -5,7 +5,7 @@ type Line struct {
 }
 
 //工厂函数，生成 `Line` 实例
-func NewLine(routers ...HttpRouter) *Line {
+func NewLine(routers ...HTTPRouter) *Line {
 	lineChart := new(Line)
 	lineChart.HasXYAxis = true
 	lineChart.initBaseOpts(routers...)

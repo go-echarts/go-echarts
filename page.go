@@ -16,14 +16,14 @@ type Page struct {
 	AssetsOpts
 	Charts []interface{}
 
-	HttpRouters
+	HTTPRouters
 }
 
 //工厂函数，生成 `Bar` 实例
-func NewPage(routers ...HttpRouter) *Page {
+func NewPage(routers ...HTTPRouter) *Page {
 	page := new(Page)
 	for i := 0; i < len(routers); i++ {
-		page.HttpRouters = append(page.HttpRouters, routers[i])
+		page.HTTPRouters = append(page.HTTPRouters, routers[i])
 	}
 	return page
 }
@@ -64,8 +64,5 @@ func (page *Page) extractCSSAssets(cssList []string) {
 
 func (page *Page) Render(w ...io.Writer) error {
 	page.InitOpts.setDefault()
-	if err := renderToWriter(page, "page", w...); err != nil {
-		return err
-	}
-	return nil
+	return renderToWriter(page, "page", w...)
 }

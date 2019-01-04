@@ -60,8 +60,5 @@ func (rc *RectChart) validateOpts() {
 func (rc *RectChart) Render(w ...io.Writer) error {
 	rc.XAxisOpts.Data = rc.xAxisData
 	rc.validateOpts()
-	if err := renderToWriter(rc, "chart", w...); err != nil {
-		return err
-	}
-	return nil
+	return renderToWriter(rc, "chart", w...)
 }

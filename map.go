@@ -12,13 +12,13 @@ type Map struct {
 }
 
 // 工厂函数，生成 `Map` 实例
-func NewMap(mapType string, routers ...HttpRouter) *Map {
+func NewMap(mapType string, routers ...HTTPRouter) *Map {
 	mapChart := new(Map)
 	mapChart.mapType = mapType
 	mapChart.HasXYAxis = false
 	mapChart.initBaseOpts(routers...)
 	mapChart.initAssetsOpts()
-	mapChart.JSAssets = append(mapChart.JSAssets, "maps/"+MapFilenames[mapType]+".js")
+	mapChart.appendJsAssets("maps/" + MapFilenames[mapType] + ".js")
 	return mapChart
 }
 
@@ -58,8 +58,5 @@ func (c *Map) validateOpts() {
 func (c *Map) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	if err := renderToWriter(c, "chart", w...); err != nil {
-		return err
-	}
-	return nil
+	return renderToWriter(c, "chart", w...)
 }

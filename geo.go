@@ -9,13 +9,13 @@ type Geo struct {
 	Series
 }
 
-//工厂函数，生成 `Geo` 实例
-func NewGeo(mapType string, routers ...HttpRouter) *Geo {
+// 工厂函数，生成 `Geo` 实例
+func NewGeo(mapType string, routers ...HTTPRouter) *Geo {
 	geoChart := new(Geo)
 	geoChart.HasXYAxis = false
 	geoChart.initBaseOpts(routers...)
 	geoChart.initAssetsOpts()
-	geoChart.JSAssets = append(geoChart.JSAssets, "maps/"+MapFilenames[mapType]+".js")
+	geoChart.appendJsAssets("maps/" + MapFilenames[mapType] + ".js")
 	geoChart.GeoOpts.Map = mapType
 	return geoChart
 }
@@ -33,9 +33,8 @@ func (c *Geo) Add(name, geoType string, data map[string]float32, options ...inte
 }
 
 func (c *Geo) extendValue(region string, v float32) []float32 {
-	res := make([]float32, 0)
 	tv := Coordinates[region]
-	res = append(tv[:], v)
+	res := append(tv[:], v)
 	return res
 }
 
@@ -59,8 +58,5 @@ func (c *Geo) validateOpts() {
 func (c *Geo) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	if err := renderToWriter(c, "chart", w...); err != nil {
-		return err
-	}
-	return nil
+	return renderToWriter(c, "chart", w...)
 }

@@ -18,10 +18,10 @@ var headerTpl = `
 var routerTpl = `
 {{- define "routers" }}
 <div class="select" style="margin-left: 10px; margin-top:10px">
-{{- if gt .HttpRouters.Len 0}}
+{{- if gt .HTTPRouters.Len 0}}
     <select onchange="window.location.href=this.options[this.selectedIndex].value">
-    {{- range .HttpRouters }}
-        <option value="{{ .Url }}">{{ .Text }}</option>
+    {{- range .HTTPRouters }}
+        <option value="{{ .URL }}">{{ .Text }}</option>
     {{- end }}
     </select>
 {{- end -}}
@@ -37,8 +37,8 @@ var baseTpl = `
          style="width:{{ .InitOpts.Width }};height:{{ .InitOpts.Height }};"></div>
 </div>
 <script type="text/javascript">
-    let myChart__x__{{ .ChartID }}__x__ = echarts.init(document.getElementById('{{ .ChartID }}'), "{{ .Theme }}");
-    let option__x__{{ .ChartID }}__x__ = {
+    let myChart___x__{{ .ChartID }}__x__ = echarts.init(document.getElementById('{{ .ChartID }}'), "{{ .Theme }}");
+    let option___x__{{ .ChartID }}__x__ = {
         title: {{ .TitleOpts  }},
         tooltip: {{ .TooltipOpts }},
         legend: {{ .LegendOpts }},
@@ -65,7 +65,7 @@ var baseTpl = `
         color: {{ .ColorList }}
     {{- end }}
     };
-    myChart__x__{{ .ChartID }}__x__.setOption(option__x__{{ .ChartID }}__x__);
+    myChart___x__{{ .ChartID }}__x__.setOption(option___x__{{ .ChartID }}__x__);
 </script>
 {{ end }}`
 

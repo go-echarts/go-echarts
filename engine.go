@@ -16,7 +16,7 @@ const (
 	letterIdxBits = 6                    // 6 bits to represent a letter index
 	letterIdxMask = 1<<letterIdxBits - 1 // All 1-bits, as many as letterIdxBits
 	letterIdxMax  = 63 / letterIdxBits   // # of letter indices fitting in 63 bits
-	chartIdSize   = 12
+	chartIDSize   = 12
 )
 
 // 渲染图表
@@ -29,10 +29,7 @@ func renderChart(chart interface{}, w io.Writer, name string) error {
 	}
 	tpl := template.Must(template.New("").Parse(contents[0]))
 	mustTpl(tpl, contents[1:]...)
-	if err := tpl.ExecuteTemplate(w, name, chart); err != nil {
-		return err
-	}
-	return nil
+	return tpl.ExecuteTemplate(w, name, chart)
 }
 
 func mustTpl(tpl *template.Template, html ...string) {
@@ -48,7 +45,10 @@ func renderToWriter(chart interface{}, renderName string, w ...io.Writer) error 
 	}
 	res := replaceRender(b)
 	for i := 0; i < len(w); i++ {
-		w[i].Write(res)
+		_, err := w[i].Write(res)
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }
@@ -58,8 +58,8 @@ var seed = rand.NewSource(time.Now().UnixNano())
 
 // 生成唯一且随机的图表 ID
 func genChartID() string {
-	b := make([]byte, chartIdSize)
-	for i, cache, remain := chartIdSize-1, seed.Int63(), letterIdxMax; i >= 0; {
+	b := make([]byte, chartIDSize)
+	for i, cache, remain := chartIDSize-1, seed.Int63(), letterIdxMax; i >= 0; {
 		if remain == 0 {
 			cache, remain = seed.Int63(), letterIdxMax
 		}
