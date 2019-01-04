@@ -19,7 +19,7 @@ type Page struct {
 	HTTPRouters
 }
 
-//工厂函数，生成 `Bar` 实例
+// 工厂函数，生成 `Bar` 实例
 func NewPage(routers ...HTTPRouter) *Page {
 	page := new(Page)
 	for i := 0; i < len(routers); i++ {

@@ -6,7 +6,7 @@ import (
 
 type Map struct {
 	BaseOpts
-	Series MapSeries
+	Series
 
 	mapType string
 }
@@ -22,23 +22,12 @@ func NewMap(mapType string, routers ...HTTPRouter) *Map {
 	return mapChart
 }
 
-type singleMapSeries struct {
-	singleSeries
-	MapType string `json:"mapType"`
-	//Roam    bool   `json:"roam"`
-}
-
-type MapSeries []singleMapSeries
-
 func (c *Map) Add(name string, data map[string]interface{}, options ...interface{}) *Map {
 	nvs := make([]nameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, nameValueItem{k, v})
 	}
-	series := singleMapSeries{
-		singleSeries: singleSeries{Name: name, Type: "map", Data: nvs},
-		MapType:      c.mapType,
-	}
+	series := singleSeries{Name: name, Type: "map", MapType: c.mapType, Data: nvs}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

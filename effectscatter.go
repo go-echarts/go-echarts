@@ -23,7 +23,7 @@ type RippleEffectOpts struct {
 	BrushType string `json:"brushType,omitempty"`
 }
 
-//工厂函数，生成 `Scatter` 实例
+// 工厂函数，生成 `Scatter` 实例
 func NewEffectScatter(routers ...HTTPRouter) *EffectScatter {
 	esChart := new(EffectScatter)
 	esChart.HasXYAxis = true

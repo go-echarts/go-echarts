@@ -146,11 +146,17 @@ type singleSeries struct {
 	// series type
 	Type string `json:"type"`
 
+	// Rectangular charts
 	Stack      string `json:"stack,omitempty"`
 	XAxisIndex int    `json:"xAxisIndex,omitempty"`
 	YAxisIndex int    `json:"yAxisIndex,omitempty"`
 
+	// Map charts
+	MapType     string `json:"mapType,omitempty"`
 	CoordSystem string `json:"coordinateSystem,omitempty"`
+
+	// Line charts
+	Step bool `json:"step,omitempty"`
 
 	// series data items
 	Data interface{} `json:"data"`
@@ -217,6 +223,14 @@ func (s *singleSeries) setSingleSeriesOpts(options ...interface{}) {
 }
 
 type Series []singleSeries
+
+type seriesI interface {
+	exportSeries() Series
+}
+
+func (series *Series) exportSeries() Series {
+	return *series
+}
 
 func (series *Series) SetSeriesConfig(options ...interface{}) {
 	tsl := *series

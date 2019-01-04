@@ -49,6 +49,13 @@ func (rc *RectChart) SetGlobalConfig(options ...interface{}) *RectChart {
 	return rc
 }
 
+// 并行显示多张图
+func (rc *RectChart) Grid(a ...seriesI) {
+	for i := 0; i < len(a); i++ {
+		rc.Series = append(rc.Series, a[i].exportSeries()...)
+	}
+}
+
 // RectChart 校验器
 func (rc *RectChart) validateOpts() {
 	rc.XAxisOpts.Data = rc.xAxisData

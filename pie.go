@@ -9,7 +9,7 @@ type Pie struct {
 	Series
 }
 
-//工厂函数，生成 `Pie` 实例
+// 工厂函数，生成 `Pie` 实例
 func NewPie(routers ...HTTPRouter) *Pie {
 	pieChart := new(Pie)
 	pieChart.HasXYAxis = false

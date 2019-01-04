@@ -4,7 +4,7 @@ type Line struct {
 	RectChart
 }
 
-//工厂函数，生成 `Line` 实例
+// 工厂函数，生成 `Line` 实例
 func NewLine(routers ...HTTPRouter) *Line {
 	lineChart := new(Line)
 	lineChart.HasXYAxis = true

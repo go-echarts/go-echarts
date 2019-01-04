@@ -9,6 +9,10 @@ type Geo struct {
 	Series
 }
 
+var geoFormatter = `function (params) {
+	return params.name + ' : ' + params.value[2];
+}`
+
 // 工厂函数，生成 `Geo` 实例
 func NewGeo(mapType string, routers ...HTTPRouter) *Geo {
 	geoChart := new(Geo)

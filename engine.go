@@ -80,14 +80,17 @@ func replaceRender(b bytes.Buffer) []byte {
 	// 替换并转为 []byte 类型
 	content := idPat.ReplaceAllString(b.String(), "")
 	unusedObj := []string{
+		`geo: {},`,
+		`"textStyle":{}`,
+		`,"subtextStyle":{}`,
 		`,"inRange":{}`,
 		`,"label":{}`,
 		`,"markLine":{}`,
 		`,"markPoint":{}`,
+		`,"itemStyle":{}`,
 		`,"areaStyle":{}`,
 		`,"lineStyle":{}`,
 		`,"rippleEffect":{}`,
-		`geo: {},`,
 	}
 	res := []byte(removeUnusedObj(content, unusedObj...))
 	return res
