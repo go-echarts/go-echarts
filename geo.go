@@ -15,7 +15,7 @@ func NewGeo(mapType string, routers ...HttpRouter) *Geo {
 	geoChart.HasXYAxis = false
 	geoChart.initBaseOpts(routers...)
 	geoChart.initAssetsOpts()
-	geoChart.JSAssets = append(geoChart.JSAssets, "maps/"+mapType+".js")
+	geoChart.JSAssets = append(geoChart.JSAssets, "maps/"+MapFilenames[mapType]+".js")
 	geoChart.GeoOpts.Map = mapType
 	return geoChart
 }

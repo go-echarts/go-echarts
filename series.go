@@ -47,6 +47,9 @@ type MPNameTypeItem struct {
 	Name string `json:"name"`
 	// 内置类型，可选 "average", "min", "max"
 	Type string `json:"type"`
+	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
+	ValueDim string `json:"valueDim,omitempty"`
 }
 
 // MarkPoint 数据 Name-Coordinates
@@ -55,6 +58,9 @@ type MPNameCoordItem struct {
 	Name string `json:"name"`
 	// 标记点坐标
 	Coord []interface{} `json:"coord"`
+	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
+	ValueDim string `json:"valueDim,omitempty"`
 }
 
 // MarkLine 配置项
@@ -78,6 +84,9 @@ type MLNameTypeItem struct {
 	Name string `json:"name"`
 	// 内置类型，可选 "average", "min", "max"
 	Type string `json:"type"`
+	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
+	ValueDim string `json:"valueDim,omitempty"`
 }
 
 // MarkLine 数据 Name-YAxis
@@ -86,6 +95,9 @@ type MLNameYAxisItem struct {
 	Name string `json:"name"`
 	// Y 轴数据
 	YAxis interface{} `json:"yAxis"`
+	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
+	ValueDim string `json:"valueDim,omitempty"`
 }
 
 // MarkLine 数据 Name-XAxis
@@ -94,6 +106,9 @@ type MLNameXAxisItem struct {
 	Name string `json:"name"`
 	// X 轴数据
 	XAxis interface{} `json:"xAxis"`
+	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
+	ValueDim string `json:"valueDim,omitempty"`
 }
 
 // MarkLine 数据 Name-Coordinates
@@ -104,6 +119,9 @@ type MLNameCoordItem struct {
 	Coord0 []interface{}
 	// 标记线结束坐标
 	Coord1 []interface{}
+	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
+	ValueDim string `json:"valueDim,omitempty"`
 }
 
 type ItemStyleOpts struct {
@@ -123,9 +141,9 @@ type ItemStyleOpts struct {
 
 // Series 配置项
 type singleSeries struct {
-	// series 名称
+	// series name
 	Name string `json:"name,omitempty"`
-	// series 类型
+	// series type
 	Type string `json:"type"`
 
 	Stack      string `json:"stack,omitempty"`
@@ -134,7 +152,7 @@ type singleSeries struct {
 
 	CoordSystem string `json:"coordinateSystem,omitempty"`
 
-	// series 数据项
+	// series data items
 	Data interface{} `json:"data"`
 
 	// series options
@@ -166,6 +184,8 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 			s.LineStyleOpts = option.(LineStyleOpts)
 		case AreaStyleOpts:
 			s.AreaStyleOpts = option.(AreaStyleOpts)
+		case ItemStyleOpts:
+			s.ItemStyleOpts = option.(ItemStyleOpts)
 
 			// MarkLine 配置项
 		case MLNameTypeItem:
@@ -192,15 +212,12 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 	}
 }
 
-// 设置 singleSeries 配置项
 func (s *singleSeries) setSingleSeriesOpts(options ...interface{}) {
 	s.switchSeriesOpts(options...)
 }
 
-// Series 列表
 type Series []singleSeries
 
-// 设置 Series 配置项
 func (series *Series) SetSeriesConfig(options ...interface{}) {
 	tsl := *series
 	for i := 0; i < len(tsl); i++ {
