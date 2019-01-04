@@ -1,15 +1,19 @@
 package goecharts
 
+import (
+	"regexp"
+)
+
 // 标题组件配置项
 type TitleOpts struct {
 	// 主标题
 	Title string `json:"text,omitempty"`
 	// 主标题样式配置项
-	TitleStyle *TextStyle `json:"textStyle,omitempty"`
+	TitleStyle TextStyleOpts `json:"textStyle,omitempty"`
 	// 副标题
 	Subtitle string `json:"subtext,omitempty"`
 	// 副标题样式配置项
-	SubtitleStyle *TextStyle `json:"subtextStyle,omitempty"`
+	SubtitleStyle TextStyleOpts `json:"subtextStyle,omitempty"`
 	// 主标题文本超链接
 	Link string `json:"link,omitempty"`
 	// 指定窗口打开主标题超链接
@@ -113,7 +117,7 @@ type TBFeature struct {
 }
 
 // 字体样式配置项
-type TextStyle struct {
+type TextStyleOpts struct {
 	// 文字字体颜色
 	Color string `json:"color,omitempty"`
 	// 文字字体的风格
@@ -257,7 +261,10 @@ type GeoOpts struct {
 }
 
 // 处理 function 类型配置项
-// TODO: 处理 \n
 func FuncOpts(fn string) string {
+	nPat, _ := regexp.Compile(`([^'"])\n`)
+	tPat, _ := regexp.Compile(`([^'"])\t`)
+	fn = nPat.ReplaceAllString(fn, "$1")
+	fn = tPat.ReplaceAllString(fn, "$1")
 	return "__x__" + fn + "__x__"
 }
