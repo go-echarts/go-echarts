@@ -17,6 +17,10 @@ func (o *orderSet) init(item string) {
 	o.Add(item)
 }
 
+func (o *orderSet) initWithoutArg() {
+	o.filter = make(map[string]bool)
+}
+
 func (o *orderSet) Add(item string) {
 	if !o.filter[item] {
 		o.filter[item] = true
