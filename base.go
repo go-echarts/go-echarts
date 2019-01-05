@@ -16,60 +16,30 @@ type InitOpts struct {
 	Theme string `default:"white"`
 }
 
-// TODO: 使用集合/有序集合来实现
 // 静态资源配置项
 type AssetsOpts struct {
-	JSAssets  []string
-	CSSAssets []string
+	JSAssets  orderSet
+	CSSAssets orderSet
 }
 
 // 初始化静态资源配置项
 func (opt *AssetsOpts) initAssetsOpts() {
-	opt.JSAssets = []string{echartsJS}
-	opt.CSSAssets = []string{bulmaCSS}
-}
-
-// 追加 js 资源
-func (opt *AssetsOpts) appendJsAssets(asset string) {
-	opt.JSAssets = append(opt.JSAssets, asset)
+	opt.JSAssets.init("echarts.min.js")
+	opt.CSSAssets.init("bulma.min.css")
 }
 
 // 返回资源列表
 func (opt *AssetsOpts) yieldAssets() ([]string, []string) {
-	return opt.JSAssets, opt.CSSAssets
-}
-
-// 判断 js 资源是否在列表中
-func (opt *AssetsOpts) jsIn(jsRef string) bool {
-	isIn := false
-	for i := 0; i < len(opt.JSAssets); i++ {
-		if opt.JSAssets[i] == jsRef {
-			isIn = true
-			break
-		}
-	}
-	return isIn
-}
-
-// 判断 css 资源是否在列表中
-func (opt *AssetsOpts) cssIn(cssRef string) bool {
-	isIn := false
-	for i := 0; i < len(opt.CSSAssets); i++ {
-		if opt.CSSAssets[i] == cssRef {
-			isIn = true
-			break
-		}
-	}
-	return isIn
+	return opt.JSAssets.Values, opt.CSSAssets.Values
 }
 
 // 校验静态资源配置项，追加 host
 func (opt *AssetsOpts) validateAssets(host string) {
-	for i := 0; i < len(opt.JSAssets); i++ {
-		opt.JSAssets[i] = host + opt.JSAssets[i]
+	for i := 0; i < len(opt.JSAssets.Values); i++ {
+		opt.JSAssets.Values[i] = host + opt.JSAssets.Values[i]
 	}
-	for j := 0; j < len(opt.CSSAssets); j++ {
-		opt.CSSAssets[j] = host + opt.CSSAssets[j]
+	for j := 0; j < len(opt.CSSAssets.Values); j++ {
+		opt.CSSAssets.Values[j] = host + opt.CSSAssets.Values[j]
 	}
 }
 
@@ -169,7 +139,7 @@ func (opt *BaseOpts) setBaseGlobalConfig(options ...interface{}) {
 		case InitOpts:
 			opt.InitOpts = option.(InitOpts)
 			if opt.InitOpts.Theme != "" {
-				opt.JSAssets = append(opt.JSAssets, "themes/"+opt.Theme+".js")
+				opt.JSAssets.Add("themes/" + opt.Theme + ".js")
 			}
 		case TitleOpts:
 			opt.TitleOpts = option.(TitleOpts)

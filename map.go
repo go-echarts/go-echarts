@@ -18,7 +18,7 @@ func NewMap(mapType string, routers ...HTTPRouter) *Map {
 	mapChart.HasXYAxis = false
 	mapChart.initBaseOpts(routers...)
 	mapChart.initAssetsOpts()
-	mapChart.appendJsAssets("maps/" + MapFilenames[mapType] + ".js")
+	mapChart.JSAssets.Add("maps/" + MapFilenames[mapType] + ".js")
 	return mapChart
 }
 

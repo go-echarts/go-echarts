@@ -25,6 +25,7 @@ func NewPage(routers ...HTTPRouter) *Page {
 	for i := 0; i < len(routers); i++ {
 		page.HTTPRouters = append(page.HTTPRouters, routers[i])
 	}
+	page.initAssetsOpts()
 	return page
 }
 
@@ -47,18 +48,14 @@ func (page *Page) Add(charts ...validator) *Page {
 // 提取 js 引用
 func (page *Page) extractJSAssets(jsList []string) {
 	for i := 0; i < len(jsList); i++ {
-		if !page.AssetsOpts.jsIn(jsList[i]) {
-			page.JSAssets = append(page.JSAssets, jsList[i])
-		}
+		page.JSAssets.Add(jsList[i])
 	}
 }
 
 // 提取 css 引用
 func (page *Page) extractCSSAssets(cssList []string) {
 	for i := 0; i < len(cssList); i++ {
-		if !page.AssetsOpts.cssIn(cssList[i]) {
-			page.CSSAssets = append(page.CSSAssets, cssList[i])
-		}
+		page.CSSAssets.Add(cssList[i])
 	}
 }
 
