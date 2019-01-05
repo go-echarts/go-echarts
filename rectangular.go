@@ -50,6 +50,8 @@ func (rc *RectChart) SetGlobalConfig(options ...interface{}) *RectChart {
 }
 
 // 并行显示多张图
+// 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
+// 而全局配置使用的是调用者的配置项
 func (rc *RectChart) Grid(a ...seriesI) {
 	for i := 0; i < len(a); i++ {
 		rc.Series = append(rc.Series, a[i].exportSeries()...)

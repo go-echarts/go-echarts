@@ -16,6 +16,7 @@ type InitOpts struct {
 	Theme string `default:"white"`
 }
 
+// TODO: 使用集合/有序集合来实现
 // 静态资源配置项
 type AssetsOpts struct {
 	JSAssets  []string
@@ -73,9 +74,8 @@ func (opt *AssetsOpts) validateAssets(host string) {
 }
 
 // 为 InitOptions 设置字段默认值
-func (opt *InitOpts) setDefault() {
-	err := setDefaultValue(opt)
-	checkError(err)
+func (opt *InitOpts) setDefault() error {
+	return setDefaultValue(opt)
 }
 
 // 确保 ContainerID 不为空且唯一

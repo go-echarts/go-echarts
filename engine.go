@@ -92,19 +92,15 @@ func replaceRender(b bytes.Buffer) []byte {
 		`,"lineStyle":{}`,
 		`,"rippleEffect":{}`,
 	}
-	res := []byte(removeUnusedObj(content, unusedObj...))
-	return res
-}
-
-// 移除无用的 JSON object
-// 另一种解决方案是使用 *struct
-func removeUnusedObj(content string, pat ...string) string {
-	c := content
-	for i := 0; i < len(pat); i++ {
-		p, _ := regexp.Compile(pat[i])
-		c = p.ReplaceAllString(c, "")
+	// 移除无用的 JSON object
+	// 另一种解决方案是使用 *struct
+	var unusedPat string
+	for i := 0; i < len(unusedObj); i++ {
+		unusedPat += unusedObj[i] + "|"
 	}
-	return c
+	p, _ := regexp.Compile(unusedPat)
+	res := p.ReplaceAllString(content, "")
+	return []byte(res)
 }
 
 // 为结构体设置默认值
