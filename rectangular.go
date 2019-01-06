@@ -6,8 +6,16 @@ import (
 
 // XY 轴配置项
 type XYOpts struct {
-	XAxisOpts
-	YAxisOpts
+	xAxis XAxisOpts
+	yAxis YAxisOpts
+
+	XAxisOptsList []XAxisOpts
+	YAxisOptsList []YAxisOpts
+}
+
+func (opt *XYOpts) initXYOpts() {
+	opt.XAxisOptsList = append(opt.XAxisOptsList, XAxisOpts{})
+	opt.YAxisOptsList = append(opt.YAxisOptsList, YAxisOpts{})
 }
 
 // 设置 XYOptions 全局配置项
@@ -16,10 +24,22 @@ func (opt *XYOpts) setXYGlobalConfig(options ...interface{}) {
 		option := options[i]
 		switch option.(type) {
 		case XAxisOpts:
-			opt.XAxisOpts = option.(XAxisOpts)
+			opt.XAxisOptsList[0] = option.(XAxisOpts)
 		case YAxisOpts:
-			opt.YAxisOpts = option.(YAxisOpts)
+			opt.YAxisOptsList[0] = option.(YAxisOpts)
 		}
+	}
+}
+
+func (opt *XYOpts) ExtendXAxis(xAxis ...XAxisOpts) {
+	for i := 0; i < len(xAxis); i++ {
+		opt.XAxisOptsList = append(opt.XAxisOptsList, xAxis[i])
+	}
+}
+
+func (opt *XYOpts) ExtendYAxis(yAxis ...YAxisOpts) {
+	for i := 0; i < len(yAxis); i++ {
+		opt.YAxisOptsList = append(opt.YAxisOptsList, yAxis[i])
 	}
 }
 
@@ -60,13 +80,13 @@ func (rc *RectChart) Grid(a ...seriesI) {
 
 // RectChart 校验器
 func (rc *RectChart) validateOpts() {
-	rc.XAxisOpts.Data = rc.xAxisData
+	// 确保 X 轴数据不会因为设置了 XAxisOpts 而被抹除
+	rc.XAxisOptsList[0].Data = rc.xAxisData
 	rc.validateAssets(rc.AssetsHost)
 }
 
 // RectChart 渲染图表
 func (rc *RectChart) Render(w ...io.Writer) error {
-	rc.XAxisOpts.Data = rc.xAxisData
 	rc.validateOpts()
 	return renderToWriter(rc, "chart", w...)
 }

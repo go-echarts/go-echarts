@@ -53,8 +53,8 @@ var baseTpl = `
         visualMap:{{ .VisualMapOptsList }},
     {{- end }}
     {{- if .HasXYAxis }}
-        xAxis: {{ .XAxisOpts }},
-        yAxis: {{ .YAxisOpts }},
+        xAxis: {{ .XAxisOptsList }},
+        yAxis: {{ .YAxisOptsList }},
     {{- end }}
         series: [
         {{ range .Series }}

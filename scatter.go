@@ -8,6 +8,7 @@ type Scatter struct {
 func NewScatter(routers ...HTTPRouter) *Scatter {
 	chart := new(Scatter)
 	chart.initBaseOpts(true, routers...)
+	chart.initXYOpts()
 	return chart
 }
 

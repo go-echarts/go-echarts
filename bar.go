@@ -1,27 +1,28 @@
 package goecharts
 
 import (
-	"bytes"
 	"io"
 )
 
 type Bar struct {
 	RectChart
 	BarChartOpts
+
+	IsXYReversal bool
 }
 
 // Bar series options
 type BarChartOpts struct {
-	Stack        string
-	XAxisIndex   int
-	YAxisIndex   int
-	IsXYReversal bool
+	Stack      string
+	XAxisIndex int
+	YAxisIndex int
 }
 
 // 工厂函数，生成 `Bar` 实例
 func NewBar(routers ...HTTPRouter) *Bar {
 	chart := new(Bar)
 	chart.initBaseOpts(true, routers...)
+	chart.initXYOpts()
 	return chart
 }
 
@@ -59,11 +60,11 @@ func (c *Bar) isSelfChartOpts(options ...interface{}) (bool, BarChartOpts) {
 
 // 对图形配置做最后的验证，确保能够正确渲染
 func (c *Bar) validateOpts() {
-	c.XAxisOpts.Data = c.xAxisData
+	c.XAxisOptsList[0].Data = c.xAxisData
 	// XY 轴翻转
 	if c.IsXYReversal {
-		c.YAxisOpts.Data = c.xAxisData
-		c.XAxisOpts.Data = nil
+		c.YAxisOptsList[0].Data = c.xAxisData
+		c.XAxisOptsList[0].Data = nil
 	}
 	c.validateAssets(c.AssetsHost)
 }
@@ -71,17 +72,5 @@ func (c *Bar) validateOpts() {
 func (c *Bar) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-
-	var b bytes.Buffer
-	if err := renderChart(c, &b, "chart"); err != nil {
-		return err
-	}
-	res := replaceRender(b)
-	for i := 0; i < len(w); i++ {
-		_, err := w[i].Write(res)
-		if err != nil {
-			return err
-		}
-	}
-	return nil
+	return renderToWriter(c, "chart", w...)
 }
