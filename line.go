@@ -7,8 +7,18 @@ type Line struct {
 // Line series options
 type LineChartOpts struct {
 	Stack      string
+	Smooth     bool
+	Step       bool
 	XAxisIndex int
 	YAxisIndex int
+}
+
+func (opt *LineChartOpts) setChartOpt(s *singleSeries) {
+	s.Stack = opt.Stack
+	s.Smooth = opt.Smooth
+	s.Step = opt.Step
+	s.XAxisIndex = opt.XAxisIndex
+	s.YAxisIndex = opt.YAxisIndex
 }
 
 // 工厂函数，生成 `Line` 实例
@@ -29,14 +39,6 @@ func (c *Line) AddXAxis(xAxis interface{}) *Line {
 func (c *Line) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Line {
 	series := singleSeries{Name: name, Type: "line", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
-
-	if ok, opt := switchChartOpts(options...); ok {
-		opt := opt.(LineChartOpts)
-		series.Stack = opt.Stack
-		series.XAxisIndex = opt.XAxisIndex
-		series.YAxisIndex = opt.YAxisIndex
-	}
-
 	c.Series = append(c.Series, series)
 	c.setColor(options...)
 	return c

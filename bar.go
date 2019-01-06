@@ -18,6 +18,12 @@ type BarChartOpts struct {
 	YAxisIndex int
 }
 
+func (opt *BarChartOpts) setChartOpt(s *singleSeries) {
+	s.Stack = opt.Stack
+	s.XAxisIndex = opt.XAxisIndex
+	s.YAxisIndex = opt.YAxisIndex
+}
+
 // 工厂函数，生成 `Bar` 实例
 func NewBar(routers ...HTTPRouter) *Bar {
 	chart := new(Bar)
@@ -36,14 +42,6 @@ func (c *Bar) AddXAxis(xAxis interface{}) *Bar {
 func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Bar {
 	series := singleSeries{Name: name, Type: "bar", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
-
-	if ok, opt := switchChartOpts(options...); ok {
-		opt := opt.(BarChartOpts)
-		series.Stack = opt.Stack
-		series.XAxisIndex = opt.XAxisIndex
-		series.YAxisIndex = opt.YAxisIndex
-	}
-
 	c.Series = append(c.Series, series)
 	c.setColor(options...)
 	return c

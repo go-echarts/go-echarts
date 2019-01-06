@@ -10,6 +10,11 @@ type heatMapChartOpts struct {
 	YAxisIndex int
 }
 
+func (opt *heatMapChartOpts) setChartOpt(s *singleSeries) {
+	s.XAxisIndex = opt.XAxisIndex
+	s.YAxisIndex = opt.YAxisIndex
+}
+
 // 工厂函数，生成 `heatMap` 实例
 func NewHeatMap(routers ...HTTPRouter) *HeatMap {
 	chart := new(HeatMap)
@@ -28,13 +33,6 @@ func (c *HeatMap) AddXAxis(xAxis interface{}) *HeatMap {
 func (c *HeatMap) AddYAxis(name string, yAxis interface{}, options ...interface{}) *HeatMap {
 	series := singleSeries{Name: name, Type: "heatmap", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
-
-	if ok, opt := switchChartOpts(options...); ok {
-		opt := opt.(heatMapChartOpts)
-		series.XAxisIndex = opt.XAxisIndex
-		series.YAxisIndex = opt.YAxisIndex
-	}
-
 	c.Series = append(c.Series, series)
 	c.setColor(options...)
 	return c

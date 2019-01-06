@@ -22,9 +22,10 @@ const (
 // 渲染图表
 func renderChart(chart interface{}, w io.Writer, name string) error {
 	contents := []string{headerTpl, routerTpl, baseTpl}
-	if name == "chart" {
+	switch name {
+	case "chart":
 		contents = append(contents, chartTpl)
-	} else if name == "page" {
+	case "page":
 		contents = append(contents, pageTpl)
 	}
 	tpl := template.Must(template.New("").Parse(contents[0]))
@@ -81,7 +82,7 @@ func replaceRender(b bytes.Buffer) []byte {
 	content := idPat.ReplaceAllString(b.String(), "")
 	unusedObj := []string{
 		`geo: {},`,
-		`"textStyle":{}`,
+		`,?"textStyle":{}`,
 		`,?"subtextStyle":{}`,
 		`,?"inRange":{}`,
 		`,?"label":{}`,

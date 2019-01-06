@@ -156,7 +156,8 @@ type singleSeries struct {
 	CoordSystem string `json:"coordinateSystem,omitempty"`
 
 	// Line charts
-	Step bool `json:"step,omitempty"`
+	Step   bool `json:"step,omitempty"`
+	Smooth bool `json:"smooth,omitempty"`
 
 	// series data items
 	Data interface{} `json:"data"`
@@ -214,6 +215,10 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 			s.MarkPointOpts.Data = append(s.MarkPointOpts.Data, option.(MPNameCoordItem))
 		case MPStyleOpts:
 			s.MarkPointOpts.MPStyleOpts = option.(MPStyleOpts)
+
+		case LineChartOpts:
+			opt := option.(LineChartOpts)
+			opt.setChartOpt(s)
 		}
 	}
 }

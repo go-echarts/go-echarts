@@ -37,25 +37,19 @@ func (page *Page) Add(charts ...validator) *Page {
 	}
 	for i := 0; i < len(charts); i++ {
 		charts[i].validateOpts()
-		jsList, cssList := charts[i].yieldAssets()
-		page.extractJSAssets(jsList)
-		page.extractCSSAssets(cssList)
+		page.extractAssets(charts[i].yieldAssets())
 		page.Charts = append(page.Charts, charts[i])
 	}
 	return page
 }
 
-// 提取 js 引用
-func (page *Page) extractJSAssets(jsList []string) {
+// 提取引用资源
+func (page *Page) extractAssets(jsList, cssList []string) {
 	for i := 0; i < len(jsList); i++ {
 		page.JSAssets.Add(jsList[i])
 	}
-}
-
-// 提取 css 引用
-func (page *Page) extractCSSAssets(cssList []string) {
-	for i := 0; i < len(cssList); i++ {
-		page.CSSAssets.Add(cssList[i])
+	for j := 0; j < len(cssList); j++ {
+		page.CSSAssets.Add(cssList[j])
 	}
 }
 

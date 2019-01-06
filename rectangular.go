@@ -28,12 +28,14 @@ func (opt *XYOpts) setXYGlobalConfig(options ...interface{}) {
 	}
 }
 
+// 扩展新增 X 轴
 func (opt *XYOpts) ExtendXAxis(xAxis ...XAxisOpts) {
 	for i := 0; i < len(xAxis); i++ {
 		opt.XAxisOptsList = append(opt.XAxisOptsList, xAxis[i])
 	}
 }
 
+// 扩展新增 Y 轴
 func (opt *XYOpts) ExtendYAxis(yAxis ...YAxisOpts) {
 	for i := 0; i < len(yAxis); i++ {
 		opt.YAxisOptsList = append(opt.YAxisOptsList, yAxis[i])
