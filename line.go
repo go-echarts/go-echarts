@@ -6,11 +6,11 @@ type Line struct {
 
 // 工厂函数，生成 `Line` 实例
 func NewLine(routers ...HTTPRouter) *Line {
-	lineChart := new(Line)
-	lineChart.HasXYAxis = true
-	lineChart.initBaseOpts(routers...)
-	lineChart.initAssetsOpts()
-	return lineChart
+	chart := new(Line)
+	chart.HasXYAxis = true
+	chart.initBaseOpts(routers...)
+	chart.initAssetsOpts()
+	return chart
 }
 
 // 提供 X 轴数据

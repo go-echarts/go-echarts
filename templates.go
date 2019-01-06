@@ -62,7 +62,7 @@ var baseTpl = `
         {{ end -}}
         ],
     {{- if eq .Theme "white" }}
-        color: {{ .ColorList }}
+        color: {{ .Colors }}
     {{- end }}
     };
     myChart___x__{{ .ChartID }}__x__.setOption(option___x__{{ .ChartID }}__x__);

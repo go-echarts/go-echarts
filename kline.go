@@ -6,11 +6,11 @@ type Kline struct {
 
 // 工厂函数，生成 `Kline` 实例
 func NewKLine(routers ...HTTPRouter) *Kline {
-	klineChart := new(Kline)
-	klineChart.HasXYAxis = true
-	klineChart.initBaseOpts(routers...)
-	klineChart.initAssetsOpts()
-	return klineChart
+	chart := new(Kline)
+	chart.HasXYAxis = true
+	chart.initBaseOpts(routers...)
+	chart.initAssetsOpts()
+	return chart
 }
 
 // 提供 X 轴数据

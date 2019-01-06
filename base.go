@@ -84,7 +84,7 @@ type BaseOpts struct {
 	ToolboxOpts          // 工具箱组件配置项
 	TitleOpts            // 标题组件配置项
 	AssetsOpts           // 静态资源配置项
-	ColorList   []string // 全局颜色列表
+	Colors      []string // 全局颜色列表
 	appendColor []string // 追加全局颜色列表
 	HTTPRouters          // 路由列表
 	DataZoomOptsList     // 区域缩放组件配置项列表
@@ -107,7 +107,7 @@ func (opt *BaseOpts) setColor(options ...interface{}) {
 
 // 初始化全局颜色列表
 func (opt *BaseOpts) initSeriesColors() {
-	opt.ColorList = []string{
+	opt.Colors = []string{
 		"#c23531", "#2f4554", "#61a0a8", "#d48265", "#91c7ae", "#749f83",
 		"#ca8622", "#bda29a", "#6e7074", "#546570", "#c4ccd3"}
 }
@@ -125,9 +125,9 @@ func (opt *BaseOpts) insertSeriesColors(s []string) {
 	tmpCl := reverseSlice(s) // 翻转颜色列表
 	// 颜色追加至首部
 	for i := 0; i < len(tmpCl); i++ {
-		opt.ColorList = append(opt.ColorList, "")
-		copy(opt.ColorList[1:], opt.ColorList[0:])
-		opt.ColorList[0] = tmpCl[i]
+		opt.Colors = append(opt.Colors, "")
+		copy(opt.Colors[1:], opt.Colors[0:])
+		opt.Colors[0] = tmpCl[i]
 	}
 }
 

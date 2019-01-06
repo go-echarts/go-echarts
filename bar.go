@@ -20,11 +20,11 @@ type BarChartOpts struct {
 
 // 工厂函数，生成 `Bar` 实例
 func NewBar(routers ...HTTPRouter) *Bar {
-	barChart := new(Bar)
-	barChart.HasXYAxis = true
-	barChart.initBaseOpts(routers...)
-	barChart.initAssetsOpts()
-	return barChart
+	chart := new(Bar)
+	chart.HasXYAxis = true
+	chart.initBaseOpts(routers...)
+	chart.initAssetsOpts()
+	return chart
 }
 
 // 提供 X 轴数据

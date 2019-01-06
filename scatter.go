@@ -6,11 +6,11 @@ type Scatter struct {
 
 // 工厂函数，生成 `Scatter` 实例
 func NewScatter(routers ...HTTPRouter) *Scatter {
-	scatterChart := new(Scatter)
-	scatterChart.HasXYAxis = true
-	scatterChart.initBaseOpts(routers...)
-	scatterChart.initAssetsOpts()
-	return scatterChart
+	chart := new(Scatter)
+	chart.HasXYAxis = true
+	chart.initBaseOpts(routers...)
+	chart.initAssetsOpts()
+	return chart
 }
 
 // 提供 X 轴数据

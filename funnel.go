@@ -11,11 +11,11 @@ type Funnel struct {
 
 // 工厂函数，生成 `Funnel` 实例
 func NewFunnel(routers ...HTTPRouter) *Funnel {
-	funnelChart := new(Funnel)
-	funnelChart.HasXYAxis = false
-	funnelChart.initBaseOpts(routers...)
-	funnelChart.initAssetsOpts()
-	return funnelChart
+	chart := new(Funnel)
+	chart.HasXYAxis = false
+	chart.initBaseOpts(routers...)
+	chart.initAssetsOpts()
+	return chart
 }
 
 func (c *Funnel) Add(name string, data map[string]interface{}, options ...interface{}) *Funnel {

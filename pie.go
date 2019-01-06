@@ -11,11 +11,11 @@ type Pie struct {
 
 // 工厂函数，生成 `Pie` 实例
 func NewPie(routers ...HTTPRouter) *Pie {
-	pieChart := new(Pie)
-	pieChart.HasXYAxis = false
-	pieChart.initBaseOpts(routers...)
-	pieChart.initAssetsOpts()
-	return pieChart
+	chart := new(Pie)
+	chart.HasXYAxis = false
+	chart.initBaseOpts(routers...)
+	chart.initAssetsOpts()
+	return chart
 }
 
 func (c *Pie) Add(name string, data map[string]interface{}, options ...interface{}) *Pie {

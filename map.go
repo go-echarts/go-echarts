@@ -13,13 +13,13 @@ type Map struct {
 
 // 工厂函数，生成 `Map` 实例
 func NewMap(mapType string, routers ...HTTPRouter) *Map {
-	mapChart := new(Map)
-	mapChart.mapType = mapType
-	mapChart.HasXYAxis = false
-	mapChart.initBaseOpts(routers...)
-	mapChart.initAssetsOpts()
-	mapChart.JSAssets.Add("maps/" + MapFilenames[mapType] + ".js")
-	return mapChart
+	chart := new(Map)
+	chart.mapType = mapType
+	chart.HasXYAxis = false
+	chart.initBaseOpts(routers...)
+	chart.initAssetsOpts()
+	chart.JSAssets.Add("maps/" + MapFilenames[mapType] + ".js")
+	return chart
 }
 
 func (c *Map) Add(name string, data map[string]interface{}, options ...interface{}) *Map {

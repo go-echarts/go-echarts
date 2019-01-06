@@ -15,13 +15,13 @@ var geoFormatter = `function (params) {
 
 // 工厂函数，生成 `Geo` 实例
 func NewGeo(mapType string, routers ...HTTPRouter) *Geo {
-	geoChart := new(Geo)
-	geoChart.HasXYAxis = false
-	geoChart.initBaseOpts(routers...)
-	geoChart.initAssetsOpts()
-	geoChart.JSAssets.Add("maps/" + MapFilenames[mapType] + ".js")
-	geoChart.GeoOpts.Map = mapType
-	return geoChart
+	chart := new(Geo)
+	chart.HasXYAxis = false
+	chart.initBaseOpts(routers...)
+	chart.initAssetsOpts()
+	chart.JSAssets.Add("maps/" + MapFilenames[mapType] + ".js")
+	chart.GeoOpts.Map = mapType
+	return chart
 }
 
 func (c *Geo) Add(name, geoType string, data map[string]float32, options ...interface{}) *Geo {
