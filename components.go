@@ -185,7 +185,7 @@ type VisualMapOpts struct {
 	// 是否显示拖拽用的手柄（手柄能拖拽调整选中范围）
 	Calculable bool `json:"calculable"`
 	// VisualMap 组件的允许的最小值
-	Mix float32 `json:"mix,omitempty"`
+	Min float32 `json:"min,omitempty"`
 	// VisualMap 组件的允许的最大值
 	Max float32 `json:"max,omitempty"`
 	// 指定手柄对应数值的位置。range 应在 min max 范围内
@@ -212,10 +212,20 @@ type VMInRange struct {
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 }
 
+// 坐标轴在 grid 区域中的分隔区域
+type SplitArea struct {
+	Show bool `json:"show,omitempty"`
+}
+
 // X 轴配置项组件
 type XAxisOpts struct {
 	// X 轴名称
 	Name string `json:"name,omitempty"`
+	// X 坐标轴类型，可选：
+	// "value"：数值轴，适用于连续数据。
+	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+	// "log" 对数轴。适用于对数数据。
+	Type string `json:"type,omitempty"`
 	// 是否显示 X 轴
 	Show bool `json:"show,omitempty"`
 	// X 轴数据项
@@ -229,12 +239,28 @@ type XAxisOpts struct {
 	// 在设置 min 和 max 之后该配置项无效
 	// 默认为 false
 	Scale bool `json:"scale,omitempty"`
+	// X 坐标轴刻度最小值
+	// 可以设置成特殊值 'dataMin'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
+	Mix float32 `json:"min,omitempty"`
+	// X 坐标轴刻度最大值
+	// 可以设置成特殊值 'dataMax'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
+	Max float32 `json:"max,omitempty"`
+	// X 轴所在的 grid 的索引
+	// 默认 0
+	GridIndex int `json:"gridIndex,omitempty"`
+	// X 轴分隔区域配置项
+	SplitArea `json:"splitArea,omitempty"`
 }
 
 // Y 轴配置项组件
 type YAxisOpts struct {
 	// Y 轴名称
 	Name string `json:"name,omitempty"`
+	// Y 坐标轴类型，可选：
+	// "value"：数值轴，适用于连续数据。
+	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+	// "log" 对数轴。适用于对数数据。
+	Type string `json:"type,omitempty"`
 	// 是否显示 Y 轴
 	Show bool `json:"show,omitempty"`
 	// Y 轴数据项
@@ -248,6 +274,17 @@ type YAxisOpts struct {
 	// 在设置 min 和 max 之后该配置项无效
 	// 默认为 false
 	Scale bool `json:"scale,omitempty"`
+	// Y 坐标轴刻度最小值
+	// 可以设置成特殊值 'dataMin'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
+	Mix float32 `json:"min,omitempty"`
+	// Y 坐标轴刻度最大值
+	// 可以设置成特殊值 'dataMax'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
+	Max float32 `json:"max,omitempty"`
+	// Y 轴所在的 grid 的索引
+	// 默认 0
+	GridIndex int `json:"gridIndex,omitempty"`
+	// Y 轴分隔区域配置项
+	SplitArea `json:"splitArea,omitempty"`
 }
 
 // 地理坐标系组件配置项

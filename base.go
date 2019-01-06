@@ -49,7 +49,7 @@ func (opt *AssetsOpts) validateAssets(host string) {
 	}
 }
 
-// 为 InitOptions 设置字段默认值
+// 设置 InitOptions 字段默认值
 func (opt *InitOpts) setDefault() {
 	setDefaultValue(opt)
 }

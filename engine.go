@@ -91,6 +91,7 @@ func replaceRender(b bytes.Buffer) []byte {
 		`,"areaStyle":{}`,
 		`,"lineStyle":{}`,
 		`,"rippleEffect":{}`,
+		`,?"splitArea":{}`,
 	}
 	// 移除无用的 JSON object
 	// 另一种解决方案是使用 *struct
