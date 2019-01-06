@@ -8,7 +8,7 @@ type Bar struct {
 	RectChart
 	BarChartOpts
 
-	IsXYReversal bool
+	isXYReversal bool
 }
 
 // Bar series options
@@ -37,7 +37,8 @@ func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{}) *
 	series := singleSeries{Name: name, Type: "bar", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 
-	if ok, opt := c.isSelfChartOpts(options...); ok {
+	if ok, opt := switchChartOpts(options...); ok {
+		opt := opt.(BarChartOpts)
 		series.Stack = opt.Stack
 		series.XAxisIndex = opt.XAxisIndex
 		series.YAxisIndex = opt.YAxisIndex
@@ -48,21 +49,15 @@ func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{}) *
 	return c
 }
 
-func (c *Bar) isSelfChartOpts(options ...interface{}) (bool, BarChartOpts) {
-	for i := 0; i < len(options); i++ {
-		switch options[i].(type) {
-		case BarChartOpts:
-			return true, options[i].(BarChartOpts)
-		}
-	}
-	return false, BarChartOpts{}
+func (c *Bar) XYReversal() {
+	c.isXYReversal = true
 }
 
 // 对图形配置做最后的验证，确保能够正确渲染
 func (c *Bar) validateOpts() {
 	c.XAxisOptsList[0].Data = c.xAxisData
 	// XY 轴翻转
-	if c.IsXYReversal {
+	if c.isXYReversal {
 		c.YAxisOptsList[0].Data = c.xAxisData
 		c.XAxisOptsList[0].Data = nil
 	}

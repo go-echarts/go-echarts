@@ -30,7 +30,8 @@ func (c *Line) AddYAxis(name string, yAxis interface{}, options ...interface{}) 
 	series := singleSeries{Name: name, Type: "line", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 
-	if ok, opt := c.isSelfChartOpts(options...); ok {
+	if ok, opt := switchChartOpts(options...); ok {
+		opt := opt.(LineChartOpts)
 		series.Stack = opt.Stack
 		series.XAxisIndex = opt.XAxisIndex
 		series.YAxisIndex = opt.YAxisIndex
@@ -39,14 +40,4 @@ func (c *Line) AddYAxis(name string, yAxis interface{}, options ...interface{}) 
 	c.Series = append(c.Series, series)
 	c.setColor(options...)
 	return c
-}
-
-func (c *Line) isSelfChartOpts(options ...interface{}) (bool, LineChartOpts) {
-	for i := 0; i < len(options); i++ {
-		switch options[i].(type) {
-		case LineChartOpts:
-			return true, options[i].(LineChartOpts)
-		}
-	}
-	return false, LineChartOpts{}
 }

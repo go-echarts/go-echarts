@@ -26,8 +26,7 @@ var routerTpl = `
     </select>
 {{- end -}}
 </div>
-{{- end }}
-
+{{ end }}
 `
 
 var baseTpl = `
@@ -87,7 +86,6 @@ var chartTpl = `
         justify-content: center;
         align-items: center;
     }
-
     .item {
         margin: auto;
     }

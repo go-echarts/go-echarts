@@ -50,8 +50,8 @@ func (opt *AssetsOpts) validateAssets(host string) {
 }
 
 // 为 InitOptions 设置字段默认值
-func (opt *InitOpts) setDefault() error {
-	return setDefaultValue(opt)
+func (opt *InitOpts) setDefault() {
+	setDefaultValue(opt)
 }
 
 // 确保 ChartID 不为空且唯一
@@ -136,8 +136,8 @@ func (opt *BaseOpts) initBaseOpts(hasXYAxis bool, routers ...HTTPRouter) {
 	}
 	opt.HasXYAxis = hasXYAxis
 	opt.initSeriesColors()
-	opt.validateInitOpt()
 	opt.initAssetsOpts()
+	opt.validateInitOpt()
 }
 
 // 插入颜色到颜色列表首部

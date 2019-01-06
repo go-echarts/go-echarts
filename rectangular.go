@@ -6,9 +6,6 @@ import (
 
 // XY 轴配置项
 type XYOpts struct {
-	xAxis XAxisOpts
-	yAxis YAxisOpts
-
 	XAxisOptsList []XAxisOpts
 	YAxisOptsList []YAxisOpts
 }

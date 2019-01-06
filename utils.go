@@ -16,3 +16,16 @@ func replaceJsFuncs(fn string) string {
 	fn = pat.ReplaceAllString(fn, "")
 	return "__x__" + fn + "__x__"
 }
+
+// switch chartType options and return itself struct
+func switchChartOpts(options ...interface{}) (bool, interface{}) {
+	for i := 0; i < len(options); i++ {
+		switch options[i].(type) {
+		case BarChartOpts:
+			return true, options[i].(BarChartOpts)
+		case LineChartOpts:
+			return true, options[i].(LineChartOpts)
+		}
+	}
+	return false, nil
+}
