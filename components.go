@@ -1,9 +1,5 @@
 package goecharts
 
-import (
-	"regexp"
-)
-
 // 标题组件配置项
 type TitleOpts struct {
 	// 主标题
@@ -262,9 +258,5 @@ type GeoOpts struct {
 
 // 处理 function 类型配置项
 func FuncOpts(fn string) string {
-	nPat, _ := regexp.Compile(`([^'"])\n`)
-	tPat, _ := regexp.Compile(`([^'"])\t`)
-	fn = nPat.ReplaceAllString(fn, "$1")
-	fn = tPat.ReplaceAllString(fn, "$1")
-	return "__x__" + fn + "__x__"
+	return replaceJsFuncs(fn)
 }

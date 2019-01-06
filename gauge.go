@@ -4,42 +4,42 @@ import (
 	"io"
 )
 
-type Funnel struct {
+type Gauge struct {
 	BaseOpts
 	Series
 }
 
-// 工厂函数，生成 `Funnel` 实例
-func NewFunnel(routers ...HTTPRouter) *Funnel {
-	chart := new(Funnel)
+// 工厂函数，生成 `Gauge` 实例
+func NewGauge(routers ...HTTPRouter) *Gauge {
+	chart := new(Gauge)
 	chart.HasXYAxis = false
 	chart.initBaseOpts(routers...)
 	chart.initAssetsOpts()
 	return chart
 }
 
-func (c *Funnel) Add(name string, data map[string]interface{}, options ...interface{}) *Funnel {
+func (c *Gauge) Add(name string, data map[string]interface{}, options ...interface{}) *Gauge {
 	nvs := make([]nameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, nameValueItem{k, v})
 	}
-	series := singleSeries{Name: name, Type: "funnel", Data: nvs}
+	series := singleSeries{Name: name, Type: "gauge", Data: nvs}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)
 	return c
 }
 
-func (c *Funnel) SetGlobalConfig(options ...interface{}) *Funnel {
+func (c *Gauge) SetGlobalConfig(options ...interface{}) *Gauge {
 	c.BaseOpts.setBaseGlobalConfig(options...)
 	return c
 }
 
-func (c *Funnel) validateOpts() {
+func (c *Gauge) validateOpts() {
 	c.validateAssets(c.AssetsHost)
 }
 
-func (c *Funnel) Render(w ...io.Writer) error {
+func (c *Gauge) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
 	return renderToWriter(c, "chart", w...)

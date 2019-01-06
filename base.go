@@ -49,7 +49,7 @@ func (opt *InitOpts) setDefault() error {
 }
 
 // 确保 ContainerID 不为空且唯一
-func (opt *InitOpts) checkID() {
+func (opt *InitOpts) validateChartID() {
 	if opt.ChartID == "" {
 		opt.ChartID = genChartID()
 	}
@@ -58,7 +58,7 @@ func (opt *InitOpts) checkID() {
 // 验证初始化参数，确保图形能够得到正确渲染
 func (opt *InitOpts) validateInitOpt() {
 	opt.setDefault()
-	opt.checkID()
+	opt.validateChartID()
 }
 
 // Http 路由
@@ -71,6 +71,16 @@ type HTTPRouters []HTTPRouter
 
 func (hr HTTPRouters) Len() int {
 	return len(hr)
+}
+
+type JSFunctions struct {
+	Fns []string
+}
+
+func (f *JSFunctions) AddJSFuncs(fn ...string) {
+	for i := 0; i < len(fn); i++ {
+		f.Fns = append(f.Fns, replaceJsFuncs(fn[i]))
+	}
 }
 
 // 全局颜色配置项
@@ -91,6 +101,7 @@ type BaseOpts struct {
 	VisualMapOptsList    // 视觉映射组件配置项列表
 	GeoOpts              // 地理坐标系组件配置项
 
+	JSFunctions
 	HasXYAxis bool // 图形是否拥有 XY 轴
 }
 
@@ -118,6 +129,7 @@ func (opt *BaseOpts) initBaseOpts(routers ...HTTPRouter) {
 		opt.HTTPRouters = append(opt.HTTPRouters, routers[i])
 	}
 	opt.initSeriesColors()
+	opt.validateInitOpt()
 }
 
 // 插入颜色到颜色列表首部
@@ -141,6 +153,7 @@ func (opt *BaseOpts) setBaseGlobalConfig(options ...interface{}) {
 			if opt.InitOpts.Theme != "" {
 				opt.JSAssets.Add("themes/" + opt.Theme + ".js")
 			}
+			opt.validateInitOpt()
 		case TitleOpts:
 			opt.TitleOpts = option.(TitleOpts)
 		case ToolboxOpts:

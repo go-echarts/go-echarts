@@ -40,7 +40,6 @@ func (c *Map) SetGlobalConfig(options ...interface{}) *Map {
 }
 
 func (c *Map) validateOpts() {
-	c.validateInitOpt()
 	c.validateAssets(c.AssetsHost)
 }
 

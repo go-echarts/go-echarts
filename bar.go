@@ -67,7 +67,6 @@ func (c *Bar) validateOpts() {
 		c.YAxisOpts.Data = c.xAxisData
 		c.XAxisOpts.Data = nil
 	}
-	c.validateInitOpt()
 	c.validateAssets(c.AssetsHost)
 }
 

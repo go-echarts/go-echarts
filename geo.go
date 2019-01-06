@@ -10,7 +10,7 @@ type Geo struct {
 }
 
 var geoFormatter = `function (params) {
-	return params.name + ' : ' + params.value[2];
+		return params.name + ' : ' + params.value[2];
 }`
 
 // 工厂函数，生成 `Geo` 实例
@@ -54,7 +54,6 @@ func (c *Geo) validateGeoFormatter() {
 }
 
 func (c *Geo) validateOpts() {
-	c.validateInitOpt()
 	c.validateAssets(c.AssetsHost)
 	c.validateGeoFormatter()
 }

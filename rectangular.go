@@ -61,7 +61,6 @@ func (rc *RectChart) Grid(a ...seriesI) {
 // RectChart 校验器
 func (rc *RectChart) validateOpts() {
 	rc.XAxisOpts.Data = rc.xAxisData
-	rc.validateInitOpt()
 	rc.validateAssets(rc.AssetsHost)
 }
 

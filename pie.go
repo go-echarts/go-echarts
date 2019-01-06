@@ -36,7 +36,6 @@ func (c *Pie) SetGlobalConfig(options ...interface{}) *Pie {
 }
 
 func (c *Pie) validateOpts() {
-	c.validateInitOpt()
 	c.validateAssets(c.AssetsHost)
 }
 
