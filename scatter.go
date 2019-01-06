@@ -7,9 +7,7 @@ type Scatter struct {
 // 工厂函数，生成 `Scatter` 实例
 func NewScatter(routers ...HTTPRouter) *Scatter {
 	chart := new(Scatter)
-	chart.HasXYAxis = true
-	chart.initBaseOpts(routers...)
-	chart.initAssetsOpts()
+	chart.initBaseOpts(true, routers...)
 	return chart
 }
 

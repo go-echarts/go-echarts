@@ -12,9 +12,7 @@ type Gauge struct {
 // 工厂函数，生成 `Gauge` 实例
 func NewGauge(routers ...HTTPRouter) *Gauge {
 	chart := new(Gauge)
-	chart.HasXYAxis = false
-	chart.initBaseOpts(routers...)
-	chart.initAssetsOpts()
+	chart.initBaseOpts(false, routers...)
 	return chart
 }
 

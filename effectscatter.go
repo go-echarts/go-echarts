@@ -26,9 +26,7 @@ type RippleEffectOpts struct {
 // 工厂函数，生成 `Scatter` 实例
 func NewEffectScatter(routers ...HTTPRouter) *EffectScatter {
 	esChart := new(EffectScatter)
-	esChart.HasXYAxis = true
-	esChart.initBaseOpts(routers...)
-	esChart.initAssetsOpts()
+	esChart.initBaseOpts(true, routers...)
 	return esChart
 }
 

@@ -21,9 +21,7 @@ type BarChartOpts struct {
 // 工厂函数，生成 `Bar` 实例
 func NewBar(routers ...HTTPRouter) *Bar {
 	chart := new(Bar)
-	chart.HasXYAxis = true
-	chart.initBaseOpts(routers...)
-	chart.initAssetsOpts()
+	chart.initBaseOpts(true, routers...)
 	return chart
 }
 

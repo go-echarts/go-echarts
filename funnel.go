@@ -12,9 +12,7 @@ type Funnel struct {
 // 工厂函数，生成 `Funnel` 实例
 func NewFunnel(routers ...HTTPRouter) *Funnel {
 	chart := new(Funnel)
-	chart.HasXYAxis = false
-	chart.initBaseOpts(routers...)
-	chart.initAssetsOpts()
+	chart.initBaseOpts(false, routers...)
 	return chart
 }
 

@@ -16,9 +16,7 @@ var geoFormatter = `function (params) {
 // 工厂函数，生成 `Geo` 实例
 func NewGeo(mapType string, routers ...HTTPRouter) *Geo {
 	chart := new(Geo)
-	chart.HasXYAxis = false
-	chart.initBaseOpts(routers...)
-	chart.initAssetsOpts()
+	chart.initBaseOpts(false, routers...)
 	chart.JSAssets.Add("maps/" + MapFilenames[mapType] + ".js")
 	chart.GeoOpts.Map = mapType
 	return chart

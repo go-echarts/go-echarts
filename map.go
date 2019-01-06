@@ -15,9 +15,7 @@ type Map struct {
 func NewMap(mapType string, routers ...HTTPRouter) *Map {
 	chart := new(Map)
 	chart.mapType = mapType
-	chart.HasXYAxis = false
-	chart.initBaseOpts(routers...)
-	chart.initAssetsOpts()
+	chart.initBaseOpts(false, routers...)
 	chart.JSAssets.Add("maps/" + MapFilenames[mapType] + ".js")
 	return chart
 }

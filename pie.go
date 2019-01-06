@@ -12,9 +12,7 @@ type Pie struct {
 // 工厂函数，生成 `Pie` 实例
 func NewPie(routers ...HTTPRouter) *Pie {
 	chart := new(Pie)
-	chart.HasXYAxis = false
-	chart.initBaseOpts(routers...)
-	chart.initAssetsOpts()
+	chart.initBaseOpts(false, routers...)
 	return chart
 }
 

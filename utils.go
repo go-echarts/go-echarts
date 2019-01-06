@@ -10,6 +10,7 @@ func reverseSlice(s []string) []string {
 	return s
 }
 
+// replace and clear up js functions string
 func replaceJsFuncs(fn string) string {
 	pat, _ := regexp.Compile(`\n|\t`)
 	fn = pat.ReplaceAllString(fn, "")

@@ -25,8 +25,7 @@ func NewPage(routers ...HTTPRouter) *Page {
 	for i := 0; i < len(routers); i++ {
 		page.HTTPRouters = append(page.HTTPRouters, routers[i])
 	}
-	page.JSAssets.initWithoutArg()
-	page.CSSAssets.initWithoutArg()
+	page.AssetsOpts.initAssetsOptsWithoutArg()
 	return page
 }
 

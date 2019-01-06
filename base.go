@@ -5,7 +5,7 @@ type InitOpts struct {
 	// 生成的 HTML 页面标题
 	PageTitle string `default:"Awesome go-echarts"`
 	// 画布宽度
-	Width string `default:"800px"`
+	Width string `default:"900px"`
 	// 画布高度
 	Height string `default:"500px"`
 	// 图表 ID，是图表唯一标识
@@ -28,6 +28,12 @@ func (opt *AssetsOpts) initAssetsOpts() {
 	opt.CSSAssets.init("bulma.min.css")
 }
 
+// 初始化静态资源配置项
+func (opt *AssetsOpts) initAssetsOptsWithoutArg() {
+	opt.JSAssets.initWithoutArg()
+	opt.CSSAssets.initWithoutArg()
+}
+
 // 返回资源列表
 func (opt *AssetsOpts) yieldAssets() ([]string, []string) {
 	return opt.JSAssets.Values, opt.CSSAssets.Values
@@ -48,7 +54,7 @@ func (opt *InitOpts) setDefault() error {
 	return setDefaultValue(opt)
 }
 
-// 确保 ContainerID 不为空且唯一
+// 确保 ChartID 不为空且唯一
 func (opt *InitOpts) validateChartID() {
 	if opt.ChartID == "" {
 		opt.ChartID = genChartID()
@@ -101,7 +107,7 @@ type BaseOpts struct {
 	VisualMapOptsList    // 视觉映射组件配置项列表
 	GeoOpts              // 地理坐标系组件配置项
 
-	JSFunctions
+	JSFunctions    // JS 函数列表
 	HasXYAxis bool // 图形是否拥有 XY 轴
 }
 
@@ -124,12 +130,14 @@ func (opt *BaseOpts) initSeriesColors() {
 }
 
 // 初始化 BaseOpts
-func (opt *BaseOpts) initBaseOpts(routers ...HTTPRouter) {
+func (opt *BaseOpts) initBaseOpts(hasXYAxis bool, routers ...HTTPRouter) {
 	for i := 0; i < len(routers); i++ {
 		opt.HTTPRouters = append(opt.HTTPRouters, routers[i])
 	}
+	opt.HasXYAxis = hasXYAxis
 	opt.initSeriesColors()
 	opt.validateInitOpt()
+	opt.initAssetsOpts()
 }
 
 // 插入颜色到颜色列表首部

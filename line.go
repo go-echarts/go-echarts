@@ -7,9 +7,7 @@ type Line struct {
 // 工厂函数，生成 `Line` 实例
 func NewLine(routers ...HTTPRouter) *Line {
 	chart := new(Line)
-	chart.HasXYAxis = true
-	chart.initBaseOpts(routers...)
-	chart.initAssetsOpts()
+	chart.initBaseOpts(true, routers...)
 	return chart
 }
 

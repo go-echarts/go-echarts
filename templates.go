@@ -17,7 +17,7 @@ var headerTpl = `
 
 var routerTpl = `
 {{- define "routers" }}
-<div class="select" style="margin-left: 10px; margin-top:10px">
+<div class="select" style="margin-right: 10px; margin-top:10px; float:right">
 {{- if gt .HTTPRouters.Len 0}}
     <select onchange="window.location.href=this.options[this.selectedIndex].value">
     {{- range .HTTPRouters }}
