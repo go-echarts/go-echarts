@@ -1,11 +1,11 @@
-package goecharts
+package charts
 
 type Line struct {
 	RectChart
 }
 
 // Line series options
-type LineChartOpts struct {
+type LineOpts struct {
 	Stack      string
 	Smooth     bool
 	Step       bool
@@ -13,7 +13,7 @@ type LineChartOpts struct {
 	YAxisIndex int
 }
 
-func (opt *LineChartOpts) setChartOpt(s *singleSeries) {
+func (opt *LineOpts) setChartOpt(s *singleSeries) {
 	s.Stack = opt.Stack
 	s.Smooth = opt.Smooth
 	s.Step = opt.Step

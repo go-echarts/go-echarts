@@ -1,4 +1,4 @@
-package goecharts
+package charts
 
 var headerTpl = `
 {{ define "header" }}

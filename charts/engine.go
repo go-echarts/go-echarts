@@ -1,4 +1,4 @@
-package goecharts
+package charts
 
 import (
 	"bytes"
@@ -82,6 +82,7 @@ func replaceRender(b bytes.Buffer) []byte {
 	content := idPat.ReplaceAllString(b.String(), "")
 	unusedObj := []string{
 		`geo: {},`,
+		`,?"normal":{}`,
 		`,?"textStyle":{}`,
 		`,?"subtextStyle":{}`,
 		`,?"inRange":{}`,

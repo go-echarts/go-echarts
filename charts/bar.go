@@ -1,4 +1,4 @@
-package goecharts
+package charts
 
 import (
 	"io"
@@ -6,19 +6,19 @@ import (
 
 type Bar struct {
 	RectChart
-	BarChartOpts
+	BarOpts
 
 	isXYReversal bool
 }
 
 // Bar series options
-type BarChartOpts struct {
+type BarOpts struct {
 	Stack      string
 	XAxisIndex int
 	YAxisIndex int
 }
 
-func (opt *BarChartOpts) setChartOpt(s *singleSeries) {
+func (opt *BarOpts) setChartOpt(s *singleSeries) {
 	s.Stack = opt.Stack
 	s.XAxisIndex = opt.XAxisIndex
 	s.YAxisIndex = opt.YAxisIndex

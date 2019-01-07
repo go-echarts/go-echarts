@@ -1,4 +1,4 @@
-package goecharts
+package charts
 
 // Name-Value 数据项
 type nameValueItem struct {

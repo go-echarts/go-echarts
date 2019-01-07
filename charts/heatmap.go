@@ -1,21 +1,21 @@
-package goecharts
+package charts
 
 type HeatMap struct {
 	RectChart
 }
 
 // heatMap series options
-type heatMapChartOpts struct {
+type HeatMapOpts struct {
 	XAxisIndex int
 	YAxisIndex int
 }
 
-func (opt *heatMapChartOpts) setChartOpt(s *singleSeries) {
+func (opt *HeatMapOpts) setChartOpt(s *singleSeries) {
 	s.XAxisIndex = opt.XAxisIndex
 	s.YAxisIndex = opt.YAxisIndex
 }
 
-// 工厂函数，生成 `heatMap` 实例
+// 工厂函数，生成 `HeatMap` 实例
 func NewHeatMap(routers ...HTTPRouter) *HeatMap {
 	chart := new(HeatMap)
 	chart.initBaseOpts(true, routers...)

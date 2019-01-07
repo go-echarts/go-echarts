@@ -1,4 +1,4 @@
-package goecharts
+package charts
 
 var MapFilenames = map[string]string{
 	"china": "china",

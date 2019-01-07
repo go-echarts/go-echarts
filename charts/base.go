@@ -1,4 +1,4 @@
-package goecharts
+package charts
 
 // 图形初始化配置项
 type InitOpts struct {

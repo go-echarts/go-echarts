@@ -1,4 +1,4 @@
-package goecharts
+package charts
 
 // 标题组件配置项
 type TitleOpts struct {
@@ -61,9 +61,9 @@ type TooltipOpts struct {
 	// 是否显示提示框
 	Show bool `json:"show,omitempty"`
 	// 触发类型。
-	// 'item': 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
-	// 'axis': 坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
-	// 'none': 什么都不触发。
+	// "item": 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
+	// "axis": 坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
+	// "none": 什么都不触发。
 	Trigger string `json:"trigger,omitempty"`
 	// 1, 字符串模板
 	// 模板变量有 {a}, {b}，{c}，{d}，{e}，分别表示系列名，数据名，数据值等。
@@ -121,6 +121,8 @@ type TextStyleOpts struct {
 	FontStyle string `json:"fontStyle,omitempty"`
 	// 字体大小
 	FontSize int `json:"fontSize,omitempty"`
+	// 递归结构，为了兼容 wordCloud
+	Normal *TextStyleOpts `json:"normal,omitempty"`
 }
 
 type LineStyleOpts struct {

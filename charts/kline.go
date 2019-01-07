@@ -1,4 +1,4 @@
-package goecharts
+package charts
 
 type Kline struct {
 	RectChart

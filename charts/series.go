@@ -1,4 +1,4 @@
-package goecharts
+package charts
 
 // 图形上的文本标签配置项
 type LabelTextOpts struct {
@@ -9,20 +9,20 @@ type LabelTextOpts struct {
 	// 标签的位置
 	// 通过相对的百分比或者绝对像素值表示标签相对于图形包围盒左上角的位置。示例：
 	// 绝对的像素值	position: [10, 10],
-	// 相对的百分比	position: ['50%', '50%']
-	// 'top'
-	// 'left'
-	// 'right'
-	// 'bottom'
-	// 'inside'
-	// 'insideLeft'
-	// 'insideRight'
-	// 'insideTop'
-	// 'insideBottom'
-	// 'insideTopLeft'
-	// 'insideBottomLeft'
-	// 'insideTopRight'
-	// 'insideBottomRight'
+	// 相对的百分比	position: ["50%", "50%"]
+	// "top"
+	// "left"
+	// "right"
+	// "bottom"
+	// "inside"
+	// "insideLeft"
+	// "insideRight"
+	// "insideTop"
+	// "insideBottom"
+	// "insideTopLeft"
+	// "insideBottomLeft"
+	// "insideTopRight"
+	// "insideBottomRight"
 	Position string `json:"position,omitempty"`
 }
 
@@ -35,7 +35,7 @@ type MarkPointOpts struct {
 // MarkPoint 风格配置项
 type MPStyleOpts struct {
 	// 图元的图形类别
-	// 可选 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	// 可选 "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
 	Symbol string `json:"symbol,omitempty"`
 	// 图元的大小
 	SymbolSize float32 `json:"symbolSize,omitempty"`
@@ -72,7 +72,7 @@ type MarkLineOpts struct {
 // MarkLine 风格配置项
 type MLStyleOpts struct {
 	// 图元的图形类别
-	// 可选 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	// 可选 "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
 	Symbol []string `json:"symbol,omitempty"`
 	// 图元的大小
 	SymbolSize float32 `json:"symbolSize,omitempty"`
@@ -139,30 +139,66 @@ type ItemStyleOpts struct {
 	Opacity float32 `json:"opacity,omitempty"`
 }
 
-// Series 配置项
 type singleSeries struct {
-	// series name
+	// 系列名称
 	Name string `json:"name,omitempty"`
-	// series type
+	// 系列类型
 	Type string `json:"type"`
 
 	// Rectangular charts
-	Stack      string `json:"stack,omitempty"`
-	XAxisIndex int    `json:"xAxisIndex,omitempty"`
-	YAxisIndex int    `json:"yAxisIndex,omitempty"`
+	// 数据堆叠，同个类目轴上系列配置相同的 stack 值后，后一个系列的值会在前一个系列的值上相加
+	Stack string `json:"stack,omitempty"`
+	// 使用的 X 轴的 index，在单个图表实例中存在多个 X 轴的时候有用
+	XAxisIndex int `json:"xAxisIndex,omitempty"`
+	// 使用的 Y 轴的 index，在单个图表实例中存在多个 Y 轴的时候有用
+	YAxisIndex int `json:"yAxisIndex,omitempty"`
 
 	// Map charts
-	MapType     string `json:"mapType,omitempty"`
+	MapType     string `json:"map,omitempty"`
 	CoordSystem string `json:"coordinateSystem,omitempty"`
 
 	// Line charts
-	Step   bool `json:"step,omitempty"`
+	// 是否是阶梯线图。可以设置为 true 显示成阶梯线图。
+	Step bool `json:"step,omitempty"`
+	// 是否平滑曲线显示
 	Smooth bool `json:"smooth,omitempty"`
 
-	// series data items
+	// TODO: example
+	// pie charts
+	// 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
+	// "radius": 扇区圆心角展现数据的百分比，半径展现数据的大小。
+	// "area": 所有扇区圆心角相同，仅通过半径展现数据大小。
+	RoseType interface{} `json:"roseType,omitempty"`
+	// 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。
+	// 支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度。
+	// 示例
+	// center: [400, 300] 设置成绝对的像素值
+	// center: ["50%", "50%"] 设置成相对的百分比
+	// 默认
+	// ["50%", "50%"]
+	Center interface{} `json:"center,omitempty"`
+	// 饼图的半径。可以为如下类型：
+	// number：直接指定外半径值。
+	// string：例如，"20%"，表示外半径为可视区尺寸（容器高宽中较小一项）的 20% 长度。
+	// Array.<number|string>：数组的第一项是内半径，第二项是外半径。每一项遵从上述 number string 的描述。
+	// 默认
+	// [0, "75%"]
+	Radius interface{} `json:"radius,omitempty"`
+
+	// wordCloud
+	// 词云图形状
+	// 可选 "circle", "cardioid", "diamond", "triangle-forward", "triangle", "pentagon", "star"
+	// 默认 "circle"
+	Shape string `json:"shape,omitempty"`
+	// 字体大小范围
+	SizeRange []float32 `json:"sizeRange,omitempty"`
+	// 字体倾斜角度范围
+	RotationRange []float32 `json:"rotationRange,omitempty"`
+
+	// 系列数据项
 	Data interface{} `json:"data"`
 
-	// series options
+	// 系列配置项
 	ItemStyleOpts    `json:"itemStyle,omitempty"`
 	LabelTextOpts    `json:"label,omitempty"`
 	MarkLineOpts     `json:"markLine,omitempty"`
@@ -170,9 +206,10 @@ type singleSeries struct {
 	RippleEffectOpts `json:"rippleEffect,omitempty"`
 	LineStyleOpts    `json:"lineStyle,omitempty"`
 	AreaStyleOpts    `json:"areaStyle,omitempty"`
+	TextStyleOpts    `json:"textStyle,omitempty"`
 }
 
-// 设置 Series 配置项
+// 设置 singleSeries 配置项
 func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 	// 实际 MarkLevel Name Coordinates 结构
 	type MLNameCoord struct {
@@ -193,6 +230,13 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 			s.AreaStyleOpts = option.(AreaStyleOpts)
 		case ItemStyleOpts:
 			s.ItemStyleOpts = option.(ItemStyleOpts)
+		case TextStyleOpts:
+			s.TextStyleOpts = option.(TextStyleOpts)
+			s.TextStyleOpts.Normal = &TextStyleOpts{
+				Color:     s.TextStyleOpts.Color,
+				FontSize:  s.TextStyleOpts.FontSize,
+				FontStyle: s.TextStyleOpts.FontStyle,
+			}
 
 			// MarkLine 配置项
 		case MLNameTypeItem:
@@ -216,8 +260,20 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 		case MPStyleOpts:
 			s.MarkPointOpts.MPStyleOpts = option.(MPStyleOpts)
 
-		case LineChartOpts:
-			opt := option.(LineChartOpts)
+		case BarOpts:
+			opt := option.(BarOpts)
+			opt.setChartOpt(s)
+		case HeatMapOpts:
+			opt := option.(HeatMapOpts)
+			opt.setChartOpt(s)
+		case LineOpts:
+			opt := option.(LineOpts)
+			opt.setChartOpt(s)
+		case PieOpts:
+			opt := option.(PieOpts)
+			opt.setChartOpt(s)
+		case WordCLoudOpts:
+			opt := option.(WordCLoudOpts)
 			opt.setChartOpt(s)
 		}
 	}
