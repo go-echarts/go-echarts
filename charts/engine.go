@@ -9,6 +9,8 @@ import (
 	"regexp"
 	"strconv"
 	"time"
+
+	tpls "github.com/chenjiandongx/go-echarts/templates"
 )
 
 const (
@@ -21,12 +23,12 @@ const (
 
 // 渲染图表
 func renderChart(chart interface{}, w io.Writer, name string) error {
-	contents := []string{headerTpl, routerTpl, baseTpl}
+	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl}
 	switch name {
 	case "chart":
-		contents = append(contents, chartTpl)
+		contents = append(contents, tpls.ChartTpl)
 	case "page":
-		contents = append(contents, pageTpl)
+		contents = append(contents, tpls.PageTpl)
 	}
 	tpl := template.Must(template.New("").Parse(contents[0]))
 	mustTpl(tpl, contents[1:]...)

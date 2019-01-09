@@ -1,0 +1,14 @@
+{{- define "chart" }}
+<!DOCTYPE html>
+<html>
+{{- template "header" . }}
+<body>
+{{- template "routers" . }}
+{{- template "base" . }}
+<style>
+    .container {display: flex;justify-content: center;align-items: center;}
+    .item {margin: auto;}
+</style>
+</body>
+</html>
+{{ end }}

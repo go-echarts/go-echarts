@@ -1,0 +1,41 @@
+{{- define "base" }}
+<div class="container">
+    <div class="item" id="{{ .ChartID }}"
+         style="width:{{ .InitOpts.Width }};height:{{ .InitOpts.Height }};"></div>
+</div>
+<script type="text/javascript">
+    let myChart___x__{{ .ChartID }}__x__ = echarts.init(document.getElementById('{{ .ChartID }}'), "{{ .Theme }}");
+    let option___x__{{ .ChartID }}__x__ = {
+        title: {{ .TitleOpts  }},
+        tooltip: {{ .TooltipOpts }},
+        legend: {{ .LegendOpts }},
+        geo: {{ .GeoOpts }},
+    {{- if .ToolboxOpts.Show }}
+        toolbox: {{ .ToolboxOpts }},
+    {{- end }}
+    {{- if gt .DataZoomOptsList.Len 0 }}
+        dataZoom:{{ .DataZoomOptsList }},
+    {{- end }}
+    {{- if gt .VisualMapOptsList.Len 0 }}
+        visualMap:{{ .VisualMapOptsList }},
+    {{- end }}
+    {{- if .HasXYAxis }}
+        xAxis: {{ .XAxisOptsList }},
+        yAxis: {{ .YAxisOptsList }},
+    {{- end }}
+        series: [
+        {{ range .Series }}
+        {{- . }},
+        {{ end -}}
+        ],
+    {{- if eq .Theme "white" }}
+        color: {{ .Colors }}
+    {{- end }}
+    };
+    myChart___x__{{ .ChartID }}__x__.setOption(option___x__{{ .ChartID }}__x__);
+
+    {{- range .JSFunctions.Fns }}
+		{{ . }}
+	{{- end }}
+</script>
+{{ end }}

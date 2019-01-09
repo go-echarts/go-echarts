@@ -2,8 +2,8 @@ package datasets
 
 import (
 	"encoding/json"
-	"fmt"
-	
+	"log"
+
 	"github.com/gobuffalo/packr"
 )
 
@@ -13,14 +13,12 @@ var Coordinates map[string][2]float32
 func init() {
 	box := packr.NewBox(".")
 	maps, err := box.Find("map_filename.json")
-	if err != nil {
-		fmt.Println(err)
-	}
 	json.Unmarshal(maps, &MapFileNames)
 
 	coordinates, err := box.Find("coordinates.json")
-	if err != nil {
-		fmt.Println(err)
-	}
 	json.Unmarshal(coordinates, &Coordinates)
+
+	if err != nil {
+		log.Fatal(err)
+	}
 }
