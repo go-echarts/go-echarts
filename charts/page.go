@@ -55,5 +55,5 @@ func (page *Page) extractAssets(jsList, cssList []string) {
 
 func (page *Page) Render(w ...io.Writer) error {
 	page.InitOpts.setDefault()
-	return renderToWriter(page, "page", w...)
+	return renderToWriter(page, "page", []string{}, w...)
 }

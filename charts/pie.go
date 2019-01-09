@@ -53,5 +53,5 @@ func (c *Pie) validateOpts() {
 func (c *Pie) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", w...)
+	return renderToWriter(c, "chart", []string{}, w...)
 }

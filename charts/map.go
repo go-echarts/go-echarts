@@ -44,5 +44,5 @@ func (c *Map) validateOpts() {
 func (c *Map) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", w...)
+	return renderToWriter(c, "chart", []string{}, w...)
 }

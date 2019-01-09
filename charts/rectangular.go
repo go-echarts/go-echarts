@@ -87,5 +87,5 @@ func (rc *RectChart) validateOpts() {
 // RectChart 渲染图表
 func (rc *RectChart) Render(w ...io.Writer) error {
 	rc.validateOpts()
-	return renderToWriter(rc, "chart", w...)
+	return renderToWriter(rc, "chart", []string{}, w...)
 }

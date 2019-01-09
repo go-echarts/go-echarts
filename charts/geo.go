@@ -59,5 +59,5 @@ func (c *Geo) validateOpts() {
 func (c *Geo) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", w...)
+	return renderToWriter(c, "chart", []string{}, w...)
 }

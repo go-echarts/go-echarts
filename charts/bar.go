@@ -1,8 +1,6 @@
 package charts
 
-import (
-	"io"
-)
+import "io"
 
 type Bar struct {
 	RectChart
@@ -65,5 +63,5 @@ func (c *Bar) validateOpts() {
 func (c *Bar) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", w...)
+	return renderToWriter(c, "chart", []string{}, w...)
 }

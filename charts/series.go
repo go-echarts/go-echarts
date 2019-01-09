@@ -195,6 +195,10 @@ type singleSeries struct {
 	// 字体倾斜角度范围
 	RotationRange []float32 `json:"rotationRange,omitempty"`
 
+	// Liquid
+	LiquidOutlineOpts `json:"outline,omitempty"`
+	IsWaveAnimation   bool `json:"waveAnimation"`
+
 	// 系列数据项
 	Data interface{} `json:"data"`
 
@@ -268,6 +272,9 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 			opt.setChartOpt(s)
 		case LineOpts:
 			opt := option.(LineOpts)
+			opt.setChartOpt(s)
+		case LiquidOpts:
+			opt := option.(LiquidOpts)
 			opt.setChartOpt(s)
 		case PieOpts:
 			opt := option.(PieOpts)
