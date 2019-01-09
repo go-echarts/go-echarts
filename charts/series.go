@@ -292,7 +292,7 @@ func (s *singleSeries) setSingleSeriesOpts(options ...interface{}) {
 
 type Series []singleSeries
 
-type seriesI interface {
+type serieser interface {
 	exportSeries() Series
 }
 

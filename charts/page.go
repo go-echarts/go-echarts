@@ -6,7 +6,7 @@ import (
 )
 
 // 校验器接口
-type validator interface {
+type validatorer interface {
 	validateOpts()
 	yieldAssets() ([]string, []string)
 }
@@ -30,7 +30,7 @@ func NewPage(routers ...HTTPRouter) *Page {
 }
 
 // 新增 Page 图表，支持一次接收多个 Chart
-func (page *Page) Add(charts ...validator) *Page {
+func (page *Page) Add(charts ...validatorer) *Page {
 	if len(charts) < 1 {
 		log.Println("Charts should length > 0")
 		return page
