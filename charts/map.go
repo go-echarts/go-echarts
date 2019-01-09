@@ -2,6 +2,8 @@ package charts
 
 import (
 	"io"
+	
+	"github.com/chenjiandongx/go-echarts/datasets"
 )
 
 type Map struct {
@@ -16,7 +18,7 @@ func NewMap(mapType string, routers ...HTTPRouter) *Map {
 	chart := new(Map)
 	chart.mapType = mapType
 	chart.initBaseOpts(false, routers...)
-	chart.JSAssets.Add("maps/" + MapFilenames[mapType] + ".js")
+	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
 	return chart
 }
 

@@ -23,8 +23,8 @@ func TestBarAssetsAfterRender(t *testing.T) {
 
 func TestBarDefaultValue(t *testing.T) {
 	bar := NewBar()
-	bar.Render()
-
+	err := bar.Render()
+	assert.NoError(t, err)
 	assert.Equal(t, bar.Width, "900px")
 	assert.Equal(t, bar.Height, "500px")
 	assert.Equal(t, bar.PageTitle, "Awesome go-echarts")

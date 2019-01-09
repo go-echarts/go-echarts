@@ -2,6 +2,8 @@ package charts
 
 import (
 	"io"
+
+	"github.com/chenjiandongx/go-echarts/datasets"
 )
 
 type Geo struct {
@@ -17,7 +19,7 @@ var geoFormatter = `function (params) {
 func NewGeo(mapType string, routers ...HTTPRouter) *Geo {
 	chart := new(Geo)
 	chart.initBaseOpts(false, routers...)
-	chart.JSAssets.Add("maps/" + MapFilenames[mapType] + ".js")
+	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
 	chart.GeoOpts.Map = mapType
 	return chart
 }
@@ -35,7 +37,7 @@ func (c *Geo) Add(name, geoType string, data map[string]float32, options ...inte
 }
 
 func (c *Geo) extendValue(region string, v float32) []float32 {
-	tv := Coordinates[region]
+	tv := datasets.Coordinates[region]
 	res := append(tv[:], v)
 	return res
 }
