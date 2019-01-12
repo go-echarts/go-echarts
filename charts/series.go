@@ -14,6 +14,30 @@ type LabelTextOpts struct {
 	// "inside", "insideLeft", "insideRight", "insideTop", "insideBottom"
 	// "insideTopLeft", "insideBottomLeft", "insideTopRight", "insideBottomRight"
 	Position string `json:"position,omitempty"`
+	// 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行。
+	// 1. 字符串模板 模板变量有：
+	// {a}：系列名。
+	// {b}：数据名。
+	// {c}：数据值。
+	// {@xxx}：数据中名为'xxx'的维度的值，如{@product}表示名为'product'`的维度的值。
+	// {@[n]}：数据中维度 n 的值，如{@[3]}` 表示维度 3 的值，从 0 开始计数。
+	// 2, 回调函数
+	// 回调函数格式：
+	// (params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string
+	// 第一个参数 params 是 formatter 需要的数据集。格式如下：
+	// {
+	//    componentType: 'series',
+	//    seriesType: string,	// 系列类型
+	//    seriesIndex: number,	// 系列在传入的 option.series 中的 index
+	//    seriesName: string,	// 系列名称
+	//    name: string,			// 数据名，类目名
+	//    dataIndex: number,	// 数据在传入的 data 数组中的 index
+	//    data: Object,			// 传入的原始数据项
+	//    value: number|Array,	// 传入的数据值
+	//    color: string,		// 数据图形的颜色
+	//    percent: number,		// 饼图的百分比
+	// }
+	Formatter string `json:"formatter,omitempty"`
 }
 
 // MarkLine 配置项
@@ -29,6 +53,8 @@ type MPStyleOpts struct {
 	Symbol string `json:"symbol,omitempty"`
 	// 图元的大小
 	SymbolSize float32 `json:"symbolSize,omitempty"`
+	// 标注文本配置项
+	Label LabelTextOpts `json:"label,omitempty"`
 }
 
 // MarkPoint 数据 Name-Type
@@ -66,6 +92,8 @@ type MLStyleOpts struct {
 	Symbol []string `json:"symbol,omitempty"`
 	// 图元的大小
 	SymbolSize float32 `json:"symbolSize,omitempty"`
+	// 标线文本配置项
+	Label LabelTextOpts `json:"label,omitempty"`
 }
 
 // MarkLine 数据 Name-Type
