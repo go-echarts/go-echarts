@@ -18,8 +18,7 @@ type InitOpts struct {
 
 // 静态资源配置项
 type AssetsOpts struct {
-	JSAssets  orderSet
-	CSSAssets orderSet
+	JSAssets, CSSAssets orderedSet
 }
 
 // 初始化静态资源配置项

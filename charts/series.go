@@ -10,19 +10,9 @@ type LabelTextOpts struct {
 	// 通过相对的百分比或者绝对像素值表示标签相对于图形包围盒左上角的位置。示例：
 	// 绝对的像素值	position: [10, 10],
 	// 相对的百分比	position: ["50%", "50%"]
-	// "top"
-	// "left"
-	// "right"
-	// "bottom"
-	// "inside"
-	// "insideLeft"
-	// "insideRight"
-	// "insideTop"
-	// "insideBottom"
-	// "insideTopLeft"
-	// "insideBottomLeft"
-	// "insideTopRight"
-	// "insideBottomRight"
+	// "top", "left", "right", "bottom"
+	// "inside", "insideLeft", "insideRight", "insideTop", "insideBottom"
+	// "insideTopLeft", "insideBottomLeft", "insideTopRight", "insideBottomRight"
 	Position string `json:"position,omitempty"`
 }
 

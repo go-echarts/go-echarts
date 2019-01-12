@@ -214,9 +214,16 @@ type VMInRange struct {
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 }
 
-// 坐标轴在 grid 区域中的分隔区域
-type SplitArea struct {
+// 坐标轴在 grid 区域中的分隔区域配置项
+type SplitAreaOpts struct {
+	// 是否显示分隔区域
 	Show bool `json:"show,omitempty"`
+}
+
+// 坐标轴在 grid 区域中的分隔线配置项配置项
+type SplitLineOpts struct {
+	// 是否显示分隔线
+	Show bool `json:"show"`
 }
 
 // X 轴配置项组件
@@ -250,8 +257,10 @@ type XAxisOpts struct {
 	// X 轴所在的 grid 的索引
 	// 默认 0
 	GridIndex int `json:"gridIndex,omitempty"`
-	// X 轴分隔区域配置项
-	SplitArea `json:"splitArea,omitempty"`
+	// X 轴在 grid 区域中的分隔区域配置项
+	SplitArea SplitAreaOpts `json:"splitArea,omitempty"`
+	// X 轴在 grid 区域中的分隔线配置项
+	SplitLine SplitLineOpts `json:"splitLine,,omitempty"`
 }
 
 // Y 轴配置项组件
@@ -285,8 +294,10 @@ type YAxisOpts struct {
 	// Y 轴所在的 grid 的索引
 	// 默认 0
 	GridIndex int `json:"gridIndex,omitempty"`
-	// Y 轴分隔区域配置项
-	SplitArea `json:"splitArea,omitempty"`
+	// Y 轴在 grid 区域中的分隔区域配置项
+	SplitArea SplitAreaOpts `json:"splitArea,omitempty"`
+	// Y 轴在 grid 区域中的分隔线配置项
+	SplitLine SplitLineOpts `json:"splitLine,,omitempty"`
 }
 
 // 地理坐标系组件配置项

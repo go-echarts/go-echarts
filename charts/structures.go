@@ -7,21 +7,21 @@ type nameValueItem struct {
 }
 
 // 有序去重集合
-type orderSet struct {
+type orderedSet struct {
 	filter map[string]bool
 	Values []string
 }
 
-func (o *orderSet) init(item string) {
+func (o *orderedSet) init(item string) {
 	o.filter = make(map[string]bool)
 	o.Add(item)
 }
 
-func (o *orderSet) initWithoutArg() {
+func (o *orderedSet) initWithoutArg() {
 	o.filter = make(map[string]bool)
 }
 
-func (o *orderSet) Add(item string) {
+func (o *orderedSet) Add(item string) {
 	if !o.filter[item] {
 		o.filter[item] = true
 		o.Values = append(o.Values, item)
