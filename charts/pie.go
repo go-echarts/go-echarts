@@ -22,7 +22,6 @@ func (opt *PieOpts) setChartOpt(s *singleSeries) {
 	s.Radius = opt.Radius
 }
 
-// 工厂函数，生成 `Pie` 实例
 func NewPie(routers ...HTTPRouter) *Pie {
 	chart := new(Pie)
 	chart.initBaseOpts(false, routers...)

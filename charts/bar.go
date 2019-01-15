@@ -22,7 +22,6 @@ func (opt *BarOpts) setChartOpt(s *singleSeries) {
 	s.YAxisIndex = opt.YAxisIndex
 }
 
-// 工厂函数，生成 `Bar` 实例
 func NewBar(routers ...HTTPRouter) *Bar {
 	chart := new(Bar)
 	chart.initBaseOpts(true, routers...)

@@ -9,7 +9,6 @@ type Gauge struct {
 	Series
 }
 
-// 工厂函数，生成 `Gauge` 实例
 func NewGauge(routers ...HTTPRouter) *Gauge {
 	chart := new(Gauge)
 	chart.initBaseOpts(false, routers...)

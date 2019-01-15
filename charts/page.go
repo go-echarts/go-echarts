@@ -19,7 +19,6 @@ type Page struct {
 	HTTPRouters
 }
 
-// 工厂函数，生成 `Bar` 实例
 func NewPage(routers ...HTTPRouter) *Page {
 	page := new(Page)
 	for i := 0; i < len(routers); i++ {
@@ -43,7 +42,6 @@ func (page *Page) Add(charts ...validatorer) *Page {
 	return page
 }
 
-// 提取引用资源
 func (page *Page) extractAssets(jsList, cssList []string) {
 	for i := 0; i < len(jsList); i++ {
 		page.JSAssets.Add(jsList[i])

@@ -21,7 +21,6 @@ func (opt *LineOpts) setChartOpt(s *singleSeries) {
 	s.YAxisIndex = opt.YAxisIndex
 }
 
-// 工厂函数，生成 `Line` 实例
 func NewLine(routers ...HTTPRouter) *Line {
 	chart := new(Line)
 	chart.initBaseOpts(true, routers...)

@@ -2,7 +2,7 @@ package templates
 
 import (
 	"log"
-	
+
 	"github.com/gobuffalo/packr"
 )
 

@@ -15,7 +15,6 @@ func (opt *HeatMapOpts) setChartOpt(s *singleSeries) {
 	s.YAxisIndex = opt.YAxisIndex
 }
 
-// 工厂函数，生成 `HeatMap` 实例
 func NewHeatMap(routers ...HTTPRouter) *HeatMap {
 	chart := new(HeatMap)
 	chart.initBaseOpts(true, routers...)

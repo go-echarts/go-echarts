@@ -23,7 +23,6 @@ type RippleEffectOpts struct {
 	BrushType string `json:"brushType,omitempty"`
 }
 
-// 工厂函数，生成 `Scatter` 实例
 func NewEffectScatter(routers ...HTTPRouter) *EffectScatter {
 	chart := new(EffectScatter)
 	chart.initBaseOpts(true, routers...)

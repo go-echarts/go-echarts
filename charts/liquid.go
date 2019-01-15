@@ -26,7 +26,6 @@ func (opt *LiquidOpts) setChartOpt(s *singleSeries) {
 	s.IsWaveAnimation = opt.IsWaveAnimation
 }
 
-// 工厂函数，生成 `Liquid` 实例
 func NewLiquid(routers ...HTTPRouter) *Liquid {
 	chart := new(Liquid)
 	chart.initBaseOpts(false, routers...)

@@ -4,7 +4,6 @@ type Scatter struct {
 	RectChart
 }
 
-// 工厂函数，生成 `Scatter` 实例
 func NewScatter(routers ...HTTPRouter) *Scatter {
 	chart := new(Scatter)
 	chart.initBaseOpts(true, routers...)

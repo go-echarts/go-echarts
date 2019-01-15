@@ -4,7 +4,6 @@ type Kline struct {
 	RectChart
 }
 
-// 工厂函数，生成 `Kline` 实例
 func NewKLine(routers ...HTTPRouter) *Kline {
 	chart := new(Kline)
 	chart.initBaseOpts(true, routers...)

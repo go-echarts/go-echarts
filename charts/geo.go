@@ -15,7 +15,6 @@ var geoFormatter = `function (params) {
 		return params.name + ' : ' + params.value[2];
 }`
 
-// 工厂函数，生成 `Geo` 实例
 func NewGeo(mapType string, routers ...HTTPRouter) *Geo {
 	chart := new(Geo)
 	chart.initBaseOpts(false, routers...)

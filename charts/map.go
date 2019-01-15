@@ -13,7 +13,6 @@ type Map struct {
 	mapType string
 }
 
-// 工厂函数，生成 `Map` 实例
 func NewMap(mapType string, routers ...HTTPRouter) *Map {
 	chart := new(Map)
 	chart.mapType = mapType

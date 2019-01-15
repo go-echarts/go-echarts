@@ -29,7 +29,6 @@ var wcTextColor = `function () {
 		Math.round(Math.random() * 160)].join(',') + ')';
 }`
 
-// 工厂函数，生成 `WordCloud` 实例
 func NewWordCloud(routers ...HTTPRouter) *WordCloud {
 	chart := new(WordCloud)
 	chart.initBaseOpts(false, routers...)
