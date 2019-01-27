@@ -22,13 +22,11 @@ func NewHeatMap(routers ...HTTPRouter) *HeatMap {
 	return chart
 }
 
-// 提供 X 轴数据
 func (c *HeatMap) AddXAxis(xAxis interface{}) *HeatMap {
 	c.xAxisData = xAxis
 	return c
 }
 
-// 提供 Y 轴数据及 Series 配置项
 func (c *HeatMap) AddYAxis(name string, yAxis interface{}, options ...interface{}) *HeatMap {
 	series := singleSeries{Name: name, Type: "heatmap", Data: yAxis}
 	series.setSingleSeriesOpts(options...)

@@ -29,13 +29,11 @@ func NewBar(routers ...HTTPRouter) *Bar {
 	return chart
 }
 
-// 提供 X 轴数据
 func (c *Bar) AddXAxis(xAxis interface{}) *Bar {
 	c.xAxisData = xAxis
 	return c
 }
 
-// 提供 Y 轴数据及 Series 配置项
 func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Bar {
 	series := singleSeries{Name: name, Type: "bar", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
@@ -48,7 +46,6 @@ func (c *Bar) XYReversal() {
 	c.isXYReversal = true
 }
 
-// 对图形配置做最后的验证，确保能够正确渲染
 func (c *Bar) validateOpts() {
 	c.XAxisOptsList[0].Data = c.xAxisData
 	// XY 轴翻转

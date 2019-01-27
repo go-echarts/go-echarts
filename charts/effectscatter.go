@@ -30,13 +30,11 @@ func NewEffectScatter(routers ...HTTPRouter) *EffectScatter {
 	return chart
 }
 
-// 提供 X 轴数据
 func (c *EffectScatter) AddXAxis(xAxis interface{}) *EffectScatter {
 	c.xAxisData = xAxis
 	return c
 }
 
-// 提供 Y 轴数据及 Series 配置项
 func (c *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *EffectScatter {
 	series := singleSeries{Name: name, Type: "effectScatter", Data: yAxis}
 	series.setSingleSeriesOpts(options...)

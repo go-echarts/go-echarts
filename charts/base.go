@@ -66,7 +66,6 @@ func (opt *InitOpts) validateInitOpt() {
 	opt.validateChartID()
 }
 
-// Http 路由
 type HTTPRouter struct {
 	URL  string // 路由 URL
 	Text string // 路由显示文字

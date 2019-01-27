@@ -56,7 +56,6 @@ func renderToWriter(chart interface{}, renderName string, removeStr []string, w 
 	return nil
 }
 
-// 随机种子
 var seed = rand.NewSource(time.Now().UnixNano())
 
 // 生成唯一且随机的图表 ID

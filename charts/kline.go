@@ -11,13 +11,11 @@ func NewKLine(routers ...HTTPRouter) *Kline {
 	return chart
 }
 
-// 提供 X 轴数据
 func (c *Kline) AddXAxis(xAxis interface{}) *Kline {
 	c.xAxisData = xAxis
 	return c
 }
 
-// 提供 Y 轴数据及 Series 配置项
 func (c *Kline) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Kline {
 	series := singleSeries{Name: name, Type: "candlestick", Data: yAxis}
 	series.setSingleSeriesOpts(options...)

@@ -63,7 +63,7 @@ type RectChart struct {
 }
 
 // RectChart 设置全局配置项
-func (rc *RectChart) SetGlobalConfig(options ...interface{}) *RectChart {
+func (rc *RectChart) SetGlobalOptions(options ...interface{}) *RectChart {
 	rc.RectOpts.setRectGlobalConfig(options...)
 	return rc
 }

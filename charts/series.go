@@ -318,7 +318,7 @@ func (series *Series) exportSeries() Series {
 	return *series
 }
 
-func (series *Series) SetSeriesConfig(options ...interface{}) {
+func (series *Series) SetSeriesOptions(options ...interface{}) {
 	tsl := *series
 	for i := 0; i < len(tsl); i++ {
 		tsl[i].switchSeriesOpts(options...)

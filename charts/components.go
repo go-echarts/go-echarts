@@ -125,6 +125,7 @@ type TextStyleOpts struct {
 	Normal *TextStyleOpts `json:"normal,omitempty"`
 }
 
+// 线风格配置项
 type LineStyleOpts struct {
 	// 线的颜色
 	Color string `json:"color,omitempty"`
@@ -141,6 +142,7 @@ type LineStyleOpts struct {
 	Curveness float32 `json:"curveness,omitempty"`
 }
 
+// 区域风格配置项
 type AreaStyleOpts struct {
 	// 填充区域的颜色
 	Color string `json:"color,omitempty"`
