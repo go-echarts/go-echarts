@@ -5,7 +5,8 @@
 <body>
 {{- template "routers" . }}
 {{- range .Charts }}
-    {{ template "base" .}}
+    {{ template "base" . }}
+    <br/>
 {{- end }}
 <style>
     .container {display: flex;justify-content: center;align-items: center;}

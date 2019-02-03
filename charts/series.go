@@ -1,9 +1,13 @@
 package charts
 
+type seriesOptser interface {
+	markSeries()
+}
+
 // 图形上的文本标签配置项
 type LabelTextOpts struct {
 	// 是否显示标签
-	Show bool `json:"show,omitempty"`
+	Show bool `json:"show"`
 	// 文字的颜色
 	Color string `json:"color,omitempty"`
 	// 标签的位置
@@ -40,8 +44,10 @@ type LabelTextOpts struct {
 	Formatter string `json:"formatter,omitempty"`
 }
 
+func (LabelTextOpts) markSeries() {}
+
 // MarkLine 配置项
-type MarkPointOpts struct {
+type MarkPoint struct {
 	Data []interface{} `json:"data,omitempty"`
 	MPStyleOpts
 }
@@ -57,6 +63,8 @@ type MPStyleOpts struct {
 	Label LabelTextOpts `json:"label,omitempty"`
 }
 
+func (MPStyleOpts) markSeries() {}
+
 // MarkPoint 数据 Name-Type
 type MPNameTypeItem struct {
 	// 标记点名称
@@ -67,6 +75,8 @@ type MPNameTypeItem struct {
 	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
 	ValueDim string `json:"valueDim,omitempty"`
 }
+
+func (MPNameTypeItem) markSeries() {}
 
 // MarkPoint 数据 Name-Coordinates
 type MPNameCoordItem struct {
@@ -79,8 +89,10 @@ type MPNameCoordItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
+func (MPNameCoordItem) markSeries() {}
+
 // MarkLine 配置项
-type MarkLineOpts struct {
+type MarkLine struct {
 	Data []interface{} `json:"data,omitempty"`
 	MLStyleOpts
 }
@@ -96,6 +108,8 @@ type MLStyleOpts struct {
 	Label LabelTextOpts `json:"label,omitempty"`
 }
 
+func (MLStyleOpts) markSeries() {}
+
 // MarkLine 数据 Name-Type
 type MLNameTypeItem struct {
 	// 标记线名称
@@ -106,6 +120,8 @@ type MLNameTypeItem struct {
 	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
 	ValueDim string `json:"valueDim,omitempty"`
 }
+
+func (MLNameTypeItem) markSeries() {}
 
 // MarkLine 数据 Name-YAxis
 type MLNameYAxisItem struct {
@@ -118,6 +134,8 @@ type MLNameYAxisItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
+func (MLNameYAxisItem) markSeries() {}
+
 // MarkLine 数据 Name-XAxis
 type MLNameXAxisItem struct {
 	// 标记线名称
@@ -128,6 +146,8 @@ type MLNameXAxisItem struct {
 	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
 	ValueDim string `json:"valueDim,omitempty"`
 }
+
+func (MLNameXAxisItem) markSeries() {}
 
 // MarkLine 数据 Name-Coordinates
 type MLNameCoordItem struct {
@@ -141,6 +161,8 @@ type MLNameCoordItem struct {
 	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
 	ValueDim string `json:"valueDim,omitempty"`
 }
+
+func (MLNameCoordItem) markSeries() {}
 
 type ItemStyleOpts struct {
 	// 图形的颜色
@@ -156,6 +178,8 @@ type ItemStyleOpts struct {
 	// 图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形
 	Opacity float32 `json:"opacity,omitempty"`
 }
+
+func (ItemStyleOpts) markSeries() {}
 
 type singleSeries struct {
 	// 系列名称
@@ -223,8 +247,8 @@ type singleSeries struct {
 	// 系列配置项
 	ItemStyleOpts    `json:"itemStyle,omitempty"`
 	LabelTextOpts    `json:"label,omitempty"`
-	MarkLineOpts     `json:"markLine,omitempty"`
-	MarkPointOpts    `json:"markPoint,omitempty"`
+	MarkLine         `json:"markLine,omitempty"`
+	MarkPoint        `json:"markPoint,omitempty"`
 	RippleEffectOpts `json:"rippleEffect,omitempty"`
 	LineStyleOpts    `json:"lineStyle,omitempty"`
 	AreaStyleOpts    `json:"areaStyle,omitempty"`
@@ -232,7 +256,7 @@ type singleSeries struct {
 }
 
 // 设置 singleSeries 配置项
-func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
+func (s *singleSeries) switchSeriesOpts(options ...seriesOptser) {
 	// 实际 MarkLevel Name Coordinates 结构
 	type MLNameCoord struct {
 		Name  string        `json:"name,omitempty"`
@@ -262,25 +286,25 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 
 			// MarkLine 配置项
 		case MLNameTypeItem:
-			s.MarkLineOpts.Data = append(s.MarkLineOpts.Data, option.(MLNameTypeItem))
+			s.MarkLine.Data = append(s.MarkLine.Data, option.(MLNameTypeItem))
 		case MLNameXAxisItem:
-			s.MarkLineOpts.Data = append(s.MarkLineOpts.Data, option.(MLNameXAxisItem))
+			s.MarkLine.Data = append(s.MarkLine.Data, option.(MLNameXAxisItem))
 		case MLNameYAxisItem:
-			s.MarkLineOpts.Data = append(s.MarkLineOpts.Data, option.(MLNameYAxisItem))
+			s.MarkLine.Data = append(s.MarkLine.Data, option.(MLNameYAxisItem))
 		case MLNameCoordItem:
 			m := option.(MLNameCoordItem)
-			s.MarkLineOpts.Data = append(
-				s.MarkLineOpts.Data, []MLNameCoord{{Name: m.Name, Coord: m.Coord0}, {Coord: m.Coord1}})
+			s.MarkLine.Data = append(
+				s.MarkLine.Data, []MLNameCoord{{Name: m.Name, Coord: m.Coord0}, {Coord: m.Coord1}})
 		case MLStyleOpts:
-			s.MarkLineOpts.MLStyleOpts = option.(MLStyleOpts)
+			s.MarkLine.MLStyleOpts = option.(MLStyleOpts)
 
 			// MarkPoint 配置项
 		case MPNameTypeItem:
-			s.MarkPointOpts.Data = append(s.MarkPointOpts.Data, option.(MPNameTypeItem))
+			s.MarkPoint.Data = append(s.MarkPoint.Data, option.(MPNameTypeItem))
 		case MPNameCoordItem:
-			s.MarkPointOpts.Data = append(s.MarkPointOpts.Data, option.(MPNameCoordItem))
+			s.MarkPoint.Data = append(s.MarkPoint.Data, option.(MPNameCoordItem))
 		case MPStyleOpts:
-			s.MarkPointOpts.MPStyleOpts = option.(MPStyleOpts)
+			s.MarkPoint.MPStyleOpts = option.(MPStyleOpts)
 
 		case BarOpts:
 			opt := option.(BarOpts)
@@ -304,7 +328,7 @@ func (s *singleSeries) switchSeriesOpts(options ...interface{}) {
 	}
 }
 
-func (s *singleSeries) setSingleSeriesOpts(options ...interface{}) {
+func (s *singleSeries) setSingleSeriesOpts(options ...seriesOptser) {
 	s.switchSeriesOpts(options...)
 }
 
@@ -318,7 +342,7 @@ func (series *Series) exportSeries() Series {
 	return *series
 }
 
-func (series *Series) SetSeriesOptions(options ...interface{}) {
+func (series *Series) SetSeriesOptions(options ...seriesOptser) {
 	tsl := *series
 	for i := 0; i < len(tsl); i++ {
 		tsl[i].switchSeriesOpts(options...)

@@ -34,6 +34,8 @@ type TitleOpts struct {
 	Right string `json:"right,omitempty"`
 }
 
+func (TitleOpts) markGlobal() {}
+
 // 图例组件配置项
 type LegendOpts struct {
 	// 是否显示图例
@@ -55,6 +57,8 @@ type LegendOpts struct {
 	// 默认自适应。
 	Bottom string `json:"bottom,omitempty"`
 }
+
+func (LegendOpts) markGlobal() {}
 
 // 提示框组件配置项
 type TooltipOpts struct {
@@ -94,12 +98,16 @@ type TooltipOpts struct {
 	Formatter string `json:"formatter,omitempty"`
 }
 
+func (TooltipOpts) markGlobal() {}
+
 // 工具箱组件配置项
 type ToolboxOpts struct {
 	// 是否显示工具栏组件
 	Show      bool `json:"show"`
 	TBFeature `json:"feature"`
 }
+
+func (ToolboxOpts) markGlobal() {}
 
 type TBFeature struct {
 	// 保存为图片
@@ -125,6 +133,8 @@ type TextStyleOpts struct {
 	Normal *TextStyleOpts `json:"normal,omitempty"`
 }
 
+func (TextStyleOpts) markSeries() {}
+
 // 线风格配置项
 type LineStyleOpts struct {
 	// 线的颜色
@@ -142,6 +152,8 @@ type LineStyleOpts struct {
 	Curveness float32 `json:"curveness,omitempty"`
 }
 
+func (LineStyleOpts) markSeries() {}
+
 // 区域风格配置项
 type AreaStyleOpts struct {
 	// 填充区域的颜色
@@ -149,6 +161,8 @@ type AreaStyleOpts struct {
 	// 填充区域的透明度。支持从 0 到 1 的数字，为 0 时不填充区域
 	Opacity float32 `json:"opacity,omitempty"`
 }
+
+func (AreaStyleOpts) markSeries() {}
 
 // 区域缩放组件配置项
 type DataZoomOpts struct {
@@ -175,6 +189,8 @@ type DataZoomOpts struct {
 	YAxisIndex interface{} `json:"yAxisIndex,omitempty"`
 }
 
+func (DataZoomOpts) markGlobal() {}
+
 type DataZoomOptsList []DataZoomOpts
 
 func (dz DataZoomOptsList) Len() int {
@@ -197,8 +213,10 @@ type VisualMapOpts struct {
 	// 两端的文本，如 ['High', 'Low']
 	Text []string `json:"text,omitempty"`
 	// 定义在选中范围中的视觉元素
-	VMInRange `json:"inRange,omitempty"`
+	InRange VMInRange `json:"inRange,omitempty"`
 }
+
+func (VisualMapOpts) markGlobal() {}
 
 type VisualMapOptsList []VisualMapOpts
 
@@ -265,6 +283,8 @@ type XAxisOpts struct {
 	SplitLine SplitLineOpts `json:"splitLine,,omitempty"`
 }
 
+func (XAxisOpts) markGlobal() {}
+
 // Y 轴配置项组件
 type YAxisOpts struct {
 	// Y 轴名称
@@ -276,6 +296,20 @@ type YAxisOpts struct {
 	Type string `json:"type,omitempty"`
 	// 是否显示 Y 轴
 	Show bool `json:"show,omitempty"`
+	// 刻度标签的内容格式器，支持字符串模板和回调函数两种形式
+	// 1.使用字符串模板，模板变量为刻度默认标签 {value}
+	// formatter: '{value} kg'
+	// 2.使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
+	// formatter: function (value, index) {
+	//    // 格式化成月/日，只在第一个刻度显示年份
+	//    var date = new Date(value);
+	//    var texts = [(date.getMonth() + 1), date.getDate()];
+	//    if (index === 0) {
+	//        texts.unshift(date.getYear());
+	//    }
+	//    return texts.join('/');
+	// }
+	AxisLabel LabelTextOpts `json:"axisLabel,omitempty"`
 	// Y 轴数据项
 	Data interface{} `json:"data,omitempty"`
 	// Y 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，
@@ -301,6 +335,8 @@ type YAxisOpts struct {
 	// Y 轴在 grid 区域中的分隔线配置项
 	SplitLine SplitLineOpts `json:"splitLine,,omitempty"`
 }
+
+func (YAxisOpts) markGlobal() {}
 
 // 地理坐标系组件配置项
 type GeoOpts struct {

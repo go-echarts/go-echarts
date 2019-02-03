@@ -9,12 +9,16 @@ type WordCloud struct {
 	Series
 }
 
+func (WordCloud) chartType() string { return "wordCloud" }
+
 // WordCLoud series options
 type WordCLoudOpts struct {
 	Shape         string
 	SizeRange     []float32
 	RotationRange []float32
 }
+
+func (WordCLoudOpts) markSeries() {}
 
 func (opt *WordCLoudOpts) setChartOpt(s *singleSeries) {
 	s.Shape = opt.Shape
@@ -36,7 +40,7 @@ func NewWordCloud(routers ...HTTPRouter) *WordCloud {
 	return chart
 }
 
-func (c *WordCloud) Add(name string, data map[string]interface{}, options ...interface{}) *WordCloud {
+func (c *WordCloud) Add(name string, data map[string]interface{}, options ...seriesOptser) *WordCloud {
 	nvs := make([]nameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, nameValueItem{k, v})
@@ -58,8 +62,8 @@ func (c *WordCloud) Add(name string, data map[string]interface{}, options ...int
 	return c
 }
 
-func (c *WordCloud) SetGlobalConfig(options ...interface{}) *WordCloud {
-	c.BaseOpts.setBaseGlobalConfig(options...)
+func (c *WordCloud) SetGlobalOptions(options ...globalOptser) *WordCloud {
+	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }
 

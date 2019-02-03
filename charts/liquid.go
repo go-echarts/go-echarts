@@ -9,12 +9,16 @@ type Liquid struct {
 	Series
 }
 
+func (Liquid) chartType() string { return "liquid" }
+
 // Liquid series options
 type LiquidOpts struct {
 	Shape           string
 	IsShowOutline   bool
 	IsWaveAnimation bool
 }
+
+func (LiquidOpts) markSeries() {}
 
 type LiquidOutlineOpts struct {
 	Show bool `json:"show"`
@@ -33,16 +37,15 @@ func NewLiquid(routers ...HTTPRouter) *Liquid {
 	return chart
 }
 
-func (c *Liquid) Add(name string, data interface{}, options ...interface{}) *Liquid {
+func (c *Liquid) Add(name string, data interface{}, options ...seriesOptser) *Liquid {
 	series := singleSeries{Name: name, Type: "liquidFill", Data: data}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
-	c.setColor(options...)
 	return c
 }
 
-func (c *Liquid) SetGlobalConfig(options ...interface{}) *Liquid {
-	c.BaseOpts.setBaseGlobalConfig(options...)
+func (c *Liquid) SetGlobalOptions(options ...globalOptser) *Liquid {
+	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }
 

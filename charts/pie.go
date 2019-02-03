@@ -9,12 +9,16 @@ type Pie struct {
 	Series
 }
 
+func (Pie) chartType() string { return "pie" }
+
 // Pie series options
 type PieOpts struct {
 	RoseType interface{}
 	Center   interface{}
 	Radius   interface{}
 }
+
+func (PieOpts) markSeries() {}
 
 func (opt *PieOpts) setChartOpt(s *singleSeries) {
 	s.RoseType = opt.RoseType
@@ -28,7 +32,7 @@ func NewPie(routers ...HTTPRouter) *Pie {
 	return chart
 }
 
-func (c *Pie) Add(name string, data map[string]interface{}, options ...interface{}) *Pie {
+func (c *Pie) Add(name string, data map[string]interface{}, options ...seriesOptser) *Pie {
 	nvs := make([]nameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, nameValueItem{k, v})
@@ -40,8 +44,8 @@ func (c *Pie) Add(name string, data map[string]interface{}, options ...interface
 	return c
 }
 
-func (c *Pie) SetGlobalConfig(options ...interface{}) *Pie {
-	c.BaseOpts.setBaseGlobalConfig(options...)
+func (c *Pie) SetGlobalOptions(options ...globalOptser) *Pie {
+	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }
 

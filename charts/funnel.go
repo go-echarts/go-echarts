@@ -9,13 +9,15 @@ type Funnel struct {
 	Series
 }
 
+func (Funnel) chartType() string { return "funnel" }
+
 func NewFunnel(routers ...HTTPRouter) *Funnel {
 	chart := new(Funnel)
 	chart.initBaseOpts(false, routers...)
 	return chart
 }
 
-func (c *Funnel) Add(name string, data map[string]interface{}, options ...interface{}) *Funnel {
+func (c *Funnel) Add(name string, data map[string]interface{}, options ...seriesOptser) *Funnel {
 	nvs := make([]nameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, nameValueItem{k, v})
@@ -27,8 +29,8 @@ func (c *Funnel) Add(name string, data map[string]interface{}, options ...interf
 	return c
 }
 
-func (c *Funnel) SetGlobalConfig(options ...interface{}) *Funnel {
-	c.BaseOpts.setBaseGlobalConfig(options...)
+func (c *Funnel) SetGlobalOptions(options ...globalOptser) *Funnel {
+	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }
 

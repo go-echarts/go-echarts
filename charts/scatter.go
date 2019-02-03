@@ -4,6 +4,8 @@ type Scatter struct {
 	RectChart
 }
 
+func (Scatter) chartType() string { return "scatter" }
+
 func NewScatter(routers ...HTTPRouter) *Scatter {
 	chart := new(Scatter)
 	chart.initBaseOpts(true, routers...)
@@ -16,7 +18,7 @@ func (c *Scatter) AddXAxis(xAxis interface{}) *Scatter {
 	return c
 }
 
-func (c *Scatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Scatter {
+func (c *Scatter) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Scatter {
 	series := singleSeries{Name: name, Type: "scatter", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)

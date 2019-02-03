@@ -5,53 +5,53 @@ import (
 )
 
 // XY 轴配置项
-type XYOpts struct {
+type XYAxis struct {
 	XAxisOptsList []XAxisOpts
 	YAxisOptsList []YAxisOpts
 }
 
-func (opt *XYOpts) initXYOpts() {
-	opt.XAxisOptsList = append(opt.XAxisOptsList, XAxisOpts{})
-	opt.YAxisOptsList = append(opt.YAxisOptsList, YAxisOpts{})
+func (xy *XYAxis) initXYOpts() {
+	xy.XAxisOptsList = append(xy.XAxisOptsList, XAxisOpts{})
+	xy.YAxisOptsList = append(xy.YAxisOptsList, YAxisOpts{})
 }
 
 // 设置 XYOptions 全局配置项
-func (opt *XYOpts) setXYGlobalConfig(options ...interface{}) {
+func (xy *XYAxis) setXYGlobalOptions(options ...globalOptser) {
 	for i := 0; i < len(options); i++ {
 		option := options[i]
 		switch option.(type) {
 		case XAxisOpts:
-			opt.XAxisOptsList[0] = option.(XAxisOpts)
+			xy.XAxisOptsList[0] = option.(XAxisOpts)
 		case YAxisOpts:
-			opt.YAxisOptsList[0] = option.(YAxisOpts)
+			xy.YAxisOptsList[0] = option.(YAxisOpts)
 		}
 	}
 }
 
 // 扩展新增 X 轴
-func (opt *XYOpts) ExtendXAxis(xAxis ...XAxisOpts) {
+func (xy *XYAxis) ExtendXAxis(xAxis ...XAxisOpts) {
 	for i := 0; i < len(xAxis); i++ {
-		opt.XAxisOptsList = append(opt.XAxisOptsList, xAxis[i])
+		xy.XAxisOptsList = append(xy.XAxisOptsList, xAxis[i])
 	}
 }
 
 // 扩展新增 Y 轴
-func (opt *XYOpts) ExtendYAxis(yAxis ...YAxisOpts) {
+func (xy *XYAxis) ExtendYAxis(yAxis ...YAxisOpts) {
 	for i := 0; i < len(yAxis); i++ {
-		opt.YAxisOptsList = append(opt.YAxisOptsList, yAxis[i])
+		xy.YAxisOptsList = append(xy.YAxisOptsList, yAxis[i])
 	}
 }
 
 // 直角坐标系配置项
 type RectOpts struct {
 	BaseOpts
-	XYOpts
+	XYAxis
 }
 
 // 设置 RectOptions 全局配置项
-func (rect *RectOpts) setRectGlobalConfig(options ...interface{}) {
-	rect.BaseOpts.setBaseGlobalConfig(options...)
-	rect.XYOpts.setXYGlobalConfig(options...)
+func (rect *RectOpts) setRectGlobalOptions(options ...globalOptser) {
+	rect.BaseOpts.setBaseGlobalOptions(options...)
+	rect.XYAxis.setXYGlobalOptions(options...)
 }
 
 // 直角坐标系图表
@@ -63,8 +63,8 @@ type RectChart struct {
 }
 
 // RectChart 设置全局配置项
-func (rc *RectChart) SetGlobalOptions(options ...interface{}) *RectChart {
-	rc.RectOpts.setRectGlobalConfig(options...)
+func (rc *RectChart) SetGlobalOptions(options ...globalOptser) *RectChart {
+	rc.RectOpts.setRectGlobalOptions(options...)
 	return rc
 }
 
@@ -81,6 +81,10 @@ func (rc *RectChart) Overlap(a ...serieser) {
 func (rc *RectChart) validateOpts() {
 	// 确保 X 轴数据不会因为设置了 XAxisOpts 而被抹除
 	rc.XAxisOptsList[0].Data = rc.xAxisData
+	// 确保 Y 轴数标签正确显示
+	for i := 0; i < len(rc.YAxisOptsList); i++ {
+		rc.YAxisOptsList[i].AxisLabel.Show = true
+	}
 	rc.validateAssets(rc.AssetsHost)
 }
 

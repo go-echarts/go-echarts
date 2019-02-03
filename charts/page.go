@@ -5,18 +5,19 @@ import (
 	"log"
 )
 
-// 校验器接口
-type validatorer interface {
+type charter interface {
 	validateOpts()
 	yieldAssets() ([]string, []string)
+	chartType() string
 }
 
 type Page struct {
 	InitOpts
 	AssetsOpts
 	Charts []interface{}
-
 	HTTPRouters
+
+	unusedStr orderedSet
 }
 
 func NewPage(routers ...HTTPRouter) *Page {
@@ -25,11 +26,12 @@ func NewPage(routers ...HTTPRouter) *Page {
 		page.HTTPRouters = append(page.HTTPRouters, routers[i])
 	}
 	page.AssetsOpts.initAssetsOptsWithoutArg()
+	page.unusedStr.initWithoutArg()
 	return page
 }
 
 // 新增 Page 图表，支持一次接收多个 Chart
-func (page *Page) Add(charts ...validatorer) *Page {
+func (page *Page) Add(charts ...charter) *Page {
 	if len(charts) < 1 {
 		log.Println("Charts should length > 0")
 		return page
@@ -38,6 +40,11 @@ func (page *Page) Add(charts ...validatorer) *Page {
 		charts[i].validateOpts()
 		page.extractAssets(charts[i].yieldAssets())
 		page.Charts = append(page.Charts, charts[i])
+
+		if charts[i].chartType() == "liquid" {
+			page.unusedStr.Add(`"outline":{"show":false},?`)
+			page.unusedStr.Add(`"waveAnimation":false,?`)
+		}
 	}
 	return page
 }
@@ -53,5 +60,5 @@ func (page *Page) extractAssets(jsList, cssList []string) {
 
 func (page *Page) Render(w ...io.Writer) error {
 	page.InitOpts.setDefault()
-	return renderToWriter(page, "page", []string{}, w...)
+	return renderToWriter(page, "page", page.unusedStr.Values, w...)
 }

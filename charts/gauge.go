@@ -9,13 +9,15 @@ type Gauge struct {
 	Series
 }
 
+func (Gauge) chartType() string { return "gauge" }
+
 func NewGauge(routers ...HTTPRouter) *Gauge {
 	chart := new(Gauge)
 	chart.initBaseOpts(false, routers...)
 	return chart
 }
 
-func (c *Gauge) Add(name string, data map[string]interface{}, options ...interface{}) *Gauge {
+func (c *Gauge) Add(name string, data map[string]interface{}, options ...seriesOptser) *Gauge {
 	nvs := make([]nameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, nameValueItem{k, v})
@@ -23,12 +25,11 @@ func (c *Gauge) Add(name string, data map[string]interface{}, options ...interfa
 	series := singleSeries{Name: name, Type: "gauge", Data: nvs}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
-	c.setColor(options...)
 	return c
 }
 
-func (c *Gauge) SetGlobalConfig(options ...interface{}) *Gauge {
-	c.BaseOpts.setBaseGlobalConfig(options...)
+func (c *Gauge) SetGlobalOptions(options ...globalOptser) *Gauge {
+	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }
 

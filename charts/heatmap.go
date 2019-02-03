@@ -4,11 +4,15 @@ type HeatMap struct {
 	RectChart
 }
 
+func (HeatMap) chartType() string { return "heatMap" }
+
 // heatMap series options
 type HeatMapOpts struct {
 	XAxisIndex int
 	YAxisIndex int
 }
+
+func (HeatMapOpts) markSeries() {}
 
 func (opt *HeatMapOpts) setChartOpt(s *singleSeries) {
 	s.XAxisIndex = opt.XAxisIndex
@@ -27,7 +31,7 @@ func (c *HeatMap) AddXAxis(xAxis interface{}) *HeatMap {
 	return c
 }
 
-func (c *HeatMap) AddYAxis(name string, yAxis interface{}, options ...interface{}) *HeatMap {
+func (c *HeatMap) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *HeatMap {
 	series := singleSeries{Name: name, Type: "heatmap", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)

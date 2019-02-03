@@ -4,6 +4,8 @@ type EffectScatter struct {
 	RectChart
 }
 
+func (EffectScatter) chartType() string { return "effectScatter" }
+
 // EffectScatter series options
 type EffectScatterChartOpts struct {
 	XAxisIndex int
@@ -23,6 +25,8 @@ type RippleEffectOpts struct {
 	BrushType string `json:"brushType,omitempty"`
 }
 
+func (RippleEffectOpts) markSeries() {}
+
 func NewEffectScatter(routers ...HTTPRouter) *EffectScatter {
 	chart := new(EffectScatter)
 	chart.initBaseOpts(true, routers...)
@@ -35,7 +39,7 @@ func (c *EffectScatter) AddXAxis(xAxis interface{}) *EffectScatter {
 	return c
 }
 
-func (c *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...interface{}) *EffectScatter {
+func (c *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *EffectScatter {
 	series := singleSeries{Name: name, Type: "effectScatter", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)

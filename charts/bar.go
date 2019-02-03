@@ -9,12 +9,16 @@ type Bar struct {
 	isXYReversal bool
 }
 
+func (Bar) chartType() string { return "bar" }
+
 // Bar series options
 type BarOpts struct {
 	Stack      string
 	XAxisIndex int
 	YAxisIndex int
 }
+
+func (BarOpts) markSeries() {}
 
 func (opt *BarOpts) setChartOpt(s *singleSeries) {
 	s.Stack = opt.Stack
@@ -34,7 +38,7 @@ func (c *Bar) AddXAxis(xAxis interface{}) *Bar {
 	return c
 }
 
-func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Bar {
+func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Bar {
 	series := singleSeries{Name: name, Type: "bar", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
@@ -52,6 +56,10 @@ func (c *Bar) validateOpts() {
 	if c.isXYReversal {
 		c.YAxisOptsList[0].Data = c.xAxisData
 		c.XAxisOptsList[0].Data = nil
+	}
+	// 确保 Y 轴数标签正确显示
+	for i := 0; i < len(c.YAxisOptsList); i++ {
+		c.YAxisOptsList[i].AxisLabel.Show = true
 	}
 	c.validateAssets(c.AssetsHost)
 }

@@ -11,6 +11,8 @@ type Geo struct {
 	Series
 }
 
+func (Geo) chartType() string { return "geo" }
+
 var geoFormatter = `function (params) {
 		return params.name + ' : ' + params.value[2];
 }`
@@ -23,7 +25,7 @@ func NewGeo(mapType string, routers ...HTTPRouter) *Geo {
 	return chart
 }
 
-func (c *Geo) Add(name, geoType string, data map[string]float32, options ...interface{}) *Geo {
+func (c *Geo) Add(name, geoType string, data map[string]float32, options ...seriesOptser) *Geo {
 	nvs := make([]nameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, nameValueItem{k, c.extendValue(k, v)})
@@ -41,8 +43,8 @@ func (c *Geo) extendValue(region string, v float32) []float32 {
 	return res
 }
 
-func (c *Geo) SetGlobalConfig(options ...interface{}) *Geo {
-	c.BaseOpts.setBaseGlobalConfig(options...)
+func (c *Geo) SetGlobalOptions(options ...globalOptser) *Geo {
+	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }
 

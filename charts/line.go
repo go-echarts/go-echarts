@@ -4,6 +4,8 @@ type Line struct {
 	RectChart
 }
 
+func (Line) chartType() string { return "line" }
+
 // Line series options
 type LineOpts struct {
 	Stack      string
@@ -12,6 +14,8 @@ type LineOpts struct {
 	XAxisIndex int
 	YAxisIndex int
 }
+
+func (LineOpts) markSeries() {}
 
 func (opt *LineOpts) setChartOpt(s *singleSeries) {
 	s.Stack = opt.Stack
@@ -33,7 +37,7 @@ func (c *Line) AddXAxis(xAxis interface{}) *Line {
 	return c
 }
 
-func (c *Line) AddYAxis(name string, yAxis interface{}, options ...interface{}) *Line {
+func (c *Line) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Line {
 	series := singleSeries{Name: name, Type: "line", Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)

@@ -14,3 +14,6 @@
 # IDE
 .idea/
 .vscode/
+
+# render file
+example/html/*.html

@@ -13,6 +13,8 @@ type Map struct {
 	mapType string
 }
 
+func (Map) chartType() string { return "map" }
+
 func NewMap(mapType string, routers ...HTTPRouter) *Map {
 	chart := new(Map)
 	chart.mapType = mapType
@@ -21,7 +23,7 @@ func NewMap(mapType string, routers ...HTTPRouter) *Map {
 	return chart
 }
 
-func (c *Map) Add(name string, data map[string]interface{}, options ...interface{}) *Map {
+func (c *Map) Add(name string, data map[string]float32, options ...seriesOptser) *Map {
 	nvs := make([]nameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, nameValueItem{k, v})
@@ -33,8 +35,8 @@ func (c *Map) Add(name string, data map[string]interface{}, options ...interface
 	return c
 }
 
-func (c *Map) SetGlobalConfig(options ...interface{}) *Map {
-	c.BaseOpts.setBaseGlobalConfig(options...)
+func (c *Map) SetGlobalOptions(options ...globalOptser) *Map {
+	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }
 
