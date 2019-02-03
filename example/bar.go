@@ -45,6 +45,7 @@ func barColor() *charts.Bar {
 		AddYAxis("商家A", randInt(), charts.ColorOpts{"lightblue"}).
 		AddYAxis("商家B", randInt(), charts.ColorOpts{"pink"})
 	bar.SetSeriesOptions(charts.LabelTextOpts{Show: true})
+	// 或者可以这样设置
 	//bar.SetGlobalOptions(charts.ColorOpts{"lightblue", "pink"})
 	return bar
 }

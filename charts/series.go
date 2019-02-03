@@ -205,7 +205,6 @@ type singleSeries struct {
 	// 是否平滑曲线显示
 	Smooth bool `json:"smooth,omitempty"`
 
-	// TODO: example
 	// pie charts
 	// 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
 	// "radius": 扇区圆心角展现数据的百分比，半径展现数据的大小。
