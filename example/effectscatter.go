@@ -24,7 +24,7 @@ func esEffectStyle() *charts.EffectScatter {
 	return es
 }
 
-func esHandler(w http.ResponseWriter, r *http.Request) {
+func esHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("effectScatter")...)
 	page.Add(
 		esBase(),

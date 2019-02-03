@@ -16,7 +16,7 @@ func TestPageAssetsAfterRender(t *testing.T) {
 	page := NewPage()
 
 	page.Add(NewBar())
-	page.Add(NewMap("china").SetGlobalConfig(InitOpts{Theme: "macarons"}))
+	page.Add(NewMap("china").SetGlobalOptions(InitOpts{Theme: "macarons"}))
 
 	err := page.Render()
 	assert.NoError(t, err)

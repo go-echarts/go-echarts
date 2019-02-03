@@ -65,7 +65,7 @@ func mapTheme() *charts.Map {
 	return mc
 }
 
-func mapHandler(w http.ResponseWriter, r *http.Request) {
+func mapHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("map")...)
 	page.Add(
 		mapBase(),

@@ -150,7 +150,7 @@ func klineStyle() *charts.Kline {
 	return kline
 }
 
-func klineHandler(w http.ResponseWriter, r *http.Request) {
+func klineHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("kline")...)
 	page.Add(
 		klineBase(),

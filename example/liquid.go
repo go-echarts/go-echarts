@@ -79,7 +79,7 @@ func liquidTriangle() *charts.Liquid {
 	return liquid
 }
 
-func liquidHandler(w http.ResponseWriter, r *http.Request) {
+func liquidHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("liquid")...)
 	page.Add(
 		liquidBase(),

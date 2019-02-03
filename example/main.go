@@ -71,6 +71,7 @@ var (
 		{"line", charts.HTTPRouter{URL: host + "/line", Text: "Line-(折线图)"}},
 		{"liquid", charts.HTTPRouter{URL: host + "/liquid", Text: "Liquid-(水球图)"}},
 		{"map", charts.HTTPRouter{URL: host + "/map", Text: "Map-(地图)"}},
+		{"overlap", charts.HTTPRouter{URL: host + "/overlap", Text: "Overlap-(重叠图)"}},
 		{"pie", charts.HTTPRouter{URL: host + "/pie", Text: "Pie-(饼图)"}},
 		{"scatter", charts.HTTPRouter{URL: host + "/scatter", Text: "Scatter-(散点图)"}},
 		{"wordCloud", charts.HTTPRouter{URL: host + "/wordCloud", Text: "WordCloud-(词云图)"}},
@@ -132,6 +133,7 @@ func main() {
 	http.HandleFunc("/line", logTracing(lineHandler))
 	http.HandleFunc("/liquid", logTracing(liquidHandler))
 	http.HandleFunc("/map", logTracing(mapHandler))
+	http.HandleFunc("/overlap", logTracing(overlapHandler))
 	http.HandleFunc("/pie", logTracing(pieHandler))
 	http.HandleFunc("/scatter", logTracing(scatterHandler))
 	http.HandleFunc("/wordCloud", logTracing(wcHandler))

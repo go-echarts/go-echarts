@@ -22,6 +22,7 @@ func pageHandler(w http.ResponseWriter, _ *http.Request) {
 		lineBase(),
 		liquidBase(),
 		mapBase(),
+		overlapBase(),
 		pieBase(),
 		scatterBase(),
 		wcBase(),

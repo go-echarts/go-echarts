@@ -89,7 +89,7 @@ func geoShantou() *charts.Geo {
 	return geo
 }
 
-func geoHandler(w http.ResponseWriter, r *http.Request) {
+func geoHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("geo")...)
 	page.Add(
 		geoBase(),

@@ -22,7 +22,7 @@ func funnelShowLabel() *charts.Funnel {
 	return funnel
 }
 
-func funnelHandler(w http.ResponseWriter, r *http.Request) {
+func funnelHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("funnel")...)
 	page.Add(
 		funnelBase(),
