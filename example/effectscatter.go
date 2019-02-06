@@ -19,8 +19,10 @@ func esEffectStyle() *charts.EffectScatter {
 	es := charts.NewEffectScatter()
 	es.SetGlobalOptions(charts.TitleOpts{Title: "EffectScatter-涟漪效果"})
 	es.AddXAxis(nameItems).
-		AddYAxis("es1", randInt(), charts.RippleEffectOpts{Period: 4, Scale: 10, BrushType: "stroke"}).
-		AddYAxis("es2", randInt(), charts.RippleEffectOpts{Period: 3, Scale: 6, BrushType: "fill"})
+		AddYAxis("es1", randInt(),
+			charts.RippleEffectOpts{Period: 4, Scale: 10, BrushType: "stroke"}).
+		AddYAxis("es2", randInt(),
+			charts.RippleEffectOpts{Period: 3, Scale: 6, BrushType: "fill"})
 	return es
 }
 

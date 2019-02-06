@@ -17,8 +17,19 @@ func lineBase() *charts.Line {
 
 func lineShowLabel() *charts.Line {
 	line := charts.NewLine()
-	line.SetGlobalOptions(charts.TitleOpts{Title: "Line-显示 Labal"})
+	line.SetGlobalOptions(charts.TitleOpts{Title: "Line-显示 Label"})
 	line.AddXAxis(nameItems).AddYAxis("商家A", randInt(), charts.LabelTextOpts{Show: true})
+	return line
+}
+
+func lineMarkPoint() *charts.Line {
+	line := charts.NewLine()
+	line.SetGlobalOptions(charts.TitleOpts{Title: "Line-标记点"})
+	line.AddXAxis(nameItems).AddYAxis("商家A", randInt(),
+		charts.MPNameTypeItem{Name:"最大值", Type:"max"},
+		charts.MPNameTypeItem{Name:"平均值", Type:"average"},
+		charts.MPNameTypeItem{Name:"最小值", Type:"min"},
+		charts.MPStyleOpts{Label:charts.LabelTextOpts{Show:true}})
 	return line
 }
 
@@ -100,6 +111,7 @@ func lineHandler(w http.ResponseWriter, _ *http.Request) {
 	page.Add(
 		lineBase(),
 		lineShowLabel(),
+		lineMarkPoint(),
 		lineSplitLine(),
 		lineStep(),
 		lineSmooth(),

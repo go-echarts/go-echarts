@@ -13,8 +13,12 @@ func (Liquid) chartType() string { return "liquid" }
 
 // Liquid series options
 type LiquidOpts struct {
+	// 水球图形状，可选
+	// "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
 	Shape           string
+	// 是否显示水球轮廓
 	IsShowOutline   bool
+	// 是否停止动画
 	IsWaveAnimation bool
 }
 

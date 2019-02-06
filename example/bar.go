@@ -10,7 +10,7 @@ import (
 
 func barBase() *charts.Bar {
 	bar := charts.NewBar()
-	bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-示例图"})
+	bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-示例图"}, charts.ToolboxOpts{Show: true})
 	bar.AddXAxis(nameItems).
 		AddYAxis("商家A", randInt()).
 		AddYAxis("商家B", randInt())
@@ -95,8 +95,7 @@ func barMark() *charts.Bar {
 	bar.SetGlobalOptions(
 		charts.TitleOpts{Title: "Bar-标记线&标记点"},
 	)
-	bar.
-		AddXAxis(nameItems).
+	bar.AddXAxis(nameItems).
 		AddYAxis("商家A", randInt()).
 		AddYAxis("商家B", randInt())
 	bar.SetSeriesOptions(

@@ -145,7 +145,8 @@ func klineStyle() *charts.Kline {
 		charts.MPNameTypeItem{Name: "highest value", Type: "max", ValueDim: "highest"},
 		charts.MPNameTypeItem{Name: "lowest value", Type: "min", ValueDim: "lowest"},
 		charts.MPStyleOpts{Label: charts.LabelTextOpts{Show: true}},
-		charts.ItemStyleOpts{Color: "#ec0000", Color0: "#00da3c", BorderColor: "#8A0000", BorderColor0: "#008F28"},
+		charts.ItemStyleOpts{
+			Color: "#ec0000", Color0: "#00da3c", BorderColor: "#8A0000", BorderColor0: "#008F28"},
 	)
 	return kline
 }

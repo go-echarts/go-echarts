@@ -13,8 +13,12 @@ func (WordCloud) chartType() string { return "wordCloud" }
 
 // WordCLoud series options
 type WordCLoudOpts struct {
+	// 词云图形状，可选
+	//"circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
 	Shape         string
+	// 字体大小范围
 	SizeRange     []float32
+	// 字体选择角度范围
 	RotationRange []float32
 }
 

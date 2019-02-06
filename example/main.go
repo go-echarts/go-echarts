@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"net/http"
 	"path"
+	"time"
 
 	"github.com/chenjiandongx/go-echarts/charts"
 )
@@ -105,11 +106,13 @@ func logTracing(next http.HandlerFunc) http.HandlerFunc {
 	}
 }
 
+var seed = rand.NewSource(time.Now().UnixNano())
+
 func randInt() []int {
 	cnt := len(nameItems)
 	r := make([]int, 0)
 	for i := 0; i < cnt; i++ {
-		r = append(r, rand.Intn(maxNum))
+		r = append(r, int(seed.Int63())%maxNum)
 	}
 	return r
 }
@@ -117,7 +120,7 @@ func randInt() []int {
 func genKvData() map[string]interface{} {
 	m := make(map[string]interface{})
 	for i := 0; i < len(nameItems); i++ {
-		m[nameItems[i]] = rand.Intn(50)
+		m[nameItems[i]] = rand.Intn(maxNum)
 	}
 	return m
 }

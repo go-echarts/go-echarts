@@ -46,11 +46,21 @@ func wcCardioid() *charts.WordCloud {
 	return wc
 }
 
+
+func wcStar() *charts.WordCloud {
+	wc := charts.NewWordCloud()
+	wc.SetGlobalOptions(charts.TitleOpts{Title: "WordCloud-形状(star)"})
+	wc.Add("wordcloud", wcData,
+		charts.WordCLoudOpts{SizeRange: []float32{14, 80}}, charts.WordCLoudOpts{Shape: "cardioid"})
+	return wc
+}
+
 func wcHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("wordCloud")...)
 	page.Add(
 		wcBase(),
 		wcCardioid(),
+		wcStar(),
 	)
 	f, err := os.Create(getRenderPath("wordCloud.html"))
 	if err != nil {

@@ -1,0 +1,23 @@
+{
+  "docs": {
+    "概览": ["overview", "quickstart"],
+    "API": ["api"],
+    "配置项": ["base_options", "series_options"],
+    "基本图表": [
+      "bar",
+      "effectScatter",
+      "funnel",
+      "gauge",
+      "geo",
+      "heatmap",
+      "kline",
+      "line",
+      "liquid",
+      "map",
+      "pie",
+      "scatter",
+      "wordCloud"
+    ],
+    "组合图表": ["overlap", "page"]
+  }
+}

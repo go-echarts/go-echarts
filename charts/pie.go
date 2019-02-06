@@ -13,8 +13,21 @@ func (Pie) chartType() string { return "pie" }
 
 // Pie series options
 type PieOpts struct {
-	RoseType interface{}
+	// 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
+	// 1."radius": 扇区圆心角展现数据的百分比，半径展现数据的大小。
+	// 2."area": 所有扇区圆心角相同，仅通过半径展现数据大小。
+	RoseType string
+	// 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。
+	// 支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度
+	// 使用示例
+	// 设置成绝对的像素值: center: [400, 300]
+	// 设置成相对的百分比: center: ['50%', '50%']
 	Center   interface{}
+	// 饼图的半径。可以为如下类型：
+	// 1.number：直接指定外半径值。
+	// 2.string：例如，'20%'，表示外半径为可视区尺寸（容器高宽中较小一项）的 20% 长度。
+	// 3.Array.<number|string>：数组的第一项是内半径，第二项是外半径。
+	// 每一项遵从上述 number string 的描述。
 	Radius   interface{}
 }
 

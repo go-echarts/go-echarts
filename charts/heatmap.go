@@ -8,7 +8,9 @@ func (HeatMap) chartType() string { return "heatMap" }
 
 // heatMap series options
 type HeatMapOpts struct {
+	//使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
 	XAxisIndex int
+	//使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
 	YAxisIndex int
 }
 

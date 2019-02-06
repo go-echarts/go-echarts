@@ -72,7 +72,8 @@ type MPNameTypeItem struct {
 	// 内置类型，可选 "average", "min", "max"
 	Type string `json:"type"`
 	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
+	// candlestick 图时可以是 open、close 等维度名称。
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
@@ -85,7 +86,8 @@ type MPNameCoordItem struct {
 	// 标记点坐标
 	Coord []interface{} `json:"coord"`
 	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
+	// candlestick 图时可以是 open、close 等维度名称。
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
@@ -117,7 +119,8 @@ type MLNameTypeItem struct {
 	// 内置类型，可选 "average", "min", "max"
 	Type string `json:"type"`
 	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
+	// candlestick 图时可以是 open、close 等维度名称。
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
@@ -130,7 +133,8 @@ type MLNameYAxisItem struct {
 	// Y 轴数据
 	YAxis interface{} `json:"yAxis"`
 	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
+	// candlestick 图时可以是 open、close 等维度名称。
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
@@ -143,7 +147,8 @@ type MLNameXAxisItem struct {
 	// X 轴数据
 	XAxis interface{} `json:"xAxis"`
 	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
+	// candlestick 图时可以是 open、close 等维度名称。
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
@@ -158,12 +163,14 @@ type MLNameCoordItem struct {
 	// 标记线结束坐标
 	Coord1 []interface{}
 	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等、candlestick 图时可以是 open、close 等维度名称。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
+	// candlestick 图时可以是 open、close 等维度名称。
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
 func (MLNameCoordItem) markSeries() {}
 
+// 数据 Item 配置项
 type ItemStyleOpts struct {
 	// 图形的颜色
 	// Kline 图中为 阳线图形颜色

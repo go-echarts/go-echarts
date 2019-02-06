@@ -70,7 +70,7 @@ func geoEsHeatMap() *charts.Geo {
 func geoGuangdong() *charts.Geo {
 	geo := charts.NewGeo("广东")
 	geo.SetGlobalOptions(
-		charts.TitleOpts{Title: "Map-广东地图"},
+		charts.TitleOpts{Title: "Geo-广东地图"},
 		charts.VisualMapOpts{Calculable: true,
 			InRange: charts.VMInRange{Color: []string{"#50a3ba", "#eac736", "#d94e5d"}}},
 	)
@@ -81,7 +81,7 @@ func geoGuangdong() *charts.Geo {
 func geoShantou() *charts.Geo {
 	geo := charts.NewGeo("汕头")
 	geo.SetGlobalOptions(
-		charts.TitleOpts{Title: "Map-汕头地图"},
+		charts.TitleOpts{Title: "Geo-汕头地图"},
 		charts.VisualMapOpts{Calculable: true,
 			InRange: charts.VMInRange{Color: []string{"#50a3ba", "#eac736", "#d94e5d"}}},
 	)
