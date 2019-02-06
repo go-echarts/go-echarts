@@ -1,10 +1,12 @@
 package charts
 
+import "github.com/chenjiandongx/go-echarts/common"
+
 type HeatMap struct {
 	RectChart
 }
 
-func (HeatMap) chartType() string { return "heatMap" }
+func (HeatMap) chartType() string { return common.HeatMapType }
 
 // heatMap series options
 type HeatMapOpts struct {

@@ -1,19 +1,21 @@
 package charts
 
+import "github.com/chenjiandongx/go-echarts/common"
+
 type Line struct {
 	RectChart
 }
 
-func (Line) chartType() string { return "line" }
+func (Line) chartType() string { return common.LineType }
 
 // Line series options
 type LineOpts struct {
 	// 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
-	Stack      string
+	Stack string
 	// 曲线是否平滑
-	Smooth     bool
+	Smooth bool
 	// 是否使用阶梯图
-	Step       bool
+	Step bool
 	// 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
 	XAxisIndex int
 	// 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用

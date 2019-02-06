@@ -2,6 +2,8 @@ package charts
 
 import (
 	"io"
+
+	"github.com/chenjiandongx/go-echarts/common"
 )
 
 type Pie struct {
@@ -9,7 +11,7 @@ type Pie struct {
 	Series
 }
 
-func (Pie) chartType() string { return "pie" }
+func (Pie) chartType() string { return common.PieType }
 
 // Pie series options
 type PieOpts struct {
@@ -22,13 +24,13 @@ type PieOpts struct {
 	// 使用示例
 	// 设置成绝对的像素值: center: [400, 300]
 	// 设置成相对的百分比: center: ['50%', '50%']
-	Center   interface{}
+	Center interface{}
 	// 饼图的半径。可以为如下类型：
 	// 1.number：直接指定外半径值。
 	// 2.string：例如，'20%'，表示外半径为可视区尺寸（容器高宽中较小一项）的 20% 长度。
 	// 3.Array.<number|string>：数组的第一项是内半径，第二项是外半径。
 	// 每一项遵从上述 number string 的描述。
-	Radius   interface{}
+	Radius interface{}
 }
 
 func (PieOpts) markSeries() {}
@@ -46,9 +48,9 @@ func NewPie(routers ...HTTPRouter) *Pie {
 }
 
 func (c *Pie) Add(name string, data map[string]interface{}, options ...seriesOptser) *Pie {
-	nvs := make([]nameValueItem, 0)
+	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, nameValueItem{k, v})
+		nvs = append(nvs, common.NameValueItem{k, v})
 	}
 	series := singleSeries{Name: name, Type: "pie", Data: nvs}
 	series.setSingleSeriesOpts(options...)

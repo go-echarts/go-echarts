@@ -63,6 +63,7 @@ var (
 
 	routers = []Routers{
 		{"bar", charts.HTTPRouter{URL: host + "/bar", Text: "Bar-(柱状图)"}},
+		{"boxPlot", charts.HTTPRouter{URL: host + "/boxPlot", Text: "BoxPlot-(箱线图)"}},
 		{"effectScatter", charts.HTTPRouter{URL: host + "/effectScatter", Text: "EffectScatter-(动态散点图)"}},
 		{"funnel", charts.HTTPRouter{URL: host + "/funnel", Text: "Funnel-(漏斗图)"}},
 		{"gauge", charts.HTTPRouter{URL: host + "/gauge", Text: "Gauge-仪表盘"}},
@@ -127,6 +128,7 @@ func genKvData() map[string]interface{} {
 
 func main() {
 	http.HandleFunc("/bar", logTracing(BarHandler))
+	http.HandleFunc("/boxPlot", logTracing(boxPlotHandler))
 	http.HandleFunc("/effectScatter", logTracing(esHandler))
 	http.HandleFunc("/funnel", logTracing(funnelHandler))
 	http.HandleFunc("/gauge", logTracing(gaugeHandler))

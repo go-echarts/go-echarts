@@ -3,6 +3,7 @@ package charts
 import (
 	"io"
 
+	"github.com/chenjiandongx/go-echarts/common"
 	"github.com/chenjiandongx/go-echarts/datasets"
 )
 
@@ -13,7 +14,7 @@ type Map struct {
 	mapType string
 }
 
-func (Map) chartType() string { return "map" }
+func (Map) chartType() string { return common.MapType }
 
 func NewMap(mapType string, routers ...HTTPRouter) *Map {
 	chart := new(Map)
@@ -24,9 +25,9 @@ func NewMap(mapType string, routers ...HTTPRouter) *Map {
 }
 
 func (c *Map) Add(name string, data map[string]float32, options ...seriesOptser) *Map {
-	nvs := make([]nameValueItem, 0)
+	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, nameValueItem{k, v})
+		nvs = append(nvs, common.NameValueItem{k, v})
 	}
 	series := singleSeries{Name: name, Type: "map", MapType: c.mapType, Data: nvs}
 	series.setSingleSeriesOpts(options...)

@@ -1,10 +1,12 @@
 package charts
 
+import "github.com/chenjiandongx/go-echarts/common"
+
 type Kline struct {
 	RectChart
 }
 
-func (Kline) chartType() string { return "kline" }
+func (Kline) chartType() string { return common.KlineType }
 
 func NewKLine(routers ...HTTPRouter) *Kline {
 	chart := new(Kline)

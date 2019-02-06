@@ -26,10 +26,10 @@ func lineMarkPoint() *charts.Line {
 	line := charts.NewLine()
 	line.SetGlobalOptions(charts.TitleOpts{Title: "Line-标记点"})
 	line.AddXAxis(nameItems).AddYAxis("商家A", randInt(),
-		charts.MPNameTypeItem{Name:"最大值", Type:"max"},
-		charts.MPNameTypeItem{Name:"平均值", Type:"average"},
-		charts.MPNameTypeItem{Name:"最小值", Type:"min"},
-		charts.MPStyleOpts{Label:charts.LabelTextOpts{Show:true}})
+		charts.MPNameTypeItem{Name: "最大值", Type: "max"},
+		charts.MPNameTypeItem{Name: "平均值", Type: "average"},
+		charts.MPNameTypeItem{Name: "最小值", Type: "min"},
+		charts.MPStyleOpts{Label: charts.LabelTextOpts{Show: true}})
 	return line
 }
 

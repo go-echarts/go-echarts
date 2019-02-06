@@ -1,10 +1,12 @@
 package charts
 
+import "github.com/chenjiandongx/go-echarts/common"
+
 type EffectScatter struct {
 	RectChart
 }
 
-func (EffectScatter) chartType() string { return "effectScatter" }
+func (EffectScatter) chartType() string { return common.EffectScatterType }
 
 // EffectScatter series options
 type EffectScatterChartOpts struct {

@@ -46,7 +46,6 @@ func wcCardioid() *charts.WordCloud {
 	return wc
 }
 
-
 func wcStar() *charts.WordCloud {
 	wc := charts.NewWordCloud()
 	wc.SetGlobalOptions(charts.TitleOpts{Title: "WordCloud-形状(star)"})

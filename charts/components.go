@@ -107,7 +107,7 @@ func (TooltipOpts) markGlobal() {}
 // 工具箱组件配置项
 type ToolboxOpts struct {
 	// 是否显示工具栏组件
-	Show      bool `json:"show"`
+	Show bool `json:"show"`
 	// 工具箱功能种类，不支持自定义
 	TBFeature `json:"feature"`
 }

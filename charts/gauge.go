@@ -2,6 +2,8 @@ package charts
 
 import (
 	"io"
+
+	"github.com/chenjiandongx/go-echarts/common"
 )
 
 type Gauge struct {
@@ -9,7 +11,7 @@ type Gauge struct {
 	Series
 }
 
-func (Gauge) chartType() string { return "gauge" }
+func (Gauge) chartType() string { return common.GaugeType }
 
 func NewGauge(routers ...HTTPRouter) *Gauge {
 	chart := new(Gauge)
@@ -18,9 +20,9 @@ func NewGauge(routers ...HTTPRouter) *Gauge {
 }
 
 func (c *Gauge) Add(name string, data map[string]interface{}, options ...seriesOptser) *Gauge {
-	nvs := make([]nameValueItem, 0)
+	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, nameValueItem{k, v})
+		nvs = append(nvs, common.NameValueItem{k, v})
 	}
 	series := singleSeries{Name: name, Type: "gauge", Data: nvs}
 	series.setSingleSeriesOpts(options...)

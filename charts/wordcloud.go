@@ -2,6 +2,8 @@ package charts
 
 import (
 	"io"
+
+	"github.com/chenjiandongx/go-echarts/common"
 )
 
 type WordCloud struct {
@@ -9,15 +11,15 @@ type WordCloud struct {
 	Series
 }
 
-func (WordCloud) chartType() string { return "wordCloud" }
+func (WordCloud) chartType() string { return common.WordCloudType }
 
 // WordCLoud series options
 type WordCLoudOpts struct {
 	// 词云图形状，可选
 	//"circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
-	Shape         string
+	Shape string
 	// 字体大小范围
-	SizeRange     []float32
+	SizeRange []float32
 	// 字体选择角度范围
 	RotationRange []float32
 }
@@ -45,9 +47,9 @@ func NewWordCloud(routers ...HTTPRouter) *WordCloud {
 }
 
 func (c *WordCloud) Add(name string, data map[string]interface{}, options ...seriesOptser) *WordCloud {
-	nvs := make([]nameValueItem, 0)
+	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, nameValueItem{k, v})
+		nvs = append(nvs, common.NameValueItem{k, v})
 	}
 	series := singleSeries{Name: name, Type: "wordCloud", Data: nvs}
 	series.setSingleSeriesOpts(options...)

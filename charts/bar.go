@@ -1,6 +1,10 @@
 package charts
 
-import "io"
+import (
+	"io"
+
+	"github.com/chenjiandongx/go-echarts/common"
+)
 
 type Bar struct {
 	RectChart
@@ -9,12 +13,12 @@ type Bar struct {
 	isXYReversal bool
 }
 
-func (Bar) chartType() string { return "bar" }
+func (Bar) chartType() string { return common.BarType }
 
 // Bar series options
 type BarOpts struct {
 	// 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
-	Stack      string
+	Stack string
 	// 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
 	XAxisIndex int
 	// 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用

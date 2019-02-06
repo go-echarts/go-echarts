@@ -3,6 +3,8 @@ package charts
 import (
 	"io"
 	"log"
+
+	"github.com/chenjiandongx/go-echarts/common"
 )
 
 type charter interface {
@@ -17,7 +19,7 @@ type Page struct {
 	Charts []interface{}
 	HTTPRouters
 
-	unusedStr orderedSet
+	unusedStr common.OrderedSet
 }
 
 func NewPage(routers ...HTTPRouter) *Page {
@@ -26,14 +28,14 @@ func NewPage(routers ...HTTPRouter) *Page {
 		page.HTTPRouters = append(page.HTTPRouters, routers[i])
 	}
 	page.AssetsOpts.initAssetsOptsWithoutArg()
-	page.unusedStr.initWithoutArg()
+	page.unusedStr.InitWithoutArg()
 	return page
 }
 
 // 新增 Page 图表，支持一次接收多个 Chart
 func (page *Page) Add(charts ...charter) *Page {
 	if len(charts) < 1 {
-		log.Println("Charts should length > 0")
+		log.Println("Charts length should > 0")
 		return page
 	}
 	for i := 0; i < len(charts); i++ {
@@ -41,7 +43,7 @@ func (page *Page) Add(charts ...charter) *Page {
 		page.extractAssets(charts[i].yieldAssets())
 		page.Charts = append(page.Charts, charts[i])
 
-		if charts[i].chartType() == "liquid" {
+		if charts[i].chartType() == common.LiquidType {
 			page.unusedStr.Add(`"outline":{"show":false},?`)
 			page.unusedStr.Add(`"waveAnimation":false,?`)
 		}

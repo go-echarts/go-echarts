@@ -1,10 +1,12 @@
 package charts
 
+import "github.com/chenjiandongx/go-echarts/common"
+
 type Scatter struct {
 	RectChart
 }
 
-func (Scatter) chartType() string { return "scatter" }
+func (Scatter) chartType() string { return common.ScatterType }
 
 func NewScatter(routers ...HTTPRouter) *Scatter {
 	chart := new(Scatter)

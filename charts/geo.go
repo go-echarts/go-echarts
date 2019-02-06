@@ -3,6 +3,7 @@ package charts
 import (
 	"io"
 
+	"github.com/chenjiandongx/go-echarts/common"
 	"github.com/chenjiandongx/go-echarts/datasets"
 )
 
@@ -11,7 +12,7 @@ type Geo struct {
 	Series
 }
 
-func (Geo) chartType() string { return "geo" }
+func (Geo) chartType() string { return common.GeoType }
 
 var geoFormatter = `function (params) {
 		return params.name + ' : ' + params.value[2];
@@ -26,9 +27,9 @@ func NewGeo(mapType string, routers ...HTTPRouter) *Geo {
 }
 
 func (c *Geo) Add(name, geoType string, data map[string]float32, options ...seriesOptser) *Geo {
-	nvs := make([]nameValueItem, 0)
+	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, nameValueItem{k, c.extendValue(k, v)})
+		nvs = append(nvs, common.NameValueItem{k, c.extendValue(k, v)})
 	}
 	series := singleSeries{Name: name, Type: geoType, Data: nvs, CoordSystem: "geo"}
 	series.setSingleSeriesOpts(options...)
