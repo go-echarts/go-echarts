@@ -91,7 +91,7 @@ type JSFunctions struct {
 
 func (f *JSFunctions) AddJSFuncs(fn ...string) {
 	for i := 0; i < len(fn); i++ {
-		f.Fns = append(f.Fns, replaceJsFuncs(fn[i]))
+		f.Fns = append(f.Fns, common.ReplaceJsFuncs(fn[i]))
 	}
 }
 
@@ -151,7 +151,7 @@ func (opt *BaseOpts) initBaseOpts(hasXYAxis bool, routers ...HTTPRouter) {
 
 // 插入颜色到颜色列表首部
 func (opt *BaseOpts) insertSeriesColors(s []string) {
-	tmpCl := reverseSlice(s) // 翻转颜色列表
+	tmpCl := common.ReverseSlice(s) // 翻转颜色列表
 	// 颜色追加至首部
 	for i := 0; i < len(tmpCl); i++ {
 		opt.Colors = append(opt.Colors, "")

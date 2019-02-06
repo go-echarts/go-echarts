@@ -13,6 +13,7 @@ func pageHandler(w http.ResponseWriter, _ *http.Request) {
 
 	p.Add(
 		barBase(),
+		boxPlotBase(),
 		esBase(),
 		funnelBase(),
 		gaugeBase(),

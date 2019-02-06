@@ -1,5 +1,7 @@
 package charts
 
+import "github.com/chenjiandongx/go-echarts/common"
+
 // 标题组件配置项
 type TitleOpts struct {
 	// 主标题
@@ -351,5 +353,5 @@ type GeoOpts struct {
 
 // 处理 function 类型配置项
 func FuncOpts(fn string) string {
-	return replaceJsFuncs(fn)
+	return common.ReplaceJsFuncs(fn)
 }
