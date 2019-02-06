@@ -13,7 +13,7 @@ func AddXAxis(xAxis interface{}) *Scatter {}
 // 新增 Y 轴数据及配置项
 func AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *  Scatter {}
 // 结合不同类型图表叠加画在同张图上
-// 只适用于 RectChart 图表，RectChart 图表包括 Bar/Line/Scatter/EffectScatter/Kline/HeatMap
+// 只适用于 RectChart 图表，RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
 // 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
 // 而全局配置使用的是调用者的配置项
 func Overlap(a ...serieser)

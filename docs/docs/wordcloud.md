@@ -13,6 +13,7 @@ func Add(name string, data map[string]interface{}, options ...seriesOptser) *Wor
 ```
 
 ## 预定义
+> Note: 示例用到的一些变量及方法，部分重复的以后代码中不会再次列出
 ```go
 var wcData = map[string]interface{}{
     "Sam S Club":               10000,

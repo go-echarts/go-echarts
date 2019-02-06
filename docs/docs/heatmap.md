@@ -13,7 +13,7 @@ func AddXAxis(xAxis interface{}) *HeatMap {}
 // 新增 Y 轴数据及配置项
 func AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *  HeatMap {}
 // 结合不同类型图表叠加画在同张图上
-// 只适用于 RectChart 图表，RectChart 图表包括 Bar/Line/Scatter/EffectScatter/Kline/HeatMap
+// 只适用于 RectChart 图表，RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
 // 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
 // 而全局配置使用的是调用者的配置项
 func Overlap(a ...serieser)
@@ -24,6 +24,7 @@ func ExtendYAxis(yAxis ...YAxisOpts) {}
 ```
 
 ## 预定义
+> Note: 示例用到的一些变量及方法，部分重复的以后代码中不会再次列出
 ```go
 var hours = [...]string{
         "12a", "1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a",

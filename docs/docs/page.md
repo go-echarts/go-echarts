@@ -7,6 +7,7 @@ sidebar_label: Page（顺序多图）
 ## API
 
 ## 预定义
+> Note: 示例用到的一些变量及方法，部分重复的以后代码中不会再次列出
 ```go
 func gaugeBase() *charts.Gauge {
 	gauge := charts.NewGauge()

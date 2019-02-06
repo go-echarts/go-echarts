@@ -13,6 +13,7 @@ func Add(name, geoType string, data map[string]interface{}, options ...seriesOpt
 ```
 
 ## 预定义
+> Note: 示例用到的一些变量及方法，部分重复的以后代码中不会再次列出
 ```go
 mapData = map[string]float32{
     "北京":   float32(rand.Intn(150)),
