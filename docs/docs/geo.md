@@ -1,15 +1,25 @@
 ---
 id: geo
-title: Geo（地理坐标系）
+title: Geo
 sidebar_label: Geo（地理坐标系）
 ---
+
+> 地理坐标系组件用于地图的绘制，支持在地理坐标系上绘制散点图，线集
 
 ## API
 ```go
 // 实例化图表
-func NewGeo(mapType string, routers ...HTTPRouter) *Geo {}
+func NewGeo(mapType string, routers ...HTTPRouter) *Geo
 // 新增数据及配置项
-func Add(name, geoType string, data map[string]interface{}, options ...seriesOptser) *Geo {}
+func Add(name, geoType string, data map[string]interface{}, options ...seriesOptser) *Geo
+// 新增 JS 函数
+func AddJSFuncs(fn ...string)
+// 设置全局配置项
+func SetGlobalOptions(options ...globalOptser)
+// 设置 Series 配置项
+func SetSeriesOptions(options ...seriesOptser)
+// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
+func Render(w ...io.Writer)
 ```
 
 ## 预定义

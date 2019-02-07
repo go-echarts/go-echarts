@@ -11,7 +11,7 @@ type Pie struct {
 	Series
 }
 
-func (Pie) chartType() string { return common.PieType }
+func (Pie) chartType() string { return common.ChartType.PieType }
 
 // Pie series options
 type PieOpts struct {

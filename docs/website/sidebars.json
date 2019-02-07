@@ -8,7 +8,7 @@
       "api"
     ],
     "配置项": [
-      "base_options",
+      "global_options",
       "series_options"
     ],
     "基本图表": [
@@ -30,6 +30,7 @@
     "组合图表": [
       "overlap",
       "page"
-    ]
+    ],
+    "数据集": ["assets_file", "map_coords"]
   }
 }

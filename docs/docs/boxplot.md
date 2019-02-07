@@ -4,6 +4,35 @@ title: BoxPlot
 sidebar_label: BoxPlot（箱线图）
 ---
 
+> 箱形图是一种用作显示一组数据分散情况资料的统计图。它能显示出一组数据的最大值、最小值、中位数、下四分位数及上四分位数
+
+## API
+```go
+// 实例化图表
+func NewBoxPlot(routers ...HTTPRouter) *BoxPlot
+// 新增 X 轴数据
+func AddXAxis(xAxis interface{}) *BoxPlot
+// 新增 Y 轴数据及配置项
+func AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *BoxPlot
+// 结合不同类型图表叠加画在同张图上
+// 只适用于 RectChart 图表，RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
+// 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
+// 而全局配置使用的是调用者的配置项
+func Overlap(a ...rectCharter)
+// 新增扩展 X 轴
+func ExtendXAxis(xAxis ...XAxisOpts)
+// 新增扩展 Y 轴
+func ExtendYAxis(yAxis ...YAxisOpts)
+// 新增 JS 函数
+func AddJSFuncs(fn ...string)
+// 设置全局配置项
+func SetGlobalOptions(options ...globalOptser)
+// 设置 Series 配置项
+func SetSeriesOptions(options ...seriesOptser)
+// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
+func Render(w ...io.Writer)
+```
+
 ## 预定义
 > Note: 示例用到的一些变量及方法，部分重复的以后代码中不会再次列出
 ```go
@@ -24,28 +53,6 @@ var (
 )
 ```
 
-## API
-```go
-// 实例化图表
-func NewBoxPlot(routers ...HTTPRouter) *BoxPlot {}
-// 新增 X 轴数据
-func AddXAxis(xAxis interface{}) *BoxPlot {}
-// 新增 Y 轴数据及配置项
-func AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *BoxPlot {}
-// 是否翻转 XY 坐标轴
-func XYReversal() {}
-// 结合不同类型图表叠加画在同张图上
-// 只适用于 RectChart 图表，RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
-// 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
-// 而全局配置使用的是调用者的配置项
-func Overlap(a ...serieser)
-// 扩展新增 X 轴
-func ExtendXAxis(xAxis ...XAxisOpts) {}
-// 扩展新增 Y 轴
-func ExtendYAxis(yAxis ...YAxisOpts) {}
-```
-
-
 ## Demo
 
 ### BoxPlot-示例图
@@ -55,3 +62,14 @@ bp.SetGlobalOptions(charts.TitleOpts{Title: "BoxPlot-示例图"})
 bp.AddXAxis(bpX).AddYAxis("boxplot", bpY)
 ```
 ![](https://user-images.githubusercontent.com/19553554/52360729-ad640980-2a77-11e9-84e2-feff7e11aea5.gif)
+
+
+### BoxPlot-多 Series
+```go
+bp := charts.NewBoxPlot()
+bp.SetGlobalOptions(charts.TitleOpts{Title: "BoxPlot-多 Series"})
+bp.AddXAxis(bpX[:2]).
+	AddYAxis("boxplot1", bpY[:2]).
+	AddYAxis("boxplot2", bpY[2:])
+```
+![](https://user-images.githubusercontent.com/19553554/52392733-1e3e0c80-2ade-11e9-898e-720128e69007.png)

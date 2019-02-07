@@ -1,15 +1,25 @@
 ---
 id: funnel
-title: Funnel（漏斗图）
+title: Funnel
 sidebar_label: Funnel（漏斗图）
 ---
+
+> 漏斗图适用于业务流程比较规范、周期长、环节多的单流程单向分析，通过漏斗各环节业务数据的比较能够直观地发现和说明问题所在的环节，进而做出决策
 
 ## API
 ```go
 // 实例化图表
-func NewFunnel(routers ...HTTPRouter) *Funnel {}
+func NewFunnel(routers ...HTTPRouter) *Funnel
 // 新增数据及配置项
-func Add(name string, data map[string]interface{}, options ...seriesOptser) *Funnel {}
+func Add(name string, data map[string]interface{}, options ...seriesOptser) *Funnel
+// 新增 JS 函数
+func AddJSFuncs(fn ...string)
+// 设置全局配置项
+func SetGlobalOptions(options ...globalOptser)
+// 设置 Series 配置项
+func SetSeriesOptions(options ...seriesOptser)
+// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
+func Render(w ...io.Writer)
 ```
 
 ## Demo

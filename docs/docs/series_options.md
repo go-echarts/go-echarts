@@ -6,7 +6,15 @@ sidebar_label: 系列配置项
 
 以下所有 Opts/Item 结尾的配置项均可以作为 SetSeriesOptions 方法的参数，它们均实现了 seriesOptser 接口
 
-## LabelTextOpts
+```go
+type seriesOptser interface {
+    markSeries()
+}
+```
+
+## 通用 Options
+
+### LabelTextOpts
 > 图形上的文本标签配置项
 ```go
 type LabelTextOpts struct {
@@ -49,7 +57,7 @@ type LabelTextOpts struct {
 }
 ```
 
-## RippleEffectOpts
+### RippleEffectOpts
 > 涟漪特效配置项
 ```go
 type RippleEffectOpts struct {
@@ -65,7 +73,7 @@ type RippleEffectOpts struct {
 }
 ```
 
-## LineStyleOpts
+### LineStyleOpts
 > 线风格配置项
 ```go
 type LineStyleOpts struct {
@@ -85,7 +93,7 @@ type LineStyleOpts struct {
 }
 ```
 
-## AreaStyleOpts
+### AreaStyleOpts
 > 区域风格配置项
 ```go
 type AreaStyleOpts struct {
@@ -96,7 +104,7 @@ type AreaStyleOpts struct {
 }
 ```
 
-## ItemStyleOpts
+### ItemStyleOpts
 > 数据 Item 配置项
 ```go
 type ItemStyleOpts struct {
@@ -115,7 +123,7 @@ type ItemStyleOpts struct {
 }
 ```
 
-## TextStyleOpts
+### TextStyleOpts
 > 字体样式配置项
 ```go
 type TextStyleOpts struct {
@@ -131,7 +139,9 @@ type TextStyleOpts struct {
 }
 ```
 
-## MLNameTypeItem
+## 标记点、线、区域 Options
+
+### MLNameTypeItem
 > MarkLine 数据 Name-Type
 ```go
 type MLNameTypeItem struct {
@@ -146,7 +156,7 @@ type MLNameTypeItem struct {
 }
 ```
 
-## MLNameXAxisItem
+### MLNameXAxisItem
 > MarkLine 数据 Name-XAxis
 ```go
 type MLNameXAxisItem struct {
@@ -161,7 +171,7 @@ type MLNameXAxisItem struct {
 }
 ```
 
-## MLNameYAxisItem
+### MLNameYAxisItem
 > MarkLine 数据 Name-YAxis
 ```go
 type MLNameYAxisItem struct {
@@ -176,7 +186,7 @@ type MLNameYAxisItem struct {
 }
 ```
 
-## MLNameCoordItem
+### MLNameCoordItem
 > MarkLine 数据 Name-Coordinates
 ```go
 type MLNameCoordItem struct {
@@ -193,7 +203,7 @@ type MLNameCoordItem struct {
 }
 ```
 
-## MLStyleOpts
+### MLStyleOpts
 > MarkLine 风格配置项
 ```go
 type MLStyleOpts struct {
@@ -207,7 +217,7 @@ type MLStyleOpts struct {
 }
 ```
 
-## MPNameTypeItem
+### MPNameTypeItem
 > MarkPoint 数据 Name-Type
 ```go
 type MPNameTypeItem struct {
@@ -222,7 +232,7 @@ type MPNameTypeItem struct {
 }
 ```
 
-## MPNameCoordItem
+### MPNameCoordItem
 > MarkPoint 数据 Name-Coordinates
 ```go
 type MPNameCoordItem struct {
@@ -237,7 +247,7 @@ type MPNameCoordItem struct {
 }
 ```
 
-## MPStyleOpts
+### MPStyleOpts
 > MarkPoint 风格配置项
 ```go
 type MPStyleOpts struct {
@@ -251,7 +261,9 @@ type MPStyleOpts struct {
 }
 ```
 
-## BarOpts
+## 图表专属 Options
+
+### BarOpts
 > Bar series options
 ```go
 type BarOpts struct {
@@ -264,7 +276,7 @@ type BarOpts struct {
 }
 ```
 
-## HeatMapOpts
+### HeatMapOpts
 > heatMap series options
 ```go
 type HeatMapOpts struct {
@@ -275,9 +287,10 @@ type HeatMapOpts struct {
 }
 ```
 
-## LineOpts
+### LineOpts
 > Line series options
 ```go
+type LineOpts struct {
     // 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
     Stack      string
     // 曲线是否平滑
@@ -288,9 +301,10 @@ type HeatMapOpts struct {
     XAxisIndex int
     // 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
     YAxisIndex int
+}
 ```
 
-## LiquidOpts
+### LiquidOpts
 > Liquid series options
 ```go
 type LiquidOpts struct {
@@ -304,7 +318,7 @@ type LiquidOpts struct {
 }
 ```
 
-## PieOpts
+### PieOpts
 > Pie series options
 ```go
 type PieOpts struct {
@@ -327,7 +341,18 @@ type PieOpts struct {
 }
 ```
 
-## WordCLoudOpts
+### ScatterOpts
+> Scatter series options
+```go
+type ScatterOpts struct {
+    // 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
+    XAxisIndex int
+    // 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
+    YAxisIndex int
+}
+```
+
+### WordCLoudOpts
 > WordCLoud series options
 ```go
 type WordCLoudOpts struct {

@@ -4,10 +4,55 @@ title: Bar
 sidebar_label: Bar（柱状图）
 ---
 
+> 柱状/条形图，通过柱形的高度/条形的宽度来表现数据的大小
+
+## API
+```go
+// 实例化图表
+func NewBar(routers ...HTTPRouter) *Bar
+// 新增 X 轴数据
+func AddXAxis(xAxis interface{}) *Bar
+// 新增 Y 轴数据及配置项
+func AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Bar
+// 是否翻转 XY 坐标轴
+func XYReversal()
+// 结合不同类型图表叠加画在同张图上
+// 只适用于 RectChart 图表，RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
+// 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
+// 而全局配置使用的是调用者的配置项
+func Overlap(a ...rectCharter)
+// 新增扩展 X 轴
+func ExtendXAxis(xAxis ...XAxisOpts)
+// 新增扩展 Y 轴
+func ExtendYAxis(yAxis ...YAxisOpts)
+// 新增 JS 函数
+func AddJSFuncs(fn ...string)
+// 设置全局配置项
+func SetGlobalOptions(options ...globalOptser)
+// 设置 Series 配置项
+func SetSeriesOptions(options ...seriesOptser)
+// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
+func Render(w ...io.Writer)
+```
+
+## 专属 Options
+> 在 `SetSeriesOptions` 中设置
+```go
+type BarOpts struct {
+    // 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
+    Stack      string
+    // 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
+    XAxisIndex int
+    // 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
+    YAxisIndex int
+}
+```
+
 ## 预定义
 > Note: 示例用到的一些变量及方法，部分重复的以后代码中不会再次列出
 ```go
 var nameItems = []string{"衬衫", "牛仔裤", "运动裤", "袜子", "冲锋衣", "羊毛衫"}
+var foodItems = []string{"面包", "牛奶", "奶茶", "棒棒糖", "加多宝", "可口可乐"}
 
 var seed = rand.NewSource(time.Now().UnixNano())
 func randInt() []int {
@@ -18,27 +63,6 @@ func randInt() []int {
     }
     return r
 }
-```
-
-## API
-```go
-// 实例化图表
-func NewBar(routers ...HTTPRouter) *Bar {}
-// 新增 X 轴数据
-func AddXAxis(xAxis interface{}) *Bar {}
-// 新增 Y 轴数据及配置项
-func AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Bar {}
-// 是否翻转 XY 坐标轴
-func XYReversal() {}
-// 结合不同类型图表叠加画在同张图上
-// 只适用于 RectChart 图表，RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
-// 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
-// 而全局配置使用的是调用者的配置项
-func Overlap(a ...serieser)
-// 扩展新增 X 轴
-func ExtendXAxis(xAxis ...XAxisOpts) {}
-// 扩展新增 Y 轴
-func ExtendYAxis(yAxis ...YAxisOpts) {}
 ```
 
 ## Demo
@@ -82,6 +106,21 @@ func main() {
 }
 ```
 ![](https://user-images.githubusercontent.com/19553554/52197440-843a5200-289a-11e9-8601-3ce8d945b04a.gif)
+
+
+### Bar-标题
+```go
+bar := charts.NewBar()
+bar.SetGlobalOptions(
+    charts.TitleOpts{Title: "Bar-标题", Subtitle: "我是副标题，相对来讲我会长一点", Right: "40%"},
+    charts.LegendOpts{Right: "80%"},
+    charts.ToolboxOpts{Show: true},
+)
+bar.AddXAxis(nameItems).
+    AddYAxis("商家A", randInt()).
+    AddYAxis("商家B", randInt())
+```
+![](https://user-images.githubusercontent.com/19553554/52395508-6ca4d880-2ae9-11e9-853d-4ced2e5db822.png)
 
 
 ### Bar-显示 Label
@@ -149,6 +188,51 @@ bar.SetGlobalOptions(
 ![](https://user-images.githubusercontent.com/19553554/52332025-8fc18080-2a34-11e9-8961-7cd606628be8.png)
 
 
+### Bar-多 Y 轴
+```go
+bar := charts.NewBar()
+bar.SetGlobalOptions(
+    charts.TitleOpts{Title: "Bar-多 Y 轴"},
+    charts.YAxisOpts{AxisLabel: charts.LabelTextOpts{Formatter: "{value} 件/天"}},
+)
+bar.AddXAxis(nameItems).
+    AddYAxis("商家A", randInt(), charts.BarOpts{YAxisIndex: 0}).
+    AddYAxis("商家B", randInt(), charts.BarOpts{YAxisIndex: 1})
+bar.ExtendYAxis(charts.YAxisOpts{AxisLabel: charts.LabelTextOpts{Formatter: "{value} 件/月"}})
+```
+![](https://user-images.githubusercontent.com/19553554/52392892-cfdd3d80-2ade-11e9-985d-d80ae110c1e3.png)
+
+
+### Bar-多 X 轴
+```go
+bar := charts.NewBar()
+bar.SetGlobalOptions(
+    charts.TitleOpts{Title: "Bar-多 X 轴"},
+    charts.YAxisOpts{AxisLabel: charts.LabelTextOpts{Formatter: "{value} 件/天"}},
+)
+bar.AddXAxis(nameItems).
+    AddYAxis("商家A", randInt(), charts.BarOpts{XAxisIndex: 0}).
+    AddYAxis("商家B", randInt(), charts.BarOpts{XAxisIndex: 1})
+bar.ExtendXAxis(charts.XAxisOpts{Data: foodItems})
+```
+![](https://user-images.githubusercontent.com/19553554/52393164-ea63e680-2adf-11e9-99fa-dc1d6c5dd61e.png)
+
+
+### Bar-DataZoom
+```go
+bar := charts.NewBar()
+bar.SetGlobalOptions(
+    charts.TitleOpts{Title: "Bar-DataZoom"},
+    charts.ToolboxOpts{Show: true},
+    charts.DataZoomOpts{XAxisIndex: []int{0}, Start: 50, End: 100},
+)
+bar.AddXAxis(nameItems).
+    AddYAxis("商家A", randInt()).
+    AddYAxis("商家B", randInt())
+```
+![](https://user-images.githubusercontent.com/19553554/52393958-9824c480-2ae3-11e9-8418-52e71fd33ccb.gif)
+
+
 ### Bar-翻转 XY 轴
 ```go
 bar := charts.NewBar()
@@ -191,10 +275,12 @@ bar.SetSeriesOptions(
 
 ### Bar-自定义标记+主题
 ```go
+import "github.com/chenjiandongx/go-echarts/common"
+
 bar := charts.NewBar()
 bar.SetGlobalOptions(
     charts.TitleOpts{Title: "Bar-自定义标记+主题"},
-    charts.InitOpts{PageTitle: "Awesome", Theme: "macarons"},
+    charts.InitOpts{PageTitle: "Awesome", Theme: common.ThemeType.Macarons},
 )
 bar.AddXAxis(nameItems).
     AddYAxis("商家A", randInt()).

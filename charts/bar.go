@@ -13,7 +13,7 @@ type Bar struct {
 	isXYReversal bool
 }
 
-func (Bar) chartType() string { return common.BarType }
+func (Bar) chartType() string { return common.ChartType.BarType }
 
 // Bar series options
 type BarOpts struct {

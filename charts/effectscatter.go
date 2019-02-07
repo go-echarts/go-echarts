@@ -6,7 +6,7 @@ type EffectScatter struct {
 	RectChart
 }
 
-func (EffectScatter) chartType() string { return common.EffectScatterType }
+func (EffectScatter) chartType() string { return common.ChartType.EffectScatterType }
 
 // EffectScatter series options
 type EffectScatterChartOpts struct {

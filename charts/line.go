@@ -6,7 +6,7 @@ type Line struct {
 	RectChart
 }
 
-func (Line) chartType() string { return common.LineType }
+func (Line) chartType() string { return common.ChartType.LineType }
 
 // Line series options
 type LineOpts struct {

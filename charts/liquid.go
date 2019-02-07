@@ -11,7 +11,7 @@ type Liquid struct {
 	Series
 }
 
-func (Liquid) chartType() string { return common.LiquidType }
+func (Liquid) chartType() string { return common.ChartType.LiquidType }
 
 // Liquid series options
 type LiquidOpts struct {

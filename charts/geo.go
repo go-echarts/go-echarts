@@ -12,7 +12,7 @@ type Geo struct {
 	Series
 }
 
-func (Geo) chartType() string { return common.GeoType }
+func (Geo) chartType() string { return common.ChartType.GeoType }
 
 var geoFormatter = `function (params) {
 		return params.name + ' : ' + params.value[2];

@@ -6,7 +6,7 @@ type Kline struct {
 	RectChart
 }
 
-func (Kline) chartType() string { return common.KlineType }
+func (Kline) chartType() string { return common.ChartType.KlineType }
 
 func NewKLine(routers ...HTTPRouter) *Kline {
 	chart := new(Kline)

@@ -85,10 +85,12 @@ func (hr HTTPRouters) Len() int {
 	return len(hr)
 }
 
+// JS 函数配置项
 type JSFunctions struct {
 	Fns []string
 }
 
+// 新增 JS 函数
 func (f *JSFunctions) AddJSFuncs(fn ...string) {
 	for i := 0; i < len(fn); i++ {
 		f.Fns = append(f.Fns, common.ReplaceJsFuncs(fn[i]))
@@ -118,6 +120,7 @@ type BaseOpts struct {
 
 	JSFunctions      // JS 函数列表
 	HasXYAxis   bool // 图形是否拥有 XY 轴
+	Has3DAxis   bool // 图形是否为 3D XYZ 轴
 }
 
 // 设置全局颜色

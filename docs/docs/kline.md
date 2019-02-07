@@ -1,27 +1,36 @@
 ---
 id: kline
-title: Kline（K 线图）
+title: Kline
 sidebar_label: Kline（K 线图）
 ---
 
+> 红涨蓝跌
 
 ## API
 ```go
 // // 实例化图表
-func NewKiine(routers ...HTTPRouter) *Kiine {}
+func NewKiine(routers ...HTTPRouter) *Kiine
 // 新增 X 轴数据
-func AddXAxis(xAxis interface{}) *Kiine {}
+func AddXAxis(xAxis interface{}) *Kiine
 // 新增 Y 轴数据及配置项
-func AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Kiine {}
+func AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Kiine
 // 结合不同类型图表叠加画在同张图上
 // 只适用于 RectChart 图表，RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
 // 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
 // 而全局配置使用的是调用者的配置项
-func Overlap(a ...serieser)
-// 扩展新增 X 轴
-func ExtendXAxis(xAxis ...XAxisOpts) {}
-// 扩展新增 Y 轴
-func ExtendYAxis(yAxis ...YAxisOpts) {}
+func Overlap(a ...rectCharter)
+// 新增扩展 X 轴
+func ExtendXAxis(xAxis ...XAxisOpts)
+// 新增扩展 Y 轴
+func ExtendYAxis(yAxis ...YAxisOpts)
+// 新增 JS 函数
+func AddJSFuncs(fn ...string)
+// 设置全局配置项
+func SetGlobalOptions(options ...globalOptser)
+// 设置 Series 配置项
+func SetSeriesOptions(options ...seriesOptser)
+// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
+func Render(w ...io.Writer)
 ```
 
 ## 预定义
@@ -148,8 +157,29 @@ kline.SetGlobalOptions(
 ![](https://user-images.githubusercontent.com/19553554/52345490-4a16af00-2a58-11e9-9b43-7bbc86aa05b6.gif)
 
 
+### Kline-DataZoom(inside)
+```go
+kline := charts.NewKLine()
 
-### Kline-不同风格
+x := make([]string, 0)
+y := make([][4]float32, 0)
+for i := 0; i < len(kd); i++ {
+    x = append(x, kd[i].date)
+    y = append(y, kd[i].data)
+}
+
+kline.AddXAxis(x).AddYAxis("kline", y)
+kline.SetGlobalOptions(
+    charts.TitleOpts{Title: "Kline-DataZoom(inside)"},
+    charts.XAxisOpts{SplitNumber: 20},
+    charts.YAxisOpts{Scale: true},
+    charts.DataZoomOpts{Type:"inside", XAxisIndex: []int{0}, Start: 50, End: 100},
+)
+```
+![](https://user-images.githubusercontent.com/19553554/52393335-91488280-2ae0-11e9-9f00-2735e073d5a3.gif)
+
+
+### Kline-DataZoom(inside+slider)
 ```go
 kline := charts.NewKLine()
 
@@ -159,20 +189,65 @@ for i := 0; i < len(kd); i++ {
 	x = append(x, kd[i].date)
 	y = append(y, kd[i].data)
 }
+
+kline.AddXAxis(x).AddYAxis("kline", y)
+kline.SetGlobalOptions(
+	charts.TitleOpts{Title: "Kline-DataZoom(inside+slider)"},
+	charts.XAxisOpts{SplitNumber: 20},
+	charts.YAxisOpts{Scale: true},
+	charts.DataZoomOpts{Type:"inside", XAxisIndex: []int{0}, Start: 50, End: 100},
+	charts.DataZoomOpts{Type:"slider", XAxisIndex: []int{0}, Start: 50, End: 100},
+)
+```
+![](https://user-images.githubusercontent.com/19553554/52393449-0a47da00-2ae1-11e9-907e-027d8ea90fc5.gif)
+
+
+### Kline-DataZoom(yAxis)
+```go
+kline := charts.NewKLine()
+
+x := make([]string, 0)
+y := make([][4]float32, 0)
+for i := 0; i < len(kd); i++ {
+	x = append(x, kd[i].date)
+	y = append(y, kd[i].data)
+}
+
+kline.AddXAxis(x).AddYAxis("kline", y)
+kline.SetGlobalOptions(
+	charts.TitleOpts{Title: "Kline-DataZoom(yAxis)"},
+	charts.XAxisOpts{SplitNumber: 20},
+	charts.YAxisOpts{Scale: true},
+	charts.DataZoomOpts{Type:"slider", YAxisIndex: []int{0}, Start: 50, End: 100},
+)
+```
+![](https://user-images.githubusercontent.com/19553554/52393531-64e13600-2ae1-11e9-8db0-1afaaee9f8a5.png)
+
+
+### Kline-不同风格
+```go
+kline := charts.NewKLine()
+
+x := make([]string, 0)
+y := make([][4]float32, 0)
+for i := 0; i < len(kd); i++ {
+    x = append(x, kd[i].date)
+    y = append(y, kd[i].data)
+}
 kline.AddXAxis(x)
 kline.AddYAxis("kline", y)
 kline.SetGlobalOptions(
-	charts.TitleOpts{Title: "Kline-不同风格"},
-	charts.XAxisOpts{SplitNumber: 20},
-	charts.YAxisOpts{Scale: true},
-	charts.DataZoomOpts{XAxisIndex: []int{0}, Start: 50, End: 100},
+    charts.TitleOpts{Title: "Kline-不同风格"},
+    charts.XAxisOpts{SplitNumber: 20},
+    charts.YAxisOpts{Scale: true},
+    charts.DataZoomOpts{XAxisIndex: []int{0}, Start: 50, End: 100},
 )
 kline.SetSeriesOptions(
-	charts.MPNameTypeItem{Name: "highest value", Type: "max", ValueDim: "highest"},
-	charts.MPNameTypeItem{Name: "lowest value", Type: "min", ValueDim: "lowest"},
-	charts.MPStyleOpts{Label: charts.LabelTextOpts{Show: true}},
-	charts.ItemStyleOpts{
-		Color: "#ec0000", Color0: "#00da3c", BorderColor: "#8A0000", BorderColor0: "#008F28"},
+    charts.MPNameTypeItem{Name: "highest value", Type: "max", ValueDim: "highest"},
+    charts.MPNameTypeItem{Name: "lowest value", Type: "min", ValueDim: "lowest"},
+    charts.MPStyleOpts{Label: charts.LabelTextOpts{Show: true}},
+    charts.ItemStyleOpts{
+        Color: "#ec0000", Color0: "#00da3c", BorderColor: "#8A0000", BorderColor0: "#008F28"},
 )
 ```
 ![](https://user-images.githubusercontent.com/19553554/52345566-81855b80-2a58-11e9-8fa1-cc38d16b93df.gif)

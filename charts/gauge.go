@@ -11,7 +11,7 @@ type Gauge struct {
 	Series
 }
 
-func (Gauge) chartType() string { return common.GaugeType }
+func (Gauge) chartType() string { return common.ChartType.GaugeType }
 
 func NewGauge(routers ...HTTPRouter) *Gauge {
 	chart := new(Gauge)

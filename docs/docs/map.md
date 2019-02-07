@@ -1,15 +1,25 @@
 ---
 id: map
-title: Map（地图）
+title: Map
 sidebar_label: Map（地图）
 ---
+
+> 地图主要用于地理区域数据的可视化
 
 ## API
 ```go
 // 实例化图表
-func NewMap(mapType string, routers ...HTTPRouter) *Map {}
+func NewMap(mapType string, routers ...HTTPRouter) *Map
 // 新增数据及配置项
-func Add(name string, data map[string]float32, options ...seriesOptser) *Map {}
+func Add(name string, data map[string]float32, options ...seriesOptser) *Map
+// 新增 JS 函数
+func AddJSFuncs(fn ...string)
+// 设置全局配置项
+func SetGlobalOptions(options ...globalOptser)
+// 设置 Series 配置项
+func SetSeriesOptions(options ...seriesOptser)
+// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
+func Render(w ...io.Writer)
 ```
 
 ## 预定义
@@ -107,9 +117,11 @@ mc.Add("map", shantouData)
 
 ### Map-设置风格
 ```go
+import "github.com/chenjiandongx/go-echarts/common"
+
 mc := charts.NewMap("china")
 mc.SetGlobalOptions(
-    charts.InitOpts{Theme: "macarons"},
+    charts.InitOpts{Theme: common.ThemeType.Macarons},
     charts.TitleOpts{Title: "Map-设置风格"},
     charts.VisualMapOpts{Calculable: true, Max: 150},
 )

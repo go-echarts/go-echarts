@@ -6,7 +6,7 @@ type HeatMap struct {
 	RectChart
 }
 
-func (HeatMap) chartType() string { return common.HeatMapType }
+func (HeatMap) chartType() string { return common.ChartType.HeatMapType }
 
 // heatMap series options
 type HeatMapOpts struct {

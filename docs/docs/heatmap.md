@@ -1,27 +1,49 @@
 ---
 id: heatmap
-title: HeatMap（热力图）
+title: HeatMap
 sidebar_label: HeatMap（热力图）
 ---
+
+> 热力图主要通过颜色去表现数值的大小，必须要配合 visualMap 组件使用。直角坐标系上必须要使用两个类目轴
 
 ## API
 ```go
 // // 实例化图表
-func NewHeatMap(routers ...HTTPRouter) * HeatMap {}
+func NewHeatMap(routers ...HTTPRouter) *HeatMap
 // 新增 X 轴数据
-func AddXAxis(xAxis interface{}) *HeatMap {}
+func AddXAxis(xAxis interface{}) *HeatMap
 // 新增 Y 轴数据及配置项
-func AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *  HeatMap {}
+func AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *HeatMap
 // 结合不同类型图表叠加画在同张图上
 // 只适用于 RectChart 图表，RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
 // 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
 // 而全局配置使用的是调用者的配置项
-func Overlap(a ...serieser)
-// 扩展新增 X 轴
-func ExtendXAxis(xAxis ...XAxisOpts) {}
-// 扩展新增 Y 轴
-func ExtendYAxis(yAxis ...YAxisOpts) {}
+func Overlap(a ...rectCharter)
+// 新增扩展 X 轴
+func ExtendXAxis(xAxis ...XAxisOpts)
+// 新增扩展 Y 轴
+func ExtendYAxis(yAxis ...YAxisOpts)
+// 新增 JS 函数
+func AddJSFuncs(fn ...string)
+// 设置全局配置项
+func SetGlobalOptions(options ...globalOptser)
+// 设置 Series 配置项
+func SetSeriesOptions(options ...seriesOptser)
+// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
+func Render(w ...io.Writer)
 ```
+
+## 专属 Options
+> 在 `SetSeriesOptions` 中设置
+```go
+type HeatMapOpts struct {
+    //使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
+    XAxisIndex int
+    //使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
+    YAxisIndex int
+}
+```
+
 
 ## 预定义
 > Note: 示例用到的一些变量及方法，部分重复的以后代码中不会再次列出

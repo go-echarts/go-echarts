@@ -327,6 +327,9 @@ func (s *singleSeries) switchSeriesOpts(options ...seriesOptser) {
 		case PieOpts:
 			opt := option.(PieOpts)
 			opt.setChartOpt(s)
+		case ScatterOpts:
+			opt := option.(ScatterOpts)
+			opt.setChartOpt(s)
 		case WordCLoudOpts:
 			opt := option.(WordCLoudOpts)
 			opt.setChartOpt(s)

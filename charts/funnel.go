@@ -11,7 +11,7 @@ type Funnel struct {
 	Series
 }
 
-func (Funnel) chartType() string { return common.FunnelType }
+func (Funnel) chartType() string { return common.ChartType.FunnelType }
 
 func NewFunnel(routers ...HTTPRouter) *Funnel {
 	chart := new(Funnel)

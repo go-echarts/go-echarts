@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/chenjiandongx/go-echarts/charts"
+	"github.com/chenjiandongx/go-echarts/common"
 )
 
 func mapBase() *charts.Map {
@@ -57,7 +58,7 @@ func mapShantou() *charts.Map {
 func mapTheme() *charts.Map {
 	mc := charts.NewMap("china")
 	mc.SetGlobalOptions(
-		charts.InitOpts{Theme: "macarons"},
+		charts.InitOpts{Theme: common.ThemeType.Macarons},
 		charts.TitleOpts{Title: "Map-设置风格"},
 		charts.VisualMapOpts{Calculable: true, Max: 150},
 	)

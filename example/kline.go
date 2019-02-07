@@ -124,6 +124,67 @@ func klineBase() *charts.Kline {
 	return kline
 }
 
+func klineDataZoomInside() *charts.Kline {
+	kline := charts.NewKLine()
+
+	x := make([]string, 0)
+	y := make([][4]float32, 0)
+	for i := 0; i < len(kd); i++ {
+		x = append(x, kd[i].date)
+		y = append(y, kd[i].data)
+	}
+
+	kline.AddXAxis(x).AddYAxis("kline", y)
+	kline.SetGlobalOptions(
+		charts.TitleOpts{Title: "Kline-DataZoom(inside)"},
+		charts.XAxisOpts{SplitNumber: 20},
+		charts.YAxisOpts{Scale: true},
+		charts.DataZoomOpts{Type: "inside", XAxisIndex: []int{0}, Start: 50, End: 100},
+	)
+	return kline
+}
+
+func klineDataZoomBoth() *charts.Kline {
+	kline := charts.NewKLine()
+
+	x := make([]string, 0)
+	y := make([][4]float32, 0)
+	for i := 0; i < len(kd); i++ {
+		x = append(x, kd[i].date)
+		y = append(y, kd[i].data)
+	}
+
+	kline.AddXAxis(x).AddYAxis("kline", y)
+	kline.SetGlobalOptions(
+		charts.TitleOpts{Title: "Kline-DataZoom(inside+slider)"},
+		charts.XAxisOpts{SplitNumber: 20},
+		charts.YAxisOpts{Scale: true},
+		charts.DataZoomOpts{Type: "inside", XAxisIndex: []int{0}, Start: 50, End: 100},
+		charts.DataZoomOpts{Type: "slider", XAxisIndex: []int{0}, Start: 50, End: 100},
+	)
+	return kline
+}
+
+func klineDataZoomYAxis() *charts.Kline {
+	kline := charts.NewKLine()
+
+	x := make([]string, 0)
+	y := make([][4]float32, 0)
+	for i := 0; i < len(kd); i++ {
+		x = append(x, kd[i].date)
+		y = append(y, kd[i].data)
+	}
+
+	kline.AddXAxis(x).AddYAxis("kline", y)
+	kline.SetGlobalOptions(
+		charts.TitleOpts{Title: "Kline-DataZoom(yAxis)"},
+		charts.XAxisOpts{SplitNumber: 20},
+		charts.YAxisOpts{Scale: true},
+		charts.DataZoomOpts{Type: "slider", YAxisIndex: []int{0}, Start: 50, End: 100},
+	)
+	return kline
+}
+
 func klineStyle() *charts.Kline {
 	kline := charts.NewKLine()
 
@@ -155,6 +216,9 @@ func klineHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("kline")...)
 	page.Add(
 		klineBase(),
+		klineDataZoomInside(),
+		klineDataZoomBoth(),
+		klineDataZoomYAxis(),
 		klineStyle(),
 	)
 	f, err := os.Create(getRenderPath("kline.html"))

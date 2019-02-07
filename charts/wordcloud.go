@@ -11,7 +11,7 @@ type WordCloud struct {
 	Series
 }
 
-func (WordCloud) chartType() string { return common.WordCloudType }
+func (WordCloud) chartType() string { return common.ChartType.WordCloudType }
 
 // WordCLoud series options
 type WordCLoudOpts struct {

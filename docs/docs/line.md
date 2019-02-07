@@ -1,27 +1,55 @@
 ---
 id: line
-title: Line（折线图）
+title: Line
 sidebar_label: Line（折线图）
 ---
+
+> 折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势
 
 ## API
 ```go
 // // 实例化图表
-func NewLine(routers ...HTTPRouter) * Line {}
+func NewLine(routers ...HTTPRouter) *Line
 // 新增 X 轴数据
-func AddXAxis(xAxis interface{}) *Line {}
+func AddXAxis(xAxis interface{}) *Line
 // 新增 Y 轴数据及配置项
-func AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *  Line {}
+func AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Line
 // 结合不同类型图表叠加画在同张图上
 // 只适用于 RectChart 图表，RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
 // 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
 // 而全局配置使用的是调用者的配置项
-func Overlap(a ...serieser)
-// 扩展新增 X 轴
-func ExtendXAxis(xAxis ...XAxisOpts) {}
-// 扩展新增 Y 轴
-func ExtendYAxis(yAxis ...YAxisOpts) {}
+func Overlap(a ...rectCharter)
+// 新增扩展 X 轴
+func ExtendXAxis(xAxis ...XAxisOpts)
+// 新增扩展 Y 轴
+func ExtendYAxis(yAxis ...YAxisOpts)
+// 新增 JS 函数
+func AddJSFuncs(fn ...string)
+// 设置全局配置项
+func SetGlobalOptions(options ...globalOptser)
+// 设置 Series 配置项
+func SetSeriesOptions(options ...seriesOptser)
+// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
+func Render(w ...io.Writer)
 ```
+
+## 专属 Options
+> 在 `SetSeriesOptions` 中设置
+```go
+type LineOpts struct {
+    // 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
+    Stack      string
+    // 曲线是否平滑
+    Smooth     bool
+    // 是否使用阶梯图
+    Step       bool
+    // 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
+    XAxisIndex int
+    // 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
+    YAxisIndex int
+}
+```
+
 
 ## Demo
 

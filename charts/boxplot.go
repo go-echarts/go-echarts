@@ -6,7 +6,7 @@ type BoxPlot struct {
 	RectChart
 }
 
-func (BoxPlot) chartType() string { return common.BoxPlotType }
+func (BoxPlot) chartType() string { return common.ChartType.BoxPlotType }
 
 func NewBoxPlot(routers ...HTTPRouter) *BoxPlot {
 	chart := new(BoxPlot)

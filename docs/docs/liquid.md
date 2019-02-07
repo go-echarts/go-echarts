@@ -1,15 +1,39 @@
 ---
 id: liquid
-title: Liquid（水球图）
+title: Liquid
 sidebar_label: Liquid（水球图）
 ---
+
+> 主要用来突出数据的百分比
 
 ## API
 ```go
 // 实例化图表
-func NewLiquid(routers ...HTTPRouter) *Liquid {}
+func NewLiquid(routers ...HTTPRouter) *Liquid
 // 新增数据及配置项
-func Add(name string, data map[string]interface{}, options ...seriesOptser) *Liquid {}
+func Add(name string, data map[string]interface{}, options ...seriesOptser) *Liquid
+// 新增 JS 函数
+func AddJSFuncs(fn ...string)
+// 设置全局配置项
+func SetGlobalOptions(options ...globalOptser)
+// 设置 Series 配置项
+func SetSeriesOptions(options ...seriesOptser)
+// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
+func Render(w ...io.Writer)
+```
+
+## 专属 Options
+> 在 `SetSeriesOptions` 中设置
+```go
+type LiquidOpts struct {
+    // 水球图形状，可选
+    // "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
+    Shape           string
+    // 是否显示水球轮廓
+    IsShowOutline   bool
+    // 是否停止动画
+    IsWaveAnimation bool
+}
 ```
 
 ## Demo

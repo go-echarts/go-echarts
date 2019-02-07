@@ -31,10 +31,20 @@ func boxPlotBase() *charts.BoxPlot {
 	return bp
 }
 
+func boxPlotMulti() *charts.BoxPlot {
+	bp := charts.NewBoxPlot()
+	bp.SetGlobalOptions(charts.TitleOpts{Title: "BoxPlot-多 Series"})
+	bp.AddXAxis(bpX[:2]).
+		AddYAxis("boxplot1", bpY[:2]).
+		AddYAxis("boxplot2", bpY[2:])
+	return bp
+}
+
 func boxPlotHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("boxPlot")...)
 	page.Add(
 		boxPlotBase(),
+		boxPlotMulti(),
 	)
 	f, err := os.Create(getRenderPath("boxPlot.html"))
 	if err != nil {

@@ -1,10 +1,8 @@
 ---
 id: overlap
-title: Overlap（重叠图）
+title: Overlap
 sidebar_label: Overlap（重叠图）
 ---
-
-## API
 
 ## 预定义
 ```go

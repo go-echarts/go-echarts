@@ -4,7 +4,7 @@ title: 简介
 sidebar_label: 简介
 ---
 
-<img align="center" height="350px" weight="350px" src="https://user-images.githubusercontent.com/19553554/52387794-8680f400-2ac6-11e9-8f5e-cf7821f09a03.png"/>
+<img align="center" height="300px" weight="300px" src="https://user-images.githubusercontent.com/19553554/52387794-8680f400-2ac6-11e9-8f5e-cf7821f09a03.png"/>
 
 <h1 align="center">🎨 go-echarts</h1>
 <p align="center">

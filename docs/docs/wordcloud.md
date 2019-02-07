@@ -1,15 +1,39 @@
 ---
 id: wordCloud
-title: WordCloud（词云图）
+title: WordCloud
 sidebar_label: WordCloud（词云图）
 ---
+
+> 词云图
 
 ## API
 ```go
 // 实例化图表
-func NewWordCloud(routers ...HTTPRouter) *WordCloud {}
+func NewWordCloud(routers ...HTTPRouter) *WordCloud
 // 新增数据及配置项
-func Add(name string, data map[string]interface{}, options ...seriesOptser) *WordCloud {}
+func Add(name string, data map[string]interface{}, options ...seriesOptser) *WordCloud
+// 新增 JS 函数
+func AddJSFuncs(fn ...string)
+// 设置全局配置项
+func SetGlobalOptions(options ...globalOptser)
+// 设置 Series 配置项
+func SetSeriesOptions(options ...seriesOptser)
+// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
+func Render(w ...io.Writer)
+```
+
+## 专属 Options
+> 在 `SetSeriesOptions` 中设置
+```go
+type WordCLoudOpts struct {
+    // 词云图形状，可选
+    //"circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
+    Shape         string
+    // 字体大小范围
+    SizeRange     []float32
+    // 字体选择角度范围
+    RotationRange []float32
+}
 ```
 
 ## 预定义

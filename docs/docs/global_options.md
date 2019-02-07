@@ -1,12 +1,27 @@
 ---
-id: base_options
-title: 基本配置项
-sidebar_label: 基本配置项
+id: global_options
+title: 全局配置项
+sidebar_label: 全局配置项
 ---
 
 以下所有 `Opts` 结尾的配置项均可以作为 `SetGlobalOptions` 方法的参数，它们均实现了 `globalOptser` 接口
 
-## InitOpts
+```go
+type globalOptser interface {
+    markGlobal()
+}
+```
+
+## 初识组件
+> **SetGlobalOptions** 接受的参数是全局配置项，共有以下几个
+
+![](https://user-images.githubusercontent.com/19553554/52394318-dff81b80-2ae4-11e9-9c5f-6a3044224c8a.png)
+
+![](https://user-images.githubusercontent.com/19553554/52394719-3f0a6000-2ae6-11e9-8d00-c540e9a0fe2b.png)
+
+## Options
+
+### InitOpts
 > 图形初始化配置项
 ```go
 type InitOpts struct {
@@ -25,7 +40,7 @@ type InitOpts struct {
 }
 ```
 
-## TitleOpts
+### TitleOpts
 > 标题组件配置项
 
 => [TextStyleOpts](docs/series_options#textstyleopts) <=
@@ -66,7 +81,7 @@ type TitleOpts struct {
 }
 ```
 
-## ToolboxOpts
+### ToolboxOpts
 > 工具箱组件配置项
 ```go
 type ToolboxOpts struct {
@@ -88,7 +103,7 @@ type TBFeature struct {
 }
 ```
 
-## TooltipOpts
+### TooltipOpts
 > 提示框组件配置项
 ```go
 type TooltipOpts struct {
@@ -129,7 +144,7 @@ type TooltipOpts struct {
 }
 ```
 
-## LegendOpts
+### LegendOpts
 > 图例组件配置项
 ```go
 type LegendOpts struct {
@@ -156,13 +171,27 @@ type LegendOpts struct {
 }
 ```
 
-## ColorOpts
+### ColorOpts
 > 全局颜色配置项
 ```go
 type ColorOpts []string
 ```
 
-## DataZoomOpts
+此配置项可以设置全局 Series 颜色，即可使用在 `SetGlobalOptions` 方法，也可以使用在 `SetSeriesOptions` 方法。
+```go
+bar := charts.NewBar()
+bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-设置系列颜色"})
+// 单独设置
+bar.AddXAxis(nameItems).
+	AddYAxis("商家A", randInt(), charts.ColorOpts{"lightblue"}).
+	AddYAxis("商家B", randInt(), charts.ColorOpts{"pink"})
+// 或者可以这样设置
+//bar.SetGlobalOptions(charts.ColorOpts{"lightblue", "pink"})
+```
+![](https://user-images.githubusercontent.com/19553554/52331995-74567580-2a34-11e9-9050-3e4f202b8810.png)
+
+
+### DataZoomOpts
 > 区域缩放组件配置项
 ```go
 type DataZoomOpts struct {
@@ -190,7 +219,7 @@ type DataZoomOpts struct {
 }
 ```
 
-## VisualMapOpts
+### VisualMapOpts
 > 视觉映射组件配置项 用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）
 ```go
 type VisualMapOpts struct {
@@ -218,5 +247,99 @@ type VMInRange struct {
     Symbol string `json:"symbol,omitempty"`
     // 图元的大小
     SymbolSize float32 `json:"symbolSize,omitempty"`
+}
+```
+
+### XAxisOpts
+> X 轴配置项组件
+```go
+type XAxisOpts struct {
+    // X 轴名称
+    Name string `json:"name,omitempty"`
+    // X 坐标轴类型，可选：
+    // "value"：数值轴，适用于连续数据。
+    // "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+    // "log" 对数轴。适用于对数数据。
+    Type string `json:"type,omitempty"`
+    // 是否显示 X 轴
+    Show bool `json:"show,omitempty"`
+    // X 轴数据项
+    Data interface{} `json:"data,omitempty"`
+    // X 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，
+    // 最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
+    // 在类目轴中无效
+    SplitNumber int `json:"splitNumber,omitempty"`
+    // 只在数值轴中（type: 'value'）有效。
+    // 是否是脱离 0 值比例。设置成 true 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。
+    // 在设置 min 和 max 之后该配置项无效
+    // 默认为 false
+    Scale bool `json:"scale,omitempty"`
+    // X 坐标轴刻度最小值
+    // 可以设置成特殊值 'dataMin'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
+    Mix float32 `json:"min,omitempty"`
+    // X 坐标轴刻度最大值
+    // 可以设置成特殊值 'dataMax'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
+    Max float32 `json:"max,omitempty"`
+    // X 轴所在的 grid 的索引
+    // 默认 0
+    GridIndex int `json:"gridIndex,omitempty"`
+    // X 轴在 grid 区域中的分隔区域配置项
+    SplitArea SplitAreaOpts `json:"splitArea,omitempty"`
+    // X 轴在 grid 区域中的分隔线配置项
+    SplitLine SplitLineOpts `json:"splitLine,,omitempty"`
+}
+```
+
+### YAxisOpts
+> Y 轴配置项组件
+```go
+type YAxisOpts struct {
+    // Y 轴名称
+    Name string `json:"name,omitempty"`
+    // Y 坐标轴类型，可选：
+    // "value"：数值轴，适用于连续数据。
+    // "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+    // "log" 对数轴。适用于对数数据。
+    Type string `json:"type,omitempty"`
+    // 是否显示 Y 轴
+    Show bool `json:"show,omitempty"`
+    // 刻度标签的内容格式器，支持字符串模板和回调函数两种形式
+    // 1.使用字符串模板，模板变量为刻度默认标签 {value}
+    // formatter: '{value} kg'
+    // 2.使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
+    // formatter: function (value, index) {
+    //    // 格式化成月/日，只在第一个刻度显示年份
+    //    var date = new Date(value);
+    //    var texts = [(date.getMonth() + 1), date.getDate()];
+    //    if (index === 0) {
+    //        texts.unshift(date.getYear());
+    //    }
+    //    return texts.join('/');
+    // }
+    AxisLabel LabelTextOpts `json:"axisLabel,omitempty"`
+    // Y 轴数据项
+    Data interface{} `json:"data,omitempty"`
+    // Y 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，
+    // 最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
+    // 在类目轴中无效
+    SplitNumber int `json:"splitNumber,omitempty"`
+    // 只在数值轴中（type: 'value'）有效。
+    // 是否是脱离 0 值比例。设置成 true 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。
+    // 在设置 min 和 max 之后该配置项无效
+    // 默认为 false
+    Scale bool `json:"scale,omitempty"`
+    // Y 坐标轴刻度最小值
+    // 可以设置成特殊值 'dataMin'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
+    Mix float32 `json:"min,omitempty"`
+    // Y 坐标轴刻度最大值
+    // 可以设置成特殊值 'dataMax'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
+    Max float32 `json:"max,omitempty"`
+    // Y 轴所在的 grid 的索引
+    // 默认 0
+    GridIndex int `json:"gridIndex,omitempty"`
+    // Y 轴在 grid 区域中的分隔区域配置项
+    SplitArea SplitAreaOpts `json:"splitArea,omitempty"`
+    // Y 轴在 grid 区域中的分隔线配置项
+    SplitLine SplitLineOpts `json:"splitLine,,omitempty"`
 }
 ```
