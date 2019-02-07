@@ -10,17 +10,19 @@ go-echarts 秉承着 API 设计要简洁的原则，对所有图表只提供了�
 ### Render(w ...io.Writer)
 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
 
-Add()
+### Add(arg0 Type0, arg1 Type1, ...)
+新增 series，参数由具体图表决定
 
-AddXAxis()
+### AddXAxis(arg0 Type0, arg1 Type1, ...)
+新增 X 轴数据，参数由具体图表决定
 
-AddYAxis()
+### AddYAxis(arg0 Type0, arg1 Type1, ...)
+新增 X 轴数据，参数由具体图表决定
 
-Overlap()
+### Overlap()
 
-// 设置全局配置项
-func SetGlobalOptions(options ...globalOptser) *RectChart {}
-// 设置 Series 配置项
-func SetSeriesOptions(options ...seriesOptser) {}
-// 渲染图表
-func Render(w ...io.Writer) error {}
+### func SetGlobalOptions(options ...globalOptser) *RectChart {}
+设置全局配置项
+
+### func SetSeriesOptions(options ...seriesOptser) {}
+设置 Series 配置项

@@ -4,6 +4,11 @@ import (
 	"io"
 )
 
+type rectCharter interface {
+	markRectChart()
+	exportSeries() Series
+}
+
 // XY 轴配置项
 type XYAxis struct {
 	XAxisOptsList []XAxisOpts
@@ -62,6 +67,8 @@ type RectChart struct {
 	xAxisData interface{}
 }
 
+func (RectChart) markRectChart() {}
+
 // RectChart 设置全局配置项
 func (rc *RectChart) SetGlobalOptions(options ...globalOptser) *RectChart {
 	rc.RectOpts.setRectGlobalOptions(options...)
@@ -69,10 +76,11 @@ func (rc *RectChart) SetGlobalOptions(options ...globalOptser) *RectChart {
 }
 
 // 结合不同类型图表叠加画在同张图上
-// 只适用于 RectChart 图表，RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
+// 只适用于 RectChart 图表，其实现了 rectCharter 接口
+// RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
 // 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
 // 而全局配置使用的是调用者的配置项
-func (rc *RectChart) Overlap(a ...serieser) {
+func (rc *RectChart) Overlap(a ...rectCharter) {
 	for i := 0; i < len(a); i++ {
 		rc.Series = append(rc.Series, a[i].exportSeries()...)
 	}
