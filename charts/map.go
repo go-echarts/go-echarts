@@ -14,7 +14,7 @@ type Map struct {
 	mapType string
 }
 
-func (Map) chartType() string { return common.ChartType.MapType }
+func (Map) chartType() string { return common.ChartType.Map }
 
 func NewMap(mapType string, routers ...HTTPRouter) *Map {
 	chart := new(Map)
@@ -29,7 +29,7 @@ func (c *Map) Add(name string, data map[string]float32, options ...seriesOptser)
 	for k, v := range data {
 		nvs = append(nvs, common.NameValueItem{k, v})
 	}
-	series := singleSeries{Name: name, Type: "map", MapType: c.mapType, Data: nvs}
+	series := singleSeries{Name: name, Type: common.ChartType.Map, MapType: c.mapType, Data: nvs}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

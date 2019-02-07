@@ -6,7 +6,7 @@ type Kline struct {
 	RectChart
 }
 
-func (Kline) chartType() string { return common.ChartType.KlineType }
+func (Kline) chartType() string { return common.ChartType.Kline }
 
 func NewKLine(routers ...HTTPRouter) *Kline {
 	chart := new(Kline)
@@ -21,7 +21,7 @@ func (c *Kline) AddXAxis(xAxis interface{}) *Kline {
 }
 
 func (c *Kline) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Kline {
-	series := singleSeries{Name: name, Type: "candlestick", Data: yAxis}
+	series := singleSeries{Name: name, Type: common.ChartType.Kline, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

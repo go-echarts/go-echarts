@@ -13,7 +13,7 @@ type Bar struct {
 	isXYReversal bool
 }
 
-func (Bar) chartType() string { return common.ChartType.BarType }
+func (Bar) chartType() string { return common.ChartType.Bar }
 
 // Bar series options
 type BarOpts struct {
@@ -46,7 +46,7 @@ func (c *Bar) AddXAxis(xAxis interface{}) *Bar {
 }
 
 func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Bar {
-	series := singleSeries{Name: name, Type: "bar", Data: yAxis}
+	series := singleSeries{Name: name, Type: common.ChartType.Bar, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

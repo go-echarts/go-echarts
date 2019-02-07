@@ -11,7 +11,7 @@ type Gauge struct {
 	Series
 }
 
-func (Gauge) chartType() string { return common.ChartType.GaugeType }
+func (Gauge) chartType() string { return common.ChartType.Gauge }
 
 func NewGauge(routers ...HTTPRouter) *Gauge {
 	chart := new(Gauge)
@@ -24,7 +24,7 @@ func (c *Gauge) Add(name string, data map[string]interface{}, options ...seriesO
 	for k, v := range data {
 		nvs = append(nvs, common.NameValueItem{k, v})
 	}
-	series := singleSeries{Name: name, Type: "gauge", Data: nvs}
+	series := singleSeries{Name: name, Type: common.ChartType.Gauge, Data: nvs}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	return c

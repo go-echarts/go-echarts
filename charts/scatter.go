@@ -6,7 +6,7 @@ type Scatter struct {
 	RectChart
 }
 
-func (Scatter) chartType() string { return common.ChartType.ScatterType }
+func (Scatter) chartType() string { return common.ChartType.Scatter }
 
 // Scatter series options
 type ScatterOpts struct {
@@ -36,7 +36,7 @@ func (c *Scatter) AddXAxis(xAxis interface{}) *Scatter {
 }
 
 func (c *Scatter) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Scatter {
-	series := singleSeries{Name: name, Type: "scatter", Data: yAxis}
+	series := singleSeries{Name: name, Type: common.ChartType.Scatter, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

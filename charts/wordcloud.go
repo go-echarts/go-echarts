@@ -11,7 +11,7 @@ type WordCloud struct {
 	Series
 }
 
-func (WordCloud) chartType() string { return common.ChartType.WordCloudType }
+func (WordCloud) chartType() string { return common.ChartType.WordCloud }
 
 // WordCLoud series options
 type WordCLoudOpts struct {
@@ -51,7 +51,7 @@ func (c *WordCloud) Add(name string, data map[string]interface{}, options ...ser
 	for k, v := range data {
 		nvs = append(nvs, common.NameValueItem{k, v})
 	}
-	series := singleSeries{Name: name, Type: "wordCloud", Data: nvs}
+	series := singleSeries{Name: name, Type: common.ChartType.WordCloud, Data: nvs}
 	series.setSingleSeriesOpts(options...)
 
 	// 处理词云图默认随机颜色

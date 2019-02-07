@@ -6,7 +6,7 @@ type EffectScatter struct {
 	RectChart
 }
 
-func (EffectScatter) chartType() string { return common.ChartType.EffectScatterType }
+func (EffectScatter) chartType() string { return common.ChartType.EffectScatter }
 
 // EffectScatter series options
 type EffectScatterChartOpts struct {
@@ -42,7 +42,7 @@ func (c *EffectScatter) AddXAxis(xAxis interface{}) *EffectScatter {
 }
 
 func (c *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *EffectScatter {
-	series := singleSeries{Name: name, Type: "effectScatter", Data: yAxis}
+	series := singleSeries{Name: name, Type: common.ChartType.EffectScatter, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

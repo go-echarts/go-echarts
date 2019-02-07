@@ -43,7 +43,7 @@ func (page *Page) Add(charts ...charter) *Page {
 		page.extractAssets(charts[i].yieldAssets())
 		page.Charts = append(page.Charts, charts[i])
 
-		if charts[i].chartType() == common.LiquidType {
+		if charts[i].chartType() == common.ChartType.Liquid {
 			page.unusedStr.Add(`"outline":{"show":false},?`)
 			page.unusedStr.Add(`"waveAnimation":false,?`)
 		}

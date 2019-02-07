@@ -12,7 +12,7 @@ type Geo struct {
 	Series
 }
 
-func (Geo) chartType() string { return common.ChartType.GeoType }
+func (Geo) chartType() string { return common.ChartType.Geo }
 
 var geoFormatter = `function (params) {
 		return params.name + ' : ' + params.value[2];
@@ -31,7 +31,7 @@ func (c *Geo) Add(name, geoType string, data map[string]float32, options ...seri
 	for k, v := range data {
 		nvs = append(nvs, common.NameValueItem{k, c.extendValue(k, v)})
 	}
-	series := singleSeries{Name: name, Type: geoType, Data: nvs, CoordSystem: "geo"}
+	series := singleSeries{Name: name, Type: geoType, Data: nvs, CoordSystem: common.ChartType.Geo}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

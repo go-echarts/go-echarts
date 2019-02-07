@@ -11,7 +11,7 @@ type Pie struct {
 	Series
 }
 
-func (Pie) chartType() string { return common.ChartType.PieType }
+func (Pie) chartType() string { return common.ChartType.Pie }
 
 // Pie series options
 type PieOpts struct {
@@ -52,7 +52,7 @@ func (c *Pie) Add(name string, data map[string]interface{}, options ...seriesOpt
 	for k, v := range data {
 		nvs = append(nvs, common.NameValueItem{k, v})
 	}
-	series := singleSeries{Name: name, Type: "pie", Data: nvs}
+	series := singleSeries{Name: name, Type: common.ChartType.Pie, Data: nvs}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

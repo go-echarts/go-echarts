@@ -202,17 +202,17 @@ type singleSeries struct {
 	// 使用的 Y 轴的 index，在单个图表实例中存在多个 Y 轴的时候有用
 	YAxisIndex int `json:"yAxisIndex,omitempty"`
 
-	// Map charts
+	// Map chart
 	MapType     string `json:"map,omitempty"`
 	CoordSystem string `json:"coordinateSystem,omitempty"`
 
-	// Line charts
+	// Line chart
 	// 是否是阶梯线图。可以设置为 true 显示成阶梯线图。
 	Step bool `json:"step,omitempty"`
 	// 是否平滑曲线显示
 	Smooth bool `json:"smooth,omitempty"`
 
-	// pie charts
+	// Pie chart
 	// 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
 	// "radius": 扇区圆心角展现数据的百分比，半径展现数据的大小。
 	// "area": 所有扇区圆心角相同，仅通过半径展现数据大小。
@@ -233,7 +233,7 @@ type singleSeries struct {
 	// [0, "75%"]
 	Radius interface{} `json:"radius,omitempty"`
 
-	// wordCloud
+	// wordCloud chart
 	// 词云图形状
 	// 可选 "circle", "cardioid", "diamond", "triangle-forward", "triangle", "pentagon", "star"
 	// 默认 "circle"
@@ -342,10 +342,6 @@ func (s *singleSeries) setSingleSeriesOpts(options ...seriesOptser) {
 }
 
 type Series []singleSeries
-
-type serieser interface {
-	exportSeries() Series
-}
 
 func (series *Series) exportSeries() Series {
 	return *series

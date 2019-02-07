@@ -6,7 +6,7 @@ type HeatMap struct {
 	RectChart
 }
 
-func (HeatMap) chartType() string { return common.ChartType.HeatMapType }
+func (HeatMap) chartType() string { return common.ChartType.HeatMap }
 
 // heatMap series options
 type HeatMapOpts struct {
@@ -36,7 +36,7 @@ func (c *HeatMap) AddXAxis(xAxis interface{}) *HeatMap {
 }
 
 func (c *HeatMap) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *HeatMap {
-	series := singleSeries{Name: name, Type: "heatmap", Data: yAxis}
+	series := singleSeries{Name: name, Type: common.ChartType.HeatMap, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

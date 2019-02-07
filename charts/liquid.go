@@ -11,7 +11,7 @@ type Liquid struct {
 	Series
 }
 
-func (Liquid) chartType() string { return common.ChartType.LiquidType }
+func (Liquid) chartType() string { return common.ChartType.Liquid }
 
 // Liquid series options
 type LiquidOpts struct {
@@ -44,7 +44,7 @@ func NewLiquid(routers ...HTTPRouter) *Liquid {
 }
 
 func (c *Liquid) Add(name string, data interface{}, options ...seriesOptser) *Liquid {
-	series := singleSeries{Name: name, Type: "liquidFill", Data: data}
+	series := singleSeries{Name: name, Type: common.ChartType.Liquid, Data: data}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	return c

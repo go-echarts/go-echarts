@@ -11,7 +11,7 @@ type Funnel struct {
 	Series
 }
 
-func (Funnel) chartType() string { return common.ChartType.FunnelType }
+func (Funnel) chartType() string { return common.ChartType.Funnel }
 
 func NewFunnel(routers ...HTTPRouter) *Funnel {
 	chart := new(Funnel)
@@ -24,7 +24,7 @@ func (c *Funnel) Add(name string, data map[string]interface{}, options ...series
 	for k, v := range data {
 		nvs = append(nvs, common.NameValueItem{k, v})
 	}
-	series := singleSeries{Name: name, Type: "funnel", Data: nvs}
+	series := singleSeries{Name: name, Type: common.ChartType.Funnel, Data: nvs}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)
