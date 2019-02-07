@@ -15,7 +15,7 @@ const (
 	maxNum = 50
 )
 
-type Routers struct {
+type router struct {
 	name string
 	charts.HTTPRouter
 }
@@ -62,8 +62,9 @@ var (
 		"南澳县": float32(rand.Intn(150)),
 	}
 
-	routers = []Routers{
+	routers = []router{
 		{"bar", charts.HTTPRouter{URL: host + "/bar", Text: "Bar-(柱状图)"}},
+		{"bar3D", charts.HTTPRouter{URL: host + "/bar3D", Text: "Bar3D-(3D 柱状图)"}},
 		{"boxPlot", charts.HTTPRouter{URL: host + "/boxPlot", Text: "BoxPlot-(箱线图)"}},
 		{"effectScatter", charts.HTTPRouter{URL: host + "/effectScatter", Text: "EffectScatter-(动态散点图)"}},
 		{"funnel", charts.HTTPRouter{URL: host + "/funnel", Text: "Funnel-(漏斗图)"}},
@@ -128,7 +129,8 @@ func genKvData() map[string]interface{} {
 }
 
 func main() {
-	http.HandleFunc("/bar", logTracing(BarHandler))
+	http.HandleFunc("/bar", logTracing(barHandler))
+	http.HandleFunc("/bar3D", logTracing(bar3DHandler))
 	http.HandleFunc("/boxPlot", logTracing(boxPlotHandler))
 	http.HandleFunc("/effectScatter", logTracing(esHandler))
 	http.HandleFunc("/funnel", logTracing(funnelHandler))

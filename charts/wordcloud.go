@@ -49,7 +49,7 @@ func NewWordCloud(routers ...HTTPRouter) *WordCloud {
 func (c *WordCloud) Add(name string, data map[string]interface{}, options ...seriesOptser) *WordCloud {
 	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, common.NameValueItem{k, v})
+		nvs = append(nvs, common.NameValueItem{Name: k, Value: v})
 	}
 	series := singleSeries{Name: name, Type: common.ChartType.WordCloud, Data: nvs}
 	series.setSingleSeriesOpts(options...)

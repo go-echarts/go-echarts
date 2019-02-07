@@ -6,7 +6,7 @@ type BoxPlot struct {
 	RectChart
 }
 
-func (BoxPlot) chartType() string { return common.ChartType.BoxPlotType }
+func (BoxPlot) chartType() string { return common.ChartType.BoxPlot }
 
 func NewBoxPlot(routers ...HTTPRouter) *BoxPlot {
 	chart := new(BoxPlot)
@@ -21,7 +21,7 @@ func (c *BoxPlot) AddXAxis(xAxis interface{}) *BoxPlot {
 }
 
 func (c *BoxPlot) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *BoxPlot {
-	series := singleSeries{Name: name, Type: "boxplot", Data: yAxis}
+	series := singleSeries{Name: name, Type: common.ChartType.BoxPlot, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

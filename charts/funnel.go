@@ -22,7 +22,7 @@ func NewFunnel(routers ...HTTPRouter) *Funnel {
 func (c *Funnel) Add(name string, data map[string]interface{}, options ...seriesOptser) *Funnel {
 	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, common.NameValueItem{k, v})
+		nvs = append(nvs, common.NameValueItem{Name: k, Value: v})
 	}
 	series := singleSeries{Name: name, Type: common.ChartType.Funnel, Data: nvs}
 	series.setSingleSeriesOpts(options...)

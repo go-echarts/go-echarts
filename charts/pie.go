@@ -50,7 +50,7 @@ func NewPie(routers ...HTTPRouter) *Pie {
 func (c *Pie) Add(name string, data map[string]interface{}, options ...seriesOptser) *Pie {
 	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, common.NameValueItem{k, v})
+		nvs = append(nvs, common.NameValueItem{Name: k, Value: v})
 	}
 	series := singleSeries{Name: name, Type: common.ChartType.Pie, Data: nvs}
 	series.setSingleSeriesOpts(options...)

@@ -4,6 +4,7 @@ type chartType struct {
 	Bar,
 	Bar3D,
 	BoxPlot,
+	Cartesian3D,
 	EffectScatter,
 	Funnel,
 	Gauge,
@@ -21,7 +22,8 @@ type chartType struct {
 var ChartType = chartType{
 	Bar:           "bar",
 	Bar3D:         "bar3D",
-	BoxPlot:       "boxPlot",
+	BoxPlot:       "boxplot",
+	Cartesian3D:   "cartesian3D",
 	EffectScatter: "effectScatter",
 	Funnel:        "funnel",
 	Gauge:         "gauge",

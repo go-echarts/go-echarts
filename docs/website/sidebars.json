@@ -1,16 +1,8 @@
 {
   "docs": {
-    "概览": [
-      "overview",
-      "quickstart"
-    ],
-    "API": [
-      "api"
-    ],
-    "配置项": [
-      "global_options",
-      "series_options"
-    ],
+    "概览": ["overview", "quickstart"],
+    "API": ["api"],
+    "配置项": ["global_options", "series_options"],
     "基本图表": [
       "bar",
       "boxPlot",
@@ -27,10 +19,8 @@
       "scatter",
       "wordCloud"
     ],
-    "组合图表": [
-      "overlap",
-      "page"
-    ],
+    "3D 图表": ["bar3d", "line3d", "scatter3d", "surface3d"],
+    "组合图表": ["overlap", "page"],
     "数据集": ["assets_file", "map_coords"]
   }
 }

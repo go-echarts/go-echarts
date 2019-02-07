@@ -23,6 +23,12 @@
         xAxis: {{ .XAxisOptsList }},
         yAxis: {{ .YAxisOptsList }},
     {{- end }}
+    {{- if .Has3DAxis }}
+        xAxis3D: {{ .XAxis3D }},
+        yAxis3D: {{ .YAxis3D }},
+        zAxis3D: {{ .ZAxis3D }},
+        grid3D: {{ .Grid3D }},
+    {{- end }}
         series: [
         {{ range .Series }}
         {{- . }},

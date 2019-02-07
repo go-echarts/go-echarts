@@ -29,7 +29,7 @@ func NewGeo(mapType string, routers ...HTTPRouter) *Geo {
 func (c *Geo) Add(name, geoType string, data map[string]float32, options ...seriesOptser) *Geo {
 	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, common.NameValueItem{k, c.extendValue(k, v)})
+		nvs = append(nvs, common.NameValueItem{Name: k, Value: c.extendValue(k, v)})
 	}
 	series := singleSeries{Name: name, Type: geoType, Data: nvs, CoordSystem: common.ChartType.Geo}
 	series.setSingleSeriesOpts(options...)
@@ -49,15 +49,11 @@ func (c *Geo) SetGlobalOptions(options ...globalOptser) *Geo {
 	return c
 }
 
-func (c *Geo) validateGeoFormatter() {
+func (c *Geo) validateOpts() {
 	if c.TooltipOpts.Formatter == "" {
 		c.TooltipOpts.Formatter = FuncOpts(geoFormatter)
 	}
-}
-
-func (c *Geo) validateOpts() {
 	c.validateAssets(c.AssetsHost)
-	c.validateGeoFormatter()
 }
 
 func (c *Geo) Render(w ...io.Writer) error {

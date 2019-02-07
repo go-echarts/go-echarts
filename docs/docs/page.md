@@ -11,7 +11,7 @@ func NewPage(routers ...HTTPRouter) *Page
 // 新增 Page 图表，支持一次接收多个 Chart
 func Add(charts ...charter) *Page 
 // 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
-func Render(w ...io.Writer)
+func Render(w ...io.Writer) error
 ```
 
 ## Interface

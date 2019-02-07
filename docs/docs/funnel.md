@@ -19,7 +19,7 @@ func SetGlobalOptions(options ...globalOptser)
 // 设置 Series 配置项
 func SetSeriesOptions(options ...seriesOptser)
 // 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
-func Render(w ...io.Writer)
+func Render(w ...io.Writer) error
 ```
 
 ## Demo

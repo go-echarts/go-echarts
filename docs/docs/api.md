@@ -24,7 +24,7 @@ go-echarts 秉承着 API 设计要简洁的原则，对所有图表只提供了�
 
 新增 JS 函数
 
-*func Render(w ...io.Writer)*
+*func Render(w ...io.Writer) error*
 
 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
 

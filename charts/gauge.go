@@ -22,7 +22,7 @@ func NewGauge(routers ...HTTPRouter) *Gauge {
 func (c *Gauge) Add(name string, data map[string]interface{}, options ...seriesOptser) *Gauge {
 	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, common.NameValueItem{k, v})
+		nvs = append(nvs, common.NameValueItem{Name: k, Value: v})
 	}
 	series := singleSeries{Name: name, Type: common.ChartType.Gauge, Data: nvs}
 	series.setSingleSeriesOpts(options...)

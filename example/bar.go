@@ -177,7 +177,7 @@ func barMarkCustom() *charts.Bar {
 	return bar
 }
 
-func BarHandler(w http.ResponseWriter, _ *http.Request) {
+func barHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("bar")...)
 	page.Add(
 		barBase(),
