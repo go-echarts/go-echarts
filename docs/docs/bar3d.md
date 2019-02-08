@@ -4,8 +4,25 @@ title: Bar3D
 sidebar_label: Bar3D（3D 柱状图）
 ---
 
-## API
+> 三维柱状图
 
+## API
+```go
+// 实例化图表
+func NewBar3D(routers ...HTTPRouter) *Bar3D
+// 新增 XY 轴数据
+func AddXYAxis(xAxis, yAxis interface{}) *Bar3D
+// 新增 Z 轴数据及配置项
+func AddZAxis(name string, zAxis interface{}, options ...seriesOptser) *Bar3D
+// 新增 JS 函数
+func AddJSFuncs(fn ...string)
+// 设置全局配置项
+func SetGlobalOptions(options ...globalOptser)
+// 设置 Series 配置项
+func SetSeriesOptions(options ...seriesOptser)
+// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
+func Render(w ...io.Writer) error
+```
 
 ## 预定义
 > Note: 示例用到的一些变量及方法，部分重复的以后代码中不会再次列出

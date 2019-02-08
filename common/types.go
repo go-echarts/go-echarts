@@ -1,25 +1,19 @@
 package common
 
-type chartType struct {
-	Bar,
-	Bar3D,
-	BoxPlot,
+var ChartType = struct {
+	Bar, Bar3D, BoxPlot,
 	Cartesian3D,
 	EffectScatter,
 	Funnel,
-	Gauge,
-	Geo,
+	Gauge, Geo,
 	HeatMap,
 	Kline,
-	Line,
-	Liquid,
+	Line, Line3D, Liquid,
 	Map,
 	Pie,
-	Scatter,
+	Scatter, Scatter3D, Surface3D,
 	WordCloud string
-}
-
-var ChartType = chartType{
+}{
 	Bar:           "bar",
 	Bar3D:         "bar3D",
 	BoxPlot:       "boxplot",
@@ -31,28 +25,28 @@ var ChartType = chartType{
 	HeatMap:       "heatmap",
 	Kline:         "candlestick",
 	Line:          "line",
+	Line3D:        "line3D",
 	Liquid:        "liquidFill",
 	Map:           "map",
 	Pie:           "pie",
 	Scatter:       "scatter",
+	Scatter3D:     "scatter3D",
+	Surface3D:     "surface",
 	WordCloud:     "wordCloud",
 }
 
-type themeType struct {
+var ThemeType = struct {
 	Chalk,
 	Essos,
 	Halloween,
 	Infographic,
 	Macarons,
-	PurplePassion,
-	Roma,
+	PurplePassion, Roma,
 	Romantic,
 	Shine,
 	Vintage,
 	Walden string
-}
-
-var ThemeType = themeType{
+}{
 	Chalk:         "chalk",
 	Essos:         "essos",
 	Halloween:     "halloween",

@@ -74,6 +74,14 @@ func barSplitLine() *charts.Bar {
 	return bar
 }
 
+func barGap() *charts.Bar {
+	bar := charts.NewBar()
+	bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-调整 bar 距离"})
+	bar.AddXAxis(nameItems).AddYAxis("商家A", randInt())
+	bar.SetSeriesOptions(charts.BarOpts{BarCategoryGap: "70%"})
+	return bar
+}
+
 func barYAxis() *charts.Bar {
 	bar := charts.NewBar()
 	bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-Y 轴格式"})
@@ -186,6 +194,7 @@ func barHandler(w http.ResponseWriter, _ *http.Request) {
 		barXYName(),
 		barColor(),
 		barSplitLine(),
+		barGap(),
 		barYAxis(),
 		barMultiYAxis(),
 		barMultiXAxis(),

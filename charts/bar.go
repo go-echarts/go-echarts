@@ -19,6 +19,16 @@ func (Bar) chartType() string { return common.ChartType.Bar }
 type BarOpts struct {
 	// 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
 	Stack string
+	// 不同系列的柱间距离，为百分比（如 "30%"，表示柱子宽度的 30%）。
+	// 如果想要两个系列的柱子重叠，可以设置 barGap 为 "-100%"。这在用柱子做背景的时候有用。
+	// 在同一坐标系上，此属性会被多个 "bar" 系列共享。
+	// 此属性应设置于此坐标系中最后一个 "bar" 系列上才会生效，并且是对此坐标系中所有 "bar" 系列生效
+	// 默认 "30%"
+	BarGap string
+	// 同一系列的柱间距离，默认为类目间距的 20%，可设固定值
+	// 在同一坐标系上，此属性会被多个 "bar" 系列共享。
+	// 此属性应设置于此坐标系中最后一个 "bar" 系列上才会生效，并且是对此坐标系中所有 "bar" 系列生效
+	BarCategoryGap string
 	// 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
 	XAxisIndex int
 	// 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
@@ -29,6 +39,8 @@ func (BarOpts) markSeries() {}
 
 func (opt *BarOpts) setChartOpt(s *singleSeries) {
 	s.Stack = opt.Stack
+	s.BarGap = opt.BarGap
+	s.BarCategoryGap = opt.BarCategoryGap
 	s.XAxisIndex = opt.XAxisIndex
 	s.YAxisIndex = opt.YAxisIndex
 }
@@ -53,8 +65,9 @@ func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) 
 	return c
 }
 
-func (c *Bar) XYReversal() {
+func (c *Bar) XYReversal() *Bar {
 	c.isXYReversal = true
+	return c
 }
 
 func (c *Bar) validateOpts() {

@@ -29,6 +29,7 @@ go-echarts 秉承着 API 设计要简洁的原则，对所有图表只提供了�
 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
 
 ## RectChart API
+
 > RectChart 包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
 
 *func AddXAxis(arg0 Type0, arg1 Type1, ...)*
@@ -50,6 +51,18 @@ go-echarts 秉承着 API 设计要简洁的原则，对所有图表只提供了�
 *func ExtendYAxis(yAxis ...YAxisOpts)*
 
 新增扩展 Y 轴
+
+## 3D Chart API
+
+> 3D charts 包括 Bar3D/Line3D/Scatter3D/Surface3D
+
+*func AddXYAxis(xAxis, yAxis interface{})*
+
+新增 XY 轴数据
+
+*func AddZAxis(name string, zAxis interface{}, options ...seriesOptser)*
+
+新增 Z 轴数据及配置项
 
 ## Interface
 

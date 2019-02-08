@@ -41,6 +41,16 @@ func Render(w ...io.Writer) error
 type BarOpts struct {
     // 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
     Stack      string
+    // 不同系列的柱间距离，为百分比（如 "30%"，表示柱子宽度的 30%）。
+    // 如果想要两个系列的柱子重叠，可以设置 barGap 为 "-100%"。这在用柱子做背景的时候有用。
+    // 在同一坐标系上，此属性会被多个 "bar" 系列共享。
+    // 此属性应设置于此坐标系中最后一个 "bar" 系列上才会生效，并且是对此坐标系中所有 "bar" 系列生效
+    // 默认 "30%"
+    BarGap string
+    // 同一系列的柱间距离，默认为类目间距的 20%，可设固定值
+    // 在同一坐标系上，此属性会被多个 "bar" 系列共享。
+    // 此属性应设置于此坐标系中最后一个 "bar" 系列上才会生效，并且是对此坐标系中所有 "bar" 系列生效
+    BarCategoryGap string
     // 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
     XAxisIndex int
     // 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
@@ -172,6 +182,16 @@ bar.AddXAxis(nameItems).
 bar.SetGlobalOptions(charts.YAxisOpts{SplitLine: charts.SplitLineOpts{Show: true}})
 ```
 ![](https://user-images.githubusercontent.com/19553554/52332006-82a49180-2a34-11e9-8cc4-ddff94b06426.png)
+
+
+### Bar-调整 bar 距离
+```go
+bar := charts.NewBar()
+bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-调整 bar 距离"})
+bar.AddXAxis(nameItems).AddYAxis("商家A", randInt())
+bar.SetSeriesOptions(charts.BarOpts{BarCategoryGap: "70%"})
+```
+![](https://user-images.githubusercontent.com/19553554/52466253-b3afce00-2bbc-11e9-802b-c16022969c65.png)
 
 
 ### Bar-Y 轴格式

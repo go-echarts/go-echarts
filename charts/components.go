@@ -277,10 +277,10 @@ type XAxisOpts struct {
 	Scale bool `json:"scale,omitempty"`
 	// X 坐标轴刻度最小值
 	// 可以设置成特殊值 'dataMin'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
-	Mix float32 `json:"min,omitempty"`
+	Mix interface{} `json:"min,omitempty"`
 	// X 坐标轴刻度最大值
 	// 可以设置成特殊值 'dataMax'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
-	Max float32 `json:"max,omitempty"`
+	Max interface{} `json:"max,omitempty"`
 	// X 轴所在的 grid 的索引
 	// 默认 0
 	GridIndex int `json:"gridIndex,omitempty"`
@@ -330,10 +330,10 @@ type YAxisOpts struct {
 	Scale bool `json:"scale,omitempty"`
 	// Y 坐标轴刻度最小值
 	// 可以设置成特殊值 'dataMin'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
-	Mix float32 `json:"min,omitempty"`
+	Mix interface{} `json:"min,omitempty"`
 	// Y 坐标轴刻度最大值
 	// 可以设置成特殊值 'dataMax'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
-	Max float32 `json:"max,omitempty"`
+	Max interface{} `json:"max,omitempty"`
 	// Y 轴所在的 grid 的索引
 	// 默认 0
 	GridIndex int `json:"gridIndex,omitempty"`

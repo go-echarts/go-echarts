@@ -97,6 +97,7 @@ func replaceRender(b bytes.Buffer, notReplace ...string) []byte {
 		`"splitArea":{},?`,
 		`"outline":{"show":false},?`,
 		`"waveAnimation":false,?`,
+		`"viewControl":{},?`,
 	}
 	unusedObj = removeNotReplace(unusedObj, notReplace...)
 	// 移除无用的 JSON object

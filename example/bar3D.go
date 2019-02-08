@@ -8,11 +8,6 @@ import (
 	"github.com/chenjiandongx/go-echarts/charts"
 )
 
-var rangeColor = []string{
-	"#313695", "#4575b4", "#74add1", "#abd9e9", "#e0f3f8",
-	"#fee090", "#fdae61", "#f46d43", "#d73027", "#a50026",
-}
-
 func genBar3dData() [][3]int {
 
 	data := [][3]int{

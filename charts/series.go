@@ -195,52 +195,30 @@ type singleSeries struct {
 	Type string `json:"type"`
 
 	// Rectangular charts
-	// 数据堆叠，同个类目轴上系列配置相同的 stack 值后，后一个系列的值会在前一个系列的值上相加
-	Stack string `json:"stack,omitempty"`
-	// 使用的 X 轴的 index，在单个图表实例中存在多个 X 轴的时候有用
-	XAxisIndex int `json:"xAxisIndex,omitempty"`
-	// 使用的 Y 轴的 index，在单个图表实例中存在多个 Y 轴的时候有用
-	YAxisIndex int `json:"yAxisIndex,omitempty"`
+	Stack      string `json:"stack,omitempty"`
+	XAxisIndex int    `json:"xAxisIndex,omitempty"`
+	YAxisIndex int    `json:"yAxisIndex,omitempty"`
+
+	// Bar chart
+	BarGap         string `json:"barGap,omitempty"`
+	BarCategoryGap string `json:"barCategoryGap,omitempty"`
 
 	// Map chart
 	MapType     string `json:"map,omitempty"`
 	CoordSystem string `json:"coordinateSystem,omitempty"`
 
 	// Line chart
-	// 是否是阶梯线图。可以设置为 true 显示成阶梯线图。
-	Step bool `json:"step,omitempty"`
-	// 是否平滑曲线显示
+	Step   bool `json:"step,omitempty"`
 	Smooth bool `json:"smooth,omitempty"`
 
 	// Pie chart
-	// 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
-	// "radius": 扇区圆心角展现数据的百分比，半径展现数据的大小。
-	// "area": 所有扇区圆心角相同，仅通过半径展现数据大小。
 	RoseType interface{} `json:"roseType,omitempty"`
-	// 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。
-	// 支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度。
-	// 示例
-	// center: [400, 300] 设置成绝对的像素值
-	// center: ["50%", "50%"] 设置成相对的百分比
-	// 默认
-	// ["50%", "50%"]
 	Center interface{} `json:"center,omitempty"`
-	// 饼图的半径。可以为如下类型：
-	// number：直接指定外半径值。
-	// string：例如，"20%"，表示外半径为可视区尺寸（容器高宽中较小一项）的 20% 长度。
-	// Array.<number|string>：数组的第一项是内半径，第二项是外半径。每一项遵从上述 number string 的描述。
-	// 默认
-	// [0, "75%"]
 	Radius interface{} `json:"radius,omitempty"`
 
 	// wordCloud chart
-	// 词云图形状
-	// 可选 "circle", "cardioid", "diamond", "triangle-forward", "triangle", "pentagon", "star"
-	// 默认 "circle"
 	Shape string `json:"shape,omitempty"`
-	// 字体大小范围
 	SizeRange []float32 `json:"sizeRange,omitempty"`
-	// 字体倾斜角度范围
 	RotationRange []float32 `json:"rotationRange,omitempty"`
 
 	// Liquid chart

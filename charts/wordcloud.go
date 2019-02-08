@@ -16,7 +16,7 @@ func (WordCloud) chartType() string { return common.ChartType.WordCloud }
 // WordCLoud series options
 type WordCLoudOpts struct {
 	// 词云图形状，可选
-	//"circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
+	// "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
 	Shape string
 	// 字体大小范围
 	SizeRange []float32

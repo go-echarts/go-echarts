@@ -1,8 +1,6 @@
 package charts
 
 import (
-	"io"
-
 	"github.com/chenjiandongx/go-echarts/common"
 )
 
@@ -36,31 +34,6 @@ func (c *Bar3D) AddXYAxis(xAxis, yAxis interface{}) *Bar3D {
 }
 
 func (c *Bar3D) AddZAxis(name string, zAxis interface{}, options ...seriesOptser) *Bar3D {
-	series := singleSeries{
-		Name:        name,
-		Type:        common.ChartType.Bar3D,
-		Data:        zAxis,
-		CoordSystem: common.ChartType.Cartesian3D,
-	}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
-	c.setColor(options...)
+	c.addZAxis(common.ChartType.Bar3D, name, zAxis, options...)
 	return c
-}
-
-func (c *Bar3D) validateOpts() {
-	// 确保 XY 轴数据项不会被抹除
-	if c.XAxis3D.Data == nil {
-		c.XAxis3D.Data = c.xData
-	}
-	if c.YAxis3D.Data == nil {
-		c.YAxis3D.Data = c.yData
-	}
-	c.validateAssets(c.AssetsHost)
-}
-
-func (c *Bar3D) Render(w ...io.Writer) error {
-	c.insertSeriesColors(c.appendColor)
-	c.validateOpts()
-	return renderToWriter(c, "chart", []string{}, w...)
 }

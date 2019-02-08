@@ -1,5 +1,11 @@
 package charts
 
+import (
+	"io"
+	
+	"github.com/chenjiandongx/go-echarts/common"
+)
+
 type Chart3D struct {
 	BaseOpts
 	Series
@@ -40,6 +46,36 @@ func (c *Chart3D) setChart3DGlobalOptions(options ...globalOptser) {
 	}
 }
 
+func (c *Chart3D) validateOpts() {
+	// 确保 XY 轴数据项不会被抹除
+	if c.XAxis3D.Data == nil {
+		c.XAxis3D.Data = c.xData
+	}
+	if c.YAxis3D.Data == nil {
+		c.YAxis3D.Data = c.yData
+	}
+	c.validateAssets(c.AssetsHost)
+}
+
+func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, options ...seriesOptser) {
+	series := singleSeries{
+		Name:        name,
+		Type:        chartType,
+		Data:        zAxis,
+		CoordSystem: common.ChartType.Cartesian3D,
+	}
+	series.setSingleSeriesOpts(options...)
+	c.Series = append(c.Series, series)
+	c.setColor(options...)
+}
+
+func (c *Chart3D) Render(w ...io.Writer) error {
+	c.insertSeriesColors(c.appendColor)
+	c.validateOpts()
+	return renderToWriter(c, "chart", []string{}, w...)
+}
+
+// 三维笛卡尔坐标系组件
 type Grid3DOpts struct {
 	// 是否显示三维笛卡尔坐标系
 	Show bool `json:"show,omitempty"`

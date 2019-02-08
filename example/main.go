@@ -24,6 +24,11 @@ var (
 	nameItems = []string{"衬衫", "牛仔裤", "运动裤", "袜子", "冲锋衣", "羊毛衫"}
 	foodItems = []string{"面包", "牛奶", "奶茶", "棒棒糖", "加多宝", "可口可乐"}
 
+	rangeColor = []string{
+		"#313695", "#4575b4", "#74add1", "#abd9e9", "#e0f3f8",
+		"#fee090", "#fdae61", "#f46d43", "#d73027", "#a50026",
+	}
+
 	hours = [...]string{
 		"12a", "1a", "2a", "3a", "4a", "5a", "6a", "7a", "8a", "9a", "10a", "11a",
 		"12p", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p", "10p", "11p",
@@ -73,11 +78,14 @@ var (
 		{"heatMap", charts.HTTPRouter{URL: host + "/heatMap", Text: "HeatMap-热力图"}},
 		{"kline", charts.HTTPRouter{URL: host + "/kline", Text: "Kline-K 线图"}},
 		{"line", charts.HTTPRouter{URL: host + "/line", Text: "Line-(折线图)"}},
+		{"line3D", charts.HTTPRouter{URL: host + "/line3D", Text: "Line3D-(3D 折线图)"}},
 		{"liquid", charts.HTTPRouter{URL: host + "/liquid", Text: "Liquid-(水球图)"}},
 		{"map", charts.HTTPRouter{URL: host + "/map", Text: "Map-(地图)"}},
 		{"overlap", charts.HTTPRouter{URL: host + "/overlap", Text: "Overlap-(重叠图)"}},
 		{"pie", charts.HTTPRouter{URL: host + "/pie", Text: "Pie-(饼图)"}},
 		{"scatter", charts.HTTPRouter{URL: host + "/scatter", Text: "Scatter-(散点图)"}},
+		{"scatter3D", charts.HTTPRouter{URL: host + "/scatter3D", Text: "Scatter-(3D 散点图)"}},
+		{"surface3D", charts.HTTPRouter{URL: host + "/surface3D", Text: "Surface3D-(3D 曲面图)"}},
 		{"wordCloud", charts.HTTPRouter{URL: host + "/wordCloud", Text: "WordCloud-(词云图)"}},
 		{"page", charts.HTTPRouter{URL: host + "/page", Text: "Page-(顺序多图)"}},
 	}
@@ -139,11 +147,14 @@ func main() {
 	http.HandleFunc("/heatMap", logTracing(heatMapHandler))
 	http.HandleFunc("/kline", logTracing(klineHandler))
 	http.HandleFunc("/line", logTracing(lineHandler))
+	http.HandleFunc("/line3D", logTracing(line3DHandler))
 	http.HandleFunc("/liquid", logTracing(liquidHandler))
 	http.HandleFunc("/map", logTracing(mapHandler))
 	http.HandleFunc("/overlap", logTracing(overlapHandler))
 	http.HandleFunc("/pie", logTracing(pieHandler))
 	http.HandleFunc("/scatter", logTracing(scatterHandler))
+	http.HandleFunc("/scatter3D", logTracing(scatter3DHandler))
+	http.HandleFunc("/surface3D", logTracing(surface3DHandler))
 	http.HandleFunc("/wordCloud", logTracing(wcHandler))
 	http.HandleFunc("/page", logTracing(pageHandler))
 

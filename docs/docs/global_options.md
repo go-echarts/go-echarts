@@ -19,7 +19,10 @@ type globalOptser interface {
 
 ![](https://user-images.githubusercontent.com/19553554/52394719-3f0a6000-2ae6-11e9-8d00-c540e9a0fe2b.png)
 
-## Options
+![](https://user-images.githubusercontent.com/19553554/52466586-c37be200-2bbd-11e9-9cf2-d017b1ef488c.png)
+
+
+## Common Options
 
 ### InitOpts
 > 图形初始化配置项
@@ -183,8 +186,8 @@ bar := charts.NewBar()
 bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-设置系列颜色"})
 // 单独设置
 bar.AddXAxis(nameItems).
-	AddYAxis("商家A", randInt(), charts.ColorOpts{"lightblue"}).
-	AddYAxis("商家B", randInt(), charts.ColorOpts{"pink"})
+    AddYAxis("商家A", randInt(), charts.ColorOpts{"lightblue"}).
+    AddYAxis("商家B", randInt(), charts.ColorOpts{"pink"})
 // 或者可以这样设置
 //bar.SetGlobalOptions(charts.ColorOpts{"lightblue", "pink"})
 ```
@@ -250,8 +253,10 @@ type VMInRange struct {
 }
 ```
 
+## RectChart Options
+
 ### XAxisOpts
-> X 轴配置项组件
+> X 轴配置项组件，只适用于 RectChart 图表，RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
 ```go
 type XAxisOpts struct {
     // X 轴名称
@@ -276,10 +281,10 @@ type XAxisOpts struct {
     Scale bool `json:"scale,omitempty"`
     // X 坐标轴刻度最小值
     // 可以设置成特殊值 'dataMin'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
-    Mix float32 `json:"min,omitempty"`
+    Mix interface{} `json:"min,omitempty"`
     // X 坐标轴刻度最大值
     // 可以设置成特殊值 'dataMax'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
-    Max float32 `json:"max,omitempty"`
+    Max interface{} `json:"max,omitempty"`
     // X 轴所在的 grid 的索引
     // 默认 0
     GridIndex int `json:"gridIndex,omitempty"`
@@ -291,7 +296,7 @@ type XAxisOpts struct {
 ```
 
 ### YAxisOpts
-> Y 轴配置项组件
+> Y 轴配置项组件，只适用于 RectChart 图表，RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
 ```go
 type YAxisOpts struct {
     // Y 轴名称
@@ -330,10 +335,10 @@ type YAxisOpts struct {
     Scale bool `json:"scale,omitempty"`
     // Y 坐标轴刻度最小值
     // 可以设置成特殊值 'dataMin'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
-    Mix float32 `json:"min,omitempty"`
+    Mix interface{} `json:"min,omitempty"`
     // Y 坐标轴刻度最大值
     // 可以设置成特殊值 'dataMax'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
-    Max float32 `json:"max,omitempty"`
+    Max interface{} `json:"max,omitempty"`
     // Y 轴所在的 grid 的索引
     // 默认 0
     GridIndex int `json:"gridIndex,omitempty"`
@@ -341,5 +346,111 @@ type YAxisOpts struct {
     SplitArea SplitAreaOpts `json:"splitArea,omitempty"`
     // Y 轴在 grid 区域中的分隔线配置项
     SplitLine SplitLineOpts `json:"splitLine,,omitempty"`
+}
+```
+
+## 3D Charts Options
+
+### Grid3DOpts
+> 三维笛卡尔坐标系组件，只适用于 3D 图表，3D 图表包括 Bar3D/Line3D/Scatter3D/Surface3D
+```go
+type Grid3DOpts struct {
+    // 是否显示三维笛卡尔坐标系
+    Show bool `json:"show,omitempty"`
+    // 三维笛卡尔坐标系组件在三维场景中的宽度
+    // 默认 100
+    BoxWidth float32 `json:"boxWidth,omitempty"`
+    // 三维笛卡尔坐标系组件在三维场景中的高度
+    // 默认 100
+    BoxHeight float32 `json:"boxHeight,omitempty"`
+    // 三维笛卡尔坐标系组件在三维场景中的深度
+    // 默认 100
+    BoxDepth float32 `json:"boxDepth,omitempty"`
+    // 用于鼠标的旋转，缩放等视角控制
+    ViewControl ViewControlOpts `json:"viewControl,omitempty"`
+}
+```
+
+### XAxis3DOpts
+> 三维笛卡尔坐标系中的 X 轴，只适用于 3D 图表，3D 图表包括 Bar3D/Line3D/Scatter3D/Surface3D
+```go
+type XAxis3DOpts struct {
+    // 是否显示 3D X 轴
+    Show bool `json:"show,omitempty"`
+    // X 坐标轴名称
+    Name bool `json:"name,omitempty"`
+    // X 坐标轴使用的 grid3D 组件的索引。默认使用第一个 grid3D 组件
+    Grid3DIndex int `json:"grid3DIndex,omitempty"`
+    // X 坐标轴类型，可选：
+    // "value" 数值轴，适用于连续数据。
+    // "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+    // "log" 对数轴。适用于对数数据。
+    Type string `json:"type,omitempty"`
+    // X 坐标轴刻度最小值。
+    // 可以设置成特殊值 "dataMin"，此时取数据在该轴上的最小值作为最小刻度。
+    // 不设置时会自动计算最小值保证坐标轴刻度的均匀分布
+    Min interface{} `json:"min,omitempty"`
+    // X 坐标轴刻度最大值。
+    // 可以设置成特殊值 "dataMax"，此时取数据在该轴上的最大值作为最大刻度。
+    // 不设置时会自动计算最大值保证坐标轴刻度的均匀分布
+    Max interface{} `json:"max,omitempty"`
+    // 类目数据，在类目轴（type: 'category'）中有效
+    Data interface{} `json:"data,omitempty"`
+}
+```
+
+### YAxis3DOpts
+> > 三维笛卡尔坐标系中的 Y 轴，只适用于 3D 图表，3D 图表包括 Bar3D/Line3D/Scatter3D/Surface3D
+```go
+type YAxis3DOpts struct {
+    // 是否显示 3D Y 轴
+    Show bool `json:"show,omitempty"`
+    // Y 坐标轴名称
+    Name bool `json:"name,omitempty"`
+    // Y 坐标轴使用的 grid3D 组件的索引。默认使用第一个 grid3D 组件
+    Grid3DIndex int `json:"grid3DIndex,omitempty"`
+    // Y 坐标轴类型，可选：
+    // "value" 数值轴，适用于连续数据。
+    // "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+    // "log" 对数轴。适用于对数数据。
+    Type string `json:"type,omitempty"`
+    // Y 坐标轴刻度最小值。
+    // 可以设置成特殊值 "dataMin"，此时取数据在该轴上的最小值作为最小刻度。
+    // 不设置时会自动计算最小值保证坐标轴刻度的均匀分布
+    Min interface{} `json:"min,omitempty"`
+    // Y 坐标轴刻度最大值。
+    // 可以设置成特殊值 "dataMax"，此时取数据在该轴上的最大值作为最大刻度。
+    // 不设置时会自动计算最大值保证坐标轴刻度的均匀分布
+    Max interface{} `json:"max,omitempty"`
+    // 类目数据，在类目轴（type: 'category'）中有效
+    Data interface{} `json:"data,omitempty"`
+}
+```
+
+### ZAxis3DOpts
+> > 三维笛卡尔坐标系中的 Z 轴，只适用于 3D 图表，3D 图表包括 Bar3D/Line3D/Scatter3D/Surface3D
+```go
+type ZAxis3DOpts struct {
+    // 是否显示 3D Z 轴
+    Show bool `json:"show,omitempty"`
+    // Z 坐标轴名称
+    Name bool `json:"name,omitempty"`
+    // Z 坐标轴使用的 grid3D 组件的索引。默认使用第一个 grid3D 组件
+    Grid3DIndex int `json:"grid3DIndex,omitempty"`
+    // Z 坐标轴类型，可选：
+    // "value" 数值轴，适用于连续数据。
+    // "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+    // "log" 对数轴。适用于对数数据。
+    Type string `json:"type,omitempty"`
+    // Z 坐标轴刻度最小值。
+    // 可以设置成特殊值 "dataMin"，此时取数据在该轴上的最小值作为最小刻度。
+    // 不设置时会自动计算最小值保证坐标轴刻度的均匀分布
+    Min interface{} `json:"min,omitempty"`
+    // Z 坐标轴刻度最大值。
+    // 可以设置成特殊值 "dataMax"，此时取数据在该轴上的最大值作为最大刻度。
+    // 不设置时会自动计算最大值保证坐标轴刻度的均匀分布
+    Max interface{} `json:"max,omitempty"`
+    // 类目数据，在类目轴（type: 'category'）中有效
+    Data interface{} `json:"data,omitempty"`
 }
 ```
