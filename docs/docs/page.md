@@ -7,7 +7,7 @@ sidebar_label: Page（顺序多图）
 ## API
 ```go
 // 实例化图表
-func NewPage(routers ...HTTPRouter) *Page
+func NewPage(routers ...RouterOpts) *Page
 // 新增 Page 图表，支持一次接收多个 Chart
 func Add(charts ...charter) *Page 
 // 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象

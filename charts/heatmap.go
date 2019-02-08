@@ -23,7 +23,7 @@ func (opt *HeatMapOpts) setChartOpt(s *singleSeries) {
 	s.YAxisIndex = opt.YAxisIndex
 }
 
-func NewHeatMap(routers ...HTTPRouter) *HeatMap {
+func NewHeatMap(routers ...RouterOpts) *HeatMap {
 	chart := new(HeatMap)
 	chart.initBaseOpts(true, routers...)
 	chart.initXYOpts()

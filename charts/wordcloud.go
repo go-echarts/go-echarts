@@ -39,7 +39,7 @@ var wcTextColor = `function () {
 		Math.round(Math.random() * 160)].join(',') + ')';
 }`
 
-func NewWordCloud(routers ...HTTPRouter) *WordCloud {
+func NewWordCloud(routers ...RouterOpts) *WordCloud {
 	chart := new(WordCloud)
 	chart.initBaseOpts(false, routers...)
 	chart.JSAssets.Add("echarts-wordcloud.min.js")

@@ -17,7 +17,7 @@ const (
 
 type router struct {
 	name string
-	charts.HTTPRouter
+	charts.RouterOpts
 }
 
 var (
@@ -68,30 +68,30 @@ var (
 	}
 
 	routers = []router{
-		{"bar", charts.HTTPRouter{URL: host + "/bar", Text: "Bar-(柱状图)"}},
-		{"bar3D", charts.HTTPRouter{URL: host + "/bar3D", Text: "Bar3D-(3D 柱状图)"}},
-		{"boxPlot", charts.HTTPRouter{URL: host + "/boxPlot", Text: "BoxPlot-(箱线图)"}},
-		{"effectScatter", charts.HTTPRouter{URL: host + "/effectScatter", Text: "EffectScatter-(动态散点图)"}},
-		{"funnel", charts.HTTPRouter{URL: host + "/funnel", Text: "Funnel-(漏斗图)"}},
-		{"gauge", charts.HTTPRouter{URL: host + "/gauge", Text: "Gauge-仪表盘"}},
-		{"geo", charts.HTTPRouter{URL: host + "/geo", Text: "Geo-地理坐标系"}},
-		{"heatMap", charts.HTTPRouter{URL: host + "/heatMap", Text: "HeatMap-热力图"}},
-		{"kline", charts.HTTPRouter{URL: host + "/kline", Text: "Kline-K 线图"}},
-		{"line", charts.HTTPRouter{URL: host + "/line", Text: "Line-(折线图)"}},
-		{"line3D", charts.HTTPRouter{URL: host + "/line3D", Text: "Line3D-(3D 折线图)"}},
-		{"liquid", charts.HTTPRouter{URL: host + "/liquid", Text: "Liquid-(水球图)"}},
-		{"map", charts.HTTPRouter{URL: host + "/map", Text: "Map-(地图)"}},
-		{"overlap", charts.HTTPRouter{URL: host + "/overlap", Text: "Overlap-(重叠图)"}},
-		{"pie", charts.HTTPRouter{URL: host + "/pie", Text: "Pie-(饼图)"}},
-		{"scatter", charts.HTTPRouter{URL: host + "/scatter", Text: "Scatter-(散点图)"}},
-		{"scatter3D", charts.HTTPRouter{URL: host + "/scatter3D", Text: "Scatter-(3D 散点图)"}},
-		{"surface3D", charts.HTTPRouter{URL: host + "/surface3D", Text: "Surface3D-(3D 曲面图)"}},
-		{"wordCloud", charts.HTTPRouter{URL: host + "/wordCloud", Text: "WordCloud-(词云图)"}},
-		{"page", charts.HTTPRouter{URL: host + "/page", Text: "Page-(顺序多图)"}},
+		{"bar", charts.RouterOpts{URL: host + "/bar", Text: "Bar-(柱状图)"}},
+		{"bar3D", charts.RouterOpts{URL: host + "/bar3D", Text: "Bar3D-(3D 柱状图)"}},
+		{"boxPlot", charts.RouterOpts{URL: host + "/boxPlot", Text: "BoxPlot-(箱线图)"}},
+		{"effectScatter", charts.RouterOpts{URL: host + "/effectScatter", Text: "EffectScatter-(动态散点图)"}},
+		{"funnel", charts.RouterOpts{URL: host + "/funnel", Text: "Funnel-(漏斗图)"}},
+		{"gauge", charts.RouterOpts{URL: host + "/gauge", Text: "Gauge-仪表盘"}},
+		{"geo", charts.RouterOpts{URL: host + "/geo", Text: "Geo-地理坐标系"}},
+		{"heatMap", charts.RouterOpts{URL: host + "/heatMap", Text: "HeatMap-热力图"}},
+		{"kline", charts.RouterOpts{URL: host + "/kline", Text: "Kline-K 线图"}},
+		{"line", charts.RouterOpts{URL: host + "/line", Text: "Line-(折线图)"}},
+		{"line3D", charts.RouterOpts{URL: host + "/line3D", Text: "Line3D-(3D 折线图)"}},
+		{"liquid", charts.RouterOpts{URL: host + "/liquid", Text: "Liquid-(水球图)"}},
+		{"map", charts.RouterOpts{URL: host + "/map", Text: "Map-(地图)"}},
+		{"overlap", charts.RouterOpts{URL: host + "/overlap", Text: "Overlap-(重叠图)"}},
+		{"pie", charts.RouterOpts{URL: host + "/pie", Text: "Pie-(饼图)"}},
+		{"scatter", charts.RouterOpts{URL: host + "/scatter", Text: "Scatter-(散点图)"}},
+		{"scatter3D", charts.RouterOpts{URL: host + "/scatter3D", Text: "Scatter-(3D 散点图)"}},
+		{"surface3D", charts.RouterOpts{URL: host + "/surface3D", Text: "Surface3D-(3D 曲面图)"}},
+		{"wordCloud", charts.RouterOpts{URL: host + "/wordCloud", Text: "WordCloud-(词云图)"}},
+		{"page", charts.RouterOpts{URL: host + "/page", Text: "Page-(顺序多图)"}},
 	}
 )
 
-func orderRouters(chartType string) []charts.HTTPRouter {
+func orderRouters(chartType string) []charts.RouterOpts {
 	for i := 0; i < len(routers); i++ {
 		if routers[i].name == chartType {
 			routers[i], routers[0] = routers[0], routers[i]
@@ -99,9 +99,9 @@ func orderRouters(chartType string) []charts.HTTPRouter {
 		}
 	}
 
-	rs := make([]charts.HTTPRouter, 0)
+	rs := make([]charts.RouterOpts, 0)
 	for i := 0; i < len(routers); i++ {
-		rs = append(rs, routers[i].HTTPRouter)
+		rs = append(rs, routers[i].RouterOpts)
 	}
 	return rs
 }

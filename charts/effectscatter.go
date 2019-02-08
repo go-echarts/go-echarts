@@ -29,7 +29,7 @@ type RippleEffectOpts struct {
 
 func (RippleEffectOpts) markSeries() {}
 
-func NewEffectScatter(routers ...HTTPRouter) *EffectScatter {
+func NewEffectScatter(routers ...RouterOpts) *EffectScatter {
 	chart := new(EffectScatter)
 	chart.initBaseOpts(true, routers...)
 	chart.initXYOpts()

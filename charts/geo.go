@@ -18,7 +18,7 @@ var geoFormatter = `function (params) {
 		return params.name + ' : ' + params.value[2];
 }`
 
-func NewGeo(mapType string, routers ...HTTPRouter) *Geo {
+func NewGeo(mapType string, routers ...RouterOpts) *Geo {
 	chart := new(Geo)
 	chart.initBaseOpts(false, routers...)
 	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")

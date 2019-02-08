@@ -17,15 +17,15 @@ type Page struct {
 	InitOpts
 	AssetsOpts
 	Charts []interface{}
-	HTTPRouters
+	Routers
 
 	unusedStr common.OrderedSet
 }
 
-func NewPage(routers ...HTTPRouter) *Page {
+func NewPage(routers ...RouterOpts) *Page {
 	page := new(Page)
 	for i := 0; i < len(routers); i++ {
-		page.HTTPRouters = append(page.HTTPRouters, routers[i])
+		page.Routers = append(page.Routers, routers[i])
 	}
 	page.AssetsOpts.initAssetsOptsWithoutArg()
 	page.unusedStr.InitWithoutArg()

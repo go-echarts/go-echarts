@@ -9,7 +9,7 @@ sidebar_label: Gauge（仪表盘）
 ## API
 ```go
 // 实例化图表
-func NewGauge(routers ...HTTPRouter) *Gauge
+func NewGauge(routers ...RouterOpts) *Gauge
 // 新增数据及配置项
 func Add(name string, data map[string]interface{}, options ...seriesOptser) *Gauge
 // 新增 JS 函数

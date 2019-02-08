@@ -23,7 +23,7 @@ func (opt *ScatterOpts) setChartOpt(s *singleSeries) {
 	s.YAxisIndex = opt.YAxisIndex
 }
 
-func NewScatter(routers ...HTTPRouter) *Scatter {
+func NewScatter(routers ...RouterOpts) *Scatter {
 	chart := new(Scatter)
 	chart.initBaseOpts(true, routers...)
 	chart.initXYOpts()

@@ -9,7 +9,7 @@ sidebar_label: Map（地图）
 ## API
 ```go
 // 实例化图表
-func NewMap(mapType string, routers ...HTTPRouter) *Map
+func NewMap(mapType string, routers ...RouterOpts) *Map
 // 新增数据及配置项
 func Add(name string, data map[string]float32, options ...seriesOptser) *Map
 // 新增 JS 函数

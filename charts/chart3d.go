@@ -2,7 +2,7 @@ package charts
 
 import (
 	"io"
-	
+
 	"github.com/chenjiandongx/go-echarts/common"
 )
 

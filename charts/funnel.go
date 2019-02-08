@@ -13,7 +13,7 @@ type Funnel struct {
 
 func (Funnel) chartType() string { return common.ChartType.Funnel }
 
-func NewFunnel(routers ...HTTPRouter) *Funnel {
+func NewFunnel(routers ...RouterOpts) *Funnel {
 	chart := new(Funnel)
 	chart.initBaseOpts(false, routers...)
 	return chart

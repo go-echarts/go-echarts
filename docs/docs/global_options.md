@@ -43,6 +43,15 @@ type InitOpts struct {
 }
 ```
 
+### RouterOpts
+> HTTP 路由配置项，每个图表初始化选项，设置以后会在图表右上角有下拉选框，方便跳换到其他页面
+```go
+type RouterOpts struct {
+    URL  string // 路由 URL
+    Text string // 路由显示文字
+}
+```
+
 ### TitleOpts
 > 标题组件配置项
 

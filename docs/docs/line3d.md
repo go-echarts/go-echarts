@@ -9,7 +9,7 @@ sidebar_label: Line3D（3D 折线图）
 ## API
 ```go
 // 实例化图表
-func NewLine3D(routers ...HTTPRouter) *Line3D
+func NewLine3D(routers ...RouterOpts) *Line3D
 // 新增 XY 轴数据
 func AddXYAxis(xAxis, yAxis interface{}) *Line3D
 // 新增 Z 轴数据及配置项

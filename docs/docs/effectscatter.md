@@ -9,7 +9,7 @@ sidebar_label: Effectscatter（动态散点图）
 ## API
 ```go
 // // 实例化图表
-func NewEffectScatter(routers ...HTTPRouter) *EffectScatter
+func NewEffectScatter(routers ...RouterOpts) *EffectScatter
 // 新增 X 轴数据
 func AddXAxis(xAxis interface{}) *EffectScatter
 // 新增 Y 轴数据及配置项

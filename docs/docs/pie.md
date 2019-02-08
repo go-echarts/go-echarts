@@ -9,7 +9,7 @@ sidebar_label: Pie（饼图）
 ## API
 ```go
 // 实例化图表
-func NewPie(routers ...HTTPRouter) *Pie
+func NewPie(routers ...RouterOpts) *Pie
 // 新增数据及配置项
 func Add(name string, data map[string]interface{}, options ...seriesOptser) *Pie
 // 新增 JS 函数

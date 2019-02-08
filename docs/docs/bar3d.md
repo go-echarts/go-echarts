@@ -9,7 +9,7 @@ sidebar_label: Bar3D（3D 柱状图）
 ## API
 ```go
 // 实例化图表
-func NewBar3D(routers ...HTTPRouter) *Bar3D
+func NewBar3D(routers ...RouterOpts) *Bar3D
 // 新增 XY 轴数据
 func AddXYAxis(xAxis, yAxis interface{}) *Bar3D
 // 新增 Z 轴数据及配置项

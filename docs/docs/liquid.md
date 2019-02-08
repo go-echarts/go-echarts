@@ -9,7 +9,7 @@ sidebar_label: Liquid（水球图）
 ## API
 ```go
 // 实例化图表
-func NewLiquid(routers ...HTTPRouter) *Liquid
+func NewLiquid(routers ...RouterOpts) *Liquid
 // 新增数据及配置项
 func Add(name string, data map[string]interface{}, options ...seriesOptser) *Liquid
 // 新增 JS 函数

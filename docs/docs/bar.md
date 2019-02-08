@@ -9,7 +9,7 @@ sidebar_label: Bar（柱状图）
 ## API
 ```go
 // 实例化图表
-func NewBar(routers ...HTTPRouter) *Bar
+func NewBar(routers ...RouterOpts) *Bar
 // 新增 X 轴数据
 func AddXAxis(xAxis interface{}) *Bar
 // 新增 Y 轴数据及配置项

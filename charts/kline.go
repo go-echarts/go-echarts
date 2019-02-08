@@ -8,7 +8,7 @@ type Kline struct {
 
 func (Kline) chartType() string { return common.ChartType.Kline }
 
-func NewKLine(routers ...HTTPRouter) *Kline {
+func NewKLine(routers ...RouterOpts) *Kline {
 	chart := new(Kline)
 	chart.initBaseOpts(true, routers...)
 	chart.initXYOpts()

@@ -20,7 +20,7 @@ func (opt *Bar3DOpts) setChartOpt(s *singleSeries) {
 	s.Shading = opt.Shading
 }
 
-func NewBar3D(routers ...HTTPRouter) *Bar3D {
+func NewBar3D(routers ...RouterOpts) *Bar3D {
 	chart := new(Bar3D)
 	chart.initBaseOpts(false, routers...)
 	chart.initChart3D()

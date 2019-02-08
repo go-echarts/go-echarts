@@ -8,7 +8,7 @@ type BoxPlot struct {
 
 func (BoxPlot) chartType() string { return common.ChartType.BoxPlot }
 
-func NewBoxPlot(routers ...HTTPRouter) *BoxPlot {
+func NewBoxPlot(routers ...RouterOpts) *BoxPlot {
 	chart := new(BoxPlot)
 	chart.initBaseOpts(true, routers...)
 	chart.initXYOpts()

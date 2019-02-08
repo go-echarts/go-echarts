@@ -16,7 +16,7 @@ type Map struct {
 
 func (Map) chartType() string { return common.ChartType.Map }
 
-func NewMap(mapType string, routers ...HTTPRouter) *Map {
+func NewMap(mapType string, routers ...RouterOpts) *Map {
 	chart := new(Map)
 	chart.mapType = mapType
 	chart.initBaseOpts(false, routers...)

@@ -10,7 +10,7 @@ type Line3D struct {
 
 func (Line3D) chartType() string { return common.ChartType.Line3D }
 
-func NewLine3D(routers ...HTTPRouter) *Line3D {
+func NewLine3D(routers ...RouterOpts) *Line3D {
 	chart := new(Line3D)
 	chart.initBaseOpts(false, routers...)
 	chart.initChart3D()

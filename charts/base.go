@@ -74,14 +74,14 @@ func (opt *InitOpts) validateInitOpt() {
 	opt.validateChartID()
 }
 
-type HTTPRouter struct {
+type RouterOpts struct {
 	URL  string // 路由 URL
 	Text string // 路由显示文字
 }
 
-type HTTPRouters []HTTPRouter
+type Routers []RouterOpts
 
-func (hr HTTPRouters) Len() int {
+func (hr Routers) Len() int {
 	return len(hr)
 }
 
@@ -113,7 +113,7 @@ type BaseOpts struct {
 	AssetsOpts                 // 静态资源配置项
 	Colors            []string // 全局颜色列表
 	appendColor       []string // 追加全局颜色列表
-	HTTPRouters                // 路由列表
+	Routers                    // 路由列表
 	DataZoomOptsList           // 区域缩放组件配置项列表
 	VisualMapOptsList          // 视觉映射组件配置项列表
 	GeoOpts                    // 地理坐标系组件配置项
@@ -142,9 +142,9 @@ func (opt *BaseOpts) initSeriesColors() {
 }
 
 // 初始化 BaseOpts
-func (opt *BaseOpts) initBaseOpts(hasXYAxis bool, routers ...HTTPRouter) {
+func (opt *BaseOpts) initBaseOpts(hasXYAxis bool, routers ...RouterOpts) {
 	for i := 0; i < len(routers); i++ {
-		opt.HTTPRouters = append(opt.HTTPRouters, routers[i])
+		opt.Routers = append(opt.Routers, routers[i])
 	}
 	opt.HasXYAxis = hasXYAxis
 	opt.initSeriesColors()

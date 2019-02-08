@@ -45,7 +45,7 @@ func (opt *BarOpts) setChartOpt(s *singleSeries) {
 	s.YAxisIndex = opt.YAxisIndex
 }
 
-func NewBar(routers ...HTTPRouter) *Bar {
+func NewBar(routers ...RouterOpts) *Bar {
 	chart := new(Bar)
 	chart.initBaseOpts(true, routers...)
 	chart.initXYOpts()

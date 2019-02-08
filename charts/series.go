@@ -213,12 +213,12 @@ type singleSeries struct {
 
 	// Pie chart
 	RoseType interface{} `json:"roseType,omitempty"`
-	Center interface{} `json:"center,omitempty"`
-	Radius interface{} `json:"radius,omitempty"`
+	Center   interface{} `json:"center,omitempty"`
+	Radius   interface{} `json:"radius,omitempty"`
 
 	// wordCloud chart
-	Shape string `json:"shape,omitempty"`
-	SizeRange []float32 `json:"sizeRange,omitempty"`
+	Shape         string    `json:"shape,omitempty"`
+	SizeRange     []float32 `json:"sizeRange,omitempty"`
 	RotationRange []float32 `json:"rotationRange,omitempty"`
 
 	// Liquid chart

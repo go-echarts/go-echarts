@@ -1,8 +1,8 @@
 {{- define "routers" }}
 <div class="select" style="margin-right: 10px; margin-top:10px; float:right">
-{{- if gt .HTTPRouters.Len 0}}
+{{- if gt .Routers.Len 0}}
     <select onchange="window.location.href=this.options[this.selectedIndex].value">
-    {{- range .HTTPRouters }}
+    {{- range .Routers }}
         <option value="{{ .URL }}">{{ .Text }}</option>
     {{- end }}
     </select>

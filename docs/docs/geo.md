@@ -9,7 +9,7 @@ sidebar_label: Geo（地理坐标系）
 ## API
 ```go
 // 实例化图表
-func NewGeo(mapType string, routers ...HTTPRouter) *Geo
+func NewGeo(mapType string, routers ...RouterOpts) *Geo
 // 新增数据及配置项
 func Add(name, geoType string, data map[string]interface{}, options ...seriesOptser) *Geo
 // 新增 JS 函数

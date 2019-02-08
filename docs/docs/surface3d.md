@@ -9,7 +9,7 @@ sidebar_label: surface3D（3D 曲面图）
 ## API
 ```go
 // 实例化图表
-func NewSurface3D(routers ...HTTPRouter) *Surface3D
+func NewSurface3D(routers ...RouterOpts) *Surface3D
 // 新增 XY 轴数据
 func AddXYAxis(xAxis, yAxis interface{}) *Surface3D
 // 新增 Z 轴数据及配置项

@@ -9,7 +9,7 @@ sidebar_label: Kline（K 线图）
 ## API
 ```go
 // // 实例化图表
-func NewKiine(routers ...HTTPRouter) *Kiine
+func NewKiine(routers ...RouterOpts) *Kiine
 // 新增 X 轴数据
 func AddXAxis(xAxis interface{}) *Kiine
 // 新增 Y 轴数据及配置项

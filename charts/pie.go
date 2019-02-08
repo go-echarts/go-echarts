@@ -43,7 +43,7 @@ func (opt *PieOpts) setChartOpt(s *singleSeries) {
 	s.Radius = opt.Radius
 }
 
-func NewPie(routers ...HTTPRouter) *Pie {
+func NewPie(routers ...RouterOpts) *Pie {
 	chart := new(Pie)
 	chart.initBaseOpts(false, routers...)
 	return chart

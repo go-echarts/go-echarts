@@ -9,7 +9,7 @@ sidebar_label: WordCloud（词云图）
 ## API
 ```go
 // 实例化图表
-func NewWordCloud(routers ...HTTPRouter) *WordCloud
+func NewWordCloud(routers ...RouterOpts) *WordCloud
 // 新增数据及配置项
 func Add(name string, data map[string]interface{}, options ...seriesOptser) *WordCloud
 // 新增 JS 函数

@@ -13,7 +13,7 @@ type Gauge struct {
 
 func (Gauge) chartType() string { return common.ChartType.Gauge }
 
-func NewGauge(routers ...HTTPRouter) *Gauge {
+func NewGauge(routers ...RouterOpts) *Gauge {
 	chart := new(Gauge)
 	chart.initBaseOpts(false, routers...)
 	return chart

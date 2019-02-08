@@ -32,7 +32,7 @@ func (opt *LineOpts) setChartOpt(s *singleSeries) {
 	s.YAxisIndex = opt.YAxisIndex
 }
 
-func NewLine(routers ...HTTPRouter) *Line {
+func NewLine(routers ...RouterOpts) *Line {
 	chart := new(Line)
 	chart.initBaseOpts(true, routers...)
 	chart.initXYOpts()

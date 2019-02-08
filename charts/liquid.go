@@ -36,7 +36,7 @@ func (opt *LiquidOpts) setChartOpt(s *singleSeries) {
 	s.IsWaveAnimation = opt.IsWaveAnimation
 }
 
-func NewLiquid(routers ...HTTPRouter) *Liquid {
+func NewLiquid(routers ...RouterOpts) *Liquid {
 	chart := new(Liquid)
 	chart.initBaseOpts(false, routers...)
 	chart.JSAssets.Add("echarts-liquidfill.min.js")

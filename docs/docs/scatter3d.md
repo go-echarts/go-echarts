@@ -9,7 +9,7 @@ sidebar_label: Scatter3D（3D 散点图）
 ## API
 ```go
 // 实例化图表
-func NewScatter3D(routers ...HTTPRouter) *Scatter3D
+func NewScatter3D(routers ...RouterOpts) *Scatter3D
 // 新增 XY 轴数据
 func AddXYAxis(xAxis, yAxis interface{}) *Scatter3D
 // 新增 Z 轴数据及配置项
