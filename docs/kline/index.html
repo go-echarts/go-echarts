@@ -1,0 +1,289 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Kline · go-echarts</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;blockquote&gt;
+&lt;p&gt;红涨蓝跌&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Kline · go-echarts"/><meta property="og:type" content="website"/><meta property="og:url" content="http://go-echarts.chenjiandongx.com/index.html"/><meta property="og:description" content="&lt;blockquote&gt;
+&lt;p&gt;红涨蓝跌&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="go-echarts"/><h2 class="headerTitleWithLogo">go-echarts</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/overview" target="_self">Docs</a></li><li class=""><a href="https://www.github.com/chenjiandongx" target="_self">Author</a></li><li class=""><a href="https://www.github.com/chenjiandongx/go-echarts" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>基本图表</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">概览</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overview">简介</a></li><li class="navListItem"><a class="navItem" href="/docs/quickstart">快速开始</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api">API 设计</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">配置项</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/global_options">全局配置项</a></li><li class="navListItem"><a class="navItem" href="/docs/series_options">系列配置项</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">基本图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar">Bar（柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/boxPlot">BoxPlot（箱线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/effectScatter">Effectscatter（动态散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/funnel">Funnel（漏斗图）</a></li><li class="navListItem"><a class="navItem" href="/docs/gauge">Gauge（仪表盘）</a></li><li class="navListItem"><a class="navItem" href="/docs/geo">Geo（地理坐标系）</a></li><li class="navListItem"><a class="navItem" href="/docs/heatmap">HeatMap（热力图）</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/kline">Kline（K 线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line">Line（折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/liquid">Liquid（水球图）</a></li><li class="navListItem"><a class="navItem" href="/docs/map">Map（地图）</a></li><li class="navListItem"><a class="navItem" href="/docs/pie">Pie（饼图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter">Scatter（散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/wordCloud">WordCloud（词云图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">3D 图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar3d">Bar3D（3D 柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line3d">Line3D（3D 折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter3d">Scatter3D（3D 散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/surface3d">surface3D（3D 曲面图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">组合图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overlap">Overlap（重叠图）</a></li><li class="navListItem"><a class="navItem" href="/docs/page">Page（顺序多图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">数据集</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/assets_file">静态文件</a></li><li class="navListItem"><a class="navItem" href="/docs/map_coords">地理坐标</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">进阶话题</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/themes">主题定制</a></li><li class="navListItem"><a class="navItem" href="/docs/map_file">地图定制</a></li><li class="navListItem"><a class="navItem" href="/docs/javascript">原生 Javascript</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">更新日志</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/changelog">Changelog</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Kline</h1></header><article><div><span><blockquote>
+<p>红涨蓝跌</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="api"></a><a href="#api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API</h2>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// // 实例化图表</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewKiine</span><span class="hljs-params">(routers ...RouterOpts)</span> *<span class="hljs-title">Kiine</span>
+// 新增 <span class="hljs-title">X</span> 轴数据
+<span class="hljs-title">func</span> <span class="hljs-title">AddXAxis</span><span class="hljs-params">(xAxis <span class="hljs-keyword">interface</span>{})</span> *<span class="hljs-title">Kiine</span>
+// 新增 <span class="hljs-title">Y</span> 轴数据及配置项
+<span class="hljs-title">func</span> <span class="hljs-title">AddYAxis</span><span class="hljs-params">(name <span class="hljs-keyword">string</span>, yAxis <span class="hljs-keyword">interface</span>{}, options ...seriesOptser)</span> *<span class="hljs-title">Kiine</span>
+// 结合不同类型图表叠加画在同张图上
+// 只适用于 <span class="hljs-title">RectChart</span> 图表，<span class="hljs-title">RectChart</span> 图表包括 <span class="hljs-title">Bar</span>/<span class="hljs-title">BoxPlot</span>/<span class="hljs-title">Line</span>/<span class="hljs-title">Scatter</span>/<span class="hljs-title">EffectScatter</span>/<span class="hljs-title">Kline</span>/<span class="hljs-title">HeatMap</span>
+// 将 <span class="hljs-title">RectChart</span> 图表的 <span class="hljs-title">Series</span> 追加到调用者的 <span class="hljs-title">Series</span> 里面，<span class="hljs-title">Series</span> 是完全独立的
+// 而全局配置使用的是调用者的配置项
+<span class="hljs-title">func</span> <span class="hljs-title">Overlap</span><span class="hljs-params">(a ...rectCharter)</span>
+// 新增扩展 <span class="hljs-title">X</span> 轴
+<span class="hljs-title">func</span> <span class="hljs-title">ExtendXAxis</span><span class="hljs-params">(xAxis ...XAxisOpts)</span>
+// 新增扩展 <span class="hljs-title">Y</span> 轴
+<span class="hljs-title">func</span> <span class="hljs-title">ExtendYAxis</span><span class="hljs-params">(yAxis ...YAxisOpts)</span>
+// 新增 <span class="hljs-title">JS</span> 函数
+<span class="hljs-title">func</span> <span class="hljs-title">AddJSFuncs</span><span class="hljs-params">(fn ...<span class="hljs-keyword">string</span>)</span>
+// 设置全局配置项
+<span class="hljs-title">func</span> <span class="hljs-title">SetGlobalOptions</span><span class="hljs-params">(options ...globalOptser)</span>
+// 设置 <span class="hljs-title">Series</span> 配置项
+<span class="hljs-title">func</span> <span class="hljs-title">SetSeriesOptions</span><span class="hljs-params">(options ...seriesOptser)</span>
+// 负责渲染图表，支持传入多个实现了 <span class="hljs-title">io</span>.<span class="hljs-title">Writer</span> 接口的对象
+<span class="hljs-title">func</span> <span class="hljs-title">Render</span><span class="hljs-params">(w ...io.Writer)</span> <span class="hljs-title">error</span>
+</span></code></pre>
+<h2><a class="anchor" aria-hidden="true" id="预定义"></a><a href="#预定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>预定义</h2>
+<blockquote>
+<p>Note: 示例用到的一些变量及方法，部分重复的以后代码中不会再次列出</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> klineData <span class="hljs-keyword">struct</span> {
+    date <span class="hljs-keyword">string</span>
+    data [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>
+}
+
+<span class="hljs-keyword">var</span> kd = [...]klineData{
+    {date: <span class="hljs-string">"2018/1/24"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2320.26</span>, <span class="hljs-number">2320.26</span>, <span class="hljs-number">2287.3</span>, <span class="hljs-number">2362.94</span>}},
+    {date: <span class="hljs-string">"2018/1/25"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2300</span>, <span class="hljs-number">2291.3</span>, <span class="hljs-number">2288.26</span>, <span class="hljs-number">2308.38</span>}},
+    {date: <span class="hljs-string">"2018/1/28"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2295.35</span>, <span class="hljs-number">2346.5</span>, <span class="hljs-number">2295.35</span>, <span class="hljs-number">2346.92</span>}},
+    {date: <span class="hljs-string">"2018/1/29"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2347.22</span>, <span class="hljs-number">2358.98</span>, <span class="hljs-number">2337.35</span>, <span class="hljs-number">2363.8</span>}},
+    {date: <span class="hljs-string">"2018/1/30"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2360.75</span>, <span class="hljs-number">2382.48</span>, <span class="hljs-number">2347.89</span>, <span class="hljs-number">2383.76</span>}},
+    {date: <span class="hljs-string">"2018/1/31"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2383.43</span>, <span class="hljs-number">2385.42</span>, <span class="hljs-number">2371.23</span>, <span class="hljs-number">2391.82</span>}},
+    {date: <span class="hljs-string">"2018/2/1"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2377.41</span>, <span class="hljs-number">2419.02</span>, <span class="hljs-number">2369.57</span>, <span class="hljs-number">2421.15</span>}},
+    {date: <span class="hljs-string">"2018/2/4"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2425.92</span>, <span class="hljs-number">2428.15</span>, <span class="hljs-number">2417.58</span>, <span class="hljs-number">2440.38</span>}},
+    {date: <span class="hljs-string">"2018/2/5"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2411</span>, <span class="hljs-number">2433.13</span>, <span class="hljs-number">2403.3</span>, <span class="hljs-number">2437.42</span>}},
+    {date: <span class="hljs-string">"2018/2/6"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2432.68</span>, <span class="hljs-number">2434.48</span>, <span class="hljs-number">2427.7</span>, <span class="hljs-number">2441.73</span>}},
+    {date: <span class="hljs-string">"2018/2/7"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2430.69</span>, <span class="hljs-number">2418.53</span>, <span class="hljs-number">2394.22</span>, <span class="hljs-number">2433.89</span>}},
+    {date: <span class="hljs-string">"2018/2/8"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2416.62</span>, <span class="hljs-number">2432.4</span>, <span class="hljs-number">2414.4</span>, <span class="hljs-number">2443.03</span>}},
+    {date: <span class="hljs-string">"2018/2/18"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2441.91</span>, <span class="hljs-number">2421.56</span>, <span class="hljs-number">2415.43</span>, <span class="hljs-number">2444.8</span>}},
+    {date: <span class="hljs-string">"2018/2/19"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2420.26</span>, <span class="hljs-number">2382.91</span>, <span class="hljs-number">2373.53</span>, <span class="hljs-number">2427.07</span>}},
+    {date: <span class="hljs-string">"2018/2/20"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2383.49</span>, <span class="hljs-number">2397.18</span>, <span class="hljs-number">2370.61</span>, <span class="hljs-number">2397.94</span>}},
+    {date: <span class="hljs-string">"2018/2/21"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2378.82</span>, <span class="hljs-number">2325.95</span>, <span class="hljs-number">2309.17</span>, <span class="hljs-number">2378.82</span>}},
+    {date: <span class="hljs-string">"2018/2/22"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2322.94</span>, <span class="hljs-number">2314.16</span>, <span class="hljs-number">2308.76</span>, <span class="hljs-number">2330.88</span>}},
+    {date: <span class="hljs-string">"2018/2/25"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2320.62</span>, <span class="hljs-number">2325.82</span>, <span class="hljs-number">2315.01</span>, <span class="hljs-number">2338.78</span>}},
+    {date: <span class="hljs-string">"2018/2/26"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2313.74</span>, <span class="hljs-number">2293.34</span>, <span class="hljs-number">2289.89</span>, <span class="hljs-number">2340.71</span>}},
+    {date: <span class="hljs-string">"2018/2/27"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2297.77</span>, <span class="hljs-number">2313.22</span>, <span class="hljs-number">2292.03</span>, <span class="hljs-number">2324.63</span>}},
+    {date: <span class="hljs-string">"2018/2/28"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2322.32</span>, <span class="hljs-number">2365.59</span>, <span class="hljs-number">2308.92</span>, <span class="hljs-number">2366.16</span>}},
+    {date: <span class="hljs-string">"2018/3/1"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2364.54</span>, <span class="hljs-number">2359.51</span>, <span class="hljs-number">2330.86</span>, <span class="hljs-number">2369.65</span>}},
+    {date: <span class="hljs-string">"2018/3/4"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2332.08</span>, <span class="hljs-number">2273.4</span>, <span class="hljs-number">2259.25</span>, <span class="hljs-number">2333.54</span>}},
+    {date: <span class="hljs-string">"2018/3/5"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2274.81</span>, <span class="hljs-number">2326.31</span>, <span class="hljs-number">2270.1</span>, <span class="hljs-number">2328.14</span>}},
+    {date: <span class="hljs-string">"2018/3/6"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2333.61</span>, <span class="hljs-number">2347.18</span>, <span class="hljs-number">2321.6</span>, <span class="hljs-number">2351.44</span>}},
+    {date: <span class="hljs-string">"2018/3/7"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2340.44</span>, <span class="hljs-number">2324.29</span>, <span class="hljs-number">2304.27</span>, <span class="hljs-number">2352.02</span>}},
+    {date: <span class="hljs-string">"2018/3/8"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2326.42</span>, <span class="hljs-number">2318.61</span>, <span class="hljs-number">2314.59</span>, <span class="hljs-number">2333.67</span>}},
+    {date: <span class="hljs-string">"2018/3/11"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2314.68</span>, <span class="hljs-number">2310.59</span>, <span class="hljs-number">2296.58</span>, <span class="hljs-number">2320.96</span>}},
+    {date: <span class="hljs-string">"2018/3/12"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2309.16</span>, <span class="hljs-number">2286.6</span>, <span class="hljs-number">2264.83</span>, <span class="hljs-number">2333.29</span>}},
+    {date: <span class="hljs-string">"2018/3/13"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2282.17</span>, <span class="hljs-number">2263.97</span>, <span class="hljs-number">2253.25</span>, <span class="hljs-number">2286.33</span>}},
+    {date: <span class="hljs-string">"2018/3/14"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2255.77</span>, <span class="hljs-number">2270.28</span>, <span class="hljs-number">2253.31</span>, <span class="hljs-number">2276.22</span>}},
+    {date: <span class="hljs-string">"2018/3/15"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2269.31</span>, <span class="hljs-number">2278.4</span>, <span class="hljs-number">2250</span>, <span class="hljs-number">2312.08</span>}},
+    {date: <span class="hljs-string">"2018/3/18"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2267.29</span>, <span class="hljs-number">2240.02</span>, <span class="hljs-number">2239.21</span>, <span class="hljs-number">2276.05</span>}},
+    {date: <span class="hljs-string">"2018/3/19"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2244.26</span>, <span class="hljs-number">2257.43</span>, <span class="hljs-number">2232.02</span>, <span class="hljs-number">2261.31</span>}},
+    {date: <span class="hljs-string">"2018/3/20"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2257.74</span>, <span class="hljs-number">2317.37</span>, <span class="hljs-number">2257.42</span>, <span class="hljs-number">2317.86</span>}},
+    {date: <span class="hljs-string">"2018/3/21"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2318.21</span>, <span class="hljs-number">2324.24</span>, <span class="hljs-number">2311.6</span>, <span class="hljs-number">2330.81</span>}},
+    {date: <span class="hljs-string">"2018/3/22"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2321.4</span>, <span class="hljs-number">2328.28</span>, <span class="hljs-number">2314.97</span>, <span class="hljs-number">2332</span>}},
+    {date: <span class="hljs-string">"2018/3/25"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2334.74</span>, <span class="hljs-number">2326.72</span>, <span class="hljs-number">2319.91</span>, <span class="hljs-number">2344.89</span>}},
+    {date: <span class="hljs-string">"2018/3/26"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2318.58</span>, <span class="hljs-number">2297.67</span>, <span class="hljs-number">2281.12</span>, <span class="hljs-number">2319.99</span>}},
+    {date: <span class="hljs-string">"2018/3/27"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2299.38</span>, <span class="hljs-number">2301.26</span>, <span class="hljs-number">2289</span>, <span class="hljs-number">2323.48</span>}},
+    {date: <span class="hljs-string">"2018/3/28"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2273.55</span>, <span class="hljs-number">2236.3</span>, <span class="hljs-number">2232.91</span>, <span class="hljs-number">2273.55</span>}},
+    {date: <span class="hljs-string">"2018/3/29"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2238.49</span>, <span class="hljs-number">2236.62</span>, <span class="hljs-number">2228.81</span>, <span class="hljs-number">2246.87</span>}},
+    {date: <span class="hljs-string">"2018/4/1"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2229.46</span>, <span class="hljs-number">2234.4</span>, <span class="hljs-number">2227.31</span>, <span class="hljs-number">2243.95</span>}},
+    {date: <span class="hljs-string">"2018/4/2"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2234.9</span>, <span class="hljs-number">2227.74</span>, <span class="hljs-number">2220.44</span>, <span class="hljs-number">2253.42</span>}},
+    {date: <span class="hljs-string">"2018/4/3"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2232.69</span>, <span class="hljs-number">2225.29</span>, <span class="hljs-number">2217.25</span>, <span class="hljs-number">2241.34</span>}},
+    {date: <span class="hljs-string">"2018/4/8"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2196.24</span>, <span class="hljs-number">2211.59</span>, <span class="hljs-number">2180.67</span>, <span class="hljs-number">2212.59</span>}},
+    {date: <span class="hljs-string">"2018/4/9"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2215.47</span>, <span class="hljs-number">2225.77</span>, <span class="hljs-number">2215.47</span>, <span class="hljs-number">2234.73</span>}},
+    {date: <span class="hljs-string">"2018/4/10"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2224.93</span>, <span class="hljs-number">2226.13</span>, <span class="hljs-number">2212.56</span>, <span class="hljs-number">2233.04</span>}},
+    {date: <span class="hljs-string">"2018/4/11"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2236.98</span>, <span class="hljs-number">2219.55</span>, <span class="hljs-number">2217.26</span>, <span class="hljs-number">2242.48</span>}},
+    {date: <span class="hljs-string">"2018/4/12"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2218.09</span>, <span class="hljs-number">2206.78</span>, <span class="hljs-number">2204.44</span>, <span class="hljs-number">2226.26</span>}},
+    {date: <span class="hljs-string">"2018/4/15"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2199.91</span>, <span class="hljs-number">2181.94</span>, <span class="hljs-number">2177.39</span>, <span class="hljs-number">2204.99</span>}},
+    {date: <span class="hljs-string">"2018/4/16"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2169.63</span>, <span class="hljs-number">2194.85</span>, <span class="hljs-number">2165.78</span>, <span class="hljs-number">2196.43</span>}},
+    {date: <span class="hljs-string">"2018/4/17"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2195.03</span>, <span class="hljs-number">2193.8</span>, <span class="hljs-number">2178.47</span>, <span class="hljs-number">2197.51</span>}},
+    {date: <span class="hljs-string">"2018/4/18"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2181.82</span>, <span class="hljs-number">2197.6</span>, <span class="hljs-number">2175.44</span>, <span class="hljs-number">2206.03</span>}},
+    {date: <span class="hljs-string">"2018/4/19"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2201.12</span>, <span class="hljs-number">2244.64</span>, <span class="hljs-number">2200.58</span>, <span class="hljs-number">2250.11</span>}},
+    {date: <span class="hljs-string">"2018/4/22"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2236.4</span>, <span class="hljs-number">2242.17</span>, <span class="hljs-number">2232.26</span>, <span class="hljs-number">2245.12</span>}},
+    {date: <span class="hljs-string">"2018/4/23"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2242.62</span>, <span class="hljs-number">2184.54</span>, <span class="hljs-number">2182.81</span>, <span class="hljs-number">2242.62</span>}},
+    {date: <span class="hljs-string">"2018/4/24"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2187.35</span>, <span class="hljs-number">2218.32</span>, <span class="hljs-number">2184.11</span>, <span class="hljs-number">2226.12</span>}},
+    {date: <span class="hljs-string">"2018/4/25"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2213.19</span>, <span class="hljs-number">2199.31</span>, <span class="hljs-number">2191.85</span>, <span class="hljs-number">2224.63</span>}},
+    {date: <span class="hljs-string">"2018/4/26"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2203.89</span>, <span class="hljs-number">2177.91</span>, <span class="hljs-number">2173.86</span>, <span class="hljs-number">2210.58</span>}},
+    {date: <span class="hljs-string">"2018/5/2"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2170.78</span>, <span class="hljs-number">2174.12</span>, <span class="hljs-number">2161.14</span>, <span class="hljs-number">2179.65</span>}},
+    {date: <span class="hljs-string">"2018/5/3"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2179.05</span>, <span class="hljs-number">2205.5</span>, <span class="hljs-number">2179.05</span>, <span class="hljs-number">2222.81</span>}},
+    {date: <span class="hljs-string">"2018/5/6"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2212.5</span>, <span class="hljs-number">2231.17</span>, <span class="hljs-number">2212.5</span>, <span class="hljs-number">2236.07</span>}},
+    {date: <span class="hljs-string">"2018/5/7"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2227.86</span>, <span class="hljs-number">2235.57</span>, <span class="hljs-number">2219.44</span>, <span class="hljs-number">2240.26</span>}},
+    {date: <span class="hljs-string">"2018/5/8"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2242.39</span>, <span class="hljs-number">2246.3</span>, <span class="hljs-number">2235.42</span>, <span class="hljs-number">2255.21</span>}},
+    {date: <span class="hljs-string">"2018/5/9"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2246.96</span>, <span class="hljs-number">2232.97</span>, <span class="hljs-number">2221.38</span>, <span class="hljs-number">2247.86</span>}},
+    {date: <span class="hljs-string">"2018/5/10"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2228.82</span>, <span class="hljs-number">2246.83</span>, <span class="hljs-number">2225.81</span>, <span class="hljs-number">2247.67</span>}},
+    {date: <span class="hljs-string">"2018/5/13"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2247.68</span>, <span class="hljs-number">2241.92</span>, <span class="hljs-number">2231.36</span>, <span class="hljs-number">2250.85</span>}},
+    {date: <span class="hljs-string">"2018/5/14"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2238.9</span>, <span class="hljs-number">2217.01</span>, <span class="hljs-number">2205.87</span>, <span class="hljs-number">2239.93</span>}},
+    {date: <span class="hljs-string">"2018/5/15"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2217.09</span>, <span class="hljs-number">2224.8</span>, <span class="hljs-number">2213.58</span>, <span class="hljs-number">2225.19</span>}},
+    {date: <span class="hljs-string">"2018/5/16"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2221.34</span>, <span class="hljs-number">2251.81</span>, <span class="hljs-number">2210.77</span>, <span class="hljs-number">2252.87</span>}},
+    {date: <span class="hljs-string">"2018/5/17"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2249.81</span>, <span class="hljs-number">2282.87</span>, <span class="hljs-number">2248.41</span>, <span class="hljs-number">2288.09</span>}},
+    {date: <span class="hljs-string">"2018/5/20"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2286.33</span>, <span class="hljs-number">2299.99</span>, <span class="hljs-number">2281.9</span>, <span class="hljs-number">2309.39</span>}},
+    {date: <span class="hljs-string">"2018/5/21"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2297.11</span>, <span class="hljs-number">2305.11</span>, <span class="hljs-number">2290.12</span>, <span class="hljs-number">2305.3</span>}},
+    {date: <span class="hljs-string">"2018/5/22"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2303.75</span>, <span class="hljs-number">2302.4</span>, <span class="hljs-number">2292.43</span>, <span class="hljs-number">2314.18</span>}},
+    {date: <span class="hljs-string">"2018/5/23"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2293.81</span>, <span class="hljs-number">2275.67</span>, <span class="hljs-number">2274.1</span>, <span class="hljs-number">2304.95</span>}},
+    {date: <span class="hljs-string">"2018/5/24"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2281.45</span>, <span class="hljs-number">2288.53</span>, <span class="hljs-number">2270.25</span>, <span class="hljs-number">2292.59</span>}},
+    {date: <span class="hljs-string">"2018/5/27"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2286.66</span>, <span class="hljs-number">2293.08</span>, <span class="hljs-number">2283.94</span>, <span class="hljs-number">2301.7</span>}},
+    {date: <span class="hljs-string">"2018/5/28"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2293.4</span>, <span class="hljs-number">2321.32</span>, <span class="hljs-number">2281.47</span>, <span class="hljs-number">2322.1</span>}},
+    {date: <span class="hljs-string">"2018/5/29"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2323.54</span>, <span class="hljs-number">2324.02</span>, <span class="hljs-number">2321.17</span>, <span class="hljs-number">2334.33</span>}},
+    {date: <span class="hljs-string">"2018/5/30"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2316.25</span>, <span class="hljs-number">2317.75</span>, <span class="hljs-number">2310.49</span>, <span class="hljs-number">2325.72</span>}},
+    {date: <span class="hljs-string">"2018/5/31"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2320.74</span>, <span class="hljs-number">2300.59</span>, <span class="hljs-number">2299.37</span>, <span class="hljs-number">2325.53</span>}},
+    {date: <span class="hljs-string">"2018/6/3"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2300.21</span>, <span class="hljs-number">2299.25</span>, <span class="hljs-number">2294.11</span>, <span class="hljs-number">2313.43</span>}},
+    {date: <span class="hljs-string">"2018/6/4"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2297.1</span>, <span class="hljs-number">2272.42</span>, <span class="hljs-number">2264.76</span>, <span class="hljs-number">2297.1</span>}},
+    {date: <span class="hljs-string">"2018/6/5"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2270.71</span>, <span class="hljs-number">2270.93</span>, <span class="hljs-number">2260.87</span>, <span class="hljs-number">2276.86</span>}},
+    {date: <span class="hljs-string">"2018/6/6"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2264.43</span>, <span class="hljs-number">2242.11</span>, <span class="hljs-number">2240.07</span>, <span class="hljs-number">2266.69</span>}},
+    {date: <span class="hljs-string">"2018/6/7"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2242.26</span>, <span class="hljs-number">2210.9</span>, <span class="hljs-number">2205.07</span>, <span class="hljs-number">2250.63</span>}},
+    {date: <span class="hljs-string">"2018/6/13"</span>, data: [<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>{<span class="hljs-number">2190.1</span>, <span class="hljs-number">2148.35</span>, <span class="hljs-number">2126.22</span>, <span class="hljs-number">2190.1</span>}},
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="demo"></a><a href="#demo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Demo</h2>
+<h3><a class="anchor" aria-hidden="true" id="kline-示例图"></a><a href="#kline-示例图" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kline-示例图</h3>
+<pre><code class="hljs css language-go">kline := charts.NewKLine()
+
+x := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">string</span>, <span class="hljs-number">0</span>)
+y := <span class="hljs-built_in">make</span>([][<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>, <span class="hljs-number">0</span>)
+<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(kd); i++ {
+    x = <span class="hljs-built_in">append</span>(x, kd[i].date)
+    y = <span class="hljs-built_in">append</span>(y, kd[i].data)
+}
+
+kline.AddXAxis(x).AddYAxis(<span class="hljs-string">"kline"</span>, y)
+kline.SetGlobalOptions(
+    charts.TitleOpts{Title: <span class="hljs-string">"Kline-示例图"</span>},
+    charts.XAxisOpts{SplitNumber: <span class="hljs-number">20</span>},
+    charts.YAxisOpts{Scale: <span class="hljs-literal">true</span>},
+    charts.DataZoomOpts{XAxisIndex: []<span class="hljs-keyword">int</span>{<span class="hljs-number">0</span>}, Start: <span class="hljs-number">50</span>, End: <span class="hljs-number">100</span>},
+)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52345490-4a16af00-2a58-11e9-9b43-7bbc86aa05b6.gif" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="kline-datazoominside"></a><a href="#kline-datazoominside" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kline-DataZoom(inside)</h3>
+<pre><code class="hljs css language-go">kline := charts.NewKLine()
+
+x := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">string</span>, <span class="hljs-number">0</span>)
+y := <span class="hljs-built_in">make</span>([][<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>, <span class="hljs-number">0</span>)
+<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(kd); i++ {
+    x = <span class="hljs-built_in">append</span>(x, kd[i].date)
+    y = <span class="hljs-built_in">append</span>(y, kd[i].data)
+}
+
+kline.AddXAxis(x).AddYAxis(<span class="hljs-string">"kline"</span>, y)
+kline.SetGlobalOptions(
+    charts.TitleOpts{Title: <span class="hljs-string">"Kline-DataZoom(inside)"</span>},
+    charts.XAxisOpts{SplitNumber: <span class="hljs-number">20</span>},
+    charts.YAxisOpts{Scale: <span class="hljs-literal">true</span>},
+    charts.DataZoomOpts{Type:<span class="hljs-string">"inside"</span>, XAxisIndex: []<span class="hljs-keyword">int</span>{<span class="hljs-number">0</span>}, Start: <span class="hljs-number">50</span>, End: <span class="hljs-number">100</span>},
+)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52393335-91488280-2ae0-11e9-9f00-2735e073d5a3.gif" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="kline-datazoominside-slider"></a><a href="#kline-datazoominside-slider" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kline-DataZoom(inside+slider)</h3>
+<pre><code class="hljs css language-go">kline := charts.NewKLine()
+
+x := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">string</span>, <span class="hljs-number">0</span>)
+y := <span class="hljs-built_in">make</span>([][<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>, <span class="hljs-number">0</span>)
+<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(kd); i++ {
+    x = <span class="hljs-built_in">append</span>(x, kd[i].date)
+    y = <span class="hljs-built_in">append</span>(y, kd[i].data)
+}
+
+kline.AddXAxis(x).AddYAxis(<span class="hljs-string">"kline"</span>, y)
+kline.SetGlobalOptions(
+    charts.TitleOpts{Title: <span class="hljs-string">"Kline-DataZoom(inside+slider)"</span>},
+    charts.XAxisOpts{SplitNumber: <span class="hljs-number">20</span>},
+    charts.YAxisOpts{Scale: <span class="hljs-literal">true</span>},
+    charts.DataZoomOpts{Type:<span class="hljs-string">"inside"</span>, XAxisIndex: []<span class="hljs-keyword">int</span>{<span class="hljs-number">0</span>}, Start: <span class="hljs-number">50</span>, End: <span class="hljs-number">100</span>},
+    charts.DataZoomOpts{Type:<span class="hljs-string">"slider"</span>, XAxisIndex: []<span class="hljs-keyword">int</span>{<span class="hljs-number">0</span>}, Start: <span class="hljs-number">50</span>, End: <span class="hljs-number">100</span>},
+)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52393449-0a47da00-2ae1-11e9-907e-027d8ea90fc5.gif" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="kline-datazoomyaxis"></a><a href="#kline-datazoomyaxis" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kline-DataZoom(yAxis)</h3>
+<pre><code class="hljs css language-go">kline := charts.NewKLine()
+
+x := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">string</span>, <span class="hljs-number">0</span>)
+y := <span class="hljs-built_in">make</span>([][<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>, <span class="hljs-number">0</span>)
+<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(kd); i++ {
+    x = <span class="hljs-built_in">append</span>(x, kd[i].date)
+    y = <span class="hljs-built_in">append</span>(y, kd[i].data)
+}
+
+kline.AddXAxis(x).AddYAxis(<span class="hljs-string">"kline"</span>, y)
+kline.SetGlobalOptions(
+    charts.TitleOpts{Title: <span class="hljs-string">"Kline-DataZoom(yAxis)"</span>},
+    charts.XAxisOpts{SplitNumber: <span class="hljs-number">20</span>},
+    charts.YAxisOpts{Scale: <span class="hljs-literal">true</span>},
+    charts.DataZoomOpts{Type:<span class="hljs-string">"slider"</span>, YAxisIndex: []<span class="hljs-keyword">int</span>{<span class="hljs-number">0</span>}, Start: <span class="hljs-number">50</span>, End: <span class="hljs-number">100</span>},
+)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52393531-64e13600-2ae1-11e9-8db0-1afaaee9f8a5.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="kline-不同风格"></a><a href="#kline-不同风格" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Kline-不同风格</h3>
+<pre><code class="hljs css language-go">kline := charts.NewKLine()
+
+x := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">string</span>, <span class="hljs-number">0</span>)
+y := <span class="hljs-built_in">make</span>([][<span class="hljs-number">4</span>]<span class="hljs-keyword">float32</span>, <span class="hljs-number">0</span>)
+<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(kd); i++ {
+    x = <span class="hljs-built_in">append</span>(x, kd[i].date)
+    y = <span class="hljs-built_in">append</span>(y, kd[i].data)
+}
+kline.AddXAxis(x)
+kline.AddYAxis(<span class="hljs-string">"kline"</span>, y)
+kline.SetGlobalOptions(
+    charts.TitleOpts{Title: <span class="hljs-string">"Kline-不同风格"</span>},
+    charts.XAxisOpts{SplitNumber: <span class="hljs-number">20</span>},
+    charts.YAxisOpts{Scale: <span class="hljs-literal">true</span>},
+    charts.DataZoomOpts{XAxisIndex: []<span class="hljs-keyword">int</span>{<span class="hljs-number">0</span>}, Start: <span class="hljs-number">50</span>, End: <span class="hljs-number">100</span>},
+)
+kline.SetSeriesOptions(
+    charts.MPNameTypeItem{Name: <span class="hljs-string">"highest value"</span>, Type: <span class="hljs-string">"max"</span>, ValueDim: <span class="hljs-string">"highest"</span>},
+    charts.MPNameTypeItem{Name: <span class="hljs-string">"lowest value"</span>, Type: <span class="hljs-string">"min"</span>, ValueDim: <span class="hljs-string">"lowest"</span>},
+    charts.MPStyleOpts{Label: charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>}},
+    charts.ItemStyleOpts{
+        Color: <span class="hljs-string">"#ec0000"</span>, Color0: <span class="hljs-string">"#00da3c"</span>, BorderColor: <span class="hljs-string">"#8A0000"</span>, BorderColor0: <span class="hljs-string">"#008F28"</span>},
+)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52345566-81855b80-2a58-11e9-8fa1-cc38d16b93df.gif" alt=""></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-2-8 by 陈键冬</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/heatmap"><span class="arrow-prev">← </span><span class="function-name-prevnext">HeatMap（热力图）</span></a><a class="docs-next button" href="/docs/line"><span>Line（折线图）</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api">API</a></li><li><a href="#预定义">预定义</a></li><li><a href="#demo">Demo</a><ul class="toc-headings"><li><a href="#kline-示例图">Kline-示例图</a></li><li><a href="#kline-datazoominside">Kline-DataZoom(inside)</a></li><li><a href="#kline-datazoominside-slider">Kline-DataZoom(inside+slider)</a></li><li><a href="#kline-datazoomyaxis">Kline-DataZoom(yAxis)</a></li><li><a href="#kline-不同风格">Kline-不同风格</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Line · go-echarts</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;blockquote&gt;
+&lt;p&gt;折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Line · go-echarts"/><meta property="og:type" content="website"/><meta property="og:url" content="http://go-echarts.chenjiandongx.com/index.html"/><meta property="og:description" content="&lt;blockquote&gt;
+&lt;p&gt;折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="go-echarts"/><h2 class="headerTitleWithLogo">go-echarts</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/overview" target="_self">Docs</a></li><li class=""><a href="https://www.github.com/chenjiandongx" target="_self">Author</a></li><li class=""><a href="https://www.github.com/chenjiandongx/go-echarts" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>基本图表</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">概览</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overview">简介</a></li><li class="navListItem"><a class="navItem" href="/docs/quickstart">快速开始</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api">API 设计</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">配置项</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/global_options">全局配置项</a></li><li class="navListItem"><a class="navItem" href="/docs/series_options">系列配置项</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">基本图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar">Bar（柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/boxPlot">BoxPlot（箱线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/effectScatter">Effectscatter（动态散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/funnel">Funnel（漏斗图）</a></li><li class="navListItem"><a class="navItem" href="/docs/gauge">Gauge（仪表盘）</a></li><li class="navListItem"><a class="navItem" href="/docs/geo">Geo（地理坐标系）</a></li><li class="navListItem"><a class="navItem" href="/docs/heatmap">HeatMap（热力图）</a></li><li class="navListItem"><a class="navItem" href="/docs/kline">Kline（K 线图）</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/line">Line（折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/liquid">Liquid（水球图）</a></li><li class="navListItem"><a class="navItem" href="/docs/map">Map（地图）</a></li><li class="navListItem"><a class="navItem" href="/docs/pie">Pie（饼图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter">Scatter（散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/wordCloud">WordCloud（词云图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">3D 图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar3d">Bar3D（3D 柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line3d">Line3D（3D 折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter3d">Scatter3D（3D 散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/surface3d">surface3D（3D 曲面图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">组合图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overlap">Overlap（重叠图）</a></li><li class="navListItem"><a class="navItem" href="/docs/page">Page（顺序多图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">数据集</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/assets_file">静态文件</a></li><li class="navListItem"><a class="navItem" href="/docs/map_coords">地理坐标</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">进阶话题</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/themes">主题定制</a></li><li class="navListItem"><a class="navItem" href="/docs/map_file">地图定制</a></li><li class="navListItem"><a class="navItem" href="/docs/javascript">原生 Javascript</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">更新日志</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/changelog">Changelog</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Line</h1></header><article><div><span><blockquote>
+<p>折线图是用折线将各个数据点标志连接起来的图表，用于展现数据的变化趋势</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="api"></a><a href="#api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API</h2>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// // 实例化图表</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewLine</span><span class="hljs-params">(routers ...RouterOpts)</span> *<span class="hljs-title">Line</span>
+// 新增 <span class="hljs-title">X</span> 轴数据
+<span class="hljs-title">func</span> <span class="hljs-title">AddXAxis</span><span class="hljs-params">(xAxis <span class="hljs-keyword">interface</span>{})</span> *<span class="hljs-title">Line</span>
+// 新增 <span class="hljs-title">Y</span> 轴数据及配置项
+<span class="hljs-title">func</span> <span class="hljs-title">AddYAxis</span><span class="hljs-params">(name <span class="hljs-keyword">string</span>, yAxis <span class="hljs-keyword">interface</span>{}, options ...seriesOptser)</span> *<span class="hljs-title">Line</span>
+// 结合不同类型图表叠加画在同张图上
+// 只适用于 <span class="hljs-title">RectChart</span> 图表，<span class="hljs-title">RectChart</span> 图表包括 <span class="hljs-title">Bar</span>/<span class="hljs-title">BoxPlot</span>/<span class="hljs-title">Line</span>/<span class="hljs-title">Scatter</span>/<span class="hljs-title">EffectScatter</span>/<span class="hljs-title">Kline</span>/<span class="hljs-title">HeatMap</span>
+// 将 <span class="hljs-title">RectChart</span> 图表的 <span class="hljs-title">Series</span> 追加到调用者的 <span class="hljs-title">Series</span> 里面，<span class="hljs-title">Series</span> 是完全独立的
+// 而全局配置使用的是调用者的配置项
+<span class="hljs-title">func</span> <span class="hljs-title">Overlap</span><span class="hljs-params">(a ...rectCharter)</span>
+// 新增扩展 <span class="hljs-title">X</span> 轴
+<span class="hljs-title">func</span> <span class="hljs-title">ExtendXAxis</span><span class="hljs-params">(xAxis ...XAxisOpts)</span>
+// 新增扩展 <span class="hljs-title">Y</span> 轴
+<span class="hljs-title">func</span> <span class="hljs-title">ExtendYAxis</span><span class="hljs-params">(yAxis ...YAxisOpts)</span>
+// 新增 <span class="hljs-title">JS</span> 函数
+<span class="hljs-title">func</span> <span class="hljs-title">AddJSFuncs</span><span class="hljs-params">(fn ...<span class="hljs-keyword">string</span>)</span>
+// 设置全局配置项
+<span class="hljs-title">func</span> <span class="hljs-title">SetGlobalOptions</span><span class="hljs-params">(options ...globalOptser)</span>
+// 设置 <span class="hljs-title">Series</span> 配置项
+<span class="hljs-title">func</span> <span class="hljs-title">SetSeriesOptions</span><span class="hljs-params">(options ...seriesOptser)</span>
+// 负责渲染图表，支持传入多个实现了 <span class="hljs-title">io</span>.<span class="hljs-title">Writer</span> 接口的对象
+<span class="hljs-title">func</span> <span class="hljs-title">Render</span><span class="hljs-params">(w ...io.Writer)</span> <span class="hljs-title">error</span>
+</span></code></pre>
+<h2><a class="anchor" aria-hidden="true" id="专属-options"></a><a href="#专属-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>专属 Options</h2>
+<blockquote>
+<p>在 <code>SetSeriesOptions</code> 中设置</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> LineOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置</span>
+    Stack      <span class="hljs-keyword">string</span>
+    <span class="hljs-comment">// 曲线是否平滑</span>
+    Smooth     <span class="hljs-keyword">bool</span>
+    <span class="hljs-comment">// 是否使用阶梯图</span>
+    Step       <span class="hljs-keyword">bool</span>
+    <span class="hljs-comment">// 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用</span>
+    XAxisIndex <span class="hljs-keyword">int</span>
+    <span class="hljs-comment">// 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用</span>
+    YAxisIndex <span class="hljs-keyword">int</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="demo"></a><a href="#demo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Demo</h2>
+<h3><a class="anchor" aria-hidden="true" id="line-示例图"></a><a href="#line-示例图" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Line-示例图</h3>
+<pre><code class="hljs css language-go">line := charts.NewLine()
+line.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Line-示例图"</span>})
+line.AddXAxis(nameItems).AddYAxis(<span class="hljs-string">"商家A"</span>, randInt())
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52346064-b7770f80-2a59-11e9-9e03-6dae3a8c637d.gif" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="line-显示-label"></a><a href="#line-显示-label" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Line-显示 Label</h3>
+<pre><code class="hljs css language-go">line := charts.NewLine()
+line.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Line-显示 Label"</span>})
+line.AddXAxis(nameItems).AddYAxis(<span class="hljs-string">"商家A"</span>, randInt(), charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52346108-d2e21a80-2a59-11e9-8786-2164cbb23e89.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="line-标记点"></a><a href="#line-标记点" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Line-标记点</h3>
+<pre><code class="hljs css language-go">line := charts.NewLine()
+line.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Line-标记点"</span>})
+line.AddXAxis(nameItems).AddYAxis(<span class="hljs-string">"商家A"</span>, randInt(),
+    charts.MPNameTypeItem{Name:<span class="hljs-string">"最大值"</span>, Type:<span class="hljs-string">"max"</span>},
+    charts.MPNameTypeItem{Name:<span class="hljs-string">"平均值"</span>, Type:<span class="hljs-string">"average"</span>},
+    charts.MPNameTypeItem{Name:<span class="hljs-string">"最小值"</span>, Type:<span class="hljs-string">"min"</span>},
+    charts.MPStyleOpts{Label:charts.LabelTextOpts{Show:<span class="hljs-literal">true</span>}})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52346684-1db06200-2a5b-11e9-9488-4a51db0806d4.gif" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="line-显示分割线"></a><a href="#line-显示分割线" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Line-显示分割线</h3>
+<pre><code class="hljs css language-go">line := charts.NewLine()
+line.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Line-显示分割线"</span>})
+line.AddXAxis(nameItems).AddYAxis(<span class="hljs-string">"商家A"</span>, randInt(), charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>})
+line.SetGlobalOptions(charts.YAxisOpts{SplitLine: charts.SplitLineOpts{Show: <span class="hljs-literal">true</span>}})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52346154-f6a56080-2a59-11e9-9c24-9679c6ebc8d5.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="line-阶梯图"></a><a href="#line-阶梯图" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Line-阶梯图</h3>
+<pre><code class="hljs css language-go">line := charts.NewLine()
+line.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Line-阶梯图"</span>})
+line.AddXAxis(nameItems).AddYAxis(<span class="hljs-string">"商家A"</span>, randInt(), charts.LineOpts{Step: <span class="hljs-literal">true</span>})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52346208-0d4bb780-2a5a-11e9-821d-bf7f1a9b26c6.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="line-平滑曲线"></a><a href="#line-平滑曲线" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Line-平滑曲线</h3>
+<pre><code class="hljs css language-go">line := charts.NewLine()
+line.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Line-平滑曲线"</span>})
+line.AddXAxis(nameItems).AddYAxis(<span class="hljs-string">"商家A"</span>, randInt(), charts.LineOpts{Smooth: <span class="hljs-literal">true</span>})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52346235-1d639700-2a5a-11e9-8bd0-5f85ea24194d.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="line-填充区域"></a><a href="#line-填充区域" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Line-填充区域</h3>
+<pre><code class="hljs css language-go">line := charts.NewLine()
+line.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Line-填充区域"</span>})
+line.AddXAxis(nameItems).AddYAxis(<span class="hljs-string">"商家A"</span>, randInt(),
+    charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>},
+    charts.AreaStyleOpts{Opacity: <span class="hljs-number">0.2</span>},
+)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52346258-2f453a00-2a5a-11e9-845e-89a64a7fe317.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="line-平滑区域"></a><a href="#line-平滑区域" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Line-平滑区域</h3>
+<pre><code class="hljs css language-go">line := charts.NewLine()
+line.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Line-平滑区域"</span>})
+line.AddXAxis(nameItems).AddYAxis(<span class="hljs-string">"商家A"</span>, randInt(),
+    charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>},
+    charts.AreaStyleOpts{Opacity: <span class="hljs-number">0.2</span>},
+    charts.LineOpts{Smooth: <span class="hljs-literal">true</span>},
+)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52346289-3f5d1980-2a5a-11e9-9b7f-939f90d0c685.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="line-多线"></a><a href="#line-多线" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Line-多线</h3>
+<pre><code class="hljs css language-go">line := charts.NewLine()
+line.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Line-多线"</span>}, charts.InitOpts{Theme: <span class="hljs-string">"shine"</span>})
+line.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家 A"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家 B"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家 C"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家 D"</span>, randInt())
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52346315-51d75300-2a5a-11e9-83ce-49f9f73308aa.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="查询时间对比-哈希表-vs-二分查找"></a><a href="#查询时间对比-哈希表-vs-二分查找" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>查询时间对比 哈希表 vs 二分查找</h3>
+<pre><code class="hljs css language-go">line := charts.NewLine()
+line.AddXAxis([]<span class="hljs-keyword">string</span>{<span class="hljs-string">"10e1"</span>, <span class="hljs-string">"10e2"</span>, <span class="hljs-string">"10e3"</span>, <span class="hljs-string">"10e4"</span>, <span class="hljs-string">"10e5"</span>, <span class="hljs-string">"10e6"</span>, <span class="hljs-string">"10e7"</span>}).
+    AddYAxis(<span class="hljs-string">"map"</span>, []<span class="hljs-keyword">float32</span>{<span class="hljs-number">19.9</span>, <span class="hljs-number">16.8</span>, <span class="hljs-number">19.9</span>, <span class="hljs-number">29.4</span>, <span class="hljs-number">61.3</span>, <span class="hljs-number">77.3</span>, <span class="hljs-number">93.0</span>},
+        charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>, Position: <span class="hljs-string">"bottom"</span>}).
+    AddYAxis(<span class="hljs-string">"slice"</span>, []<span class="hljs-keyword">float32</span>{<span class="hljs-number">24.9</span>, <span class="hljs-number">34.9</span>, <span class="hljs-number">48.1</span>, <span class="hljs-number">58.3</span>, <span class="hljs-number">69.7</span>, <span class="hljs-number">123</span>, <span class="hljs-number">131</span>},
+        charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>, Position: <span class="hljs-string">"top"</span>})
+line.SetSeriesOptions(
+    charts.MLNameTypeItem{Name: <span class="hljs-string">"平均值"</span>, Type: <span class="hljs-string">"average"</span>},
+    charts.LineOpts{Smooth: <span class="hljs-literal">true</span>},
+    charts.MLStyleOpts{Label: charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>, Formatter: <span class="hljs-string">"{a}: {b}"</span>}},
+)
+line.SetGlobalOptions(
+    charts.TitleOpts{Title: <span class="hljs-string">"查询时间对比 哈希表 vs 二分查找"</span>},
+    charts.YAxisOpts{Name: <span class="hljs-string">"搜索时间(ns)"</span>, SplitLine: charts.SplitLineOpts{Show: <span class="hljs-literal">false</span>}},
+    charts.XAxisOpts{Name: <span class="hljs-string">"元素数量"</span>})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52346349-60256f00-2a5a-11e9-85f5-df627c655844.png" alt=""></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-2-8 by 陈键冬</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/kline"><span class="arrow-prev">← </span><span>Kline（K 线图）</span></a><a class="docs-next button" href="/docs/liquid"><span>Liquid（水球图）</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api">API</a></li><li><a href="#专属-options">专属 Options</a></li><li><a href="#demo">Demo</a><ul class="toc-headings"><li><a href="#line-示例图">Line-示例图</a></li><li><a href="#line-显示-label">Line-显示 Label</a></li><li><a href="#line-标记点">Line-标记点</a></li><li><a href="#line-显示分割线">Line-显示分割线</a></li><li><a href="#line-阶梯图">Line-阶梯图</a></li><li><a href="#line-平滑曲线">Line-平滑曲线</a></li><li><a href="#line-填充区域">Line-填充区域</a></li><li><a href="#line-平滑区域">Line-平滑区域</a></li><li><a href="#line-多线">Line-多线</a></li><li><a href="#查询时间对比-哈希表-vs-二分查找">查询时间对比 哈希表 vs 二分查找</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>

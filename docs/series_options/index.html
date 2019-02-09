@@ -1,0 +1,320 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>系列配置项 · go-echarts</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;以下所有 Opts/Item 结尾的配置项均可以作为 SetSeriesOptions 方法的参数，它们均实现了 seriesOptser 接口&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="系列配置项 · go-echarts"/><meta property="og:type" content="website"/><meta property="og:url" content="http://go-echarts.chenjiandongx.com/index.html"/><meta property="og:description" content="&lt;p&gt;以下所有 Opts/Item 结尾的配置项均可以作为 SetSeriesOptions 方法的参数，它们均实现了 seriesOptser 接口&lt;/p&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="go-echarts"/><h2 class="headerTitleWithLogo">go-echarts</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/overview" target="_self">Docs</a></li><li class=""><a href="https://www.github.com/chenjiandongx" target="_self">Author</a></li><li class=""><a href="https://www.github.com/chenjiandongx/go-echarts" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>配置项</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">概览</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overview">简介</a></li><li class="navListItem"><a class="navItem" href="/docs/quickstart">快速开始</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api">API 设计</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">配置项</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/global_options">全局配置项</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/series_options">系列配置项</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">基本图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar">Bar（柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/boxPlot">BoxPlot（箱线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/effectScatter">Effectscatter（动态散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/funnel">Funnel（漏斗图）</a></li><li class="navListItem"><a class="navItem" href="/docs/gauge">Gauge（仪表盘）</a></li><li class="navListItem"><a class="navItem" href="/docs/geo">Geo（地理坐标系）</a></li><li class="navListItem"><a class="navItem" href="/docs/heatmap">HeatMap（热力图）</a></li><li class="navListItem"><a class="navItem" href="/docs/kline">Kline（K 线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line">Line（折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/liquid">Liquid（水球图）</a></li><li class="navListItem"><a class="navItem" href="/docs/map">Map（地图）</a></li><li class="navListItem"><a class="navItem" href="/docs/pie">Pie（饼图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter">Scatter（散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/wordCloud">WordCloud（词云图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">3D 图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar3d">Bar3D（3D 柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line3d">Line3D（3D 折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter3d">Scatter3D（3D 散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/surface3d">surface3D（3D 曲面图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">组合图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overlap">Overlap（重叠图）</a></li><li class="navListItem"><a class="navItem" href="/docs/page">Page（顺序多图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">数据集</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/assets_file">静态文件</a></li><li class="navListItem"><a class="navItem" href="/docs/map_coords">地理坐标</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">进阶话题</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/themes">主题定制</a></li><li class="navListItem"><a class="navItem" href="/docs/map_file">地图定制</a></li><li class="navListItem"><a class="navItem" href="/docs/javascript">原生 Javascript</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">更新日志</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/changelog">Changelog</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">系列配置项</h1></header><article><div><span><p>以下所有 Opts/Item 结尾的配置项均可以作为 SetSeriesOptions 方法的参数，它们均实现了 seriesOptser 接口</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> seriesOptser <span class="hljs-keyword">interface</span> {
+    markSeries()
+}
+</code></pre>
+<blockquote>
+<p>Note: <strong>图表专属 Options</strong> 也可作为 <code>SetSeriesOptions</code> 的参数，具体可参见图表具体文档</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="common-options"></a><a href="#common-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Common Options</h2>
+<h3><a class="anchor" aria-hidden="true" id="labeltextopts"></a><a href="#labeltextopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LabelTextOpts</h3>
+<blockquote>
+<p>图形上的文本标签配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> LabelTextOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 是否显示标签</span>
+    Show <span class="hljs-keyword">bool</span> <span class="hljs-string">`json:"show"`</span>
+    <span class="hljs-comment">// 文字的颜色</span>
+    Color <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"color,omitempty"`</span>
+    <span class="hljs-comment">// 标签的位置</span>
+    <span class="hljs-comment">// 通过相对的百分比或者绝对像素值表示标签相对于图形包围盒左上角的位置。示例：</span>
+    <span class="hljs-comment">// 绝对的像素值    position: [10, 10],</span>
+    <span class="hljs-comment">// 相对的百分比    position: ["50%", "50%"]</span>
+    <span class="hljs-comment">// "top", "left", "right", "bottom"</span>
+    <span class="hljs-comment">// "inside", "insideLeft", "insideRight", "insideTop", "insideBottom"</span>
+    <span class="hljs-comment">// "insideTopLeft", "insideBottomLeft", "insideTopRight", "insideBottomRight"</span>
+    Position <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"position,omitempty"`</span>
+    <span class="hljs-comment">// 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行。</span>
+    <span class="hljs-comment">// 1. 字符串模板 模板变量有：</span>
+    <span class="hljs-comment">// {a}：系列名。</span>
+    <span class="hljs-comment">// {b}：数据名。</span>
+    <span class="hljs-comment">// {c}：数据值。</span>
+    <span class="hljs-comment">// {@xxx}：数据中名为'xxx'的维度的值，如{@product}表示名为'product'`的维度的值。</span>
+    <span class="hljs-comment">// {@[n]}：数据中维度 n 的值，如{@[3]}` 表示维度 3 的值，从 0 开始计数。</span>
+    <span class="hljs-comment">// 2, 回调函数</span>
+    <span class="hljs-comment">// 回调函数格式：</span>
+    <span class="hljs-comment">// (params: Object|Array, ticket: string, callback: (ticket: string, html: string)) =&gt; string</span>
+    <span class="hljs-comment">// 第一个参数 params 是 formatter 需要的数据集。格式如下：</span>
+    <span class="hljs-comment">// {</span>
+    <span class="hljs-comment">//    componentType: 'series',</span>
+    <span class="hljs-comment">//    seriesType: string,    // 系列类型</span>
+    <span class="hljs-comment">//    seriesIndex: number,    // 系列在传入的 option.series 中的 index</span>
+    <span class="hljs-comment">//    seriesName: string,    // 系列名称</span>
+    <span class="hljs-comment">//    name: string,            // 数据名，类目名</span>
+    <span class="hljs-comment">//    dataIndex: number,    // 数据在传入的 data 数组中的 index</span>
+    <span class="hljs-comment">//    data: Object,            // 传入的原始数据项</span>
+    <span class="hljs-comment">//    value: number|Array,    // 传入的数据值</span>
+    <span class="hljs-comment">//    color: string,        // 数据图形的颜色</span>
+    <span class="hljs-comment">//    percent: number,        // 饼图的百分比</span>
+    <span class="hljs-comment">// }</span>
+    Formatter <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"formatter,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="rippleeffectopts"></a><a href="#rippleeffectopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RippleEffectOpts</h3>
+<blockquote>
+<p>涟漪特效配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> RippleEffectOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 动画的周期，秒数</span>
+    <span class="hljs-comment">// 默认 4(s)</span>
+    Period <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"period,omitempty"`</span>
+    <span class="hljs-comment">// 动画中波纹的最大缩放比例</span>
+    <span class="hljs-comment">// 默认 2.5</span>
+    Scale <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"scale,omitempty"`</span>
+    <span class="hljs-comment">// 波纹的绘制方式，可选 "stroke" 和 "fill"</span>
+    <span class="hljs-comment">// 默认 "fill"</span>
+    BrushType <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"brushType,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="linestyleopts"></a><a href="#linestyleopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LineStyleOpts</h3>
+<blockquote>
+<p>线风格配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> LineStyleOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 线的颜色</span>
+    Color <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"color,omitempty"`</span>
+    <span class="hljs-comment">// 线的宽度</span>
+    <span class="hljs-comment">// 默认 1</span>
+    Width <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"width,omitempty"`</span>
+    <span class="hljs-comment">// 线的类型，可选 "solid", "dashed", "dotted"</span>
+    <span class="hljs-comment">// 默认 "solid"</span>
+    Type <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"type,omitempty"`</span>
+    <span class="hljs-comment">// 线的透明度。支持从 0 到 1 的数字，为 0 时不绘制线</span>
+    Opacity <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"opacity,omitempty"`</span>
+    <span class="hljs-comment">// 线的曲度，支持从 0 到 1 的值，值越大曲度越大</span>
+    <span class="hljs-comment">// 默认 0</span>
+    Curveness <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"curveness,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="areastyleopts"></a><a href="#areastyleopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>AreaStyleOpts</h3>
+<blockquote>
+<p>区域风格配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> AreaStyleOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 填充区域的颜色</span>
+    Color <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"color,omitempty"`</span>
+    <span class="hljs-comment">// 填充区域的透明度。支持从 0 到 1 的数字，为 0 时不填充区域</span>
+    Opacity <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"opacity,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="itemstyleopts"></a><a href="#itemstyleopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ItemStyleOpts</h3>
+<blockquote>
+<p>数据 Item 配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> ItemStyleOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 图形的颜色</span>
+    <span class="hljs-comment">// Kline 图中为 阳线图形颜色</span>
+    Color <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"color,omitempty"`</span>
+    <span class="hljs-comment">// Kline 图中为 阴线图形颜色</span>
+    Color0 <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"color0,omitempty"`</span>
+    <span class="hljs-comment">// 图形的描边颜色</span>
+    <span class="hljs-comment">// Kline 途中为 阳线图形的描边颜色</span>
+    BorderColor <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"borderColor,omitempty"`</span>
+    <span class="hljs-comment">// Kline 途中为 阴线图形的描边颜色</span>
+    BorderColor0 <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"borderColor0,omitempty"`</span>
+    <span class="hljs-comment">// 图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形</span>
+    Opacity <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"opacity,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="textstyleopts"></a><a href="#textstyleopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TextStyleOpts</h3>
+<blockquote>
+<p>字体样式配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> TextStyleOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 文字字体颜色</span>
+    Color <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"color,omitempty"`</span>
+    <span class="hljs-comment">// 文字字体的风格</span>
+    <span class="hljs-comment">// 可选  'normal', 'italic', 'oblique'</span>
+    FontStyle <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"fontStyle,omitempty"`</span>
+    <span class="hljs-comment">// 字体大小</span>
+    FontSize <span class="hljs-keyword">int</span> <span class="hljs-string">`json:"fontSize,omitempty"`</span>
+    <span class="hljs-comment">// 递归结构，为了兼容 wordCloud</span>
+    Normal *TextStyleOpts <span class="hljs-string">`json:"normal,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="funcopts"></a><a href="#funcopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FuncOpts</h3>
+<blockquote>
+<p>JS 函数配置项，不过准确来说这是一个 <strong>方法</strong>，在 formatter 等一些配置项中可以用到</p>
+</blockquote>
+<pre><code class="hljs css language-go">FuncOpts(fn <span class="hljs-keyword">string</span>) <span class="hljs-keyword">string</span>
+</code></pre>
+<p>示例</p>
+<pre><code class="hljs css language-go">fn := <span class="hljs-string">`function (params) {
+    return params.name + ' : ' + params.value[2];
+}`</span>
+charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>, Formatter: charts.FuncOpts(fn)}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="markline-markpoint-options"></a><a href="#markline-markpoint-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Markline/Markpoint Options</h2>
+<h3><a class="anchor" aria-hidden="true" id="mlnametypeitem"></a><a href="#mlnametypeitem" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MLNameTypeItem</h3>
+<blockquote>
+<p>MarkLine 数据 Name-Type</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> MLNameTypeItem <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 标记线名称</span>
+    Name <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name"`</span>
+    <span class="hljs-comment">// 内置类型，可选 "average", "min", "max"</span>
+    Type <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"type"`</span>
+    <span class="hljs-comment">// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。</span>
+    <span class="hljs-comment">// 可以是维度的直接名称，例如折线图时可以是 x、angle 等</span>
+    <span class="hljs-comment">// candlestick 图时可以是 open、close 等维度名称。</span>
+    ValueDim <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"valueDim,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="mlnamexaxisitem"></a><a href="#mlnamexaxisitem" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MLNameXAxisItem</h3>
+<blockquote>
+<p>MarkLine 数据 Name-XAxis</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> MLNameXAxisItem <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 标记线名称</span>
+    Name <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name"`</span>
+    <span class="hljs-comment">// X 轴数据</span>
+    XAxis <span class="hljs-keyword">interface</span>{} <span class="hljs-string">`json:"xAxis"`</span>
+    <span class="hljs-comment">// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。</span>
+    <span class="hljs-comment">// 可以是维度的直接名称，例如折线图时可以是 x、angle 等</span>
+    <span class="hljs-comment">// candlestick 图时可以是 open、close 等维度名称。</span>
+    ValueDim <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"valueDim,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="mlnameyaxisitem"></a><a href="#mlnameyaxisitem" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MLNameYAxisItem</h3>
+<blockquote>
+<p>MarkLine 数据 Name-YAxis</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> MLNameYAxisItem <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 标记线名称</span>
+    Name <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name"`</span>
+    <span class="hljs-comment">// Y 轴数据</span>
+    YAxis <span class="hljs-keyword">interface</span>{} <span class="hljs-string">`json:"yAxis"`</span>
+    <span class="hljs-comment">// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。</span>
+    <span class="hljs-comment">// 可以是维度的直接名称，例如折线图时可以是 x、angle 等</span>
+    <span class="hljs-comment">// candlestick 图时可以是 open、close 等维度名称。</span>
+    ValueDim <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"valueDim,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="mlnamecoorditem"></a><a href="#mlnamecoorditem" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MLNameCoordItem</h3>
+<blockquote>
+<p>MarkLine 数据 Name-Coordinates</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> MLNameCoordItem <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 标记线名称</span>
+    Name <span class="hljs-keyword">string</span>
+    <span class="hljs-comment">// 标记线起始坐标</span>
+    Coord0 []<span class="hljs-keyword">interface</span>{}
+    <span class="hljs-comment">// 标记线结束坐标</span>
+    Coord1 []<span class="hljs-keyword">interface</span>{}
+    <span class="hljs-comment">// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。</span>
+    <span class="hljs-comment">// 可以是维度的直接名称，例如折线图时可以是 x、angle 等</span>
+    <span class="hljs-comment">// candlestick 图时可以是 open、close 等维度名称。</span>
+    ValueDim <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"valueDim,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="mlstyleopts"></a><a href="#mlstyleopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MLStyleOpts</h3>
+<blockquote>
+<p>MarkLine 风格配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> MLStyleOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 图元的图形类别</span>
+    <span class="hljs-comment">// 可选 "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"</span>
+    Symbol []<span class="hljs-keyword">string</span> <span class="hljs-string">`json:"symbol,omitempty"`</span>
+    <span class="hljs-comment">// 图元的大小</span>
+    SymbolSize <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"symbolSize,omitempty"`</span>
+    <span class="hljs-comment">// 标线文本配置项</span>
+    Label LabelTextOpts <span class="hljs-string">`json:"label,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="mpnametypeitem"></a><a href="#mpnametypeitem" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MPNameTypeItem</h3>
+<blockquote>
+<p>MarkPoint 数据 Name-Type</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> MPNameTypeItem <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 标记点名称</span>
+    Name <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name"`</span>
+    <span class="hljs-comment">// 内置类型，可选 "average", "min", "max"</span>
+    Type <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"type"`</span>
+    <span class="hljs-comment">// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。</span>
+    <span class="hljs-comment">// 可以是维度的直接名称，例如折线图时可以是 x、angle 等</span>
+    <span class="hljs-comment">// candlestick 图时可以是 open、close 等维度名称。</span>
+    ValueDim <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"valueDim,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="mpnamecoorditem"></a><a href="#mpnamecoorditem" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MPNameCoordItem</h3>
+<blockquote>
+<p>MarkPoint 数据 Name-Coordinates</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> MPNameCoordItem <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 标记点名称</span>
+    Name <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name"`</span>
+    <span class="hljs-comment">// 标记点坐标</span>
+    Coord []<span class="hljs-keyword">interface</span>{} <span class="hljs-string">`json:"coord"`</span>
+    <span class="hljs-comment">// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。</span>
+    <span class="hljs-comment">// 可以是维度的直接名称，例如折线图时可以是 x、angle 等</span>
+    <span class="hljs-comment">// candlestick 图时可以是 open、close 等维度名称。</span>
+    ValueDim <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"valueDim,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="mpstyleopts"></a><a href="#mpstyleopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MPStyleOpts</h3>
+<blockquote>
+<p>MarkPoint 风格配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> MPStyleOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 图元的图形类别</span>
+    <span class="hljs-comment">// 可选 "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"</span>
+    Symbol <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"symbol,omitempty"`</span>
+    <span class="hljs-comment">// 图元的大小</span>
+    SymbolSize <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"symbolSize,omitempty"`</span>
+    <span class="hljs-comment">// 标注文本配置项</span>
+    Label LabelTextOpts <span class="hljs-string">`json:"label,omitempty"`</span>
+}
+</code></pre>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-2-8 by 陈键冬</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/global_options"><span class="arrow-prev">← </span><span>全局配置项</span></a><a class="docs-next button" href="/docs/bar"><span>Bar（柱状图）</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#common-options">Common Options</a><ul class="toc-headings"><li><a href="#labeltextopts">LabelTextOpts</a></li><li><a href="#rippleeffectopts">RippleEffectOpts</a></li><li><a href="#linestyleopts">LineStyleOpts</a></li><li><a href="#areastyleopts">AreaStyleOpts</a></li><li><a href="#itemstyleopts">ItemStyleOpts</a></li><li><a href="#textstyleopts">TextStyleOpts</a></li><li><a href="#funcopts">FuncOpts</a></li></ul></li><li><a href="#markline-markpoint-options">Markline/Markpoint Options</a><ul class="toc-headings"><li><a href="#mlnametypeitem">MLNameTypeItem</a></li><li><a href="#mlnamexaxisitem">MLNameXAxisItem</a></li><li><a href="#mlnameyaxisitem">MLNameYAxisItem</a></li><li><a href="#mlnamecoorditem">MLNameCoordItem</a></li><li><a href="#mlstyleopts">MLStyleOpts</a></li><li><a href="#mpnametypeitem">MPNameTypeItem</a></li><li><a href="#mpnamecoorditem">MPNameCoordItem</a></li><li><a href="#mpstyleopts">MPStyleOpts</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>

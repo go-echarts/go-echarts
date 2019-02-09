@@ -1,0 +1,332 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Bar · go-echarts</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;blockquote&gt;
+&lt;p&gt;柱状/条形图，通过柱形的高度/条形的宽度来表现数据的大小&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Bar · go-echarts"/><meta property="og:type" content="website"/><meta property="og:url" content="http://go-echarts.chenjiandongx.com/index.html"/><meta property="og:description" content="&lt;blockquote&gt;
+&lt;p&gt;柱状/条形图，通过柱形的高度/条形的宽度来表现数据的大小&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="go-echarts"/><h2 class="headerTitleWithLogo">go-echarts</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/overview" target="_self">Docs</a></li><li class=""><a href="https://www.github.com/chenjiandongx" target="_self">Author</a></li><li class=""><a href="https://www.github.com/chenjiandongx/go-echarts" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>基本图表</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">概览</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overview">简介</a></li><li class="navListItem"><a class="navItem" href="/docs/quickstart">快速开始</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api">API 设计</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">配置项</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/global_options">全局配置项</a></li><li class="navListItem"><a class="navItem" href="/docs/series_options">系列配置项</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">基本图表</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/bar">Bar（柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/boxPlot">BoxPlot（箱线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/effectScatter">Effectscatter（动态散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/funnel">Funnel（漏斗图）</a></li><li class="navListItem"><a class="navItem" href="/docs/gauge">Gauge（仪表盘）</a></li><li class="navListItem"><a class="navItem" href="/docs/geo">Geo（地理坐标系）</a></li><li class="navListItem"><a class="navItem" href="/docs/heatmap">HeatMap（热力图）</a></li><li class="navListItem"><a class="navItem" href="/docs/kline">Kline（K 线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line">Line（折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/liquid">Liquid（水球图）</a></li><li class="navListItem"><a class="navItem" href="/docs/map">Map（地图）</a></li><li class="navListItem"><a class="navItem" href="/docs/pie">Pie（饼图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter">Scatter（散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/wordCloud">WordCloud（词云图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">3D 图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar3d">Bar3D（3D 柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line3d">Line3D（3D 折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter3d">Scatter3D（3D 散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/surface3d">surface3D（3D 曲面图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">组合图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overlap">Overlap（重叠图）</a></li><li class="navListItem"><a class="navItem" href="/docs/page">Page（顺序多图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">数据集</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/assets_file">静态文件</a></li><li class="navListItem"><a class="navItem" href="/docs/map_coords">地理坐标</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">进阶话题</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/themes">主题定制</a></li><li class="navListItem"><a class="navItem" href="/docs/map_file">地图定制</a></li><li class="navListItem"><a class="navItem" href="/docs/javascript">原生 Javascript</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">更新日志</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/changelog">Changelog</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Bar</h1></header><article><div><span><blockquote>
+<p>柱状/条形图，通过柱形的高度/条形的宽度来表现数据的大小</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="api"></a><a href="#api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API</h2>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// 实例化图表</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewBar</span><span class="hljs-params">(routers ...RouterOpts)</span> *<span class="hljs-title">Bar</span>
+// 新增 <span class="hljs-title">X</span> 轴数据
+<span class="hljs-title">func</span> <span class="hljs-title">AddXAxis</span><span class="hljs-params">(xAxis <span class="hljs-keyword">interface</span>{})</span> *<span class="hljs-title">Bar</span>
+// 新增 <span class="hljs-title">Y</span> 轴数据及配置项
+<span class="hljs-title">func</span> <span class="hljs-title">AddYAxis</span><span class="hljs-params">(name <span class="hljs-keyword">string</span>, yAxis <span class="hljs-keyword">interface</span>{}, options ...seriesOptser)</span> *<span class="hljs-title">Bar</span>
+// 是否翻转 <span class="hljs-title">XY</span> 坐标轴
+<span class="hljs-title">func</span> <span class="hljs-title">XYReversal</span><span class="hljs-params">()</span>
+// 结合不同类型图表叠加画在同张图上
+// 只适用于 <span class="hljs-title">RectChart</span> 图表，<span class="hljs-title">RectChart</span> 图表包括 <span class="hljs-title">Bar</span>/<span class="hljs-title">BoxPlot</span>/<span class="hljs-title">Line</span>/<span class="hljs-title">Scatter</span>/<span class="hljs-title">EffectScatter</span>/<span class="hljs-title">Kline</span>/<span class="hljs-title">HeatMap</span>
+// 将 <span class="hljs-title">RectChart</span> 图表的 <span class="hljs-title">Series</span> 追加到调用者的 <span class="hljs-title">Series</span> 里面，<span class="hljs-title">Series</span> 是完全独立的
+// 而全局配置使用的是调用者的配置项
+<span class="hljs-title">func</span> <span class="hljs-title">Overlap</span><span class="hljs-params">(a ...rectCharter)</span>
+// 新增扩展 <span class="hljs-title">X</span> 轴
+<span class="hljs-title">func</span> <span class="hljs-title">ExtendXAxis</span><span class="hljs-params">(xAxis ...XAxisOpts)</span>
+// 新增扩展 <span class="hljs-title">Y</span> 轴
+<span class="hljs-title">func</span> <span class="hljs-title">ExtendYAxis</span><span class="hljs-params">(yAxis ...YAxisOpts)</span>
+// 新增 <span class="hljs-title">JS</span> 函数
+<span class="hljs-title">func</span> <span class="hljs-title">AddJSFuncs</span><span class="hljs-params">(fn ...<span class="hljs-keyword">string</span>)</span>
+// 设置全局配置项
+<span class="hljs-title">func</span> <span class="hljs-title">SetGlobalOptions</span><span class="hljs-params">(options ...globalOptser)</span>
+// 设置 <span class="hljs-title">Series</span> 配置项
+<span class="hljs-title">func</span> <span class="hljs-title">SetSeriesOptions</span><span class="hljs-params">(options ...seriesOptser)</span>
+// 负责渲染图表，支持传入多个实现了 <span class="hljs-title">io</span>.<span class="hljs-title">Writer</span> 接口的对象
+<span class="hljs-title">func</span> <span class="hljs-title">Render</span><span class="hljs-params">(w ...io.Writer)</span> <span class="hljs-title">error</span>
+</span></code></pre>
+<h2><a class="anchor" aria-hidden="true" id="专属-options"></a><a href="#专属-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>专属 Options</h2>
+<blockquote>
+<p>在 <code>SetSeriesOptions</code> 中设置</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> BarOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置</span>
+    Stack      <span class="hljs-keyword">string</span>
+    <span class="hljs-comment">// 不同系列的柱间距离，为百分比（如 "30%"，表示柱子宽度的 30%）。</span>
+    <span class="hljs-comment">// 如果想要两个系列的柱子重叠，可以设置 barGap 为 "-100%"。这在用柱子做背景的时候有用。</span>
+    <span class="hljs-comment">// 在同一坐标系上，此属性会被多个 "bar" 系列共享。</span>
+    <span class="hljs-comment">// 此属性应设置于此坐标系中最后一个 "bar" 系列上才会生效，并且是对此坐标系中所有 "bar" 系列生效</span>
+    <span class="hljs-comment">// 默认 "30%"</span>
+    BarGap <span class="hljs-keyword">string</span>
+    <span class="hljs-comment">// 同一系列的柱间距离，默认为类目间距的 20%，可设固定值</span>
+    <span class="hljs-comment">// 在同一坐标系上，此属性会被多个 "bar" 系列共享。</span>
+    <span class="hljs-comment">// 此属性应设置于此坐标系中最后一个 "bar" 系列上才会生效，并且是对此坐标系中所有 "bar" 系列生效</span>
+    BarCategoryGap <span class="hljs-keyword">string</span>
+    <span class="hljs-comment">// 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用</span>
+    XAxisIndex <span class="hljs-keyword">int</span>
+    <span class="hljs-comment">// 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用</span>
+    YAxisIndex <span class="hljs-keyword">int</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="预定义"></a><a href="#预定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>预定义</h2>
+<blockquote>
+<p>Note: 示例用到的一些变量及方法，部分重复的以后代码中不会再次列出</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">var</span> nameItems = []<span class="hljs-keyword">string</span>{<span class="hljs-string">"衬衫"</span>, <span class="hljs-string">"牛仔裤"</span>, <span class="hljs-string">"运动裤"</span>, <span class="hljs-string">"袜子"</span>, <span class="hljs-string">"冲锋衣"</span>, <span class="hljs-string">"羊毛衫"</span>}
+<span class="hljs-keyword">var</span> foodItems = []<span class="hljs-keyword">string</span>{<span class="hljs-string">"面包"</span>, <span class="hljs-string">"牛奶"</span>, <span class="hljs-string">"奶茶"</span>, <span class="hljs-string">"棒棒糖"</span>, <span class="hljs-string">"加多宝"</span>, <span class="hljs-string">"可口可乐"</span>}
+
+<span class="hljs-keyword">var</span> seed = rand.NewSource(time.Now().UnixNano())
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">randInt</span><span class="hljs-params">()</span> []<span class="hljs-title">int</span></span> {
+    cnt := <span class="hljs-built_in">len</span>(nameItems)
+    r := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">int</span>, <span class="hljs-number">0</span>)
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; cnt; i++ {
+        r = <span class="hljs-built_in">append</span>(r, <span class="hljs-keyword">int</span>(seed.Int63())%<span class="hljs-number">50</span>)
+    }
+    <span class="hljs-keyword">return</span> r
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="demo"></a><a href="#demo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Demo</h2>
+<h3><a class="anchor" aria-hidden="true" id="bar-示例图"></a><a href="#bar-示例图" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-示例图</h3>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">"..."</span>   <span class="hljs-comment">// 其他内置库，不一一列出，后面示例代码也是一样</span>
+
+    <span class="hljs-string">"github.com/chenjiandongx/go-echarts/charts"</span>
+)
+
+bar := charts.NewBar()
+bar.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Bar-示例图"</span>}, charts.ToolboxOpts{Show: <span class="hljs-literal">true</span>})
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt())
+f, err := os.Create(<span class="hljs-string">"bar.html"</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Println(err)
+    }
+bar.Render(f)
+
+<span class="hljs-comment">// 或者使用 net/http，同上，后面也不就列出</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">handler</span><span class="hljs-params">(w http.ResponseWriter, _ *http.Request)</span></span> {
+    bar := charts.NewBar()
+    bar.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Bar-示例图"</span>}, charts.ToolboxOpts{Show: <span class="hljs-literal">true</span>})
+    bar.AddXAxis(nameItems).
+        AddYAxis(<span class="hljs-string">"商家A"</span>, randInt()).
+        AddYAxis(<span class="hljs-string">"商家B"</span>, randInt())
+    f, err := os.Create(<span class="hljs-string">"bar.html"</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        log.Println(err)
+    }
+    bar.Render(w, f) <span class="hljs-comment">// Render 可接收多个 io.writer 接口</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    http.HandleFunc(<span class="hljs-string">"/"</span>, handler)
+    http.ListenAndServe(<span class="hljs-string">":8081"</span>, <span class="hljs-literal">nil</span>)
+}
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52197440-843a5200-289a-11e9-8601-3ce8d945b04a.gif" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-标题"></a><a href="#bar-标题" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-标题</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(
+    charts.TitleOpts{Title: <span class="hljs-string">"Bar-标题"</span>, Subtitle: <span class="hljs-string">"我是副标题，相对来讲我会长一点"</span>, Right: <span class="hljs-string">"40%"</span>},
+    charts.LegendOpts{Right: <span class="hljs-string">"80%"</span>},
+    charts.ToolboxOpts{Show: <span class="hljs-literal">true</span>},
+)
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt())
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52395508-6ca4d880-2ae9-11e9-853d-4ced2e5db822.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-显示-label"></a><a href="#bar-显示-label" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-显示 Label</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Bar-显示 Label"</span>})
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt())
+bar.SetSeriesOptions(charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52331824-1c1f7380-2a34-11e9-928b-70b84c179fb0.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-xy-轴名称"></a><a href="#bar-xy-轴名称" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-XY 轴名称</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Bar-XY 轴名称"</span>})
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt())
+bar.SetSeriesOptions(charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>})
+bar.SetGlobalOptions(charts.XAxisOpts{Name: <span class="hljs-string">"商品名称"</span>}, charts.YAxisOpts{Name: <span class="hljs-string">"销售量"</span>})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52331865-2d688000-2a34-11e9-850c-a15adab4d775.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-设置系列颜色"></a><a href="#bar-设置系列颜色" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-设置系列颜色</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Bar-设置系列颜色"</span>})
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt(), charts.ColorOpts{<span class="hljs-string">"lightblue"</span>}).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt(), charts.ColorOpts{<span class="hljs-string">"pink"</span>})
+bar.SetSeriesOptions(charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>})
+<span class="hljs-comment">// 或者可以这样设置</span>
+<span class="hljs-comment">//bar.SetGlobalOptions(charts.ColorOpts{"lightblue", "pink"})</span>
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52331995-74567580-2a34-11e9-9050-3e4f202b8810.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-显示分割线"></a><a href="#bar-显示分割线" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-显示分割线</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Bar-显示分割线"</span>})
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt())
+bar.SetGlobalOptions(charts.YAxisOpts{SplitLine: charts.SplitLineOpts{Show: <span class="hljs-literal">true</span>}})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52332006-82a49180-2a34-11e9-8cc4-ddff94b06426.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-调整-bar-距离"></a><a href="#bar-调整-bar-距离" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-调整 bar 距离</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Bar-调整 bar 距离"</span>})
+bar.AddXAxis(nameItems).AddYAxis(<span class="hljs-string">"商家A"</span>, randInt())
+bar.SetSeriesOptions(charts.BarOpts{BarCategoryGap: <span class="hljs-string">"70%"</span>})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52466253-b3afce00-2bbc-11e9-802b-c16022969c65.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-y-轴格式"></a><a href="#bar-y-轴格式" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-Y 轴格式</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Bar-Y 轴格式"</span>})
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt())
+bar.SetGlobalOptions(
+    charts.YAxisOpts{AxisLabel: charts.LabelTextOpts{Formatter: <span class="hljs-string">"{value} 件/天"</span>}},
+)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52332025-8fc18080-2a34-11e9-8961-7cd606628be8.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-多-y-轴"></a><a href="#bar-多-y-轴" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-多 Y 轴</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(
+    charts.TitleOpts{Title: <span class="hljs-string">"Bar-多 Y 轴"</span>},
+    charts.YAxisOpts{AxisLabel: charts.LabelTextOpts{Formatter: <span class="hljs-string">"{value} 件/天"</span>}},
+)
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt(), charts.BarOpts{YAxisIndex: <span class="hljs-number">0</span>}).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt(), charts.BarOpts{YAxisIndex: <span class="hljs-number">1</span>})
+bar.ExtendYAxis(charts.YAxisOpts{AxisLabel: charts.LabelTextOpts{Formatter: <span class="hljs-string">"{value} 件/月"</span>}})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52392892-cfdd3d80-2ade-11e9-985d-d80ae110c1e3.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-多-x-轴"></a><a href="#bar-多-x-轴" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-多 X 轴</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(
+    charts.TitleOpts{Title: <span class="hljs-string">"Bar-多 X 轴"</span>},
+    charts.YAxisOpts{AxisLabel: charts.LabelTextOpts{Formatter: <span class="hljs-string">"{value} 件/天"</span>}},
+)
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt(), charts.BarOpts{XAxisIndex: <span class="hljs-number">0</span>}).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt(), charts.BarOpts{XAxisIndex: <span class="hljs-number">1</span>})
+bar.ExtendXAxis(charts.XAxisOpts{Data: foodItems})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52393164-ea63e680-2adf-11e9-99fa-dc1d6c5dd61e.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-datazoom"></a><a href="#bar-datazoom" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-DataZoom</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(
+    charts.TitleOpts{Title: <span class="hljs-string">"Bar-DataZoom"</span>},
+    charts.ToolboxOpts{Show: <span class="hljs-literal">true</span>},
+    charts.DataZoomOpts{XAxisIndex: []<span class="hljs-keyword">int</span>{<span class="hljs-number">0</span>}, Start: <span class="hljs-number">50</span>, End: <span class="hljs-number">100</span>},
+)
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt())
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52393958-9824c480-2ae3-11e9-8418-52e71fd33ccb.gif" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-翻转-xy-轴"></a><a href="#bar-翻转-xy-轴" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-翻转 XY 轴</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Bar-翻转 XY 轴"</span>})
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt())
+bar.XYReversal()
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52332106-bb446b00-2a34-11e9-8a79-a03db79c74a0.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-堆叠效果"></a><a href="#bar-堆叠效果" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-堆叠效果</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Bar-堆叠效果"</span>})
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt(), charts.BarOpts{Stack: <span class="hljs-string">"stack"</span>}).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt(), charts.BarOpts{Stack: <span class="hljs-string">"stack"</span>})
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52332121-c7302d00-2a34-11e9-86f1-a6c363e8b808.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-标记线-标记点"></a><a href="#bar-标记线-标记点" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-标记线&amp;标记点</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Bar-标记线&amp;标记点"</span>})
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt())
+bar.SetSeriesOptions(
+    charts.MLNameTypeItem{Name: <span class="hljs-string">"最大值"</span>, Type: <span class="hljs-string">"max"</span>},
+    charts.MLStyleOpts{SymbolSize: <span class="hljs-number">20</span>, Label: charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>}},
+    charts.MPNameTypeItem{Name: <span class="hljs-string">"最大值点"</span>, Type: <span class="hljs-string">"max"</span>},
+    charts.MPStyleOpts{Label: charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>}},
+)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52332133-d2835880-2a34-11e9-8e4f-792fb2ea540a.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-自定义标记-主题"></a><a href="#bar-自定义标记-主题" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-自定义标记+主题</h3>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> <span class="hljs-string">"github.com/chenjiandongx/go-echarts/common"</span>
+
+bar := charts.NewBar()
+bar.SetGlobalOptions(
+    charts.TitleOpts{Title: <span class="hljs-string">"Bar-自定义标记+主题"</span>},
+    charts.InitOpts{PageTitle: <span class="hljs-string">"Awesome"</span>, Theme: common.ThemeType.Macarons},
+)
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt(),
+        charts.MLNameYAxisItem{Name: <span class="hljs-string">"Y 值为 5"</span>, YAxis: <span class="hljs-number">20</span>},
+        charts.MLNameCoordItem{Name: <span class="hljs-string">"自定义标记线"</span>,
+            Coord0: []<span class="hljs-keyword">interface</span>{}{<span class="hljs-string">"衬衫"</span>, <span class="hljs-number">10</span>}, Coord1: []<span class="hljs-keyword">interface</span>{}{<span class="hljs-string">"羊毛衫"</span>, <span class="hljs-number">40</span>}},
+        charts.MLStyleOpts{SymbolSize: <span class="hljs-number">20</span>, Label: charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>}},
+    )
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52332160-e29b3800-2a34-11e9-8218-66a0b7a24622.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="bar-画布大小"></a><a href="#bar-画布大小" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Bar-画布大小</h3>
+<pre><code class="hljs css language-go">bar := charts.NewBar()
+bar.SetGlobalOptions(
+    charts.TitleOpts{Title: <span class="hljs-string">"Bar-画布大小"</span>},
+    charts.InitOpts{Width: <span class="hljs-string">"600px"</span>, Height: <span class="hljs-string">"400px"</span>},
+    charts.ToolboxOpts{Show: <span class="hljs-literal">true</span>},
+)
+bar.AddXAxis(nameItems).
+    AddYAxis(<span class="hljs-string">"商家A"</span>, randInt()).
+    AddYAxis(<span class="hljs-string">"商家B"</span>, randInt())
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52518170-8da03180-2c81-11e9-802a-9a48af799b52.png" alt=""></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-2-9 by 陈键冬</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/series_options"><span class="arrow-prev">← </span><span>系列配置项</span></a><a class="docs-next button" href="/docs/boxPlot"><span class="function-name-prevnext">BoxPlot（箱线图）</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api">API</a></li><li><a href="#专属-options">专属 Options</a></li><li><a href="#预定义">预定义</a></li><li><a href="#demo">Demo</a><ul class="toc-headings"><li><a href="#bar-示例图">Bar-示例图</a></li><li><a href="#bar-标题">Bar-标题</a></li><li><a href="#bar-显示-label">Bar-显示 Label</a></li><li><a href="#bar-xy-轴名称">Bar-XY 轴名称</a></li><li><a href="#bar-设置系列颜色">Bar-设置系列颜色</a></li><li><a href="#bar-显示分割线">Bar-显示分割线</a></li><li><a href="#bar-调整-bar-距离">Bar-调整 bar 距离</a></li><li><a href="#bar-y-轴格式">Bar-Y 轴格式</a></li><li><a href="#bar-多-y-轴">Bar-多 Y 轴</a></li><li><a href="#bar-多-x-轴">Bar-多 X 轴</a></li><li><a href="#bar-datazoom">Bar-DataZoom</a></li><li><a href="#bar-翻转-xy-轴">Bar-翻转 XY 轴</a></li><li><a href="#bar-堆叠效果">Bar-堆叠效果</a></li><li><a href="#bar-标记线-标记点">Bar-标记线&amp;标记点</a></li><li><a href="#bar-自定义标记-主题">Bar-自定义标记+主题</a></li><li><a href="#bar-画布大小">Bar-画布大小</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>
