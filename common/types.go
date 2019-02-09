@@ -38,18 +38,16 @@ var ChartType = struct {
 var ThemeType = struct {
 	Chalk,
 	Essos,
-	Halloween,
 	Infographic,
 	Macarons,
 	PurplePassion, Roma,
 	Romantic,
 	Shine,
 	Vintage,
-	Walden string
+	Walden, Westeros, Wonderland string
 }{
 	Chalk:         "chalk",
 	Essos:         "essos",
-	Halloween:     "halloween",
 	Infographic:   "infographic",
 	Macarons:      "macarons",
 	PurplePassion: "purple-passion",
@@ -58,4 +56,6 @@ var ThemeType = struct {
 	Shine:         "shine",
 	Vintage:       "vintage",
 	Walden:        "walden",
+	Westeros:      "westeros",
+	Wonderland:    "wonderland",
 }

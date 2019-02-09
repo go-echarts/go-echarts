@@ -86,3 +86,13 @@ func main() {
 启动服务器
 
 ![](https://user-images.githubusercontent.com/19553554/52198001-6a9a0a00-289c-11e9-9daa-e6637b4ae527.png)
+
+或者你可以运行 `example/main.go` 预览所有示例
+
+```shell
+$ cd your/gopath/src/github.com/chenjiandongx/go-echarts/example
+$ go build .
+$ ./example.exe
+```
+
+![](https://user-images.githubusercontent.com/19553554/52496959-cdc6cc00-2c0f-11e9-8bab-8e39a050ad91.png)

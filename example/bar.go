@@ -185,6 +185,19 @@ func barMarkCustom() *charts.Bar {
 	return bar
 }
 
+func barSize() *charts.Bar {
+	bar := charts.NewBar()
+	bar.SetGlobalOptions(
+		charts.TitleOpts{Title: "Bar-画布大小"},
+		charts.InitOpts{Width: "600px", Height: "400px"},
+		charts.ToolboxOpts{Show: true},
+	)
+	bar.AddXAxis(nameItems).
+		AddYAxis("商家A", randInt()).
+		AddYAxis("商家B", randInt())
+	return bar
+}
+
 func barHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("bar")...)
 	page.Add(
@@ -203,6 +216,7 @@ func barHandler(w http.ResponseWriter, _ *http.Request) {
 		barStack(),
 		barMark(),
 		barMarkCustom(),
+		barSize(),
 	)
 	f, err := os.Create(getRenderPath("bar.html"))
 	if err != nil {

@@ -9,21 +9,11 @@
 // site configuration options.
 
 // List of projects/orgs using your project for the users page.
-const users = [
-  {
-    caption: 'User1',
-    // You will need to prepend the image path with your baseUrl
-    // if it is not '/', like: '/test-site/img/docusaurus.svg'.
-    image: '/img/docusaurus.svg',
-    infoLink: 'https://www.facebook.com',
-    pinned: true,
-  },
-];
 
 const siteConfig = {
   title: 'go-echarts', // Title for your website.
-  tagline: 'The adorable charts library for Golang',
-  url: 'https://your-docusaurus-test-site.com', // Your website URL
+  tagline: '🎨 The adorable charts library for Golang',
+  url: 'http://go-echarts.chenjiandongx.com', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
@@ -39,15 +29,15 @@ const siteConfig = {
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
     {doc: 'overview', label: 'Docs'},
-    {blog: true, label: 'Changelog'},
     {
-      href: 'https://www.github.com/fchenjiandongx/go-echarts',
+      href: 'https://www.github.com/chenjiandongx',
+      label: 'Author',
+    },
+    {
+      href: 'https://www.github.com/chenjiandongx/go-echarts',
       label: 'GitHub',
     },
   ],
-
-  // If you have users set above, you add it here:
-  users,
 
   /* path to images for header/footer */
   headerIcon: 'img/favicon.ico',
@@ -91,14 +81,14 @@ const siteConfig = {
   cleanUrl: true,
 
   // Open Graph and Twitter card images.
-  ogImage: 'img/docusaurus.png',
-  twitterImage: 'img/docusaurus.png',
+  // ogImage: 'img/docusaurus.png',
+  // twitterImage: 'img/docusaurus.png',
 
   // Show documentation's last contributor's name.
-  // enableUpdateBy: true,
+  enableUpdateBy: true,
 
   // Show documentation's last update time.
-  // enableUpdateTime: true,
+  enableUpdateTime: true,
 
   // You may provide arbitrary config keys to be used as needed by your
   // template. For example, if you need your repo's URL...

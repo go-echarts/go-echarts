@@ -312,3 +312,18 @@ bar.AddXAxis(nameItems).
     )
 ```
 ![](https://user-images.githubusercontent.com/19553554/52332160-e29b3800-2a34-11e9-8218-66a0b7a24622.png)
+
+
+### Bar-画布大小
+```go
+bar := charts.NewBar()
+bar.SetGlobalOptions(
+    charts.TitleOpts{Title: "Bar-画布大小"},
+    charts.InitOpts{Width: "600px", Height: "400px"},
+    charts.ToolboxOpts{Show: true},
+)
+bar.AddXAxis(nameItems).
+    AddYAxis("商家A", randInt()).
+    AddYAxis("商家B", randInt())
+```
+![](https://user-images.githubusercontent.com/19553554/52518170-8da03180-2c81-11e9-802a-9a48af799b52.png)

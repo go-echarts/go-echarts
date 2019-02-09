@@ -9,7 +9,6 @@ const React = require('react');
 
 const CompLibrary = require('../../core/CompLibrary.js');
 
-const MarkdownBlock = CompLibrary.MarkdownBlock; /* Used to read markdown */
 const Container = CompLibrary.Container;
 const GridBlock = CompLibrary.GridBlock;
 
@@ -65,8 +64,6 @@ class HomeSplash extends React.Component {
           <ProjectTitle siteConfig={siteConfig} />
           <PromoSection>
             <Button href="docs/overview">Get start</Button>
-            {/* <Button href={docUrl('doc1.html')}>Example Link</Button> */}
-            {/* <Button href={docUrl('doc2.html')}>Example Link 2</Button> */}
           </PromoSection>
         </div>
       </SplashContainer>
@@ -96,24 +93,10 @@ class Index extends React.Component {
       <Block id="try" background="light">
         {[
           {
-            content: 'Talk about trying this out',
-            image: `${baseUrl}img/docusaurus.svg`,
+            content: '启动 HTTP 服务器预览所有示例图表',
+            image: `${baseUrl}img/run_example.png`,
             imageAlign: 'left',
-            title: 'Try it Out',
-          },
-        ]}
-      </Block>
-    );
-
-    const Description = () => (
-      <Block background="dark">
-        {[
-          {
-            content:
-              'This is another description of how this project is useful',
-            image: `${baseUrl}img/docusaurus.svg`,
-            imageAlign: 'right',
-            title: 'Description',
+            title: '5 分钟总览',
           },
         ]}
       </Block>
@@ -123,10 +106,10 @@ class Index extends React.Component {
       <Block>
         {[
           {
-            content: 'Talk about learning how to use this',
-            image: `${baseUrl}img/docusaurus.svg`,
+            content: '只需要 5 行核心代码即可绘制出优雅的图表',
+            image: `${baseUrl}img/quickstart.png`,
             imageAlign: 'right',
-            title: '快速开始',
+            title: '1 分钟上手',
           },
         ]}
       </Block>
@@ -157,35 +140,6 @@ class Index extends React.Component {
       </Block>
     );
 
-    const Showcase = () => {
-      if ((siteConfig.users || []).length === 0) {
-        return null;
-      }
-
-      const showcase = siteConfig.users
-        .filter(user => user.pinned)
-        .map(user => (
-          <a href={user.infoLink} key={user.infoLink}>
-            <img src={user.image} alt={user.caption} title={user.caption} />
-          </a>
-        ));
-
-      const pageUrl = page => baseUrl + (language ? `${language}/` : '') + page;
-
-      return (
-        <div className="productShowcaseSection paddingBottom">
-          <h2>Who is Using This?</h2>
-          <p>This project is used by all these people</p>
-          <div className="logos">{showcase}</div>
-          <div className="more-users">
-            <a className="button" href={pageUrl('users.html')}>
-              More {siteConfig.title} Users
-            </a>
-          </div>
-        </div>
-      );
-    };
-
     return (
       <div>
         <HomeSplash siteConfig={siteConfig} language={language} />
@@ -193,8 +147,6 @@ class Index extends React.Component {
           <Features />
           <LearnHow />
           <TryOut />
-          <Description />
-          <Showcase />
         </div>
       </div>
     );

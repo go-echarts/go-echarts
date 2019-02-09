@@ -21,6 +21,8 @@
     ],
     "3D 图表": ["bar3d", "line3d", "scatter3d", "surface3d"],
     "组合图表": ["overlap", "page"],
-    "数据集": ["assets_file", "map_coords"]
+    "数据集": ["assets_file", "map_coords"],
+    "进阶话题": ["themes", "map_file", "javascript"],
+    "更新日志": ["changelog"]
   }
 }
