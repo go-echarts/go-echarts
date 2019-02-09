@@ -92,7 +92,7 @@ func main() {
 ```shell
 $ cd your/gopath/src/github.com/chenjiandongx/go-echarts/example
 $ go build .
-$ ./example.exe
+$ ./example
 ```
 
 ![](https://user-images.githubusercontent.com/19553554/52496959-cdc6cc00-2c0f-11e9-8bab-8e39a050ad91.png)
