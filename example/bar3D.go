@@ -42,7 +42,7 @@ func genBar3dData() [][3]int {
 	}
 
 	for i := 0; i < len(data); i++ {
-		data[i][0], data[i][1], data[i][2] = data[i][1], data[i][0], data[i][2]
+		data[i][0], data[i][1] = data[i][1], data[i][0]
 	}
 	return data
 }

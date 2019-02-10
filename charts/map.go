@@ -27,7 +27,7 @@ func NewMap(mapType string, routers ...RouterOpts) *Map {
 func (c *Map) Add(name string, data map[string]float32, options ...seriesOptser) *Map {
 	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, common.NameValueItem{k, v})
+		nvs = append(nvs, common.NameValueItem{Name: k, Value: v})
 	}
 	series := singleSeries{Name: name, Type: common.ChartType.Map, MapType: c.mapType, Data: nvs}
 	series.setSingleSeriesOpts(options...)
