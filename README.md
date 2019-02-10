@@ -85,7 +85,7 @@ $ go build .
 $ ./example
 ```
 
-了解更多文档的内容请访问 [go-echarts.chenjaindongx.com](http://go-echarts.chenjaindongx.com)
+了解更多文档的内容请访问 [go-echarts.chenjiandongx.com](http://go-echarts.chenjiandongx.com)
 
 ### 📃 LICENSE
 
