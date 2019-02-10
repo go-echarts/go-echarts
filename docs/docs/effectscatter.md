@@ -41,7 +41,7 @@ es := charts.NewEffectScatter()
 es.SetGlobalOptions(charts.TitleOpts{Title: "EffectScatter-示例图"})
 es.AddXAxis(nameItems).AddYAxis("es1", randInt())
 ```
-![](https://user-images.githubusercontent.com/19553554/52332299-28580080-2a35-11e9-95b8-c23b06c78ea0.gif)
+![](https://user-images.githubusercontent.com/19553554/52535290-4b611800-2d87-11e9-8bf2-b43a54a3bda8.png)
 
 
 ### EffectScatter-涟漪效果
