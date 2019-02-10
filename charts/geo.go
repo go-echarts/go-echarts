@@ -1,15 +1,23 @@
 package charts
 
 import (
+	"fmt"
 	"io"
+	"log"
 
 	"github.com/chenjiandongx/go-echarts/common"
 	"github.com/chenjiandongx/go-echarts/datasets"
 )
 
+// 地理坐标系组件配置项
+type GeoComponentOpts struct {
+	Map string `json:"map,omitempty"`
+}
+
 type Geo struct {
 	BaseOpts
 	Series
+	GeoComponentOpts
 }
 
 func (Geo) chartType() string { return common.ChartType.Geo }
@@ -21,11 +29,16 @@ var geoFormatter = `function (params) {
 func NewGeo(mapType string, routers ...RouterOpts) *Geo {
 	chart := new(Geo)
 	chart.initBaseOpts(false, routers...)
+	chart.HasGeo = true
 	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
-	chart.GeoOpts.Map = mapType
+	chart.GeoComponentOpts.Map = mapType
 	return chart
 }
 
+// geoType 是 Geo 图形的种类，有以下三种类型可选
+// common.ChartType.Scatter
+// common.ChartType.EffectScatter
+// common.ChartType.HeatMap
 func (c *Geo) Add(name, geoType string, data map[string]float32, options ...seriesOptser) *Geo {
 	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
@@ -39,8 +52,13 @@ func (c *Geo) Add(name, geoType string, data map[string]float32, options ...seri
 }
 
 func (c *Geo) extendValue(region string, v float32) []float32 {
+	res := make([]float32, 0)
 	tv := datasets.Coordinates[region]
-	res := append(tv[:], v)
+	if tv == [2]float32{0, 0} {
+		log.Println(fmt.Sprintf("No coordinate is specified for %s", region))
+	} else {
+		res = append(tv[:], v)
+	}
 	return res
 }
 

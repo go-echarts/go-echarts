@@ -62,6 +62,12 @@ type LegendOpts struct {
 	// bottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
 	// 默认自适应。
 	Bottom string `json:"bottom,omitempty"`
+	// Legend 数据项
+	Data interface{} `json:"data,omitempty"`
+	// 除此之外也可以设成 "single" 或者 "multiple" 使用单选或者多选模式。默认 "multiple"
+	SelectedMode string `json:"selectedMode,omitempty"`
+	// 图例的公用文本样式
+	TextStyle TextStyleOpts `json:"textStyle,omitempty"`
 }
 
 func (LegendOpts) markGlobal() {}
@@ -244,13 +250,17 @@ type VMInRange struct {
 // 坐标轴在 grid 区域中的分隔区域配置项
 type SplitAreaOpts struct {
 	// 是否显示分隔区域
-	Show bool `json:"show,omitempty"`
+	Show bool `json:"show"`
+	// 风格区域风格
+	AreaStyle AreaStyleOpts `json:"areaStyle,omitempty"`
 }
 
 // 坐标轴在 grid 区域中的分隔线配置项配置项
 type SplitLineOpts struct {
 	// 是否显示分隔线
 	Show bool `json:"show"`
+	// 分割线风格
+	LineStyle LineStyleOpts `json:"lineStyle,omitempty"`
 }
 
 // X 轴配置项组件
@@ -344,12 +354,6 @@ type YAxisOpts struct {
 }
 
 func (YAxisOpts) markGlobal() {}
-
-// 地理坐标系组件配置项
-type GeoOpts struct {
-	Map  string `json:"map,omitempty"`
-	Roam bool   `json:"roam,omitempty"`
-}
 
 // 处理 function 类型配置项
 func FuncOpts(fn string) string {

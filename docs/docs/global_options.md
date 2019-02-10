@@ -34,6 +34,8 @@ type InitOpts struct {
     Width string `default:"900px"`
     // 画布高度
     Height string `default:"500px"`
+    // 画布背景颜色
+    BackgroundColor string `json:"backgroundColor"`
     // 图表 ID，是图表唯一标识
     ChartID string
     // 静态资源 host 地址
@@ -55,7 +57,7 @@ type RouterOpts struct {
 ### TitleOpts
 > 标题组件配置项
 
-=> [TextStyleOpts](docs/series_options#textstyleopts) <=
+=> [TextStyleOpts](/docs/series_options#textstyleopts) <=
 ```go
 type TitleOpts struct {
     // 主标题
@@ -180,6 +182,12 @@ type LegendOpts struct {
     // bottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
     // 默认自适应。
     Bottom string `json:"bottom,omitempty"`
+    // Legend 数据项
+    Data interface{} `json:"data,omitempty"`
+    // 除此之外也可以设成 "single" 或者 "multiple" 使用单选或者多选模式。默认 "multiple"
+    SelectedMode string `json:"selectedMode,omitempty"`
+    // 图例的公用文本样式
+    TextStyle TextStyleOpts `json:"textStyle,omitempty"`
 }
 ```
 
@@ -259,6 +267,67 @@ type VMInRange struct {
     Symbol string `json:"symbol,omitempty"`
     // 图元的大小
     SymbolSize float32 `json:"symbolSize,omitempty"`
+}
+```
+
+## SplitLine/Area Options
+> 分割线、分割区域配置项，在 RadarComponentOpts/XAxisOpts/YAxisOpts 中使用
+
+### SplitLineOpts
+> 坐标轴在 grid 区域中的分隔线配置项配置项
+```go
+type SplitLineOpts struct {
+    // 是否显示分隔线
+    Show bool `json:"show"`
+    // 分割线风格
+    LineStyle LineStyleOpts `json:"lineStyle,omitempty"`
+}
+```
+
+### SplitAreaOpts
+> 坐标轴在 grid 区域中的分隔区域配置项
+```go
+type SplitAreaOpts struct {
+    // 是否显示分隔区域
+    Show bool `json:"show"`
+    // 风格区域风格
+    AreaStyle AreaStyleOpts `json:"areaStyle,omitempty"`
+}
+```
+
+=> [LineStyleOpts](/docs/series_options#linestyleopts) <=
+
+## RadarChart Options
+
+### IndicatorOpts
+> 雷达图指示器配置项组件
+```go
+type IndicatorOpts struct {
+    // 指示器名称
+    Name string `json:"name,omitempty"`
+    // 指示器的最大值，可选，建议设置
+    Max float32 `json:"max,omitempty"`
+    // 指示器的最小值，可选，默认为 0
+    Min float32 `json:"min,omitempty"`
+    // 标签特定的颜色
+    Color string `json:"color,omitempty"`
+}
+```
+
+### RadarComponentOpts
+> 雷达图坐标系组件配置项，只适用于雷达图
+```go
+type RadarComponentOpts struct {
+    // 雷达图的指示器，用来指定雷达图中的多个变量（维度）
+    Indicator []IndicatorOpts `json:"indicator,omitempty"`
+    // 雷达图绘制类型，支持 "polygon" 和 "circle"
+    Shape string `json:"shape,omitempty"`
+    // 指示器轴的分割段数。默认 5
+    SplitNumber int `json:"splitNumber,omitempty"`
+    // 坐标轴在 grid 区域中的分隔区域
+    SplitArea SplitAreaOpts `json:"splitArea,omitempty"`
+    // 坐标轴在 grid 区域中的分隔线
+    SplitLine SplitLineOpts `json:"splitLine,omitempty"`
 }
 ```
 

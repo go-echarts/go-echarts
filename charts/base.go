@@ -14,6 +14,8 @@ type InitOpts struct {
 	Width string `default:"900px"`
 	// 画布高度
 	Height string `default:"500px"`
+	// 画布背景颜色
+	BackgroundColor string `json:"backgroundColor"`
 	// 图表 ID，是图表唯一标识
 	ChartID string
 	// 静态资源 host 地址
@@ -105,22 +107,25 @@ func (ColorOpts) markSeries() {}
 
 // 所有图表都拥有的基本配置项
 type BaseOpts struct {
-	InitOpts                   // 图形初始化配置项
-	LegendOpts                 // 图例组件配置项
-	TooltipOpts                // 提示框组件配置项
-	ToolboxOpts                // 工具箱组件配置项
-	TitleOpts                  // 标题组件配置项
-	AssetsOpts                 // 静态资源配置项
-	Colors            []string // 全局颜色列表
-	appendColor       []string // 追加全局颜色列表
-	Routers                    // 路由列表
-	DataZoomOptsList           // 区域缩放组件配置项列表
-	VisualMapOptsList          // 视觉映射组件配置项列表
-	GeoOpts                    // 地理坐标系组件配置项
+	InitOpts           // 图形初始化配置项
+	LegendOpts         // 图例组件配置项
+	legends            []string
+	TooltipOpts                 // 提示框组件配置项
+	ToolboxOpts                 // 工具箱组件配置项
+	TitleOpts                   // 标题组件配置项
+	AssetsOpts                  // 静态资源配置项
+	Colors             []string // 全局颜色列表
+	appendColor        []string // 追加全局颜色列表
+	Routers                     // 路由列表
+	DataZoomOptsList            // 区域缩放组件配置项列表
+	VisualMapOptsList           // 视觉映射组件配置项列表
+	RadarComponentOpts          // 雷达图组件配置项
 
 	JSFunctions      // JS 函数列表
 	HasXYAxis   bool // 图形是否拥有 XY 轴
-	Has3DAxis   bool // 图形是否为 3D XYZ 轴
+	Has3DAxis   bool // 图形是否拥有 3D XYZ 轴
+	HasGeo      bool // 图形是否拥有 Geo 组件
+	HasRadar    bool // 图形是否拥有 Radar 组件
 }
 
 // 设置全局颜色
@@ -188,6 +193,8 @@ func (opt *BaseOpts) setBaseGlobalOptions(options ...globalOptser) {
 			opt.DataZoomOptsList = append(opt.DataZoomOptsList, option.(DataZoomOpts))
 		case VisualMapOpts:
 			opt.VisualMapOptsList = append(opt.VisualMapOptsList, option.(VisualMapOpts))
+		case RadarComponentOpts:
+			opt.RadarComponentOpts = option.(RadarComponentOpts)
 		}
 	}
 }

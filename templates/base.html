@@ -9,7 +9,12 @@
         title: {{ .TitleOpts  }},
         tooltip: {{ .TooltipOpts }},
         legend: {{ .LegendOpts }},
-        geo: {{ .GeoOpts }},
+    {{- if .HasGeo }}
+        geo: {{ .GeoComponentOpts }},
+    {{- end }}
+    {{- if .HasRadar }}
+        radar: {{ .RadarComponentOpts }},
+    {{- end }}
     {{- if .ToolboxOpts.Show }}
         toolbox: {{ .ToolboxOpts }},
     {{- end }}
@@ -35,7 +40,10 @@
         {{ end -}}
         ],
     {{- if eq .Theme "white" }}
-        color: {{ .Colors }}
+        color: {{ .Colors }},
+    {{- end }}
+    {{- if ne .BackgroundColor "" }}
+        backgroundColor: {{ .BackgroundColor }}
     {{- end }}
     };
     myChart___x__{{ .ChartID }}__x__.setOption(option___x__{{ .ChartID }}__x__);

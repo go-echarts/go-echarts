@@ -11,6 +11,10 @@ sidebar_label: Geo（地理坐标系）
 // 实例化图表
 func NewGeo(mapType string, routers ...RouterOpts) *Geo
 // 新增数据及配置项
+// geoType 是 Geo 图形的种类，有以下三种类型可选
+// common.ChartType.Scatter
+// common.ChartType.EffectScatter
+// common.ChartType.HeatMap
 func Add(name, geoType string, data map[string]interface{}, options ...seriesOptser) *Geo
 // 新增 JS 函数
 func AddJSFuncs(fn ...string)
@@ -61,9 +65,11 @@ shantouData = map[string]float32{
 
 ### Geo-示例图(effectScatter)
 ```go
+import "github.com/chenjiandongx/go-echarts/common"
+
 geo := charts.NewGeo("china")
 geo.SetGlobalOptions(charts.TitleOpts{Title: "Geo-示例图(effectScatter)"})
-geo.Add("geo", "effectScatter", mapData,
+geo.Add("geo", common.ChartType.EffectScatter, mapData,
     charts.RippleEffectOpts{Period: 4, Scale: 6, BrushType: "stroke"})
 ```
 ![](https://user-images.githubusercontent.com/19553554/52333496-60147780-2a38-11e9-86b4-967bee2ae954.gif)
@@ -77,7 +83,7 @@ geo.SetGlobalOptions(charts.TitleOpts{Title: "Geo-显示 Label"})
 fn := `function (params) {
     return params.name + ' : ' + params.value[2];
 }`
-geo.Add("geo", "effectScatter", mapData,
+geo.Add("geo", common.ChartType.EffectScatter, mapData,
     charts.LabelTextOpts{
         Show: true, 
         Formatter: charts.FuncOpts(fn), Color: "black", Position: "right"},
@@ -91,7 +97,7 @@ geo.Add("geo", "effectScatter", mapData,
 ```go
 geo := charts.NewGeo("china")
 geo.SetGlobalOptions(charts.TitleOpts{Title: "Geo-Scatter"})
-geo.Add("geo", "scatter", mapData)
+geo.Add("geo", common.ChartType.Scatter, mapData)
 ```
 ![](https://user-images.githubusercontent.com/19553554/52344634-3ec28400-2a56-11e9-9020-e2eb18c95826.png)
 
@@ -100,7 +106,7 @@ geo.Add("geo", "scatter", mapData)
 ```go
 geo := charts.NewGeo("china")
 geo.SetGlobalOptions(charts.TitleOpts{Title: "Geo-设置 VisualMap"})
-geo.Add("geo", "scatter", mapData)
+geo.Add("geo", common.ChartType.Scatter, mapData)
 geo.SetGlobalOptions(charts.VisualMapOpts{Max: 60, Calculable: true})
 ```
 ![](https://user-images.githubusercontent.com/19553554/52344700-63b6f700-2a56-11e9-9075-efc97a088889.gif)
@@ -113,7 +119,7 @@ geo.SetGlobalOptions(
     charts.TitleOpts{Title: "Geo-HeatMap"},
     charts.VisualMapOpts{Max: 60, Calculable: true},
 )
-geo.Add("geo", "heatmap", mapData)
+geo.Add("geo", common.ChartType.HeatMap, mapData)
 ```
 ![](https://user-images.githubusercontent.com/19553554/52344749-834e1f80-2a56-11e9-92b3-bbc8618f6ea2.gif)
 
@@ -125,9 +131,9 @@ geo.SetGlobalOptions(
     charts.TitleOpts{Title: "Geo-示例图(effectScatter+heatMap)"},
     charts.VisualMapOpts{Max: 60, Calculable: true},
 )
-geo.Add("es", "effectScatter", mapData,
+geo.Add("es", common.ChartType.EffectScatter, mapData,
     charts.RippleEffectOpts{Period: 4, Scale: 10, BrushType: "stroke"})
-geo.Add("heatmap", "heatmap", mapData)
+geo.Add("heatmap", common.ChartType.HeatMap, mapData)
 ```
 ![](https://user-images.githubusercontent.com/19553554/52344796-a547a200-2a56-11e9-9dbc-9b7f4ed6431c.gif)
 
@@ -140,7 +146,7 @@ geo.SetGlobalOptions(
     charts.VisualMapOpts{Calculable: true,
         InRange: charts.VMInRange{Color: []string{"#50a3ba", "#eac736", "#d94e5d"}}},
 )
-geo.Add("geo", "scatter", guangdongData)
+geo.Add("geo", common.ChartType.Scatter, guangdongData)
 ```
 ![](https://user-images.githubusercontent.com/19553554/52344868-d922c780-2a56-11e9-9114-f7dc06f9c7e5.gif)
 
@@ -153,6 +159,6 @@ geo.SetGlobalOptions(
     charts.VisualMapOpts{Calculable: true,
         InRange: charts.VMInRange{Color: []string{"#50a3ba", "#eac736", "#d94e5d"}}},
 )
-geo.Add("geo", "heatmap", shantouData)
+geo.Add("geo", common.ChartType.HeatMap, shantouData)
 ```
 ![](https://user-images.githubusercontent.com/19553554/52344892-e93aa700-2a56-11e9-92e9-faaba7c79fc6.png)

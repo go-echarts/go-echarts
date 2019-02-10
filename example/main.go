@@ -83,6 +83,7 @@ var (
 		{"map", charts.RouterOpts{URL: host + "/map", Text: "Map-(地图)"}},
 		{"overlap", charts.RouterOpts{URL: host + "/overlap", Text: "Overlap-(重叠图)"}},
 		{"pie", charts.RouterOpts{URL: host + "/pie", Text: "Pie-(饼图)"}},
+		{"radar", charts.RouterOpts{URL: host + "/radar", Text: "Radar-(雷达图)"}},
 		{"scatter", charts.RouterOpts{URL: host + "/scatter", Text: "Scatter-(散点图)"}},
 		{"scatter3D", charts.RouterOpts{URL: host + "/scatter3D", Text: "Scatter-(3D 散点图)"}},
 		{"surface3D", charts.RouterOpts{URL: host + "/surface3D", Text: "Surface3D-(3D 曲面图)"}},
@@ -152,6 +153,7 @@ func main() {
 	http.HandleFunc("/map", logTracing(mapHandler))
 	http.HandleFunc("/overlap", logTracing(overlapHandler))
 	http.HandleFunc("/pie", logTracing(pieHandler))
+	http.HandleFunc("/radar", logTracing(radarHandler))
 	http.HandleFunc("/scatter", logTracing(scatterHandler))
 	http.HandleFunc("/scatter3D", logTracing(scatter3DHandler))
 	http.HandleFunc("/surface3D", logTracing(surface3DHandler))
