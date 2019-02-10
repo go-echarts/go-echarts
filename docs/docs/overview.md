@@ -4,13 +4,24 @@ title: 简介
 sidebar_label: 简介
 ---
 
-<img align="center" height="300px" weight="300px" src="https://user-images.githubusercontent.com/19553554/52387794-8680f400-2ac6-11e9-8f5e-cf7821f09a03.png"/>
+<p align="center">
+<img src="https://user-images.githubusercontent.com/19553554/52535979-c0d0e680-2d8f-11e9-85c8-2e9f659e7c6f.png" width=300 height=300 />
+</p>
 
 <h1 align="center">go-echarts</h1>
 <p align="center">
     <em>🎨 The adorable charts library for Golang</em>
 </p>
 <p align="center">
+    <a href="https://travis-ci.org/chenjiandongx/go-echarts">
+        <img src="https://travis-ci.org/chenjiandongx/go-echarts.svg?branch=master" alt="Build Status">
+    </a>
+    <a href="https://ci.appveyor.com/project/chenjiandongx/go-echarts">
+        <img src="https://ci.appveyor.com/api/projects/status/kdxi0s1nc1t6dqn0?svg=true" alt="Build Status">
+    </a>
+    <a href="https://goreportcard.com/report/github.com/chenjiandongx/go-echarts">
+        <img src="https://goreportcard.com/badge/github.com/chenjiandongx/go-echarts" alt="Go Report Card">
+    </a>
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT License">
     </a>

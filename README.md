@@ -10,6 +10,9 @@
     <a href="https://travis-ci.org/chenjiandongx/go-echarts">
         <img src="https://travis-ci.org/chenjiandongx/go-echarts.svg?branch=master" alt="Build Status">
     </a>
+    <a href="https://ci.appveyor.com/project/chenjiandongx/go-echarts">
+        <img src="https://ci.appveyor.com/api/projects/status/kdxi0s1nc1t6dqn0?svg=true" alt="Build Status">
+    </a>
     <a href="https://goreportcard.com/report/github.com/chenjiandongx/go-echarts">
         <img src="https://goreportcard.com/badge/github.com/chenjiandongx/go-echarts" alt="Go Report Card">
     </a>
