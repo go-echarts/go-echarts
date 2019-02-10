@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://user-images.githubusercontent.com/19553554/52387794-8680f400-2ac6-11e9-8f5e-cf7821f09a03.png" width=300 height=300 />
+<img src="https://user-images.githubusercontent.com/19553554/52535979-c0d0e680-2d8f-11e9-85c8-2e9f659e7c6f.png" width=300 height=300 />
 </p>
 
 <h1 align="center">go-echarts</h1>
@@ -85,7 +85,7 @@ $ go build .
 $ ./example
 ```
 
-想了解更多文档的内容请访问 [go-echarts.chenjaindongx.com](http://go-echarts.chenjaindongx.com)
+了解更多文档的内容请访问 [go-echarts.chenjaindongx.com](http://go-echarts.chenjaindongx.com)
 
 ### 📃 LICENSE
 
