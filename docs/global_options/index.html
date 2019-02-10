@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>全局配置项 · go-echarts</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;以下所有 &lt;code&gt;Opts&lt;/code&gt; 结尾的配置项均可以作为 &lt;code&gt;SetGlobalOptions&lt;/code&gt; 方法的参数，它们均实现了 &lt;code&gt;globalOptser&lt;/code&gt; 接口&lt;/p&gt;
 "/><meta name="docsearch:language" content="en"/><meta property="og:title" content="全局配置项 · go-echarts"/><meta property="og:type" content="website"/><meta property="og:url" content="http://go-echarts.chenjiandongx.com/index.html"/><meta property="og:description" content="&lt;p&gt;以下所有 &lt;code&gt;Opts&lt;/code&gt; 结尾的配置项均可以作为 &lt;code&gt;SetGlobalOptions&lt;/code&gt; 方法的参数，它们均实现了 &lt;code&gt;globalOptser&lt;/code&gt; 接口&lt;/p&gt;
-"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="go-echarts"/><h2 class="headerTitleWithLogo">go-echarts</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/overview" target="_self">Docs</a></li><li class=""><a href="https://www.github.com/chenjiandongx" target="_self">Author</a></li><li class=""><a href="https://www.github.com/chenjiandongx/go-echarts" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>配置项</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">概览</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overview">简介</a></li><li class="navListItem"><a class="navItem" href="/docs/quickstart">快速开始</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api">API 设计</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">配置项</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/global_options">全局配置项</a></li><li class="navListItem"><a class="navItem" href="/docs/series_options">系列配置项</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">基本图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar">Bar（柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/boxPlot">BoxPlot（箱线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/effectScatter">Effectscatter（动态散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/funnel">Funnel（漏斗图）</a></li><li class="navListItem"><a class="navItem" href="/docs/gauge">Gauge（仪表盘）</a></li><li class="navListItem"><a class="navItem" href="/docs/geo">Geo（地理坐标系）</a></li><li class="navListItem"><a class="navItem" href="/docs/heatmap">HeatMap（热力图）</a></li><li class="navListItem"><a class="navItem" href="/docs/kline">Kline（K 线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line">Line（折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/liquid">Liquid（水球图）</a></li><li class="navListItem"><a class="navItem" href="/docs/map">Map（地图）</a></li><li class="navListItem"><a class="navItem" href="/docs/pie">Pie（饼图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter">Scatter（散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/wordCloud">WordCloud（词云图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">3D 图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar3d">Bar3D（3D 柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line3d">Line3D（3D 折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter3d">Scatter3D（3D 散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/surface3d">surface3D（3D 曲面图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">组合图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overlap">Overlap（重叠图）</a></li><li class="navListItem"><a class="navItem" href="/docs/page">Page（顺序多图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">数据集</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/assets_file">静态文件</a></li><li class="navListItem"><a class="navItem" href="/docs/map_coords">地理坐标</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">进阶话题</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/themes">主题定制</a></li><li class="navListItem"><a class="navItem" href="/docs/map_file">地图定制</a></li><li class="navListItem"><a class="navItem" href="/docs/javascript">原生 Javascript</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">更新日志</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/changelog">Changelog</a></li></ul></div></div></section></div><script>
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="go-echarts"/><h2 class="headerTitleWithLogo">go-echarts</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/overview" target="_self">Docs</a></li><li class=""><a href="https://www.github.com/chenjiandongx" target="_self">Author</a></li><li class=""><a href="https://www.github.com/chenjiandongx/go-echarts" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>配置项</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">概览</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overview">简介</a></li><li class="navListItem"><a class="navItem" href="/docs/quickstart">快速开始</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api">API 设计</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">配置项</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/global_options">全局配置项</a></li><li class="navListItem"><a class="navItem" href="/docs/series_options">系列配置项</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">基本图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar">Bar（柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/boxPlot">BoxPlot（箱线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/effectScatter">Effectscatter（动态散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/funnel">Funnel（漏斗图）</a></li><li class="navListItem"><a class="navItem" href="/docs/gauge">Gauge（仪表盘）</a></li><li class="navListItem"><a class="navItem" href="/docs/geo">Geo（地理坐标系）</a></li><li class="navListItem"><a class="navItem" href="/docs/heatmap">HeatMap（热力图）</a></li><li class="navListItem"><a class="navItem" href="/docs/kline">Kline（K 线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line">Line（折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/liquid">Liquid（水球图）</a></li><li class="navListItem"><a class="navItem" href="/docs/map">Map（地图）</a></li><li class="navListItem"><a class="navItem" href="/docs/parallel">Parallel（平行坐标系）</a></li><li class="navListItem"><a class="navItem" href="/docs/pie">Pie（饼图）</a></li><li class="navListItem"><a class="navItem" href="/docs/radar">Radar（雷达图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter">Scatter（散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/wordCloud">WordCloud（词云图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">3D 图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar3d">Bar3D（3D 柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line3d">Line3D（3D 折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter3d">Scatter3D（3D 散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/surface3d">surface3D（3D 曲面图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">组合图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overlap">Overlap（重叠图）</a></li><li class="navListItem"><a class="navItem" href="/docs/page">Page（顺序多图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">数据集</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/assets_file">静态文件</a></li><li class="navListItem"><a class="navItem" href="/docs/map_coords">地理坐标</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">进阶话题</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/themes">主题定制</a></li><li class="navListItem"><a class="navItem" href="/docs/map_file">地图定制</a></li><li class="navListItem"><a class="navItem" href="/docs/javascript">原生 Javascript</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">更新日志</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/changelog">Changelog</a></li></ul></div></div></section></div><script>
             var coll = document.getElementsByClassName('collapsible');
             var checkActiveCategory = true;
             for (var i = 0; i < coll.length; i++) {
@@ -74,6 +74,8 @@
     Width <span class="hljs-keyword">string</span> <span class="hljs-string">`default:"900px"`</span>
     <span class="hljs-comment">// 画布高度</span>
     Height <span class="hljs-keyword">string</span> <span class="hljs-string">`default:"500px"`</span>
+    <span class="hljs-comment">// 画布背景颜色</span>
+    BackgroundColor <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"backgroundColor"`</span>
     <span class="hljs-comment">// 图表 ID，是图表唯一标识</span>
     ChartID <span class="hljs-keyword">string</span>
     <span class="hljs-comment">// 静态资源 host 地址</span>
@@ -95,7 +97,7 @@
 <blockquote>
 <p>标题组件配置项</p>
 </blockquote>
-<p>=&gt; <a href="docs/series_options#textstyleopts">TextStyleOpts</a> &lt;=</p>
+<p>=&gt; <a href="/docs/series_options#textstyleopts">TextStyleOpts</a> &lt;=</p>
 <pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> TitleOpts <span class="hljs-keyword">struct</span> {
     <span class="hljs-comment">// 主标题</span>
     Title <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"text,omitempty"`</span>
@@ -219,6 +221,12 @@
     <span class="hljs-comment">// bottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。</span>
     <span class="hljs-comment">// 默认自适应。</span>
     Bottom <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"bottom,omitempty"`</span>
+    <span class="hljs-comment">// Legend 数据项</span>
+    Data <span class="hljs-keyword">interface</span>{} <span class="hljs-string">`json:"data,omitempty"`</span>
+    <span class="hljs-comment">// 除此之外也可以设成 "single" 或者 "multiple" 使用单选或者多选模式。默认 "multiple"</span>
+    SelectedMode <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"selectedMode,omitempty"`</span>
+    <span class="hljs-comment">// 图例的公用文本样式</span>
+    TextStyle TextStyleOpts <span class="hljs-string">`json:"textStyle,omitempty"`</span>
 }
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="coloropts"></a><a href="#coloropts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ColorOpts</h3>
@@ -295,6 +303,66 @@ bar.AddXAxis(nameItems).
     Symbol <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"symbol,omitempty"`</span>
     <span class="hljs-comment">// 图元的大小</span>
     SymbolSize <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"symbolSize,omitempty"`</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="splitline-area-options"></a><a href="#splitline-area-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SplitLine/Area Options</h2>
+<blockquote>
+<p>分割线、分割区域配置项，在 RadarComponentOpts/XAxisOpts/YAxisOpts 中使用</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="splitlineopts"></a><a href="#splitlineopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SplitLineOpts</h3>
+<blockquote>
+<p>坐标轴在 grid 区域中的分隔线配置项配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> SplitLineOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 是否显示分隔线</span>
+    Show <span class="hljs-keyword">bool</span> <span class="hljs-string">`json:"show"`</span>
+    <span class="hljs-comment">// 分割线风格</span>
+    LineStyle LineStyleOpts <span class="hljs-string">`json:"lineStyle,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="splitareaopts"></a><a href="#splitareaopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SplitAreaOpts</h3>
+<blockquote>
+<p>坐标轴在 grid 区域中的分隔区域配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> SplitAreaOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 是否显示分隔区域</span>
+    Show <span class="hljs-keyword">bool</span> <span class="hljs-string">`json:"show"`</span>
+    <span class="hljs-comment">// 风格区域风格</span>
+    AreaStyle AreaStyleOpts <span class="hljs-string">`json:"areaStyle,omitempty"`</span>
+}
+</code></pre>
+<p>=&gt; <a href="/docs/series_options#linestyleopts">LineStyleOpts</a> &lt;=</p>
+<h2><a class="anchor" aria-hidden="true" id="radarchart-options"></a><a href="#radarchart-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RadarChart Options</h2>
+<h3><a class="anchor" aria-hidden="true" id="indicatoropts"></a><a href="#indicatoropts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IndicatorOpts</h3>
+<blockquote>
+<p>雷达图指示器配置项组件</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> IndicatorOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 指示器名称</span>
+    Name <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name,omitempty"`</span>
+    <span class="hljs-comment">// 指示器的最大值，可选，建议设置</span>
+    Max <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"max,omitempty"`</span>
+    <span class="hljs-comment">// 指示器的最小值，可选，默认为 0</span>
+    Min <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"min,omitempty"`</span>
+    <span class="hljs-comment">// 标签特定的颜色</span>
+    Color <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"color,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="radarcomponentopts"></a><a href="#radarcomponentopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RadarComponentOpts</h3>
+<blockquote>
+<p>雷达图坐标系组件配置项，只适用于雷达图</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> RadarComponentOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 雷达图的指示器，用来指定雷达图中的多个变量（维度）</span>
+    Indicator []IndicatorOpts <span class="hljs-string">`json:"indicator,omitempty"`</span>
+    <span class="hljs-comment">// 雷达图绘制类型，支持 "polygon" 和 "circle"</span>
+    Shape <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"shape,omitempty"`</span>
+    <span class="hljs-comment">// 指示器轴的分割段数。默认 5</span>
+    SplitNumber <span class="hljs-keyword">int</span> <span class="hljs-string">`json:"splitNumber,omitempty"`</span>
+    <span class="hljs-comment">// 坐标轴在 grid 区域中的分隔区域</span>
+    SplitArea SplitAreaOpts <span class="hljs-string">`json:"splitArea,omitempty"`</span>
+    <span class="hljs-comment">// 坐标轴在 grid 区域中的分隔线</span>
+    SplitLine SplitLineOpts <span class="hljs-string">`json:"splitLine,omitempty"`</span>
 }
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="rectchart-options"></a><a href="#rectchart-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>RectChart Options</h2>
@@ -390,6 +458,61 @@ bar.AddXAxis(nameItems).
     SplitArea SplitAreaOpts <span class="hljs-string">`json:"splitArea,omitempty"`</span>
     <span class="hljs-comment">// Y 轴在 grid 区域中的分隔线配置项</span>
     SplitLine SplitLineOpts <span class="hljs-string">`json:"splitLine,,omitempty"`</span>
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="parallelchart-options"></a><a href="#parallelchart-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ParallelChart Options</h2>
+<h3><a class="anchor" aria-hidden="true" id="parallelcomponentopts"></a><a href="#parallelcomponentopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ParallelComponentOpts</h3>
+<blockquote>
+<p>平行坐标系组件配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> ParallelComponentOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// parallel 组件离容器左侧的距离。</span>
+    <span class="hljs-comment">// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比</span>
+    <span class="hljs-comment">// 也可以是 'left', 'center', 'right'。</span>
+    <span class="hljs-comment">// 如果 left 的值为'left', 'center', 'right'，组件会根据相应的位置自动对齐。</span>
+    Left <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"left,omitempty"`</span>
+    <span class="hljs-comment">// parallel 组件离容器上侧的距离。</span>
+    <span class="hljs-comment">// top 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比</span>
+    <span class="hljs-comment">// 也可以是 'top', 'middle', 'bottom'。</span>
+    <span class="hljs-comment">// 如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐。</span>
+    Top <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"top,omitempty"`</span>
+    <span class="hljs-comment">// parallel 组件离容器右侧的距离。</span>
+    <span class="hljs-comment">// right 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。</span>
+    <span class="hljs-comment">// 默认自适应。</span>
+    Right <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"right,omitempty"`</span>
+    <span class="hljs-comment">// parallel 组件离容器下侧的距离。</span>
+    <span class="hljs-comment">// bottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。</span>
+    <span class="hljs-comment">// 默认自适应</span>
+    Bottom <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"bottom,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="parallelaxisopts"></a><a href="#parallelaxisopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ParallelAxisOpts</h3>
+<blockquote>
+<p>平行坐标系中的坐标轴组件配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> ParallelAxisOpts []PAOpts
+
+<span class="hljs-keyword">type</span> PAOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 坐标轴的维度序号</span>
+    Dim <span class="hljs-keyword">int</span> <span class="hljs-string">`json:"dim,omitempty"`</span>
+    <span class="hljs-comment">// 坐标轴名称</span>
+    Name <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name,omitempty"`</span>
+    <span class="hljs-comment">// 坐标轴刻度最大值。</span>
+    <span class="hljs-comment">// 可以设置成特殊值 "dataMax"，此时取数据在该轴上的最大值作为最大刻度。</span>
+    <span class="hljs-comment">// 不设置时会自动计算最大值保证坐标轴刻度的均匀分布</span>
+    Max <span class="hljs-keyword">interface</span>{} <span class="hljs-string">`json:"max,omitempty"`</span>
+    <span class="hljs-comment">// 是否是反向坐标轴</span>
+    Inverse <span class="hljs-keyword">bool</span> <span class="hljs-string">`json:"inverse,omitempty"`</span>
+    <span class="hljs-comment">// 坐标轴名称显示位置，可选 "start", "middle", "center", "end"</span>
+    <span class="hljs-comment">// 默认 "end"</span>
+    NameLocation <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"nameLocation,omitempty"`</span>
+    <span class="hljs-comment">// 坐标轴类型，可选：</span>
+    <span class="hljs-comment">// "value"：数值轴，适用于连续数据。</span>
+    <span class="hljs-comment">// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。</span>
+    <span class="hljs-comment">// "log" 对数轴。适用于对数数据。</span>
+    Type <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"type,omitempty"`</span>
+    <span class="hljs-comment">// 类目数据，在类目轴（type: "category"）中有效</span>
+    Data <span class="hljs-keyword">interface</span>{} <span class="hljs-string">`json:"data,omitempty"`</span>
 }
 </code></pre>
 <h2><a class="anchor" aria-hidden="true" id="3d-charts-options"></a><a href="#3d-charts-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>3D Charts Options</h2>
@@ -501,4 +624,4 @@ bar.AddXAxis(nameItems).
     Data <span class="hljs-keyword">interface</span>{} <span class="hljs-string">`json:"data,omitempty"`</span>
 }
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-2-8 by 陈键冬</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api"><span class="arrow-prev">← </span><span>API 设计</span></a><a class="docs-next button" href="/docs/series_options"><span>系列配置项</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#初识组件">初识组件</a></li><li><a href="#common-options">Common Options</a><ul class="toc-headings"><li><a href="#initopts">InitOpts</a></li><li><a href="#routeropts">RouterOpts</a></li><li><a href="#titleopts">TitleOpts</a></li><li><a href="#toolboxopts">ToolboxOpts</a></li><li><a href="#tooltipopts">TooltipOpts</a></li><li><a href="#legendopts">LegendOpts</a></li><li><a href="#coloropts">ColorOpts</a></li><li><a href="#datazoomopts">DataZoomOpts</a></li><li><a href="#visualmapopts">VisualMapOpts</a></li></ul></li><li><a href="#rectchart-options">RectChart Options</a><ul class="toc-headings"><li><a href="#xaxisopts">XAxisOpts</a></li><li><a href="#yaxisopts">YAxisOpts</a></li></ul></li><li><a href="#3d-charts-options">3D Charts Options</a><ul class="toc-headings"><li><a href="#grid3dopts">Grid3DOpts</a></li><li><a href="#xaxis3dopts">XAxis3DOpts</a></li><li><a href="#yaxis3dopts">YAxis3DOpts</a></li><li><a href="#zaxis3dopts">ZAxis3DOpts</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-2-10 by 陈键冬</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api"><span class="arrow-prev">← </span><span>API 设计</span></a><a class="docs-next button" href="/docs/series_options"><span>系列配置项</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#初识组件">初识组件</a></li><li><a href="#common-options">Common Options</a><ul class="toc-headings"><li><a href="#initopts">InitOpts</a></li><li><a href="#routeropts">RouterOpts</a></li><li><a href="#titleopts">TitleOpts</a></li><li><a href="#toolboxopts">ToolboxOpts</a></li><li><a href="#tooltipopts">TooltipOpts</a></li><li><a href="#legendopts">LegendOpts</a></li><li><a href="#coloropts">ColorOpts</a></li><li><a href="#datazoomopts">DataZoomOpts</a></li><li><a href="#visualmapopts">VisualMapOpts</a></li></ul></li><li><a href="#splitline-area-options">SplitLine/Area Options</a><ul class="toc-headings"><li><a href="#splitlineopts">SplitLineOpts</a></li><li><a href="#splitareaopts">SplitAreaOpts</a></li></ul></li><li><a href="#radarchart-options">RadarChart Options</a><ul class="toc-headings"><li><a href="#indicatoropts">IndicatorOpts</a></li><li><a href="#radarcomponentopts">RadarComponentOpts</a></li></ul></li><li><a href="#rectchart-options">RectChart Options</a><ul class="toc-headings"><li><a href="#xaxisopts">XAxisOpts</a></li><li><a href="#yaxisopts">YAxisOpts</a></li></ul></li><li><a href="#parallelchart-options">ParallelChart Options</a><ul class="toc-headings"><li><a href="#parallelcomponentopts">ParallelComponentOpts</a></li><li><a href="#parallelaxisopts">ParallelAxisOpts</a></li></ul></li><li><a href="#3d-charts-options">3D Charts Options</a><ul class="toc-headings"><li><a href="#grid3dopts">Grid3DOpts</a></li><li><a href="#xaxis3dopts">XAxis3DOpts</a></li><li><a href="#yaxis3dopts">YAxis3DOpts</a></li><li><a href="#zaxis3dopts">ZAxis3DOpts</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>
