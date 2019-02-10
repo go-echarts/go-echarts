@@ -1,0 +1,15 @@
+build: off
+
+clone_folder: c:\gopath\src\github.com\chenjiandongx\go-echarts
+
+environment:
+  GOPATH: c:\gopath
+
+stack: go 1.10
+
+before_test:
+  - go get -t -v ./...
+  - go vet ./...
+
+test_script:
+  - go test -v -race ./...

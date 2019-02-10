@@ -7,6 +7,12 @@
     <em>🎨 The adorable charts library for Golang</em>
 </p>
 <p align="center">
+    <a href="https://travis-ci.org/chenjiandongx/go-echarts">
+        <img src="https://travis-ci.org/chenjiandongx/go-echarts.svg?branch=master" alt="Build Status">
+    </a>
+    <a href="https://goreportcard.com/report/github.com/chenjiandongx/go-echarts">
+        <img src="https://goreportcard.com/badge/github.com/chenjiandongx/go-echarts" alt="Go Report Card">
+    </a>
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT License">
     </a>
