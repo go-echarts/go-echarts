@@ -10,7 +10,7 @@ var ChartType = struct {
 	Kline,
 	Line, Line3D, Liquid,
 	Map,
-	Pie,
+	Parallel, Pie,
 	Radar,
 	Scatter, Scatter3D, Surface3D,
 	WordCloud string
@@ -29,6 +29,7 @@ var ChartType = struct {
 	Line3D:        "line3D",
 	Liquid:        "liquidFill",
 	Map:           "map",
+	Parallel:      "parallel",
 	Pie:           "pie",
 	Radar:         "radar",
 	Scatter:       "scatter",

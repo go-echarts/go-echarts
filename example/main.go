@@ -82,6 +82,7 @@ var (
 		{"liquid", charts.RouterOpts{URL: host + "/liquid", Text: "Liquid-(水球图)"}},
 		{"map", charts.RouterOpts{URL: host + "/map", Text: "Map-(地图)"}},
 		{"overlap", charts.RouterOpts{URL: host + "/overlap", Text: "Overlap-(重叠图)"}},
+		{"parallel", charts.RouterOpts{URL: host + "/parallel", Text: "Parallel-(平行坐标系)"}},
 		{"pie", charts.RouterOpts{URL: host + "/pie", Text: "Pie-(饼图)"}},
 		{"radar", charts.RouterOpts{URL: host + "/radar", Text: "Radar-(雷达图)"}},
 		{"scatter", charts.RouterOpts{URL: host + "/scatter", Text: "Scatter-(散点图)"}},
@@ -152,6 +153,7 @@ func main() {
 	http.HandleFunc("/liquid", logTracing(liquidHandler))
 	http.HandleFunc("/map", logTracing(mapHandler))
 	http.HandleFunc("/overlap", logTracing(overlapHandler))
+	http.HandleFunc("/parallel", logTracing(parallelHandler))
 	http.HandleFunc("/pie", logTracing(pieHandler))
 	http.HandleFunc("/radar", logTracing(radarHandler))
 	http.HandleFunc("/scatter", logTracing(scatterHandler))
@@ -159,9 +161,6 @@ func main() {
 	http.HandleFunc("/surface3D", logTracing(surface3DHandler))
 	http.HandleFunc("/wordCloud", logTracing(wcHandler))
 	http.HandleFunc("/page", logTracing(pageHandler))
-
-	//box := packr.NewBox("./go-echarts-assets")
-	//http.Handle("/", http.FileServer(box))
 
 	log.Println("Run server at " + host)
 	http.ListenAndServe(":8080", nil)

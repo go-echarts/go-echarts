@@ -109,7 +109,7 @@ var indicators = []charts.IndicatorOpts{
 
 ## Demo
 
-雷达图需要配置 `RadarComponentOpts`，配置项详细参数可参考 [全局配置项#RadarComponentOpts](/docs/global_options#radarcomponentopts)
+雷达图需要配置 `RadarChart Options`，配置项详细参数可参考 [全局配置项#RadarChart Options](/docs/global_options#radarchart-options)
 
 ### Radar-示例图
 ```go
@@ -151,7 +151,7 @@ radar.SetGlobalOptions(
         TextStyle: charts.TextStyleOpts{Color: "#eee"},
     },
 )
- radar.Add("北京", radarDataBJ)
+radar.Add("北京", radarDataBJ)
 radar.SetSeriesOptions(
     charts.ItemStyleOpts{Color: "#F9713C"},
     charts.LineStyleOpts{Width: 1, Opacity: 0.5},
@@ -185,9 +185,10 @@ radar.SetGlobalOptions(
         TextStyle: charts.TextStyleOpts{Color: "#eee"},
     },
 )
-radar.Add("北京", radarDataBJ, charts.ItemStyleOpts{Color: "#F9713C"})
-radar.Add("广州", radarDataGZ, charts.ItemStyleOpts{Color: "#B3E4A1"})
-radar.Add("上海", radarDataSH, charts.ItemStyleOpts{Color: "rgb(238, 197, 102)"})
+radar.
+    Add("北京", radarDataBJ, charts.ItemStyleOpts{Color: "#F9713C"}).
+    Add("广州", radarDataGZ, charts.ItemStyleOpts{Color: "#B3E4A1"}).
+    Add("上海", radarDataSH, charts.ItemStyleOpts{Color: "rgb(238, 197, 102)"})
 radar.SetSeriesOptions(
     charts.LineStyleOpts{Width: 1, Opacity: 0.5},
     charts.AreaStyleOpts{Opacity: 0.1},
@@ -221,9 +222,10 @@ radar.SetGlobalOptions(
         SelectedMode: "single",
     },
 )
-radar.Add("北京", radarDataBJ, charts.ItemStyleOpts{Color: "#F9713C"})
-radar.Add("广州", radarDataGZ, charts.ItemStyleOpts{Color: "#B3E4A1"})
-radar.Add("上海", radarDataSH, charts.ItemStyleOpts{Color: "rgb(238, 197, 102)"})
+radar.
+    Add("北京", radarDataBJ, charts.ItemStyleOpts{Color: "#F9713C"}).
+    Add("广州", radarDataGZ, charts.ItemStyleOpts{Color: "#B3E4A1"}).
+    Add("上海", radarDataSH, charts.ItemStyleOpts{Color: "rgb(238, 197, 102)"})
 radar.SetSeriesOptions(
     charts.LineStyleOpts{Width: 1, Opacity: 0.5},
     charts.AreaStyleOpts{Opacity: 0.1},

@@ -158,9 +158,10 @@ func radarLegendMulti() *charts.Radar {
 			TextStyle: charts.TextStyleOpts{Color: "#eee"},
 		},
 	)
-	radar.Add("北京", radarDataBJ, charts.ItemStyleOpts{Color: "#F9713C"})
-	radar.Add("广州", radarDataGZ, charts.ItemStyleOpts{Color: "#B3E4A1"})
-	radar.Add("上海", radarDataSH, charts.ItemStyleOpts{Color: "rgb(238, 197, 102)"})
+	radar.
+		Add("北京", radarDataBJ, charts.ItemStyleOpts{Color: "#F9713C"}).
+		Add("广州", radarDataGZ, charts.ItemStyleOpts{Color: "#B3E4A1"}).
+		Add("上海", radarDataSH, charts.ItemStyleOpts{Color: "rgb(238, 197, 102)"})
 	radar.SetSeriesOptions(
 		charts.LineStyleOpts{Width: 1, Opacity: 0.5},
 		charts.AreaStyleOpts{Opacity: 0.1},
@@ -192,9 +193,10 @@ func radarLegendSingle() *charts.Radar {
 			SelectedMode: "single",
 		},
 	)
-	radar.Add("北京", radarDataBJ, charts.ItemStyleOpts{Color: "#F9713C"})
-	radar.Add("广州", radarDataGZ, charts.ItemStyleOpts{Color: "#B3E4A1"})
-	radar.Add("上海", radarDataSH, charts.ItemStyleOpts{Color: "rgb(238, 197, 102)"})
+	radar.
+		Add("北京", radarDataBJ, charts.ItemStyleOpts{Color: "#F9713C"}).
+		Add("广州", radarDataGZ, charts.ItemStyleOpts{Color: "#B3E4A1"}).
+		Add("上海", radarDataSH, charts.ItemStyleOpts{Color: "rgb(238, 197, 102)"})
 	radar.SetSeriesOptions(
 		charts.LineStyleOpts{Width: 1, Opacity: 0.5},
 		charts.AreaStyleOpts{Opacity: 0.1},
