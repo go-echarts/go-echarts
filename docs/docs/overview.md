@@ -12,20 +12,6 @@ sidebar_label: 简介
 <p align="center">
     <em>🎨 The adorable charts library for Golang</em>
 </p>
-<p align="center">
-    <a href="https://travis-ci.org/chenjiandongx/go-echarts">
-        <img src="https://travis-ci.org/chenjiandongx/go-echarts.svg?branch=master" alt="Build Status">
-    </a>
-    <a href="https://ci.appveyor.com/project/chenjiandongx/go-echarts">
-        <img src="https://ci.appveyor.com/api/projects/status/kdxi0s1nc1t6dqn0?svg=true" alt="Build Status">
-    </a>
-    <a href="https://goreportcard.com/report/github.com/chenjiandongx/go-echarts">
-        <img src="https://goreportcard.com/badge/github.com/chenjiandongx/go-echarts" alt="Go Report Card">
-    </a>
-    <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT License">
-    </a>
-</p>
 
 在 Golang 这门语言中，目前数据可视化的第三方库还是特别少，[go-echarts](https://github.com/chenjiandongx/go-echarts) 的开发就是为了填补这部分的空隙。[Echarts](https://echarts.baidu.com) 是百度开源的非常优秀的可视化图表库，凭借着良好的交互性，精巧的图表设计，得到了众多开发者的认可。也有其他语言为其实现了相应语言版本的接口，如 Python 的 [pyecharts](https://github.com/pyecharts/pyecharts)，go-echarts 也是借鉴了 pyecharts 的一些设计思想。
 
