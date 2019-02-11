@@ -16,7 +16,7 @@ func Add(name string, data map[string]interface{}, options ...seriesOptser) *Gau
 func AddJSFuncs(fn ...string)
 // 设置全局配置项
 func SetGlobalOptions(options ...globalOptser)
-// 设置 Series 配置项
+// 设置全部 Series 配置项
 func SetSeriesOptions(options ...seriesOptser)
 // 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
 func Render(w ...io.Writer) error

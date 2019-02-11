@@ -10,7 +10,7 @@ go-echarts 秉承着 API 设计要简洁的原则，对所有图表只提供了�
 
 *func Add(arg0 Type0, arg1 Type1, ...)*
 
-新增 series，参数由具体图表决定
+新增 series，参数由具体图表决定，可设置单个 Series 配置项
 
 *func SetGlobalOptions(options ...globalOptser)*
 
@@ -18,7 +18,7 @@ go-echarts 秉承着 API 设计要简洁的原则，对所有图表只提供了�
 
 *func SetSeriesOptions(options ...seriesOptser)*
 
-设置 Series 配置项
+设置图表全部 Series 配置项
 
 *func AddJSFuncs(fn ...string)*
 
@@ -34,11 +34,11 @@ go-echarts 秉承着 API 设计要简洁的原则，对所有图表只提供了�
 
 *func AddXAxis(arg0 Type0, arg1 Type1, ...)*
 
-新增 X 轴数据，参数由具体图表决定
+新增 X 轴数据，参数由具体图表决定，可设置单个 Series 配置项
 
 *func AddYAxis(arg0 Type0, arg1 Type1, ...)*
 
-新增 X 轴数据，参数由具体图表决定
+新增 X 轴数据，参数由具体图表决定，可设置单个 Series 配置项
 
 *func Overlap(a ...rectCharter)*
 
