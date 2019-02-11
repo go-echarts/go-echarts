@@ -53,11 +53,11 @@
         </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">API 设计</h1></header><article><div><span><p>go-echarts 秉承着 API 设计要简洁的原则，对所有图表只提供了下面的接口</p>
 <h2><a class="anchor" aria-hidden="true" id="common-api"></a><a href="#common-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Common API</h2>
 <p><em>func Add(arg0 Type0, arg1 Type1, ...)</em></p>
-<p>新增 series，参数由具体图表决定</p>
+<p>新增 series，参数由具体图表决定，可设置单个 Series 配置项</p>
 <p><em>func SetGlobalOptions(options ...globalOptser)</em></p>
 <p>设置全局配置项</p>
 <p><em>func SetSeriesOptions(options ...seriesOptser)</em></p>
-<p>设置 Series 配置项</p>
+<p>设置图表全部 Series 配置项</p>
 <p><em>func AddJSFuncs(fn ...string)</em></p>
 <p>新增 JS 函数</p>
 <p><em>func Render(w ...io.Writer) error</em></p>
@@ -67,9 +67,9 @@
 <p>RectChart 包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap</p>
 </blockquote>
 <p><em>func AddXAxis(arg0 Type0, arg1 Type1, ...)</em></p>
-<p>新增 X 轴数据，参数由具体图表决定</p>
+<p>新增 X 轴数据，参数由具体图表决定，可设置单个 Series 配置项</p>
 <p><em>func AddYAxis(arg0 Type0, arg1 Type1, ...)</em></p>
-<p>新增 X 轴数据，参数由具体图表决定</p>
+<p>新增 X 轴数据，参数由具体图表决定，可设置单个 Series 配置项</p>
 <p><em>func Overlap(a ...rectCharter)</em></p>
 <p>新增重叠 Series，对象必须实现 rectCharter 接口</p>
 <p><em>func ExtendXAxis(xAxis ...XAxisOpts)</em></p>
@@ -101,4 +101,4 @@
     exportSeries() Series
 }
 </code></pre>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-2-8 by 陈键冬</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/quickstart"><span class="arrow-prev">← </span><span>快速开始</span></a><a class="docs-next button" href="/docs/global_options"><span>全局配置项</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#common-api">Common API</a></li><li><a href="#rectchart-api">RectChart API</a></li><li><a href="#3d-chart-api">3D Chart API</a></li><li><a href="#interface">Interface</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-2-11 by 陈键冬</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/quickstart"><span class="arrow-prev">← </span><span>快速开始</span></a><a class="docs-next button" href="/docs/global_options"><span>全局配置项</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#common-api">Common API</a></li><li><a href="#rectchart-api">RectChart API</a></li><li><a href="#3d-chart-api">3D Chart API</a></li><li><a href="#interface">Interface</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>
