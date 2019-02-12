@@ -7,6 +7,9 @@
     <em>🎨 The adorable charts library for Golang</em>
 </p>
 <p align="center">
+    <a href="https://godoc.org/github.com/chenjiandongx/go-echarts">
+        <img src="https://godoc.org/github.com/chenjiandongx/go-echarts?status.svg" alt="GoDoc">
+    </a>
     <a href="https://travis-ci.org/chenjiandongx/go-echarts">
         <img src="https://travis-ci.org/chenjiandongx/go-echarts.svg?branch=master" alt="Build Status">
     </a>
