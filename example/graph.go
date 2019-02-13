@@ -72,7 +72,7 @@ func graphNpmDep() *charts.Graph {
 	}
 	graph.Add("graph", data.Nodes, data.Links,
 		charts.GraphOpts{Layout: "none", Roam: true, FocusNodeAdjacency: true},
-		charts.EmphasisOpts{Label: charts.LabelTextOpts{Show: true, Position:"left", Color:"black"}},
+		charts.EmphasisOpts{Label: charts.LabelTextOpts{Show: true, Position: "left", Color: "black"}},
 		charts.LineStyleOpts{Curveness: 0.3},
 	)
 	return graph

@@ -30,9 +30,9 @@ type GraphNode struct {
 	Symbol string `json:"symbol,omitempty"`
 	// 该类目节点标记的大小，可以设置成诸如 10 这样单一的数字，
 	// 也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10
-	SymbolSize interface{}   `json:"symbolSize,omitempty"`
+	SymbolSize interface{} `json:"symbolSize,omitempty"`
 	// 该节点的样式
-	ItemStyle  ItemStyleOpts `json:"itemStyle,omitempty"`
+	ItemStyle ItemStyleOpts `json:"itemStyle,omitempty"`
 }
 
 // 关系图节点间的关系数据
@@ -131,5 +131,5 @@ func (c *Graph) validateOpts() {
 func (c *Graph) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", []string{`"force":{},?`,}, w...)
+	return renderToWriter(c, "chart", []string{`"force":{},?`}, w...)
 }
