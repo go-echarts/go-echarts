@@ -15,7 +15,7 @@ func (Funnel) chartType() string { return common.ChartType.Funnel }
 
 func NewFunnel(routers ...RouterOpts) *Funnel {
 	chart := new(Funnel)
-	chart.initBaseOpts(false, routers...)
+	chart.initBaseOpts(routers...)
 	return chart
 }
 

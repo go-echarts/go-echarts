@@ -75,6 +75,7 @@ var (
 		{"funnel", charts.RouterOpts{URL: host + "/funnel", Text: "Funnel-(漏斗图)"}},
 		{"gauge", charts.RouterOpts{URL: host + "/gauge", Text: "Gauge-仪表盘"}},
 		{"geo", charts.RouterOpts{URL: host + "/geo", Text: "Geo-地理坐标系"}},
+		{"graph", charts.RouterOpts{URL: host + "/graph", Text: "Graph-关系图"}},
 		{"heatMap", charts.RouterOpts{URL: host + "/heatMap", Text: "HeatMap-热力图"}},
 		{"kline", charts.RouterOpts{URL: host + "/kline", Text: "Kline-K 线图"}},
 		{"line", charts.RouterOpts{URL: host + "/line", Text: "Line-(折线图)"}},
@@ -146,6 +147,7 @@ func main() {
 	http.HandleFunc("/funnel", logTracing(funnelHandler))
 	http.HandleFunc("/gauge", logTracing(gaugeHandler))
 	http.HandleFunc("/geo", logTracing(geoHandler))
+	http.HandleFunc("/graph", logTracing(graphHandler))
 	http.HandleFunc("/heatMap", logTracing(heatMapHandler))
 	http.HandleFunc("/kline", logTracing(klineHandler))
 	http.HandleFunc("/line", logTracing(lineHandler))

@@ -46,6 +46,16 @@ type LabelTextOpts struct {
 
 func (LabelTextOpts) markSeries() {}
 
+// 高亮的图形样式和标签样式
+type EmphasisOpts struct {
+	// 高亮的标签样式
+	Label LabelTextOpts `json:"label,omitempty"`
+	// 高亮的图形样式
+	ItemStyle ItemStyleOpts `json:"itemStyle,omitempty"`
+}
+
+func (EmphasisOpts) markSeries() {}
+
 // MarkLine 配置项
 type MarkPoint struct {
 	Data []interface{} `json:"data,omitempty"`
@@ -203,30 +213,38 @@ type singleSeries struct {
 	BarGap         string `json:"barGap,omitempty"`
 	BarCategoryGap string `json:"barCategoryGap,omitempty"`
 
-	// Map chart
-	MapType     string `json:"map,omitempty"`
-	CoordSystem string `json:"coordinateSystem,omitempty"`
+	// Bar3D chart
+	Shading string `json:"shading,omitempty"`
+
+	// Graph charts
+	Links              []GraphLink     `json:"links,omitempty"`
+	Layout             string          `json:"layout,omitempty"`
+	Force              GraphForce      `json:"force,omitempty"`
+	Categories         []GraphCategory `json:"categories,omitempty"`
+	Roam               bool            `json:"roam,omitempty"`
+	FocusNodeAdjacency bool            `json:"focusNodeAdjacency,omitempty"`
 
 	// Line chart
 	Step   bool `json:"step,omitempty"`
 	Smooth bool `json:"smooth,omitempty"`
+
+	// Liquid chart
+	LiquidOutlineOpts `json:"outline,omitempty"`
+	IsWaveAnimation   bool `json:"waveAnimation"`
+
+	// Map chart
+	MapType     string `json:"map,omitempty"`
+	CoordSystem string `json:"coordinateSystem,omitempty"`
 
 	// Pie chart
 	RoseType interface{} `json:"roseType,omitempty"`
 	Center   interface{} `json:"center,omitempty"`
 	Radius   interface{} `json:"radius,omitempty"`
 
-	// wordCloud chart
+	// WordCloud chart
 	Shape         string    `json:"shape,omitempty"`
 	SizeRange     []float32 `json:"sizeRange,omitempty"`
 	RotationRange []float32 `json:"rotationRange,omitempty"`
-
-	// Liquid chart
-	LiquidOutlineOpts `json:"outline,omitempty"`
-	IsWaveAnimation   bool `json:"waveAnimation"`
-
-	// bar3D chart
-	Shading string `json:"shading,omitempty"`
 
 	// 系列数据项
 	Data interface{} `json:"data"`
@@ -234,6 +252,7 @@ type singleSeries struct {
 	// 系列配置项
 	ItemStyleOpts    `json:"itemStyle,omitempty"`
 	LabelTextOpts    `json:"label,omitempty"`
+	EmphasisOpts     `json:"emphasis,omitempty"`
 	MarkLine         `json:"markLine,omitempty"`
 	MarkPoint        `json:"markPoint,omitempty"`
 	RippleEffectOpts `json:"rippleEffect,omitempty"`
@@ -255,6 +274,8 @@ func (s *singleSeries) switchSeriesOpts(options ...seriesOptser) {
 		switch option.(type) {
 		case LabelTextOpts:
 			s.LabelTextOpts = option.(LabelTextOpts)
+		case EmphasisOpts:
+			s.EmphasisOpts = option.(EmphasisOpts)
 		case RippleEffectOpts:
 			s.RippleEffectOpts = option.(RippleEffectOpts)
 		case LineStyleOpts:
@@ -298,6 +319,9 @@ func (s *singleSeries) switchSeriesOpts(options ...seriesOptser) {
 			opt.setChartOpt(s)
 		case Bar3DOpts:
 			opt := option.(Bar3DOpts)
+			opt.setChartOpt(s)
+		case GraphOpts:
+			opt := option.(GraphOpts)
 			opt.setChartOpt(s)
 		case HeatMapOpts:
 			opt := option.(HeatMapOpts)

@@ -10,8 +10,9 @@ func (BoxPlot) chartType() string { return common.ChartType.BoxPlot }
 
 func NewBoxPlot(routers ...RouterOpts) *BoxPlot {
 	chart := new(BoxPlot)
-	chart.initBaseOpts(true, routers...)
+	chart.initBaseOpts(routers...)
 	chart.initXYOpts()
+	chart.HasXYAxis = true
 	return chart
 }
 

@@ -12,7 +12,7 @@ func (Surface3D) chartType() string { return common.ChartType.Surface3D }
 
 func NewSurface3D(routers ...RouterOpts) *Surface3D {
 	chart := new(Surface3D)
-	chart.initBaseOpts(false, routers...)
+	chart.initBaseOpts(routers...)
 	chart.initChart3D()
 	return chart
 }

@@ -67,7 +67,7 @@ func (Parallel) chartType() string { return common.ChartType.Parallel }
 
 func NewParallel(routers ...RouterOpts) *Parallel {
 	chart := new(Parallel)
-	chart.initBaseOpts(false, routers...)
+	chart.initBaseOpts(routers...)
 	chart.HasParallel = true
 	return chart
 }

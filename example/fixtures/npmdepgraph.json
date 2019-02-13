@@ -1,0 +1,7132 @@
+{
+    "nodes": [{
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "jquery",
+        "y": -404.26147,
+        "x": -739.36383,
+        "symbolSize": 4.7252817
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "backbone",
+        "y": -862.7517,
+        "x": -134.2215,
+        "symbolSize": 6.1554675
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "underscore",
+        "y": -734.4221,
+        "x": -75.53079,
+        "symbolSize": 100.0
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "faye",
+        "y": 624.50604,
+        "x": -818.97516,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "socket.io",
+        "y": 120.37976,
+        "x": -710.59204,
+        "symbolSize": 19.818306
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "requirejs",
+        "y": -612.5541,
+        "x": 71.52897,
+        "symbolSize": 4.0862627
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "amdefine",
+        "y": -556.3107,
+        "x": 1202.1166,
+        "symbolSize": 2.3822114
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "mongoose",
+        "y": 378.15536,
+        "x": -1150.2018,
+        "symbolSize": 10.81118
+    }, {
+        "itemStyle": {"color": "#c76919"},
+        "name": "underscore.deferred",
+        "y": 477.03778,
+        "x": -127.03764,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "cheerio",
+        "y": -404.62427,
+        "x": -338.03128,
+        "symbolSize": 8.163814
+    }, {
+        "itemStyle": {"color": "#c76919"},
+        "name": "lodash",
+        "y": -380.16626,
+        "x": 118.30771,
+        "symbolSize": 18.935852
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "faye-websocket",
+        "y": 649.6795,
+        "x": -697.4635,
+        "symbolSize": 1.0128845
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "dateformat",
+        "y": -531.28235,
+        "x": 381.10724,
+        "symbolSize": 3.3863845
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "mkdirp",
+        "y": -224.0287,
+        "x": 317.77667,
+        "symbolSize": 23.713282
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "express",
+        "y": -230.14833,
+        "x": -644.2716,
+        "symbolSize": 49.608772
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "connect",
+        "y": 294.88266,
+        "x": -933.4234,
+        "symbolSize": 19.574871
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "consolidate",
+        "y": 495.22098,
+        "x": -101.796974,
+        "symbolSize": 3.0212305
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "hogan.js",
+        "y": 79.99539,
+        "x": 930.74255,
+        "symbolSize": 3.2646663
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "node-uuid",
+        "y": 815.4766,
+        "x": -378.0424,
+        "symbolSize": 13.488974
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "async",
+        "y": 41.25936,
+        "x": 157.57562,
+        "symbolSize": 73.161194
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "redis",
+        "y": 56.938953,
+        "x": -895.56586,
+        "symbolSize": 17.475237
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "backoff",
+        "y": 810.54626,
+        "x": -275.69714,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "bytes",
+        "y": 380.12103,
+        "x": -1005.2705,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "temp",
+        "y": 144.45488,
+        "x": 1057.7959,
+        "symbolSize": 4.0558333
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "mustache",
+        "y": -554.3333,
+        "x": -554.2029,
+        "symbolSize": 3.7819674
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "request",
+        "y": 241.89249,
+        "x": -147.57906,
+        "symbolSize": 64.54965
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "underscore.string",
+        "y": -528.7333,
+        "x": 58.392773,
+        "symbolSize": 7.311788
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "jquery-browserify",
+        "y": 385.31375,
+        "x": -231.44426,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "event-stream",
+        "y": 858.8598,
+        "x": 313.5104,
+        "symbolSize": 3.0212305
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "log4js",
+        "y": 350.19534,
+        "x": 7.309183,
+        "symbolSize": 3.4776726
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "optimist",
+        "y": 171.80579,
+        "x": 599.53815,
+        "symbolSize": 48.6046
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "mocha",
+        "y": -178.11076,
+        "x": -393.3754,
+        "symbolSize": 7.889948
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "should",
+        "y": -198.63869,
+        "x": -334.43466,
+        "symbolSize": 4.7252817
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "semver",
+        "y": 375.80014,
+        "x": 414.43912,
+        "symbolSize": 8.711545
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "q",
+        "y": -389.02567,
+        "x": -423.78125,
+        "symbolSize": 12.54566
+    }, {
+        "itemStyle": {"color": "#c74f19"},
+        "name": "node-fs",
+        "y": -94.528114,
+        "x": -319.42093,
+        "symbolSize": 1.225891
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "colorize",
+        "y": -432.71243,
+        "x": 37.15866,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#c76919"},
+        "name": "github",
+        "y": 244.62839,
+        "x": -383.83453,
+        "symbolSize": 1.6519039
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "prompt",
+        "y": 819.16583,
+        "x": 748.4038,
+        "symbolSize": 4.1471214
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "colors",
+        "y": -265.6326,
+        "x": 694.03375,
+        "symbolSize": 33.359425
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "commander",
+        "y": -682.1726,
+        "x": -479.44443,
+        "symbolSize": 43.21858
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "validator",
+        "y": -429.05365,
+        "x": -668.0554,
+        "symbolSize": 3.6602497
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt",
+        "y": -710.3381,
+        "x": 683.8534,
+        "symbolSize": 9.959153
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt-contrib-clean",
+        "y": -386.1587,
+        "x": -292.83875,
+        "symbolSize": 1.0128845
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt-contrib-concat",
+        "y": 224.41283,
+        "x": 99.38902,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt-contrib-less",
+        "y": -611.3146,
+        "x": -215.58498,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt-contrib-jshint",
+        "y": -938.3397,
+        "x": 548.61926,
+        "symbolSize": 1.3171794
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt-contrib-uglify",
+        "y": -871.8892,
+        "x": 160.96982,
+        "symbolSize": 1.1346025
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt-contrib-watch",
+        "y": 80.96627,
+        "x": -616.9189,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "http-proxy",
+        "y": 418.763,
+        "x": 711.7106,
+        "symbolSize": 4.6339936
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "mime",
+        "y": 34.348167,
+        "x": -284.14108,
+        "symbolSize": 14.858301
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "ycssmin",
+        "y": -392.55402,
+        "x": -199.6149,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#3419c7"},
+        "name": "mongodb",
+        "y": 522.375,
+        "x": -1089.2416,
+        "symbolSize": 11.237192
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "ini",
+        "y": 357.40076,
+        "x": 1076.3447,
+        "symbolSize": 1.5301858
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "slide",
+        "y": -272.38953,
+        "x": 928.9824,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "abbrev",
+        "y": -185.45026,
+        "x": 1187.2019,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "graceful-fs",
+        "y": -400.4116,
+        "x": 864.7834,
+        "symbolSize": 1.8649102
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "minimatch",
+        "y": -332.82092,
+        "x": 923.4708,
+        "symbolSize": 4.6339936
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "nopt",
+        "y": 0.9246719,
+        "x": 648.4921,
+        "symbolSize": 5.303442
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "rimraf",
+        "y": -169.53479,
+        "x": 842.5285,
+        "symbolSize": 7.159641
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "which",
+        "y": -237.25739,
+        "x": 1191.029,
+        "symbolSize": 1.8649102
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "tar",
+        "y": -160.8614,
+        "x": 572.6111,
+        "symbolSize": 3.2646663
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "fstream",
+        "y": -86.683586,
+        "x": 522.8266,
+        "symbolSize": 2.5343587
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "inherits",
+        "y": 289.38367,
+        "x": 639.7362,
+        "symbolSize": 3.4472432
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "read",
+        "y": 376.2344,
+        "x": 537.65076,
+        "symbolSize": 1.4997563
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "lru-cache",
+        "y": 63.76733,
+        "x": 758.7636,
+        "symbolSize": 2.1996343
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "node-gyp",
+        "y": -206.755,
+        "x": 941.12946,
+        "symbolSize": 1.165032
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "fstream-npm",
+        "y": 172.07289,
+        "x": 792.2891,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "archy",
+        "y": -15.182732,
+        "x": 1288.449,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "npmlog",
+        "y": -713.69055,
+        "x": 856.64276,
+        "symbolSize": 1.4084679
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "ansi",
+        "y": -722.70416,
+        "x": 996.9021,
+        "symbolSize": 1.165032
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "npm-registry-client",
+        "y": -163.23782,
+        "x": 770.89215,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "read-package-json",
+        "y": -328.63486,
+        "x": 835.7924,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "glob",
+        "y": -542.05096,
+        "x": 502.02698,
+        "symbolSize": 14.88873
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "osenv",
+        "y": 83.11953,
+        "x": 1170.4095,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#c76919"},
+        "name": "retry",
+        "y": -149.41582,
+        "x": 1088.8419,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#34c719"},
+        "name": "once",
+        "y": 632.73914,
+        "x": 692.4719,
+        "symbolSize": 0.92159617
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "npmconf",
+        "y": 263.6715,
+        "x": 880.9455,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "opener",
+        "y": 30.311459,
+        "x": 1306.2058,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#3419c7"},
+        "name": "append",
+        "y": -216.35048,
+        "x": 23.50861,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#3419c7"},
+        "name": "clone",
+        "y": 52.33028,
+        "x": -407.7309,
+        "symbolSize": 2.4430702
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "ejs",
+        "y": 264.84995,
+        "x": -421.52237,
+        "symbolSize": 11.298051
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "debug",
+        "y": -75.5553,
+        "x": -880.5015,
+        "symbolSize": 15.923333
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "out",
+        "y": -141.5042,
+        "x": -27.64139,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "when",
+        "y": -798.01276,
+        "x": -874.1786,
+        "symbolSize": 3.8123972
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "coffee-script",
+        "y": -915.89026,
+        "x": 81.49971,
+        "symbolSize": 44.131462
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "adm-zip",
+        "y": 198.17334,
+        "x": 893.567,
+        "symbolSize": 1.3780384
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "findup-sync",
+        "y": -535.91614,
+        "x": 345.53296,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "node-minify",
+        "y": -772.7816,
+        "x": 284.06558,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "watch",
+        "y": 794.0542,
+        "x": 1113.2292,
+        "symbolSize": 3.7211087
+    }, {
+        "itemStyle": {"color": "#19c784"},
+        "name": "bal-util",
+        "y": 630.7962,
+        "x": 1637.5715,
+        "symbolSize": 1.0128845
+    }, {
+        "itemStyle": {"color": "#19c784"},
+        "name": "extendr",
+        "y": 674.9556,
+        "x": 1661.8947,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#19c784"},
+        "name": "taskgroup",
+        "y": 557.3904,
+        "x": 1473.007,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#19c784"},
+        "name": "typechecker",
+        "y": 655.7608,
+        "x": 1672.5186,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c7199f"},
+        "name": "underscorem",
+        "y": -865.8074,
+        "x": -106.96772,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "hubot",
+        "y": -683.4332,
+        "x": -280.204,
+        "symbolSize": 1.165032
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "ndarray-ops",
+        "y": -1321.741,
+        "x": 518.3953,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "ndarray",
+        "y": -1302.119,
+        "x": 501.15656,
+        "symbolSize": 1.1041731
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "typedarray-pool",
+        "y": -1032.3728,
+        "x": 964.9717,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "jade",
+        "y": -449.40155,
+        "x": -173.24167,
+        "symbolSize": 20.031315
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "nodemailer",
+        "y": -531.05963,
+        "x": 847.43915,
+        "symbolSize": 3.873256
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "pkginfo",
+        "y": 1029.6494,
+        "x": 657.2629,
+        "symbolSize": 8.498538
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "eco",
+        "y": -986.8328,
+        "x": 61.016094,
+        "symbolSize": 2.230064
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "github-flavored-markdown",
+        "y": -805.08057,
+        "x": -594.8061,
+        "symbolSize": 0.92159617
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "filed",
+        "y": 123.003525,
+        "x": -254.39879,
+        "symbolSize": 1.3780384
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "wrench",
+        "y": -524.69977,
+        "x": -186.77402,
+        "symbolSize": 8.559398
+    }, {
+        "itemStyle": {"color": "#c71984"},
+        "name": "flatiron",
+        "y": 816.91064,
+        "x": 876.8348,
+        "symbolSize": 1.9561987
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "winston",
+        "y": 695.1258,
+        "x": 881.2038,
+        "symbolSize": 11.845781
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "coffeekup",
+        "y": -987.40234,
+        "x": 85.66932,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "stylus",
+        "y": -620.4443,
+        "x": -586.76886,
+        "symbolSize": 10.020013
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "querystring",
+        "y": 1011.7739,
+        "x": 758.26154,
+        "symbolSize": 1.9257691
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "xml2json",
+        "y": 806.3456,
+        "x": -601.0259,
+        "symbolSize": 1.6214744
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "nano",
+        "y": -75.38197,
+        "x": -114.47825,
+        "symbolSize": 1.5910448
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "less",
+        "y": -358.01407,
+        "x": -128.87897,
+        "symbolSize": 9.928724
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "uglify-js",
+        "y": -699.5852,
+        "x": 177.18362,
+        "symbolSize": 22.252666
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "clean-css",
+        "y": -807.94244,
+        "x": -442.73334,
+        "symbolSize": 3.7819674
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "filesymbolSize",
+        "y": -56.161583,
+        "x": -210.30255,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c71984"},
+        "name": "strftime",
+        "y": 209.59007,
+        "x": -0.24881881,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "canvas",
+        "y": 463.22067,
+        "x": -290.9267,
+        "symbolSize": 3.1429486
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "common",
+        "y": 500.33102,
+        "x": -227.09238,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "structr",
+        "y": -1252.3774,
+        "x": 318.85583,
+        "symbolSize": 1.4997563
+    }, {
+        "itemStyle": {"color": "#1934c7"},
+        "name": "simple-mime",
+        "y": -174.76685,
+        "x": 7.712948,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#1934c7"},
+        "name": "haml",
+        "y": 221.30989,
+        "x": 174.83754,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "step",
+        "y": -1171.119,
+        "x": 261.83853,
+        "symbolSize": 4.2688394
+    }, {
+        "itemStyle": {"color": "#1934c7"},
+        "name": "datetime",
+        "y": 419.69788,
+        "x": 791.56323,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "inflection",
+        "y": -550.88916,
+        "x": 1271.2019,
+        "symbolSize": 1.3476089
+    }, {
+        "itemStyle": {"color": "#1934c7"},
+        "name": "vows",
+        "y": 398.0463,
+        "x": 791.03455,
+        "symbolSize": 3.751538
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "docco",
+        "y": -878.3072,
+        "x": -420.23013,
+        "symbolSize": 1.0737435
+    }, {
+        "itemStyle": {"color": "#34c719"},
+        "name": "readable-stream",
+        "y": 492.42526,
+        "x": -531.76953,
+        "symbolSize": 3.873256
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "sax",
+        "y": 610.6721,
+        "x": -534.7558,
+        "symbolSize": 2.7169356
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "xml2js",
+        "y": 210.87439,
+        "x": -510.32123,
+        "symbolSize": 8.894122
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "libxmljs",
+        "y": 92.88487,
+        "x": -1068.4481,
+        "symbolSize": 1.7431923
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "handlebars",
+        "y": -423.4632,
+        "x": 590.7474,
+        "symbolSize": 8.285532
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "numeric",
+        "y": -247.50432,
+        "x": -210.03926,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "tap",
+        "y": -312.4931,
+        "x": 551.4122,
+        "symbolSize": 1.4693269
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "boo",
+        "y": -200.40657,
+        "x": 75.31598,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "walk",
+        "y": -584.2039,
+        "x": 383.56738,
+        "symbolSize": 2.3517818
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "errs",
+        "y": 45.422947,
+        "x": -102.39036,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "through",
+        "y": 649.42224,
+        "x": 320.47504,
+        "symbolSize": 10.14173
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "duplexer",
+        "y": 940.3869,
+        "x": 251.87953,
+        "symbolSize": 1.3476089
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "shell-quote",
+        "y": 850.67114,
+        "x": 118.35625,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "split",
+        "y": 750.0239,
+        "x": 348.1923,
+        "symbolSize": 1.1346025
+    }, {
+        "itemStyle": {"color": "#3419c7"},
+        "name": "csv",
+        "y": 509.271,
+        "x": -160.78777,
+        "symbolSize": 1.7127627
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "memcached",
+        "y": 1149.197,
+        "x": -234.76114,
+        "symbolSize": 1.0128845
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "express-resource",
+        "y": -175.72437,
+        "x": -1060.0989,
+        "symbolSize": 0.7998782
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "connect-assets",
+        "y": -554.7191,
+        "x": -72.89341,
+        "symbolSize": 0.7998782
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "knox",
+        "y": -5.803794,
+        "x": -617.46643,
+        "symbolSize": 3.112519
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "aws-sdk",
+        "y": 359.47635,
+        "x": -628.1506,
+        "symbolSize": 1.4693269
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "fs-extra",
+        "y": -203.57794,
+        "x": 428.15845,
+        "symbolSize": 4.2079806
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "awssum",
+        "y": -279.23215,
+        "x": -325.59766,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#84c719"},
+        "name": "walker",
+        "y": -165.20312,
+        "x": -280.2626,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#84c719"},
+        "name": "batchflow",
+        "y": 405.85773,
+        "x": -213.34535,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#84c719"},
+        "name": "path-extra",
+        "y": 310.982,
+        "x": -367.00104,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "cradle",
+        "y": 356.7393,
+        "x": -42.904198,
+        "symbolSize": 2.1996343
+    }, {
+        "itemStyle": {"color": "#194fc7"},
+        "name": "cli-color",
+        "y": -1213.5996,
+        "x": 135.87648,
+        "symbolSize": 4.4514165
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "hoek",
+        "y": 357.1927,
+        "x": 298.65424,
+        "symbolSize": 0.8911666
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "csso",
+        "y": -265.18994,
+        "x": 159.92708,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "html-minifier",
+        "y": 347.3478,
+        "x": 106.32629,
+        "symbolSize": 1.1346025
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "hashish",
+        "y": -983.94257,
+        "x": 691.4775,
+        "symbolSize": 1.3780384
+    }, {
+        "itemStyle": {"color": "#34c719"},
+        "name": "htmlparser2",
+        "y": 32.03244,
+        "x": -571.7144,
+        "symbolSize": 1.3780384
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "node-zip",
+        "y": 322.0001,
+        "x": 25.3843,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "batch",
+        "y": -315.33505,
+        "x": -502.78232,
+        "symbolSize": 1.8953397
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "emitter-component",
+        "y": 217.5223,
+        "x": -994.7767,
+        "symbolSize": 1.3171794
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "netmask",
+        "y": -974.2597,
+        "x": 39.66092,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "pkgcloud",
+        "y": 435.87173,
+        "x": 112.212494,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#c76919"},
+        "name": "eventemitter2",
+        "y": 383.04288,
+        "x": 1152.9218,
+        "symbolSize": 4.3905573
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "lingo",
+        "y": -344.86972,
+        "x": -1027.0432,
+        "symbolSize": 1.165032
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "mailparser",
+        "y": 74.95499,
+        "x": -381.3953,
+        "symbolSize": 0.7998782
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "moment",
+        "y": -792.2076,
+        "x": -998.14185,
+        "symbolSize": 12.180507
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "iconv",
+        "y": 92.13313,
+        "x": -414.8885,
+        "symbolSize": 1.5910448
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "websocket",
+        "y": -280.031,
+        "x": -68.44273,
+        "symbolSize": 1.8344806
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "portfinder",
+        "y": -113.6123,
+        "x": 371.73843,
+        "symbolSize": 0.92159617
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "node-markdown",
+        "y": -332.64737,
+        "x": 434.20547,
+        "symbolSize": 1.6823332
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "forever-monitor",
+        "y": 626.0845,
+        "x": 984.5066,
+        "symbolSize": 1.1041731
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "mysql",
+        "y": 526.6606,
+        "x": -133.69568,
+        "symbolSize": 4.8165703
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "passport",
+        "y": 1162.1132,
+        "x": 529.5607,
+        "symbolSize": 4.1471214
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "jshint",
+        "y": -839.91656,
+        "x": 533.37573,
+        "symbolSize": 3.0212305
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "nib",
+        "y": -691.36115,
+        "x": -655.49725,
+        "symbolSize": 3.9341152
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "cssom",
+        "y": -490.82297,
+        "x": -805.296,
+        "symbolSize": 0.95202565
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt-lib-contrib",
+        "y": -830.87317,
+        "x": -221.20235,
+        "symbolSize": 1.8040513
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt-contrib-copy",
+        "y": 223.77101,
+        "x": 57.86038,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt-contrib-stylus",
+        "y": -673.43256,
+        "x": -653.4811,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "phantom",
+        "y": 1001.26575,
+        "x": -280.97418,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "jslint",
+        "y": -4.006271,
+        "x": 613.1153,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "xtend",
+        "y": 974.34454,
+        "x": 25.975996,
+        "symbolSize": 3.2038076
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "bufferstream",
+        "y": 1160.7294,
+        "x": 152.05467,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "browserify",
+        "y": 786.3091,
+        "x": 195.28586,
+        "symbolSize": 5.8816023
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "insert-css",
+        "y": 279.7769,
+        "x": -6.9432707,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "uuid",
+        "y": -77.014244,
+        "x": -279.67914,
+        "symbolSize": 1.0737435
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "bindings",
+        "y": 80.179634,
+        "x": -1028.0078,
+        "symbolSize": 3.3559546
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "argsparser",
+        "y": -178.20844,
+        "x": -244.5057,
+        "symbolSize": 0.64773077
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "byline",
+        "y": -380.787,
+        "x": -21.57464,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "nodeunit",
+        "y": -515.95337,
+        "x": 278.70786,
+        "symbolSize": 2.8995125
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "vine",
+        "y": -1349.9265,
+        "x": 138.67784,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "sprintf",
+        "y": -107.171104,
+        "x": -1031.4116,
+        "symbolSize": 2.929942
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "tq",
+        "y": -1175.0505,
+        "x": 101.18756,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "findit",
+        "y": -1036.1184,
+        "x": 751.62134,
+        "symbolSize": 3.05166
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "plugin",
+        "y": -1226.2068,
+        "x": 268.24854,
+        "symbolSize": 0.95202565
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "crema",
+        "y": -1152.8553,
+        "x": 114.24345,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "outcome",
+        "y": -1357.6165,
+        "x": 158.47685,
+        "symbolSize": 1.3476089
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "comerr",
+        "y": -216.2576,
+        "x": -258.3082,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#b919c7"},
+        "name": "bean",
+        "y": -1213.9034,
+        "x": -1086.2054,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "sk",
+        "y": -781.8526,
+        "x": 333.07233,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "growl",
+        "y": -508.24026,
+        "x": -921.39386,
+        "symbolSize": 2.3517818
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "stitch",
+        "y": -365.59622,
+        "x": 27.93561,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "jasmine-node",
+        "y": -579.92035,
+        "x": 27.825665,
+        "symbolSize": 2.108346
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "file",
+        "y": -1062.3031,
+        "x": -77.094055,
+        "symbolSize": 1.0737435
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "jsdom",
+        "y": -263.90924,
+        "x": -799.74493,
+        "symbolSize": 9.56357
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "inotify",
+        "y": 313.49222,
+        "x": 89.25136,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "superagent",
+        "y": 182.74373,
+        "x": -907.1791,
+        "symbolSize": 5.0904355
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "marked",
+        "y": -871.4397,
+        "x": -500.8899,
+        "symbolSize": 8.224673
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "highlight",
+        "y": -94.81895,
+        "x": -209.03227,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#c74f19"},
+        "name": "sugar",
+        "y": 226.64883,
+        "x": 1280.8156,
+        "symbolSize": 2.3517818
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "msgpack",
+        "y": 428.69183,
+        "x": -51.497612,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "chai",
+        "y": 174.10605,
+        "x": 1250.3047,
+        "symbolSize": 2.9603715
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "readdirp",
+        "y": -405.0667,
+        "x": 915.12866,
+        "symbolSize": 0.95202565
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "ws",
+        "y": -317.98154,
+        "x": -871.0914,
+        "symbolSize": 4.5731344
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "node-xmpp",
+        "y": 598.0257,
+        "x": -410.16193,
+        "symbolSize": 1.3780384
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "csslint",
+        "y": 478.5039,
+        "x": -61.05299,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#19c784"},
+        "name": "watchr",
+        "y": 655.0502,
+        "x": 1623.2988,
+        "symbolSize": 2.0779166
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "open",
+        "y": -1175.2716,
+        "x": -371.70215,
+        "symbolSize": 2.169205
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "celeri",
+        "y": -1163.5059,
+        "x": 178.71414,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "iniparser",
+        "y": -339.9005,
+        "x": -52.90442,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "coa",
+        "y": -496.67493,
+        "x": -374.48096,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "ometajs",
+        "y": -563.26465,
+        "x": -248.37671,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "q-fs",
+        "y": -252.13869,
+        "x": -493.3316,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#19c769"},
+        "name": "estraverse",
+        "y": -438.3512,
+        "x": 1230.5919,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#19c769"},
+        "name": "esprima",
+        "y": -492.75586,
+        "x": 1093.5259,
+        "symbolSize": 4.8165703
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "vow",
+        "y": 274.6161,
+        "x": 22.648827,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "cookies",
+        "y": 1429.8711,
+        "x": -284.74634,
+        "symbolSize": 1.5301858
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "inherit",
+        "y": 182.67122,
+        "x": 14.1439,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "dot",
+        "y": -150.56572,
+        "x": -237.81726,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "benchmark",
+        "y": 497.00113,
+        "x": -186.69818,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "falafel",
+        "y": -291.48453,
+        "x": 1044.3159,
+        "symbolSize": 1.4997563
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "cli-table",
+        "y": -276.09082,
+        "x": 599.47327,
+        "symbolSize": 2.3213525
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "qs",
+        "y": 446.33676,
+        "x": -440.75952,
+        "symbolSize": 3.9036858
+    }, {
+        "itemStyle": {"color": "#84c719"},
+        "name": "idgen",
+        "y": 428.3982,
+        "x": -268.81287,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "cli",
+        "y": -816.1008,
+        "x": 467.85532,
+        "symbolSize": 2.047487
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "bunyan",
+        "y": 1165.037,
+        "x": 85.06831,
+        "symbolSize": 1.7431923
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "cookie",
+        "y": 76.30339,
+        "x": -946.7451,
+        "symbolSize": 1.5910448
+    }, {
+        "itemStyle": {"color": "#c7199f"},
+        "name": "callsite",
+        "y": 201.48732,
+        "x": 26.608828,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "bit-twiddle",
+        "y": -1051.561,
+        "x": 969.86316,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#c71984"},
+        "name": "utile",
+        "y": 579.9666,
+        "x": 723.9766,
+        "symbolSize": 1.8040513
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "deep-equal",
+        "y": 627.13947,
+        "x": 403.1256,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "send",
+        "y": -25.373653,
+        "x": -798.1167,
+        "symbolSize": 2.3822114
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "jison",
+        "y": -632.0565,
+        "x": 1053.5453,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "socket.io-client",
+        "y": -341.4672,
+        "x": -552.156,
+        "symbolSize": 3.7819674
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "resource",
+        "y": -41.398632,
+        "x": 1071.8018,
+        "symbolSize": 1.8344806
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "node-expat",
+        "y": 788.2994,
+        "x": -586.8687,
+        "symbolSize": 1.3476089
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "jake",
+        "y": -456.03333,
+        "x": 963.65735,
+        "symbolSize": 0.92159617
+    }, {
+        "itemStyle": {"color": "#1934c7"},
+        "name": "assert",
+        "y": 841.56354,
+        "x": -892.81085,
+        "symbolSize": 0.8911666
+    }, {
+        "itemStyle": {"color": "#c7199f"},
+        "name": "bigint",
+        "y": 420.5151,
+        "x": -74.42052,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "path",
+        "y": -293.70203,
+        "x": -306.8733,
+        "symbolSize": 1.3476089
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "detective",
+        "y": -324.75464,
+        "x": 1175.4331,
+        "symbolSize": 1.6214744
+    }, {
+        "itemStyle": {"color": "#c7199f"},
+        "name": "bignum",
+        "y": 447.65332,
+        "x": -88.192,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "gaze",
+        "y": -129.82701,
+        "x": -467.96494,
+        "symbolSize": 1.1346025
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "istanbul",
+        "y": -414.29037,
+        "x": 981.35065,
+        "symbolSize": 1.4693269
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "sinon",
+        "y": 241.44598,
+        "x": 121.80424,
+        "symbolSize": 1.7127627
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "tiny-lr",
+        "y": 272.46545,
+        "x": -702.41003,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "argparse",
+        "y": -633.0312,
+        "x": 336.41046,
+        "symbolSize": 1.4388975
+    }, {
+        "itemStyle": {"color": "#194fc7"},
+        "name": "node.extend",
+        "y": 120.20691,
+        "x": 287.5265,
+        "symbolSize": 1.5606153
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "dref",
+        "y": -1461.0592,
+        "x": 310.44052,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "toarray",
+        "y": -1257.1584,
+        "x": 208.80318,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "type-component",
+        "y": -1413.6371,
+        "x": 284.43454,
+        "symbolSize": 0.7998782
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "java",
+        "y": -224.4037,
+        "x": -105.301605,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "walkdir",
+        "y": -548.8894,
+        "x": 199.97614,
+        "symbolSize": 1.1346025
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "haml-coffee",
+        "y": -460.67175,
+        "x": 300.36,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#19c769"},
+        "name": "prime",
+        "y": -170.90903,
+        "x": -213.16695,
+        "symbolSize": 0.92159617
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "asyncjs",
+        "y": 15.206377,
+        "x": 295.61932,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "oauth",
+        "y": 1275.2666,
+        "x": -218.46474,
+        "symbolSize": 5.0295763
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "buffertools",
+        "y": 1148.7097,
+        "x": 164.38617,
+        "symbolSize": 1.1346025
+    }, {
+        "itemStyle": {"color": "#c7199f"},
+        "name": "binary",
+        "y": 684.67883,
+        "x": 4.923739,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#c71984"},
+        "name": "irc",
+        "y": -76.81115,
+        "x": -224.82208,
+        "symbolSize": 1.8040513
+    }, {
+        "itemStyle": {"color": "#c7199f"},
+        "name": "forever",
+        "y": 671.5869,
+        "x": 1066.038,
+        "symbolSize": 1.5910448
+    }, {
+        "itemStyle": {"color": "#c7199f"},
+        "name": "buffers",
+        "y": 735.97046,
+        "x": 18.47544,
+        "symbolSize": 0.8911666
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "hooks",
+        "y": 409.85138,
+        "x": -1169.465,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "num",
+        "y": 146.5466,
+        "x": -386.24503,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "shelljs",
+        "y": -900.85004,
+        "x": 499.16705,
+        "symbolSize": 3.234237
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "serialport",
+        "y": 89.454384,
+        "x": -131.34398,
+        "symbolSize": 1.9561987
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "pegjs",
+        "y": -289.04016,
+        "x": 164.06274,
+        "symbolSize": 1.28675
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "connect-redis",
+        "y": 0.25086692,
+        "x": -927.49084,
+        "symbolSize": 1.8649102
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "optparse",
+        "y": -843.711,
+        "x": -301.50488,
+        "symbolSize": 1.0128845
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "dnode",
+        "y": 1043.8707,
+        "x": -152.54582,
+        "symbolSize": 2.1387753
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "highlight.js",
+        "y": -923.82654,
+        "x": -452.9307,
+        "symbolSize": 2.4126408
+    }, {
+        "itemStyle": {"color": "#c71984"},
+        "name": "plates",
+        "y": -92.00068,
+        "x": 199.20425,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "after",
+        "y": -525.1652,
+        "x": 640.8966,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#c71984"},
+        "name": "union",
+        "y": 779.5833,
+        "x": 128.22095,
+        "symbolSize": 1.1041731
+    }, {
+        "itemStyle": {"color": "#c71984"},
+        "name": "director",
+        "y": 868.4869,
+        "x": 851.6432,
+        "symbolSize": 1.0128845
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "crypto",
+        "y": 315.04626,
+        "x": -2.5743425,
+        "symbolSize": 1.8649102
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "passport-local",
+        "y": 1117.0792,
+        "x": 606.08325,
+        "symbolSize": 1.3171794
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "xmldom",
+        "y": 555.979,
+        "x": -786.6827,
+        "symbolSize": 1.986628
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "markdown",
+        "y": 14.575827,
+        "x": 610.2677,
+        "symbolSize": 2.230064
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "ent",
+        "y": 533.3348,
+        "x": 172.2999,
+        "symbolSize": 1.0737435
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "node-gd",
+        "y": -254.01602,
+        "x": -60.33067,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "microtime",
+        "y": 98.89298,
+        "x": -1054.5382,
+        "symbolSize": 1.1954615
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "crc",
+        "y": 217.0216,
+        "x": 132.25229,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "rss",
+        "y": 76.558815,
+        "x": -446.1457,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "connect-mongodb",
+        "y": 425.84332,
+        "x": -1039.9854,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "express-partials",
+        "y": -273.29303,
+        "x": -98.9056,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "connect-flash",
+        "y": 207.55605,
+        "x": -392.5633,
+        "symbolSize": 0.95202565
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "sift",
+        "y": -1229.2162,
+        "x": 203.28523,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "charm",
+        "y": -855.05255,
+        "x": 684.35016,
+        "symbolSize": 1.1346025
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "showdown",
+        "y": -355.61545,
+        "x": 158.14978,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "connect-form",
+        "y": 620.0338,
+        "x": -932.84155,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "yaml",
+        "y": -317.5982,
+        "x": -279.82288,
+        "symbolSize": 1.4084679
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "zombie",
+        "y": -95.91513,
+        "x": -656.0366,
+        "symbolSize": 1.4388975
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "jugglingdb",
+        "y": -540.2533,
+        "x": 1273.7468,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "date-utils",
+        "y": -571.8109,
+        "x": -1065.7231,
+        "symbolSize": 0.98245513
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "regexp-quote",
+        "y": -193.41238,
+        "x": -275.24255,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "hiredis",
+        "y": 115.843506,
+        "x": -1046.4277,
+        "symbolSize": 4.23841
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "swig",
+        "y": -807.8819,
+        "x": -189.87314,
+        "symbolSize": 1.6214744
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "xmlhttprequest",
+        "y": -388.15134,
+        "x": -831.295,
+        "symbolSize": 1.8040513
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "keypress",
+        "y": -1097.4784,
+        "x": -158.4356,
+        "symbolSize": 1.3171794
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "formidable",
+        "y": 600.273,
+        "x": -921.4781,
+        "symbolSize": 3.4168139
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "node-static",
+        "y": -10.201102,
+        "x": 354.93808,
+        "symbolSize": 2.929942
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "imagemagick",
+        "y": 215.64548,
+        "x": -360.4117,
+        "symbolSize": 1.6823332
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "bootstrap",
+        "y": -731.5939,
+        "x": -528.3612,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "nconf",
+        "y": 511.7138,
+        "x": 915.0162,
+        "symbolSize": 4.3905573
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "htmlparser",
+        "y": -575.9647,
+        "x": -136.95193,
+        "symbolSize": 2.2909229
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "seq",
+        "y": -1037.4547,
+        "x": 734.58215,
+        "symbolSize": 1.7736217
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "azure",
+        "y": -44.75286,
+        "x": -406.81332,
+        "symbolSize": 1.0128845
+    }, {
+        "itemStyle": {"color": "#19c769"},
+        "name": "resolve",
+        "y": -923.4041,
+        "x": 695.9144,
+        "symbolSize": 1.6214744
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "generic-pool",
+        "y": -363.04434,
+        "x": -1126.6726,
+        "symbolSize": 1.5301858
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "pg",
+        "y": -251.6094,
+        "x": -1194.4589,
+        "symbolSize": 3.2038076
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "jqtpl",
+        "y": -843.789,
+        "x": -155.0798,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "npm",
+        "y": -86.14667,
+        "x": 1400.5574,
+        "symbolSize": 5.0904355
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "ncp",
+        "y": 112.65727,
+        "x": 718.81494,
+        "symbolSize": 2.7169356
+    }, {
+        "itemStyle": {"color": "#84c719"},
+        "name": "promised-io",
+        "y": 29.489025,
+        "x": -423.36993,
+        "symbolSize": 1.1346025
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "log",
+        "y": -523.3549,
+        "x": -19.44641,
+        "symbolSize": 1.1041731
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "zmq",
+        "y": 300.038,
+        "x": -294.43927,
+        "symbolSize": 1.1346025
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "nomnom",
+        "y": -597.822,
+        "x": 531.09247,
+        "symbolSize": 2.3213525
+    }, {
+        "itemStyle": {"color": "#1934c7"},
+        "name": "JSV",
+        "y": -247.65616,
+        "x": -240.78343,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "passport-oauth",
+        "y": 1229.6758,
+        "x": 527.8946,
+        "symbolSize": 3.6602497
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "passport-twitter",
+        "y": 1171.3842,
+        "x": 599.1357,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "methods",
+        "y": -49.73068,
+        "x": -1083.3983,
+        "symbolSize": 1.6823332
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "hat",
+        "y": 428.36014,
+        "x": -233.57118,
+        "symbolSize": 1.0737435
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "mongoskin",
+        "y": 548.74744,
+        "x": -1074.1718,
+        "symbolSize": 1.28675
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "traverse",
+        "y": -869.6334,
+        "x": 607.4505,
+        "symbolSize": 2.169205
+    }, {
+        "itemStyle": {"color": "#b919c7"},
+        "name": "bonzo",
+        "y": -1230.6212,
+        "x": -1068.8632,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "emailjs",
+        "y": -827.9733,
+        "x": -1057.115,
+        "symbolSize": 0.98245513
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "connect-mongo",
+        "y": 542.9935,
+        "x": -1111.1758,
+        "symbolSize": 0.98245513
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "bcrypt",
+        "y": 74.34341,
+        "x": -1062.3085,
+        "symbolSize": 2.1387753
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "ntwitter",
+        "y": 1392.1279,
+        "x": -288.68558,
+        "symbolSize": 0.98245513
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "juice",
+        "y": -363.1132,
+        "x": -774.99554,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "pause-stream",
+        "y": 747.02313,
+        "x": 325.80133,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "aug",
+        "y": 48.178226,
+        "x": 299.8556,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "sequelize",
+        "y": -618.1904,
+        "x": -736.92706,
+        "symbolSize": 1.4693269
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "tar.gz",
+        "y": -348.83762,
+        "x": 219.78055,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "progress",
+        "y": 398.53415,
+        "x": -321.36157,
+        "symbolSize": 1.4997563
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "jqueryify",
+        "y": -282.94342,
+        "x": -273.135,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "prettyjson",
+        "y": -330.08105,
+        "x": 677.47784,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "bops",
+        "y": 1038.1771,
+        "x": -594.73846,
+        "symbolSize": 0.92159617
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "string",
+        "y": 282.6386,
+        "x": 140.15605,
+        "symbolSize": 1.9561987
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "acorn",
+        "y": -244.40276,
+        "x": 44.10389,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#19c769"},
+        "name": "escodegen",
+        "y": -395.20676,
+        "x": 1190.5619,
+        "symbolSize": 2.4734998
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "ssh2",
+        "y": -344.42947,
+        "x": -37.119053,
+        "symbolSize": 1.043314
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "url",
+        "y": 999.7216,
+        "x": 756.65375,
+        "symbolSize": 1.2563205
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "ltx",
+        "y": 729.8443,
+        "x": -564.28973,
+        "symbolSize": 1.043314
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "util",
+        "y": 835.1216,
+        "x": -901.55054,
+        "symbolSize": 1.1041731
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "events",
+        "y": 244.31078,
+        "x": 183.56725,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "bouncy",
+        "y": 442.78336,
+        "x": 465.8834,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "mdns",
+        "y": -95.6844,
+        "x": -180.63136,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "simplicial-complex",
+        "y": -1043.0298,
+        "x": 952.3011,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "tmp",
+        "y": 86.25464,
+        "x": 981.84015,
+        "symbolSize": 1.1041731
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "bower",
+        "y": -25.807001,
+        "x": 950.3085,
+        "symbolSize": 2.3517818
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "rc",
+        "y": 288.68192,
+        "x": 964.8844,
+        "symbolSize": 0.7998782
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "unzip",
+        "y": 468.33945,
+        "x": 43.956604,
+        "symbolSize": 1.4084679
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "buffer-crc32",
+        "y": 34.657063,
+        "x": -959.97186,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "fresh",
+        "y": -176.22559,
+        "x": -847.5239,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "scaffolder",
+        "y": -156.31787,
+        "x": 39.511776,
+        "symbolSize": 0.64773077
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "memory-cache",
+        "y": -189.8613,
+        "x": -303.6808,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "restler",
+        "y": 206.90912,
+        "x": 214.60414,
+        "symbolSize": 2.3213525
+    }, {
+        "itemStyle": {"color": "#1934c7"},
+        "name": "stream-buffers",
+        "y": 382.2567,
+        "x": -296.40576,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "hook.io",
+        "y": 469.00113,
+        "x": 631.8956,
+        "symbolSize": 2.7169356
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "node-promise",
+        "y": 171.45761,
+        "x": -338.04773,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "pty.js",
+        "y": 413.48465,
+        "x": -96.42841,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c76919"},
+        "name": "fs.extra",
+        "y": -372.29422,
+        "x": 386.45148,
+        "symbolSize": 1.165032
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "now",
+        "y": 172.7239,
+        "x": -784.44946,
+        "symbolSize": 0.98245513
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "ansi-color",
+        "y": -602.7042,
+        "x": -1037.8462,
+        "symbolSize": 1.0737435
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "brfs",
+        "y": 1.9099157,
+        "x": 882.43463,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "bufferjs",
+        "y": -852.70483,
+        "x": -1094.3876,
+        "symbolSize": 0.98245513
+    }, {
+        "itemStyle": {"color": "#3419c7"},
+        "name": "mongojs",
+        "y": 527.018,
+        "x": -839.6172,
+        "symbolSize": 1.1346025
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "feedparser",
+        "y": 497.93576,
+        "x": -429.6493,
+        "symbolSize": 0.98245513
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "connect-xcors",
+        "y": 437.05307,
+        "x": -203.66441,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "broadway",
+        "y": 683.59796,
+        "x": 1014.90295,
+        "symbolSize": 0.64773077
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "restify",
+        "y": 937.7202,
+        "x": -84.80429,
+        "symbolSize": 2.564788
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "cliff",
+        "y": 465.76242,
+        "x": 1005.90594,
+        "symbolSize": 0.95202565
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "concat-stream",
+        "y": 804.2095,
+        "x": -39.16583,
+        "symbolSize": 1.5910448
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "docopt",
+        "y": 185.8025,
+        "x": 237.28787,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "JSONStream",
+        "y": 726.4061,
+        "x": 285.7015,
+        "symbolSize": 1.9561987
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "merge",
+        "y": 247.26161,
+        "x": 1.9699359,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "plist",
+        "y": 534.6398,
+        "x": -769.35736,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "natural",
+        "y": -906.51306,
+        "x": -159.15141,
+        "symbolSize": 0.7998782
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "cjson",
+        "y": -678.4876,
+        "x": 1057.1864,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "commondir",
+        "y": 465.1034,
+        "x": -184.05745,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "convert-source-map",
+        "y": 402.94788,
+        "x": -249.03694,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "global",
+        "y": 729.27844,
+        "x": -729.46423,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "map-stream",
+        "y": 929.72076,
+        "x": 303.13293,
+        "symbolSize": 0.7998782
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "ecstatic",
+        "y": 315.07608,
+        "x": 215.21909,
+        "symbolSize": 1.5301858
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "process",
+        "y": 712.41925,
+        "x": -716.8126,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "ms",
+        "y": 124.84042,
+        "x": -896.667,
+        "symbolSize": 1.165032
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "useragent",
+        "y": 67.39527,
+        "x": 738.78033,
+        "symbolSize": 1.1346025
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "colorful",
+        "y": -427.3014,
+        "x": -301.80933,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "rmdir",
+        "y": 473.40564,
+        "x": -211.67924,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "snockets",
+        "y": -572.307,
+        "x": -55.683994,
+        "symbolSize": 1.0128845
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "soupselect",
+        "y": -568.26624,
+        "x": 82.975624,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "mailer",
+        "y": -432.30478,
+        "x": 783.54236,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#3419c7"},
+        "name": "bson",
+        "y": 578.06537,
+        "x": -1087.7448,
+        "symbolSize": 0.64773077
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "keygrip",
+        "y": 1415.7012,
+        "x": -306.24265,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "fibers",
+        "y": 221.70279,
+        "x": 1370.3695,
+        "symbolSize": 1.5606153
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "archiver",
+        "y": 507.19348,
+        "x": -561.5876,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "aws2js",
+        "y": 67.3963,
+        "x": -71.76326,
+        "symbolSize": 0.7998782
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "websocket.io",
+        "y": -217.81973,
+        "x": -922.6484,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "node-stringprep",
+        "y": -243.02711,
+        "x": 130.45053,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#19c79f"},
+        "name": "reducers",
+        "y": -502.97894,
+        "x": -1274.6791,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#19c79f"},
+        "name": "reducible",
+        "y": -515.39526,
+        "x": -1286.8624,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#19c769"},
+        "name": "coffee-script-redux",
+        "y": -426.9769,
+        "x": 1172.5735,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "source-map",
+        "y": -401.11676,
+        "x": 1097.5082,
+        "symbolSize": 1.5606153
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "cssmin",
+        "y": -547.905,
+        "x": -586.3544,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "stack-trace",
+        "y": 752.4155,
+        "x": 786.0242,
+        "symbolSize": 1.043314
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "logmagic",
+        "y": -117.18427,
+        "x": -215.80826,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "string-to-js",
+        "y": 364.86655,
+        "x": 76.84316,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "uglifycss",
+        "y": -300.3197,
+        "x": -238.5077,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "passerror",
+        "y": 369.9193,
+        "x": -258.02805,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "time",
+        "y": 1.9313185,
+        "x": -998.3049,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "coco",
+        "y": 243.6456,
+        "x": 25.135742,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "eyes",
+        "y": 484.3233,
+        "x": 1062.8107,
+        "symbolSize": 2.564788
+    }, {
+        "itemStyle": {"color": "#19c784"},
+        "name": "cson",
+        "y": -1017.48755,
+        "x": 8.207783,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#c71984"},
+        "name": "resourceful",
+        "y": 617.45764,
+        "x": 230.89415,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#194fc7"},
+        "name": "execSync",
+        "y": -35.15042,
+        "x": -1274.4426,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "loader-utils",
+        "y": -1141.6609,
+        "x": 569.31177,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "lazy",
+        "y": 565.9527,
+        "x": 1158.8604,
+        "symbolSize": 1.2563205
+    }, {
+        "itemStyle": {"color": "#34c719"},
+        "name": "assert-plus",
+        "y": 1075.4281,
+        "x": 86.17554,
+        "symbolSize": 1.0737435
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "node-int64",
+        "y": 321.1519,
+        "x": 123.714005,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "wd",
+        "y": -229.05304,
+        "x": -143.04478,
+        "symbolSize": 1.3171794
+    }, {
+        "itemStyle": {"color": "#34c719"},
+        "name": "dtrace-provider",
+        "y": 1149.9846,
+        "x": 67.68434,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "buster-core",
+        "y": 174.64687,
+        "x": -2.8802125,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "iconv-lite",
+        "y": 252.77287,
+        "x": -305.2421,
+        "symbolSize": 2.169205
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "fs-watch-tree",
+        "y": -805.3652,
+        "x": -863.2866,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "cookiejar",
+        "y": 543.63135,
+        "x": -885.83795,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "glob-whatev",
+        "y": -364.26727,
+        "x": 925.2539,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "hapi",
+        "y": 288.86652,
+        "x": 322.17715,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "humanize",
+        "y": -237.40352,
+        "x": 9.4212,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "pretty-data",
+        "y": 520.63293,
+        "x": -202.25743,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "printf",
+        "y": -842.82385,
+        "x": 321.60583,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#1934c7"},
+        "name": "fairmont",
+        "y": -192.92662,
+        "x": -29.472069,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "typescript",
+        "y": 451.12564,
+        "x": -113.66281,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "chokidar",
+        "y": -143.56265,
+        "x": -320.56717,
+        "symbolSize": 2.169205
+    }, {
+        "itemStyle": {"color": "#c71984"},
+        "name": "node_hash",
+        "y": -126.50663,
+        "x": -151.39897,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "imap",
+        "y": 155.15096,
+        "x": -360.41003,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "password-hash",
+        "y": -632.2503,
+        "x": 94.21731,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "coffeecup",
+        "y": -872.26465,
+        "x": -216.88039,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#4fc719"},
+        "name": "libprotein",
+        "y": -91.98003,
+        "x": -253.22894,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "js-yaml",
+        "y": -631.6599,
+        "x": 761.8784,
+        "symbolSize": 5.2121534
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "dustjs-linkedin",
+        "y": -43.070652,
+        "x": 271.35666,
+        "symbolSize": 1.6519039
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "deep-extend",
+        "y": 317.19928,
+        "x": 976.4367,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "jquery-component",
+        "y": 406.12448,
+        "x": -189.71065,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#b919c7"},
+        "name": "jeesh",
+        "y": -1262.0615,
+        "x": -1080.7123,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "everyauth",
+        "y": 365.4934,
+        "x": -683.33185,
+        "symbolSize": 0.7998782
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "node-xml",
+        "y": -713.54456,
+        "x": -311.38135,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "sanitizer",
+        "y": 242.19066,
+        "x": -355.07367,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "prelude-ls",
+        "y": 1009.4159,
+        "x": -703.39124,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "sqwish",
+        "y": -771.2408,
+        "x": 393.27988,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "temporary",
+        "y": 399.0136,
+        "x": 878.17725,
+        "symbolSize": 0.8911666
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "opts",
+        "y": 278.39178,
+        "x": -379.19516,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#84c719"},
+        "name": "drip",
+        "y": -305.52167,
+        "x": -102.83262,
+        "symbolSize": 0.64773077
+    }, {
+        "itemStyle": {"color": "#84c719"},
+        "name": "sherlock",
+        "y": 137.86107,
+        "x": 272.0998,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#194fc7"},
+        "name": "deferred",
+        "y": -1267.6863,
+        "x": 55.40451,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#194fc7"},
+        "name": "es5-ext",
+        "y": -1268.802,
+        "x": 77.727,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "postal",
+        "y": -829.2972,
+        "x": -171.42653,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "jspack",
+        "y": 198.374,
+        "x": 48.071236,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "sphericalmercator",
+        "y": -296.1046,
+        "x": -46.726612,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "xml",
+        "y": 101.8597,
+        "x": -532.62463,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "ahr2",
+        "y": -875.5225,
+        "x": -1099.1768,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "negotiator",
+        "y": 604.249,
+        "x": 149.55948,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "thrift",
+        "y": 291.87094,
+        "x": 5.0832486,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "source-map-support",
+        "y": -422.4552,
+        "x": 1104.8613,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "cycle",
+        "y": 779.6143,
+        "x": 812.88934,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "sqlite3",
+        "y": 496.06732,
+        "x": -256.83957,
+        "symbolSize": 2.0170577
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "xmlbuilder",
+        "y": 471.48856,
+        "x": -699.2409,
+        "symbolSize": 1.6214744
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "amqp",
+        "y": 260.00815,
+        "x": 153.61894,
+        "symbolSize": 1.986628
+    }, {
+        "itemStyle": {"color": "#19c769"},
+        "name": "needle",
+        "y": 372.77905,
+        "x": -401.42374,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "stream-stack",
+        "y": -184.47614,
+        "x": 40.362274,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "read-stream",
+        "y": 631.4286,
+        "x": -648.8073,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "write-stream",
+        "y": 519.99194,
+        "x": -549.48267,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "ap",
+        "y": 446.58817,
+        "x": -144.28262,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "future",
+        "y": -867.01746,
+        "x": -1071.5906,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "sequence",
+        "y": -713.06415,
+        "x": 365.48837,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "extend",
+        "y": 263.66006,
+        "x": 105.55116,
+        "symbolSize": 1.7127627
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "fetch",
+        "y": -73.16297,
+        "x": -346.91745,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "wordwrap",
+        "y": -227.00159,
+        "x": 1031.0585,
+        "symbolSize": 0.8911666
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "line-reader",
+        "y": -127.01337,
+        "x": -249.51375,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "sockjs",
+        "y": 837.4435,
+        "x": -511.7771,
+        "symbolSize": 1.3780384
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "engine.io",
+        "y": -210.20392,
+        "x": -906.73157,
+        "symbolSize": 0.95202565
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "crdt",
+        "y": 947.0767,
+        "x": 442.64102,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "mux-demux",
+        "y": 1019.63727,
+        "x": 235.80574,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#194fc7"},
+        "name": "check-types",
+        "y": 269.9921,
+        "x": 48.660164,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "tunnel",
+        "y": -404.86826,
+        "x": -263.88354,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "devnull",
+        "y": -331.34488,
+        "x": 703.6627,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "d3",
+        "y": -284.5455,
+        "x": -825.9526,
+        "symbolSize": 0.98245513
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "ursa",
+        "y": 386.29645,
+        "x": 26.145437,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#b919c7"},
+        "name": "valentine",
+        "y": 134.40224,
+        "x": -344.4175,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "posix",
+        "y": 338.36703,
+        "x": -291.90344,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "twitter",
+        "y": 1405.1498,
+        "x": -266.97806,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "tav",
+        "y": 474.78238,
+        "x": -155.47731,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "expresso",
+        "y": 323.57846,
+        "x": 53.00957,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "less-middleware",
+        "y": -306.3249,
+        "x": 79.35592,
+        "symbolSize": 1.1954615
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "i18n",
+        "y": -98.362976,
+        "x": -999.24835,
+        "symbolSize": 0.64773077
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "deepmerge",
+        "y": -325.44296,
+        "x": -307.36197,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "pushover",
+        "y": 263.17816,
+        "x": 434.1828,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "wru",
+        "y": -353.93207,
+        "x": -288.18814,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "fs-tools",
+        "y": -228.75322,
+        "x": 141.40994,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "xregexp",
+        "y": 905.34344,
+        "x": -812.6837,
+        "symbolSize": 0.8911666
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "config",
+        "y": -228.0563,
+        "x": -316.3829,
+        "symbolSize": 1.225891
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "cron",
+        "y": 183.46445,
+        "x": -313.95187,
+        "symbolSize": 1.28675
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "carrier",
+        "y": 363.87253,
+        "x": -339.49533,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "classes-component",
+        "y": -257.2873,
+        "x": -265.0465,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "hbs",
+        "y": -499.19263,
+        "x": 633.9885,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "iced-coffee-script",
+        "y": 271.1939,
+        "x": -351.02173,
+        "symbolSize": 1.0128845
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "color",
+        "y": -103.35395,
+        "x": -286.06134,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "follow",
+        "y": 164.50044,
+        "x": -68.12239,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "node-proxy",
+        "y": 195.5393,
+        "x": -800.92053,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "phantomjs",
+        "y": 152.25127,
+        "x": 876.6572,
+        "symbolSize": 1.7431923
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "cloneextend",
+        "y": -229.28201,
+        "x": 102.871826,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "tracer",
+        "y": -422.93143,
+        "x": 542.50507,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "axon",
+        "y": -85.857155,
+        "x": -931.0856,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#c76919"},
+        "name": "nssocket",
+        "y": 535.05194,
+        "x": 1203.0873,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "dropbox",
+        "y": -1175.9393,
+        "x": -360.20236,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "dirty",
+        "y": 423.41846,
+        "x": -299.88483,
+        "symbolSize": 1.1346025
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "json-schema",
+        "y": 157.80661,
+        "x": -302.5626,
+        "symbolSize": 0.95202565
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "fileops",
+        "y": -329.38306,
+        "x": 137.90787,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "cluster",
+        "y": -411.9638,
+        "x": 159.38046,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "data2xml",
+        "y": 437.87564,
+        "x": -174.35355,
+        "symbolSize": 1.28675
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "aws-lib",
+        "y": 426.57806,
+        "x": -553.01654,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "node-phantom",
+        "y": 148.08284,
+        "x": -739.18555,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "MD5",
+        "y": -125.08657,
+        "x": -299.09158,
+        "symbolSize": 1.28675
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "gzippo",
+        "y": -2.3343637,
+        "x": -802.20013,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#34c719"},
+        "name": "extsprintf",
+        "y": 1132.2307,
+        "x": -342.06006,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#34c719"},
+        "name": "verror",
+        "y": 1140.7922,
+        "x": -322.61658,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "expect.js",
+        "y": 397.88303,
+        "x": -275.31586,
+        "symbolSize": 0.92159617
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "slug",
+        "y": 352.22522,
+        "x": 137.75543,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "diff",
+        "y": 200.05052,
+        "x": 422.92963,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "gravatar",
+        "y": 358.5257,
+        "x": -313.8026,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "dox",
+        "y": -780.07043,
+        "x": -568.47504,
+        "symbolSize": 1.1041731
+    }, {
+        "itemStyle": {"color": "#b919c7"},
+        "name": "reqwest",
+        "y": -53.65022,
+        "x": -178.76468,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#b919c7"},
+        "name": "qwery",
+        "y": -1192.8473,
+        "x": -1008.4534,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#b919c7"},
+        "name": "domready",
+        "y": -1242.8838,
+        "x": -1106.5486,
+        "symbolSize": 1.043314
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "openid",
+        "y": 412.59,
+        "x": -744.5368,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c74f19"},
+        "name": "longjohn",
+        "y": 211.15984,
+        "x": 1253.4175,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "node-sass",
+        "y": -105.74819,
+        "x": 565.4153,
+        "symbolSize": 1.0128845
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "entities",
+        "y": -421.44012,
+        "x": -378.36694,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "css-parse",
+        "y": 1261.7021,
+        "x": 133.59259,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "collections",
+        "y": -89.36993,
+        "x": -560.28796,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "gm",
+        "y": 313.9868,
+        "x": -312.90167,
+        "symbolSize": 1.986628
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "comb",
+        "y": 298.83356,
+        "x": 43.5338,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "routes",
+        "y": -336.05746,
+        "x": -69.0418,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "node-log",
+        "y": -626.0221,
+        "x": 393.26965,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "component-builder",
+        "y": -222.94373,
+        "x": -186.5061,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "hyperquest",
+        "y": 825.61273,
+        "x": 282.46597,
+        "symbolSize": 1.165032
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "win-spawn",
+        "y": -140.79959,
+        "x": -276.95242,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "graphviz",
+        "y": 162.88615,
+        "x": 1070.9303,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "yaml-js",
+        "y": -481.71786,
+        "x": -319.28323,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "get",
+        "y": 233.56311,
+        "x": 150.1213,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "kew",
+        "y": 184.67331,
+        "x": 922.88745,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "pause",
+        "y": 1019.8613,
+        "x": 101.822105,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "levelup",
+        "y": 714.339,
+        "x": -101.48984,
+        "symbolSize": 1.7431923
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "msgpack-js",
+        "y": 1044.0156,
+        "x": -577.04565,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "mincer",
+        "y": -335.08432,
+        "x": 192.89568,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "mongolian",
+        "y": 357.0469,
+        "x": -278.67535,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "riak-js",
+        "y": 109.45611,
+        "x": -554.1743,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "JSONSelect",
+        "y": -674.25793,
+        "x": 1032.245,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "spdy",
+        "y": 969.4349,
+        "x": -195.11647,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "mout",
+        "y": -462.46005,
+        "x": 62.060043,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "jQuery",
+        "y": -330.18433,
+        "x": -245.54166,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "contextify",
+        "y": -187.65944,
+        "x": -967.41296,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "level-sublevel",
+        "y": 989.98175,
+        "x": 8.113629,
+        "symbolSize": 0.98245513
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "tape",
+        "y": 783.2846,
+        "x": 277.2358,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "urllib",
+        "y": -233.95155,
+        "x": -80.95783,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "duplex",
+        "y": 1108.3147,
+        "x": 320.11743,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "dustjs-helpers",
+        "y": -261.29047,
+        "x": -302.44653,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "base64",
+        "y": -139.1424,
+        "x": -203.06262,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "elementtree",
+        "y": 637.6989,
+        "x": -549.07086,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "test",
+        "y": -1007.59406,
+        "x": -665.63513,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "i",
+        "y": 701.9958,
+        "x": 439.42538,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "ftp",
+        "y": 910.1776,
+        "x": -803.49304,
+        "symbolSize": 0.64773077
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "eyespect",
+        "y": -228.91646,
+        "x": -367.09158,
+        "symbolSize": 1.5606153
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "required-keys",
+        "y": -232.21452,
+        "x": -286.83685,
+        "symbolSize": 3.2038076
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "defaultable",
+        "y": 280.47433,
+        "x": 72.49314,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "node-inspector",
+        "y": 167.67815,
+        "x": -547.4956,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "portscanner",
+        "y": 131.61783,
+        "x": 103.87312,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "burrito",
+        "y": -825.43256,
+        "x": 397.68042,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "crafity-jstest",
+        "y": 9.04491,
+        "x": -371.97717,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "mu2",
+        "y": 408.01105,
+        "x": -118.72287,
+        "symbolSize": 0.7998782
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "trumpet",
+        "y": 707.18274,
+        "x": 125.280426,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "ref",
+        "y": -118.67814,
+        "x": -1197.3179,
+        "symbolSize": 0.98245513
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "ref-struct",
+        "y": -88.6764,
+        "x": -1152.9425,
+        "symbolSize": 0.64773077
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "ffi",
+        "y": -37.738617,
+        "x": -1253.4946,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#194fc7"},
+        "name": "promise",
+        "y": -660.9082,
+        "x": -798.1094,
+        "symbolSize": 0.92159617
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "scuttlebutt",
+        "y": 1085.3298,
+        "x": 394.12222,
+        "symbolSize": 0.64773077
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "form-data",
+        "y": 33.676548,
+        "x": -79.20483,
+        "symbolSize": 1.1954615
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "router",
+        "y": 456.70023,
+        "x": -234.20868,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "daemon",
+        "y": 421.1385,
+        "x": -137.47592,
+        "symbolSize": 1.0128845
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "sylvester",
+        "y": -948.5652,
+        "x": -188.29977,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "js2coffee",
+        "y": -1019.6858,
+        "x": -36.928844,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "cwise",
+        "y": -1295.9099,
+        "x": 519.8282,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#4f19c7"},
+        "name": "css",
+        "y": 1263.161,
+        "x": 123.637375,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "event-component",
+        "y": -71.59668,
+        "x": 239.32458,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "js-beautify",
+        "y": -108.54099,
+        "x": 474.7446,
+        "symbolSize": 0.92159617
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "q-io",
+        "y": -89.468155,
+        "x": -507.4834,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "JSONPath",
+        "y": -781.22864,
+        "x": -202.30043,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "mochiscript",
+        "y": 807.76044,
+        "x": 1096.608,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "leveldown",
+        "y": 341.01407,
+        "x": -775.22314,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c76919"},
+        "name": "Faker",
+        "y": 81.81546,
+        "x": 295.8043,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "nunjucks",
+        "y": 339.15506,
+        "x": 72.22817,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "sync",
+        "y": 217.82198,
+        "x": 1387.9712,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "extended",
+        "y": -962.1278,
+        "x": 657.08826,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "is-extended",
+        "y": -1022.18335,
+        "x": 637.44147,
+        "symbolSize": 0.64773077
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "array-extended",
+        "y": -995.6015,
+        "x": 563.8498,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#c7199f"},
+        "name": "put",
+        "y": -191.68346,
+        "x": -98.489784,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "deck",
+        "y": -56.16481,
+        "x": -243.28035,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "stream-combiner",
+        "y": 1035.9756,
+        "x": 270.37732,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#34c719"},
+        "name": "setimmediate",
+        "y": 536.1866,
+        "x": 6.1590505,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "uglify-js2",
+        "y": -105.903336,
+        "x": 874.6104,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "upnode",
+        "y": 1053.4792,
+        "x": -170.91736,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "fstream-ignore",
+        "y": 18.67513,
+        "x": 771.4828,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "smoosh",
+        "y": -627.7807,
+        "x": 576.5164,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "yui",
+        "y": 98.7935,
+        "x": 8.43035,
+        "symbolSize": 0.83030766
+    }, {
+        "itemStyle": {"color": "#19c79f"},
+        "name": "method",
+        "y": -512.6561,
+        "x": -1259.057,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "node-getopt",
+        "y": -264.04025,
+        "x": 52.247433,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "foreach",
+        "y": -342.96857,
+        "x": -85.643105,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "difflet",
+        "y": -828.60913,
+        "x": 666.7738,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "mootools",
+        "y": -271.17963,
+        "x": 78.709526,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "shoe",
+        "y": 906.18555,
+        "x": -374.22174,
+        "symbolSize": 1.0737435
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "sass",
+        "y": -205.86336,
+        "x": -5.8695316,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "level",
+        "y": 561.232,
+        "x": -458.09595,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "jsonify",
+        "y": 937.7613,
+        "x": 98.0932,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "markdown-js",
+        "y": -1001.21906,
+        "x": -673.2897,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "json5",
+        "y": -1142.8562,
+        "x": 559.41046,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c76919"},
+        "name": "yamljs",
+        "y": -625.1245,
+        "x": 429.07022,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "passport-http",
+        "y": 1112.6439,
+        "x": 586.60333,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "docparse-config",
+        "y": 343.87463,
+        "x": 1012.1537,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "seaport",
+        "y": 555.8372,
+        "x": 509.89893,
+        "symbolSize": 1.165032
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "imacros-read-file",
+        "y": 212.80945,
+        "x": 78.05023,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "loggly-console-logger",
+        "y": 724.5533,
+        "x": 855.0759,
+        "symbolSize": 0.58687174
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "apn",
+        "y": -407.88702,
+        "x": -459.53925,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "node-watch",
+        "y": 360.09363,
+        "x": 35.46165,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#84c719"},
+        "name": "tea-extend",
+        "y": 335.02548,
+        "x": -347.4769,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#3419c7"},
+        "name": "qbox",
+        "y": -164.44691,
+        "x": -25.2235,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "passport-google-oauth",
+        "y": 1153.7697,
+        "x": 589.3833,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c74f19"},
+        "name": "ar-drone",
+        "y": -290.17487,
+        "x": 192.4303,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#19c74f"},
+        "name": "forEachAsync",
+        "y": -684.2996,
+        "x": 378.59113,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "yuidocjs",
+        "y": -273.36804,
+        "x": 444.81802,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "fs",
+        "y": 458.85266,
+        "x": -260.27344,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "snippets",
+        "y": -277.18225,
+        "x": -223.52954,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "node-hid",
+        "y": -220.93335,
+        "x": -213.05804,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "sf",
+        "y": 76.88708,
+        "x": -167.24387,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#c71984"},
+        "name": "revalidator",
+        "y": 787.1881,
+        "x": 498.58612,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "googleclientlogin",
+        "y": -304.12473,
+        "x": -80.95831,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c73419"},
+        "name": "ee-class",
+        "y": 174.6967,
+        "x": -397.30457,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "mongoose-types",
+        "y": 375.1962,
+        "x": -1176.3058,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c74f19"},
+        "name": "funargs",
+        "y": 421.4906,
+        "x": 1178.4454,
+        "symbolSize": 1.1954615
+    }, {
+        "itemStyle": {"color": "#b9c719"},
+        "name": "simplesmtp",
+        "y": -563.16315,
+        "x": 867.2839,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#b919c7"},
+        "name": "ender-bootstrap-base",
+        "y": -1214.9171,
+        "x": -1119.1847,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#b919c7"},
+        "name": "ender-bootstrap-transition",
+        "y": -1175.8195,
+        "x": -1094.6414,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#9f19c7"},
+        "name": "engine.io-client",
+        "y": -288.4646,
+        "x": -925.3114,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "monotonic-timestamp",
+        "y": 1104.9058,
+        "x": 374.07852,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#34c719"},
+        "name": "ldapjs",
+        "y": 995.9913,
+        "x": 197.95416,
+        "symbolSize": 0.70858973
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "LiveScript",
+        "y": 1017.7713,
+        "x": -697.17413,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#19b9c7"},
+        "name": "require-like",
+        "y": 410.90912,
+        "x": -163.40764,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "reconnect",
+        "y": 699.574,
+        "x": -287.58524,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "from",
+        "y": 928.98145,
+        "x": 332.75525,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#1934c7"},
+        "name": "eventproxy",
+        "y": -60.85565,
+        "x": -296.83182,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "exec-sync",
+        "y": -16.778877,
+        "x": -1259.8529,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#9fc719"},
+        "name": "passport-facebook",
+        "y": 1156.7816,
+        "x": 612.5751,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "update-notifier",
+        "y": 130.25168,
+        "x": 386.5853,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#19c719"},
+        "name": "utilities",
+        "y": -495.67886,
+        "x": 962.3648,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#3419c7"},
+        "name": "fire",
+        "y": 26.584068,
+        "x": 625.1236,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c79f19"},
+        "name": "yamlish",
+        "y": -378.95523,
+        "x": 516.29596,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#34c719"},
+        "name": "posix-getopt",
+        "y": 247.62514,
+        "x": 79.496185,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#34c719"},
+        "name": "latest",
+        "y": -97.57242,
+        "x": 1358.8243,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c76919"},
+        "name": "yeoman-generator",
+        "y": -186.74983,
+        "x": 190.55476,
+        "symbolSize": 5.6381664
+    }, {
+        "itemStyle": {"color": "#1984c7"},
+        "name": "jsftp",
+        "y": 475.91956,
+        "x": 238.58153,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "funkit",
+        "y": -254.73396,
+        "x": -112.39201,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#84c719"},
+        "name": "xmlrpc",
+        "y": 566.62756,
+        "x": -646.174,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "gate",
+        "y": -207.42516,
+        "x": -233.15547,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c7194f"},
+        "name": "mysql-libmysqlclient",
+        "y": -242.4547,
+        "x": 88.063034,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "twit",
+        "y": 1252.696,
+        "x": -227.96336,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#34c719"},
+        "name": "ip",
+        "y": 578.1533,
+        "x": 32.292908,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt-contrib-cssmin",
+        "y": -857.68835,
+        "x": -357.30762,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt-contrib-nodeunit",
+        "y": -535.1022,
+        "x": 266.95883,
+        "symbolSize": 0.6173013
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "gzip-js",
+        "y": 241.80016,
+        "x": 46.09004,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "grunt-lib-phantomjs",
+        "y": 362.2341,
+        "x": 879.5071,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#1919c7"},
+        "name": "saucelabs",
+        "y": -214.85513,
+        "x": 57.529392,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c71919"},
+        "name": "node-syslog",
+        "y": -264.05222,
+        "x": 125.97945,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#c719b9"},
+        "name": "hashring",
+        "y": 1145.2965,
+        "x": -244.37975,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#19c734"},
+        "name": "hypher",
+        "y": -297.57465,
+        "x": 113.438896,
+        "symbolSize": 1.2563205
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "soda",
+        "y": -351.1734,
+        "x": -19.649744,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "joose",
+        "y": 20.20147,
+        "x": 1053.6621,
+        "symbolSize": 0.98245513
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "iwebpp.io",
+        "y": 989.7358,
+        "x": -517.65106,
+        "symbolSize": 0.64773077
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "siphash",
+        "y": 986.30225,
+        "x": -539.15283,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "jsgui-lang-essentials",
+        "y": -574.97003,
+        "x": 1197.1713,
+        "symbolSize": 0.43472436
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "pull-stream",
+        "y": 185.75874,
+        "x": -367.50992,
+        "symbolSize": 1.043314
+    }, {
+        "itemStyle": {"color": "#8419c7"},
+        "name": "konphyg",
+        "y": 203.21783,
+        "x": -333.21362,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "level-live-stream",
+        "y": 291.01462,
+        "x": 101.217674,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#19c7b9"},
+        "name": "logmimosa",
+        "y": -583.9365,
+        "x": -1048.6061,
+        "symbolSize": 0.76944876
+    }, {
+        "itemStyle": {"color": "#c74f19"},
+        "name": "node-document-storage",
+        "y": 183.08963,
+        "x": 1286.1066,
+        "symbolSize": 0.67816025
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "noflo",
+        "y": -971.328,
+        "x": 310.00107,
+        "symbolSize": 1.4388975
+    }, {
+        "itemStyle": {"color": "#c78419"},
+        "name": "spine",
+        "y": 225.49977,
+        "x": 13.505666,
+        "symbolSize": 0.4651538
+    }, {
+        "itemStyle": {"color": "#c71969"},
+        "name": "punch",
+        "y": -520.8965,
+        "x": -451.1391,
+        "symbolSize": 0.8607372
+    }, {
+        "itemStyle": {"color": "#6919c7"},
+        "name": "quiver-error",
+        "y": -386.996,
+        "x": 8.449575,
+        "symbolSize": 0.52601284
+    }, {
+        "itemStyle": {"color": "#1969c7"},
+        "name": "rle-core",
+        "y": 39.557953,
+        "x": -379.84222,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#199fc7"},
+        "name": "joosex-namespace-depended",
+        "y": 32.93445,
+        "x": 1071.2402,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#69c719"},
+        "name": "sourcemint-util-js",
+        "y": -501.3569,
+        "x": -121.91505,
+        "symbolSize": 0.7390192
+    }, {
+        "itemStyle": {"color": "#c7b919"},
+        "name": "spmrc",
+        "y": 138.83679,
+        "x": -316.52774,
+        "symbolSize": 0.40429485
+    }, {
+        "itemStyle": {"color": "#c71934"},
+        "name": "tower-emitter",
+        "y": 1096.0394,
+        "x": -553.1255,
+        "symbolSize": 0.55644226
+    }, {
+        "itemStyle": {"color": "#c71934"},
+        "name": "tower-directive",
+        "y": 1093.3612,
+        "x": -543.5085,
+        "symbolSize": 0.4955833
+    }, {
+        "itemStyle": {"color": "#c74f19"},
+        "name": "voxel",
+        "y": 321.36972,
+        "x": 618.49976,
+        "symbolSize": 0.52601284
+    }],
+    "links": [{
+        "source": "jquery",
+        "target": "jsdom"
+    }, {
+        "source": "jquery",
+        "target": "xmlhttprequest"
+    }, {
+        "source": "jquery",
+        "target": "htmlparser"
+    }, {
+        "source": "jquery",
+        "target": "contextify"
+    }, {
+        "source": "backbone",
+        "target": "underscore"
+    }, {
+        "source": "faye",
+        "target": "faye-websocket"
+    }, {
+        "source": "faye",
+        "target": "cookiejar"
+    }, {
+        "source": "socket.io",
+        "target": "redis"
+    }, {
+        "source": "socket.io",
+        "target": "socket.io-client"
+    }, {
+        "source": "mongoose",
+        "target": "mongodb"
+    }, {
+        "source": "mongoose",
+        "target": "hooks"
+    }, {
+        "source": "mongoose",
+        "target": "ms"
+    }, {
+        "source": "cheerio",
+        "target": "underscore"
+    }, {
+        "source": "cheerio",
+        "target": "htmlparser2"
+    }, {
+        "source": "cheerio",
+        "target": "entities"
+    }, {
+        "source": "express",
+        "target": "mkdirp"
+    }, {
+        "source": "express",
+        "target": "connect"
+    }, {
+        "source": "express",
+        "target": "commander"
+    }, {
+        "source": "express",
+        "target": "debug"
+    }, {
+        "source": "express",
+        "target": "cookie"
+    }, {
+        "source": "express",
+        "target": "send"
+    }, {
+        "source": "express",
+        "target": "methods"
+    }, {
+        "source": "express",
+        "target": "buffer-crc32"
+    }, {
+        "source": "express",
+        "target": "fresh"
+    }, {
+        "source": "connect",
+        "target": "bytes"
+    }, {
+        "source": "connect",
+        "target": "debug"
+    }, {
+        "source": "connect",
+        "target": "qs"
+    }, {
+        "source": "connect",
+        "target": "cookie"
+    }, {
+        "source": "connect",
+        "target": "send"
+    }, {
+        "source": "connect",
+        "target": "formidable"
+    }, {
+        "source": "connect",
+        "target": "methods"
+    }, {
+        "source": "connect",
+        "target": "buffer-crc32"
+    }, {
+        "source": "connect",
+        "target": "fresh"
+    }, {
+        "source": "connect",
+        "target": "pause"
+    }, {
+        "source": "temp",
+        "target": "rimraf"
+    }, {
+        "source": "request",
+        "target": "node-uuid"
+    }, {
+        "source": "request",
+        "target": "mime"
+    }, {
+        "source": "request",
+        "target": "qs"
+    }, {
+        "source": "request",
+        "target": "form-data"
+    }, {
+        "source": "event-stream",
+        "target": "through"
+    }, {
+        "source": "event-stream",
+        "target": "duplexer"
+    }, {
+        "source": "event-stream",
+        "target": "split"
+    }, {
+        "source": "event-stream",
+        "target": "pause-stream"
+    }, {
+        "source": "event-stream",
+        "target": "map-stream"
+    }, {
+        "source": "event-stream",
+        "target": "stream-combiner"
+    }, {
+        "source": "event-stream",
+        "target": "from"
+    }, {
+        "source": "log4js",
+        "target": "async"
+    }, {
+        "source": "log4js",
+        "target": "semver"
+    }, {
+        "source": "log4js",
+        "target": "readable-stream"
+    }, {
+        "source": "optimist",
+        "target": "wordwrap"
+    }, {
+        "source": "mocha",
+        "target": "mkdirp"
+    }, {
+        "source": "mocha",
+        "target": "commander"
+    }, {
+        "source": "mocha",
+        "target": "glob"
+    }, {
+        "source": "mocha",
+        "target": "debug"
+    }, {
+        "source": "mocha",
+        "target": "jade"
+    }, {
+        "source": "mocha",
+        "target": "growl"
+    }, {
+        "source": "mocha",
+        "target": "ms"
+    }, {
+        "source": "mocha",
+        "target": "diff"
+    }, {
+        "source": "prompt",
+        "target": "read"
+    }, {
+        "source": "prompt",
+        "target": "pkginfo"
+    }, {
+        "source": "prompt",
+        "target": "winston"
+    }, {
+        "source": "prompt",
+        "target": "utile"
+    }, {
+        "source": "prompt",
+        "target": "revalidator"
+    }, {
+        "source": "commander",
+        "target": "keypress"
+    }, {
+        "source": "grunt",
+        "target": "lodash"
+    }, {
+        "source": "grunt",
+        "target": "dateformat"
+    }, {
+        "source": "grunt",
+        "target": "async"
+    }, {
+        "source": "grunt",
+        "target": "underscore.string"
+    }, {
+        "source": "grunt",
+        "target": "colors"
+    }, {
+        "source": "grunt",
+        "target": "minimatch"
+    }, {
+        "source": "grunt",
+        "target": "nopt"
+    }, {
+        "source": "grunt",
+        "target": "rimraf"
+    }, {
+        "source": "grunt",
+        "target": "which"
+    }, {
+        "source": "grunt",
+        "target": "glob"
+    }, {
+        "source": "grunt",
+        "target": "coffee-script"
+    }, {
+        "source": "grunt",
+        "target": "findup-sync"
+    }, {
+        "source": "grunt",
+        "target": "eventemitter2"
+    }, {
+        "source": "grunt",
+        "target": "iconv-lite"
+    }, {
+        "source": "grunt",
+        "target": "js-yaml"
+    }, {
+        "source": "grunt-contrib-less",
+        "target": "less"
+    }, {
+        "source": "grunt-contrib-less",
+        "target": "grunt-lib-contrib"
+    }, {
+        "source": "grunt-contrib-jshint",
+        "target": "jshint"
+    }, {
+        "source": "grunt-contrib-uglify",
+        "target": "uglify-js"
+    }, {
+        "source": "grunt-contrib-uglify",
+        "target": "grunt-lib-contrib"
+    }, {
+        "source": "grunt-contrib-watch",
+        "target": "gaze"
+    }, {
+        "source": "grunt-contrib-watch",
+        "target": "tiny-lr"
+    }, {
+        "source": "http-proxy",
+        "target": "optimist"
+    }, {
+        "source": "http-proxy",
+        "target": "colors"
+    }, {
+        "source": "http-proxy",
+        "target": "pkginfo"
+    }, {
+        "source": "http-proxy",
+        "target": "utile"
+    }, {
+        "source": "mongodb",
+        "target": "bson"
+    }, {
+        "source": "minimatch",
+        "target": "lru-cache"
+    }, {
+        "source": "nopt",
+        "target": "abbrev"
+    }, {
+        "source": "rimraf",
+        "target": "graceful-fs"
+    }, {
+        "source": "tar",
+        "target": "fstream"
+    }, {
+        "source": "tar",
+        "target": "inherits"
+    }, {
+        "source": "fstream",
+        "target": "mkdirp"
+    }, {
+        "source": "fstream",
+        "target": "graceful-fs"
+    }, {
+        "source": "fstream",
+        "target": "rimraf"
+    }, {
+        "source": "fstream",
+        "target": "inherits"
+    }, {
+        "source": "node-gyp",
+        "target": "mkdirp"
+    }, {
+        "source": "node-gyp",
+        "target": "request"
+    }, {
+        "source": "node-gyp",
+        "target": "semver"
+    }, {
+        "source": "node-gyp",
+        "target": "graceful-fs"
+    }, {
+        "source": "node-gyp",
+        "target": "minimatch"
+    }, {
+        "source": "node-gyp",
+        "target": "nopt"
+    }, {
+        "source": "node-gyp",
+        "target": "rimraf"
+    }, {
+        "source": "node-gyp",
+        "target": "which"
+    }, {
+        "source": "node-gyp",
+        "target": "tar"
+    }, {
+        "source": "node-gyp",
+        "target": "fstream"
+    }, {
+        "source": "node-gyp",
+        "target": "npmlog"
+    }, {
+        "source": "node-gyp",
+        "target": "glob"
+    }, {
+        "source": "node-gyp",
+        "target": "osenv"
+    }, {
+        "source": "fstream-npm",
+        "target": "inherits"
+    }, {
+        "source": "fstream-npm",
+        "target": "fstream-ignore"
+    }, {
+        "source": "npmlog",
+        "target": "ansi"
+    }, {
+        "source": "npm-registry-client",
+        "target": "mkdirp"
+    }, {
+        "source": "npm-registry-client",
+        "target": "request"
+    }, {
+        "source": "npm-registry-client",
+        "target": "semver"
+    }, {
+        "source": "npm-registry-client",
+        "target": "slide"
+    }, {
+        "source": "npm-registry-client",
+        "target": "graceful-fs"
+    }, {
+        "source": "npm-registry-client",
+        "target": "rimraf"
+    }, {
+        "source": "npm-registry-client",
+        "target": "npmlog"
+    }, {
+        "source": "npm-registry-client",
+        "target": "retry"
+    }, {
+        "source": "read-package-json",
+        "target": "graceful-fs"
+    }, {
+        "source": "read-package-json",
+        "target": "lru-cache"
+    }, {
+        "source": "read-package-json",
+        "target": "glob"
+    }, {
+        "source": "glob",
+        "target": "graceful-fs"
+    }, {
+        "source": "glob",
+        "target": "minimatch"
+    }, {
+        "source": "glob",
+        "target": "inherits"
+    }, {
+        "source": "npmconf",
+        "target": "mkdirp"
+    }, {
+        "source": "npmconf",
+        "target": "semver"
+    }, {
+        "source": "npmconf",
+        "target": "ini"
+    }, {
+        "source": "npmconf",
+        "target": "nopt"
+    }, {
+        "source": "npmconf",
+        "target": "inherits"
+    }, {
+        "source": "npmconf",
+        "target": "osenv"
+    }, {
+        "source": "npmconf",
+        "target": "once"
+    }, {
+        "source": "findup-sync",
+        "target": "lodash"
+    }, {
+        "source": "findup-sync",
+        "target": "glob"
+    }, {
+        "source": "node-minify",
+        "target": "uglify-js"
+    }, {
+        "source": "node-minify",
+        "target": "sqwish"
+    }, {
+        "source": "bal-util",
+        "target": "extendr"
+    }, {
+        "source": "bal-util",
+        "target": "taskgroup"
+    }, {
+        "source": "bal-util",
+        "target": "typechecker"
+    }, {
+        "source": "extendr",
+        "target": "typechecker"
+    }, {
+        "source": "taskgroup",
+        "target": "eventemitter2"
+    }, {
+        "source": "underscorem",
+        "target": "underscore"
+    }, {
+        "source": "hubot",
+        "target": "express"
+    }, {
+        "source": "hubot",
+        "target": "coffee-script"
+    }, {
+        "source": "hubot",
+        "target": "optparse"
+    }, {
+        "source": "hubot",
+        "target": "log"
+    }, {
+        "source": "ndarray-ops",
+        "target": "ndarray"
+    }, {
+        "source": "ndarray-ops",
+        "target": "cwise"
+    }, {
+        "source": "typedarray-pool",
+        "target": "bit-twiddle"
+    }, {
+        "source": "jade",
+        "target": "mkdirp"
+    }, {
+        "source": "jade",
+        "target": "commander"
+    }, {
+        "source": "nodemailer",
+        "target": "simplesmtp"
+    }, {
+        "source": "eco",
+        "target": "coffee-script"
+    }, {
+        "source": "filed",
+        "target": "mime"
+    }, {
+        "source": "flatiron",
+        "target": "optimist"
+    }, {
+        "source": "flatiron",
+        "target": "prompt"
+    }, {
+        "source": "flatiron",
+        "target": "pkginfo"
+    }, {
+        "source": "flatiron",
+        "target": "director"
+    }, {
+        "source": "flatiron",
+        "target": "broadway"
+    }, {
+        "source": "winston",
+        "target": "async"
+    }, {
+        "source": "winston",
+        "target": "request"
+    }, {
+        "source": "winston",
+        "target": "colors"
+    }, {
+        "source": "winston",
+        "target": "pkginfo"
+    }, {
+        "source": "winston",
+        "target": "stack-trace"
+    }, {
+        "source": "winston",
+        "target": "eyes"
+    }, {
+        "source": "winston",
+        "target": "cycle"
+    }, {
+        "source": "coffeekup",
+        "target": "coffee-script"
+    }, {
+        "source": "stylus",
+        "target": "mkdirp"
+    }, {
+        "source": "stylus",
+        "target": "debug"
+    }, {
+        "source": "stylus",
+        "target": "cssom"
+    }, {
+        "source": "xml2json",
+        "target": "node-expat"
+    }, {
+        "source": "nano",
+        "target": "underscore"
+    }, {
+        "source": "nano",
+        "target": "request"
+    }, {
+        "source": "nano",
+        "target": "errs"
+    }, {
+        "source": "nano",
+        "target": "follow"
+    }, {
+        "source": "less",
+        "target": "mkdirp"
+    }, {
+        "source": "less",
+        "target": "request"
+    }, {
+        "source": "less",
+        "target": "mime"
+    }, {
+        "source": "less",
+        "target": "ycssmin"
+    }, {
+        "source": "uglify-js",
+        "target": "async"
+    }, {
+        "source": "uglify-js",
+        "target": "optimist"
+    }, {
+        "source": "uglify-js",
+        "target": "source-map"
+    }, {
+        "source": "clean-css",
+        "target": "commander"
+    }, {
+        "source": "datetime",
+        "target": "vows"
+    }, {
+        "source": "vows",
+        "target": "eyes"
+    }, {
+        "source": "vows",
+        "target": "diff"
+    }, {
+        "source": "docco",
+        "target": "underscore"
+    }, {
+        "source": "docco",
+        "target": "commander"
+    }, {
+        "source": "docco",
+        "target": "marked"
+    }, {
+        "source": "docco",
+        "target": "highlight.js"
+    }, {
+        "source": "xml2js",
+        "target": "sax"
+    }, {
+        "source": "libxmljs",
+        "target": "bindings"
+    }, {
+        "source": "handlebars",
+        "target": "optimist"
+    }, {
+        "source": "handlebars",
+        "target": "uglify-js"
+    }, {
+        "source": "tap",
+        "target": "mkdirp"
+    }, {
+        "source": "tap",
+        "target": "slide"
+    }, {
+        "source": "tap",
+        "target": "nopt"
+    }, {
+        "source": "tap",
+        "target": "inherits"
+    }, {
+        "source": "tap",
+        "target": "glob"
+    }, {
+        "source": "tap",
+        "target": "deep-equal"
+    }, {
+        "source": "tap",
+        "target": "difflet"
+    }, {
+        "source": "tap",
+        "target": "yamlish"
+    }, {
+        "source": "walk",
+        "target": "forEachAsync"
+    }, {
+        "source": "split",
+        "target": "through"
+    }, {
+        "source": "memcached",
+        "target": "hashring"
+    }, {
+        "source": "express-resource",
+        "target": "debug"
+    }, {
+        "source": "express-resource",
+        "target": "lingo"
+    }, {
+        "source": "express-resource",
+        "target": "methods"
+    }, {
+        "source": "connect-assets",
+        "target": "snockets"
+    }, {
+        "source": "knox",
+        "target": "mime"
+    }, {
+        "source": "knox",
+        "target": "debug"
+    }, {
+        "source": "knox",
+        "target": "xml2js"
+    }, {
+        "source": "aws-sdk",
+        "target": "xml2js"
+    }, {
+        "source": "aws-sdk",
+        "target": "xmlbuilder"
+    }, {
+        "source": "fs-extra",
+        "target": "mkdirp"
+    }, {
+        "source": "fs-extra",
+        "target": "rimraf"
+    }, {
+        "source": "fs-extra",
+        "target": "ncp"
+    }, {
+        "source": "awssum",
+        "target": "underscore"
+    }, {
+        "source": "awssum",
+        "target": "xml2js"
+    }, {
+        "source": "cradle",
+        "target": "request"
+    }, {
+        "source": "cradle",
+        "target": "follow"
+    }, {
+        "source": "cli-color",
+        "target": "es5-ext"
+    }, {
+        "source": "hashish",
+        "target": "traverse"
+    }, {
+        "source": "htmlparser2",
+        "target": "readable-stream"
+    }, {
+        "source": "netmask",
+        "target": "coffee-script"
+    }, {
+        "source": "pkgcloud",
+        "target": "underscore"
+    }, {
+        "source": "pkgcloud",
+        "target": "async"
+    }, {
+        "source": "pkgcloud",
+        "target": "request"
+    }, {
+        "source": "pkgcloud",
+        "target": "mime"
+    }, {
+        "source": "pkgcloud",
+        "target": "pkginfo"
+    }, {
+        "source": "pkgcloud",
+        "target": "filed"
+    }, {
+        "source": "pkgcloud",
+        "target": "xml2js"
+    }, {
+        "source": "pkgcloud",
+        "target": "errs"
+    }, {
+        "source": "pkgcloud",
+        "target": "through"
+    }, {
+        "source": "pkgcloud",
+        "target": "eventemitter2"
+    }, {
+        "source": "pkgcloud",
+        "target": "qs"
+    }, {
+        "source": "pkgcloud",
+        "target": "utile"
+    }, {
+        "source": "pkgcloud",
+        "target": "ip"
+    }, {
+        "source": "mailparser",
+        "target": "mime"
+    }, {
+        "source": "mailparser",
+        "target": "iconv"
+    }, {
+        "source": "portfinder",
+        "target": "mkdirp"
+    }, {
+        "source": "forever-monitor",
+        "target": "minimatch"
+    }, {
+        "source": "forever-monitor",
+        "target": "watch"
+    }, {
+        "source": "forever-monitor",
+        "target": "pkginfo"
+    }, {
+        "source": "forever-monitor",
+        "target": "utile"
+    }, {
+        "source": "forever-monitor",
+        "target": "broadway"
+    }, {
+        "source": "passport",
+        "target": "pkginfo"
+    }, {
+        "source": "passport",
+        "target": "pause"
+    }, {
+        "source": "jshint",
+        "target": "underscore"
+    }, {
+        "source": "jshint",
+        "target": "minimatch"
+    }, {
+        "source": "jshint",
+        "target": "cli"
+    }, {
+        "source": "jshint",
+        "target": "shelljs"
+    }, {
+        "source": "nib",
+        "target": "stylus"
+    }, {
+        "source": "grunt-contrib-stylus",
+        "target": "stylus"
+    }, {
+        "source": "grunt-contrib-stylus",
+        "target": "nib"
+    }, {
+        "source": "phantom",
+        "target": "dnode"
+    }, {
+        "source": "phantom",
+        "target": "shoe"
+    }, {
+        "source": "jslint",
+        "target": "nopt"
+    }, {
+        "source": "bufferstream",
+        "target": "buffertools"
+    }, {
+        "source": "browserify",
+        "target": "event-stream"
+    }, {
+        "source": "browserify",
+        "target": "optimist"
+    }, {
+        "source": "browserify",
+        "target": "inherits"
+    }, {
+        "source": "browserify",
+        "target": "through"
+    }, {
+        "source": "browserify",
+        "target": "duplexer"
+    }, {
+        "source": "browserify",
+        "target": "shell-quote"
+    }, {
+        "source": "browserify",
+        "target": "concat-stream"
+    }, {
+        "source": "browserify",
+        "target": "JSONStream"
+    }, {
+        "source": "nodeunit",
+        "target": "tap"
+    }, {
+        "source": "vine",
+        "target": "outcome"
+    }, {
+        "source": "findit",
+        "target": "seq"
+    }, {
+        "source": "plugin",
+        "target": "underscore"
+    }, {
+        "source": "plugin",
+        "target": "async"
+    }, {
+        "source": "plugin",
+        "target": "structr"
+    }, {
+        "source": "plugin",
+        "target": "step"
+    }, {
+        "source": "plugin",
+        "target": "outcome"
+    }, {
+        "source": "plugin",
+        "target": "dref"
+    }, {
+        "source": "plugin",
+        "target": "toarray"
+    }, {
+        "source": "plugin",
+        "target": "sift"
+    }, {
+        "source": "plugin",
+        "target": "resolve"
+    }, {
+        "source": "sk",
+        "target": "dateformat"
+    }, {
+        "source": "sk",
+        "target": "colors"
+    }, {
+        "source": "sk",
+        "target": "structr"
+    }, {
+        "source": "sk",
+        "target": "htmlparser"
+    }, {
+        "source": "sk",
+        "target": "printf"
+    }, {
+        "source": "stitch",
+        "target": "underscore"
+    }, {
+        "source": "stitch",
+        "target": "async"
+    }, {
+        "source": "jasmine-node",
+        "target": "underscore"
+    }, {
+        "source": "jasmine-node",
+        "target": "requirejs"
+    }, {
+        "source": "jasmine-node",
+        "target": "mkdirp"
+    }, {
+        "source": "jasmine-node",
+        "target": "coffee-script"
+    }, {
+        "source": "jasmine-node",
+        "target": "gaze"
+    }, {
+        "source": "jasmine-node",
+        "target": "walkdir"
+    }, {
+        "source": "jsdom",
+        "target": "request"
+    }, {
+        "source": "jsdom",
+        "target": "htmlparser2"
+    }, {
+        "source": "jsdom",
+        "target": "cssom"
+    }, {
+        "source": "jsdom",
+        "target": "contextify"
+    }, {
+        "source": "superagent",
+        "target": "mime"
+    }, {
+        "source": "superagent",
+        "target": "debug"
+    }, {
+        "source": "superagent",
+        "target": "emitter-component"
+    }, {
+        "source": "superagent",
+        "target": "qs"
+    }, {
+        "source": "superagent",
+        "target": "formidable"
+    }, {
+        "source": "superagent",
+        "target": "methods"
+    }, {
+        "source": "superagent",
+        "target": "cookiejar"
+    }, {
+        "source": "readdirp",
+        "target": "graceful-fs"
+    }, {
+        "source": "readdirp",
+        "target": "minimatch"
+    }, {
+        "source": "ws",
+        "target": "commander"
+    }, {
+        "source": "node-xmpp",
+        "target": "faye-websocket"
+    }, {
+        "source": "node-xmpp",
+        "target": "request"
+    }, {
+        "source": "node-xmpp",
+        "target": "mocha"
+    }, {
+        "source": "node-xmpp",
+        "target": "browserify"
+    }, {
+        "source": "node-xmpp",
+        "target": "node-expat"
+    }, {
+        "source": "node-xmpp",
+        "target": "ltx"
+    }, {
+        "source": "watchr",
+        "target": "bal-util"
+    }, {
+        "source": "watchr",
+        "target": "extendr"
+    }, {
+        "source": "watchr",
+        "target": "taskgroup"
+    }, {
+        "source": "watchr",
+        "target": "typechecker"
+    }, {
+        "source": "celeri",
+        "target": "underscore"
+    }, {
+        "source": "celeri",
+        "target": "colors"
+    }, {
+        "source": "celeri",
+        "target": "structr"
+    }, {
+        "source": "celeri",
+        "target": "tq"
+    }, {
+        "source": "celeri",
+        "target": "plugin"
+    }, {
+        "source": "celeri",
+        "target": "crema"
+    }, {
+        "source": "celeri",
+        "target": "outcome"
+    }, {
+        "source": "celeri",
+        "target": "keypress"
+    }, {
+        "source": "coa",
+        "target": "q"
+    }, {
+        "source": "ometajs",
+        "target": "q"
+    }, {
+        "source": "ometajs",
+        "target": "uglify-js"
+    }, {
+        "source": "ometajs",
+        "target": "coa"
+    }, {
+        "source": "q-fs",
+        "target": "q"
+    }, {
+        "source": "q-fs",
+        "target": "q-io"
+    }, {
+        "source": "falafel",
+        "target": "esprima"
+    }, {
+        "source": "cli-table",
+        "target": "colors"
+    }, {
+        "source": "cli",
+        "target": "glob"
+    }, {
+        "source": "bunyan",
+        "target": "dtrace-provider"
+    }, {
+        "source": "utile",
+        "target": "mkdirp"
+    }, {
+        "source": "utile",
+        "target": "async"
+    }, {
+        "source": "utile",
+        "target": "rimraf"
+    }, {
+        "source": "utile",
+        "target": "deep-equal"
+    }, {
+        "source": "utile",
+        "target": "ncp"
+    }, {
+        "source": "utile",
+        "target": "i"
+    }, {
+        "source": "send",
+        "target": "mime"
+    }, {
+        "source": "send",
+        "target": "debug"
+    }, {
+        "source": "send",
+        "target": "fresh"
+    }, {
+        "source": "jison",
+        "target": "esprima"
+    }, {
+        "source": "jison",
+        "target": "nomnom"
+    }, {
+        "source": "jison",
+        "target": "escodegen"
+    }, {
+        "source": "jison",
+        "target": "cjson"
+    }, {
+        "source": "jison",
+        "target": "JSONSelect"
+    }, {
+        "source": "socket.io-client",
+        "target": "uglify-js"
+    }, {
+        "source": "socket.io-client",
+        "target": "ws"
+    }, {
+        "source": "socket.io-client",
+        "target": "xmlhttprequest"
+    }, {
+        "source": "resource",
+        "target": "colors"
+    }, {
+        "source": "resource",
+        "target": "which"
+    }, {
+        "source": "resource",
+        "target": "eventemitter2"
+    }, {
+        "source": "jake",
+        "target": "minimatch"
+    }, {
+        "source": "jake",
+        "target": "utilities"
+    }, {
+        "source": "assert",
+        "target": "util"
+    }, {
+        "source": "detective",
+        "target": "esprima"
+    }, {
+        "source": "detective",
+        "target": "escodegen"
+    }, {
+        "source": "istanbul",
+        "target": "mkdirp"
+    }, {
+        "source": "istanbul",
+        "target": "async"
+    }, {
+        "source": "istanbul",
+        "target": "abbrev"
+    }, {
+        "source": "istanbul",
+        "target": "nopt"
+    }, {
+        "source": "istanbul",
+        "target": "which"
+    }, {
+        "source": "istanbul",
+        "target": "handlebars"
+    }, {
+        "source": "istanbul",
+        "target": "esprima"
+    }, {
+        "source": "istanbul",
+        "target": "resolve"
+    }, {
+        "source": "istanbul",
+        "target": "escodegen"
+    }, {
+        "source": "istanbul",
+        "target": "wordwrap"
+    }, {
+        "source": "tiny-lr",
+        "target": "faye-websocket"
+    }, {
+        "source": "tiny-lr",
+        "target": "debug"
+    }, {
+        "source": "tiny-lr",
+        "target": "qs"
+    }, {
+        "source": "argparse",
+        "target": "underscore"
+    }, {
+        "source": "argparse",
+        "target": "underscore.string"
+    }, {
+        "source": "dref",
+        "target": "structr"
+    }, {
+        "source": "dref",
+        "target": "dref"
+    }, {
+        "source": "dref",
+        "target": "type-component"
+    }, {
+        "source": "haml-coffee",
+        "target": "optimist"
+    }, {
+        "source": "haml-coffee",
+        "target": "coffee-script"
+    }, {
+        "source": "haml-coffee",
+        "target": "walkdir"
+    }, {
+        "source": "binary",
+        "target": "buffers"
+    }, {
+        "source": "forever",
+        "target": "optimist"
+    }, {
+        "source": "forever",
+        "target": "colors"
+    }, {
+        "source": "forever",
+        "target": "watch"
+    }, {
+        "source": "forever",
+        "target": "pkginfo"
+    }, {
+        "source": "forever",
+        "target": "flatiron"
+    }, {
+        "source": "forever",
+        "target": "winston"
+    }, {
+        "source": "forever",
+        "target": "forever-monitor"
+    }, {
+        "source": "forever",
+        "target": "utile"
+    }, {
+        "source": "forever",
+        "target": "nconf"
+    }, {
+        "source": "forever",
+        "target": "cliff"
+    }, {
+        "source": "forever",
+        "target": "nssocket"
+    }, {
+        "source": "serialport",
+        "target": "async"
+    }, {
+        "source": "serialport",
+        "target": "optimist"
+    }, {
+        "source": "serialport",
+        "target": "bindings"
+    }, {
+        "source": "serialport",
+        "target": "sf"
+    }, {
+        "source": "connect-redis",
+        "target": "redis"
+    }, {
+        "source": "connect-redis",
+        "target": "debug"
+    }, {
+        "source": "dnode",
+        "target": "jsonify"
+    }, {
+        "source": "union",
+        "target": "pkginfo"
+    }, {
+        "source": "union",
+        "target": "qs"
+    }, {
+        "source": "passport-local",
+        "target": "pkginfo"
+    }, {
+        "source": "passport-local",
+        "target": "passport"
+    }, {
+        "source": "markdown",
+        "target": "nopt"
+    }, {
+        "source": "microtime",
+        "target": "bindings"
+    }, {
+        "source": "rss",
+        "target": "mime"
+    }, {
+        "source": "rss",
+        "target": "xml"
+    }, {
+        "source": "connect-mongodb",
+        "target": "connect"
+    }, {
+        "source": "connect-mongodb",
+        "target": "mongodb"
+    }, {
+        "source": "connect-form",
+        "target": "formidable"
+    }, {
+        "source": "zombie",
+        "target": "request"
+    }, {
+        "source": "zombie",
+        "target": "q"
+    }, {
+        "source": "zombie",
+        "target": "mime"
+    }, {
+        "source": "zombie",
+        "target": "jsdom"
+    }, {
+        "source": "zombie",
+        "target": "ws"
+    }, {
+        "source": "zombie",
+        "target": "ms"
+    }, {
+        "source": "jugglingdb",
+        "target": "inflection"
+    }, {
+        "source": "hiredis",
+        "target": "bindings"
+    }, {
+        "source": "swig",
+        "target": "underscore"
+    }, {
+        "source": "node-static",
+        "target": "optimist"
+    }, {
+        "source": "node-static",
+        "target": "colors"
+    }, {
+        "source": "node-static",
+        "target": "mime"
+    }, {
+        "source": "bootstrap",
+        "target": "commander"
+    }, {
+        "source": "nconf",
+        "target": "async"
+    }, {
+        "source": "nconf",
+        "target": "optimist"
+    }, {
+        "source": "nconf",
+        "target": "ini"
+    }, {
+        "source": "nconf",
+        "target": "pkginfo"
+    }, {
+        "source": "seq",
+        "target": "hashish"
+    }, {
+        "source": "azure",
+        "target": "underscore"
+    }, {
+        "source": "azure",
+        "target": "dateformat"
+    }, {
+        "source": "azure",
+        "target": "node-uuid"
+    }, {
+        "source": "azure",
+        "target": "request"
+    }, {
+        "source": "azure",
+        "target": "validator"
+    }, {
+        "source": "azure",
+        "target": "mime"
+    }, {
+        "source": "azure",
+        "target": "xml2js"
+    }, {
+        "source": "azure",
+        "target": "xmlbuilder"
+    }, {
+        "source": "azure",
+        "target": "tunnel"
+    }, {
+        "source": "pg",
+        "target": "generic-pool"
+    }, {
+        "source": "pg",
+        "target": "ref"
+    }, {
+        "source": "jqtpl",
+        "target": "underscore"
+    }, {
+        "source": "npm",
+        "target": "mkdirp"
+    }, {
+        "source": "npm",
+        "target": "request"
+    }, {
+        "source": "npm",
+        "target": "semver"
+    }, {
+        "source": "npm",
+        "target": "ini"
+    }, {
+        "source": "npm",
+        "target": "slide"
+    }, {
+        "source": "npm",
+        "target": "abbrev"
+    }, {
+        "source": "npm",
+        "target": "graceful-fs"
+    }, {
+        "source": "npm",
+        "target": "minimatch"
+    }, {
+        "source": "npm",
+        "target": "nopt"
+    }, {
+        "source": "npm",
+        "target": "rimraf"
+    }, {
+        "source": "npm",
+        "target": "which"
+    }, {
+        "source": "npm",
+        "target": "tar"
+    }, {
+        "source": "npm",
+        "target": "fstream"
+    }, {
+        "source": "npm",
+        "target": "inherits"
+    }, {
+        "source": "npm",
+        "target": "read"
+    }, {
+        "source": "npm",
+        "target": "lru-cache"
+    }, {
+        "source": "npm",
+        "target": "node-gyp"
+    }, {
+        "source": "npm",
+        "target": "fstream-npm"
+    }, {
+        "source": "npm",
+        "target": "archy"
+    }, {
+        "source": "npm",
+        "target": "npmlog"
+    }, {
+        "source": "npm",
+        "target": "ansi"
+    }, {
+        "source": "npm",
+        "target": "npm-registry-client"
+    }, {
+        "source": "npm",
+        "target": "read-package-json"
+    }, {
+        "source": "npm",
+        "target": "glob"
+    }, {
+        "source": "npm",
+        "target": "osenv"
+    }, {
+        "source": "npm",
+        "target": "retry"
+    }, {
+        "source": "npm",
+        "target": "once"
+    }, {
+        "source": "npm",
+        "target": "npmconf"
+    }, {
+        "source": "npm",
+        "target": "opener"
+    }, {
+        "source": "nomnom",
+        "target": "underscore"
+    }, {
+        "source": "nomnom",
+        "target": "colors"
+    }, {
+        "source": "passport-oauth",
+        "target": "pkginfo"
+    }, {
+        "source": "passport-oauth",
+        "target": "passport"
+    }, {
+        "source": "passport-oauth",
+        "target": "oauth"
+    }, {
+        "source": "passport-twitter",
+        "target": "pkginfo"
+    }, {
+        "source": "passport-twitter",
+        "target": "passport-oauth"
+    }, {
+        "source": "mongoskin",
+        "target": "mongodb"
+    }, {
+        "source": "emailjs",
+        "target": "moment"
+    }, {
+        "source": "emailjs",
+        "target": "bufferjs"
+    }, {
+        "source": "connect-mongo",
+        "target": "mongodb"
+    }, {
+        "source": "bcrypt",
+        "target": "bindings"
+    }, {
+        "source": "ntwitter",
+        "target": "cookies"
+    }, {
+        "source": "ntwitter",
+        "target": "oauth"
+    }, {
+        "source": "ntwitter",
+        "target": "keygrip"
+    }, {
+        "source": "juice",
+        "target": "commander"
+    }, {
+        "source": "juice",
+        "target": "batch"
+    }, {
+        "source": "juice",
+        "target": "cssom"
+    }, {
+        "source": "juice",
+        "target": "jsdom"
+    }, {
+        "source": "juice",
+        "target": "superagent"
+    }, {
+        "source": "pause-stream",
+        "target": "through"
+    }, {
+        "source": "sequelize",
+        "target": "lodash"
+    }, {
+        "source": "sequelize",
+        "target": "underscore.string"
+    }, {
+        "source": "sequelize",
+        "target": "commander"
+    }, {
+        "source": "sequelize",
+        "target": "validator"
+    }, {
+        "source": "sequelize",
+        "target": "lingo"
+    }, {
+        "source": "sequelize",
+        "target": "moment"
+    }, {
+        "source": "sequelize",
+        "target": "generic-pool"
+    }, {
+        "source": "sequelize",
+        "target": "promise"
+    }, {
+        "source": "tar.gz",
+        "target": "commander"
+    }, {
+        "source": "tar.gz",
+        "target": "tar"
+    }, {
+        "source": "tar.gz",
+        "target": "fstream"
+    }, {
+        "source": "prettyjson",
+        "target": "colors"
+    }, {
+        "source": "escodegen",
+        "target": "estraverse"
+    }, {
+        "source": "escodegen",
+        "target": "esprima"
+    }, {
+        "source": "escodegen",
+        "target": "source-map"
+    }, {
+        "source": "url",
+        "target": "querystring"
+    }, {
+        "source": "ltx",
+        "target": "sax"
+    }, {
+        "source": "ltx",
+        "target": "node-expat"
+    }, {
+        "source": "bouncy",
+        "target": "optimist"
+    }, {
+        "source": "bouncy",
+        "target": "through"
+    }, {
+        "source": "simplicial-complex",
+        "target": "bit-twiddle"
+    }, {
+        "source": "bower",
+        "target": "lodash"
+    }, {
+        "source": "bower",
+        "target": "mkdirp"
+    }, {
+        "source": "bower",
+        "target": "hogan.js"
+    }, {
+        "source": "bower",
+        "target": "async"
+    }, {
+        "source": "bower",
+        "target": "request"
+    }, {
+        "source": "bower",
+        "target": "semver"
+    }, {
+        "source": "bower",
+        "target": "colors"
+    }, {
+        "source": "bower",
+        "target": "abbrev"
+    }, {
+        "source": "bower",
+        "target": "nopt"
+    }, {
+        "source": "bower",
+        "target": "rimraf"
+    }, {
+        "source": "bower",
+        "target": "which"
+    }, {
+        "source": "bower",
+        "target": "tar"
+    }, {
+        "source": "bower",
+        "target": "fstream"
+    }, {
+        "source": "bower",
+        "target": "archy"
+    }, {
+        "source": "bower",
+        "target": "read-package-json"
+    }, {
+        "source": "bower",
+        "target": "glob"
+    }, {
+        "source": "bower",
+        "target": "tmp"
+    }, {
+        "source": "bower",
+        "target": "rc"
+    }, {
+        "source": "bower",
+        "target": "unzip"
+    }, {
+        "source": "bower",
+        "target": "update-notifier"
+    }, {
+        "source": "rc",
+        "target": "optimist"
+    }, {
+        "source": "rc",
+        "target": "ini"
+    }, {
+        "source": "rc",
+        "target": "deep-extend"
+    }, {
+        "source": "unzip",
+        "target": "fstream"
+    }, {
+        "source": "unzip",
+        "target": "readable-stream"
+    }, {
+        "source": "unzip",
+        "target": "binary"
+    }, {
+        "source": "unzip",
+        "target": "setimmediate"
+    }, {
+        "source": "scaffolder",
+        "target": "underscore"
+    }, {
+        "source": "scaffolder",
+        "target": "async"
+    }, {
+        "source": "scaffolder",
+        "target": "underscore.string"
+    }, {
+        "source": "scaffolder",
+        "target": "nopt"
+    }, {
+        "source": "scaffolder",
+        "target": "read"
+    }, {
+        "source": "scaffolder",
+        "target": "debug"
+    }, {
+        "source": "scaffolder",
+        "target": "out"
+    }, {
+        "source": "hook.io",
+        "target": "socket.io"
+    }, {
+        "source": "hook.io",
+        "target": "mkdirp"
+    }, {
+        "source": "hook.io",
+        "target": "async"
+    }, {
+        "source": "hook.io",
+        "target": "optimist"
+    }, {
+        "source": "hook.io",
+        "target": "semver"
+    }, {
+        "source": "hook.io",
+        "target": "prompt"
+    }, {
+        "source": "hook.io",
+        "target": "colors"
+    }, {
+        "source": "hook.io",
+        "target": "pkginfo"
+    }, {
+        "source": "hook.io",
+        "target": "winston"
+    }, {
+        "source": "hook.io",
+        "target": "eventemitter2"
+    }, {
+        "source": "hook.io",
+        "target": "portfinder"
+    }, {
+        "source": "hook.io",
+        "target": "socket.io-client"
+    }, {
+        "source": "hook.io",
+        "target": "union"
+    }, {
+        "source": "hook.io",
+        "target": "nconf"
+    }, {
+        "source": "hook.io",
+        "target": "npm"
+    }, {
+        "source": "hook.io",
+        "target": "traverse"
+    }, {
+        "source": "hook.io",
+        "target": "ecstatic"
+    }, {
+        "source": "hook.io",
+        "target": "lazy"
+    }, {
+        "source": "hook.io",
+        "target": "jsonify"
+    }, {
+        "source": "fs.extra",
+        "target": "mkdirp"
+    }, {
+        "source": "fs.extra",
+        "target": "walk"
+    }, {
+        "source": "fs.extra",
+        "target": "fs-extra"
+    }, {
+        "source": "now",
+        "target": "socket.io"
+    }, {
+        "source": "now",
+        "target": "node-proxy"
+    }, {
+        "source": "brfs",
+        "target": "through"
+    }, {
+        "source": "brfs",
+        "target": "falafel"
+    }, {
+        "source": "brfs",
+        "target": "escodegen"
+    }, {
+        "source": "mongojs",
+        "target": "mongodb"
+    }, {
+        "source": "mongojs",
+        "target": "readable-stream"
+    }, {
+        "source": "feedparser",
+        "target": "request"
+    }, {
+        "source": "feedparser",
+        "target": "readable-stream"
+    }, {
+        "source": "feedparser",
+        "target": "sax"
+    }, {
+        "source": "broadway",
+        "target": "winston"
+    }, {
+        "source": "broadway",
+        "target": "eventemitter2"
+    }, {
+        "source": "broadway",
+        "target": "utile"
+    }, {
+        "source": "broadway",
+        "target": "nconf"
+    }, {
+        "source": "broadway",
+        "target": "cliff"
+    }, {
+        "source": "restify",
+        "target": "node-uuid"
+    }, {
+        "source": "restify",
+        "target": "backoff"
+    }, {
+        "source": "restify",
+        "target": "semver"
+    }, {
+        "source": "restify",
+        "target": "mime"
+    }, {
+        "source": "restify",
+        "target": "lru-cache"
+    }, {
+        "source": "restify",
+        "target": "once"
+    }, {
+        "source": "restify",
+        "target": "qs"
+    }, {
+        "source": "restify",
+        "target": "bunyan"
+    }, {
+        "source": "restify",
+        "target": "deep-equal"
+    }, {
+        "source": "restify",
+        "target": "formidable"
+    }, {
+        "source": "restify",
+        "target": "assert-plus"
+    }, {
+        "source": "restify",
+        "target": "dtrace-provider"
+    }, {
+        "source": "restify",
+        "target": "negotiator"
+    }, {
+        "source": "restify",
+        "target": "verror"
+    }, {
+        "source": "restify",
+        "target": "spdy"
+    }, {
+        "source": "cliff",
+        "target": "colors"
+    }, {
+        "source": "cliff",
+        "target": "winston"
+    }, {
+        "source": "cliff",
+        "target": "eyes"
+    }, {
+        "source": "JSONStream",
+        "target": "through"
+    }, {
+        "source": "plist",
+        "target": "xmldom"
+    }, {
+        "source": "plist",
+        "target": "xmlbuilder"
+    }, {
+        "source": "natural",
+        "target": "underscore"
+    }, {
+        "source": "natural",
+        "target": "sylvester"
+    }, {
+        "source": "global",
+        "target": "process"
+    }, {
+        "source": "ecstatic",
+        "target": "optimist"
+    }, {
+        "source": "ecstatic",
+        "target": "mime"
+    }, {
+        "source": "ecstatic",
+        "target": "ent"
+    }, {
+        "source": "useragent",
+        "target": "lru-cache"
+    }, {
+        "source": "snockets",
+        "target": "underscore"
+    }, {
+        "source": "snockets",
+        "target": "mime"
+    }, {
+        "source": "snockets",
+        "target": "coffee-script"
+    }, {
+        "source": "snockets",
+        "target": "uglify-js"
+    }, {
+        "source": "soupselect",
+        "target": "nodeunit"
+    }, {
+        "source": "soupselect",
+        "target": "htmlparser"
+    }, {
+        "source": "mailer",
+        "target": "colors"
+    }, {
+        "source": "mailer",
+        "target": "nodemailer"
+    }, {
+        "source": "archiver",
+        "target": "readable-stream"
+    }, {
+        "source": "aws2js",
+        "target": "lodash"
+    }, {
+        "source": "aws2js",
+        "target": "semver"
+    }, {
+        "source": "aws2js",
+        "target": "mime"
+    }, {
+        "source": "aws2js",
+        "target": "xml2js"
+    }, {
+        "source": "websocket.io",
+        "target": "debug"
+    }, {
+        "source": "websocket.io",
+        "target": "ws"
+    }, {
+        "source": "reducers",
+        "target": "reducible"
+    }, {
+        "source": "reducible",
+        "target": "method"
+    }, {
+        "source": "coffee-script-redux",
+        "target": "escodegen"
+    }, {
+        "source": "coffee-script-redux",
+        "target": "source-map"
+    }, {
+        "source": "source-map",
+        "target": "amdefine"
+    }, {
+        "source": "time",
+        "target": "debug"
+    }, {
+        "source": "time",
+        "target": "bindings"
+    }, {
+        "source": "cson",
+        "target": "coffee-script"
+    }, {
+        "source": "cson",
+        "target": "js2coffee"
+    }, {
+        "source": "resourceful",
+        "target": "node-uuid"
+    }, {
+        "source": "resourceful",
+        "target": "async"
+    }, {
+        "source": "resourceful",
+        "target": "cradle"
+    }, {
+        "source": "resourceful",
+        "target": "utile"
+    }, {
+        "source": "resourceful",
+        "target": "i"
+    }, {
+        "source": "resourceful",
+        "target": "revalidator"
+    }, {
+        "source": "execSync",
+        "target": "ffi"
+    }, {
+        "source": "loader-utils",
+        "target": "json5"
+    }, {
+        "source": "wd",
+        "target": "underscore"
+    }, {
+        "source": "wd",
+        "target": "async"
+    }, {
+        "source": "wd",
+        "target": "request"
+    }, {
+        "source": "wd",
+        "target": "q"
+    }, {
+        "source": "fs-watch-tree",
+        "target": "when"
+    }, {
+        "source": "glob-whatev",
+        "target": "minimatch"
+    }, {
+        "source": "hapi",
+        "target": "async"
+    }, {
+        "source": "hapi",
+        "target": "optimist"
+    }, {
+        "source": "hapi",
+        "target": "semver"
+    }, {
+        "source": "hapi",
+        "target": "mime"
+    }, {
+        "source": "hapi",
+        "target": "lru-cache"
+    }, {
+        "source": "hapi",
+        "target": "hoek"
+    }, {
+        "source": "hapi",
+        "target": "negotiator"
+    }, {
+        "source": "coffeecup",
+        "target": "coffee-script"
+    }, {
+        "source": "coffeecup",
+        "target": "stylus"
+    }, {
+        "source": "coffeecup",
+        "target": "uglify-js"
+    }, {
+        "source": "coffeecup",
+        "target": "optparse"
+    }, {
+        "source": "js-yaml",
+        "target": "esprima"
+    }, {
+        "source": "js-yaml",
+        "target": "argparse"
+    }, {
+        "source": "jeesh",
+        "target": "bean"
+    }, {
+        "source": "jeesh",
+        "target": "bonzo"
+    }, {
+        "source": "jeesh",
+        "target": "qwery"
+    }, {
+        "source": "jeesh",
+        "target": "domready"
+    }, {
+        "source": "everyauth",
+        "target": "express"
+    }, {
+        "source": "everyauth",
+        "target": "connect"
+    }, {
+        "source": "everyauth",
+        "target": "request"
+    }, {
+        "source": "everyauth",
+        "target": "debug"
+    }, {
+        "source": "everyauth",
+        "target": "xml2js"
+    }, {
+        "source": "everyauth",
+        "target": "oauth"
+    }, {
+        "source": "everyauth",
+        "target": "openid"
+    }, {
+        "source": "deferred",
+        "target": "es5-ext"
+    }, {
+        "source": "postal",
+        "target": "underscore"
+    }, {
+        "source": "ahr2",
+        "target": "bufferjs"
+    }, {
+        "source": "ahr2",
+        "target": "future"
+    }, {
+        "source": "source-map-support",
+        "target": "source-map"
+    }, {
+        "source": "needle",
+        "target": "qs"
+    }, {
+        "source": "needle",
+        "target": "iconv-lite"
+    }, {
+        "source": "read-stream",
+        "target": "readable-stream"
+    }, {
+        "source": "read-stream",
+        "target": "process"
+    }, {
+        "source": "write-stream",
+        "target": "readable-stream"
+    }, {
+        "source": "sockjs",
+        "target": "faye-websocket"
+    }, {
+        "source": "sockjs",
+        "target": "node-uuid"
+    }, {
+        "source": "engine.io",
+        "target": "debug"
+    }, {
+        "source": "engine.io",
+        "target": "ws"
+    }, {
+        "source": "crdt",
+        "target": "scuttlebutt"
+    }, {
+        "source": "mux-demux",
+        "target": "through"
+    }, {
+        "source": "mux-demux",
+        "target": "xtend"
+    }, {
+        "source": "mux-demux",
+        "target": "duplex"
+    }, {
+        "source": "mux-demux",
+        "target": "stream-combiner"
+    }, {
+        "source": "devnull",
+        "target": "colors"
+    }, {
+        "source": "d3",
+        "target": "jsdom"
+    }, {
+        "source": "twitter",
+        "target": "cookies"
+    }, {
+        "source": "twitter",
+        "target": "oauth"
+    }, {
+        "source": "twitter",
+        "target": "keygrip"
+    }, {
+        "source": "less-middleware",
+        "target": "mkdirp"
+    }, {
+        "source": "less-middleware",
+        "target": "less"
+    }, {
+        "source": "i18n",
+        "target": "debug"
+    }, {
+        "source": "i18n",
+        "target": "sprintf"
+    }, {
+        "source": "pushover",
+        "target": "mkdirp"
+    }, {
+        "source": "pushover",
+        "target": "inherits"
+    }, {
+        "source": "pushover",
+        "target": "through"
+    }, {
+        "source": "fs-tools",
+        "target": "lodash"
+    }, {
+        "source": "fs-tools",
+        "target": "async"
+    }, {
+        "source": "hbs",
+        "target": "handlebars"
+    }, {
+        "source": "hbs",
+        "target": "after"
+    }, {
+        "source": "follow",
+        "target": "request"
+    }, {
+        "source": "phantomjs",
+        "target": "mkdirp"
+    }, {
+        "source": "phantomjs",
+        "target": "rimraf"
+    }, {
+        "source": "phantomjs",
+        "target": "npmconf"
+    }, {
+        "source": "phantomjs",
+        "target": "adm-zip"
+    }, {
+        "source": "phantomjs",
+        "target": "ncp"
+    }, {
+        "source": "phantomjs",
+        "target": "kew"
+    }, {
+        "source": "tracer",
+        "target": "dateformat"
+    }, {
+        "source": "tracer",
+        "target": "colors"
+    }, {
+        "source": "axon",
+        "target": "debug"
+    }, {
+        "source": "nssocket",
+        "target": "eventemitter2"
+    }, {
+        "source": "nssocket",
+        "target": "lazy"
+    }, {
+        "source": "dropbox",
+        "target": "open"
+    }, {
+        "source": "cluster",
+        "target": "mkdirp"
+    }, {
+        "source": "cluster",
+        "target": "log"
+    }, {
+        "source": "aws-lib",
+        "target": "sax"
+    }, {
+        "source": "aws-lib",
+        "target": "xml2js"
+    }, {
+        "source": "node-phantom",
+        "target": "socket.io"
+    }, {
+        "source": "gzippo",
+        "target": "send"
+    }, {
+        "source": "verror",
+        "target": "extsprintf"
+    }, {
+        "source": "dox",
+        "target": "commander"
+    }, {
+        "source": "dox",
+        "target": "github-flavored-markdown"
+    }, {
+        "source": "node-sass",
+        "target": "mkdirp"
+    }, {
+        "source": "node-sass",
+        "target": "optimist"
+    }, {
+        "source": "node-sass",
+        "target": "colors"
+    }, {
+        "source": "gm",
+        "target": "debug"
+    }, {
+        "source": "gm",
+        "target": "through"
+    }, {
+        "source": "node-log",
+        "target": "colors"
+    }, {
+        "source": "node-log",
+        "target": "coffee-script"
+    }, {
+        "source": "component-builder",
+        "target": "mkdirp"
+    }, {
+        "source": "component-builder",
+        "target": "debug"
+    }, {
+        "source": "component-builder",
+        "target": "fs-extra"
+    }, {
+        "source": "component-builder",
+        "target": "batch"
+    }, {
+        "source": "hyperquest",
+        "target": "through"
+    }, {
+        "source": "hyperquest",
+        "target": "duplexer"
+    }, {
+        "source": "graphviz",
+        "target": "temp"
+    }, {
+        "source": "levelup",
+        "target": "semver"
+    }, {
+        "source": "levelup",
+        "target": "xtend"
+    }, {
+        "source": "levelup",
+        "target": "concat-stream"
+    }, {
+        "source": "msgpack-js",
+        "target": "bops"
+    }, {
+        "source": "mincer",
+        "target": "lodash"
+    }, {
+        "source": "mincer",
+        "target": "async"
+    }, {
+        "source": "mincer",
+        "target": "argparse"
+    }, {
+        "source": "mincer",
+        "target": "fs-tools"
+    }, {
+        "source": "riak-js",
+        "target": "xml"
+    }, {
+        "source": "contextify",
+        "target": "bindings"
+    }, {
+        "source": "level-sublevel",
+        "target": "xtend"
+    }, {
+        "source": "tape",
+        "target": "through"
+    }, {
+        "source": "tape",
+        "target": "deep-equal"
+    }, {
+        "source": "tape",
+        "target": "jsonify"
+    }, {
+        "source": "elementtree",
+        "target": "sax"
+    }, {
+        "source": "ftp",
+        "target": "xregexp"
+    }, {
+        "source": "node-inspector",
+        "target": "socket.io"
+    }, {
+        "source": "node-inspector",
+        "target": "connect"
+    }, {
+        "source": "node-inspector",
+        "target": "async"
+    }, {
+        "source": "portscanner",
+        "target": "async"
+    }, {
+        "source": "burrito",
+        "target": "uglify-js"
+    }, {
+        "source": "burrito",
+        "target": "traverse"
+    }, {
+        "source": "trumpet",
+        "target": "inherits"
+    }, {
+        "source": "trumpet",
+        "target": "sax"
+    }, {
+        "source": "trumpet",
+        "target": "through"
+    }, {
+        "source": "trumpet",
+        "target": "duplexer"
+    }, {
+        "source": "trumpet",
+        "target": "buffers"
+    }, {
+        "source": "trumpet",
+        "target": "ent"
+    }, {
+        "source": "ref",
+        "target": "debug"
+    }, {
+        "source": "ref",
+        "target": "bindings"
+    }, {
+        "source": "ref-struct",
+        "target": "debug"
+    }, {
+        "source": "ref-struct",
+        "target": "ref"
+    }, {
+        "source": "ffi",
+        "target": "debug"
+    }, {
+        "source": "ffi",
+        "target": "bindings"
+    }, {
+        "source": "ffi",
+        "target": "ref"
+    }, {
+        "source": "ffi",
+        "target": "ref-struct"
+    }, {
+        "source": "scuttlebutt",
+        "target": "duplex"
+    }, {
+        "source": "scuttlebutt",
+        "target": "monotonic-timestamp"
+    }, {
+        "source": "form-data",
+        "target": "async"
+    }, {
+        "source": "form-data",
+        "target": "mime"
+    }, {
+        "source": "js2coffee",
+        "target": "underscore"
+    }, {
+        "source": "js2coffee",
+        "target": "coffee-script"
+    }, {
+        "source": "js2coffee",
+        "target": "file"
+    }, {
+        "source": "css",
+        "target": "css-parse"
+    }, {
+        "source": "js-beautify",
+        "target": "mkdirp"
+    }, {
+        "source": "js-beautify",
+        "target": "nopt"
+    }, {
+        "source": "q-io",
+        "target": "q"
+    }, {
+        "source": "q-io",
+        "target": "mime"
+    }, {
+        "source": "q-io",
+        "target": "qs"
+    }, {
+        "source": "q-io",
+        "target": "collections"
+    }, {
+        "source": "JSONPath",
+        "target": "underscore"
+    }, {
+        "source": "mochiscript",
+        "target": "watch"
+    }, {
+        "source": "leveldown",
+        "target": "bindings"
+    }, {
+        "source": "sync",
+        "target": "fibers"
+    }, {
+        "source": "extended",
+        "target": "grunt"
+    }, {
+        "source": "is-extended",
+        "target": "extended"
+    }, {
+        "source": "array-extended",
+        "target": "grunt"
+    }, {
+        "source": "array-extended",
+        "target": "grunt-contrib-jshint"
+    }, {
+        "source": "array-extended",
+        "target": "grunt-contrib-uglify"
+    }, {
+        "source": "array-extended",
+        "target": "extended"
+    }, {
+        "source": "array-extended",
+        "target": "is-extended"
+    }, {
+        "source": "stream-combiner",
+        "target": "duplexer"
+    }, {
+        "source": "uglify-js2",
+        "target": "optimist"
+    }, {
+        "source": "uglify-js2",
+        "target": "source-map"
+    }, {
+        "source": "upnode",
+        "target": "dnode"
+    }, {
+        "source": "fstream-ignore",
+        "target": "minimatch"
+    }, {
+        "source": "fstream-ignore",
+        "target": "fstream"
+    }, {
+        "source": "fstream-ignore",
+        "target": "inherits"
+    }, {
+        "source": "smoosh",
+        "target": "colors"
+    }, {
+        "source": "smoosh",
+        "target": "rimraf"
+    }, {
+        "source": "smoosh",
+        "target": "uglify-js"
+    }, {
+        "source": "smoosh",
+        "target": "jshint"
+    }, {
+        "source": "smoosh",
+        "target": "sqwish"
+    }, {
+        "source": "yui",
+        "target": "request"
+    }, {
+        "source": "difflet",
+        "target": "charm"
+    }, {
+        "source": "difflet",
+        "target": "traverse"
+    }, {
+        "source": "shoe",
+        "target": "sockjs"
+    }, {
+        "source": "level",
+        "target": "levelup"
+    }, {
+        "source": "level",
+        "target": "leveldown"
+    }, {
+        "source": "markdown-js",
+        "target": "test"
+    }, {
+        "source": "yamljs",
+        "target": "glob"
+    }, {
+        "source": "yamljs",
+        "target": "argparse"
+    }, {
+        "source": "passport-http",
+        "target": "pkginfo"
+    }, {
+        "source": "passport-http",
+        "target": "passport"
+    }, {
+        "source": "docparse-config",
+        "target": "temp"
+    }, {
+        "source": "docparse-config",
+        "target": "nconf"
+    }, {
+        "source": "seaport",
+        "target": "optimist"
+    }, {
+        "source": "seaport",
+        "target": "semver"
+    }, {
+        "source": "seaport",
+        "target": "inherits"
+    }, {
+        "source": "seaport",
+        "target": "through"
+    }, {
+        "source": "seaport",
+        "target": "crdt"
+    }, {
+        "source": "loggly-console-logger",
+        "target": "winston"
+    }, {
+        "source": "apn",
+        "target": "q"
+    }, {
+        "source": "passport-google-oauth",
+        "target": "pkginfo"
+    }, {
+        "source": "passport-google-oauth",
+        "target": "passport-oauth"
+    }, {
+        "source": "forEachAsync",
+        "target": "sequence"
+    }, {
+        "source": "yuidocjs",
+        "target": "express"
+    }, {
+        "source": "yuidocjs",
+        "target": "graceful-fs"
+    }, {
+        "source": "yuidocjs",
+        "target": "minimatch"
+    }, {
+        "source": "yuidocjs",
+        "target": "rimraf"
+    }, {
+        "source": "yuidocjs",
+        "target": "node-markdown"
+    }, {
+        "source": "yuidocjs",
+        "target": "yui"
+    }, {
+        "source": "mongoose-types",
+        "target": "mongoose"
+    }, {
+        "source": "funargs",
+        "target": "eyes"
+    }, {
+        "source": "ender-bootstrap-base",
+        "target": "bean"
+    }, {
+        "source": "ender-bootstrap-base",
+        "target": "bonzo"
+    }, {
+        "source": "ender-bootstrap-base",
+        "target": "domready"
+    }, {
+        "source": "ender-bootstrap-transition",
+        "target": "ender-bootstrap-base"
+    }, {
+        "source": "engine.io-client",
+        "target": "debug"
+    }, {
+        "source": "engine.io-client",
+        "target": "ws"
+    }, {
+        "source": "engine.io-client",
+        "target": "xmlhttprequest"
+    }, {
+        "source": "ldapjs",
+        "target": "nopt"
+    }, {
+        "source": "ldapjs",
+        "target": "bunyan"
+    }, {
+        "source": "ldapjs",
+        "target": "buffertools"
+    }, {
+        "source": "ldapjs",
+        "target": "assert-plus"
+    }, {
+        "source": "ldapjs",
+        "target": "dtrace-provider"
+    }, {
+        "source": "LiveScript",
+        "target": "prelude-ls"
+    }, {
+        "source": "reconnect",
+        "target": "backoff"
+    }, {
+        "source": "reconnect",
+        "target": "request"
+    }, {
+        "source": "reconnect",
+        "target": "shoe"
+    }, {
+        "source": "exec-sync",
+        "target": "ffi"
+    }, {
+        "source": "passport-facebook",
+        "target": "pkginfo"
+    }, {
+        "source": "passport-facebook",
+        "target": "passport-oauth"
+    }, {
+        "source": "update-notifier",
+        "target": "request"
+    }, {
+        "source": "update-notifier",
+        "target": "semver"
+    }, {
+        "source": "update-notifier",
+        "target": "colors"
+    }, {
+        "source": "fire",
+        "target": "nopt"
+    }, {
+        "source": "latest",
+        "target": "npm"
+    }, {
+        "source": "yeoman-generator",
+        "target": "cheerio"
+    }, {
+        "source": "yeoman-generator",
+        "target": "lodash"
+    }, {
+        "source": "yeoman-generator",
+        "target": "mkdirp"
+    }, {
+        "source": "yeoman-generator",
+        "target": "async"
+    }, {
+        "source": "yeoman-generator",
+        "target": "request"
+    }, {
+        "source": "yeoman-generator",
+        "target": "underscore.string"
+    }, {
+        "source": "yeoman-generator",
+        "target": "mime"
+    }, {
+        "source": "yeoman-generator",
+        "target": "nopt"
+    }, {
+        "source": "yeoman-generator",
+        "target": "rimraf"
+    }, {
+        "source": "yeoman-generator",
+        "target": "tar"
+    }, {
+        "source": "yeoman-generator",
+        "target": "glob"
+    }, {
+        "source": "yeoman-generator",
+        "target": "debug"
+    }, {
+        "source": "yeoman-generator",
+        "target": "cli-table"
+    }, {
+        "source": "yeoman-generator",
+        "target": "diff"
+    }, {
+        "source": "jsftp",
+        "target": "async"
+    }, {
+        "source": "jsftp",
+        "target": "event-stream"
+    }, {
+        "source": "xmlrpc",
+        "target": "sax"
+    }, {
+        "source": "xmlrpc",
+        "target": "xmlbuilder"
+    }, {
+        "source": "twit",
+        "target": "oauth"
+    }, {
+        "source": "grunt-contrib-cssmin",
+        "target": "clean-css"
+    }, {
+        "source": "grunt-contrib-cssmin",
+        "target": "grunt-lib-contrib"
+    }, {
+        "source": "grunt-contrib-nodeunit",
+        "target": "nodeunit"
+    }, {
+        "source": "grunt-lib-phantomjs",
+        "target": "semver"
+    }, {
+        "source": "grunt-lib-phantomjs",
+        "target": "eventemitter2"
+    }, {
+        "source": "grunt-lib-phantomjs",
+        "target": "temporary"
+    }, {
+        "source": "grunt-lib-phantomjs",
+        "target": "phantomjs"
+    }, {
+        "source": "joose",
+        "target": "temp"
+    }, {
+        "source": "joose",
+        "target": "optimist"
+    }, {
+        "source": "joose",
+        "target": "detective"
+    }, {
+        "source": "iwebpp.io",
+        "target": "node-uuid"
+    }, {
+        "source": "iwebpp.io",
+        "target": "msgpack-js"
+    }, {
+        "source": "iwebpp.io",
+        "target": "siphash"
+    }, {
+        "source": "jsgui-lang-essentials",
+        "target": "amdefine"
+    }, {
+        "source": "logmimosa",
+        "target": "growl"
+    }, {
+        "source": "logmimosa",
+        "target": "date-utils"
+    }, {
+        "source": "logmimosa",
+        "target": "ansi-color"
+    }, {
+        "source": "node-document-storage",
+        "target": "colors"
+    }, {
+        "source": "node-document-storage",
+        "target": "sugar"
+    }, {
+        "source": "node-document-storage",
+        "target": "chai"
+    }, {
+        "source": "node-document-storage",
+        "target": "longjohn"
+    }, {
+        "source": "node-document-storage",
+        "target": "sync"
+    }, {
+        "source": "node-document-storage",
+        "target": "funargs"
+    }, {
+        "source": "noflo",
+        "target": "underscore"
+    }, {
+        "source": "noflo",
+        "target": "npmlog"
+    }, {
+        "source": "noflo",
+        "target": "coffee-script"
+    }, {
+        "source": "noflo",
+        "target": "cli-color"
+    }, {
+        "source": "noflo",
+        "target": "cli"
+    }, {
+        "source": "punch",
+        "target": "underscore"
+    }, {
+        "source": "punch",
+        "target": "connect"
+    }, {
+        "source": "punch",
+        "target": "mustache"
+    }, {
+        "source": "punch",
+        "target": "mime"
+    }, {
+        "source": "punch",
+        "target": "fstream"
+    }, {
+        "source": "punch",
+        "target": "coffee-script"
+    }, {
+        "source": "punch",
+        "target": "less"
+    }, {
+        "source": "punch",
+        "target": "uglify-js"
+    }, {
+        "source": "punch",
+        "target": "knox"
+    }, {
+        "source": "punch",
+        "target": "marked"
+    }, {
+        "source": "punch",
+        "target": "fresh"
+    }, {
+        "source": "punch",
+        "target": "cssmin"
+    }, {
+        "source": "joosex-namespace-depended",
+        "target": "joose"
+    }, {
+        "source": "sourcemint-util-js",
+        "target": "q"
+    }, {
+        "source": "sourcemint-util-js",
+        "target": "glob"
+    }, {
+        "source": "sourcemint-util-js",
+        "target": "wrench"
+    }, {
+        "source": "sourcemint-util-js",
+        "target": "tunnel"
+    }, {
+        "source": "tower-directive",
+        "target": "tower-emitter"
+    }, {
+        "source": "voxel",
+        "target": "inherits"
+    }]
+}

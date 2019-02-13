@@ -34,8 +34,9 @@ func (opt *LineOpts) setChartOpt(s *singleSeries) {
 
 func NewLine(routers ...RouterOpts) *Line {
 	chart := new(Line)
-	chart.initBaseOpts(true, routers...)
+	chart.initBaseOpts(routers...)
 	chart.initXYOpts()
+	chart.HasXYAxis = true
 	return chart
 }
 

@@ -41,7 +41,7 @@ var wcTextColor = `function () {
 
 func NewWordCloud(routers ...RouterOpts) *WordCloud {
 	chart := new(WordCloud)
-	chart.initBaseOpts(false, routers...)
+	chart.initBaseOpts(routers...)
 	chart.JSAssets.Add("echarts-wordcloud.min.js")
 	return chart
 }

@@ -28,7 +28,7 @@ var geoFormatter = `function (params) {
 
 func NewGeo(mapType string, routers ...RouterOpts) *Geo {
 	chart := new(Geo)
-	chart.initBaseOpts(false, routers...)
+	chart.initBaseOpts(routers...)
 	chart.HasGeo = true
 	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
 	chart.GeoComponentOpts.Map = mapType

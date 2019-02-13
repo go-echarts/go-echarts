@@ -19,6 +19,7 @@ func pageHandler(w http.ResponseWriter, _ *http.Request) {
 		funnelBase(),
 		gaugeBase(),
 		geoBase(),
+		graphBase(),
 		heatMapBase(),
 		klineBase(),
 		lineBase(),

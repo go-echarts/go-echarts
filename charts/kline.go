@@ -10,8 +10,9 @@ func (Kline) chartType() string { return common.ChartType.Kline }
 
 func NewKLine(routers ...RouterOpts) *Kline {
 	chart := new(Kline)
-	chart.initBaseOpts(true, routers...)
+	chart.initBaseOpts(routers...)
 	chart.initXYOpts()
+	chart.HasXYAxis = true
 	return chart
 }
 

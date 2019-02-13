@@ -59,6 +59,17 @@ type LabelTextOpts struct {
 }
 ```
 
+### EmphasisOpts
+> 高亮的图形样式和标签样式
+```go
+type EmphasisOpts struct {
+    // 高亮的标签样式
+    Label LabelTextOpts `json:"label,omitempty"`
+    // 高亮的图形样式
+    ItemStyle ItemStyleOpts `json:"itemStyle,omitempty"`
+}
+```
+
 ### RippleEffectOpts
 > 涟漪特效配置项
 ```go
@@ -149,7 +160,7 @@ FuncOpts(fn string) string
 示例
 ```go
 fn := `function (params) {
-	return params.name + ' : ' + params.value[2];
+    return params.name + ' : ' + params.value[2];
 }`
 charts.LabelTextOpts{Show: true, Formatter: charts.FuncOpts(fn)}
 ```

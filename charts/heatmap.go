@@ -25,8 +25,9 @@ func (opt *HeatMapOpts) setChartOpt(s *singleSeries) {
 
 func NewHeatMap(routers ...RouterOpts) *HeatMap {
 	chart := new(HeatMap)
-	chart.initBaseOpts(true, routers...)
+	chart.initBaseOpts(routers...)
 	chart.initXYOpts()
+	chart.HasXYAxis = true
 	return chart
 }
 

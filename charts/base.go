@@ -15,7 +15,7 @@ type InitOpts struct {
 	// 画布高度
 	Height string `default:"500px"`
 	// 画布背景颜色
-	BackgroundColor string `json:"backgroundColor"`
+	BackgroundColor string `json:"backgroundColor,omitempty"`
 	// 图表 ID，是图表唯一标识
 	ChartID string
 	// 静态资源 host 地址
@@ -150,11 +150,10 @@ func (opt *BaseOpts) initSeriesColors() {
 }
 
 // 初始化 BaseOpts
-func (opt *BaseOpts) initBaseOpts(hasXYAxis bool, routers ...RouterOpts) {
+func (opt *BaseOpts) initBaseOpts(routers ...RouterOpts) {
 	for i := 0; i < len(routers); i++ {
 		opt.Routers = append(opt.Routers, routers[i])
 	}
-	opt.HasXYAxis = hasXYAxis
 	opt.initSeriesColors()
 	opt.initAssetsOpts()
 	opt.validateInitOpt()

@@ -19,7 +19,7 @@ func (Map) chartType() string { return common.ChartType.Map }
 func NewMap(mapType string, routers ...RouterOpts) *Map {
 	chart := new(Map)
 	chart.mapType = mapType
-	chart.initBaseOpts(false, routers...)
+	chart.initBaseOpts(routers...)
 	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
 	return chart
 }

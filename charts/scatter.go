@@ -25,8 +25,9 @@ func (opt *ScatterOpts) setChartOpt(s *singleSeries) {
 
 func NewScatter(routers ...RouterOpts) *Scatter {
 	chart := new(Scatter)
-	chart.initBaseOpts(true, routers...)
+	chart.initBaseOpts(routers...)
 	chart.initXYOpts()
+	chart.HasXYAxis = true
 	return chart
 }
 

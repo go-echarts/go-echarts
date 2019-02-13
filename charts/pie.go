@@ -45,7 +45,7 @@ func (opt *PieOpts) setChartOpt(s *singleSeries) {
 
 func NewPie(routers ...RouterOpts) *Pie {
 	chart := new(Pie)
-	chart.initBaseOpts(false, routers...)
+	chart.initBaseOpts(routers...)
 	return chart
 }
 

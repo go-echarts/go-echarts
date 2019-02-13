@@ -10,6 +10,7 @@
       "funnel",
       "gauge",
       "geo",
+      "graph",
       "heatmap",
       "kline",
       "line",

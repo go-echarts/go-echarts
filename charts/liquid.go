@@ -38,7 +38,7 @@ func (opt *LiquidOpts) setChartOpt(s *singleSeries) {
 
 func NewLiquid(routers ...RouterOpts) *Liquid {
 	chart := new(Liquid)
-	chart.initBaseOpts(false, routers...)
+	chart.initBaseOpts(routers...)
 	chart.JSAssets.Add("echarts-liquidfill.min.js")
 	return chart
 }

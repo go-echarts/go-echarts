@@ -31,8 +31,9 @@ func (RippleEffectOpts) markSeries() {}
 
 func NewEffectScatter(routers ...RouterOpts) *EffectScatter {
 	chart := new(EffectScatter)
-	chart.initBaseOpts(true, routers...)
+	chart.initBaseOpts(routers...)
 	chart.initXYOpts()
+	chart.HasXYAxis = true
 	return chart
 }
 

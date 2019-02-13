@@ -22,7 +22,7 @@ func (opt *Bar3DOpts) setChartOpt(s *singleSeries) {
 
 func NewBar3D(routers ...RouterOpts) *Bar3D {
 	chart := new(Bar3D)
-	chart.initBaseOpts(false, routers...)
+	chart.initBaseOpts(routers...)
 	chart.initChart3D()
 	return chart
 }

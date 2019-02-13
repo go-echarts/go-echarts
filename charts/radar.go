@@ -43,7 +43,7 @@ func (Radar) chartType() string { return common.ChartType.Radar }
 
 func NewRadar(routers ...RouterOpts) *Radar {
 	chart := new(Radar)
-	chart.initBaseOpts(false, routers...)
+	chart.initBaseOpts(routers...)
 	chart.HasRadar = true
 	return chart
 }

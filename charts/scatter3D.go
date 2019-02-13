@@ -12,7 +12,7 @@ func (Scatter3D) chartType() string { return common.ChartType.Scatter3D }
 
 func NewScatter3D(routers ...RouterOpts) *Scatter3D {
 	chart := new(Scatter3D)
-	chart.initBaseOpts(false, routers...)
+	chart.initBaseOpts(routers...)
 	chart.initChart3D()
 	return chart
 }
