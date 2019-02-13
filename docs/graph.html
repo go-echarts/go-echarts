@@ -1,0 +1,238 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Graph · go-echarts</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;blockquote&gt;
+&lt;p&gt;用于展现节点以及节点之间的关系数据&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Graph · go-echarts"/><meta property="og:type" content="website"/><meta property="og:url" content="http://go-echarts.chenjiandongx.com/index.html"/><meta property="og:description" content="&lt;blockquote&gt;
+&lt;p&gt;用于展现节点以及节点之间的关系数据&lt;/p&gt;
+&lt;/blockquote&gt;
+"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/favicon.ico" alt="go-echarts"/><h2 class="headerTitleWithLogo">go-echarts</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/overview" target="_self">Docs</a></li><li class=""><a href="https://www.github.com/chenjiandongx" target="_self">Author</a></li><li class=""><a href="https://www.github.com/chenjiandongx/go-echarts" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>基本图表</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">概览</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overview">简介</a></li><li class="navListItem"><a class="navItem" href="/docs/quickstart">快速开始</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api">API 设计</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">配置项</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/global_options">全局配置项</a></li><li class="navListItem"><a class="navItem" href="/docs/series_options">系列配置项</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">基本图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar">Bar（柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/boxPlot">BoxPlot（箱线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/effectScatter">Effectscatter（动态散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/funnel">Funnel（漏斗图）</a></li><li class="navListItem"><a class="navItem" href="/docs/gauge">Gauge（仪表盘）</a></li><li class="navListItem"><a class="navItem" href="/docs/geo">Geo（地理坐标系）</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/graph">Graph（关系图）</a></li><li class="navListItem"><a class="navItem" href="/docs/heatmap">HeatMap（热力图）</a></li><li class="navListItem"><a class="navItem" href="/docs/kline">Kline（K 线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line">Line（折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/liquid">Liquid（水球图）</a></li><li class="navListItem"><a class="navItem" href="/docs/map">Map（地图）</a></li><li class="navListItem"><a class="navItem" href="/docs/parallel">Parallel（平行坐标系）</a></li><li class="navListItem"><a class="navItem" href="/docs/pie">Pie（饼图）</a></li><li class="navListItem"><a class="navItem" href="/docs/radar">Radar（雷达图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter">Scatter（散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/wordCloud">WordCloud（词云图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">3D 图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/bar3d">Bar3D（3D 柱状图）</a></li><li class="navListItem"><a class="navItem" href="/docs/line3d">Line3D（3D 折线图）</a></li><li class="navListItem"><a class="navItem" href="/docs/scatter3d">Scatter3D（3D 散点图）</a></li><li class="navListItem"><a class="navItem" href="/docs/surface3d">surface3D（3D 曲面图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">组合图表</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/overlap">Overlap（重叠图）</a></li><li class="navListItem"><a class="navItem" href="/docs/page">Page（顺序多图）</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">数据集</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/assets_file">静态文件</a></li><li class="navListItem"><a class="navItem" href="/docs/map_coords">地理坐标</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">进阶话题</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/themes">主题定制</a></li><li class="navListItem"><a class="navItem" href="/docs/map_file">地图定制</a></li><li class="navListItem"><a class="navItem" href="/docs/javascript">原生 Javascript</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">更新日志</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/changelog">Changelog</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Graph</h1></header><article><div><span><blockquote>
+<p>用于展现节点以及节点之间的关系数据</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="api"></a><a href="#api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API</h2>
+<pre><code class="hljs css language-go"><span class="hljs-comment">// 实例化图表</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">NewGraph</span><span class="hljs-params">(routers ...RouterOpts)</span> *<span class="hljs-title">Graph</span>
+// 新增数据及配置项
+<span class="hljs-title">func</span> <span class="hljs-title">Add</span><span class="hljs-params">(name <span class="hljs-keyword">string</span>, nodes []GraphNode, links []GraphLink, options ...seriesOptser)</span> *<span class="hljs-title">Graph</span>
+// 新增 <span class="hljs-title">JS</span> 函数
+<span class="hljs-title">func</span> <span class="hljs-title">AddJSFuncs</span><span class="hljs-params">(fn ...<span class="hljs-keyword">string</span>)</span>
+// 设置全局配置项
+<span class="hljs-title">func</span> <span class="hljs-title">SetGlobalOptions</span><span class="hljs-params">(options ...globalOptser)</span>
+// 设置全部 <span class="hljs-title">Series</span> 配置项
+<span class="hljs-title">func</span> <span class="hljs-title">SetSeriesOptions</span><span class="hljs-params">(options ...seriesOptser)</span>
+// 负责渲染图表，支持传入多个实现了 <span class="hljs-title">io</span>.<span class="hljs-title">Writer</span> 接口的对象
+<span class="hljs-title">func</span> <span class="hljs-title">Render</span><span class="hljs-params">(w ...io.Writer)</span> <span class="hljs-title">error</span>
+</span></code></pre>
+<h2><a class="anchor" aria-hidden="true" id="专属-options"></a><a href="#专属-options" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>专属 Options</h2>
+<blockquote>
+<p>在 <code>SetSeriesOptions</code> 中设置</p>
+</blockquote>
+<h3><a class="anchor" aria-hidden="true" id="graphnode"></a><a href="#graphnode" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GraphNode</h3>
+<blockquote>
+<p>关系图节点数据</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> GraphNode <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 数据项名称</span>
+    Name <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name,omitempty"`</span>
+    <span class="hljs-comment">// 节点的初始 x 值。在布局为 "none" 时生效</span>
+    X <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"x,omitempty"`</span>
+    <span class="hljs-comment">// 节点的初始 y 值。在布局为 "none" 时生效</span>
+    Y <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"y,omitempty"`</span>
+    <span class="hljs-comment">// 数据项值</span>
+    Value <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"value,omitempty"`</span>
+    <span class="hljs-comment">// 节点在力引导布局中是否固定</span>
+    Fixed <span class="hljs-keyword">bool</span> <span class="hljs-string">`json:"fixed,omitempty"`</span>
+    <span class="hljs-comment">// 数据项所在类目的 index</span>
+    Category <span class="hljs-keyword">int</span> <span class="hljs-string">`json:"category,omitempty"`</span>
+    <span class="hljs-comment">// 该类目节点标记的图形，可选</span>
+    <span class="hljs-comment">// 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'</span>
+    Symbol <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"symbol,omitempty"`</span>
+    <span class="hljs-comment">// 该类目节点标记的大小，可以设置成诸如 10 这样单一的数字，</span>
+    <span class="hljs-comment">// 也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10</span>
+    SymbolSize <span class="hljs-keyword">interface</span>{}   <span class="hljs-string">`json:"symbolSize,omitempty"`</span>
+    <span class="hljs-comment">// 该节点的样式</span>
+    ItemStyle  ItemStyleOpts <span class="hljs-string">`json:"itemStyle,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="graphlink"></a><a href="#graphlink" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GraphLink</h3>
+<blockquote>
+<p>关系图节点间的关系数据</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> GraphLink <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 边的源节点名称的字符串，也支持使用数字表示源节点的索引</span>
+    Source <span class="hljs-keyword">interface</span>{} <span class="hljs-string">`json:"source,omitempty"`</span>
+    <span class="hljs-comment">// 边的目标节点名称的字符串，也支持使用数字表示源节点的索引</span>
+    Target <span class="hljs-keyword">interface</span>{} <span class="hljs-string">`json:"target,omitempty"`</span>
+    <span class="hljs-comment">// 边的数值，可以在力引导布局中用于映射到边的长度</span>
+    Value <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"value,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="graphcategory"></a><a href="#graphcategory" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GraphCategory</h3>
+<blockquote>
+<p>节点分类的类目</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> GraphCategory <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 类目名称，用于和 legend 对应以及格式化 tooltip 的内容</span>
+    Name <span class="hljs-keyword">string</span> <span class="hljs-string">`json:"name"`</span>
+    <span class="hljs-comment">// 该类目节点标签的样式</span>
+    Label LabelTextOpts <span class="hljs-string">`json:"label"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="graphforce"></a><a href="#graphforce" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GraphForce</h3>
+<blockquote>
+<p>力引导布局相关的配置项</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> GraphForce <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">// 进行力引导布局前的初始化布局，初始化布局会影响到力引导的效果</span>
+    <span class="hljs-comment">//InitLayout string `json:"initLayout,omitempty"`</span>
+    <span class="hljs-comment">// 节点之间的斥力因子。</span>
+    <span class="hljs-comment">// 支持设置成数组表达斥力的范围，此时不同大小的值会线性映射到不同的斥力。</span>
+    <span class="hljs-comment">// 值越大则斥力越大。默认为 50</span>
+    Repulsion <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"repulsion,omitempty"`</span>
+    <span class="hljs-comment">// 节点受到的向中心的引力因子。该值越大节点越往中心点靠拢</span>
+    <span class="hljs-comment">// 默认为 0.1</span>
+    Gravity <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"gravity,omitempty"`</span>
+    <span class="hljs-comment">// 边的两个节点之间的距离，这个距离也会受 Repulsion 影响。</span>
+    <span class="hljs-comment">// 支持设置成数组表达边长的范围，此时不同大小的值会线性映射到不同的长度。值越小则长度越长。</span>
+    <span class="hljs-comment">// 如下示例：值最大的边长度会趋向于 10，值最小的边长度会趋向于 50</span>
+    <span class="hljs-comment">// edgeLength: [10, 50]</span>
+    EdgeLength <span class="hljs-keyword">float32</span> <span class="hljs-string">`json:"edgeLength,omitempty"`</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="graphopts"></a><a href="#graphopts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GraphOpts</h3>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> GraphOpts <span class="hljs-keyword">struct</span> {
+    <span class="hljs-comment">//图的布局。可选：</span>
+    <span class="hljs-comment">// "none" 不采用任何布局，使用节点中提供的 x， y 作为节点的位置。</span>
+    <span class="hljs-comment">// "circular" 采用环形布局</span>
+    <span class="hljs-comment">// "force" 采用力引导布局</span>
+    Layout <span class="hljs-keyword">string</span>
+    <span class="hljs-comment">// "force", "circular" 布局详细配置项</span>
+    Force GraphForce
+    <span class="hljs-comment">// 是否开启鼠标缩放和平移漫游。默认不开启。</span>
+    Roam <span class="hljs-keyword">bool</span>
+    <span class="hljs-comment">// 是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点</span>
+    FocusNodeAdjacency <span class="hljs-keyword">bool</span>
+    <span class="hljs-comment">//</span>
+    Categories []GraphCategory
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="预定义"></a><a href="#预定义" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>预定义</h2>
+<blockquote>
+<p>Note: 示例用到的一些变量及方法，部分重复的以后代码中不会再次列出</p>
+</blockquote>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">var</span> graphNodes = []charts.GraphNode{
+    {Name: <span class="hljs-string">"节点1"</span>},
+    {Name: <span class="hljs-string">"节点2"</span>},
+    {Name: <span class="hljs-string">"节点3"</span>},
+    {Name: <span class="hljs-string">"节点4"</span>},
+    {Name: <span class="hljs-string">"节点5"</span>},
+    {Name: <span class="hljs-string">"节点6"</span>},
+    {Name: <span class="hljs-string">"节点7"</span>},
+    {Name: <span class="hljs-string">"节点8"</span>},
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">genLinks</span><span class="hljs-params">()</span> []<span class="hljs-title">charts</span>.<span class="hljs-title">GraphLink</span></span> {
+    links := <span class="hljs-built_in">make</span>([]charts.GraphLink, <span class="hljs-number">0</span>)
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(graphNodes); i++ {
+        <span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; <span class="hljs-built_in">len</span>(graphNodes); j++ {
+            links = <span class="hljs-built_in">append</span>(links,
+                charts.GraphLink{Source: graphNodes[i].Name, Target: graphNodes[j].Name})
+        }
+    }
+    <span class="hljs-keyword">return</span> links
+}
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="demo"></a><a href="#demo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Demo</h2>
+<h3><a class="anchor" aria-hidden="true" id="graph-示例图"></a><a href="#graph-示例图" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Graph-示例图</h3>
+<pre><code class="hljs css language-go">graph := charts.NewGraph()
+graph.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Graph-示例图"</span>})
+graph.Add(<span class="hljs-string">"graph"</span>, graphNodes, genLinks(),
+    charts.GraphOpts{Force: charts.GraphForce{Repulsion: <span class="hljs-number">8000</span>}},
+)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52727715-c8db9100-2ff0-11e9-8b58-f4a224a138fd.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="graph-布局circular"></a><a href="#graph-布局circular" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Graph-布局(Circular)</h3>
+<pre><code class="hljs css language-go">graph := charts.NewGraph()
+graph.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Graph-布局(Circular)"</span>})
+graph.Add(<span class="hljs-string">"graph"</span>, graphNodes, genLinks(),
+    charts.GraphOpts{Layout: <span class="hljs-string">"circular"</span>, Force: charts.GraphForce{Repulsion: <span class="hljs-number">8000</span>}},
+    charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>, Position: <span class="hljs-string">"right"</span>},
+)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52727731-d42ebc80-2ff0-11e9-8a49-041a8f2d730c.png" alt=""></p>
+<h3><a class="anchor" aria-hidden="true" id="graph-npm-package-依赖关系"></a><a href="#graph-npm-package-依赖关系" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Graph-npm package 依赖关系</h3>
+<p>=&gt; <a href="https://github.com/chenjiandongx/go-echarts/tree/master/example/fixtures/npmdepgraph.json">npmdepgraph.json</a> &lt;=&gt;</p>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> <span class="hljs-string">"github.com/gobuffalo/packr"</span>
+
+graph := charts.NewGraph()
+graph.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"Graph-npm package 依赖关系"</span>})
+box := packr.NewBox(path.Join(<span class="hljs-string">"."</span>, <span class="hljs-string">"fixtures"</span>))
+f, err := box.Find(<span class="hljs-string">"npmdepgraph.json"</span>)
+<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+    log.Fatal(err)
+}
+<span class="hljs-keyword">type</span> Data <span class="hljs-keyword">struct</span> {
+    Nodes []charts.GraphNode
+    Links []charts.GraphLink
+}
+
+<span class="hljs-keyword">var</span> data Data
+<span class="hljs-keyword">if</span> err := json.Unmarshal(f, &amp;data); err != <span class="hljs-literal">nil</span> {
+    fmt.Println(err)
+}
+graph.Add(<span class="hljs-string">"graph"</span>, data.Nodes, data.Links,
+    charts.GraphOpts{Layout: <span class="hljs-string">"none"</span>, Roam: <span class="hljs-literal">true</span>, FocusNodeAdjacency: <span class="hljs-literal">true</span>},
+    charts.EmphasisOpts{Label: charts.LabelTextOpts{Show: <span class="hljs-literal">true</span>, Position:<span class="hljs-string">"left"</span>, Color:<span class="hljs-string">"black"</span>}},
+    charts.LineStyleOpts{Curveness: <span class="hljs-number">0.3</span>},
+)
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/19553554/52727805-f7f20280-2ff0-11e9-91ab-cd99848e3127.gif" alt=""></p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-2-14 by 陈键冬</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/geo"><span class="arrow-prev">← </span><span>Geo（地理坐标系）</span></a><a class="docs-next button" href="/docs/heatmap"><span class="function-name-prevnext">HeatMap（热力图）</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api">API</a></li><li><a href="#专属-options">专属 Options</a><ul class="toc-headings"><li><a href="#graphnode">GraphNode</a></li><li><a href="#graphlink">GraphLink</a></li><li><a href="#graphcategory">GraphCategory</a></li><li><a href="#graphforce">GraphForce</a></li><li><a href="#graphopts">GraphOpts</a></li></ul></li><li><a href="#预定义">预定义</a></li><li><a href="#demo">Demo</a><ul class="toc-headings"><li><a href="#graph-示例图">Graph-示例图</a></li><li><a href="#graph-布局circular">Graph-布局(Circular)</a></li><li><a href="#graph-npm-package-依赖关系">Graph-npm package 依赖关系</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>
