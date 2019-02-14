@@ -34,6 +34,7 @@
 <url> <loc>http://go-echarts.chenjiandongx.com/docs/scatter3d</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://go-echarts.chenjiandongx.com/docs/scatter3d" /> </url>
 <url> <loc>http://go-echarts.chenjiandongx.com/docs/series_options</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://go-echarts.chenjiandongx.com/docs/series_options" /> </url>
 <url> <loc>http://go-echarts.chenjiandongx.com/docs/surface3d</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://go-echarts.chenjiandongx.com/docs/surface3d" /> </url>
+<url> <loc>http://go-echarts.chenjiandongx.com/docs/themeRiver</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://go-echarts.chenjiandongx.com/docs/themeRiver" /> </url>
 <url> <loc>http://go-echarts.chenjiandongx.com/docs/themes</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://go-echarts.chenjiandongx.com/docs/themes" /> </url>
 <url> <loc>http://go-echarts.chenjiandongx.com/docs/wordCloud</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://go-echarts.chenjiandongx.com/docs/wordCloud" /> </url>
 </urlset>
