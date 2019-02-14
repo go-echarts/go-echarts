@@ -12,7 +12,7 @@ var ChartType = struct {
 	Map,
 	Parallel, Pie,
 	Radar,
-	Scatter, Scatter3D, Surface3D,
+	Sankey, Scatter, Scatter3D, Surface3D,
 	ThemeRiver,
 	WordCloud string
 }{
@@ -34,6 +34,7 @@ var ChartType = struct {
 	Parallel:      "parallel",
 	Pie:           "pie",
 	Radar:         "radar",
+	Sankey:        "sankey",
 	Scatter:       "scatter",
 	Scatter3D:     "scatter3D",
 	Surface3D:     "surface",

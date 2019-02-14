@@ -125,7 +125,7 @@ class Index extends React.Component {
             title: '简洁',
           },
           {
-            content: '囊括了 20+ 种常见图表 应有尽有',
+            content: '囊括了 25+ 种常见图表 应有尽有',
             image: `${baseUrl}img/abundant.png`,
             imageAlign: 'top',
             title: '丰富',

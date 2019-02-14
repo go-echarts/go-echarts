@@ -86,6 +86,7 @@ var (
 		{"parallel", charts.RouterOpts{URL: host + "/parallel", Text: "Parallel-(平行坐标系)"}},
 		{"pie", charts.RouterOpts{URL: host + "/pie", Text: "Pie-(饼图)"}},
 		{"radar", charts.RouterOpts{URL: host + "/radar", Text: "Radar-(雷达图)"}},
+		{"sankey", charts.RouterOpts{URL: host + "/sankey", Text: "Sankey-(桑基图)"}},
 		{"scatter", charts.RouterOpts{URL: host + "/scatter", Text: "Scatter-(散点图)"}},
 		{"scatter3D", charts.RouterOpts{URL: host + "/scatter3D", Text: "Scatter-(3D 散点图)"}},
 		{"surface3D", charts.RouterOpts{URL: host + "/surface3D", Text: "Surface3D-(3D 曲面图)"}},
@@ -159,6 +160,7 @@ func main() {
 	http.HandleFunc("/parallel", logTracing(parallelHandler))
 	http.HandleFunc("/pie", logTracing(pieHandler))
 	http.HandleFunc("/radar", logTracing(radarHandler))
+	http.HandleFunc("/sankey", logTracing(sankeyHandler))
 	http.HandleFunc("/scatter", logTracing(scatterHandler))
 	http.HandleFunc("/scatter3D", logTracing(scatter3DHandler))
 	http.HandleFunc("/surface3D", logTracing(surface3DHandler))

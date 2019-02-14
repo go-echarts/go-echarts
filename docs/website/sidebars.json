@@ -19,6 +19,7 @@
       "parallel",
       "pie",
       "radar",
+      "sankey",
       "scatter",
       "themeRiver",
       "wordCloud"

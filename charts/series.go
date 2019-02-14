@@ -217,7 +217,7 @@ type singleSeries struct {
 	Shading string `json:"shading,omitempty"`
 
 	// Graph charts
-	Links              []GraphLink     `json:"links,omitempty"`
+	Links              interface{}     `json:"links,omitempty"`
 	Layout             string          `json:"layout,omitempty"`
 	Force              GraphForce      `json:"force,omitempty"`
 	Categories         []GraphCategory `json:"categories,omitempty"`

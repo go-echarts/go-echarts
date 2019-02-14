@@ -30,6 +30,7 @@ func pageHandler(w http.ResponseWriter, _ *http.Request) {
 		parallelBase(),
 		pieBase(),
 		radarBase(),
+		sankeyBase(),
 		scatterBase(),
 		scatter3DBase(),
 		surface3DBase(),

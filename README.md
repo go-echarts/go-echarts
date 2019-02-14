@@ -38,10 +38,10 @@ $ go get -u github.com/chenjiandongx/go-echarts/...
 ### ✨ 特性
 
 * 简洁的 API 设计，使用如丝滑般流畅
-* 囊括了 20+ 种常见图表，应有尽有
+* 囊括了 **25+** 种常见图表，应有尽有
 * 高度灵活的配置项，可轻松搭配出精美的图表
 * 详细的文档和示例，帮助开发者更快的上手项目
-* 多达 400+ 地图，为地理数据可视化提供强有力的支持
+* 多达 **400+** 地图，为地理数据可视化提供强有力的支持
 
 ### 📝 使用
 
@@ -88,6 +88,7 @@ $ go get -u github.com/chenjiandongx/go-echarts/...
 <img src="https://user-images.githubusercontent.com/19553554/52348737-01fb8a80-2a60-11e9-94ac-dacbd7b58811.png" width="33%" height="33%" alt="wordCloud"/>
 <img src="https://user-images.githubusercontent.com/19553554/52433989-4f075b80-2b49-11e9-9979-ef32c2d17c96.gif" width="33%" height="33%" alt="bar3D"/>
 <img src="https://user-images.githubusercontent.com/19553554/52464826-4baab900-2bb7-11e9-8299-776f5ee43670.gif" width="33%" height="33%" alt="line3D"/>
+<img src="https://user-images.githubusercontent.com/19553554/52802261-8d0cfe00-30ba-11e9-8ae7-ae0773770a59.gif" width="33%" height="33%" alt="sankey"/>
 <img src="https://user-images.githubusercontent.com/19553554/52464647-aee81b80-2bb6-11e9-864e-c544392e523a.gif" width="33%" height="33%" alt="scatter3D"/>
 <img src="https://user-images.githubusercontent.com/19553554/52465183-a55fb300-2bb8-11e9-8c10-4519c4e3f758.gif" width="33%" height="33%" alt="surface3D"/>
 <img src="https://user-images.githubusercontent.com/19553554/52798246-7ebae400-30b2-11e9-8489-6c10339c3429.gif" width="33%" height="33%" alt="themeRiver"/>

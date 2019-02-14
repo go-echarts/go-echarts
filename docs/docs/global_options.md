@@ -128,6 +128,12 @@ type TooltipOpts struct {
     // "axis": 坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
     // "none": 什么都不触发。
     Trigger string `json:"trigger,omitempty"`
+    // 提示框触发的条件，可选：
+    // "mousemove": 鼠标移动时触发。
+    // "click": 鼠标点击时触发。
+    // "mousemove|click": 同时鼠标移动和点击时触发。
+    // "none": 不在 "mousemove" 或 "click" 时触发
+    TriggerOn string `json:"triggerOn,omitempty"`
     // 1, 字符串模板
     // 模板变量有 {a}, {b}，{c}，{d}，{e}，分别表示系列名，数据名，数据值等。
     // 在 trigger 为 'axis' 的时候，会有多个系列的数据，此时可以通过 {a0}, {a1}, {a2}
