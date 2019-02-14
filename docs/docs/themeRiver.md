@@ -119,6 +119,8 @@ var trTime = [][]interface{}{
 
 ## Demo
 
+平行坐标系需要配置 `ThemeRiver Options`，配置项详细参数可参考 [全局配置项#ThemeRiver Options](/docs/global_options#themeriver-options)
+
 ### ThemeRiver-示例图
 ```go
 tr := charts.NewThemeRiver()
