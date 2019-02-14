@@ -19,6 +19,9 @@
         parallel: {{ .ParallelComponentOpts }},
         parallelAxis: {{ .ParallelAxisOpts }},
     {{- end }}
+    {{- if .HasSingleAxis }}
+        singleAxis: {{ .SingleAxisOpts }},
+    {{- end }}
     {{- if .ToolboxOpts.Show }}
         toolbox: {{ .ToolboxOpts }},
     {{- end }}

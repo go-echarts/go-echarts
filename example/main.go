@@ -89,6 +89,7 @@ var (
 		{"scatter", charts.RouterOpts{URL: host + "/scatter", Text: "Scatter-(散点图)"}},
 		{"scatter3D", charts.RouterOpts{URL: host + "/scatter3D", Text: "Scatter-(3D 散点图)"}},
 		{"surface3D", charts.RouterOpts{URL: host + "/surface3D", Text: "Surface3D-(3D 曲面图)"}},
+		{"themeRiver", charts.RouterOpts{URL: host + "/themeRiver", Text: "ThemeRiver-(主题河流图)"}},
 		{"wordCloud", charts.RouterOpts{URL: host + "/wordCloud", Text: "WordCloud-(词云图)"}},
 		{"page", charts.RouterOpts{URL: host + "/page", Text: "Page-(顺序多图)"}},
 	}
@@ -161,6 +162,7 @@ func main() {
 	http.HandleFunc("/scatter", logTracing(scatterHandler))
 	http.HandleFunc("/scatter3D", logTracing(scatter3DHandler))
 	http.HandleFunc("/surface3D", logTracing(surface3DHandler))
+	http.HandleFunc("/themeRiver", logTracing(themeRiverHandler))
 	http.HandleFunc("/wordCloud", logTracing(wcHandler))
 	http.HandleFunc("/page", logTracing(pageHandler))
 

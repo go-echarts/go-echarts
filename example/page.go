@@ -33,6 +33,7 @@ func pageHandler(w http.ResponseWriter, _ *http.Request) {
 		scatterBase(),
 		scatter3DBase(),
 		surface3DBase(),
+		themeRiverBase(),
 		wcBase(),
 	)
 	f, err := os.Create(getRenderPath("page.html"))

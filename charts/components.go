@@ -42,8 +42,6 @@ func (TitleOpts) markGlobal() {}
 
 // 图例组件配置项
 type LegendOpts struct {
-	// 是否显示图例
-	Show bool `json:"show,omitempty"`
 	// 图例组件离容器左侧的距离。
 	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
 	// 也可以是 'left', 'center', 'right'。
@@ -63,6 +61,7 @@ type LegendOpts struct {
 	// 默认自适应。
 	Bottom string `json:"bottom,omitempty"`
 	// Legend 数据项
+	// 如果需要隐藏 Legend 则把 Data 设置为 []string{}
 	Data interface{} `json:"data,omitempty"`
 	// 除此之外也可以设成 "single" 或者 "multiple" 使用单选或者多选模式。默认 "multiple"
 	SelectedMode string `json:"selectedMode,omitempty"`
@@ -270,6 +269,8 @@ type XAxisOpts struct {
 	// X 坐标轴类型，可选：
 	// "value"：数值轴，适用于连续数据。
 	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+	// "time" 时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，
+	// 在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
 	// "log" 对数轴。适用于对数数据。
 	Type string `json:"type,omitempty"`
 	// 是否显示 X 轴
@@ -309,6 +310,8 @@ type YAxisOpts struct {
 	// Y 坐标轴类型，可选：
 	// "value"：数值轴，适用于连续数据。
 	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+	// "time" 时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，
+	// 在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
 	// "log" 对数轴。适用于对数数据。
 	Type string `json:"type,omitempty"`
 	// 是否显示 Y 轴

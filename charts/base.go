@@ -122,13 +122,15 @@ type BaseOpts struct {
 	RadarComponentOpts             // 雷达图组件配置项
 	ParallelComponentOpts          // 平行坐标系组件配置项
 	ParallelAxisOpts               // 平行坐标系中的坐标轴组件配置项
+	JSFunctions                    // JS 函数列表
+	SingleAxisOpts                 // 单轴组件
 
-	JSFunctions      // JS 函数列表
-	HasXYAxis   bool // 图形是否拥有 XY 轴
-	Has3DAxis   bool // 图形是否拥有 3D XYZ 轴
-	HasGeo      bool // 图形是否拥有 Geo 组件
-	HasRadar    bool // 图形是否拥有 Radar 组件
-	HasParallel bool // 图形是否拥有 Parallel 组件
+	HasXYAxis     bool // 图形是否拥有 XY 轴
+	Has3DAxis     bool // 图形是否拥有 3D XYZ 轴
+	HasGeo        bool // 图形是否拥有 Geo 组件
+	HasRadar      bool // 图形是否拥有 Radar 组件
+	HasParallel   bool // 图形是否拥有 Parallel 组件
+	HasSingleAxis bool // 图形是否拥有 singleAxis 组件
 }
 
 // 设置全局颜色
@@ -201,6 +203,8 @@ func (opt *BaseOpts) setBaseGlobalOptions(options ...globalOptser) {
 			opt.ParallelComponentOpts = option.(ParallelComponentOpts)
 		case ParallelAxisOpts:
 			opt.ParallelAxisOpts = option.(ParallelAxisOpts)
+		case SingleAxisOpts:
+			opt.SingleAxisOpts = option.(SingleAxisOpts)
 		}
 	}
 }

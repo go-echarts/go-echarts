@@ -13,6 +13,7 @@ var ChartType = struct {
 	Parallel, Pie,
 	Radar,
 	Scatter, Scatter3D, Surface3D,
+	ThemeRiver,
 	WordCloud string
 }{
 	Bar:           "bar",
@@ -36,6 +37,7 @@ var ChartType = struct {
 	Scatter:       "scatter",
 	Scatter3D:     "scatter3D",
 	Surface3D:     "surface",
+	ThemeRiver:    "themeRiver",
 	WordCloud:     "wordCloud",
 }
 

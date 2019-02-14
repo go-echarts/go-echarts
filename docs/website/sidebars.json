@@ -20,6 +20,7 @@
       "pie",
       "radar",
       "scatter",
+      "themeRiver",
       "wordCloud"
     ],
     "3D 图表": ["bar3d", "line3d", "scatter3d", "surface3d"],
