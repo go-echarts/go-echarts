@@ -6,8 +6,14 @@ sidebar_label: Changelog
 
 ## 版本日志
 
-// TODO
+### 2019.02.15
 
-## 发布日志
+* [Add] 新增 ThemeRiver（主题河流图）
+* [Add] 新增 Sankey（桑基图）
 
-// TODO
+### 2019.02.14
+
+* [Add] 新增 Graph（关系图）
+
+### 2019.02.11
+* [Alpha] 项目正式开源
