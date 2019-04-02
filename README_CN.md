@@ -24,49 +24,50 @@
     </a>
 </p>
 
-> If a language can be used to build web scrapers, it definitely needs to provide a graceful data visualizing library. --- by chenjiandongx
+> 如果一门语言可以用来写爬虫，那么它就需要一个优雅的数据可视化库。 --- by chenjiandongx
 
-In the Golang ecosystem, there are not many choices for data visualizing libraries. The development of [go-echarts](https://github.com/chenjiandongx/go-echarts) aims to provide a simple yet powerful data visualizing library for Golang. [Echarts](https://echarts.baidu.com) is an outstanding charting and visualizing library opensourced by Baidu, it supports adorable chart types and various interactive features. There are many language bindings for Echarts, for example, [pyecharts](https://github.com/pyecharts/pyecharts). go-echarts learns from pyecharts and has envolved a lot.
+在 Golang 这门语言中，目前数据可视化的第三方库还是特别少，[go-echarts](https://github.com/chenjiandongx/go-echarts) 的开发就是为了填补这部分的空隙。[Echarts](https://echarts.baidu.com) 是百度开源的非常优秀的可视化图表库，凭借着良好的交互性，精巧的图表设计，得到了众多开发者的认可。也有其他语言为其实现了相应语言版本的接口，如 Python 的 [pyecharts](https://github.com/pyecharts/pyecharts)，go-echarts 也是借鉴了 pyecharts 的一些设计思想。
 
+[中文 README](README_CN.md)
 
-### 🔰 Installation
+### 🔰 安装
 
 ```shell
 $ go get -u github.com/chenjiandongx/go-echarts/...
 ```
 
-### ✨ Features
+### ✨ 特性
 
-* Clean and comprehensive API.
-* Visualize your data in 25+ different ways.
-* Highly configurable chart options.
-* Detailed documentation and a rich collection of examples.
-* Visualization your geographical data with 400+ maps.
+* 简洁的 API 设计，使用如丝滑般流畅
+* 囊括了 **25+** 种常见图表，应有尽有
+* 高度灵活的配置项，可轻松搭配出精美的图表
+* 详细的文档和示例，帮助开发者更快的上手项目
+* 多达 **400+** 地图，为地理数据可视化提供强有力的支持
 
-### 📝 Usage
+### 📝 使用
 
-It's easy to get started with go-echarts. In this example, we create a simple bar chart with only a few lines of code.
+仅需要几行核心代码就可画出美观的图表
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/19553554/52524229-bf42e800-2cd5-11e9-9eb8-47d8e3f4052b.png" width="80%" height="80%" />
 </p>
 
-And the generated bar.html is rendered as below. Isn't that cool！
+生成的 bar.html 是这样的。Cool！
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/19553554/52524101-34152280-2cd4-11e9-87c6-bbf5e388fe23.png" width="80%" height="80%" />
 </p>
 
-Of course we can also start a listening web server with `net/http`.
+当然你也可以使用更加 `golang` 的方式，利用 `net/http`
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/19553554/52524272-2c567d80-2cd6-11e9-8a73-29ba059b8bb5.png"
  width="80%" height="80%" />
 </p>
 
-Now visit http://localhost:8081 in your browser and you'll see the same bar chart.
+打开浏览器访问 http://localhost:8081 也可以看到同样的效果！
 
-### 🔖 Gallery
+### 🔖 Demo
 
 <div align="center">
 <img src="https://user-images.githubusercontent.com/19553554/52197440-843a5200-289a-11e9-8601-3ce8d945b04a.gif" width="33%" height="33%" alt="bar"/>
@@ -95,14 +96,14 @@ Now visit http://localhost:8081 in your browser and you'll see the same bar char
 <img src="https://user-images.githubusercontent.com/19553554/52349544-c2ce3900-2a61-11e9-82af-28aaaaae0d67.gif" width="33%" height="33%" alt="overlap"/>
 </div>
 
-Run the demo program under `example/` to view all the above chart examples.
+运行 example/main.go 可预览所有示例
 ```shell
 $ cd your/gopath/src/github.com/chenjiandongx/go-echarts/example
 $ go build .
 $ ./example
 ```
 
-For more information, please refer to [go-echarts.chenjiandongx.com](http://go-echarts.chenjiandongx.com).
+了解更多文档的内容请访问 [go-echarts.chenjiandongx.com](http://go-echarts.chenjiandongx.com)
 
 ### 📃 LICENSE
 
