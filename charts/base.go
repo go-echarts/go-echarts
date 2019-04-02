@@ -6,7 +6,7 @@ type globalOptser interface {
 	markGlobal()
 }
 
-// 图形初始化配置项
+// InitOpts contains options for the canvas.
 type InitOpts struct {
 	// 生成的 HTML 页面标题
 	PageTitle string `default:"Awesome go-echarts"`
@@ -26,7 +26,7 @@ type InitOpts struct {
 
 func (InitOpts) markGlobal() {}
 
-// 静态资源配置项
+// AssetsOpts contains options for static assets.
 type AssetsOpts struct {
 	JSAssets, CSSAssets common.OrderedSet
 }
@@ -76,36 +76,39 @@ func (opt *InitOpts) validateInitOpt() {
 	opt.validateChartID()
 }
 
+// RouterOpts contains information for routing.
 type RouterOpts struct {
 	URL  string // 路由 URL
 	Text string // 路由显示文字
 }
 
+// Routers is an array of RouterOpts.
 type Routers []RouterOpts
 
+// Len returns the count of RouterOpts elements in array.
 func (hr Routers) Len() int {
 	return len(hr)
 }
 
-// JS 函数配置项
+// JSFunctions contains a set of JS functions.
 type JSFunctions struct {
 	Fns []string
 }
 
-// 新增 JS 函数
+// AddJSFuncs adds a new JS function.
 func (f *JSFunctions) AddJSFuncs(fn ...string) {
 	for i := 0; i < len(fn); i++ {
 		f.Fns = append(f.Fns, common.ReplaceJsFuncs(fn[i]))
 	}
 }
 
-// 全局颜色配置项
+// ColorOpts contains options for color schemes.
 type ColorOpts []string
 
 func (ColorOpts) markGlobal() {}
 func (ColorOpts) markSeries() {}
 
-// 所有图表都拥有的基本配置项
+// BaseOpts represents a option set needed by all chart types.
 type BaseOpts struct {
 	InitOpts              // 图形初始化配置项
 	LegendOpts            // 图例组件配置项

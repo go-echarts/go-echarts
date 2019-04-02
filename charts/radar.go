@@ -6,7 +6,7 @@ import (
 	"github.com/chenjiandongx/go-echarts/common"
 )
 
-// 雷达图配置项组件
+// IndicatorOpts is the option set for a radar chart.
 type IndicatorOpts struct {
 	// 指示器名称
 	Name string `json:"name,omitempty"`
@@ -18,7 +18,7 @@ type IndicatorOpts struct {
 	Color string `json:"color,omitempty"`
 }
 
-// 雷达图坐标系组件，只适用于雷达图
+// RadarComponentOpts is the option set for a radar component.
 type RadarComponentOpts struct {
 	// 雷达图的指示器，用来指定雷达图中的多个变量（维度）
 	Indicator []IndicatorOpts `json:"indicator,omitempty"`
@@ -34,6 +34,7 @@ type RadarComponentOpts struct {
 
 func (RadarComponentOpts) markGlobal() {}
 
+// Radar represents a radar chart.
 type Radar struct {
 	BaseOpts
 	Series
@@ -41,6 +42,7 @@ type Radar struct {
 
 func (Radar) chartType() string { return common.ChartType.Radar }
 
+// NewRadar creates a new radar chart.
 func NewRadar(routers ...RouterOpts) *Radar {
 	chart := new(Radar)
 	chart.initBaseOpts(routers...)
@@ -48,6 +50,7 @@ func NewRadar(routers ...RouterOpts) *Radar {
 	return chart
 }
 
+// Add adds new data sets.
 func (c *Radar) Add(name string, data interface{}, options ...seriesOptser) *Radar {
 	series := singleSeries{Name: name, Type: common.ChartType.Radar, Data: data}
 	series.setSingleSeriesOpts(options...)
@@ -57,6 +60,7 @@ func (c *Radar) Add(name string, data interface{}, options ...seriesOptser) *Rad
 	return c
 }
 
+// SetGlobalOptions sets options for the Radar instance.
 func (c *Radar) SetGlobalOptions(options ...globalOptser) *Radar {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
@@ -67,6 +71,7 @@ func (c *Radar) validateOpts() {
 	c.validateAssets(c.AssetsHost)
 }
 
+// Render renders the chart and writes the output to given writers.
 func (c *Radar) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()

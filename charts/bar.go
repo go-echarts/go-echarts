@@ -6,6 +6,7 @@ import (
 	"github.com/chenjiandongx/go-echarts/common"
 )
 
+// Bar represents a bar chart.
 type Bar struct {
 	RectChart
 	BarOpts
@@ -15,7 +16,7 @@ type Bar struct {
 
 func (Bar) chartType() string { return common.ChartType.Bar }
 
-// Bar series options
+// BarOpts is the option set for a bar chart.
 type BarOpts struct {
 	// 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
 	Stack string
@@ -45,6 +46,7 @@ func (opt *BarOpts) setChartOpt(s *singleSeries) {
 	s.YAxisIndex = opt.YAxisIndex
 }
 
+// NewBar creates a new bar chart.
 func NewBar(routers ...RouterOpts) *Bar {
 	chart := new(Bar)
 	chart.initBaseOpts(routers...)
@@ -53,11 +55,13 @@ func NewBar(routers ...RouterOpts) *Bar {
 	return chart
 }
 
+// AddXAxis adds the X axis.
 func (c *Bar) AddXAxis(xAxis interface{}) *Bar {
 	c.xAxisData = xAxis
 	return c
 }
 
+// AddYAxis adds the Y axis.
 func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Bar {
 	series := singleSeries{Name: name, Type: common.ChartType.Bar, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
@@ -66,6 +70,7 @@ func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) 
 	return c
 }
 
+// XYReversal checks if X axis and Y axis are reversed.
 func (c *Bar) XYReversal() *Bar {
 	c.isXYReversal = true
 	return c
@@ -85,6 +90,7 @@ func (c *Bar) validateOpts() {
 	c.validateAssets(c.AssetsHost)
 }
 
+// Render renders the chart and writes the output to given writers.
 func (c *Bar) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()

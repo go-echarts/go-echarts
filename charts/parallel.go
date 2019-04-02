@@ -6,7 +6,7 @@ import (
 	"github.com/chenjiandongx/go-echarts/common"
 )
 
-// 平行坐标系组件配置项
+// ParallelComponentOpts is the option set for parallel component.
 type ParallelComponentOpts struct {
 	// parallel 组件离容器左侧的距离。
 	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
@@ -28,11 +28,13 @@ type ParallelComponentOpts struct {
 	Bottom string `json:"bottom,omitempty"`
 }
 
+// ParallelAxisOpts is a list of ParallelAxisOpts.
 // 平行坐标系中的坐标轴组件配置项
 type ParallelAxisOpts []PAOpts
 
 func (ParallelAxisOpts) markGlobal() {}
 
+// PAOpts is the option set for a parallel axis.
 type PAOpts struct {
 	// 坐标轴的维度序号
 	Dim int `json:"dim,omitempty"`
@@ -58,6 +60,7 @@ type PAOpts struct {
 
 func (ParallelComponentOpts) markGlobal() {}
 
+// Parallel represents a parallel axis.
 type Parallel struct {
 	BaseOpts
 	Series
@@ -65,6 +68,7 @@ type Parallel struct {
 
 func (Parallel) chartType() string { return common.ChartType.Parallel }
 
+// NewParallel creates a new parallel instance.
 func NewParallel(routers ...RouterOpts) *Parallel {
 	chart := new(Parallel)
 	chart.initBaseOpts(routers...)
@@ -72,6 +76,7 @@ func NewParallel(routers ...RouterOpts) *Parallel {
 	return chart
 }
 
+// Add adds new data sets.
 func (c *Parallel) Add(name string, data interface{}, options ...seriesOptser) *Parallel {
 	series := singleSeries{Name: name, Type: common.ChartType.Parallel, Data: data}
 	series.setSingleSeriesOpts(options...)
@@ -80,6 +85,7 @@ func (c *Parallel) Add(name string, data interface{}, options ...seriesOptser) *
 	return c
 }
 
+// SetGlobalOptions sets options for the Parallel instance.
 func (c *Parallel) SetGlobalOptions(options ...globalOptser) *Parallel {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
@@ -89,6 +95,7 @@ func (c *Parallel) validateOpts() {
 	c.validateAssets(c.AssetsHost)
 }
 
+// Render renders the chart and writes the output to given writers.
 func (c *Parallel) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()

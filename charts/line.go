@@ -2,13 +2,14 @@ package charts
 
 import "github.com/chenjiandongx/go-echarts/common"
 
+// Line represents a line chart.
 type Line struct {
 	RectChart
 }
 
 func (Line) chartType() string { return common.ChartType.Line }
 
-// Line series options
+// LineOpts is the options set for a line chart.
 type LineOpts struct {
 	// 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
 	Stack string
@@ -32,6 +33,7 @@ func (opt *LineOpts) setChartOpt(s *singleSeries) {
 	s.YAxisIndex = opt.YAxisIndex
 }
 
+// NewLine creates a new line chart.
 func NewLine(routers ...RouterOpts) *Line {
 	chart := new(Line)
 	chart.initBaseOpts(routers...)
@@ -40,11 +42,13 @@ func NewLine(routers ...RouterOpts) *Line {
 	return chart
 }
 
+// AddXAxis adds the X axis.
 func (c *Line) AddXAxis(xAxis interface{}) *Line {
 	c.xAxisData = xAxis
 	return c
 }
 
+// AddYAxis adds the Y axis.
 func (c *Line) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Line {
 	series := singleSeries{Name: name, Type: common.ChartType.Line, Data: yAxis}
 	series.setSingleSeriesOpts(options...)

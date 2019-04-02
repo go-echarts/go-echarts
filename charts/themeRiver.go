@@ -6,12 +6,13 @@ import (
 	"github.com/chenjiandongx/go-echarts/common"
 )
 
+// ThemeRiver represents a theme river chart.
 type ThemeRiver struct {
 	BaseOpts
 	Series
 }
 
-// 单轴配置项
+// SingleAxisOpts is the option set for single axis.
 type SingleAxisOpts struct {
 	// 坐标轴刻度最小值。
 	// 可以设置成特殊值 "dataMin"，此时取数据在该轴上的最小值作为最小刻度
@@ -52,6 +53,7 @@ func (SingleAxisOpts) markGlobal() {}
 
 func (ThemeRiver) chartType() string { return common.ChartType.ThemeRiver }
 
+// NewThemeRiver creates a new theme river chart.
 func NewThemeRiver(routers ...RouterOpts) *ThemeRiver {
 	chart := new(ThemeRiver)
 	chart.initBaseOpts(routers...)
@@ -59,6 +61,7 @@ func NewThemeRiver(routers ...RouterOpts) *ThemeRiver {
 	return chart
 }
 
+// Add adds new data sets.
 func (c *ThemeRiver) Add(name string, data interface{}, options ...seriesOptser) *ThemeRiver {
 	series := singleSeries{Name: name, Type: common.ChartType.ThemeRiver, Data: data}
 	series.setSingleSeriesOpts(options...)
@@ -66,6 +69,7 @@ func (c *ThemeRiver) Add(name string, data interface{}, options ...seriesOptser)
 	return c
 }
 
+// SetGlobalOptions sets options for the ThemeRiver instance.
 func (c *ThemeRiver) SetGlobalOptions(options ...globalOptser) *ThemeRiver {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
@@ -75,6 +79,7 @@ func (c *ThemeRiver) validateOpts() {
 	c.validateAssets(c.AssetsHost)
 }
 
+// Render renders the chart and writes the output to given writers.
 func (c *ThemeRiver) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()

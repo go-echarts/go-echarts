@@ -9,7 +9,7 @@ type rectCharter interface {
 	exportSeries() Series
 }
 
-// XY 轴配置项
+// XYAxis represent the X and Y axis in the rectangular coordinate.
 type XYAxis struct {
 	XAxisOptsList []XAxisOpts
 	YAxisOptsList []YAxisOpts
@@ -33,21 +33,21 @@ func (xy *XYAxis) setXYGlobalOptions(options ...globalOptser) {
 	}
 }
 
-// 扩展新增 X 轴
+// ExtendXAxis adds new X axes.
 func (xy *XYAxis) ExtendXAxis(xAxis ...XAxisOpts) {
 	for i := 0; i < len(xAxis); i++ {
 		xy.XAxisOptsList = append(xy.XAxisOptsList, xAxis[i])
 	}
 }
 
-// 扩展新增 Y 轴
+// ExtendYAxis adds new Y axes.
 func (xy *XYAxis) ExtendYAxis(yAxis ...YAxisOpts) {
 	for i := 0; i < len(yAxis); i++ {
 		xy.YAxisOptsList = append(xy.YAxisOptsList, yAxis[i])
 	}
 }
 
-// 直角坐标系配置项
+// RectOpts contains options for the rectangular coordinate.
 type RectOpts struct {
 	BaseOpts
 	XYAxis
@@ -59,7 +59,7 @@ func (rect *RectOpts) setRectGlobalOptions(options ...globalOptser) {
 	rect.XYAxis.setXYGlobalOptions(options...)
 }
 
-// 直角坐标系图表
+// RectChart is a chart in RectChart coordinate.
 type RectChart struct {
 	RectOpts
 	Series
@@ -69,12 +69,13 @@ type RectChart struct {
 
 func (RectChart) markRectChart() {}
 
-// RectChart 设置全局配置项
+// SetGlobalOptions sets options for the RectChart instance.
 func (rc *RectChart) SetGlobalOptions(options ...globalOptser) *RectChart {
 	rc.RectOpts.setRectGlobalOptions(options...)
 	return rc
 }
 
+// Overlap composites multiple charts into one single canvas.
 // 结合不同类型图表叠加画在同张图上
 // 只适用于 RectChart 图表，其实现了 rectCharter 接口
 // RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
@@ -97,7 +98,7 @@ func (rc *RectChart) validateOpts() {
 	rc.validateAssets(rc.AssetsHost)
 }
 
-// RectChart 渲染图表
+// Render renders the chart and writes the output to given writers.
 func (rc *RectChart) Render(w ...io.Writer) error {
 	rc.validateOpts()
 	return renderToWriter(rc, "chart", []string{}, w...)
