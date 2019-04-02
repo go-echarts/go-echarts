@@ -28,6 +28,7 @@
 
 In the Golang ecosystem, there are not many choices for data visualizing libraries. The development of [go-echarts](https://github.com/chenjiandongx/go-echarts) aims to provide a simple yet powerful data visualizing library for Golang. [Echarts](https://echarts.baidu.com) is an outstanding charting and visualizing library opensourced by Baidu, it supports adorable chart types and various interactive features. There are many language bindings for Echarts, for example, [pyecharts](https://github.com/pyecharts/pyecharts). go-echarts learns from pyecharts and has envolved a lot.
 
+[中文 README](README_CN.md)
 
 ### 🔰 Installation
 
