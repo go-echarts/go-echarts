@@ -9,11 +9,12 @@ import (
 	"github.com/chenjiandongx/go-echarts/datasets"
 )
 
-// 地理坐标系组件配置项
+// GeoComponentOpts is the option set for geo component.
 type GeoComponentOpts struct {
 	Map string `json:"map,omitempty"`
 }
 
+// Geo represents a geo chart.
 type Geo struct {
 	BaseOpts
 	Series
@@ -26,6 +27,7 @@ var geoFormatter = `function (params) {
 		return params.name + ' : ' + params.value[2];
 }`
 
+// NewGeo creates a new geo chart.
 func NewGeo(mapType string, routers ...RouterOpts) *Geo {
 	chart := new(Geo)
 	chart.initBaseOpts(routers...)
@@ -35,6 +37,7 @@ func NewGeo(mapType string, routers ...RouterOpts) *Geo {
 	return chart
 }
 
+// Add adds new data sets.
 // geoType 是 Geo 图形的种类，有以下三种类型可选
 // common.ChartType.Scatter
 // common.ChartType.EffectScatter
@@ -62,6 +65,7 @@ func (c *Geo) extendValue(region string, v float32) []float32 {
 	return res
 }
 
+// SetGlobalOptions sets options for the Geo instance.
 func (c *Geo) SetGlobalOptions(options ...globalOptser) *Geo {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
@@ -74,6 +78,7 @@ func (c *Geo) validateOpts() {
 	c.validateAssets(c.AssetsHost)
 }
 
+// Render renders the chart and writes the output to given writers.
 func (c *Geo) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()

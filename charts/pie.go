@@ -6,6 +6,7 @@ import (
 	"github.com/chenjiandongx/go-echarts/common"
 )
 
+// Pie represents a pie chart.
 type Pie struct {
 	BaseOpts
 	Series
@@ -13,7 +14,7 @@ type Pie struct {
 
 func (Pie) chartType() string { return common.ChartType.Pie }
 
-// Pie series options
+// PieOpts is the option set for a pie chart.
 type PieOpts struct {
 	// 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
 	// 1."radius": 扇区圆心角展现数据的百分比，半径展现数据的大小。
@@ -43,12 +44,14 @@ func (opt *PieOpts) setChartOpt(s *singleSeries) {
 	s.Radius = opt.Radius
 }
 
+// NewPie creates a new gauge chart.
 func NewPie(routers ...RouterOpts) *Pie {
 	chart := new(Pie)
 	chart.initBaseOpts(routers...)
 	return chart
 }
 
+// Add adds new data sets.
 func (c *Pie) Add(name string, data map[string]interface{}, options ...seriesOptser) *Pie {
 	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
@@ -61,6 +64,7 @@ func (c *Pie) Add(name string, data map[string]interface{}, options ...seriesOpt
 	return c
 }
 
+// SetGlobalOptions sets options for the Pie instance.
 func (c *Pie) SetGlobalOptions(options ...globalOptser) *Pie {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
@@ -70,6 +74,7 @@ func (c *Pie) validateOpts() {
 	c.validateAssets(c.AssetsHost)
 }
 
+// Render renders the chart and writes the output to given writers.
 func (c *Pie) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()

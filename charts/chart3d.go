@@ -6,6 +6,7 @@ import (
 	"github.com/chenjiandongx/go-echarts/common"
 )
 
+// Chart3D is a chart in 3D coordinate.
 type Chart3D struct {
 	BaseOpts
 	Series
@@ -23,7 +24,7 @@ func (c *Chart3D) initChart3D() {
 	c.Has3DAxis = true
 }
 
-// 设置 Chart3D 全局配置项
+// SetGlobalOptions sets options for the Chart3D instance.
 func (c *Chart3D) SetGlobalOptions(options ...globalOptser) *Chart3D {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	c.setChart3DGlobalOptions(options...)
@@ -69,13 +70,14 @@ func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, options ..
 	c.setColor(options...)
 }
 
+// Render renders the chart and writes the output to given writers.
 func (c *Chart3D) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
 	return renderToWriter(c, "chart", []string{}, w...)
 }
 
-// 三维笛卡尔坐标系组件
+// Grid3DOpts contains options for the 3D coordinate.
 type Grid3DOpts struct {
 	// 是否显示三维笛卡尔坐标系
 	Show bool `json:"show,omitempty"`
@@ -94,6 +96,7 @@ type Grid3DOpts struct {
 
 func (Grid3DOpts) markGlobal() {}
 
+// ViewControlOpts contains options for view controlling.
 type ViewControlOpts struct {
 	// 是否开启视角绕物体的自动旋转查看
 	AutoRotate bool `json:"autoRotate,omitempty"`
@@ -101,6 +104,7 @@ type ViewControlOpts struct {
 	AutoRotateSpeed float32 `json:"autoRotateSpeed,omitempty"`
 }
 
+// XAxis3DOpts contains options for X axis in the 3D coordinate.
 type XAxis3DOpts struct {
 	// 是否显示 3D X 轴
 	Show bool `json:"show,omitempty"`
@@ -127,6 +131,7 @@ type XAxis3DOpts struct {
 
 func (XAxis3DOpts) markGlobal() {}
 
+// YAxis3DOpts contains options for Y axis in the 3D coordinate.
 type YAxis3DOpts struct {
 	// 是否显示 3D Y 轴
 	Show bool `json:"show,omitempty"`
@@ -153,6 +158,7 @@ type YAxis3DOpts struct {
 
 func (YAxis3DOpts) markGlobal() {}
 
+// ZAxis3DOpts contains options for Z axis in the 3D coordinate.
 type ZAxis3DOpts struct {
 	// 是否显示 3D Z 轴
 	Show bool `json:"show,omitempty"`

@@ -7,6 +7,7 @@ import (
 	"github.com/chenjiandongx/go-echarts/datasets"
 )
 
+// Map represents a map chart.
 type Map struct {
 	BaseOpts
 	Series
@@ -16,6 +17,7 @@ type Map struct {
 
 func (Map) chartType() string { return common.ChartType.Map }
 
+// NewMap creates a new map chart.
 func NewMap(mapType string, routers ...RouterOpts) *Map {
 	chart := new(Map)
 	chart.mapType = mapType
@@ -24,6 +26,7 @@ func NewMap(mapType string, routers ...RouterOpts) *Map {
 	return chart
 }
 
+// Add adds new data sets.
 func (c *Map) Add(name string, data map[string]float32, options ...seriesOptser) *Map {
 	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
@@ -36,6 +39,7 @@ func (c *Map) Add(name string, data map[string]float32, options ...seriesOptser)
 	return c
 }
 
+// SetGlobalOptions sets options for the Map instance.
 func (c *Map) SetGlobalOptions(options ...globalOptser) *Map {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
@@ -45,6 +49,7 @@ func (c *Map) validateOpts() {
 	c.validateAssets(c.AssetsHost)
 }
 
+// Render renders the chart and writes the output to given writers.
 func (c *Map) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()

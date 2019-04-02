@@ -6,12 +6,13 @@ import (
 	"github.com/chenjiandongx/go-echarts/common"
 )
 
+// Graph represents a graph chart.
 type Graph struct {
 	BaseOpts
 	Series
 }
 
-// 关系图节点数据
+// GraphNode represents a data node in graph chart.
 type GraphNode struct {
 	// 数据项名称
 	Name string `json:"name,omitempty"`
@@ -35,7 +36,7 @@ type GraphNode struct {
 	ItemStyle ItemStyleOpts `json:"itemStyle,omitempty"`
 }
 
-// 关系图节点间的关系数据
+// GraphLink represents relationship between two data nodes.
 type GraphLink struct {
 	// 边的源节点名称的字符串，也支持使用数字表示源节点的索引
 	Source interface{} `json:"source,omitempty"`
@@ -45,7 +46,7 @@ type GraphLink struct {
 	Value float32 `json:"value,omitempty"`
 }
 
-// 节点分类的类目
+// GraphCategory represents a category for data nodes.
 type GraphCategory struct {
 	// 类目名称，用于和 legend 对应以及格式化 tooltip 的内容
 	Name string `json:"name"`
@@ -53,7 +54,7 @@ type GraphCategory struct {
 	Label LabelTextOpts `json:"label"`
 }
 
-// 力引导布局相关的配置项
+// GraphForce is the option set for graph force layout.
 type GraphForce struct {
 	// 进行力引导布局前的初始化布局，初始化布局会影响到力引导的效果
 	//InitLayout string `json:"initLayout,omitempty"`
@@ -71,6 +72,7 @@ type GraphForce struct {
 	EdgeLength float32 `json:"edgeLength,omitempty"`
 }
 
+// GraphOpts is the option set for graph chart.
 type GraphOpts struct {
 	//图的布局。可选：
 	// "none" 不采用任何布局，使用节点中提供的 x， y 作为节点的位置。
@@ -99,12 +101,14 @@ func (opt *GraphOpts) setChartOpt(s *singleSeries) {
 
 func (Graph) chartType() string { return common.ChartType.Graph }
 
+// NewGraph creates a new graph chart.
 func NewGraph(routers ...RouterOpts) *Graph {
 	chart := new(Graph)
 	chart.initBaseOpts(routers...)
 	return chart
 }
 
+// Add adds new data sets.
 func (c *Graph) Add(name string, nodes []GraphNode, links []GraphLink, options ...seriesOptser) *Graph {
 	series := singleSeries{Name: name, Type: common.ChartType.Graph, Links: links, Data: nodes}
 	series.setSingleSeriesOpts(options...)
@@ -113,6 +117,7 @@ func (c *Graph) Add(name string, nodes []GraphNode, links []GraphLink, options .
 	return c
 }
 
+// SetGlobalOptions sets options for the Graph instance.
 func (c *Graph) SetGlobalOptions(options ...globalOptser) *Graph {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
@@ -128,6 +133,7 @@ func (c *Graph) validateOpts() {
 	c.validateAssets(c.AssetsHost)
 }
 
+// Render renders the chart and writes the output to given writers.
 func (c *Graph) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()

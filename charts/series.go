@@ -4,7 +4,7 @@ type seriesOptser interface {
 	markSeries()
 }
 
-// 图形上的文本标签配置项
+// LabelTextOpts contains options for a label text.
 type LabelTextOpts struct {
 	// 是否显示标签
 	Show bool `json:"show"`
@@ -46,7 +46,7 @@ type LabelTextOpts struct {
 
 func (LabelTextOpts) markSeries() {}
 
-// 高亮的图形样式和标签样式
+// EmphasisOpts contains options for an emphasis.
 type EmphasisOpts struct {
 	// 高亮的标签样式
 	Label LabelTextOpts `json:"label,omitempty"`
@@ -56,13 +56,13 @@ type EmphasisOpts struct {
 
 func (EmphasisOpts) markSeries() {}
 
-// MarkLine 配置项
+// MarkPoint represents a mark point.
 type MarkPoint struct {
 	Data []interface{} `json:"data,omitempty"`
 	MPStyleOpts
 }
 
-// MarkPoint 风格配置项
+// MPStyleOpts contains styling options for a MarkPoint.
 type MPStyleOpts struct {
 	// 图元的图形类别
 	// 可选 "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
@@ -75,7 +75,7 @@ type MPStyleOpts struct {
 
 func (MPStyleOpts) markSeries() {}
 
-// MarkPoint 数据 Name-Type
+// MPNameTypeItem represents type for a MarkPoint.
 type MPNameTypeItem struct {
 	// 标记点名称
 	Name string `json:"name"`
@@ -89,7 +89,7 @@ type MPNameTypeItem struct {
 
 func (MPNameTypeItem) markSeries() {}
 
-// MarkPoint 数据 Name-Coordinates
+// MPNameCoordItem represents coordinates for a MarkPoint.
 type MPNameCoordItem struct {
 	// 标记点名称
 	Name string `json:"name"`
@@ -103,13 +103,13 @@ type MPNameCoordItem struct {
 
 func (MPNameCoordItem) markSeries() {}
 
-// MarkLine 配置项
+// MarkLine represents a mark line.
 type MarkLine struct {
 	Data []interface{} `json:"data,omitempty"`
 	MLStyleOpts
 }
 
-// MarkLine 风格配置项
+// MLStyleOpts contains styling options for a MarkLine.
 type MLStyleOpts struct {
 	// 图元的图形类别
 	// 可选 "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
@@ -122,7 +122,7 @@ type MLStyleOpts struct {
 
 func (MLStyleOpts) markSeries() {}
 
-// MarkLine 数据 Name-Type
+// MLNameTypeItem represents type for a MarkLine.
 type MLNameTypeItem struct {
 	// 标记线名称
 	Name string `json:"name"`
@@ -136,7 +136,7 @@ type MLNameTypeItem struct {
 
 func (MLNameTypeItem) markSeries() {}
 
-// MarkLine 数据 Name-YAxis
+// MLNameYAxisItem represents Y axis for a MarkLine.
 type MLNameYAxisItem struct {
 	// 标记线名称
 	Name string `json:"name"`
@@ -150,7 +150,7 @@ type MLNameYAxisItem struct {
 
 func (MLNameYAxisItem) markSeries() {}
 
-// MarkLine 数据 Name-XAxis
+// MLNameXAxisItem represents X axis for a MarkLine.
 type MLNameXAxisItem struct {
 	// 标记线名称
 	Name string `json:"name"`
@@ -164,7 +164,7 @@ type MLNameXAxisItem struct {
 
 func (MLNameXAxisItem) markSeries() {}
 
-// MarkLine 数据 Name-Coordinates
+// MLNameCoordItem represents coordinates for a MarkLine.
 type MLNameCoordItem struct {
 	// 标记线名称
 	Name string
@@ -180,7 +180,7 @@ type MLNameCoordItem struct {
 
 func (MLNameCoordItem) markSeries() {}
 
-// 数据 Item 配置项
+// ItemStyleOpts contains styling options for a MarkLine.
 type ItemStyleOpts struct {
 	// 图形的颜色
 	// Kline 图中为 阳线图形颜色
@@ -349,12 +349,14 @@ func (s *singleSeries) setSingleSeriesOpts(options ...seriesOptser) {
 	s.switchSeriesOpts(options...)
 }
 
+// Series represents multiple series.
 type Series []singleSeries
 
 func (series *Series) exportSeries() Series {
 	return *series
 }
 
+// SetSeriesOptions sets options for the series.
 func (series *Series) SetSeriesOptions(options ...seriesOptser) {
 	tsl := *series
 	for i := 0; i < len(tsl); i++ {

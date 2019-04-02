@@ -2,7 +2,7 @@ package charts
 
 import "github.com/chenjiandongx/go-echarts/common"
 
-// 标题组件配置项
+// TitleOpts is the option set for a title component.
 type TitleOpts struct {
 	// 主标题
 	Title string `json:"text,omitempty"`
@@ -40,7 +40,7 @@ type TitleOpts struct {
 
 func (TitleOpts) markGlobal() {}
 
-// 图例组件配置项
+// LegendOpts is the option set for a legend component.
 type LegendOpts struct {
 	// 图例组件离容器左侧的距离。
 	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
@@ -71,7 +71,7 @@ type LegendOpts struct {
 
 func (LegendOpts) markGlobal() {}
 
-// 提示框组件配置项
+// TooltipOpts is the option set for a tooltip component.
 type TooltipOpts struct {
 	// 是否显示提示框
 	Show bool `json:"show,omitempty"`
@@ -117,7 +117,7 @@ type TooltipOpts struct {
 
 func (TooltipOpts) markGlobal() {}
 
-// 工具箱组件配置项
+// ToolboxOpts is the option set for a toolbox component.
 type ToolboxOpts struct {
 	// 是否显示工具栏组件
 	Show bool `json:"show"`
@@ -127,6 +127,7 @@ type ToolboxOpts struct {
 
 func (ToolboxOpts) markGlobal() {}
 
+// TBFeature is a feature component under toolbox.
 type TBFeature struct {
 	// 保存为图片
 	SaveAsImage struct{} `json:"saveAsImage"`
@@ -138,7 +139,7 @@ type TBFeature struct {
 	Restore struct{} `json:"restore"`
 }
 
-// 字体样式配置项
+// TextStyleOpts is the option set for a text style component.
 type TextStyleOpts struct {
 	// 文字字体颜色
 	Color string `json:"color,omitempty"`
@@ -153,7 +154,7 @@ type TextStyleOpts struct {
 
 func (TextStyleOpts) markSeries() {}
 
-// 线风格配置项
+// LineStyleOpts is the option set for a link style component.
 type LineStyleOpts struct {
 	// 线的颜色
 	Color string `json:"color,omitempty"`
@@ -172,7 +173,7 @@ type LineStyleOpts struct {
 
 func (LineStyleOpts) markSeries() {}
 
-// 区域风格配置项
+// AreaStyleOpts is the option set for an area style component.
 type AreaStyleOpts struct {
 	// 填充区域的颜色
 	Color string `json:"color,omitempty"`
@@ -182,7 +183,7 @@ type AreaStyleOpts struct {
 
 func (AreaStyleOpts) markSeries() {}
 
-// 区域缩放组件配置项
+// DataZoomOpts is the option set for a zoom component.
 type DataZoomOpts struct {
 	// 缩放类型，可选 "inside", "slider"
 	Type string `json:"type" default:"inside"`
@@ -209,13 +210,15 @@ type DataZoomOpts struct {
 
 func (DataZoomOpts) markGlobal() {}
 
+// DataZoomOptsList is a list of DataZoomOpts.
 type DataZoomOptsList []DataZoomOpts
 
+// Len returns count of DataZoomOpts in array.
 func (dz DataZoomOptsList) Len() int {
 	return len(dz)
 }
 
-// 视觉映射组件配置项
+// VisualMapOpts is the option set for a visual map component.
 // 用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）
 type VisualMapOpts struct {
 	// 映射类型，可选 "continuous", "piecewise"
@@ -236,12 +239,15 @@ type VisualMapOpts struct {
 
 func (VisualMapOpts) markGlobal() {}
 
+// VisualMapOptsList is a list of VisualMapOpts.
 type VisualMapOptsList []VisualMapOpts
 
+// Len returns the count of VisualMapOptsList in array.
 func (vm VisualMapOptsList) Len() int {
 	return len(vm)
 }
 
+// VMInRange is a visual map instance in a range.
 type VMInRange struct {
 	// 图元的颜色
 	Color []string `json:"color,omitempty"`
@@ -252,7 +258,7 @@ type VMInRange struct {
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 }
 
-// 坐标轴在 grid 区域中的分隔区域配置项
+// SplitAreaOpts is the option set for a split area.
 type SplitAreaOpts struct {
 	// 是否显示分隔区域
 	Show bool `json:"show"`
@@ -260,7 +266,7 @@ type SplitAreaOpts struct {
 	AreaStyle AreaStyleOpts `json:"areaStyle,omitempty"`
 }
 
-// 坐标轴在 grid 区域中的分隔线配置项配置项
+// SplitLineOpts is the option set for a split line.
 type SplitLineOpts struct {
 	// 是否显示分隔线
 	Show bool `json:"show"`
@@ -268,7 +274,7 @@ type SplitLineOpts struct {
 	LineStyle LineStyleOpts `json:"lineStyle,omitempty"`
 }
 
-// X 轴配置项组件
+// XAxisOpts is the option set for X axis.
 type XAxisOpts struct {
 	// X 轴名称
 	Name string `json:"name,omitempty"`
@@ -309,7 +315,7 @@ type XAxisOpts struct {
 
 func (XAxisOpts) markGlobal() {}
 
-// Y 轴配置项组件
+// YAxisOpts is the option set for Y axis.
 type YAxisOpts struct {
 	// Y 轴名称
 	Name string `json:"name,omitempty"`
@@ -364,7 +370,7 @@ type YAxisOpts struct {
 
 func (YAxisOpts) markGlobal() {}
 
-// 处理 function 类型配置项
+// FuncOpts is the option set for handling function type.
 func FuncOpts(fn string) string {
 	return common.ReplaceJsFuncs(fn)
 }

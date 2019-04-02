@@ -13,6 +13,7 @@ type charter interface {
 	chartType() string
 }
 
+// Page represents a page chart.
 type Page struct {
 	InitOpts
 	AssetsOpts
@@ -22,6 +23,7 @@ type Page struct {
 	unusedStr common.OrderedSet
 }
 
+// NewPage creates a new page.
 func NewPage(routers ...RouterOpts) *Page {
 	page := new(Page)
 	for i := 0; i < len(routers); i++ {
@@ -32,7 +34,7 @@ func NewPage(routers ...RouterOpts) *Page {
 	return page
 }
 
-// 新增 Page 图表，支持一次接收多个 Chart
+// Add adds new charts to the page.
 func (page *Page) Add(charts ...charter) *Page {
 	if len(charts) < 1 {
 		log.Println("Charts length should > 0")
@@ -60,6 +62,7 @@ func (page *Page) extractAssets(jsList, cssList []string) {
 	}
 }
 
+// Render renders the chart and writes the output to given writers.
 func (page *Page) Render(w ...io.Writer) error {
 	page.InitOpts.setDefault()
 	return renderToWriter(page, "page", page.unusedStr.Values, w...)

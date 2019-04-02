@@ -6,6 +6,7 @@ import (
 	"github.com/chenjiandongx/go-echarts/common"
 )
 
+// WordCloud represents a word cloud chart.
 type WordCloud struct {
 	BaseOpts
 	Series
@@ -13,7 +14,7 @@ type WordCloud struct {
 
 func (WordCloud) chartType() string { return common.ChartType.WordCloud }
 
-// WordCLoud series options
+// WordCLoudOpts is the option set for a word cloud chart.
 type WordCLoudOpts struct {
 	// 词云图形状，可选
 	// "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
@@ -39,6 +40,7 @@ var wcTextColor = `function () {
 		Math.round(Math.random() * 160)].join(',') + ')';
 }`
 
+// NewWordCloud creates a new word cloud chart.
 func NewWordCloud(routers ...RouterOpts) *WordCloud {
 	chart := new(WordCloud)
 	chart.initBaseOpts(routers...)
@@ -46,6 +48,7 @@ func NewWordCloud(routers ...RouterOpts) *WordCloud {
 	return chart
 }
 
+// Add adds new data sets.
 func (c *WordCloud) Add(name string, data map[string]interface{}, options ...seriesOptser) *WordCloud {
 	nvs := make([]common.NameValueItem, 0)
 	for k, v := range data {
@@ -68,6 +71,7 @@ func (c *WordCloud) Add(name string, data map[string]interface{}, options ...ser
 	return c
 }
 
+// SetGlobalOptions sets options for the WordCloud instance.
 func (c *WordCloud) SetGlobalOptions(options ...globalOptser) *WordCloud {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
@@ -77,6 +81,7 @@ func (c *WordCloud) validateOpts() {
 	c.validateAssets(c.AssetsHost)
 }
 
+// Render renders the chart and writes the output to given writers.
 func (c *WordCloud) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
