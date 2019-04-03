@@ -14,8 +14,8 @@ type WordCloud struct {
 
 func (WordCloud) chartType() string { return common.ChartType.WordCloud }
 
-// WordCLoudOpts is the option set for a word cloud chart.
-type WordCLoudOpts struct {
+// WordCloudOpts is the option set for a word cloud chart.
+type WordCloudOpts struct {
 	// 词云图形状，可选
 	// "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
 	Shape string
@@ -25,9 +25,9 @@ type WordCLoudOpts struct {
 	RotationRange []float32
 }
 
-func (WordCLoudOpts) markSeries() {}
+func (WordCloudOpts) markSeries() {}
 
-func (opt *WordCLoudOpts) setChartOpt(s *singleSeries) {
+func (opt *WordCloudOpts) setChartOpt(s *singleSeries) {
 	s.Shape = opt.Shape
 	s.SizeRange = opt.SizeRange
 	s.RotationRange = opt.RotationRange

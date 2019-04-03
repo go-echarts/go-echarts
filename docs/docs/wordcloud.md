@@ -25,7 +25,7 @@ func Render(w ...io.Writer) error
 ## 专属 Options
 > 在 `SetSeriesOptions` 中设置
 ```go
-type WordCLoudOpts struct {
+type WordCloudOpts struct {
     // 词云图形状，可选
     //"circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
     Shape         string
@@ -69,7 +69,7 @@ var wcData = map[string]interface{}{
 ```go
 wc := charts.NewWordCloud()
 wc.SetGlobalOptions(charts.TitleOpts{Title: "WordCloud-示例图"})
-wc.Add("wordcloud", wcData, charts.WordCLoudOpts{SizeRange: []float32{14, 80}})
+wc.Add("wordcloud", wcData, charts.WordCloudOpts{SizeRange: []float32{14, 80}})
 ```
 ![](https://user-images.githubusercontent.com/19553554/52348737-01fb8a80-2a60-11e9-94ac-dacbd7b58811.png)
 
@@ -79,7 +79,7 @@ wc.Add("wordcloud", wcData, charts.WordCLoudOpts{SizeRange: []float32{14, 80}})
 wc := charts.NewWordCloud()
 wc.SetGlobalOptions(charts.TitleOpts{Title: "WordCloud-形状(cardioid)"})
 wc.Add("wordcloud", wcData,
-    charts.WordCLoudOpts{SizeRange: []float32{14, 80}}, charts.WordCLoudOpts{Shape: "cardioid"})
+    charts.WordCloudOpts{SizeRange: []float32{14, 80}}, charts.WordCloudOpts{Shape: "cardioid"})
 ```
 ![](https://user-images.githubusercontent.com/19553554/52348901-5bfc5000-2a60-11e9-94f5-fbdce2f2ec46.png)
 
@@ -89,6 +89,6 @@ wc.Add("wordcloud", wcData,
 wc := charts.NewWordCloud()
 wc.SetGlobalOptions(charts.TitleOpts{Title: "WordCloud-形状(star)"})
 wc.Add("wordcloud", wcData,
-    charts.WordCLoudOpts{SizeRange: []float32{14, 80}}, charts.WordCLoudOpts{Shape: "cardioid"})
+    charts.WordCloudOpts{SizeRange: []float32{14, 80}}, charts.WordCloudOpts{Shape: "cardioid"})
 ```
 ![](https://user-images.githubusercontent.com/19553554/52349093-bf867d80-2a60-11e9-81d7-2c45ddcce0cc.png)
