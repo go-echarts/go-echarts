@@ -338,8 +338,8 @@ func (s *singleSeries) switchSeriesOpts(options ...seriesOptser) {
 		case ScatterOpts:
 			opt := option.(ScatterOpts)
 			opt.setChartOpt(s)
-		case WordCLoudOpts:
-			opt := option.(WordCLoudOpts)
+		case WordCloudOpts:
+			opt := option.(WordCloudOpts)
 			opt.setChartOpt(s)
 		}
 	}

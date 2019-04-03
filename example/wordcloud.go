@@ -34,7 +34,7 @@ var wcData = map[string]interface{}{
 func wcBase() *charts.WordCloud {
 	wc := charts.NewWordCloud()
 	wc.SetGlobalOptions(charts.TitleOpts{Title: "WordCloud-示例图"})
-	wc.Add("wordcloud", wcData, charts.WordCLoudOpts{SizeRange: []float32{14, 80}})
+	wc.Add("wordcloud", wcData, charts.WordCloudOpts{SizeRange: []float32{14, 80}})
 	return wc
 }
 
@@ -42,7 +42,7 @@ func wcCardioid() *charts.WordCloud {
 	wc := charts.NewWordCloud()
 	wc.SetGlobalOptions(charts.TitleOpts{Title: "WordCloud-形状(cardioid)"})
 	wc.Add("wordcloud", wcData,
-		charts.WordCLoudOpts{SizeRange: []float32{14, 80}}, charts.WordCLoudOpts{Shape: "cardioid"})
+		charts.WordCloudOpts{SizeRange: []float32{14, 80}}, charts.WordCloudOpts{Shape: "cardioid"})
 	return wc
 }
 
@@ -50,7 +50,7 @@ func wcStar() *charts.WordCloud {
 	wc := charts.NewWordCloud()
 	wc.SetGlobalOptions(charts.TitleOpts{Title: "WordCloud-形状(star)"})
 	wc.Add("wordcloud", wcData,
-		charts.WordCLoudOpts{SizeRange: []float32{14, 80}}, charts.WordCLoudOpts{Shape: "cardioid"})
+		charts.WordCloudOpts{SizeRange: []float32{14, 80}}, charts.WordCloudOpts{Shape: "cardioid"})
 	return wc
 }
 
