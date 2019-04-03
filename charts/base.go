@@ -1,6 +1,10 @@
 package charts
 
-import "github.com/chenjiandongx/go-echarts/common"
+import (
+	"regexp"
+
+	"github.com/chenjiandongx/go-echarts/common"
+)
 
 type globalOptser interface {
 	markGlobal()
@@ -98,7 +102,7 @@ type JSFunctions struct {
 // AddJSFuncs adds a new JS function.
 func (f *JSFunctions) AddJSFuncs(fn ...string) {
 	for i := 0; i < len(fn); i++ {
-		f.Fns = append(f.Fns, common.ReplaceJsFuncs(fn[i]))
+		f.Fns = append(f.Fns, replaceJsFuncs(fn[i]))
 	}
 }
 
@@ -166,7 +170,7 @@ func (opt *BaseOpts) initBaseOpts(routers ...RouterOpts) {
 
 // 插入颜色到颜色列表首部
 func (opt *BaseOpts) insertSeriesColors(s []string) {
-	tmpCl := common.ReverseSlice(s) // 翻转颜色列表
+	tmpCl := reverseSlice(s) // 翻转颜色列表
 	// 颜色追加至首部
 	for i := 0; i < len(tmpCl); i++ {
 		opt.Colors = append(opt.Colors, "")
@@ -210,4 +214,19 @@ func (opt *BaseOpts) setBaseGlobalOptions(options ...globalOptser) {
 			opt.SingleAxisOpts = option.(SingleAxisOpts)
 		}
 	}
+}
+
+// reverse string slice
+func reverseSlice(s []string) []string {
+	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
+		s[i], s[j] = s[j], s[i]
+	}
+	return s
+}
+
+// replace and clear up js functions string
+func replaceJsFuncs(fn string) string {
+	pat, _ := regexp.Compile(`\n|\t`)
+	fn = pat.ReplaceAllString(fn, "")
+	return "__x__" + fn + "__x__"
 }
