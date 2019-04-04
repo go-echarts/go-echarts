@@ -42,7 +42,7 @@ $ go get -u github.com/chenjiandongx/go-echarts/...
 * Visualize your data in 25+ different ways.
 * Highly configurable chart options.
 * Detailed documentation and a rich collection of examples.
-* Visualization your geographical data with 400+ maps.
+* Visualize your geographical data with 400+ maps.
 
 ### 📝 Usage
 

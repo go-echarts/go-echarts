@@ -1,9 +1,8 @@
 package charts
 
 import (
+	"github.com/chenjiandongx/go-echarts/datatypes"
 	"regexp"
-
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 type globalOptser interface {
@@ -32,7 +31,7 @@ func (InitOpts) markGlobal() {}
 
 // AssetsOpts contains options for static assets.
 type AssetsOpts struct {
-	JSAssets, CSSAssets common.OrderedSet
+	JSAssets, CSSAssets datatypes.OrderedSet
 }
 
 // 初始化静态资源配置项
@@ -43,8 +42,8 @@ func (opt *AssetsOpts) initAssetsOpts() {
 
 // 初始化静态资源配置项
 func (opt *AssetsOpts) initAssetsOptsWithoutArg() {
-	opt.JSAssets.InitWithoutArg()
-	opt.CSSAssets.InitWithoutArg()
+	opt.JSAssets.Init()
+	opt.CSSAssets.Init()
 }
 
 // 返回资源列表

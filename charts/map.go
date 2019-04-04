@@ -1,6 +1,7 @@
 package charts
 
 import (
+	"github.com/chenjiandongx/go-echarts/datatypes"
 	"io"
 
 	"github.com/chenjiandongx/go-echarts/common"
@@ -28,9 +29,9 @@ func NewMap(mapType string, routers ...RouterOpts) *Map {
 
 // Add adds new data sets.
 func (c *Map) Add(name string, data map[string]float32, options ...seriesOptser) *Map {
-	nvs := make([]common.NameValueItem, 0)
+	nvs := make([]datatypes.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, common.NameValueItem{Name: k, Value: v})
+		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
 	}
 	series := singleSeries{Name: name, Type: common.ChartType.Map, MapType: c.mapType, Data: nvs}
 	series.setSingleSeriesOpts(options...)

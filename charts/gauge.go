@@ -1,6 +1,7 @@
 package charts
 
 import (
+	"github.com/chenjiandongx/go-echarts/datatypes"
 	"io"
 
 	"github.com/chenjiandongx/go-echarts/common"
@@ -23,9 +24,9 @@ func NewGauge(routers ...RouterOpts) *Gauge {
 
 // Add adds new data sets.
 func (c *Gauge) Add(name string, data map[string]interface{}, options ...seriesOptser) *Gauge {
-	nvs := make([]common.NameValueItem, 0)
+	nvs := make([]datatypes.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, common.NameValueItem{Name: k, Value: v})
+		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
 	}
 	series := singleSeries{Name: name, Type: common.ChartType.Gauge, Data: nvs}
 	series.setSingleSeriesOpts(options...)

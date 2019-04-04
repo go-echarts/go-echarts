@@ -1,6 +1,7 @@
 package charts
 
 import (
+	"github.com/chenjiandongx/go-echarts/datatypes"
 	"io"
 
 	"github.com/chenjiandongx/go-echarts/common"
@@ -53,9 +54,9 @@ func NewPie(routers ...RouterOpts) *Pie {
 
 // Add adds new data sets.
 func (c *Pie) Add(name string, data map[string]interface{}, options ...seriesOptser) *Pie {
-	nvs := make([]common.NameValueItem, 0)
+	nvs := make([]datatypes.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, common.NameValueItem{Name: k, Value: v})
+		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
 	}
 	series := singleSeries{Name: name, Type: common.ChartType.Pie, Data: nvs}
 	series.setSingleSeriesOpts(options...)
