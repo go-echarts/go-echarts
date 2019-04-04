@@ -1,7 +1,5 @@
 package charts
 
-import "github.com/chenjiandongx/go-echarts/common"
-
 // TitleOpts is the option set for a title component.
 type TitleOpts struct {
 	// 主标题
@@ -372,5 +370,5 @@ func (YAxisOpts) markGlobal() {}
 
 // FuncOpts is the option set for handling function type.
 func FuncOpts(fn string) string {
-	return common.ReplaceJsFuncs(fn)
+	return replaceJsFuncs(fn)
 }
