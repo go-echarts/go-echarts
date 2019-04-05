@@ -75,5 +75,5 @@ coverage:
 .PHONY: missing
 missing:
 	@echo "  $(M)  👀 missing coverage...\n"
-	grep -v -e " 1$" ./cp.out
+	grep -v -e $" 1$" ./cp.out
 
