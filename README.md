@@ -33,7 +33,30 @@ In the Golang ecosystem, there are not many choices for data visualizing librari
 ### 🔰 Installation
 
 ```shell
+
+$ cd <WORKDIR>/go-echarts && make install
+
+# or
 $ go get -u github.com/chenjiandongx/go-echarts/...
+```
+
+### 📢 Commands
+
+Run `make help` to list available commands:
+
+```console
+  $  make help
+
+Choose a command run in go-echarts:
+
+  install    Install missing dependencies. Builds binary in ./bin
+  build      Creates a docker image of the app
+  run        Runs the current docker image on port 8080
+  clean      Clean build files. Runs `go clean` internally
+  fmt        Runs gofmt on all source files
+  test       Runs all the tests.
+  coverage   Tests code coverage
+  missing    Displays lines of code missing from coverage
 ```
 
 ### ✨ Features
@@ -98,10 +121,15 @@ Now visit http://localhost:8081 in your browser and you'll see the same bar char
 
 Run the demo program under `example/` to view all the above chart examples.
 ```shell
-$ cd your/gopath/src/github.com/chenjiandongx/go-echarts/example
-$ go build .
-$ ./example
-```
+# Run with 🐹
+$ cd WORKDIR/go-echarts/
+$ make install
+$ ./bin/example
+
+# OR run it with 🐳
+$ make build
+$ make run
+````
 
 For more information, please refer to [go-echarts.chenjiandongx.com](http://go-echarts.chenjiandongx.com).
 
