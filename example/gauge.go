@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/chenjiandongx/go-echarts/charts"
+	"go-echarts/charts"
 )
 
 func gaugeBase() *charts.Gauge {
