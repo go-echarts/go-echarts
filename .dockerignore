@@ -1,0 +1,11 @@
+.appveyor
+.git
+.gitignore
+.revive
+.travis
+bin
+docs
+LICENSE
+Makefile
+README
+vendor
