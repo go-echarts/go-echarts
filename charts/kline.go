@@ -1,13 +1,11 @@
 package charts
 
-import "github.com/chenjiandongx/go-echarts/common"
-
 // Kline represents a kline chart.
 type Kline struct {
 	RectChart
 }
 
-func (Kline) chartType() string { return common.ChartType.Kline }
+func (Kline) chartType() string { return ChartType.Kline }
 
 // NewKLine creates a new kline chart.
 func NewKLine(routers ...RouterOpts) *Kline {
@@ -26,7 +24,7 @@ func (c *Kline) AddXAxis(xAxis interface{}) *Kline {
 
 // AddYAxis adds the Y axis.
 func (c *Kline) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Kline {
-	series := singleSeries{Name: name, Type: common.ChartType.Kline, Data: yAxis}
+	series := singleSeries{Name: name, Type: ChartType.Kline, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

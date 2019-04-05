@@ -2,8 +2,6 @@ package charts
 
 import (
 	"io"
-
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 // ParallelComponentOpts is the option set for parallel component.
@@ -66,7 +64,7 @@ type Parallel struct {
 	Series
 }
 
-func (Parallel) chartType() string { return common.ChartType.Parallel }
+func (Parallel) chartType() string { return ChartType.Parallel }
 
 // NewParallel creates a new parallel instance.
 func NewParallel(routers ...RouterOpts) *Parallel {
@@ -78,7 +76,7 @@ func NewParallel(routers ...RouterOpts) *Parallel {
 
 // Add adds new data sets.
 func (c *Parallel) Add(name string, data interface{}, options ...seriesOptser) *Parallel {
-	series := singleSeries{Name: name, Type: common.ChartType.Parallel, Data: data}
+	series := singleSeries{Name: name, Type: ChartType.Parallel, Data: data}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

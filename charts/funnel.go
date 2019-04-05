@@ -3,8 +3,6 @@ package charts
 import (
 	"github.com/chenjiandongx/go-echarts/datatypes"
 	"io"
-
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 // Funnel represents a funnel chart.
@@ -13,7 +11,7 @@ type Funnel struct {
 	Series
 }
 
-func (Funnel) chartType() string { return common.ChartType.Funnel }
+func (Funnel) chartType() string { return ChartType.Funnel }
 
 // NewFunnel creates a new funnel chart.
 func NewFunnel(routers ...RouterOpts) *Funnel {
@@ -28,7 +26,7 @@ func (c *Funnel) Add(name string, data map[string]interface{}, options ...series
 	for k, v := range data {
 		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
 	}
-	series := singleSeries{Name: name, Type: common.ChartType.Funnel, Data: nvs}
+	series := singleSeries{Name: name, Type: ChartType.Funnel, Data: nvs}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

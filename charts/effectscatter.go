@@ -1,13 +1,11 @@
 package charts
 
-import "github.com/chenjiandongx/go-echarts/common"
-
 // EffectScatter represents an effect scatter chart.
 type EffectScatter struct {
 	RectChart
 }
 
-func (EffectScatter) chartType() string { return common.ChartType.EffectScatter }
+func (EffectScatter) chartType() string { return ChartType.EffectScatter }
 
 // EffectScatterChartOpts is the option set for an effect scatter chart.
 type EffectScatterChartOpts struct {
@@ -47,7 +45,7 @@ func (c *EffectScatter) AddXAxis(xAxis interface{}) *EffectScatter {
 
 // AddYAxis adds the Y axis.
 func (c *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *EffectScatter {
-	series := singleSeries{Name: name, Type: common.ChartType.EffectScatter, Data: yAxis}
+	series := singleSeries{Name: name, Type: ChartType.EffectScatter, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

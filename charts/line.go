@@ -1,13 +1,11 @@
 package charts
 
-import "github.com/chenjiandongx/go-echarts/common"
-
 // Line represents a line chart.
 type Line struct {
 	RectChart
 }
 
-func (Line) chartType() string { return common.ChartType.Line }
+func (Line) chartType() string { return ChartType.Line }
 
 // LineOpts is the options set for a line chart.
 type LineOpts struct {
@@ -50,7 +48,7 @@ func (c *Line) AddXAxis(xAxis interface{}) *Line {
 
 // AddYAxis adds the Y axis.
 func (c *Line) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Line {
-	series := singleSeries{Name: name, Type: common.ChartType.Line, Data: yAxis}
+	series := singleSeries{Name: name, Type: ChartType.Line, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

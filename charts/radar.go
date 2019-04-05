@@ -2,8 +2,6 @@ package charts
 
 import (
 	"io"
-
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 // IndicatorOpts is the option set for a radar chart.
@@ -40,7 +38,7 @@ type Radar struct {
 	Series
 }
 
-func (Radar) chartType() string { return common.ChartType.Radar }
+func (Radar) chartType() string { return ChartType.Radar }
 
 // NewRadar creates a new radar chart.
 func NewRadar(routers ...RouterOpts) *Radar {
@@ -52,7 +50,7 @@ func NewRadar(routers ...RouterOpts) *Radar {
 
 // Add adds new data sets.
 func (c *Radar) Add(name string, data interface{}, options ...seriesOptser) *Radar {
-	series := singleSeries{Name: name, Type: common.ChartType.Radar, Data: data}
+	series := singleSeries{Name: name, Type: ChartType.Radar, Data: data}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

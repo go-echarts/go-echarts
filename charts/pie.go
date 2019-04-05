@@ -3,8 +3,6 @@ package charts
 import (
 	"github.com/chenjiandongx/go-echarts/datatypes"
 	"io"
-
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 // Pie represents a pie chart.
@@ -13,7 +11,7 @@ type Pie struct {
 	Series
 }
 
-func (Pie) chartType() string { return common.ChartType.Pie }
+func (Pie) chartType() string { return ChartType.Pie }
 
 // PieOpts is the option set for a pie chart.
 type PieOpts struct {
@@ -58,7 +56,7 @@ func (c *Pie) Add(name string, data map[string]interface{}, options ...seriesOpt
 	for k, v := range data {
 		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
 	}
-	series := singleSeries{Name: name, Type: common.ChartType.Pie, Data: nvs}
+	series := singleSeries{Name: name, Type: ChartType.Pie, Data: nvs}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

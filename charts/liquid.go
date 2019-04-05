@@ -2,8 +2,6 @@ package charts
 
 import (
 	"io"
-
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 // Liquid represents a liquid chart.
@@ -12,7 +10,7 @@ type Liquid struct {
 	Series
 }
 
-func (Liquid) chartType() string { return common.ChartType.Liquid }
+func (Liquid) chartType() string { return ChartType.Liquid }
 
 // LiquidOpts is the option set for a liquid chart.
 type LiquidOpts struct {
@@ -48,7 +46,7 @@ func NewLiquid(routers ...RouterOpts) *Liquid {
 
 // Add adds new data sets.
 func (c *Liquid) Add(name string, data interface{}, options ...seriesOptser) *Liquid {
-	series := singleSeries{Name: name, Type: common.ChartType.Liquid, Data: data}
+	series := singleSeries{Name: name, Type: ChartType.Liquid, Data: data}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	return c

@@ -4,8 +4,6 @@ import (
 	"github.com/chenjiandongx/go-echarts/datatypes"
 	"io"
 	"log"
-
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 type charter interface {
@@ -46,7 +44,7 @@ func (page *Page) Add(charts ...charter) *Page {
 		page.extractAssets(charts[i].yieldAssets())
 		page.Charts = append(page.Charts, charts[i])
 
-		if charts[i].chartType() == common.ChartType.Liquid {
+		if charts[i].chartType() == ChartType.Liquid {
 			page.unusedStr.Add(`"outline":{"show":false},?`)
 			page.unusedStr.Add(`"waveAnimation":false,?`)
 		}

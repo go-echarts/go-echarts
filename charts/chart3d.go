@@ -2,8 +2,6 @@ package charts
 
 import (
 	"io"
-
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 // Chart3D is a chart in 3D coordinate.
@@ -63,7 +61,7 @@ func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, options ..
 		Name:        name,
 		Type:        chartType,
 		Data:        zAxis,
-		CoordSystem: common.ChartType.Cartesian3D,
+		CoordSystem: ChartType.Cartesian3D,
 	}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
