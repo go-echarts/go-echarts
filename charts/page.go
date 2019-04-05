@@ -1,6 +1,7 @@
 package charts
 
 import (
+	"github.com/chenjiandongx/go-echarts/datatypes"
 	"io"
 	"log"
 
@@ -20,7 +21,7 @@ type Page struct {
 	Charts []interface{}
 	Routers
 
-	unusedStr common.OrderedSet
+	unusedStr datatypes.OrderedSet
 }
 
 // NewPage creates a new page.
@@ -30,7 +31,7 @@ func NewPage(routers ...RouterOpts) *Page {
 		page.Routers = append(page.Routers, routers[i])
 	}
 	page.AssetsOpts.initAssetsOptsWithoutArg()
-	page.unusedStr.InitWithoutArg()
+	page.unusedStr.Init()
 	return page
 }
 
