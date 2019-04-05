@@ -2,8 +2,6 @@ package charts
 
 import (
 	"io"
-
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 // ThemeRiver represents a theme river chart.
@@ -51,7 +49,7 @@ type SingleAxisOpts struct {
 
 func (SingleAxisOpts) markGlobal() {}
 
-func (ThemeRiver) chartType() string { return common.ChartType.ThemeRiver }
+func (ThemeRiver) chartType() string { return ChartType.ThemeRiver }
 
 // NewThemeRiver creates a new theme river chart.
 func NewThemeRiver(routers ...RouterOpts) *ThemeRiver {
@@ -63,7 +61,7 @@ func NewThemeRiver(routers ...RouterOpts) *ThemeRiver {
 
 // Add adds new data sets.
 func (c *ThemeRiver) Add(name string, data interface{}, options ...seriesOptser) *ThemeRiver {
-	series := singleSeries{Name: name, Type: common.ChartType.ThemeRiver, Data: data}
+	series := singleSeries{Name: name, Type: ChartType.ThemeRiver, Data: data}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	return c

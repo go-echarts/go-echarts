@@ -6,7 +6,6 @@ import (
 	"io"
 	"log"
 
-	"github.com/chenjiandongx/go-echarts/common"
 	"github.com/chenjiandongx/go-echarts/datasets"
 )
 
@@ -22,7 +21,7 @@ type Geo struct {
 	GeoComponentOpts
 }
 
-func (Geo) chartType() string { return common.ChartType.Geo }
+func (Geo) chartType() string { return ChartType.Geo }
 
 var geoFormatter = `function (params) {
 		return params.name + ' : ' + params.value[2];
@@ -48,7 +47,7 @@ func (c *Geo) Add(name, geoType string, data map[string]float32, options ...seri
 	for k, v := range data {
 		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: c.extendValue(k, v)})
 	}
-	series := singleSeries{Name: name, Type: geoType, Data: nvs, CoordSystem: common.ChartType.Geo}
+	series := singleSeries{Name: name, Type: geoType, Data: nvs, CoordSystem: ChartType.Geo}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

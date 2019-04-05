@@ -2,8 +2,6 @@ package charts
 
 import (
 	"io"
-
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 // Bar represents a bar chart.
@@ -14,7 +12,7 @@ type Bar struct {
 	isXYReversal bool
 }
 
-func (Bar) chartType() string { return common.ChartType.Bar }
+func (Bar) chartType() string { return ChartType.Bar }
 
 // BarOpts is the option set for a bar chart.
 type BarOpts struct {
@@ -63,7 +61,7 @@ func (c *Bar) AddXAxis(xAxis interface{}) *Bar {
 
 // AddYAxis adds the Y axis.
 func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Bar {
-	series := singleSeries{Name: name, Type: common.ChartType.Bar, Data: yAxis}
+	series := singleSeries{Name: name, Type: ChartType.Bar, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

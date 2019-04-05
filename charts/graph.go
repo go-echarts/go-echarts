@@ -2,8 +2,6 @@ package charts
 
 import (
 	"io"
-
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 // Graph represents a graph chart.
@@ -99,7 +97,7 @@ func (opt *GraphOpts) setChartOpt(s *singleSeries) {
 	s.Categories = opt.Categories
 }
 
-func (Graph) chartType() string { return common.ChartType.Graph }
+func (Graph) chartType() string { return ChartType.Graph }
 
 // NewGraph creates a new graph chart.
 func NewGraph(routers ...RouterOpts) *Graph {
@@ -110,7 +108,7 @@ func NewGraph(routers ...RouterOpts) *Graph {
 
 // Add adds new data sets.
 func (c *Graph) Add(name string, nodes []GraphNode, links []GraphLink, options ...seriesOptser) *Graph {
-	series := singleSeries{Name: name, Type: common.ChartType.Graph, Links: links, Data: nodes}
+	series := singleSeries{Name: name, Type: ChartType.Graph, Links: links, Data: nodes}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

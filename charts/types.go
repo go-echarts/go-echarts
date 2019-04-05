@@ -1,5 +1,7 @@
-package common
+package charts
 
+// ChartType contains string representations of chart types.
+// TODO: should use enum.
 var ChartType = struct {
 	Bar, Bar3D, BoxPlot,
 	Cartesian3D,
@@ -42,6 +44,8 @@ var ChartType = struct {
 	WordCloud:     "wordCloud",
 }
 
+// ThemeType contains string representations of them types.
+// TODO: should use enum.
 var ThemeType = struct {
 	Chalk,
 	Essos,

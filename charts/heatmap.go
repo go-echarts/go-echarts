@@ -1,13 +1,11 @@
 package charts
 
-import "github.com/chenjiandongx/go-echarts/common"
-
 // HeatMap represents a heatmap chart.
 type HeatMap struct {
 	RectChart
 }
 
-func (HeatMap) chartType() string { return common.ChartType.HeatMap }
+func (HeatMap) chartType() string { return ChartType.HeatMap }
 
 // HeatMapOpts is the option set for a heatmap chart.
 type HeatMapOpts struct {
@@ -41,7 +39,7 @@ func (c *HeatMap) AddXAxis(xAxis interface{}) *HeatMap {
 
 // AddYAxis adds the Y axis.
 func (c *HeatMap) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *HeatMap {
-	series := singleSeries{Name: name, Type: common.ChartType.HeatMap, Data: yAxis}
+	series := singleSeries{Name: name, Type: ChartType.HeatMap, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

@@ -2,8 +2,6 @@ package charts
 
 import (
 	"io"
-
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 // Sankey represents a sankey chart.
@@ -30,7 +28,7 @@ type SankeyNode struct {
 	Value string `json:"value,omitempty"`
 }
 
-func (Sankey) chartType() string { return common.ChartType.Sankey }
+func (Sankey) chartType() string { return ChartType.Sankey }
 
 // NewSankey creates a new sankey chart.
 func NewSankey(routers ...RouterOpts) *Sankey {
@@ -41,7 +39,7 @@ func NewSankey(routers ...RouterOpts) *Sankey {
 
 // Add adds new data sets.
 func (c *Sankey) Add(name string, nodes []SankeyNode, links []SankeyLink, options ...seriesOptser) *Sankey {
-	series := singleSeries{Name: name, Type: common.ChartType.Sankey, Data: nodes, Links: links}
+	series := singleSeries{Name: name, Type: ChartType.Sankey, Data: nodes, Links: links}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	return c

@@ -1,13 +1,11 @@
 package charts
 
-import "github.com/chenjiandongx/go-echarts/common"
-
 // Scatter represents a scatter chart.
 type Scatter struct {
 	RectChart
 }
 
-func (Scatter) chartType() string { return common.ChartType.Scatter }
+func (Scatter) chartType() string { return ChartType.Scatter }
 
 // ScatterOpts is the option set for a scatter chart.
 type ScatterOpts struct {
@@ -41,7 +39,7 @@ func (c *Scatter) AddXAxis(xAxis interface{}) *Scatter {
 
 // AddYAxis adds the Y axis.
 func (c *Scatter) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Scatter {
-	series := singleSeries{Name: name, Type: common.ChartType.Scatter, Data: yAxis}
+	series := singleSeries{Name: name, Type: ChartType.Scatter, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
 	c.setColor(options...)

@@ -6,7 +6,6 @@ import (
 	"os"
 
 	"github.com/chenjiandongx/go-echarts/charts"
-	"github.com/chenjiandongx/go-echarts/common"
 )
 
 func barBase() *charts.Bar {
@@ -172,7 +171,7 @@ func barMarkCustom() *charts.Bar {
 	bar := charts.NewBar()
 	bar.SetGlobalOptions(
 		charts.TitleOpts{Title: "Bar-自定义标记+主题"},
-		charts.InitOpts{PageTitle: "Awesome", Theme: common.ThemeType.Macarons},
+		charts.InitOpts{PageTitle: "Awesome", Theme: charts.ThemeType.Macarons},
 	)
 	bar.AddXAxis(nameItems).
 		AddYAxis("商家A", randInt()).
