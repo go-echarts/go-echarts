@@ -58,3 +58,26 @@ func main() {
 ```
 
 在一次 `Render()` 方法中只需要配置一次 `charts.InitOpts` 即可，如在 Page 的 Add() 方法中，只要其中一个图表能正确引用到的话那所有图表也就都能正常显示，因为他们都在同一个 HTML 文件中。
+
+## 编译须知
+
+在将目标程序编译成可执行文件的时候，需要先执行以下操作（一次即可）。
+
+原因是调试期间[packr](https://github.com/chenjiandongx/go-echarts)可以在开发环境中找到`go-echarts`的`datasets`和`templates`的路径，但是编译后的可执行文件，在其他无`go-echarts`的操作系统中，将会报错
+`FindFirstFile src\$GOPATH\src\github.com\chenjiandongx\go-echarts\templates\routers.html: The system cannot find the path specified.`
+
+因此使用[packr](https://github.com/gobuffalo/packr#building-a-binary-the-hard-way)提供的打包方式，将`datasets`和`templates`中的静态文件打包进可执行文件中，确保`go-echarts`的正常使用。
+
+macOS
+```bash
+$ cd $GOPATH/src/github.com/chenjiandongx/go-echarts
+$ sh doPackr.sh
+```
+
+Windows
+```dos
+cd %GOPATH%\src\github.com\chenjiandongx\go-echarts
+doPackr.bat
+```
+
+以上操作将会在`%GOPATH%\src\github.com\chenjiandongx\go-echarts\datasets`及`%GOPATH%\src\github.com\chenjiandongx\go-echarts\templates`目录下生成`*-packr.go`文件，如`a_datasets-packr` `a_templates-packr.go`
