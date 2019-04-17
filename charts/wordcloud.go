@@ -15,12 +15,12 @@ func (WordCloud) chartType() string { return ChartType.WordCloud }
 
 // WordCloudOpts is the option set for a word cloud chart.
 type WordCloudOpts struct {
-	// 词云图形状，可选
-	// "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
+	// shape of WordCloud
+	// Optional: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
 	Shape string
-	// 字体大小范围
+	// range of font size
 	SizeRange []float32
-	// 字体选择角度范围
+	// range of font rotation angle
 	RotationRange []float32
 }
 
@@ -56,7 +56,7 @@ func (c *WordCloud) Add(name string, data map[string]interface{}, options ...ser
 	series := singleSeries{Name: name, Type: ChartType.WordCloud, Data: nvs}
 	series.setSingleSeriesOpts(options...)
 
-	// 处理词云图默认随机颜色
+	// set default random color for WordCloud chart
 	if series.TextStyleOpts.Normal == nil {
 		series.TextStyleOpts.Normal = &TextStyleOpts{Color: FuncOpts(wcTextColor)}
 	} else {
