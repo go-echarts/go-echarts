@@ -142,6 +142,9 @@ func genKvData() map[string]interface{} {
 }
 
 func main() {
+	// Avoid "404 page not found".
+	http.HandleFunc("/", logTracing(barHandler))
+
 	http.HandleFunc("/bar", logTracing(barHandler))
 	http.HandleFunc("/bar3D", logTracing(bar3DHandler))
 	http.HandleFunc("/boxPlot", logTracing(boxPlotHandler))
