@@ -25,7 +25,6 @@ func init() {
 	}
 }
 
-
 func LoadTemplates(loader http.FileSystem) {
 	var err error
 	BaseTpl, err = _bytesToString(loader.Open("base.html"))
@@ -39,7 +38,7 @@ func LoadTemplates(loader http.FileSystem) {
 	}
 }
 
-func _bytesToString(file http.File, err error) (string, error){
+func _bytesToString(file http.File, err error) (string, error) {
 	content, err := ioutil.ReadAll(file)
 	return string(content), err
 }
