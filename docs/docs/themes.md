@@ -19,7 +19,6 @@ import (
     "time"
 
     "github.com/chenjiandongx/go-echarts/charts"
-    "github.com/chenjiandongx/go-echarts/common"
 )
 
 var nameItems = []string{"衬衫", "牛仔裤", "运动裤", "袜子", "冲锋衣", "羊毛衫"}
@@ -38,7 +37,7 @@ func main() {
     bar := charts.NewBar()
     bar.SetGlobalOptions(
         charts.TitleOpts{Title: "Theme-Walden"},
-        charts.InitOpts{Theme: common.ThemeType.Walden},
+        charts.InitOpts{Theme: charts.ThemeType.Walden},
         charts.ToolboxOpts{Show: true},
     )
     bar.AddXAxis(nameItems).
