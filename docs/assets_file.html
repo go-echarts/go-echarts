@@ -92,4 +92,19 @@
 }
 </code></pre>
 <p>在一次 <code>Render()</code> 方法中只需要配置一次 <code>charts.InitOpts</code> 即可，如在 Page 的 Add() 方法中，只要其中一个图表能正确引用到的话那所有图表也就都能正常显示，因为他们都在同一个 HTML 文件中。</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-2-9 by 陈键冬</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/page"><span class="arrow-prev">← </span><span>Page（顺序多图）</span></a><a class="docs-next button" href="/docs/map_coords"><span>地理坐标</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#远程引用">远程引用</a></li><li><a href="#本地引用">本地引用</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>
+<h2><a class="anchor" aria-hidden="true" id="编译须知"></a><a href="#编译须知" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>编译须知</h2>
+<p>在将目标程序编译成可执行文件的时候，需要先执行以下操作（一次即可）。</p>
+<p>原因是调试期间 <a href="https://github.com/gobuffalo/packr">packr</a> 可以在开发环境中找到 <code>go-echarts</code> 的 <code>datasets</code> 和 <code>templates</code> 的路径，但是编译后的可执行文件，在其他无 <code>go-echarts</code> 的环境中，将会报错</p>
+<pre><code class="hljs css language-shell">FindFirstFile src\$GOPATH\src\github.com\chenjiandongx\go-echarts\templates\routers.html: The system cannot find the path specified.
+</code></pre>
+<p>因此使用 <a href="https://github.com/gobuffalo/packr#building-a-binary-the-hard-way">packr</a> 提供的打包方式，将 <code>datasets</code> 和 <code>templates</code> 中的静态文件打包进可执行文件中，确保 <code>go-echarts</code> 的正常使用。</p>
+<p>Linux/MacOS</p>
+<pre><code class="hljs css language-bash">$ <span class="hljs-built_in">cd</span> <span class="hljs-variable">$GOPATH</span>/src/github.com/chenjiandongx/go-echarts
+$ ./doPackr.sh
+</code></pre>
+<p>Windows</p>
+<pre><code class="hljs css language-dos">$ <span class="hljs-built_in">cd</span> <span class="hljs-variable">%GOPATH%</span>\src\github.com\chenjiandongx\go-echarts
+$ doPackr.bat
+</code></pre>
+<p>以上操作将会在 <code>%GOPATH%\src\github.com\chenjiandongx\go-echarts\datasets</code> 及 <code>%GOPATH%\src\github.com\chenjiandongx\go-echarts\templates</code> 目录下生成 <code>*-packr.go</code> 文件，如 <code>a_datasets-packr</code>，<code>a_templates-packr.go</code>，用于替换原有的静态资源文件，相当于将静态文件的内容存储到 golang 中。</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-4-8 by 雷系泡泡</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/page"><span class="arrow-prev">← </span><span>Page（顺序多图）</span></a><a class="docs-next button" href="/docs/map_coords"><span>地理坐标</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#远程引用">远程引用</a></li><li><a href="#本地引用">本地引用</a></li><li><a href="#编译须知">编译须知</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>

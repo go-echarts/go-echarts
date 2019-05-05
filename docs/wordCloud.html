@@ -75,7 +75,7 @@
 <blockquote>
 <p>在 <code>SetSeriesOptions</code> 中设置</p>
 </blockquote>
-<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> WordCLoudOpts <span class="hljs-keyword">struct</span> {
+<pre><code class="hljs css language-go"><span class="hljs-keyword">type</span> WordCloudOpts <span class="hljs-keyword">struct</span> {
     <span class="hljs-comment">// 词云图形状，可选</span>
     <span class="hljs-comment">//"circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"</span>
     Shape         <span class="hljs-keyword">string</span>
@@ -116,21 +116,21 @@
 <h3><a class="anchor" aria-hidden="true" id="wordcloud-示例图"></a><a href="#wordcloud-示例图" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>WordCloud-示例图</h3>
 <pre><code class="hljs css language-go">wc := charts.NewWordCloud()
 wc.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"WordCloud-示例图"</span>})
-wc.Add(<span class="hljs-string">"wordcloud"</span>, wcData, charts.WordCLoudOpts{SizeRange: []<span class="hljs-keyword">float32</span>{<span class="hljs-number">14</span>, <span class="hljs-number">80</span>}})
+wc.Add(<span class="hljs-string">"wordcloud"</span>, wcData, charts.WordCloudOpts{SizeRange: []<span class="hljs-keyword">float32</span>{<span class="hljs-number">14</span>, <span class="hljs-number">80</span>}})
 </code></pre>
 <p><img src="https://user-images.githubusercontent.com/19553554/52348737-01fb8a80-2a60-11e9-94ac-dacbd7b58811.png" alt=""></p>
 <h3><a class="anchor" aria-hidden="true" id="wordcloud-形状cardioid"></a><a href="#wordcloud-形状cardioid" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>WordCloud-形状(cardioid)</h3>
 <pre><code class="hljs css language-go">wc := charts.NewWordCloud()
 wc.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"WordCloud-形状(cardioid)"</span>})
 wc.Add(<span class="hljs-string">"wordcloud"</span>, wcData,
-    charts.WordCLoudOpts{SizeRange: []<span class="hljs-keyword">float32</span>{<span class="hljs-number">14</span>, <span class="hljs-number">80</span>}}, charts.WordCLoudOpts{Shape: <span class="hljs-string">"cardioid"</span>})
+    charts.WordCloudOpts{SizeRange: []<span class="hljs-keyword">float32</span>{<span class="hljs-number">14</span>, <span class="hljs-number">80</span>}}, charts.WordCloudOpts{Shape: <span class="hljs-string">"cardioid"</span>})
 </code></pre>
 <p><img src="https://user-images.githubusercontent.com/19553554/52348901-5bfc5000-2a60-11e9-94f5-fbdce2f2ec46.png" alt=""></p>
 <h3><a class="anchor" aria-hidden="true" id="wordcloud-形状star"></a><a href="#wordcloud-形状star" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>WordCloud-形状(star)</h3>
 <pre><code class="hljs css language-go">wc := charts.NewWordCloud()
 wc.SetGlobalOptions(charts.TitleOpts{Title: <span class="hljs-string">"WordCloud-形状(star)"</span>})
 wc.Add(<span class="hljs-string">"wordcloud"</span>, wcData,
-    charts.WordCLoudOpts{SizeRange: []<span class="hljs-keyword">float32</span>{<span class="hljs-number">14</span>, <span class="hljs-number">80</span>}}, charts.WordCLoudOpts{Shape: <span class="hljs-string">"cardioid"</span>})
+    charts.WordCloudOpts{SizeRange: []<span class="hljs-keyword">float32</span>{<span class="hljs-number">14</span>, <span class="hljs-number">80</span>}}, charts.WordCloudOpts{Shape: <span class="hljs-string">"cardioid"</span>})
 </code></pre>
 <p><img src="https://user-images.githubusercontent.com/19553554/52349093-bf867d80-2a60-11e9-81d7-2c45ddcce0cc.png" alt=""></p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-2-11 by 陈键冬</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/themeRiver"><span class="arrow-prev">← </span><span class="function-name-prevnext">ThemeRiver（主题河流图）</span></a><a class="docs-next button" href="/docs/bar3d"><span>Bar3D（3D 柱状图）</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api">API</a></li><li><a href="#专属-options">专属 Options</a></li><li><a href="#预定义">预定义</a></li><li><a href="#demo">Demo</a><ul class="toc-headings"><li><a href="#wordcloud-示例图">WordCloud-示例图</a></li><li><a href="#wordcloud-形状cardioid">WordCloud-形状(cardioid)</a></li><li><a href="#wordcloud-形状star">WordCloud-形状(star)</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-4-3 by Yuankun Zhang</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/themeRiver"><span class="arrow-prev">← </span><span class="function-name-prevnext">ThemeRiver（主题河流图）</span></a><a class="docs-next button" href="/docs/bar3d"><span>Bar3D（3D 柱状图）</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#api">API</a></li><li><a href="#专属-options">专属 Options</a></li><li><a href="#预定义">预定义</a></li><li><a href="#demo">Demo</a><ul class="toc-headings"><li><a href="#wordcloud-示例图">WordCloud-示例图</a></li><li><a href="#wordcloud-形状cardioid">WordCloud-形状(cardioid)</a></li><li><a href="#wordcloud-形状star">WordCloud-形状(star)</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>
