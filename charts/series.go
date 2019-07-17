@@ -241,6 +241,9 @@ type singleSeries struct {
 	Center   interface{} `json:"center,omitempty"`
 	Radius   interface{} `json:"radius,omitempty"`
 
+	// Scatter chart
+	SymbolSize float32 `json:"symbolSize,omitempty"`
+
 	// WordCloud chart
 	Shape         string    `json:"shape,omitempty"`
 	SizeRange     []float32 `json:"sizeRange,omitempty"`
