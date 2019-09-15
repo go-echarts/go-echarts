@@ -13,12 +13,12 @@
 const siteConfig = {
   title: 'go-echarts', // Title for your website.
   tagline: '🎨 The adorable charts library for Golang',
-  url: 'http://go-echarts.chenjiandongx.com', // Your website URL
+  url: 'https://go-echarts.github.io/go-echarts/', // Your website URL
   baseUrl: '/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',
-  cname: 'go-echarts.chenjiandongx.com',
+  cname: 'go-echarts.github.io/go-echarts/',
   // Used for publishing and more
   projectName: 'go-echarts',
   organizationName: 'chenjiandongx',
@@ -34,7 +34,7 @@ const siteConfig = {
       label: 'Author',
     },
     {
-      href: 'https://www.github.com/chenjiandongx/go-echarts',
+      href: 'https://www.github.com/go-echarts/go-echarts',
       label: 'GitHub',
     },
   ],
