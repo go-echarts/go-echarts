@@ -22,7 +22,7 @@ type InitOpts struct {
 	// 图表 ID，是图表唯一标识
 	ChartID string
 	// 静态资源 host 地址
-	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/"`
+	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
 	// 图表主题
 	Theme string `default:"white"`
 }
