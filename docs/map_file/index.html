@@ -58,7 +58,7 @@
 <blockquote>
 <p>go-echarts 提供了全国 370+ 城市以及 28+ 省份的地图</p>
 </blockquote>
-<p>具体数据映射关系保存在 <a href="https://github.com/chenjiandongx/go-echarts/blob/master/datasets/map_filename.json">datasets/map_filename.json</a> 中，JSON 数据格式</p>
+<p>具体数据映射关系保存在 <a href="https://github.com/go-echarts/go-echarts/blob/master/datasets/map_filename.json">datasets/map_filename.json</a> 中，JSON 数据格式</p>
 <pre><code class="hljs">{
   <span class="hljs-string">"china"</span>: <span class="hljs-string">"china"</span>,
   <span class="hljs-string">"world"</span>: <span class="hljs-string">"world"</span>,
@@ -73,7 +73,7 @@
 }
 </code></pre>
 <p>同样的，JSON 格式的数据会在编译时被加载进内容中，可通过 <code>MapFileNames</code> 引用和修改</p>
-<pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> <span class="hljs-string">"github.com/chenjiandongx/go-echarts/datasets"</span>
+<pre><code class="hljs css language-go"><span class="hljs-keyword">import</span> <span class="hljs-string">"github.com/go-echarts/go-echarts/datasets"</span>
 
 <span class="hljs-comment">// 打印</span>
 fmt.Println(datasets.MapFileNames)
@@ -89,4 +89,4 @@ region, ok := datasets.MapFileNames[<span class="hljs-string">"北京"</span>]
 <p>由于 Echarts 已经关闭了地图定制功能</p>
 <p><img src="https://user-images.githubusercontent.com/19553554/52518306-b295a400-2c83-11e9-986b-f2e76fc2621d.png" alt=""></p>
 <p>所以现在已经不支持自己定制地图了，但是 go-echarts 本身提供的 400+ 地图应该能够满足开发者的日常开发需要了！</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-2-9 by 陈键冬</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/go-echarts/docs/themes"><span class="arrow-prev">← </span><span>主题定制</span></a><a class="docs-next button" href="/go-echarts/docs/javascript"><span>原生 Javascript</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#地图资源">地图资源</a></li><li><a href="#定制地图">定制地图</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2019-9-15 by chenjiandongx</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/go-echarts/docs/themes"><span class="arrow-prev">← </span><span>主题定制</span></a><a class="docs-next button" href="/go-echarts/docs/javascript"><span>原生 Javascript</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#地图资源">地图资源</a></li><li><a href="#定制地图">定制地图</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 chenjiandongx</section></footer></div></body></html>
