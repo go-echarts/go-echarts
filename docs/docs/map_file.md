@@ -7,7 +7,7 @@ sidebar_label: 地图定制
 ## 地图资源
 > go-echarts 提供了全国 370+ 城市以及 28+ 省份的地图
 
-具体数据映射关系保存在 [datasets/map_filename.json](https://github.com/chenjiandongx/go-echarts/blob/master/datasets/map_filename.json) 中，JSON 数据格式
+具体数据映射关系保存在 [datasets/map_filename.json](https://github.com/go-echarts/go-echarts/blob/master/datasets/map_filename.json) 中，JSON 数据格式
 ```
 {
   "china": "china",
@@ -25,7 +25,7 @@ sidebar_label: 地图定制
 
 同样的，JSON 格式的数据会在编译时被加载进内容中，可通过 `MapFileNames` 引用和修改
 ```go
-import "github.com/chenjiandongx/go-echarts/datasets"
+import "github.com/go-echarts/go-echarts/datasets"
 
 // 打印
 fmt.Println(datasets.MapFileNames)

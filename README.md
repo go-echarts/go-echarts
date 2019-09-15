@@ -33,7 +33,7 @@ In the Golang ecosystem, there are not many choices for data visualizing librari
 ### 🔰 Installation
 
 ```shell
-$ go get -u github.com/chenjiandongx/go-echarts/...
+$ go get -u github.com/go-echarts/go-echarts/...
 ```
 
 ### ✨ Features
@@ -98,7 +98,7 @@ Now visit http://localhost:8081 in your browser and you'll see the same bar char
 
 Run the demo program under `example/` to view all the above chart examples.
 ```shell
-$ cd your/gopath/src/github.com/chenjiandongx/go-echarts/example
+$ cd your/gopath/src/github.com/go-echarts/go-echarts/example
 $ go build .
 $ ./example
 ```

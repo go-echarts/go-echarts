@@ -117,7 +117,7 @@ mc.Add("map", shantouData)
 
 ### Map-设置风格
 ```go
-import "github.com/chenjiandongx/go-echarts/common"
+import "github.com/go-echarts/go-echarts/common"
 
 mc := charts.NewMap("china")
 mc.SetGlobalOptions(

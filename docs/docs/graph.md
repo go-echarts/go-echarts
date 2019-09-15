@@ -167,7 +167,7 @@ graph.Add("graph", graphNodes, genLinks(),
 
 
 ### Graph-npm package 依赖关系
-=> [npmdepgraph.json](https://github.com/chenjiandongx/go-echarts/tree/master/example/fixtures/npmdepgraph.json) <=>
+=> [npmdepgraph.json](https://github.com/go-echarts/go-echarts/tree/master/example/fixtures/npmdepgraph.json) <=>
 ```go
 import "github.com/gobuffalo/packr"
 

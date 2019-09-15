@@ -80,7 +80,7 @@ sankey.Add("sankey", sankeyNode, sankeyLink, charts.LabelTextOpts{Show: true})
 
 
 ### Sankey-官方示例
-=> [energy.json](https://github.com/chenjiandongx/go-echarts/tree/master/example/fixtures/energy.json) <=>
+=> [energy.json](https://github.com/go-echarts/go-echarts/tree/master/example/fixtures/energy.json) <=>
 ```go
 import "github.com/gobuffalo/packr"
 

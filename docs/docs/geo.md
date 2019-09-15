@@ -65,7 +65,7 @@ shantouData = map[string]float32{
 
 ### Geo-示例图(effectScatter)
 ```go
-import "github.com/chenjiandongx/go-echarts/common"
+import "github.com/go-echarts/go-echarts/common"
 
 geo := charts.NewGeo("china")
 geo.SetGlobalOptions(charts.TitleOpts{Title: "Geo-示例图(effectScatter)"})

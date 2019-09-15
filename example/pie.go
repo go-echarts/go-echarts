@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/chenjiandongx/go-echarts/charts"
+	"github.com/go-echarts/go-echarts/charts"
 )
 
 func pieBase() *charts.Pie {

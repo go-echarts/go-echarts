@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"time"
 
-	tpls "github.com/chenjiandongx/go-echarts/templates"
+	tpls "github.com/go-echarts/go-echarts/templates"
 )
 
 const (

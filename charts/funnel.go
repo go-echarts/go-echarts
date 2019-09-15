@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"github.com/chenjiandongx/go-echarts/datatypes"
+	"github.com/go-echarts/go-echarts/datatypes"
 	"io"
 )
 

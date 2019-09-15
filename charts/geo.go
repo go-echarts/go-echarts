@@ -2,11 +2,11 @@ package charts
 
 import (
 	"fmt"
-	"github.com/chenjiandongx/go-echarts/datatypes"
+	"github.com/go-echarts/go-echarts/datatypes"
 	"io"
 	"log"
 
-	"github.com/chenjiandongx/go-echarts/datasets"
+	"github.com/go-echarts/go-echarts/datasets"
 )
 
 // GeoComponentOpts is the option set for geo component.

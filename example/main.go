@@ -7,7 +7,7 @@ import (
 	"path"
 	"time"
 
-	"github.com/chenjiandongx/go-echarts/charts"
+	"github.com/go-echarts/go-echarts/charts"
 )
 
 const (
