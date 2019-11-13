@@ -1,8 +1,9 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/datatypes"
 	"regexp"
+
+	"github.com/go-echarts/go-echarts/datatypes"
 )
 
 type globalOptser interface {
@@ -22,7 +23,7 @@ type InitOpts struct {
 	// 图表 ID，是图表唯一标识
 	ChartID string
 	// 静态资源 host 地址
-	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
+	AssetsHost string `default:"https://cdn.bootcss.com/echarts/4.3.0/"`
 	// 图表主题
 	Theme string `default:"white"`
 }
@@ -37,7 +38,7 @@ type AssetsOpts struct {
 // 初始化静态资源配置项
 func (opt *AssetsOpts) initAssetsOpts() {
 	opt.JSAssets.Init("echarts.min.js")
-	opt.CSSAssets.Init("bulma.min.css")
+	//opt.CSSAssets.Init("bulma.min.css")
 }
 
 // 初始化静态资源配置项
