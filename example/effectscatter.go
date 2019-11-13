@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/go-echarts/go-echarts/charts"
+	"github.com/semua/go-echarts/charts"
 )
 
 func esBase() *charts.EffectScatter {
