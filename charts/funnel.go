@@ -1,8 +1,9 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/datatypes"
 	"io"
+
+	"github.com/semua/go-echarts/datatypes"
 )
 
 // Funnel represents a funnel chart.

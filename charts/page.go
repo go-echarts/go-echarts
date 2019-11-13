@@ -1,9 +1,10 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/datatypes"
 	"io"
 	"log"
+
+	"github.com/semua/go-echarts/datatypes"
 )
 
 type charter interface {
