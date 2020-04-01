@@ -46,5 +46,5 @@ func (c *Gauge) validateOpts() {
 func (c *Gauge) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", []string{}, w...)
+	return renderToWriter(c, "chart", nil, []string{}, w...)
 }

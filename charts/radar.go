@@ -73,5 +73,5 @@ func (c *Radar) validateOpts() {
 func (c *Radar) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", []string{}, w...)
+	return renderToWriter(c, "chart", nil, []string{}, w...)
 }

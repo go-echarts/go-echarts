@@ -64,5 +64,10 @@ func (page *Page) extractAssets(jsList, cssList []string) {
 // Render renders the chart and writes the output to given writers.
 func (page *Page) Render(w ...io.Writer) error {
 	page.InitOpts.setDefault()
-	return renderToWriter(page, "page", page.unusedStr.Values, w...)
+	return renderToWriter(page, "page", nil, page.unusedStr.Values, w...)
+}
+
+func (page *Page) RenderByTemplate(template []string, renderName string, w ...io.Writer) error {
+	page.InitOpts.setDefault()
+	return renderToWriter(page, renderName, template, page.unusedStr.Values, w...)
 }

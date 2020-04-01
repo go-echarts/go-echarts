@@ -5,6 +5,7 @@ import (
 	"html/template"
 	"io"
 	"math/rand"
+	"os"
 	"reflect"
 	"regexp"
 	"strconv"
@@ -41,10 +42,35 @@ func mustTpl(tpl *template.Template, html ...string) {
 	}
 }
 
-func renderToWriter(chart interface{}, renderName string, removeStr []string, w ...io.Writer) error {
+func renderChartByTemplate(chart interface{}, w io.Writer, renderName string, paths []string) error {
+	tpl := template.New(renderName)
+	for i := range paths {
+		templateFile, err := os.Open(paths[i])
+		if err != nil {
+			return err
+		}
+		buffer := bytes.Buffer{}
+		_, err = buffer.ReadFrom(templateFile)
+		if err != nil {
+			return err
+		}
+		_ = templateFile.Close()
+		tpl = template.Must(tpl.Parse(buffer.String()))
+	}
+
+	return tpl.ExecuteTemplate(w, renderName, chart)
+}
+
+func renderToWriter(chart interface{}, renderName string, renderHtml []string, removeStr []string, w ...io.Writer) error {
 	var b bytes.Buffer
-	if err := renderChart(chart, &b, renderName); err != nil {
-		return err
+	if renderHtml != nil {
+		if err := renderChartByTemplate(chart, &b, renderName, renderHtml); err != nil {
+			return err
+		}
+	} else {
+		if err := renderChart(chart, &b, renderName); err != nil {
+			return err
+		}
 	}
 	res := replaceRender(b, removeStr...)
 	for i := 0; i < len(w); i++ {

@@ -135,5 +135,5 @@ func (c *Graph) validateOpts() {
 func (c *Graph) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", []string{`"force":{},?`}, w...)
+	return renderToWriter(c, "chart", nil, []string{`"force":{},?`}, w...)
 }

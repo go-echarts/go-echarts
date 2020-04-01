@@ -72,7 +72,7 @@ func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, options ..
 func (c *Chart3D) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", []string{}, w...)
+	return renderToWriter(c, "chart", nil, []string{}, w...)
 }
 
 // Grid3DOpts contains options for the 3D coordinate.
