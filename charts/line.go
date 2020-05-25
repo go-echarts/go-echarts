@@ -19,6 +19,8 @@ type LineOpts struct {
 	XAxisIndex int
 	// 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
 	YAxisIndex int
+	// 是否连接空数据。
+	ConnectNulls bool
 }
 
 func (LineOpts) markSeries() {}
@@ -29,6 +31,7 @@ func (opt *LineOpts) setChartOpt(s *singleSeries) {
 	s.Step = opt.Step
 	s.XAxisIndex = opt.XAxisIndex
 	s.YAxisIndex = opt.YAxisIndex
+	s.ConnectNulls = opt.ConnectNulls
 }
 
 // NewLine creates a new line chart.

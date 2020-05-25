@@ -227,6 +227,7 @@ type singleSeries struct {
 	// Line chart
 	Step   bool `json:"step,omitempty"`
 	Smooth bool `json:"smooth,omitempty"`
+	ConnectNulls bool `json:"connectNulls,omitempty"`
 
 	// Liquid chart
 	LiquidOutlineOpts `json:"outline,omitempty"`
