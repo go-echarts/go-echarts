@@ -1,6 +1,7 @@
 package charts
 
 import (
+	"bytes"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -13,14 +14,15 @@ func TestPageAssetsBeforeRender(t *testing.T) {
 }
 
 func TestPageAssetsAfterRender(t *testing.T) {
+	var buffer bytes.Buffer
 	page := NewPage()
 
 	page.Add(NewBar())
 	page.Add(NewMap("china").SetGlobalOptions(InitOpts{Theme: "macarons"}))
 
-	err := page.Render()
+	err := page.Render(&buffer)
 	assert.NoError(t, err)
-	var host = "http://chenjiandongx.com/go-echarts-assets/assets/"
+	var host = "https://go-echarts.github.io/go-echarts-assets/assets/"
 	assert.Equal(t, page.JSAssets.Values, []string{
 		host + "echarts.min.js", host + "maps/china.js", host + "themes/macarons.js"},
 	)

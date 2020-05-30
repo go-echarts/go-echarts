@@ -99,7 +99,7 @@ func (rc *RectChart) validateOpts() {
 }
 
 // Render renders the chart and writes the output to given writers.
-func (rc *RectChart) Render(w ...io.Writer) error {
+func (rc *RectChart) Render(w io.Writer) error {
 	rc.validateOpts()
-	return renderToWriter(rc, "chart", []string{}, w...)
+	return renderToWriter(rc, "chart", []string{}, w)
 }

@@ -89,8 +89,8 @@ func (c *Bar) validateOpts() {
 }
 
 // Render renders the chart and writes the output to given writers.
-func (c *Bar) Render(w ...io.Writer) error {
+func (c *Bar) Render(w io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", []string{}, w...)
+	return renderToWriter(c, "chart", []string{}, w)
 }

@@ -63,8 +63,8 @@ func (c *Liquid) validateOpts() {
 }
 
 // Render renders the chart and writes the output to given writers.
-func (c *Liquid) Render(w ...io.Writer) error {
+func (c *Liquid) Render(w io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", []string{`"outline":{"show":false},?`, `"waveAnimation":false,?`}, w...)
+	return renderToWriter(c, "chart", []string{`"outline":{"show":false},?`, `"waveAnimation":false,?`}, w)
 }

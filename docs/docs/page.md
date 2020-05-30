@@ -10,8 +10,8 @@ sidebar_label: Page（顺序多图）
 func NewPage(routers ...RouterOpts) *Page
 // 新增 Page 图表，支持一次接收多个 Chart
 func Add(charts ...charter) *Page 
-// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
-func Render(w ...io.Writer) error
+// 负责渲染图表，支持传入io.Writer接口的对象，多个输出可以采用io.MultiWriter(w1, w2, w3)
+func Render(w io.Writer) error
 ```
 
 ## Interface

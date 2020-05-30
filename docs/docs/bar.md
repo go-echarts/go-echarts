@@ -31,8 +31,8 @@ func AddJSFuncs(fn ...string)
 func SetGlobalOptions(options ...globalOptser)
 // 设置全部 Series 配置项
 func SetSeriesOptions(options ...seriesOptser)
-// 负责渲染图表，支持传入多个实现了 io.Writer 接口的对象
-func Render(w ...io.Writer) error
+// 负责渲染图表，支持传入io.Writer接口的对象，多个输出可以采用io.MultiWriter(w1, w2, w3)
+func Render(w io.Writer) error
 ```
 
 ## 专属 Options

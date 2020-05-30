@@ -5,6 +5,8 @@ sidebar_label: Changelog
 ---
 
 ## 版本日志
+### 2020.05.29
+* [Add] 修改各个图表Render()接口签名
 
 ### 2019.02.15
 

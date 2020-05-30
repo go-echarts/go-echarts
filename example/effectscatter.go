@@ -1,6 +1,7 @@
 package main
 
 import (
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -36,5 +37,8 @@ func esHandler(w http.ResponseWriter, _ *http.Request) {
 	if err != nil {
 		log.Println(err)
 	}
-	page.Render(w, f)
+	err = page.Render(io.MultiWriter(w, f))
+	if err != nil {
+		log.Println(err)
+	}
 }

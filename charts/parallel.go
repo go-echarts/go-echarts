@@ -94,8 +94,8 @@ func (c *Parallel) validateOpts() {
 }
 
 // Render renders the chart and writes the output to given writers.
-func (c *Parallel) Render(w ...io.Writer) error {
+func (c *Parallel) Render(w io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.validateOpts()
-	return renderToWriter(c, "chart", []string{}, w...)
+	return renderToWriter(c, "chart", []string{}, w)
 }
