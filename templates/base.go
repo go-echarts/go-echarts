@@ -8,8 +8,8 @@ var BaseTpl = `
 </div>
 <script type="text/javascript">
     "use strict";
-    let myChart___x__{{ .ChartID }}__x__ = echarts.init(document.getElementById('{{ .ChartID }}'), "{{ .Theme }}");
-    let option___x__{{ .ChartID }}__x__ = {
+    var myChart___x__{{ .ChartID }}__x__ = echarts.init(document.getElementById('{{ .ChartID }}'), "{{ .Theme }}");
+    var option___x__{{ .ChartID }}__x__ = {
         title: {{ .TitleOpts  }},
         tooltip: {{ .TooltipOpts }},
         legend: {{ .LegendOpts }},
