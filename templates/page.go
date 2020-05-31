@@ -1,3 +1,6 @@
+package templates
+
+var PageTpl = `
 {{- define "page" }}
 <!DOCTYPE html>
 <html>
@@ -15,3 +18,4 @@
 </body>
 </html>
 {{ end }}
+`

@@ -1,3 +1,6 @@
+package templates
+
+var BaseTpl = `
 {{- define "base" }}
 <div class="container">
     <div class="item" id="{{ .ChartID }}"
@@ -61,3 +64,4 @@
 	{{- end }}
 </script>
 {{ end }}
+`

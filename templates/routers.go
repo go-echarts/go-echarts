@@ -1,3 +1,6 @@
+package templates
+
+var RoutersTpl = `
 {{- define "routers" }}
 <div class="select" style="margin-right:10px; margin-top:10px; position:fixed; right:10px;">
 {{- if gt .Routers.Len 0}}
@@ -9,3 +12,4 @@
 {{- end -}}
 </div>
 {{ end }}
+`

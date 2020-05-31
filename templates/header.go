@@ -1,3 +1,6 @@
+package templates
+
+var HeaderTpl = `
 {{ define "header" }}
 <head>
     <meta charset="utf-8">
@@ -10,3 +13,4 @@
 {{- end }}
 </head>
 {{ end }}
+`
