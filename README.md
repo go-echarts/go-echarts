@@ -26,7 +26,7 @@
 
 > If a language can be used to build web scrapers, it definitely needs to provide a graceful data visualizing library. --- by chenjiandongx
 
-In the Golang ecosystem, there are not many choices for data visualizing libraries. The development of [go-echarts](https://github.com/chenjiandongx/go-echarts) aims to provide a simple yet powerful data visualizing library for Golang. [Echarts](https://echarts.baidu.com) is an outstanding charting and visualizing library opensourced by Baidu, it supports adorable chart types and various interactive features. There are many language bindings for Echarts, for example, [pyecharts](https://github.com/pyecharts/pyecharts). go-echarts learns from pyecharts and has evolved a lot.
+In the Golang ecosystem, there are not many choices for data visualizing libraries. The development of [go-echarts](https://github.com/go-echarts/go-echarts) aims to provide a simple yet powerful data visualizing library for Golang. [Echarts](https://echarts.baidu.com) is an outstanding charting and visualizing library opensourced by Baidu, it supports adorable chart types and various interactive features. There are many language bindings for Echarts, for example, [pyecharts](https://github.com/pyecharts/pyecharts). go-echarts learns from pyecharts and has evolved a lot.
 
 [中文 README](README_CN.md)
 
@@ -96,11 +96,11 @@ Now visit http://localhost:8081 in your browser and you'll see the same bar char
 <img src="https://user-images.githubusercontent.com/19553554/52349544-c2ce3900-2a61-11e9-82af-28aaaaae0d67.gif" width="33%" height="33%" alt="overlap"/>
 </div>
 
-Run the demo program under `example/` to view all the above chart examples.
+Run the demo program under `_examples/` to view all the above chart examples.
 ```shell
-$ cd your/gopath/src/github.com/go-echarts/go-echarts/example
+$ cd your/gopath/src/github.com/go-echarts/go-echarts/_examples
 $ go build .
-$ ./example
+$ ./_examples
 ```
 
 For more information, please refer to [go-echarts.github.io/go-echarts/](https://go-echarts.github.io/go-echarts/).

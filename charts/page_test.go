@@ -20,7 +20,7 @@ func TestPageAssetsAfterRender(t *testing.T) {
 
 	err := page.Render()
 	assert.NoError(t, err)
-	var host = "http://chenjiandongx.com/go-echarts-assets/assets/"
+	var host = "https://go-echarts.github.io/go-echarts-assets/assets/"
 	assert.Equal(t, page.JSAssets.Values, []string{
 		host + "echarts.min.js", host + "maps/china.js", host + "themes/macarons.js"},
 	)

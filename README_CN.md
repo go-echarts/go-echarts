@@ -26,7 +26,7 @@
 
 > 如果一门语言可以用来写爬虫，那么它就需要一个优雅的数据可视化库。 --- by chenjiandongx
 
-在 Golang 这门语言中，目前数据可视化的第三方库还是特别少，[go-echarts](https://github.com/chenjiandongx/go-echarts) 的开发就是为了填补这部分的空隙。[Echarts](https://echarts.baidu.com) 是百度开源的非常优秀的可视化图表库，凭借着良好的交互性，精巧的图表设计，得到了众多开发者的认可。也有其他语言为其实现了相应语言版本的接口，如 Python 的 [pyecharts](https://github.com/pyecharts/pyecharts)，go-echarts 也是借鉴了 pyecharts 的一些设计思想。
+在 Golang 这门语言中，目前数据可视化的第三方库还是特别少，[go-echarts](https://github.com/go-echarts/go-echarts) 的开发就是为了填补这部分的空隙。[Echarts](https://echarts.baidu.com) 是百度开源的非常优秀的可视化图表库，凭借着良好的交互性，精巧的图表设计，得到了众多开发者的认可。也有其他语言为其实现了相应语言版本的接口，如 Python 的 [pyecharts](https://github.com/pyecharts/pyecharts)，go-echarts 也是借鉴了 pyecharts 的一些设计思想。
 
 
 ### 🔰 安装
@@ -95,11 +95,11 @@ $ go get -u github.com/go-echarts/go-echarts/...
 <img src="https://user-images.githubusercontent.com/19553554/52349544-c2ce3900-2a61-11e9-82af-28aaaaae0d67.gif" width="33%" height="33%" alt="overlap"/>
 </div>
 
-运行 example/main.go 可预览所有示例
+运行 _examples/main.go 可预览所有示例
 ```shell
-$ cd your/gopath/src/github.com/go-echarts/go-echarts/example
+$ cd your/gopath/src/github.com/go-echarts/go-echarts/_examples
 $ go build .
-$ ./example
+$ ./_examples
 ```
 
 了解更多文档的内容请访问 [go-echarts.github.io/go-echarts/](https://go-echarts.github.io/go-echarts/)
