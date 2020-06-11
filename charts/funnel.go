@@ -21,7 +21,7 @@ func NewFunnel(routers ...RouterOpts) *Funnel {
 }
 
 // Add adds new data sets.
-func (c *Funnel) Add(name string, data map[string]interface{}, options ...seriesOptser) *Funnel {
+func (c *Funnel) Add(name string, data map[string]interface{}, options ...SeriesOptser) *Funnel {
 	nvs := make([]datatypes.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
@@ -34,7 +34,7 @@ func (c *Funnel) Add(name string, data map[string]interface{}, options ...series
 }
 
 // SetGlobalOptions sets options for the Funnel instance.
-func (c *Funnel) SetGlobalOptions(options ...globalOptser) *Funnel {
+func (c *Funnel) SetGlobalOptions(options ...GlobalOptser) *Funnel {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }

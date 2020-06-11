@@ -38,7 +38,7 @@ func NewSankey(routers ...RouterOpts) *Sankey {
 }
 
 // Add adds new data sets.
-func (c *Sankey) Add(name string, nodes []SankeyNode, links []SankeyLink, options ...seriesOptser) *Sankey {
+func (c *Sankey) Add(name string, nodes []SankeyNode, links []SankeyLink, options ...SeriesOptser) *Sankey {
 	series := singleSeries{Name: name, Type: ChartType.Sankey, Data: nodes, Links: links}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
@@ -46,7 +46,7 @@ func (c *Sankey) Add(name string, nodes []SankeyNode, links []SankeyLink, option
 }
 
 // SetGlobalOptions sets options for the Sankey instance.
-func (c *Sankey) SetGlobalOptions(options ...globalOptser) *Sankey {
+func (c *Sankey) SetGlobalOptions(options ...GlobalOptser) *Sankey {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }

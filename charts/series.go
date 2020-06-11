@@ -1,7 +1,7 @@
 package charts
 
-type seriesOptser interface {
-	markSeries()
+type SeriesOptser interface {
+	MarkSeries()
 }
 
 // LabelTextOpts contains options for a label text.
@@ -44,7 +44,7 @@ type LabelTextOpts struct {
 	Formatter string `json:"formatter,omitempty"`
 }
 
-func (LabelTextOpts) markSeries() {}
+func (LabelTextOpts) MarkSeries() {}
 
 // EmphasisOpts contains options for an emphasis.
 type EmphasisOpts struct {
@@ -54,7 +54,7 @@ type EmphasisOpts struct {
 	ItemStyle ItemStyleOpts `json:"itemStyle,omitempty"`
 }
 
-func (EmphasisOpts) markSeries() {}
+func (EmphasisOpts) MarkSeries() {}
 
 // MarkPoint represents a mark point.
 type MarkPoint struct {
@@ -73,7 +73,7 @@ type MPStyleOpts struct {
 	Label LabelTextOpts `json:"label,omitempty"`
 }
 
-func (MPStyleOpts) markSeries() {}
+func (MPStyleOpts) MarkSeries() {}
 
 // MPNameTypeItem represents type for a MarkPoint.
 type MPNameTypeItem struct {
@@ -87,7 +87,7 @@ type MPNameTypeItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
-func (MPNameTypeItem) markSeries() {}
+func (MPNameTypeItem) MarkSeries() {}
 
 // MPNameCoordItem represents coordinates for a MarkPoint.
 type MPNameCoordItem struct {
@@ -101,7 +101,7 @@ type MPNameCoordItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
-func (MPNameCoordItem) markSeries() {}
+func (MPNameCoordItem) MarkSeries() {}
 
 // MarkLine represents a mark line.
 type MarkLine struct {
@@ -120,7 +120,7 @@ type MLStyleOpts struct {
 	Label LabelTextOpts `json:"label,omitempty"`
 }
 
-func (MLStyleOpts) markSeries() {}
+func (MLStyleOpts) MarkSeries() {}
 
 // MLNameTypeItem represents type for a MarkLine.
 type MLNameTypeItem struct {
@@ -134,7 +134,7 @@ type MLNameTypeItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
-func (MLNameTypeItem) markSeries() {}
+func (MLNameTypeItem) MarkSeries() {}
 
 // MLNameYAxisItem represents Y axis for a MarkLine.
 type MLNameYAxisItem struct {
@@ -148,7 +148,7 @@ type MLNameYAxisItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
-func (MLNameYAxisItem) markSeries() {}
+func (MLNameYAxisItem) MarkSeries() {}
 
 // MLNameXAxisItem represents X axis for a MarkLine.
 type MLNameXAxisItem struct {
@@ -162,7 +162,7 @@ type MLNameXAxisItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
-func (MLNameXAxisItem) markSeries() {}
+func (MLNameXAxisItem) MarkSeries() {}
 
 // MLNameCoordItem represents coordinates for a MarkLine.
 type MLNameCoordItem struct {
@@ -178,7 +178,7 @@ type MLNameCoordItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
-func (MLNameCoordItem) markSeries() {}
+func (MLNameCoordItem) MarkSeries() {}
 
 // ItemStyleOpts contains styling options for a MarkLine.
 type ItemStyleOpts struct {
@@ -196,7 +196,7 @@ type ItemStyleOpts struct {
 	Opacity float32 `json:"opacity,omitempty"`
 }
 
-func (ItemStyleOpts) markSeries() {}
+func (ItemStyleOpts) MarkSeries() {}
 
 type singleSeries struct {
 	// 系列名称
@@ -266,7 +266,7 @@ type singleSeries struct {
 }
 
 // 设置 singleSeries 配置项
-func (s *singleSeries) switchSeriesOpts(options ...seriesOptser) {
+func (s *singleSeries) switchSeriesOpts(options ...SeriesOptser) {
 	// 实际 MarkLevel Name Coordinates 结构
 	type MLNameCoord struct {
 		Name  string        `json:"name,omitempty"`
@@ -275,21 +275,21 @@ func (s *singleSeries) switchSeriesOpts(options ...seriesOptser) {
 
 	for i := 0; i < len(options); i++ {
 		option := options[i]
-		switch option.(type) {
+		switch option := option.(type) {
 		case LabelTextOpts:
-			s.LabelTextOpts = option.(LabelTextOpts)
+			s.LabelTextOpts = option
 		case EmphasisOpts:
-			s.EmphasisOpts = option.(EmphasisOpts)
+			s.EmphasisOpts = option
 		case RippleEffectOpts:
-			s.RippleEffectOpts = option.(RippleEffectOpts)
+			s.RippleEffectOpts = option
 		case LineStyleOpts:
-			s.LineStyleOpts = option.(LineStyleOpts)
+			s.LineStyleOpts = option
 		case AreaStyleOpts:
-			s.AreaStyleOpts = option.(AreaStyleOpts)
+			s.AreaStyleOpts = option
 		case ItemStyleOpts:
-			s.ItemStyleOpts = option.(ItemStyleOpts)
+			s.ItemStyleOpts = option
 		case TextStyleOpts:
-			s.TextStyleOpts = option.(TextStyleOpts)
+			s.TextStyleOpts = option
 			s.TextStyleOpts.Normal = &TextStyleOpts{
 				Color:     s.TextStyleOpts.Color,
 				FontSize:  s.TextStyleOpts.FontSize,
@@ -298,58 +298,58 @@ func (s *singleSeries) switchSeriesOpts(options ...seriesOptser) {
 
 			// MarkLine 配置项
 		case MLNameTypeItem:
-			s.MarkLine.Data = append(s.MarkLine.Data, option.(MLNameTypeItem))
+			s.MarkLine.Data = append(s.MarkLine.Data, option)
 		case MLNameXAxisItem:
-			s.MarkLine.Data = append(s.MarkLine.Data, option.(MLNameXAxisItem))
+			s.MarkLine.Data = append(s.MarkLine.Data, option)
 		case MLNameYAxisItem:
-			s.MarkLine.Data = append(s.MarkLine.Data, option.(MLNameYAxisItem))
+			s.MarkLine.Data = append(s.MarkLine.Data, option)
 		case MLNameCoordItem:
-			m := option.(MLNameCoordItem)
+			m := option
 			s.MarkLine.Data = append(
 				s.MarkLine.Data, []MLNameCoord{{Name: m.Name, Coord: m.Coord0}, {Coord: m.Coord1}})
 		case MLStyleOpts:
-			s.MarkLine.MLStyleOpts = option.(MLStyleOpts)
+			s.MarkLine.MLStyleOpts = option
 
 			// MarkPoint 配置项
 		case MPNameTypeItem:
-			s.MarkPoint.Data = append(s.MarkPoint.Data, option.(MPNameTypeItem))
+			s.MarkPoint.Data = append(s.MarkPoint.Data, option)
 		case MPNameCoordItem:
-			s.MarkPoint.Data = append(s.MarkPoint.Data, option.(MPNameCoordItem))
+			s.MarkPoint.Data = append(s.MarkPoint.Data, option)
 		case MPStyleOpts:
-			s.MarkPoint.MPStyleOpts = option.(MPStyleOpts)
+			s.MarkPoint.MPStyleOpts = option
 
 		case BarOpts:
-			opt := option.(BarOpts)
+			opt := option
 			opt.setChartOpt(s)
 		case Bar3DOpts:
-			opt := option.(Bar3DOpts)
+			opt := option
 			opt.setChartOpt(s)
 		case GraphOpts:
-			opt := option.(GraphOpts)
+			opt := option
 			opt.setChartOpt(s)
 		case HeatMapOpts:
-			opt := option.(HeatMapOpts)
+			opt := option
 			opt.setChartOpt(s)
 		case LineOpts:
-			opt := option.(LineOpts)
+			opt := option
 			opt.setChartOpt(s)
 		case LiquidOpts:
-			opt := option.(LiquidOpts)
+			opt := option
 			opt.setChartOpt(s)
 		case PieOpts:
-			opt := option.(PieOpts)
+			opt := option
 			opt.setChartOpt(s)
 		case ScatterOpts:
-			opt := option.(ScatterOpts)
+			opt := option
 			opt.setChartOpt(s)
 		case WordCloudOpts:
-			opt := option.(WordCloudOpts)
+			opt := option
 			opt.setChartOpt(s)
 		}
 	}
 }
 
-func (s *singleSeries) setSingleSeriesOpts(options ...seriesOptser) {
+func (s *singleSeries) setSingleSeriesOpts(options ...SeriesOptser) {
 	s.switchSeriesOpts(options...)
 }
 
@@ -361,7 +361,7 @@ func (series *Series) exportSeries() Series {
 }
 
 // SetSeriesOptions sets options for the series.
-func (series *Series) SetSeriesOptions(options ...seriesOptser) {
+func (series *Series) SetSeriesOptions(options ...SeriesOptser) {
 	tsl := *series
 	for i := 0; i < len(tsl); i++ {
 		tsl[i].switchSeriesOpts(options...)

@@ -23,24 +23,23 @@ func (c *Chart3D) initChart3D() {
 }
 
 // SetGlobalOptions sets options for the Chart3D instance.
-func (c *Chart3D) SetGlobalOptions(options ...globalOptser) *Chart3D {
+func (c *Chart3D) SetGlobalOptions(options ...GlobalOptser) *Chart3D {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	c.setChart3DGlobalOptions(options...)
 	return c
 }
 
-func (c *Chart3D) setChart3DGlobalOptions(options ...globalOptser) {
+func (c *Chart3D) setChart3DGlobalOptions(options ...GlobalOptser) {
 	for i := 0; i < len(options); i++ {
-		option := options[i]
-		switch option.(type) {
+		switch option := options[i].(type) {
 		case XAxis3DOpts:
-			c.XAxis3D = option.(XAxis3DOpts)
+			c.XAxis3D = option
 		case YAxis3DOpts:
-			c.YAxis3D = option.(YAxis3DOpts)
+			c.YAxis3D = option
 		case ZAxis3DOpts:
-			c.ZAxis3D = option.(ZAxis3DOpts)
+			c.ZAxis3D = option
 		case Grid3DOpts:
-			c.Grid3D = option.(Grid3DOpts)
+			c.Grid3D = option
 		}
 	}
 }
@@ -56,7 +55,7 @@ func (c *Chart3D) validateOpts() {
 	c.validateAssets(c.AssetsHost)
 }
 
-func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, options ...seriesOptser) {
+func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, options ...SeriesOptser) {
 	series := singleSeries{
 		Name:        name,
 		Type:        chartType,
@@ -92,7 +91,7 @@ type Grid3DOpts struct {
 	ViewControl ViewControlOpts `json:"viewControl,omitempty"`
 }
 
-func (Grid3DOpts) markGlobal() {}
+func (Grid3DOpts) MarkGlobal() {}
 
 // ViewControlOpts contains options for view controlling.
 type ViewControlOpts struct {
@@ -127,7 +126,7 @@ type XAxis3DOpts struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
-func (XAxis3DOpts) markGlobal() {}
+func (XAxis3DOpts) MarkGlobal() {}
 
 // YAxis3DOpts contains options for Y axis in the 3D coordinate.
 type YAxis3DOpts struct {
@@ -154,7 +153,7 @@ type YAxis3DOpts struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
-func (YAxis3DOpts) markGlobal() {}
+func (YAxis3DOpts) MarkGlobal() {}
 
 // ZAxis3DOpts contains options for Z axis in the 3D coordinate.
 type ZAxis3DOpts struct {
@@ -181,4 +180,4 @@ type ZAxis3DOpts struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
-func (ZAxis3DOpts) markGlobal() {}
+func (ZAxis3DOpts) MarkGlobal() {}

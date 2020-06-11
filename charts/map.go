@@ -27,7 +27,7 @@ func NewMap(mapType string, routers ...RouterOpts) *Map {
 }
 
 // Add adds new data sets.
-func (c *Map) Add(name string, data map[string]float32, options ...seriesOptser) *Map {
+func (c *Map) Add(name string, data map[string]float32, options ...SeriesOptser) *Map {
 	nvs := make([]datatypes.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
@@ -40,7 +40,7 @@ func (c *Map) Add(name string, data map[string]float32, options ...seriesOptser)
 }
 
 // SetGlobalOptions sets options for the Map instance.
-func (c *Map) SetGlobalOptions(options ...globalOptser) *Map {
+func (c *Map) SetGlobalOptions(options ...GlobalOptser) *Map {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }

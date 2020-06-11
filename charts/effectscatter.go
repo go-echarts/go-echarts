@@ -26,7 +26,7 @@ type RippleEffectOpts struct {
 	BrushType string `json:"brushType,omitempty"`
 }
 
-func (RippleEffectOpts) markSeries() {}
+func (RippleEffectOpts) MarkSeries() {}
 
 // NewEffectScatter creates a new effect scatter chart.
 func NewEffectScatter(routers ...RouterOpts) *EffectScatter {
@@ -44,7 +44,7 @@ func (c *EffectScatter) AddXAxis(xAxis interface{}) *EffectScatter {
 }
 
 // AddYAxis adds the Y axis.
-func (c *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *EffectScatter {
+func (c *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...SeriesOptser) *EffectScatter {
 	series := singleSeries{Name: name, Type: ChartType.EffectScatter, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)

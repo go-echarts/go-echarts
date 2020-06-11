@@ -23,7 +23,7 @@ func (c *Surface3D) AddXYAxis(xAxis, yAxis interface{}) *Surface3D {
 }
 
 // AddZAxis adds the Z axis.
-func (c *Surface3D) AddZAxis(name string, zAxis interface{}, options ...seriesOptser) *Surface3D {
+func (c *Surface3D) AddZAxis(name string, zAxis interface{}, options ...SeriesOptser) *Surface3D {
 	c.addZAxis(ChartType.Surface3D, name, zAxis, options...)
 	return c
 }

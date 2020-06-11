@@ -25,11 +25,14 @@ func lineShowLabel() *charts.Line {
 func lineMarkPoint() *charts.Line {
 	line := charts.NewLine()
 	line.SetGlobalOptions(charts.TitleOpts{Title: "Line-标记点"})
-	line.AddXAxis(nameItems).AddYAxis("商家A", randInt(),
+
+	var markpoints = []charts.SeriesOptser{
 		charts.MPNameTypeItem{Name: "最大值", Type: "max"},
 		charts.MPNameTypeItem{Name: "平均值", Type: "average"},
 		charts.MPNameTypeItem{Name: "最小值", Type: "min"},
-		charts.MPStyleOpts{Label: charts.LabelTextOpts{Show: true}})
+		charts.MPStyleOpts{Label: charts.LabelTextOpts{Show: true}},
+	}
+	line.AddXAxis(nameItems).AddYAxis("商家A", randInt(), markpoints...)
 	return line
 }
 

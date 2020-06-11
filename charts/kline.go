@@ -23,7 +23,7 @@ func (c *Kline) AddXAxis(xAxis interface{}) *Kline {
 }
 
 // AddYAxis adds the Y axis.
-func (c *Kline) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Kline {
+func (c *Kline) AddYAxis(name string, yAxis interface{}, options ...SeriesOptser) *Kline {
 	series := singleSeries{Name: name, Type: ChartType.Kline, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)

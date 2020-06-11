@@ -5,8 +5,8 @@ import (
 	"regexp"
 )
 
-type globalOptser interface {
-	markGlobal()
+type GlobalOptser interface {
+	MarkGlobal()
 }
 
 // InitOpts contains options for the canvas.
@@ -27,7 +27,7 @@ type InitOpts struct {
 	Theme string `default:"white"`
 }
 
-func (InitOpts) markGlobal() {}
+func (InitOpts) MarkGlobal() {}
 
 // AssetsOpts contains options for static assets.
 type AssetsOpts struct {
@@ -108,8 +108,8 @@ func (f *JSFunctions) AddJSFuncs(fn ...string) {
 // ColorOpts contains options for color schemes.
 type ColorOpts []string
 
-func (ColorOpts) markGlobal() {}
-func (ColorOpts) markSeries() {}
+func (ColorOpts) MarkGlobal() {}
+func (ColorOpts) MarkSeries() {}
 
 // BaseOpts represents a option set needed by all chart types.
 type BaseOpts struct {
@@ -140,12 +140,11 @@ type BaseOpts struct {
 }
 
 // 设置全局颜色
-func (opt *BaseOpts) setColor(options ...seriesOptser) {
+func (opt *BaseOpts) setColor(options ...SeriesOptser) {
 	for i := 0; i < len(options); i++ {
-		option := options[i]
-		switch option.(type) {
+		switch option := options[i].(type) {
 		case ColorOpts:
-			opt.insertSeriesColors(option.(ColorOpts))
+			opt.insertSeriesColors(option)
 		}
 	}
 }
@@ -179,38 +178,38 @@ func (opt *BaseOpts) insertSeriesColors(s []string) {
 }
 
 // 设置 BaseOptions 全局配置项
-func (opt *BaseOpts) setBaseGlobalOptions(options ...globalOptser) {
+func (opt *BaseOpts) setBaseGlobalOptions(options ...GlobalOptser) {
 	for i := 0; i < len(options); i++ {
 		option := options[i]
-		switch option.(type) {
+		switch option := option.(type) {
 		case InitOpts:
-			opt.InitOpts = option.(InitOpts)
+			opt.InitOpts = option
 			if opt.InitOpts.Theme != "" {
 				opt.JSAssets.Add("themes/" + opt.Theme + ".js")
 			}
 			opt.validateInitOpt()
 		case TitleOpts:
-			opt.TitleOpts = option.(TitleOpts)
+			opt.TitleOpts = option
 		case ToolboxOpts:
-			opt.ToolboxOpts = option.(ToolboxOpts)
+			opt.ToolboxOpts = option
 		case TooltipOpts:
-			opt.TooltipOpts = option.(TooltipOpts)
+			opt.TooltipOpts = option
 		case LegendOpts:
-			opt.LegendOpts = option.(LegendOpts)
+			opt.LegendOpts = option
 		case ColorOpts:
-			opt.insertSeriesColors(option.(ColorOpts))
+			opt.insertSeriesColors(option)
 		case DataZoomOpts:
-			opt.DataZoomOptsList = append(opt.DataZoomOptsList, option.(DataZoomOpts))
+			opt.DataZoomOptsList = append(opt.DataZoomOptsList, option)
 		case VisualMapOpts:
-			opt.VisualMapOptsList = append(opt.VisualMapOptsList, option.(VisualMapOpts))
+			opt.VisualMapOptsList = append(opt.VisualMapOptsList, option)
 		case RadarComponentOpts:
-			opt.RadarComponentOpts = option.(RadarComponentOpts)
+			opt.RadarComponentOpts = option
 		case ParallelComponentOpts:
-			opt.ParallelComponentOpts = option.(ParallelComponentOpts)
+			opt.ParallelComponentOpts = option
 		case ParallelAxisOpts:
-			opt.ParallelAxisOpts = option.(ParallelAxisOpts)
+			opt.ParallelAxisOpts = option
 		case SingleAxisOpts:
-			opt.SingleAxisOpts = option.(SingleAxisOpts)
+			opt.SingleAxisOpts = option
 		}
 	}
 }

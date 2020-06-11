@@ -12,7 +12,7 @@ type Bar3DOpts struct {
 	Shading string
 }
 
-func (Bar3DOpts) markSeries() {}
+func (Bar3DOpts) MarkSeries() {}
 
 func (opt *Bar3DOpts) setChartOpt(s *singleSeries) {
 	s.Shading = opt.Shading
@@ -34,7 +34,7 @@ func (c *Bar3D) AddXYAxis(xAxis, yAxis interface{}) *Bar3D {
 }
 
 // AddZAxis adds the Z axis.
-func (c *Bar3D) AddZAxis(name string, zAxis interface{}, options ...seriesOptser) *Bar3D {
+func (c *Bar3D) AddZAxis(name string, zAxis interface{}, options ...SeriesOptser) *Bar3D {
 	c.addZAxis(ChartType.Bar3D, name, zAxis, options...)
 	return c
 }

@@ -30,7 +30,7 @@ type RadarComponentOpts struct {
 	SplitLine SplitLineOpts `json:"splitLine,omitempty"`
 }
 
-func (RadarComponentOpts) markGlobal() {}
+func (RadarComponentOpts) MarkGlobal() {}
 
 // Radar represents a radar chart.
 type Radar struct {
@@ -49,7 +49,7 @@ func NewRadar(routers ...RouterOpts) *Radar {
 }
 
 // Add adds new data sets.
-func (c *Radar) Add(name string, data interface{}, options ...seriesOptser) *Radar {
+func (c *Radar) Add(name string, data interface{}, options ...SeriesOptser) *Radar {
 	series := singleSeries{Name: name, Type: ChartType.Radar, Data: data}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
@@ -59,7 +59,7 @@ func (c *Radar) Add(name string, data interface{}, options ...seriesOptser) *Rad
 }
 
 // SetGlobalOptions sets options for the Radar instance.
-func (c *Radar) SetGlobalOptions(options ...globalOptser) *Radar {
+func (c *Radar) SetGlobalOptions(options ...GlobalOptser) *Radar {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }

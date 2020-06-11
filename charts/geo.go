@@ -42,7 +42,7 @@ func NewGeo(mapType string, routers ...RouterOpts) *Geo {
 // common.ChartType.Scatter
 // common.ChartType.EffectScatter
 // common.ChartType.HeatMap
-func (c *Geo) Add(name, geoType string, data map[string]float32, options ...seriesOptser) *Geo {
+func (c *Geo) Add(name, geoType string, data map[string]float32, options ...SeriesOptser) *Geo {
 	nvs := make([]datatypes.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: c.extendValue(k, v)})
@@ -66,7 +66,7 @@ func (c *Geo) extendValue(region string, v float32) []float32 {
 }
 
 // SetGlobalOptions sets options for the Geo instance.
-func (c *Geo) SetGlobalOptions(options ...globalOptser) *Geo {
+func (c *Geo) SetGlobalOptions(options ...GlobalOptser) *Geo {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }

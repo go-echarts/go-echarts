@@ -21,14 +21,13 @@ func (xy *XYAxis) initXYOpts() {
 }
 
 // 设置 XYOptions 全局配置项
-func (xy *XYAxis) setXYGlobalOptions(options ...globalOptser) {
+func (xy *XYAxis) setXYGlobalOptions(options ...GlobalOptser) {
 	for i := 0; i < len(options); i++ {
-		option := options[i]
-		switch option.(type) {
+		switch option := options[i].(type) {
 		case XAxisOpts:
-			xy.XAxisOptsList[0] = option.(XAxisOpts)
+			xy.XAxisOptsList[0] = option
 		case YAxisOpts:
-			xy.YAxisOptsList[0] = option.(YAxisOpts)
+			xy.YAxisOptsList[0] = option
 		}
 	}
 }
@@ -54,7 +53,7 @@ type RectOpts struct {
 }
 
 // 设置 RectOptions 全局配置项
-func (rect *RectOpts) setRectGlobalOptions(options ...globalOptser) {
+func (rect *RectOpts) setRectGlobalOptions(options ...GlobalOptser) {
 	rect.BaseOpts.setBaseGlobalOptions(options...)
 	rect.XYAxis.setXYGlobalOptions(options...)
 }
@@ -70,7 +69,7 @@ type RectChart struct {
 func (RectChart) markRectChart() {}
 
 // SetGlobalOptions sets options for the RectChart instance.
-func (rc *RectChart) SetGlobalOptions(options ...globalOptser) *RectChart {
+func (rc *RectChart) SetGlobalOptions(options ...GlobalOptser) *RectChart {
 	rc.RectOpts.setRectGlobalOptions(options...)
 	return rc
 }
