@@ -23,7 +23,7 @@ func (c *Scatter3D) AddXYAxis(xAxis, yAxis interface{}) *Scatter3D {
 }
 
 // AddZAxis adds the Z axis.
-func (c *Scatter3D) AddZAxis(name string, zAxis interface{}, options ...seriesOptser) *Scatter3D {
+func (c *Scatter3D) AddZAxis(name string, zAxis interface{}, options ...SeriesOptser) *Scatter3D {
 	c.addZAxis(ChartType.Scatter3D, name, zAxis, options...)
 	return c
 }

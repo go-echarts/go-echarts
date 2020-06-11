@@ -23,7 +23,7 @@ type LineOpts struct {
 	ConnectNulls bool
 }
 
-func (LineOpts) markSeries() {}
+func (LineOpts) MarkSeries() {}
 
 func (opt *LineOpts) setChartOpt(s *singleSeries) {
 	s.Stack = opt.Stack
@@ -50,7 +50,7 @@ func (c *Line) AddXAxis(xAxis interface{}) *Line {
 }
 
 // AddYAxis adds the Y axis.
-func (c *Line) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Line {
+func (c *Line) AddYAxis(name string, yAxis interface{}, options ...SeriesOptser) *Line {
 	series := singleSeries{Name: name, Type: ChartType.Line, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)

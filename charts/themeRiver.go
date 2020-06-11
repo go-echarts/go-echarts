@@ -47,7 +47,7 @@ type SingleAxisOpts struct {
 	Bottom string `json:"bottom,omitempty"`
 }
 
-func (SingleAxisOpts) markGlobal() {}
+func (SingleAxisOpts) MarkGlobal() {}
 
 func (ThemeRiver) chartType() string { return ChartType.ThemeRiver }
 
@@ -60,7 +60,7 @@ func NewThemeRiver(routers ...RouterOpts) *ThemeRiver {
 }
 
 // Add adds new data sets.
-func (c *ThemeRiver) Add(name string, data interface{}, options ...seriesOptser) *ThemeRiver {
+func (c *ThemeRiver) Add(name string, data interface{}, options ...SeriesOptser) *ThemeRiver {
 	series := singleSeries{Name: name, Type: ChartType.ThemeRiver, Data: data}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
@@ -68,7 +68,7 @@ func (c *ThemeRiver) Add(name string, data interface{}, options ...seriesOptser)
 }
 
 // SetGlobalOptions sets options for the ThemeRiver instance.
-func (c *ThemeRiver) SetGlobalOptions(options ...globalOptser) *ThemeRiver {
+func (c *ThemeRiver) SetGlobalOptions(options ...GlobalOptser) *ThemeRiver {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }

@@ -36,7 +36,7 @@ type TitleOpts struct {
 	Right string `json:"right,omitempty"`
 }
 
-func (TitleOpts) markGlobal() {}
+func (TitleOpts) MarkGlobal() {}
 
 // LegendOpts is the option set for a legend component.
 type LegendOpts struct {
@@ -67,7 +67,7 @@ type LegendOpts struct {
 	TextStyle TextStyleOpts `json:"textStyle,omitempty"`
 }
 
-func (LegendOpts) markGlobal() {}
+func (LegendOpts) MarkGlobal() {}
 
 // TooltipOpts is the option set for a tooltip component.
 type TooltipOpts struct {
@@ -113,7 +113,7 @@ type TooltipOpts struct {
 	Formatter string `json:"formatter,omitempty"`
 }
 
-func (TooltipOpts) markGlobal() {}
+func (TooltipOpts) MarkGlobal() {}
 
 // ToolboxOpts is the option set for a toolbox component.
 type ToolboxOpts struct {
@@ -123,7 +123,7 @@ type ToolboxOpts struct {
 	TBFeature `json:"feature"`
 }
 
-func (ToolboxOpts) markGlobal() {}
+func (ToolboxOpts) MarkGlobal() {}
 
 // TBFeature is a feature component under toolbox.
 type TBFeature struct {
@@ -150,7 +150,7 @@ type TextStyleOpts struct {
 	Normal *TextStyleOpts `json:"normal,omitempty"`
 }
 
-func (TextStyleOpts) markSeries() {}
+func (TextStyleOpts) MarkSeries() {}
 
 // LineStyleOpts is the option set for a link style component.
 type LineStyleOpts struct {
@@ -169,7 +169,7 @@ type LineStyleOpts struct {
 	Curveness float32 `json:"curveness,omitempty"`
 }
 
-func (LineStyleOpts) markSeries() {}
+func (LineStyleOpts) MarkSeries() {}
 
 // AreaStyleOpts is the option set for an area style component.
 type AreaStyleOpts struct {
@@ -179,7 +179,7 @@ type AreaStyleOpts struct {
 	Opacity float32 `json:"opacity,omitempty"`
 }
 
-func (AreaStyleOpts) markSeries() {}
+func (AreaStyleOpts) MarkSeries() {}
 
 // DataZoomOpts is the option set for a zoom component.
 type DataZoomOpts struct {
@@ -206,7 +206,7 @@ type DataZoomOpts struct {
 	YAxisIndex interface{} `json:"yAxisIndex,omitempty"`
 }
 
-func (DataZoomOpts) markGlobal() {}
+func (DataZoomOpts) MarkGlobal() {}
 
 // DataZoomOptsList is a list of DataZoomOpts.
 type DataZoomOptsList []DataZoomOpts
@@ -235,7 +235,7 @@ type VisualMapOpts struct {
 	InRange VMInRange `json:"inRange,omitempty"`
 }
 
-func (VisualMapOpts) markGlobal() {}
+func (VisualMapOpts) MarkGlobal() {}
 
 // VisualMapOptsList is a list of VisualMapOpts.
 type VisualMapOptsList []VisualMapOpts
@@ -311,7 +311,7 @@ type XAxisOpts struct {
 	SplitLine SplitLineOpts `json:"splitLine,,omitempty"`
 }
 
-func (XAxisOpts) markGlobal() {}
+func (XAxisOpts) MarkGlobal() {}
 
 // YAxisOpts is the option set for Y axis.
 type YAxisOpts struct {
@@ -366,7 +366,7 @@ type YAxisOpts struct {
 	SplitLine SplitLineOpts `json:"splitLine,,omitempty"`
 }
 
-func (YAxisOpts) markGlobal() {}
+func (YAxisOpts) MarkGlobal() {}
 
 // FuncOpts is the option set for handling function type.
 func FuncOpts(fn string) string {

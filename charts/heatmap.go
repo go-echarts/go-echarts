@@ -15,7 +15,7 @@ type HeatMapOpts struct {
 	YAxisIndex int
 }
 
-func (HeatMapOpts) markSeries() {}
+func (HeatMapOpts) MarkSeries() {}
 
 func (opt *HeatMapOpts) setChartOpt(s *singleSeries) {
 	s.XAxisIndex = opt.XAxisIndex
@@ -38,7 +38,7 @@ func (c *HeatMap) AddXAxis(xAxis interface{}) *HeatMap {
 }
 
 // AddYAxis adds the Y axis.
-func (c *HeatMap) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *HeatMap {
+func (c *HeatMap) AddYAxis(name string, yAxis interface{}, options ...SeriesOptser) *HeatMap {
 	series := singleSeries{Name: name, Type: ChartType.HeatMap, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)

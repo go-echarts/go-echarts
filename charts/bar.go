@@ -34,7 +34,7 @@ type BarOpts struct {
 	YAxisIndex int
 }
 
-func (BarOpts) markSeries() {}
+func (BarOpts) MarkSeries() {}
 
 func (opt *BarOpts) setChartOpt(s *singleSeries) {
 	s.Stack = opt.Stack
@@ -60,7 +60,7 @@ func (c *Bar) AddXAxis(xAxis interface{}) *Bar {
 }
 
 // AddYAxis adds the Y axis.
-func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Bar {
+func (c *Bar) AddYAxis(name string, yAxis interface{}, options ...SeriesOptser) *Bar {
 	series := singleSeries{Name: name, Type: ChartType.Bar, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)

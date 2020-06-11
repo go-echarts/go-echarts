@@ -21,7 +21,7 @@ func NewGauge(routers ...RouterOpts) *Gauge {
 }
 
 // Add adds new data sets.
-func (c *Gauge) Add(name string, data map[string]interface{}, options ...seriesOptser) *Gauge {
+func (c *Gauge) Add(name string, data map[string]interface{}, options ...SeriesOptser) *Gauge {
 	nvs := make([]datatypes.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
@@ -33,7 +33,7 @@ func (c *Gauge) Add(name string, data map[string]interface{}, options ...seriesO
 }
 
 // SetGlobalOptions sets options for the Gauge instance.
-func (c *Gauge) SetGlobalOptions(options ...globalOptser) *Gauge {
+func (c *Gauge) SetGlobalOptions(options ...GlobalOptser) *Gauge {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }

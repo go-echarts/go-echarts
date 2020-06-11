@@ -87,7 +87,7 @@ type GraphOpts struct {
 	Categories []GraphCategory
 }
 
-func (GraphOpts) markSeries() {}
+func (GraphOpts) MarkSeries() {}
 
 func (opt *GraphOpts) setChartOpt(s *singleSeries) {
 	s.Layout = opt.Layout
@@ -107,7 +107,7 @@ func NewGraph(routers ...RouterOpts) *Graph {
 }
 
 // Add adds new data sets.
-func (c *Graph) Add(name string, nodes []GraphNode, links []GraphLink, options ...seriesOptser) *Graph {
+func (c *Graph) Add(name string, nodes []GraphNode, links []GraphLink, options ...SeriesOptser) *Graph {
 	series := singleSeries{Name: name, Type: ChartType.Graph, Links: links, Data: nodes}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
@@ -116,7 +116,7 @@ func (c *Graph) Add(name string, nodes []GraphNode, links []GraphLink, options .
 }
 
 // SetGlobalOptions sets options for the Graph instance.
-func (c *Graph) SetGlobalOptions(options ...globalOptser) *Graph {
+func (c *Graph) SetGlobalOptions(options ...GlobalOptser) *Graph {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }

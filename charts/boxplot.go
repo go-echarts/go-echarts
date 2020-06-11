@@ -23,7 +23,7 @@ func (c *BoxPlot) AddXAxis(xAxis interface{}) *BoxPlot {
 }
 
 // AddYAxis adds the Y axis.
-func (c *BoxPlot) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *BoxPlot {
+func (c *BoxPlot) AddYAxis(name string, yAxis interface{}, options ...SeriesOptser) *BoxPlot {
 	series := singleSeries{Name: name, Type: ChartType.BoxPlot, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)

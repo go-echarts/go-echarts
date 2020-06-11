@@ -30,7 +30,7 @@ type ParallelComponentOpts struct {
 // 平行坐标系中的坐标轴组件配置项
 type ParallelAxisOpts []PAOpts
 
-func (ParallelAxisOpts) markGlobal() {}
+func (ParallelAxisOpts) MarkGlobal() {}
 
 // PAOpts is the option set for a parallel axis.
 type PAOpts struct {
@@ -56,7 +56,7 @@ type PAOpts struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
-func (ParallelComponentOpts) markGlobal() {}
+func (ParallelComponentOpts) MarkGlobal() {}
 
 // Parallel represents a parallel axis.
 type Parallel struct {
@@ -75,7 +75,7 @@ func NewParallel(routers ...RouterOpts) *Parallel {
 }
 
 // Add adds new data sets.
-func (c *Parallel) Add(name string, data interface{}, options ...seriesOptser) *Parallel {
+func (c *Parallel) Add(name string, data interface{}, options ...SeriesOptser) *Parallel {
 	series := singleSeries{Name: name, Type: ChartType.Parallel, Data: data}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
@@ -84,7 +84,7 @@ func (c *Parallel) Add(name string, data interface{}, options ...seriesOptser) *
 }
 
 // SetGlobalOptions sets options for the Parallel instance.
-func (c *Parallel) SetGlobalOptions(options ...globalOptser) *Parallel {
+func (c *Parallel) SetGlobalOptions(options ...GlobalOptser) *Parallel {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }

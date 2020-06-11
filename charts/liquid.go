@@ -23,7 +23,7 @@ type LiquidOpts struct {
 	IsWaveAnimation bool
 }
 
-func (LiquidOpts) markSeries() {}
+func (LiquidOpts) MarkSeries() {}
 
 // LiquidOutlineOpts is the options set for a liquid outline.
 type LiquidOutlineOpts struct {
@@ -45,7 +45,7 @@ func NewLiquid(routers ...RouterOpts) *Liquid {
 }
 
 // Add adds new data sets.
-func (c *Liquid) Add(name string, data interface{}, options ...seriesOptser) *Liquid {
+func (c *Liquid) Add(name string, data interface{}, options ...SeriesOptser) *Liquid {
 	series := singleSeries{Name: name, Type: ChartType.Liquid, Data: data}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
@@ -53,7 +53,7 @@ func (c *Liquid) Add(name string, data interface{}, options ...seriesOptser) *Li
 }
 
 // SetGlobalOptions sets options for the Liquid instance.
-func (c *Liquid) SetGlobalOptions(options ...globalOptser) *Liquid {
+func (c *Liquid) SetGlobalOptions(options ...GlobalOptser) *Liquid {
 	c.BaseOpts.setBaseGlobalOptions(options...)
 	return c
 }

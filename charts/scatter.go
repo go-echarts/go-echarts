@@ -15,7 +15,7 @@ type ScatterOpts struct {
 	YAxisIndex int
 }
 
-func (ScatterOpts) markSeries() {}
+func (ScatterOpts) MarkSeries() {}
 
 func (opt *ScatterOpts) setChartOpt(s *singleSeries) {
 	s.XAxisIndex = opt.XAxisIndex
@@ -38,7 +38,7 @@ func (c *Scatter) AddXAxis(xAxis interface{}) *Scatter {
 }
 
 // AddYAxis adds the Y axis.
-func (c *Scatter) AddYAxis(name string, yAxis interface{}, options ...seriesOptser) *Scatter {
+func (c *Scatter) AddYAxis(name string, yAxis interface{}, options ...SeriesOptser) *Scatter {
 	series := singleSeries{Name: name, Type: ChartType.Scatter, Data: yAxis}
 	series.setSingleSeriesOpts(options...)
 	c.Series = append(c.Series, series)
