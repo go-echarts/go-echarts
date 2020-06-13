@@ -35,10 +35,10 @@ func (RadarComponentOpts) MarkGlobal() {}
 // Radar represents a radar chart.
 type Radar struct {
 	BaseOpts
-	Series
+	MultiSeries
 }
 
-func (Radar) chartType() string { return ChartType.Radar }
+func (Radar) Type() string { return ChartType.Radar }
 
 // NewRadar creates a new radar chart.
 func NewRadar(routers ...RouterOpts) *Radar {
@@ -49,10 +49,10 @@ func NewRadar(routers ...RouterOpts) *Radar {
 }
 
 // Add adds new data sets.
-func (c *Radar) Add(name string, data interface{}, options ...SeriesOptser) *Radar {
-	series := singleSeries{Name: name, Type: ChartType.Radar, Data: data}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
+func (c *Radar) Add(name string, data interface{}, fns ...SeriesOptFn) *Radar {
+	series := SingleSeries{Name: name, Type: ChartType.Radar, Data: data}
+	series.configureSeriesFns(fns...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	c.setColor(options...)
 	c.legends = append(c.legends, name)
 	return c

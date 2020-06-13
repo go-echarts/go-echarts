@@ -70,32 +70,32 @@ type GraphForce struct {
 	EdgeLength float32 `json:"edgeLength,omitempty"`
 }
 
-// GraphOpts is the option set for graph chart.
-type GraphOpts struct {
-	//图的布局。可选：
-	// "none" 不采用任何布局，使用节点中提供的 x， y 作为节点的位置。
-	// "circular" 采用环形布局
-	// "force" 采用力引导布局
-	Layout string
-	// "force", "circular" 布局详细配置项
-	Force GraphForce
-	// 是否开启鼠标缩放和平移漫游。默认不开启。
-	Roam bool
-	// 是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点
-	FocusNodeAdjacency bool
-	//
-	Categories []GraphCategory
-}
-
-func (GraphOpts) MarkSeries() {}
-
-func (opt *GraphOpts) setChartOpt(s *singleSeries) {
-	s.Layout = opt.Layout
-	s.Force = opt.Force
-	s.Roam = opt.Roam
-	s.FocusNodeAdjacency = opt.FocusNodeAdjacency
-	s.Categories = opt.Categories
-}
+//// GraphOpts is the option set for graph chart.
+//type GraphOpts struct {
+//	//图的布局。可选：
+//	// "none" 不采用任何布局，使用节点中提供的 x， y 作为节点的位置。
+//	// "circular" 采用环形布局
+//	// "force" 采用力引导布局
+//	Layout string
+//	// "force", "circular" 布局详细配置项
+//	Force GraphForce
+//	// 是否开启鼠标缩放和平移漫游。默认不开启。
+//	Roam bool
+//	// 是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点
+//	FocusNodeAdjacency bool
+//	//
+//	Categories []GraphCategory
+//}
+//
+//func (GraphOpts) MarkSeries() {}
+//
+//func (opt *GraphOpts) setChartOpt(s *singleSeries) {
+//	s.Layout = opt.Layout
+//	s.Force = opt.Force
+//	s.Roam = opt.Roam
+//	s.FocusNodeAdjacency = opt.FocusNodeAdjacency
+//	s.Categories = opt.Categories
+//}
 
 func (Graph) chartType() string { return ChartType.Graph }
 

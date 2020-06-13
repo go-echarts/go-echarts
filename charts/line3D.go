@@ -5,7 +5,7 @@ type Line3D struct {
 	Chart3D
 }
 
-func (Line3D) chartType() string { return ChartType.Line3D }
+func (Line3D) Type() string { return ChartType.Line3D }
 
 // NewLine3D creates a new 3D line chart.
 func NewLine3D(routers ...RouterOpts) *Line3D {

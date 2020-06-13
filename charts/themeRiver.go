@@ -7,7 +7,7 @@ import (
 // ThemeRiver represents a theme river chart.
 type ThemeRiver struct {
 	BaseOpts
-	Series
+	MultiSeries
 }
 
 // SingleAxisOpts is the option set for single axis.
@@ -49,7 +49,7 @@ type SingleAxisOpts struct {
 
 func (SingleAxisOpts) MarkGlobal() {}
 
-func (ThemeRiver) chartType() string { return ChartType.ThemeRiver }
+func (ThemeRiver) Type() string { return ChartType.ThemeRiver }
 
 // NewThemeRiver creates a new theme river chart.
 func NewThemeRiver(routers ...RouterOpts) *ThemeRiver {
@@ -60,10 +60,10 @@ func NewThemeRiver(routers ...RouterOpts) *ThemeRiver {
 }
 
 // Add adds new data sets.
-func (c *ThemeRiver) Add(name string, data interface{}, options ...SeriesOptser) *ThemeRiver {
-	series := singleSeries{Name: name, Type: ChartType.ThemeRiver, Data: data}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
+func (c *ThemeRiver) Add(name string, data interface{}, fns ...SeriesOptFn) *ThemeRiver {
+	series := SingleSeries{Name: name, Type: ChartType.ThemeRiver, Data: data}
+	series.configureSeriesFns(fns...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 

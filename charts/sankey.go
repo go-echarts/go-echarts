@@ -7,7 +7,7 @@ import (
 // Sankey represents a sankey chart.
 type Sankey struct {
 	BaseOpts
-	Series
+	MultiSeries
 }
 
 // SankeyLink represents relationship between two data nodes.
@@ -28,7 +28,7 @@ type SankeyNode struct {
 	Value string `json:"value,omitempty"`
 }
 
-func (Sankey) chartType() string { return ChartType.Sankey }
+func (Sankey) Type() string { return ChartType.Sankey }
 
 // NewSankey creates a new sankey chart.
 func NewSankey(routers ...RouterOpts) *Sankey {
@@ -38,10 +38,10 @@ func NewSankey(routers ...RouterOpts) *Sankey {
 }
 
 // Add adds new data sets.
-func (c *Sankey) Add(name string, nodes []SankeyNode, links []SankeyLink, options ...SeriesOptser) *Sankey {
-	series := singleSeries{Name: name, Type: ChartType.Sankey, Data: nodes, Links: links}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
+func (c *Sankey) Add(name string, nodes []SankeyNode, links []SankeyLink, fns ...SeriesOptFn) *Sankey {
+	series := SingleSeries{Name: name, Type: ChartType.Sankey, Data: nodes, Links: links}
+	series.configureSeriesFns(fns...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 

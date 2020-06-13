@@ -3,18 +3,28 @@ package charts
 // ChartType contains string representations of chart types.
 // TODO: should use enum.
 var ChartType = struct {
-	Bar, Bar3D, BoxPlot,
+	Bar,
+	Bar3D,
+	BoxPlot,
 	Cartesian3D,
 	EffectScatter,
 	Funnel,
-	Gauge, Geo, Graph,
+	Gauge,
+	Geo,
+	Graph,
 	HeatMap,
 	Kline,
-	Line, Line3D, Liquid,
+	Line,
+	Line3D,
+	Liquid,
 	Map,
-	Parallel, Pie,
+	Parallel,
+	Pie,
 	Radar,
-	Sankey, Scatter, Scatter3D, Surface3D,
+	Sankey,
+	Scatter,
+	Scatter3D,
+	Surface3D,
 	ThemeRiver,
 	WordCloud string
 }{
@@ -51,11 +61,14 @@ var ThemeType = struct {
 	Essos,
 	Infographic,
 	Macarons,
-	PurplePassion, Roma,
+	PurplePassion,
+	Roma,
 	Romantic,
 	Shine,
 	Vintage,
-	Walden, Westeros, Wonderland string
+	Walden,
+	Westeros,
+	Wonderland string
 }{
 	Chalk:         "chalk",
 	Essos:         "essos",

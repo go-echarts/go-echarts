@@ -61,7 +61,7 @@ func (ParallelComponentOpts) MarkGlobal() {}
 // Parallel represents a parallel axis.
 type Parallel struct {
 	BaseOpts
-	Series
+	MultiSeries
 }
 
 func (Parallel) chartType() string { return ChartType.Parallel }
@@ -75,10 +75,10 @@ func NewParallel(routers ...RouterOpts) *Parallel {
 }
 
 // Add adds new data sets.
-func (c *Parallel) Add(name string, data interface{}, options ...SeriesOptser) *Parallel {
-	series := singleSeries{Name: name, Type: ChartType.Parallel, Data: data}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
+func (c *Parallel) Add(name string, data interface{}, fns ...SeriesOptFn) *Parallel {
+	series := SingleSeries{Name: name, Type: ChartType.Parallel, Data: data}
+	series.configureSeriesFns(fns...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	c.setColor(options...)
 	return c
 }

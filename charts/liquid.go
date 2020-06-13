@@ -7,34 +7,34 @@ import (
 // Liquid represents a liquid chart.
 type Liquid struct {
 	BaseOpts
-	Series
+	MultiSeries
 }
 
-func (Liquid) chartType() string { return ChartType.Liquid }
+func (Liquid) Type() string { return ChartType.Liquid }
 
 // LiquidOpts is the option set for a liquid chart.
-type LiquidOpts struct {
-	// 水球图形状，可选
-	// "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
-	Shape string
-	// 是否显示水球轮廓
-	IsShowOutline bool
-	// 是否停止动画
-	IsWaveAnimation bool
-}
-
-func (LiquidOpts) MarkSeries() {}
-
-// LiquidOutlineOpts is the options set for a liquid outline.
-type LiquidOutlineOpts struct {
-	Show bool `json:"show"`
-}
-
-func (opt *LiquidOpts) setChartOpt(s *singleSeries) {
-	s.Shape = opt.Shape
-	s.LiquidOutlineOpts.Show = opt.IsShowOutline
-	s.IsWaveAnimation = opt.IsWaveAnimation
-}
+//type LiquidOpts struct {
+//	// 水球图形状，可选
+//	// "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
+//	Shape string
+//	// 是否显示水球轮廓
+//	IsShowOutline bool
+//	// 是否停止动画
+//	IsWaveAnimation bool
+//}
+//
+//func (LiquidOpts) MarkSeries() {}
+//
+//// LiquidOutlineOpts is the options set for a liquid outline.
+//type LiquidOutlineOpts struct {
+//	Show bool `json:"show"`
+//}
+//
+//func (opt *LiquidOpts) setChartOpt(s *singleSeries) {
+//	s.Shape = opt.Shape
+//	s.LiquidOutlineOpts.Show = opt.IsShowOutline
+//	s.IsWaveAnimation = opt.IsWaveAnimation
+//}
 
 // NewLiquid creates a new liquid chart.
 func NewLiquid(routers ...RouterOpts) *Liquid {
@@ -45,10 +45,10 @@ func NewLiquid(routers ...RouterOpts) *Liquid {
 }
 
 // Add adds new data sets.
-func (c *Liquid) Add(name string, data interface{}, options ...SeriesOptser) *Liquid {
-	series := singleSeries{Name: name, Type: ChartType.Liquid, Data: data}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
+func (c *Liquid) Add(name string, data interface{}, fns ...SeriesOptFn) *Liquid {
+	series := SingleSeries{Name: name, Type: ChartType.Liquid, Data: data}
+	series.configureSeriesFns(fns...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 

@@ -13,21 +13,6 @@ type EffectScatterChartOpts struct {
 	YAxisIndex int
 }
 
-// RippleEffectOpts is the option set for the ripple effect.
-type RippleEffectOpts struct {
-	// 动画的周期，秒数
-	// 默认 4(s)
-	Period float32 `json:"period,omitempty"`
-	// 动画中波纹的最大缩放比例
-	// 默认 2.5
-	Scale float32 `json:"scale,omitempty"`
-	// 波纹的绘制方式，可选 "stroke" 和 "fill"
-	// 默认 "fill"
-	BrushType string `json:"brushType,omitempty"`
-}
-
-func (RippleEffectOpts) MarkSeries() {}
-
 // NewEffectScatter creates a new effect scatter chart.
 func NewEffectScatter(routers ...RouterOpts) *EffectScatter {
 	chart := new(EffectScatter)

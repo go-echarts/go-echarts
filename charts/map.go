@@ -10,7 +10,7 @@ import (
 // Map represents a map chart.
 type Map struct {
 	BaseOpts
-	Series
+	MultiSeries
 
 	mapType string
 }
@@ -27,14 +27,14 @@ func NewMap(mapType string, routers ...RouterOpts) *Map {
 }
 
 // Add adds new data sets.
-func (c *Map) Add(name string, data map[string]float32, options ...SeriesOptser) *Map {
+func (c *Map) Add(name string, data map[string]float32, fns ...SeriesOptser) *Map {
 	nvs := make([]datatypes.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
 	}
-	series := singleSeries{Name: name, Type: ChartType.Map, MapType: c.mapType, Data: nvs}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
+	series := SingleSeries{Name: name, Type: ChartType.Map, MapType: c.mapType, Data: nvs}
+	series.configureSeriesFns(fns...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	c.setColor(options...)
 	return c
 }

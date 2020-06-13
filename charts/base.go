@@ -1,8 +1,9 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/datatypes"
 	"regexp"
+
+	"github.com/go-echarts/go-echarts/datatypes"
 )
 
 type GlobalOptser interface {
@@ -108,8 +109,9 @@ func (f *JSFunctions) AddJSFuncs(fn ...string) {
 // ColorOpts contains options for color schemes.
 type ColorOpts []string
 
-func (ColorOpts) MarkGlobal() {}
-func (ColorOpts) MarkSeries() {}
+//
+//func (ColorOpts) MarkGlobal() {}
+//func (ColorOpts) MarkSeries() {}
 
 // BaseOpts represents a option set needed by all chart types.
 type BaseOpts struct {
@@ -152,8 +154,9 @@ func (opt *BaseOpts) setColor(options ...SeriesOptser) {
 // 初始化全局颜色列表
 func (opt *BaseOpts) initSeriesColors() {
 	opt.Colors = []string{
-		"#c23531", "#2f4554", "#61a0a8", "#d48265", "#91c7ae", "#749f83",
-		"#ca8622", "#bda29a", "#6e7074", "#546570", "#c4ccd3"}
+		"#c23531", "#2f4554", "#61a0a8", "#d48265", "#91c7ae",
+		"#749f83", "#ca8622", "#bda29a", "#6e7074", "#546570",
+	}
 }
 
 // 初始化 BaseOpts

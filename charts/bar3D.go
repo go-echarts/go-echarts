@@ -5,18 +5,7 @@ type Bar3D struct {
 	Chart3D
 }
 
-func (Bar3D) chartType() string { return ChartType.Bar3D }
-
-// Bar3DOpts is the option set for a 3D bar chart.
-type Bar3DOpts struct {
-	Shading string
-}
-
-func (Bar3DOpts) MarkSeries() {}
-
-func (opt *Bar3DOpts) setChartOpt(s *singleSeries) {
-	s.Shading = opt.Shading
-}
+func (Bar3D) Type() string { return ChartType.Bar3D }
 
 // NewBar3D creates a new 3D bar chart.
 func NewBar3D(routers ...RouterOpts) *Bar3D {

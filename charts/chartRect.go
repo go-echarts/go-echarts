@@ -2,6 +2,8 @@ package charts
 
 import (
 	"io"
+
+	"github.com/go-echarts/go-echarts/opts"
 )
 
 type rectCharter interface {
@@ -11,13 +13,13 @@ type rectCharter interface {
 
 // XYAxis represent the X and Y axis in the rectangular coordinate.
 type XYAxis struct {
-	XAxisOptsList []XAxisOpts
-	YAxisOptsList []YAxisOpts
+	XAxisList []opts.XAxis
+	YAxisList []opts.YAxis
 }
 
 func (xy *XYAxis) initXYOpts() {
-	xy.XAxisOptsList = append(xy.XAxisOptsList, XAxisOpts{})
-	xy.YAxisOptsList = append(xy.YAxisOptsList, YAxisOpts{})
+	xy.XAxisList = append(xy.XAxisList, opts.XAxis{})
+	xy.YAxisList = append(xy.YAxisList, opts.YAxis{})
 }
 
 // 设置 XYOptions 全局配置项
@@ -32,6 +34,7 @@ func (xy *XYAxis) setXYGlobalOptions(options ...GlobalOptser) {
 	}
 }
 
+//
 // ExtendXAxis adds new X axes.
 func (xy *XYAxis) ExtendXAxis(xAxis ...XAxisOpts) {
 	for i := 0; i < len(xAxis); i++ {
@@ -39,6 +42,7 @@ func (xy *XYAxis) ExtendXAxis(xAxis ...XAxisOpts) {
 	}
 }
 
+//
 // ExtendYAxis adds new Y axes.
 func (xy *XYAxis) ExtendYAxis(yAxis ...YAxisOpts) {
 	for i := 0; i < len(yAxis); i++ {
@@ -46,12 +50,14 @@ func (xy *XYAxis) ExtendYAxis(yAxis ...YAxisOpts) {
 	}
 }
 
+//
 // RectOpts contains options for the rectangular coordinate.
 type RectOpts struct {
 	BaseOpts
 	XYAxis
 }
 
+//
 // 设置 RectOptions 全局配置项
 func (rect *RectOpts) setRectGlobalOptions(options ...GlobalOptser) {
 	rect.BaseOpts.setBaseGlobalOptions(options...)
@@ -61,13 +67,14 @@ func (rect *RectOpts) setRectGlobalOptions(options ...GlobalOptser) {
 // RectChart is a chart in RectChart coordinate.
 type RectChart struct {
 	RectOpts
-	Series
+	MultiSeries
 
 	xAxisData interface{}
 }
 
-func (RectChart) markRectChart() {}
-
+//
+//func (RectChart) markRectChart() {}
+//
 // SetGlobalOptions sets options for the RectChart instance.
 func (rc *RectChart) SetGlobalOptions(options ...GlobalOptser) *RectChart {
 	rc.RectOpts.setRectGlobalOptions(options...)
