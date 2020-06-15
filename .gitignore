@@ -16,4 +16,4 @@
 .vscode/
 
 # render file
-_examples/html/*.html
+examples/html/*.html
