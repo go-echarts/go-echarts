@@ -5,7 +5,7 @@ type Kline struct {
 	RectChart
 }
 
-func (Kline) chartType() string { return ChartType.Kline }
+func (Kline) Type() string { return ChartType.Kline }
 
 // NewKLine creates a new kline chart.
 func NewKLine(routers ...RouterOpts) *Kline {

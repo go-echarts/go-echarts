@@ -23,7 +23,7 @@ func (c *Scatter) AddXAxis(xAxis interface{}) *Scatter {
 }
 
 // AddYAxis adds the Y axis.
-func (c *Scatter) AddYAxis(name string, yAxis interface{}, fns ...SeriesOptFn) *Scatter {
+func (c *Scatter) AddYAxis(name string, yAxis interface{}, fns ...SeriesOpts) *Scatter {
 	series := SingleSeries{Name: name, Type: ChartType.Scatter, Data: yAxis}
 	series.configureSeriesFns(fns...)
 	c.MultiSeries = append(c.MultiSeries, series)

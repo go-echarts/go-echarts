@@ -1,7 +1,7 @@
 package opts
 
 // InitOpts contains options for the canvas.
-type Init struct {
+type Initialization struct {
 	// 生成的 HTML 页面标题
 	PageTitle string `default:"Awesome go-echarts"`
 	// 画布宽度
@@ -16,6 +16,35 @@ type Init struct {
 	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
 	// 图表主题
 	Theme string `default:"white"`
+}
+
+// LegendOpts is the option set for a legend component.
+type Legend struct {
+	// 图例组件离容器左侧的距离。
+	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
+	// 也可以是 'left', 'center', 'right'。
+	// 如果 left 的值为'left', 'center', 'right'，组件会根据相应的位置自动对齐。
+	Left string `json:"left,omitempty"`
+	// 图例组件离容器上侧的距离。
+	// top 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
+	// 也可以是 'top', 'middle', 'bottom'。
+	// 如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐。
+	Top string `json:"top,omitempty"`
+	// 图例组件离容器右侧的距离。
+	// right 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
+	// 默认自适应。
+	Right string `json:"right,omitempty"`
+	// 图例组件离容器下侧的距离。
+	// bottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
+	// 默认自适应。
+	Bottom string `json:"bottom,omitempty"`
+	// Legend 数据项
+	// 如果需要隐藏 Legend 则把 Data 设置为 []string{}
+	Data interface{} `json:"data,omitempty"`
+	// 除此之外也可以设成 "single" 或者 "multiple" 使用单选或者多选模式。默认 "multiple"
+	SelectedMode string `json:"selectedMode,omitempty"`
+	// 图例的公用文本样式
+	TextStyle TextStyleOpts `json:"textStyle,omitempty"`
 }
 
 // TooltipOpts is the option set for a tooltip component.
@@ -294,31 +323,39 @@ type Title struct {
 	Right string `json:"right,omitempty"`
 }
 
-// LegendOpts is the option set for a legend component.
-type Legend struct {
-	// 图例组件离容器左侧的距离。
-	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
-	// 也可以是 'left', 'center', 'right'。
-	// 如果 left 的值为'left', 'center', 'right'，组件会根据相应的位置自动对齐。
+// SingleAxisOpts is the option set for single axis.
+type SingleAxis struct {
+	// 坐标轴刻度最小值。
+	// 可以设置成特殊值 "dataMin"，此时取数据在该轴上的最小值作为最小刻度
+	Min interface{} `json:"min,omitempty"`
+	// 坐标轴刻度最大值。
+	// 可以设置成特殊值 "dataMax"，此时取数据在该轴上的最大值作为最大刻度
+	Max interface{} `json:"max,omitempty"`
+	// 坐标轴类型
+	// "value" 数值轴，适用于连续数据。
+	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+	// "time" 时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，
+	// 在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
+	// "log" 对数轴。适用于对数数据。
+	Type string `json:"type,omitempty"`
+	// single 组件离容器左侧的距离。
+	// left 的值可以是像 20 这样的具体像素值，可以是像 "20%" 这样相对于容器高宽的百分比，
+	// 也可以是 "left", "center", "right"。
+	// 如果 left 的值为 "left", "center", "right"，组件会根据相应的位置自动对齐
 	Left string `json:"left,omitempty"`
-	// 图例组件离容器上侧的距离。
-	// top 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
-	// 也可以是 'top', 'middle', 'bottom'。
-	// 如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐。
-	Top string `json:"top,omitempty"`
-	// 图例组件离容器右侧的距离。
-	// right 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
-	// 默认自适应。
+	// single 组件离容器右侧的距离。
+	// left 的值可以是像 20 这样的具体像素值，可以是像 "20%" 这样相对于容器高宽的百分比，
+	// 也可以是 "left", "center", "right"。
+	// 如果 left 的值为 "left", "center", "right"，组件会根据相应的位置自动对齐
 	Right string `json:"right,omitempty"`
-	// 图例组件离容器下侧的距离。
-	// bottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
-	// 默认自适应。
+	// single 组件离容器顶侧的距离。
+	// left 的值可以是像 20 这样的具体像素值，可以是像 "20%" 这样相对于容器高宽的百分比，
+	// 也可以是 "left", "center", "right"。
+	// 如果 left 的值为 "left", "center", "right"，组件会根据相应的位置自动对齐
+	Top string `json:"top,omitempty"`
+	// single 组件离容器底侧的距离。
+	// left 的值可以是像 20 这样的具体像素值，可以是像 "20%" 这样相对于容器高宽的百分比，
+	// 也可以是 "left", "center", "right"。
+	// 如果 left 的值为 "left", "center", "right"，组件会根据相应的位置自动对齐
 	Bottom string `json:"bottom,omitempty"`
-	// Legend 数据项
-	// 如果需要隐藏 Legend 则把 Data 设置为 []string{}
-	Data interface{} `json:"data,omitempty"`
-	// 除此之外也可以设成 "single" 或者 "multiple" 使用单选或者多选模式。默认 "multiple"
-	SelectedMode string `json:"selectedMode,omitempty"`
-	// 图例的公用文本样式
-	TextStyle TextStyle `json:"textStyle,omitempty"`
 }

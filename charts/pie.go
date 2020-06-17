@@ -22,7 +22,7 @@ func NewPie(routers ...RouterOpts) *Pie {
 }
 
 // Add adds new data sets.
-func (c *Pie) Add(name string, data map[string]interface{}, fns ...SeriesOptFn) *Pie {
+func (c *Pie) Add(name string, data map[string]interface{}, fns ...SeriesOpts) *Pie {
 	nvs := make([]datatypes.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})

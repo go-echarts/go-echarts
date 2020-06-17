@@ -45,7 +45,7 @@ func NewLiquid(routers ...RouterOpts) *Liquid {
 }
 
 // Add adds new data sets.
-func (c *Liquid) Add(name string, data interface{}, fns ...SeriesOptFn) *Liquid {
+func (c *Liquid) Add(name string, data interface{}, fns ...SeriesOpts) *Liquid {
 	series := SingleSeries{Name: name, Type: ChartType.Liquid, Data: data}
 	series.configureSeriesFns(fns...)
 	c.MultiSeries = append(c.MultiSeries, series)

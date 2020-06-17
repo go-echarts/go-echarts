@@ -1,34 +1,13 @@
 package charts
 
 import (
+	"github.com/go-echarts/go-echarts/opts"
 	"regexp"
 
 	"github.com/go-echarts/go-echarts/datatypes"
 )
 
-type GlobalOptser interface {
-	MarkGlobal()
-}
-
-// InitOpts contains options for the canvas.
-type InitOpts struct {
-	// 生成的 HTML 页面标题
-	PageTitle string `default:"Awesome go-echarts"`
-	// 画布宽度
-	Width string `default:"900px"`
-	// 画布高度
-	Height string `default:"500px"`
-	// 画布背景颜色
-	BackgroundColor string `json:"backgroundColor,omitempty"`
-	// 图表 ID，是图表唯一标识
-	ChartID string
-	// 静态资源 host 地址
-	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
-	// 图表主题
-	Theme string `default:"white"`
-}
-
-func (InitOpts) MarkGlobal() {}
+type GlobalOpts func(bc *BaseConfiguration)
 
 // AssetsOpts contains options for static assets.
 type AssetsOpts struct {
@@ -109,19 +88,16 @@ func (f *JSFunctions) AddJSFuncs(fn ...string) {
 // ColorOpts contains options for color schemes.
 type ColorOpts []string
 
-//
-//func (ColorOpts) MarkGlobal() {}
-//func (ColorOpts) MarkSeries() {}
-
 // BaseOpts represents a option set needed by all chart types.
-type BaseOpts struct {
-	InitOpts              // 图形初始化配置项
-	LegendOpts            // 图例组件配置项
+type BaseConfiguration struct {
+	opts.Initialization // 图形初始化配置项
+	opts.Legend         // 图例组件配置项
+	opts.Tooltip        // 提示框组件配置项
+	opts.Toolbox        // 工具箱组件配置项
+	opts.Title          // 标题组件配置项
+
+	AssetsOpts            // 静态资源配置项
 	legends               []string
-	TooltipOpts                    // 提示框组件配置项
-	ToolboxOpts                    // 工具箱组件配置项
-	TitleOpts                      // 标题组件配置项
-	AssetsOpts                     // 静态资源配置项
 	Colors                []string // 全局颜色列表
 	appendColor           []string // 追加全局颜色列表
 	Routers                        // 路由列表
@@ -131,8 +107,9 @@ type BaseOpts struct {
 	ParallelComponentOpts          // 平行坐标系组件配置项
 	ParallelAxisOpts               // 平行坐标系中的坐标轴组件配置项
 	JSFunctions                    // JS 函数列表
-	SingleAxisOpts                 // 单轴组件
+	opts.SingleAxis                // 单轴组件
 
+	// todo: 使用方法代替属性
 	HasXYAxis     bool // 图形是否拥有 XY 轴
 	Has3DAxis     bool // 图形是否拥有 3D XYZ 轴
 	HasGeo        bool // 图形是否拥有 Geo 组件

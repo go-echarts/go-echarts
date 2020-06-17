@@ -64,7 +64,7 @@ type Parallel struct {
 	MultiSeries
 }
 
-func (Parallel) chartType() string { return ChartType.Parallel }
+func (Parallel) Type() string { return ChartType.Parallel }
 
 // NewParallel creates a new parallel instance.
 func NewParallel(routers ...RouterOpts) *Parallel {
@@ -75,7 +75,7 @@ func NewParallel(routers ...RouterOpts) *Parallel {
 }
 
 // Add adds new data sets.
-func (c *Parallel) Add(name string, data interface{}, fns ...SeriesOptFn) *Parallel {
+func (c *Parallel) Add(name string, data interface{}, fns ...SeriesOpts) *Parallel {
 	series := SingleSeries{Name: name, Type: ChartType.Parallel, Data: data}
 	series.configureSeriesFns(fns...)
 	c.MultiSeries = append(c.MultiSeries, series)

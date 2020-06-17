@@ -69,33 +69,33 @@ type SingleSeries struct {
 	TextStyleOpts     `json:"textStyle,omitempty"`
 }
 
-type SeriesOptFn func(s *SingleSeries)
+type SeriesOpts func(s *SingleSeries)
 
-func WithLabelTextOpts(opt opts.LabelText) SeriesOptFn {
+func WithLabelTextOpts(opt opts.LabelText) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.LabelText = opt
 	}
 }
 
-func WithEmphasisOpts(opt opts.Emphasis) SeriesOptFn {
+func WithEmphasisOpts(opt opts.Emphasis) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Emphasis = opt
 	}
 }
 
-func WithRippleEffectOpts(opt opts.RippleEffect) SeriesOptFn {
+func WithRippleEffectOpts(opt opts.RippleEffect) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.RippleEffect = opt
 	}
 }
 
-func WithLineStyleOpts(opt opts.LineStyle) SeriesOptFn {
+func WithLineStyleOpts(opt opts.LineStyle) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.LineStyle = opt
 	}
 }
 
-func WithBarChartOpts(opt opts.BarChart) SeriesOptFn {
+func WithBarChartOpts(opt opts.BarChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Stack = opt.Stack
 		s.BarGap = opt.BarGap
@@ -105,7 +105,7 @@ func WithBarChartOpts(opt opts.BarChart) SeriesOptFn {
 	}
 }
 
-func WithGraphChartOpts(opt opts.GraphChart) SeriesOptFn {
+func WithGraphChartOpts(opt opts.GraphChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Layout = opt.Layout
 		s.Force = opt.Force
@@ -115,14 +115,14 @@ func WithGraphChartOpts(opt opts.GraphChart) SeriesOptFn {
 	}
 }
 
-func WithHeatMapChartOpts(opt opts.HeatMapChart) SeriesOptFn {
+func WithHeatMapChartOpts(opt opts.HeatMapChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
 	}
 }
 
-func WithLineChartOpts(opt opts.LineChart) SeriesOptFn {
+func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.YAxisIndex = opt.YAxisIndex
 		s.Stack = opt.Stack
@@ -134,7 +134,7 @@ func WithLineChartOpts(opt opts.LineChart) SeriesOptFn {
 	}
 }
 
-func WithPieChartOpts(opt opts.PieChart) SeriesOptFn {
+func WithPieChartOpts(opt opts.PieChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.RoseType = opt.RoseType
 		s.Center = opt.Center
@@ -142,14 +142,14 @@ func WithPieChartOpts(opt opts.PieChart) SeriesOptFn {
 	}
 }
 
-func WithScatterChartOpts(opt opts.ScatterChart) SeriesOptFn {
+func WithScatterChartOpts(opt opts.ScatterChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
 	}
 }
 
-func WithLiquidChartOpts(opt opts.LiquidChart) SeriesOptFn {
+func WithLiquidChartOpts(opt opts.LiquidChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Shape = opt.Shape
 		s.LiquidOutlineOpts.Show = opt.IsShowOutline
@@ -157,13 +157,13 @@ func WithLiquidChartOpts(opt opts.LiquidChart) SeriesOptFn {
 	}
 }
 
-func WithBar3DChartOpts(opt opts.Bar3DChart) SeriesOptFn {
+func WithBar3DChartOpts(opt opts.Bar3DChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Shading = opt.Shading
 	}
 }
 
-func WithWorldCloudChartOpts(opt opts.WordCloudChart) SeriesOptFn {
+func WithWorldCloudChartOpts(opt opts.WordCloudChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Shape = opt.Shape
 		s.SizeRange = opt.SizeRange
@@ -171,25 +171,25 @@ func WithWorldCloudChartOpts(opt opts.WordCloudChart) SeriesOptFn {
 	}
 }
 
-func WithMarkLineNameTypeItemOpts(opt opts.MarkLineNameTypeItem) SeriesOptFn {
+func WithMarkLineNameTypeItemOpts(opt opts.MarkLineNameTypeItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.MarkLines.Data = append(s.MarkLines.Data, opt)
 	}
 }
 
-func WithMarkLineNameXAxisItemOpts(opt opts.MarkLineNameXAxisItem) SeriesOptFn {
+func WithMarkLineNameXAxisItemOpts(opt opts.MarkLineNameXAxisItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.MarkLines.Data = append(s.MarkLines.Data, opt)
 	}
 }
 
-func WithMarkLineNameYAxisItemOpts(opt opts.MarkLineNameYAxisItem) SeriesOptFn {
+func WithMarkLineNameYAxisItemOpts(opt opts.MarkLineNameYAxisItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.MarkLines.Data = append(s.MarkLines.Data, opt)
 	}
 }
 
-func (s *SingleSeries) configureSeriesFns(fns ...SeriesOptFn) {
+func (s *SingleSeries) configureSeriesFns(fns ...SeriesOpts) {
 	for _, fn := range fns {
 		fn(s)
 	}
@@ -292,7 +292,7 @@ type MultiSeries []SingleSeries
 //}
 
 // SetSeriesOptions sets options for the series.
-func (ms *MultiSeries) SetSeriesOptions(fns ...SeriesOptFn) {
+func (ms *MultiSeries) SetSeriesOptions(fns ...SeriesOpts) {
 	s := *ms
 	for i := 0; i < len(s); i++ {
 		s[i].configureSeriesFns(fns...)

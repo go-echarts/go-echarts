@@ -115,13 +115,13 @@ type LegendOpts struct {
 //
 //func (TooltipOpts) MarkGlobal() {}
 //
-// ToolboxOpts is the option set for a toolbox component.
-type ToolboxOpts struct {
-	// 是否显示工具栏组件
-	Show bool `json:"show"`
-	// 工具箱功能种类，不支持自定义
-	TBFeature `json:"feature"`
-}
+//// ToolboxOpts is the option set for a toolbox component.
+//type ToolboxOpts struct {
+//	// 是否显示工具栏组件
+//	Show bool `json:"show"`
+//	// 工具箱功能种类，不支持自定义
+//	TBFeature `json:"feature"`
+//}
 
 //func (ToolboxOpts) MarkGlobal() {}
 //

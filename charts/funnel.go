@@ -7,7 +7,7 @@ import (
 
 // Funnel represents a funnel chart.
 type Funnel struct {
-	BaseOpts
+	BaseConfiguration
 	MultiSeries
 }
 
@@ -21,7 +21,7 @@ func NewFunnel(routers ...RouterOpts) *Funnel {
 }
 
 // Add adds new data sets.
-func (c *Funnel) Add(name string, data map[string]interface{}, fns ...SeriesOptFn) *Funnel {
+func (c *Funnel) Add(name string, data map[string]interface{}, fns ...SeriesOpts) *Funnel {
 	nvs := make([]datatypes.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})

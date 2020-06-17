@@ -17,7 +17,14 @@ type XYAxis struct {
 	YAxisList []opts.YAxis
 }
 
-func (xy *XYAxis) initXYOpts() {
+func WithXAxisOpts(opt opts.XAxis) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		s.RippleEffect = opt
+		//bc.
+	}
+}
+
+func (xy *XYAxis) initXYAxis() {
 	xy.XAxisList = append(xy.XAxisList, opts.XAxis{})
 	xy.YAxisList = append(xy.YAxisList, opts.YAxis{})
 }
@@ -38,7 +45,7 @@ func (xy *XYAxis) setXYGlobalOptions(options ...GlobalOptser) {
 // ExtendXAxis adds new X axes.
 func (xy *XYAxis) ExtendXAxis(xAxis ...XAxisOpts) {
 	for i := 0; i < len(xAxis); i++ {
-		xy.XAxisOptsList = append(xy.XAxisOptsList, xAxis[i])
+		xy.XAxisList = append(xy.XAxisList, xAxis[i])
 	}
 }
 
@@ -89,7 +96,7 @@ func (rc *RectChart) SetGlobalOptions(options ...GlobalOptser) *RectChart {
 // 而全局配置使用的是调用者的配置项
 func (rc *RectChart) Overlap(a ...rectCharter) {
 	for i := 0; i < len(a); i++ {
-		rc.Series = append(rc.Series, a[i].exportSeries()...)
+		rc.MultiSeries = append(rc.MultiSeries, a[i].exportSeries()...)
 	}
 }
 

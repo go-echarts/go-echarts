@@ -38,7 +38,7 @@ func NewSankey(routers ...RouterOpts) *Sankey {
 }
 
 // Add adds new data sets.
-func (c *Sankey) Add(name string, nodes []SankeyNode, links []SankeyLink, fns ...SeriesOptFn) *Sankey {
+func (c *Sankey) Add(name string, nodes []SankeyNode, links []SankeyLink, fns ...SeriesOpts) *Sankey {
 	series := SingleSeries{Name: name, Type: ChartType.Sankey, Data: nodes, Links: links}
 	series.configureSeriesFns(fns...)
 	c.MultiSeries = append(c.MultiSeries, series)

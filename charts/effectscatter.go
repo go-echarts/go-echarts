@@ -5,7 +5,7 @@ type EffectScatter struct {
 	RectChart
 }
 
-func (EffectScatter) chartType() string { return ChartType.EffectScatter }
+func (EffectScatter) Type() string { return ChartType.EffectScatter }
 
 // EffectScatterChartOpts is the option set for an effect scatter chart.
 type EffectScatterChartOpts struct {

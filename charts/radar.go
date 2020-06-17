@@ -49,7 +49,7 @@ func NewRadar(routers ...RouterOpts) *Radar {
 }
 
 // Add adds new data sets.
-func (c *Radar) Add(name string, data interface{}, fns ...SeriesOptFn) *Radar {
+func (c *Radar) Add(name string, data interface{}, fns ...SeriesOpts) *Radar {
 	series := SingleSeries{Name: name, Type: ChartType.Radar, Data: data}
 	series.configureSeriesFns(fns...)
 	c.MultiSeries = append(c.MultiSeries, series)

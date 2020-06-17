@@ -7,7 +7,6 @@ import (
 // Bar represents a bar chart.
 type Bar struct {
 	RectChart
-	//BarOpts
 
 	isXYReversal bool
 }
@@ -30,7 +29,7 @@ func (c *Bar) AddXAxis(xAxis interface{}) *Bar {
 }
 
 // AddYAxis adds the Y axis.
-func (c *Bar) AddYAxis(name string, yAxis interface{}, fns ...SeriesOptFn) *Bar {
+func (c *Bar) AddYAxis(name string, yAxis interface{}, fns ...SeriesOpts) *Bar {
 	series := SingleSeries{Name: name, Type: ChartType.Bar, Data: yAxis}
 	series.configureSeriesFns(fns...)
 	//series.setSingleSeriesOpts(options...)
