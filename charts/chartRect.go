@@ -6,42 +6,15 @@ import (
 	"github.com/go-echarts/go-echarts/opts"
 )
 
-//type rectCharter interface {
-//	markRectChart()
-//	exportSeries() Series
-//}
-
 // XYAxis represent the X and Y axis in the rectangular coordinate.
 type XYAxis struct {
 	XAxisList []opts.XAxis
 	YAxisList []opts.YAxis
 }
 
-func WithXAxisOpts(opt opts.XAxis) GlobalOpts {
-	return func(bc *BaseConfiguration) {
-	}
-}
-
-func WithYAxisOpts(opt opts.YAxis) GlobalOpts {
-	return func(bc *BaseConfiguration) {
-	}
-}
-
 func (xy *XYAxis) initXYAxis() {
 	xy.XAxisList = append(xy.XAxisList, opts.XAxis{})
 	xy.YAxisList = append(xy.YAxisList, opts.YAxis{})
-}
-
-// 设置 XYOptions 全局配置项
-func (xy *XYAxis) setXYGlobalOptions(options ...GlobalOptser) {
-	for i := 0; i < len(options); i++ {
-		switch option := options[i].(type) {
-		case XAxisOpts:
-			xy.XAxisOptsList[0] = option
-		case YAxisOpts:
-			xy.YAxisOptsList[0] = option
-		}
-	}
 }
 
 // ExtendXAxis adds new X axes.
@@ -54,6 +27,28 @@ func (xy *XYAxis) ExtendYAxis(yAxis ...opts.YAxis) {
 	xy.YAxisList = append(xy.YAxisList, yAxis...)
 }
 
+func WithXAxisOpts(opt opts.XAxis, index ...int) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		if len(index) == 0 {
+			index = []int{0}
+		}
+		for i := 0; i < len(index); i++ {
+			bc.XYAxis.XAxisList[index[i]] = opt
+		}
+	}
+}
+
+func WithYAxisOpts(opt opts.YAxis, index ...int) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		if len(index) == 0 {
+			index = []int{0}
+		}
+		for i := 0; i < len(index); i++ {
+			bc.XYAxis.YAxisList[index[i]] = opt
+		}
+	}
+}
+
 // RectConfiguration contains options for the rectangular coordinate.
 type RectConfiguration struct {
 	BaseConfiguration
@@ -63,7 +58,6 @@ type RectConfiguration struct {
 // 设置 RectOptions 全局配置项
 func (rect *RectConfiguration) setRectGlobalOptions(opts ...GlobalOpts) {
 	rect.BaseConfiguration.setBaseGlobalOptions(opts...)
-	rect.XYAxis.setXYGlobalOptions(opts...)
 }
 
 // RectChart is a chart in RectChart coordinate.

@@ -2,6 +2,8 @@ package charts
 
 import (
 	"io"
+
+	"github.com/go-echarts/go-echarts/types"
 )
 
 // Liquid represents a liquid chart.
@@ -10,7 +12,7 @@ type Liquid struct {
 	MultiSeries
 }
 
-func (Liquid) Type() string { return ChartType.Liquid }
+func (Liquid) Type() string { return types.ChartLiquid }
 
 // NewLiquid creates a new liquid chart.
 func NewLiquid() *Liquid {
@@ -21,7 +23,7 @@ func NewLiquid() *Liquid {
 
 // Add adds new data sets.
 func (c *Liquid) Add(name string, data interface{}, opts ...SeriesOpts) *Liquid {
-	series := SingleSeries{Name: name, Type: ChartType.Liquid, Data: data}
+	series := SingleSeries{Name: name, Type: types.ChartLiquid, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c

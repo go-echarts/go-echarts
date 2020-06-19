@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/datatypes"
+	"github.com/go-echarts/go-echarts/types"
 	"io"
 	"log"
 )
@@ -19,7 +19,7 @@ type Page struct {
 	Charts []interface{}
 	Routers
 
-	unusedStr datatypes.OrderedSet
+	unusedStr types.OrderedSet
 }
 
 // NewPage creates a new page.

@@ -1,11 +1,13 @@
 package charts
 
+import "github.com/go-echarts/go-echarts/types"
+
 // Scatter3D represents a 3D scatter chart.
 type Scatter3D struct {
 	Chart3D
 }
 
-func (Scatter3D) chartType() string { return ChartType.Scatter3D }
+func (Scatter3D) Type() string { return types.ChartScatter3D }
 
 // NewScatter3D creates a new 3D scatter chart.
 func NewScatter3D(routers ...RouterOpts) *Scatter3D {

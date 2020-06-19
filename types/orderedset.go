@@ -1,4 +1,4 @@
-package datatypes
+package types
 
 // OrderedSet represents an ordered set.
 // TODO: make it a true **Ordered** set.

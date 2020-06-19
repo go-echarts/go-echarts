@@ -1,17 +1,19 @@
 package charts
 
+import "github.com/go-echarts/go-echarts/types"
+
 // Line represents a line chart.
 type Line struct {
 	RectChart
 }
 
-func (Line) Type() string { return ChartType.Line }
+func (Line) Type() string { return types.ChartLine }
 
 // NewLine creates a new line chart.
-func NewLine(routers ...RouterOpts) *Line {
+func NewLine() *Line {
 	chart := new(Line)
-	chart.initBaseOpts(routers...)
-	chart.initXYOpts()
+	chart.initBaseConfiguration()
+	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }
@@ -23,10 +25,9 @@ func (c *Line) AddXAxis(xAxis interface{}) *Line {
 }
 
 // AddYAxis adds the Y axis.
-func (c *Line) AddYAxis(name string, yAxis interface{}, options ...SeriesOptser) *Line {
-	series := singleSeries{Name: name, Type: ChartType.Line, Data: yAxis}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
-	c.setColor(options...)
+func (c *Line) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *Line {
+	series := SingleSeries{Name: name, Type: types.ChartLine, Data: yAxis}
+	series.configureSeriesOpts(opts...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

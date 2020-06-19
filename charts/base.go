@@ -4,7 +4,7 @@ import (
 	"github.com/go-echarts/go-echarts/opts"
 )
 
-// GlobalOpts
+// GlobalOpts sets tje Global options for charts.
 type GlobalOpts func(bc *BaseConfiguration)
 
 // BaseConfiguration represents a option set needed by all chart types.
@@ -20,6 +20,14 @@ type BaseConfiguration struct {
 	opts.JSFunctions       // JS 函数列表
 	opts.SingleAxis        // 单轴组件
 
+	HasXYAxis bool // 图形是否拥有 XY 轴
+	XYAxis
+
+	Has3DAxis bool // 图形是否拥有 3D XYZ 轴
+	opts.XAxis3D
+	opts.YAxis3D
+	opts.ZAxis3D
+
 	legends     []string
 	Colors      []string // 全局颜色列表
 	appendColor []string // 追加全局颜色列表
@@ -29,31 +37,17 @@ type BaseConfiguration struct {
 	VisualMapList    []opts.VisualMap    // 视觉映射组件配置项列表
 	ParallelAxisList []opts.ParallelAxis // 平行坐标系中的坐标轴组件配置项
 
-	// todo: 使用方法代替属性
-	HasXYAxis     bool // 图形是否拥有 XY 轴
-	Has3DAxis     bool // 图形是否拥有 3D XYZ 轴
 	HasGeo        bool // 图形是否拥有 Geo 组件
 	HasRadar      bool // 图形是否拥有 Radar 组件
 	HasParallel   bool // 图形是否拥有 Parallel 组件
 	HasSingleAxis bool // 图形是否拥有 singleAxis 组件
 }
 
-// 设置全局颜色
-//func (bc *BaseConfiguration) setColor(options ...SeriesOptser) {
-//	for i := 0; i < len(options); i++ {
-//		switch option := options[i].(type) {
-//		case ColorOpts:
-//			opt.insertSeriesColors(option)
-//		}
-//	}
-//}
-
 // 初始化 BaseOpts
-func (bc *BaseConfiguration) initBaseConfiguration(routers ...opts.Router) {
-	bc.Routers = append(bc.Routers, routers...)
+func (bc *BaseConfiguration) initBaseConfiguration() {
 	bc.initSeriesColors()
 	bc.InitAssets()
-	//bc.ValidateAssets()
+	//bc.Validate()
 }
 
 // 初始化全局颜色列表
@@ -105,7 +99,7 @@ func WithInitializationOpts(opt opts.Initialization) GlobalOpts {
 		if bc.Initialization.Theme != "" {
 			bc.JSAssets.Add("themes/" + opt.Theme + ".js")
 		}
-		bc.validateInitOpt()
+		//bc.Validate()
 	}
 }
 
@@ -154,40 +148,6 @@ func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
 	for _, opt := range opts {
 		opt(bc)
 	}
-
-	//for i := 0; i < len(options); i++ {
-	//	option := options[i]
-	//	switch option := option.(type) {
-	//case InitOpts:
-	//	opt.InitOpts = option
-	//	if opt.InitOpts.Theme != "" {
-	//		opt.JSAssets.Add("themes/" + opt.Theme + ".js")
-	//	}
-	//	opt.validateInitOpt()
-	//case TitleOpts:
-	//	opt.TitleOpts = option
-	//case ToolboxOpts:
-	//	opt.ToolboxOpts = option
-	//case TooltipOpts:
-	//	opt.TooltipOpts = option
-	//case LegendOpts:
-	//	opt.LegendOpts = option
-	//case ColorOpts:
-	//	opt.insertSeriesColors(option)
-	//case DataZoomOpts:
-	//	opt.DataZoomOptsList = append(opt.DataZoomOptsList, option)
-	//case VisualMapOpts:
-	//	opt.VisualMapOptsList = append(opt.VisualMapOptsList, option)
-	//case RadarComponentOpts:
-	//	opt.RadarComponentOpts = option
-	//case ParallelComponentOpts:
-	//	opt.ParallelComponentOpts = option
-	//case ParallelAxisOpts:
-	//	opt.ParallelAxisOpts = option
-	//case SingleAxisOpts:
-	//	opt.SingleAxisOpts = option
-	//}
-	//}
 }
 
 // reverse string slice

@@ -1,11 +1,13 @@
 package charts
 
+import "github.com/go-echarts/go-echarts/types"
+
 // EffectScatter represents an effect scatter chart.
 type EffectScatter struct {
 	RectChart
 }
 
-func (EffectScatter) Type() string { return ChartType.EffectScatter }
+func (EffectScatter) Type() string { return types.ChartEffectScatter }
 
 // EffectScatterChartOpts is the option set for an effect scatter chart.
 type EffectScatterChartOpts struct {
@@ -14,10 +16,10 @@ type EffectScatterChartOpts struct {
 }
 
 // NewEffectScatter creates a new effect scatter chart.
-func NewEffectScatter(routers ...RouterOpts) *EffectScatter {
+func NewEffectScatter() *EffectScatter {
 	chart := new(EffectScatter)
-	chart.initBaseOpts(routers...)
-	chart.initXYOpts()
+	chart.initBaseConfiguration()
+	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }
@@ -29,10 +31,9 @@ func (c *EffectScatter) AddXAxis(xAxis interface{}) *EffectScatter {
 }
 
 // AddYAxis adds the Y axis.
-func (c *EffectScatter) AddYAxis(name string, yAxis interface{}, options ...SeriesOptser) *EffectScatter {
-	series := singleSeries{Name: name, Type: ChartType.EffectScatter, Data: yAxis}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
-	c.setColor(options...)
+func (c *EffectScatter) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *EffectScatter {
+	series := SingleSeries{Name: name, Type: types.ChartEffectScatter, Data: yAxis}
+	series.configureSeriesOpts(opts...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

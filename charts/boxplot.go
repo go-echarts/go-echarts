@@ -1,17 +1,19 @@
 package charts
 
+import "github.com/go-echarts/go-echarts/types"
+
 // BoxPlot represents a boxplot chart.
 type BoxPlot struct {
 	RectChart
 }
 
-func (BoxPlot) Type() string { return ChartType.BoxPlot }
+func (BoxPlot) Type() string { return types.ChartBoxPlot }
 
 // NewBoxPlot creates a new boxplot chart.
-func NewBoxPlot(routers ...RouterOpts) *BoxPlot {
+func NewBoxPlot() *BoxPlot {
 	chart := new(BoxPlot)
-	chart.initBaseOpts(routers...)
-	chart.initXYOpts()
+	chart.initBaseConfiguration()
+	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }
@@ -23,10 +25,9 @@ func (c *BoxPlot) AddXAxis(xAxis interface{}) *BoxPlot {
 }
 
 // AddYAxis adds the Y axis.
-func (c *BoxPlot) AddYAxis(name string, yAxis interface{}, fns ...SeriesOpts) *BoxPlot {
-	series := SingleSeries{Name: name, Type: ChartType.BoxPlot, Data: yAxis}
-	series.configureSeriesFns(fns...)
+func (c *BoxPlot) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *BoxPlot {
+	series := SingleSeries{Name: name, Type: types.ChartBoxPlot, Data: yAxis}
+	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
-	c.setColor(options...)
 	return c
 }

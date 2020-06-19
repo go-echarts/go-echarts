@@ -3,40 +3,39 @@ package charts
 import (
 	"io"
 
-	"github.com/go-echarts/go-echarts/datatypes"
+	"github.com/go-echarts/go-echarts/types"
 )
 
 // Pie represents a pie chart.
 type Pie struct {
-	BaseOpts
+	BaseConfiguration
 	MultiSeries
 }
 
-func (Pie) Type() string { return ChartType.Pie }
+func (Pie) Type() string { return types.ChartPie }
 
 // NewPie creates a new gauge chart.
-func NewPie(routers ...RouterOpts) *Pie {
+func NewPie() *Pie {
 	chart := new(Pie)
-	chart.initBaseOpts(routers...)
+	chart.initBaseConfiguration()
 	return chart
 }
 
 // Add adds new data sets.
-func (c *Pie) Add(name string, data map[string]interface{}, fns ...SeriesOpts) *Pie {
-	nvs := make([]datatypes.NameValueItem, 0)
+func (c *Pie) Add(name string, data map[string]interface{}, opts ...SeriesOpts) *Pie {
+	nvs := make([]types.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
+		nvs = append(nvs, types.NameValueItem{Name: k, Value: v})
 	}
-	series := SingleSeries{Name: name, Type: ChartType.Pie, Data: nvs}
-	series.configureSeriesFns(fns...)
+	series := SingleSeries{Name: name, Type: types.ChartPie, Data: nvs}
+	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
-	c.setColor(options...)
 	return c
 }
 
 // SetGlobalOptions sets options for the Pie instance.
-func (c *Pie) SetGlobalOptions(options ...GlobalOptser) *Pie {
-	c.BaseOpts.setBaseGlobalOptions(options...)
+func (c *Pie) SetGlobalOptions(opts ...GlobalOpts) *Pie {
+	c.BaseConfiguration.setBaseGlobalOptions(opts...)
 	return c
 }
 

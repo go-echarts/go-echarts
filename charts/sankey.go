@@ -1,12 +1,13 @@
 package charts
 
 import (
+	"github.com/go-echarts/go-echarts/types"
 	"io"
 )
 
 // Sankey represents a sankey chart.
 type Sankey struct {
-	BaseOpts
+	BaseConfiguration
 	MultiSeries
 }
 
@@ -28,26 +29,26 @@ type SankeyNode struct {
 	Value string `json:"value,omitempty"`
 }
 
-func (Sankey) Type() string { return ChartType.Sankey }
+func (Sankey) Type() string { return types.ChartSankey }
 
 // NewSankey creates a new sankey chart.
-func NewSankey(routers ...RouterOpts) *Sankey {
+func NewSankey() *Sankey {
 	chart := new(Sankey)
-	chart.initBaseOpts(routers...)
+	chart.initBaseConfiguration()
 	return chart
 }
 
 // Add adds new data sets.
-func (c *Sankey) Add(name string, nodes []SankeyNode, links []SankeyLink, fns ...SeriesOpts) *Sankey {
-	series := SingleSeries{Name: name, Type: ChartType.Sankey, Data: nodes, Links: links}
-	series.configureSeriesFns(fns...)
+func (c *Sankey) Add(name string, nodes []SankeyNode, links []SankeyLink, opts ...SeriesOpts) *Sankey {
+	series := SingleSeries{Name: name, Type: types.ChartSankey, Data: nodes, Links: links}
+	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the Sankey instance.
-func (c *Sankey) SetGlobalOptions(options ...GlobalOptser) *Sankey {
-	c.BaseOpts.setBaseGlobalOptions(options...)
+func (c *Sankey) SetGlobalOptions(opts ...GlobalOpts) *Sankey {
+	c.BaseConfiguration.setBaseGlobalOptions(opts...)
 	return c
 }
 

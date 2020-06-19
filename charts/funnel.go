@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/datatypes"
+	"github.com/go-echarts/go-echarts/types"
 	"io"
 )
 
@@ -11,7 +11,7 @@ type Funnel struct {
 	MultiSeries
 }
 
-func (Funnel) Type() string { return ChartType.Funnel }
+func (Funnel) Type() string { return types.ChartFunnel }
 
 // NewFunnel creates a new funnel chart.
 func NewFunnel() *Funnel {
@@ -22,14 +22,13 @@ func NewFunnel() *Funnel {
 
 // Add adds new data sets.
 func (c *Funnel) Add(name string, data map[string]interface{}, opts ...SeriesOpts) *Funnel {
-	nvs := make([]datatypes.NameValueItem, 0)
+	nvs := make([]types.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
+		nvs = append(nvs, types.NameValueItem{Name: k, Value: v})
 	}
-	series := SingleSeries{Name: name, Type: ChartType.Funnel, Data: nvs}
+	series := SingleSeries{Name: name, Type: types.ChartFunnel, Data: nvs}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
-	c.setColor(options...)
 	return c
 }
 

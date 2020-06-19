@@ -8,7 +8,7 @@ type Bar3D struct {
 func (Bar3D) Type() string { return ChartType.Bar3D }
 
 // NewBar3D creates a new 3D bar chart.
-func NewBar3D(routers ...RouterOpts) *Bar3D {
+func NewBar3D() *Bar3D {
 	chart := new(Bar3D)
 	chart.initBaseOpts(routers...)
 	chart.initChart3D()

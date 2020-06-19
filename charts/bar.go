@@ -2,6 +2,8 @@ package charts
 
 import (
 	"io"
+
+	"github.com/go-echarts/go-echarts/types"
 )
 
 // Bar represents a bar chart.
@@ -11,11 +13,12 @@ type Bar struct {
 	isXYReversal bool
 }
 
-func (Bar) Type() string { return ChartType.Bar }
+func (Bar) Type() string { return types.ChartBar }
 
 // NewBar creates a new bar chart.
 func NewBar() *Bar {
 	chart := &Bar{}
+	chart.initBaseConfiguration()
 	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
@@ -29,10 +32,9 @@ func (c *Bar) AddXAxis(xAxis interface{}) *Bar {
 
 // AddYAxis adds the Y axis.
 func (c *Bar) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *Bar {
-	series := SingleSeries{Name: name, Type: ChartType.Bar, Data: yAxis}
+	series := SingleSeries{Name: name, Type: types.ChartBar, Data: yAxis}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
-	//c.setColor(options...)
 	return c
 }
 
@@ -51,9 +53,9 @@ func (c *Bar) validateOpts() {
 	}
 	// 确保 Y 轴数标签正确显示
 	for i := 0; i < len(c.YAxisList); i++ {
-		c.YAxisList[i].AxisLabel = true
+		c.YAxisList[i].AxisLabel.Show = true
 	}
-	c.validateAssets(c.AssetsHost)
+	c.Assets.Validate(c.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.

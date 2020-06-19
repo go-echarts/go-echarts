@@ -3,7 +3,7 @@ package charts
 import (
 	"io"
 
-	"github.com/go-echarts/go-echarts/datatypes"
+	"github.com/go-echarts/go-echarts/types"
 )
 
 // Gauge represents a gauge chart.
@@ -12,22 +12,22 @@ type Gauge struct {
 	MultiSeries
 }
 
-func (Gauge) Type() string { return ChartType.Gauge }
+func (Gauge) Type() string { return types.ChartGauge }
 
 // NewGauge creates a new gauge chart.
-func NewGauge(routers ...RouterOpts) *Gauge {
+func NewGauge() *Gauge {
 	chart := new(Gauge)
-	chart.initBaseConfiguration(routers...)
+	chart.initBaseConfiguration()
 	return chart
 }
 
 // Add adds new data sets.
 func (c *Gauge) Add(name string, data map[string]interface{}, opts ...SeriesOpts) *Gauge {
-	nvs := make([]datatypes.NameValueItem, 0)
+	nvs := make([]types.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
+		nvs = append(nvs, types.NameValueItem{Name: k, Value: v})
 	}
-	series := SingleSeries{Name: name, Type: ChartType.Gauge, Data: nvs}
+	series := SingleSeries{Name: name, Type: types.ChartGauge, Data: nvs}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c

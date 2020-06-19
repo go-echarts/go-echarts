@@ -2,15 +2,12 @@ package charts
 
 import (
 	"bytes"
+	tpls "github.com/go-echarts/go-echarts/templates"
 	"html/template"
 	"io"
-	"math/rand"
 	"reflect"
 	"regexp"
 	"strconv"
-	"time"
-
-	tpls "github.com/go-echarts/go-echarts/templates"
 )
 
 const (
@@ -54,25 +51,6 @@ func renderToWriter(chart interface{}, renderName string, removeStr []string, w 
 		}
 	}
 	return nil
-}
-
-var seed = rand.NewSource(time.Now().UnixNano())
-
-// 生成唯一且随机的图表 ID
-func genChartID() string {
-	b := make([]byte, chartIDSize)
-	for i, cache, remain := chartIDSize-1, seed.Int63(), letterIdxMax; i >= 0; {
-		if remain == 0 {
-			cache, remain = seed.Int63(), letterIdxMax
-		}
-		if idx := int(cache & letterIdxMask); idx < len(letterBytes) {
-			b[i] = letterBytes[idx]
-			i--
-		}
-		cache >>= letterIdxBits
-		remain--
-	}
-	return string(b)
 }
 
 // 过滤替换渲染结果

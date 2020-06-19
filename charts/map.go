@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/datatypes"
+	"github.com/go-echarts/go-echarts/types"
 	"io"
 
 	"github.com/go-echarts/go-echarts/datasets"
@@ -9,39 +9,38 @@ import (
 
 // Map represents a map chart.
 type Map struct {
-	BaseOpts
+	BaseConfiguration
 	MultiSeries
 
 	mapType string
 }
 
-func (Map) chartType() string { return ChartType.Map }
+func (Map) Type() string { return types.ChartMap }
 
 // NewMap creates a new map chart.
-func NewMap(mapType string, routers ...RouterOpts) *Map {
+func NewMap(mapType string) *Map {
 	chart := new(Map)
 	chart.mapType = mapType
-	chart.initBaseOpts(routers...)
+	chart.initBaseConfiguration()
 	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
 	return chart
 }
 
 // Add adds new data sets.
-func (c *Map) Add(name string, data map[string]float32, fns ...SeriesOptser) *Map {
-	nvs := make([]datatypes.NameValueItem, 0)
+func (c *Map) Add(name string, data map[string]float32, opts ...SeriesOpts) *Map {
+	nvs := make([]types.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
+		nvs = append(nvs, types.NameValueItem{Name: k, Value: v})
 	}
-	series := SingleSeries{Name: name, Type: ChartType.Map, MapType: c.mapType, Data: nvs}
-	series.configureSeriesFns(fns...)
+	series := SingleSeries{Name: name, Type: types.ChartMap, MapType: c.mapType, Data: nvs}
+	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
-	c.setColor(options...)
 	return c
 }
 
 // SetGlobalOptions sets options for the Map instance.
-func (c *Map) SetGlobalOptions(options ...GlobalOptser) *Map {
-	c.BaseOpts.setBaseGlobalOptions(options...)
+func (c *Map) SetGlobalOptions(opts ...GlobalOpts) *Map {
+	c.BaseConfiguration.setBaseGlobalOptions(opts...)
 	return c
 }
 

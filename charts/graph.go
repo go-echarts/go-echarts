@@ -1,13 +1,14 @@
 package charts
 
 import (
+	"github.com/go-echarts/go-echarts/types"
 	"io"
 )
 
 // Graph represents a graph chart.
 type Graph struct {
-	BaseOpts
-	Series
+	BaseConfiguration
+	MultiSeries
 }
 
 // GraphNode represents a data node in graph chart.
@@ -70,54 +71,26 @@ type GraphForce struct {
 	EdgeLength float32 `json:"edgeLength,omitempty"`
 }
 
-//// GraphOpts is the option set for graph chart.
-//type GraphOpts struct {
-//	//图的布局。可选：
-//	// "none" 不采用任何布局，使用节点中提供的 x， y 作为节点的位置。
-//	// "circular" 采用环形布局
-//	// "force" 采用力引导布局
-//	Layout string
-//	// "force", "circular" 布局详细配置项
-//	Force GraphForce
-//	// 是否开启鼠标缩放和平移漫游。默认不开启。
-//	Roam bool
-//	// 是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点
-//	FocusNodeAdjacency bool
-//	//
-//	Categories []GraphCategory
-//}
-//
-//func (GraphOpts) MarkSeries() {}
-//
-//func (opt *GraphOpts) setChartOpt(s *singleSeries) {
-//	s.Layout = opt.Layout
-//	s.Force = opt.Force
-//	s.Roam = opt.Roam
-//	s.FocusNodeAdjacency = opt.FocusNodeAdjacency
-//	s.Categories = opt.Categories
-//}
-
-func (Graph) chartType() string { return ChartType.Graph }
+func (Graph) chartType() string { return types.ChartGraph }
 
 // NewGraph creates a new graph chart.
-func NewGraph(routers ...RouterOpts) *Graph {
+func NewGraph() *Graph {
 	chart := new(Graph)
-	chart.initBaseOpts(routers...)
+	chart.initBaseConfiguration()
 	return chart
 }
 
 // Add adds new data sets.
-func (c *Graph) Add(name string, nodes []GraphNode, links []GraphLink, options ...SeriesOptser) *Graph {
-	series := singleSeries{Name: name, Type: ChartType.Graph, Links: links, Data: nodes}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
-	c.setColor(options...)
+func (c *Graph) Add(name string, nodes []GraphNode, links []GraphLink, opts ...SeriesOpts) *Graph {
+	series := SingleSeries{Name: name, Type: types.ChartGraph, Links: links, Data: nodes}
+	series.configureSeriesOpts(opts...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the Graph instance.
-func (c *Graph) SetGlobalOptions(options ...GlobalOptser) *Graph {
-	c.BaseOpts.setBaseGlobalOptions(options...)
+func (c *Graph) SetGlobalOptions(opts ...GlobalOpts) *Graph {
+	c.BaseConfiguration.setBaseGlobalOptions(opts...)
 	return c
 }
 

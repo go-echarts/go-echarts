@@ -1,36 +1,17 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/datatypes"
+	"github.com/go-echarts/go-echarts/types"
 	"io"
 )
 
 // WordCloud represents a word cloud chart.
 type WordCloud struct {
-	BaseOpts
-	Series
+	BaseConfiguration
+	MultiSeries
 }
 
-func (WordCloud) chartType() string { return ChartType.WordCloud }
-
-// WordCloudOpts is the option set for a word cloud chart.
-type WordCloudOpts struct {
-	// shape of WordCloud
-	// Optional: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
-	Shape string
-	// range of font size
-	SizeRange []float32
-	// range of font rotation angle
-	RotationRange []float32
-}
-
-func (WordCloudOpts) MarkSeries() {}
-
-func (opt *WordCloudOpts) setChartOpt(s *singleSeries) {
-	s.Shape = opt.Shape
-	s.SizeRange = opt.SizeRange
-	s.RotationRange = opt.RotationRange
-}
+func (WordCloud) Type() string { return types.ChartWordCloud }
 
 var wcTextColor = `function () {
 	return 'rgb(' + [
@@ -40,21 +21,21 @@ var wcTextColor = `function () {
 }`
 
 // NewWordCloud creates a new word cloud chart.
-func NewWordCloud(routers ...RouterOpts) *WordCloud {
+func NewWordCloud() *WordCloud {
 	chart := new(WordCloud)
-	chart.initBaseOpts(routers...)
+	chart.initBaseConfiguration()
 	chart.JSAssets.Add("echarts-wordcloud.min.js")
 	return chart
 }
 
 // Add adds new data sets.
-func (c *WordCloud) Add(name string, data map[string]interface{}, options ...SeriesOptser) *WordCloud {
-	nvs := make([]datatypes.NameValueItem, 0)
+func (c *WordCloud) Add(name string, data map[string]interface{}, opts ...SeriesOpts) *WordCloud {
+	nvs := make([]types.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
+		nvs = append(nvs, types.NameValueItem{Name: k, Value: v})
 	}
-	series := singleSeries{Name: name, Type: ChartType.WordCloud, Data: nvs}
-	series.setSingleSeriesOpts(options...)
+	series := SingleSeries{Name: name, Type: types.ChartWordCloud, Data: nvs}
+	series.configureSeriesOpts(opts...)
 
 	// set default random color for WordCloud chart
 	if series.TextStyleOpts.Normal == nil {
@@ -65,14 +46,13 @@ func (c *WordCloud) Add(name string, data map[string]interface{}, options ...Ser
 		}
 	}
 
-	c.Series = append(c.Series, series)
-	c.setColor(options...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the WordCloud instance.
-func (c *WordCloud) SetGlobalOptions(options ...GlobalOptser) *WordCloud {
-	c.BaseOpts.setBaseGlobalOptions(options...)
+func (c *WordCloud) SetGlobalOptions(opts ...GlobalOpts) *WordCloud {
+	c.BaseConfiguration.setBaseGlobalOptions(opts...)
 	return c
 }
 

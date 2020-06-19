@@ -1,4 +1,4 @@
-package datatypes
+package types
 
 // NameValueItem represents a data type with a name and a value.
 type NameValueItem struct {

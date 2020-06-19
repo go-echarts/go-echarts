@@ -1,17 +1,19 @@
 package charts
 
+import "github.com/go-echarts/go-echarts/types"
+
 // Scatter represents a scatter chart.
 type Scatter struct {
 	RectChart
 }
 
-func (Scatter) Type() string { return ChartType.Scatter }
+func (Scatter) Type() string { return types.ChartScatter }
 
 // NewScatter creates a new scatter chart.
-func NewScatter(routers ...RouterOpts) *Scatter {
+func NewScatter() *Scatter {
 	chart := new(Scatter)
-	chart.initBaseOpts(routers...)
-	chart.initXYOpts()
+	chart.initBaseConfiguration()
+	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }
@@ -23,10 +25,9 @@ func (c *Scatter) AddXAxis(xAxis interface{}) *Scatter {
 }
 
 // AddYAxis adds the Y axis.
-func (c *Scatter) AddYAxis(name string, yAxis interface{}, fns ...SeriesOpts) *Scatter {
-	series := SingleSeries{Name: name, Type: ChartType.Scatter, Data: yAxis}
-	series.configureSeriesFns(fns...)
+func (c *Scatter) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *Scatter {
+	series := SingleSeries{Name: name, Type: types.ChartScatter, Data: yAxis}
+	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
-	c.setColor(options...)
 	return c
 }

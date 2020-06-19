@@ -2,7 +2,7 @@ package charts
 
 import (
 	"fmt"
-	"github.com/go-echarts/go-echarts/datatypes"
+	"github.com/go-echarts/go-echarts/types"
 	"io"
 	"log"
 
@@ -16,21 +16,21 @@ type GeoComponentOpts struct {
 
 // Geo represents a geo chart.
 type Geo struct {
-	BaseOpts
-	Series
+	BaseConfiguration
+	MultiSeries
 	GeoComponentOpts
 }
 
-func (Geo) chartType() string { return ChartType.Geo }
+func (Geo) chartType() string { return types.ChartGeo }
 
 var geoFormatter = `function (params) {
 		return params.name + ' : ' + params.value[2];
 }`
 
 // NewGeo creates a new geo chart.
-func NewGeo(mapType string, routers ...RouterOpts) *Geo {
+func NewGeo(mapType string) *Geo {
 	chart := new(Geo)
-	chart.initBaseOpts(routers...)
+	chart.initBaseConfiguration()
 	chart.HasGeo = true
 	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
 	chart.GeoComponentOpts.Map = mapType
@@ -42,15 +42,14 @@ func NewGeo(mapType string, routers ...RouterOpts) *Geo {
 // common.ChartType.Scatter
 // common.ChartType.EffectScatter
 // common.ChartType.HeatMap
-func (c *Geo) Add(name, geoType string, data map[string]float32, options ...SeriesOptser) *Geo {
-	nvs := make([]datatypes.NameValueItem, 0)
+func (c *Geo) Add(name, geoType string, data map[string]float32, opts ...SeriesOpts) *Geo {
+	nvs := make([]types.NameValueItem, 0)
 	for k, v := range data {
-		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: c.extendValue(k, v)})
+		nvs = append(nvs, types.NameValueItem{Name: k, Value: c.extendValue(k, v)})
 	}
-	series := singleSeries{Name: name, Type: geoType, Data: nvs, CoordSystem: ChartType.Geo}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
-	c.setColor(options...)
+	series := SingleSeries{Name: name, Type: geoType, Data: nvs, CoordSystem: types.ChartGeo}
+	series.configureSeriesOpts(opts...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
@@ -66,8 +65,8 @@ func (c *Geo) extendValue(region string, v float32) []float32 {
 }
 
 // SetGlobalOptions sets options for the Geo instance.
-func (c *Geo) SetGlobalOptions(options ...GlobalOptser) *Geo {
-	c.BaseOpts.setBaseGlobalOptions(options...)
+func (c *Geo) SetGlobalOptions(opts ...GlobalOpts) *Geo {
+	c.BaseConfiguration.setBaseGlobalOptions(opts...)
 	return c
 }
 
