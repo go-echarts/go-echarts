@@ -10,7 +10,6 @@ type ThemeRiver struct {
 	MultiSeries
 }
 
-
 func (SingleAxisOpts) MarkGlobal() {}
 
 func (ThemeRiver) Type() string { return ChartType.ThemeRiver }

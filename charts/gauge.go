@@ -8,7 +8,7 @@ import (
 
 // Gauge represents a gauge chart.
 type Gauge struct {
-	BaseOpts
+	BaseConfiguration
 	MultiSeries
 }
 
@@ -17,25 +17,25 @@ func (Gauge) Type() string { return ChartType.Gauge }
 // NewGauge creates a new gauge chart.
 func NewGauge(routers ...RouterOpts) *Gauge {
 	chart := new(Gauge)
-	chart.initBaseOpts(routers...)
+	chart.initBaseConfiguration(routers...)
 	return chart
 }
 
 // Add adds new data sets.
-func (c *Gauge) Add(name string, data map[string]interface{}, options ...SeriesOptser) *Gauge {
+func (c *Gauge) Add(name string, data map[string]interface{}, opts ...SeriesOpts) *Gauge {
 	nvs := make([]datatypes.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
 	}
 	series := SingleSeries{Name: name, Type: ChartType.Gauge, Data: nvs}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
+	series.configureSeriesOpts(opts...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the Gauge instance.
-func (c *Gauge) SetGlobalOptions(options ...GlobalOptser) *Gauge {
-	c.BaseOpts.setBaseGlobalOptions(options...)
+func (c *Gauge) SetGlobalOptions(opts ...GlobalOpts) *Gauge {
+	c.BaseConfiguration.setBaseGlobalOptions(opts...)
 	return c
 }
 

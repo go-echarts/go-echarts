@@ -1,5 +1,7 @@
 package charts
 
+import "github.com/go-echarts/go-echarts/opts"
+
 //// TitleOpts is the option set for a title component.
 //type TitleOpts struct {
 //	// 主标题
@@ -180,7 +182,7 @@ type LegendOpts struct {
 //func (DataZoomOpts) MarkGlobal() {}
 //
 // DataZoomOptsList is a list of DataZoomOpts.
-type DataZoomOptsList []DataZoomOpts
+type DataZoomList []opts.DataZoom
 
 // Len returns count of DataZoomOpts in array.
 func (dz DataZoomOptsList) Len() int {
@@ -209,12 +211,12 @@ func (dz DataZoomOptsList) Len() int {
 //func (VisualMapOpts) MarkGlobal() {}
 
 // VisualMapOptsList is a list of VisualMapOpts.
-type VisualMapOptsList []VisualMapOpts
+//type VisualMapList []opts.VisualMap
 
 // Len returns the count of VisualMapOptsList in array.
-func (vm VisualMapOptsList) Len() int {
-	return len(vm)
-}
+//func (vm VisualMapOptsList) Len() int {
+//	return len(vm)
+//}
 
 // VMInRange is a visual map instance in a range.
 type VMInRange struct {

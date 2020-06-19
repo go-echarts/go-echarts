@@ -14,28 +14,28 @@ type Funnel struct {
 func (Funnel) Type() string { return ChartType.Funnel }
 
 // NewFunnel creates a new funnel chart.
-func NewFunnel(routers ...RouterOpts) *Funnel {
+func NewFunnel() *Funnel {
 	chart := new(Funnel)
-	chart.initBaseOpts(routers...)
+	//chart.initBaseOpts(routers...)
 	return chart
 }
 
 // Add adds new data sets.
-func (c *Funnel) Add(name string, data map[string]interface{}, fns ...SeriesOpts) *Funnel {
+func (c *Funnel) Add(name string, data map[string]interface{}, opts ...SeriesOpts) *Funnel {
 	nvs := make([]datatypes.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, datatypes.NameValueItem{Name: k, Value: v})
 	}
 	series := SingleSeries{Name: name, Type: ChartType.Funnel, Data: nvs}
-	series.configureSeriesFns(fns...)
+	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	c.setColor(options...)
 	return c
 }
 
 // SetGlobalOptions sets options for the Funnel instance.
-func (c *Funnel) SetGlobalOptions(options ...GlobalOptser) *Funnel {
-	c.BaseOpts.setBaseGlobalOptions(options...)
+func (c *Funnel) SetGlobalOptions(opts ...GlobalOpts) *Funnel {
+	c.BaseConfiguration.setBaseGlobalOptions(opts...)
 	return c
 }
 

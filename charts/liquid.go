@@ -6,60 +6,35 @@ import (
 
 // Liquid represents a liquid chart.
 type Liquid struct {
-	BaseOpts
+	BaseConfiguration
 	MultiSeries
 }
 
 func (Liquid) Type() string { return ChartType.Liquid }
 
-// LiquidOpts is the option set for a liquid chart.
-//type LiquidOpts struct {
-//	// 水球图形状，可选
-//	// "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
-//	Shape string
-//	// 是否显示水球轮廓
-//	IsShowOutline bool
-//	// 是否停止动画
-//	IsWaveAnimation bool
-//}
-//
-//func (LiquidOpts) MarkSeries() {}
-//
-//// LiquidOutlineOpts is the options set for a liquid outline.
-//type LiquidOutlineOpts struct {
-//	Show bool `json:"show"`
-//}
-//
-//func (opt *LiquidOpts) setChartOpt(s *singleSeries) {
-//	s.Shape = opt.Shape
-//	s.LiquidOutlineOpts.Show = opt.IsShowOutline
-//	s.IsWaveAnimation = opt.IsWaveAnimation
-//}
-
 // NewLiquid creates a new liquid chart.
-func NewLiquid(routers ...RouterOpts) *Liquid {
+func NewLiquid() *Liquid {
 	chart := new(Liquid)
-	chart.initBaseOpts(routers...)
 	chart.JSAssets.Add("echarts-liquidfill.min.js")
 	return chart
 }
 
 // Add adds new data sets.
-func (c *Liquid) Add(name string, data interface{}, fns ...SeriesOpts) *Liquid {
+func (c *Liquid) Add(name string, data interface{}, opts ...SeriesOpts) *Liquid {
 	series := SingleSeries{Name: name, Type: ChartType.Liquid, Data: data}
-	series.configureSeriesFns(fns...)
+	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the Liquid instance.
-func (c *Liquid) SetGlobalOptions(options ...GlobalOptser) *Liquid {
-	c.BaseOpts.setBaseGlobalOptions(options...)
+func (c *Liquid) SetGlobalOptions(opts ...GlobalOpts) *Liquid {
+	c.BaseConfiguration.setBaseGlobalOptions(opts...)
 	return c
 }
 
 func (c *Liquid) validateOpts() {
-	c.validateAssets(c.AssetsHost)
+	c.ValidateAssets(c.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.

@@ -1,5 +1,10 @@
 package opts
 
+import (
+	"github.com/go-echarts/go-echarts/datatypes"
+	"regexp"
+)
+
 // InitOpts contains options for the canvas.
 type Initialization struct {
 	// 生成的 HTML 页面标题
@@ -16,6 +21,24 @@ type Initialization struct {
 	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
 	// 图表主题
 	Theme string `default:"white"`
+}
+
+// 设置 InitOptions 字段默认值
+func (opt *Initialization) setDefault() {
+	setDefaultValue(opt)
+}
+
+// 确保 ChartID 不为空且唯一
+func (opt *Initialization) validateChartID() {
+	if opt.ChartID == "" {
+		opt.ChartID = genChartID()
+	}
+}
+
+// 验证初始化参数，确保图形能够得到正确渲染
+func (opt *Initialization) validateInitOpt() {
+	opt.setDefault()
+	opt.validateChartID()
 }
 
 // LegendOpts is the option set for a legend component.
@@ -358,4 +381,135 @@ type SingleAxis struct {
 	// 也可以是 "left", "center", "right"。
 	// 如果 left 的值为 "left", "center", "right"，组件会根据相应的位置自动对齐
 	Bottom string `json:"bottom,omitempty"`
+}
+
+// IndicatorOpts is the option set for a radar chart.
+type Indicator struct {
+	// 指示器名称
+	Name string `json:"name,omitempty"`
+	// 指示器的最大值，可选，建议设置
+	Max float32 `json:"max,omitempty"`
+	// 指示器的最小值，可选，默认为 0
+	Min float32 `json:"min,omitempty"`
+	// 标签特定的颜色
+	Color string `json:"color,omitempty"`
+}
+
+// RadarComponentOpts is the option set for a radar component.
+type RadarComponent struct {
+	// 雷达图的指示器，用来指定雷达图中的多个变量（维度）
+	Indicator []Indicator `json:"indicator,omitempty"`
+	// 雷达图绘制类型，支持 "polygon" 和 "circle"
+	Shape string `json:"shape,omitempty"`
+	// 指示器轴的分割段数。默认 5
+	SplitNumber int `json:"splitNumber,omitempty"`
+	// 坐标轴在 grid 区域中的分隔区域
+	SplitArea SplitArea `json:"splitArea,omitempty"`
+	// 坐标轴在 grid 区域中的分隔线
+	SplitLine SplitLine `json:"splitLine,omitempty"`
+}
+
+// ParallelComponentOpts is the option set for parallel component.
+type ParallelComponent struct {
+	// parallel 组件离容器左侧的距离。
+	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
+	// 也可以是 'left', 'center', 'right'。
+	// 如果 left 的值为'left', 'center', 'right'，组件会根据相应的位置自动对齐。
+	Left string `json:"left,omitempty"`
+	// parallel 组件离容器上侧的距离。
+	// top 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
+	// 也可以是 'top', 'middle', 'bottom'。
+	// 如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐。
+	Top string `json:"top,omitempty"`
+	// parallel 组件离容器右侧的距离。
+	// right 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
+	// 默认自适应。
+	Right string `json:"right,omitempty"`
+	// parallel 组件离容器下侧的距离。
+	// bottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
+	// 默认自适应
+	Bottom string `json:"bottom,omitempty"`
+}
+
+// PAOpts is the option set for a parallel axis.
+type ParallelAxis struct {
+	// 坐标轴的维度序号
+	Dim int `json:"dim,omitempty"`
+	// 坐标轴名称
+	Name string `json:"name,omitempty"`
+	// 坐标轴刻度最大值。
+	// 可以设置成特殊值 "dataMax"，此时取数据在该轴上的最大值作为最大刻度。
+	// 不设置时会自动计算最大值保证坐标轴刻度的均匀分布
+	Max interface{} `json:"max,omitempty"`
+	// 是否是反向坐标轴
+	Inverse bool `json:"inverse,omitempty"`
+	// 坐标轴名称显示位置，可选 "start", "middle", "center", "end"
+	// 默认 "end"
+	NameLocation string `json:"nameLocation,omitempty"`
+	// 坐标轴类型，可选：
+	// "value"：数值轴，适用于连续数据。
+	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+	// "log" 对数轴。适用于对数数据。
+	Type string `json:"type,omitempty"`
+	// 类目数据，在类目轴（type: "category"）中有效
+	Data interface{} `json:"data,omitempty"`
+}
+
+type JSFunctions struct {
+	Fns []string
+}
+
+// AddJSFuncs adds a new JS function.
+func (f *JSFunctions) AddJSFuncs(fn ...string) {
+	for i := 0; i < len(fn); i++ {
+		f.Fns = append(f.Fns, replaceJsFuncs(fn[i]))
+	}
+}
+
+// replace and clear up js functions string
+func replaceJsFuncs(fn string) string {
+	pat, _ := regexp.Compile(`\n|\t`)
+	fn = pat.ReplaceAllString(fn, "")
+	return "__x__" + fn + "__x__"
+}
+
+type Colors []string
+
+// AssetsOpts contains options for static assets.
+type Assets struct {
+	JSAssets  datatypes.OrderedSet
+	CSSAssets datatypes.OrderedSet
+}
+
+// 初始化静态资源配置项
+func (opt *Assets) InitAssets() {
+	opt.JSAssets.Init("echarts.min.js")
+	opt.CSSAssets.Init("bulma.min.css")
+}
+
+// 初始化静态资源配置项
+func (opt *Assets) InitAssetsOptsWithoutArg() {
+	opt.JSAssets.Init()
+	opt.CSSAssets.Init()
+}
+
+// 返回资源列表
+func (opt *Assets) yieldAssets() ([]string, []string) {
+	return opt.JSAssets.Values, opt.CSSAssets.Values
+}
+
+// 校验静态资源配置项，追加 host
+func (opt *Assets) ValidateAssets(host string) {
+	for i := 0; i < len(opt.JSAssets.Values); i++ {
+		opt.JSAssets.Values[i] = host + opt.JSAssets.Values[i]
+	}
+	for j := 0; j < len(opt.CSSAssets.Values); j++ {
+		opt.CSSAssets.Values[j] = host + opt.CSSAssets.Values[j]
+	}
+}
+
+// RouterOpts contains information for routing.
+type Router struct {
+	URL  string // 路由 URL
+	Text string // 路由显示文字
 }

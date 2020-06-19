@@ -66,7 +66,7 @@ type SingleSeries struct {
 	opts.RippleEffect `json:"rippleEffect,omitempty"`
 	opts.LineStyle    `json:"lineStyle,omitempty"`
 	opts.AreaStyle    `json:"areaStyle,omitempty"`
-	TextStyleOpts     `json:"textStyle,omitempty"`
+	opts.TextStyle    `json:"textStyle,omitempty"`
 }
 
 type SeriesOpts func(s *SingleSeries)
@@ -189,9 +189,9 @@ func WithMarkLineNameYAxisItemOpts(opt opts.MarkLineNameYAxisItem) SeriesOpts {
 	}
 }
 
-func (s *SingleSeries) configureSeriesFns(fns ...SeriesOpts) {
-	for _, fn := range fns {
-		fn(s)
+func (s *SingleSeries) configureSeriesOpts(opts ...SeriesOpts) {
+	for _, opt := range opts {
+		opt(s)
 	}
 }
 
@@ -280,21 +280,13 @@ func (s *singleSeries) switchSeriesOpts(options ...SeriesOptser) {
 	}
 }
 
-//func (s *singleSeries) setSingleSeriesOpts(options ...SeriesOptser) {
-//	s.switchSeriesOpts(options...)
-//}
-
 // Series represents multiple series.
 type MultiSeries []SingleSeries
 
-//func (ms *MultiSeries) exportSeries() SingleSeries {
-//
-//}
-
 // SetSeriesOptions sets options for the series.
-func (ms *MultiSeries) SetSeriesOptions(fns ...SeriesOpts) {
+func (ms *MultiSeries) SetSeriesOptions(opts ...SeriesOpts) {
 	s := *ms
 	for i := 0; i < len(s); i++ {
-		s[i].configureSeriesFns(fns...)
+		s[i].configureSeriesOpts(opts...)
 	}
 }

@@ -14,10 +14,9 @@ type Bar struct {
 func (Bar) Type() string { return ChartType.Bar }
 
 // NewBar creates a new bar chart.
-func NewBar(routers ...RouterOpts) *Bar {
-	chart := new(Bar)
-	chart.initBaseOpts(routers...)
-	chart.initXYOpts()
+func NewBar() *Bar {
+	chart := &Bar{}
+	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }
@@ -29,10 +28,9 @@ func (c *Bar) AddXAxis(xAxis interface{}) *Bar {
 }
 
 // AddYAxis adds the Y axis.
-func (c *Bar) AddYAxis(name string, yAxis interface{}, fns ...SeriesOpts) *Bar {
+func (c *Bar) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *Bar {
 	series := SingleSeries{Name: name, Type: ChartType.Bar, Data: yAxis}
-	series.configureSeriesFns(fns...)
-	//series.setSingleSeriesOpts(options...)
+	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	//c.setColor(options...)
 	return c
@@ -45,15 +43,15 @@ func (c *Bar) XYReversal() *Bar {
 }
 
 func (c *Bar) validateOpts() {
-	c.XAxisOptsList[0].Data = c.xAxisData
+	c.XAxisList[0].Data = c.xAxisData
 	// XY 轴翻转
 	if c.isXYReversal {
-		c.YAxisOptsList[0].Data = c.xAxisData
-		c.XAxisOptsList[0].Data = nil
+		c.YAxisList[0].Data = c.xAxisData
+		c.XAxisList[0].Data = nil
 	}
 	// 确保 Y 轴数标签正确显示
-	for i := 0; i < len(c.YAxisOptsList); i++ {
-		c.YAxisOptsList[i].AxisLabel = true
+	for i := 0; i < len(c.YAxisList); i++ {
+		c.YAxisList[i].AxisLabel = true
 	}
 	c.validateAssets(c.AssetsHost)
 }

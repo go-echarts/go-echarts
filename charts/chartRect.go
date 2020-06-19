@@ -6,10 +6,10 @@ import (
 	"github.com/go-echarts/go-echarts/opts"
 )
 
-type rectCharter interface {
-	markRectChart()
-	exportSeries() Series
-}
+//type rectCharter interface {
+//	markRectChart()
+//	exportSeries() Series
+//}
 
 // XYAxis represent the X and Y axis in the rectangular coordinate.
 type XYAxis struct {
@@ -19,8 +19,11 @@ type XYAxis struct {
 
 func WithXAxisOpts(opt opts.XAxis) GlobalOpts {
 	return func(bc *BaseConfiguration) {
-		s.RippleEffect = opt
-		//bc.
+	}
+}
+
+func WithYAxisOpts(opt opts.YAxis) GlobalOpts {
+	return func(bc *BaseConfiguration) {
 	}
 }
 
@@ -41,50 +44,39 @@ func (xy *XYAxis) setXYGlobalOptions(options ...GlobalOptser) {
 	}
 }
 
-//
 // ExtendXAxis adds new X axes.
-func (xy *XYAxis) ExtendXAxis(xAxis ...XAxisOpts) {
-	for i := 0; i < len(xAxis); i++ {
-		xy.XAxisList = append(xy.XAxisList, xAxis[i])
-	}
+func (xy *XYAxis) ExtendXAxis(xAxis ...opts.XAxis) {
+	xy.XAxisList = append(xy.XAxisList, xAxis...)
 }
 
-//
 // ExtendYAxis adds new Y axes.
-func (xy *XYAxis) ExtendYAxis(yAxis ...YAxisOpts) {
-	for i := 0; i < len(yAxis); i++ {
-		xy.YAxisOptsList = append(xy.YAxisOptsList, yAxis[i])
-	}
+func (xy *XYAxis) ExtendYAxis(yAxis ...opts.YAxis) {
+	xy.YAxisList = append(xy.YAxisList, yAxis...)
 }
 
-//
-// RectOpts contains options for the rectangular coordinate.
-type RectOpts struct {
-	BaseOpts
+// RectConfiguration contains options for the rectangular coordinate.
+type RectConfiguration struct {
+	BaseConfiguration
 	XYAxis
 }
 
-//
 // 设置 RectOptions 全局配置项
-func (rect *RectOpts) setRectGlobalOptions(options ...GlobalOptser) {
-	rect.BaseOpts.setBaseGlobalOptions(options...)
-	rect.XYAxis.setXYGlobalOptions(options...)
+func (rect *RectConfiguration) setRectGlobalOptions(opts ...GlobalOpts) {
+	rect.BaseConfiguration.setBaseGlobalOptions(opts...)
+	rect.XYAxis.setXYGlobalOptions(opts...)
 }
 
 // RectChart is a chart in RectChart coordinate.
 type RectChart struct {
-	RectOpts
+	RectConfiguration
 	MultiSeries
 
 	xAxisData interface{}
 }
 
-//
-//func (RectChart) markRectChart() {}
-//
 // SetGlobalOptions sets options for the RectChart instance.
-func (rc *RectChart) SetGlobalOptions(options ...GlobalOptser) *RectChart {
-	rc.RectOpts.setRectGlobalOptions(options...)
+func (rc *RectChart) SetGlobalOptions(opts ...GlobalOpts) *RectChart {
+	rc.RectConfiguration.setRectGlobalOptions(opts...)
 	return rc
 }
 
