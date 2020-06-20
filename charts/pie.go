@@ -16,7 +16,7 @@ func (Pie) Type() string { return types.ChartPie }
 
 // NewPie creates a new gauge chart.
 func NewPie() *Pie {
-	chart := new(Pie)
+	chart := &Pie{}
 	chart.initBaseConfiguration()
 	return chart
 }
@@ -39,13 +39,13 @@ func (c *Pie) SetGlobalOptions(opts ...GlobalOpts) *Pie {
 	return c
 }
 
-func (c *Pie) validateOpts() {
-	c.validateAssets(c.AssetsHost)
+func (c *Pie) Validate() {
+	c.Assets.Validate(c.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.
 func (c *Pie) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
-	c.validateOpts()
+	c.Validate()
 	return renderToWriter(c, "chart", []string{}, w...)
 }

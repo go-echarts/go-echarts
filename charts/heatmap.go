@@ -1,17 +1,19 @@
 package charts
 
+import "github.com/go-echarts/go-echarts/types"
+
 // HeatMap represents a heatmap chart.
 type HeatMap struct {
 	RectChart
 }
 
-func (HeatMap) Type() string { return ChartType.HeatMap }
+func (HeatMap) Type() string { return types.ChartHeatMap }
 
 // NewHeatMap creates a new heatmap chart.
-func NewHeatMap(routers ...RouterOpts) *HeatMap {
+func NewHeatMap() *HeatMap {
 	chart := new(HeatMap)
-	chart.initBaseOpts(routers...)
-	chart.initXYOpts()
+	chart.initBaseConfiguration()
+	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }
@@ -23,10 +25,9 @@ func (c *HeatMap) AddXAxis(xAxis interface{}) *HeatMap {
 }
 
 // AddYAxis adds the Y axis.
-func (c *HeatMap) AddYAxis(name string, yAxis interface{}, options ...SeriesOptser) *HeatMap {
-	series := singleSeries{Name: name, Type: ChartType.HeatMap, Data: yAxis}
-	series.setSingleSeriesOpts(options...)
-	c.Series = append(c.Series, series)
-	c.setColor(options...)
+func (c *HeatMap) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *HeatMap {
+	series := SingleSeries{Name: name, Type: types.ChartHeatMap, Data: yAxis}
+	series.configureSeriesOpts(opts...)
+	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

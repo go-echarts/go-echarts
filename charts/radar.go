@@ -1,49 +1,49 @@
 package charts
 
 import (
+	"github.com/go-echarts/go-echarts/types"
 	"io"
 )
 
 // Radar represents a radar chart.
 type Radar struct {
-	BaseOpts
+	BaseConfiguration
 	MultiSeries
 }
 
-func (Radar) Type() string { return ChartType.Radar }
+func (Radar) Type() string { return types.ChartRadar }
 
 // NewRadar creates a new radar chart.
-func NewRadar(routers ...RouterOpts) *Radar {
-	chart := new(Radar)
-	chart.initBaseOpts(routers...)
+func NewRadar() *Radar {
+	chart := &Radar{}
+	chart.initBaseConfiguration()
 	chart.HasRadar = true
 	return chart
 }
 
 // Add adds new data sets.
-func (c *Radar) Add(name string, data interface{}, fns ...SeriesOpts) *Radar {
-	series := SingleSeries{Name: name, Type: ChartType.Radar, Data: data}
-	series.configureSeriesFns(fns...)
+func (c *Radar) Add(name string, data interface{}, opts ...SeriesOpts) *Radar {
+	series := SingleSeries{Name: name, Type: types.ChartRadar, Data: data}
+	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
-	c.setColor(options...)
 	c.legends = append(c.legends, name)
 	return c
 }
 
 // SetGlobalOptions sets options for the Radar instance.
-func (c *Radar) SetGlobalOptions(options ...GlobalOptser) *Radar {
-	c.BaseOpts.setBaseGlobalOptions(options...)
+func (c *Radar) SetGlobalOptions(opts ...GlobalOpts) *Radar {
+	c.BaseConfiguration.setBaseGlobalOptions(opts...)
 	return c
 }
 
-func (c *Radar) validateOpts() {
-	c.LegendOpts.Data = c.legends
-	c.validateAssets(c.AssetsHost)
+func (c *Radar) Validate() {
+	c.Legend.Data = c.legends
+	c.Assets.Validate(c.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.
 func (c *Radar) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
-	c.validateOpts()
+	c.Validate()
 	return renderToWriter(c, "chart", []string{}, w...)
 }

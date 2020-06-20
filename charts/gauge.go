@@ -16,7 +16,7 @@ func (Gauge) Type() string { return types.ChartGauge }
 
 // NewGauge creates a new gauge chart.
 func NewGauge() *Gauge {
-	chart := new(Gauge)
+	chart := &Gauge{}
 	chart.initBaseConfiguration()
 	return chart
 }
@@ -39,13 +39,13 @@ func (c *Gauge) SetGlobalOptions(opts ...GlobalOpts) *Gauge {
 	return c
 }
 
-func (c *Gauge) validateOpts() {
-	c.validateAssets(c.AssetsHost)
+func (c *Gauge) Validate() {
+	c.Assets.Validate(c.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.
 func (c *Gauge) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
-	c.validateOpts()
+	c.Validate()
 	return renderToWriter(c, "chart", []string{}, w...)
 }

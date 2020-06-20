@@ -19,7 +19,7 @@ func (Map) Type() string { return types.ChartMap }
 
 // NewMap creates a new map chart.
 func NewMap(mapType string) *Map {
-	chart := new(Map)
+	chart := &Map{}
 	chart.mapType = mapType
 	chart.initBaseConfiguration()
 	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
@@ -44,13 +44,13 @@ func (c *Map) SetGlobalOptions(opts ...GlobalOpts) *Map {
 	return c
 }
 
-func (c *Map) validateOpts() {
-	c.validateAssets(c.AssetsHost)
+func (c *Map) Validate() {
+	c.Assets.Validate(c.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.
 func (c *Map) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
-	c.validateOpts()
+	c.Validate()
 	return renderToWriter(c, "chart", []string{}, w...)
 }

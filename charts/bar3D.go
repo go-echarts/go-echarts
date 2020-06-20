@@ -1,16 +1,18 @@
 package charts
 
+import "github.com/go-echarts/go-echarts/types"
+
 // Bar3D represents a 3D bar chart.
 type Bar3D struct {
 	Chart3D
 }
 
-func (Bar3D) Type() string { return ChartType.Bar3D }
+func (Bar3D) Type() string { return types.ChartBar3D }
 
 // NewBar3D creates a new 3D bar chart.
 func NewBar3D() *Bar3D {
-	chart := new(Bar3D)
-	chart.initBaseOpts(routers...)
+	chart := &Bar3D{}
+	chart.initBaseConfiguration()
 	chart.initChart3D()
 	return chart
 }
@@ -23,7 +25,7 @@ func (c *Bar3D) AddXYAxis(xAxis, yAxis interface{}) *Bar3D {
 }
 
 // AddZAxis adds the Z axis.
-func (c *Bar3D) AddZAxis(name string, zAxis interface{}, options ...SeriesOptser) *Bar3D {
-	c.addZAxis(ChartType.Bar3D, name, zAxis, options...)
+func (c *Bar3D) AddZAxis(name string, zAxis interface{}, opts ...SeriesOpts) *Bar3D {
+	c.addZAxis(types.ChartBar3D, name, zAxis, opts...)
 	return c
 }

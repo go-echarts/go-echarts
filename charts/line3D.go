@@ -1,16 +1,18 @@
 package charts
 
+import "github.com/go-echarts/go-echarts/types"
+
 // Line3D represents a 3D line chart.
 type Line3D struct {
 	Chart3D
 }
 
-func (Line3D) Type() string { return ChartType.Line3D }
+func (Line3D) Type() string { return types.ChartLine3D }
 
 // NewLine3D creates a new 3D line chart.
-func NewLine3D(routers ...RouterOpts) *Line3D {
-	chart := new(Line3D)
-	chart.initBaseOpts(routers...)
+func NewLine3D() *Line3D {
+	chart := &Line3D{}
+	chart.initBaseConfiguration()
 	chart.initChart3D()
 	return chart
 }
@@ -23,7 +25,7 @@ func (c *Line3D) AddXYAxis(xAxis, yAxis interface{}) *Line3D {
 }
 
 // AddZAxis adds the Z axis.
-func (c *Line3D) AddZAxis(name string, zAxis interface{}, options ...SeriesOptser) *Line3D {
-	c.addZAxis(ChartType.Line3D, name, zAxis, options...)
+func (c *Line3D) AddZAxis(name string, zAxis interface{}, opts ...SeriesOpts) *Line3D {
+	c.addZAxis(types.ChartLine3D, name, zAxis, opts...)
 	return c
 }

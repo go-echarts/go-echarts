@@ -2,7 +2,9 @@ package opts
 
 import (
 	"math/rand"
+	"reflect"
 	"regexp"
+	"strconv"
 	"time"
 
 	"github.com/go-echarts/go-echarts/types"
@@ -42,6 +44,37 @@ func (opt *Initialization) validateChartID() {
 func (opt *Initialization) Validate() {
 	opt.setDefault()
 	opt.validateChartID()
+}
+
+// 为结构体设置默认值
+// 部分代码参考 https://github.com/mcuadros/go-defaults
+func setDefaultValue(ptr interface{}) {
+	elem := reflect.ValueOf(ptr).Elem()
+	t := elem.Type()
+
+	for i := 0; i < t.NumField(); i++ {
+		//如果没有 `default` tag 则不作处理
+		if defaultVal := t.Field(i).Tag.Get("default"); defaultVal != "" {
+			setField(elem.Field(i), defaultVal)
+		}
+	}
+}
+
+// 为具体字段设置默认值
+func setField(field reflect.Value, defaultVal string) {
+	// 目前只判断 string, bool 两种变量类型
+	switch field.Kind() {
+	// string 类型
+	case reflect.String:
+		if field.String() == "" {
+			field.Set(reflect.ValueOf(defaultVal).Convert(field.Type()))
+		}
+		// bool 类型
+	case reflect.Bool:
+		if val, err := strconv.ParseBool(defaultVal); err == nil {
+			field.Set(reflect.ValueOf(val).Convert(field.Type()))
+		}
+	}
 }
 
 const (
@@ -97,7 +130,7 @@ type Legend struct {
 	// 除此之外也可以设成 "single" 或者 "multiple" 使用单选或者多选模式。默认 "multiple"
 	SelectedMode string `json:"selectedMode,omitempty"`
 	// 图例的公用文本样式
-	TextStyle TextStyleOpts `json:"textStyle,omitempty"`
+	TextStyle TextStyle `json:"textStyle,omitempty"`
 }
 
 // TooltipOpts is the option set for a tooltip component.
@@ -244,17 +277,6 @@ type YAxis struct {
 	SplitLine SplitLine `json:"splitLine,,omitempty"`
 }
 
-// VMInRange is a visual map instance in a range.
-type VMInRange struct {
-	// 图元的颜色
-	Color []string `json:"color,omitempty"`
-	// 图元的图形类别
-	// 可选 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
-	Symbol string `json:"symbol,omitempty"`
-	// 图元的大小
-	SymbolSize float32 `json:"symbolSize,omitempty"`
-}
-
 // TBFeature is a feature component under toolbox.
 type TBFeature struct {
 	// 保存为图片
@@ -312,7 +334,34 @@ type VisualMap struct {
 	// 两端的文本，如 ['High', 'Low']
 	Text []string `json:"text,omitempty"`
 	// 定义在选中范围中的视觉元素
-	InRange VMInRange `json:"inRange,omitempty"`
+	InRange VisualMapInRange `json:"inRange,omitempty"`
+}
+
+// VMInRange is a visual map instance in a range.
+type VisualMapInRange struct {
+	// 图元的颜色
+	Color []string `json:"color,omitempty"`
+	// 图元的图形类别
+	// 可选 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	Symbol string `json:"symbol,omitempty"`
+	// 图元的大小
+	SymbolSize float32 `json:"symbolSize,omitempty"`
+}
+
+// SplitAreaOpts is the option set for a split area.
+type SplitAreaOpts struct {
+	// 是否显示分隔区域
+	Show bool `json:"show"`
+	// 风格区域风格
+	AreaStyle AreaStyle `json:"areaStyle,omitempty"`
+}
+
+// SplitLineOpts is the option set for a split line.
+type SplitLineOpts struct {
+	// 是否显示分隔线
+	Show bool `json:"show"`
+	// 分割线风格
+	LineStyle LineStyle `json:"lineStyle,omitempty"`
 }
 
 // DataZoomOpts is the option set for a zoom component.
@@ -642,4 +691,9 @@ type ViewControl struct {
 	AutoRotate bool `json:"autoRotate,omitempty"`
 	// 物体自转的速度。单位为角度 / 秒，默认为 10 ，也就是 36 秒转一圈
 	AutoRotateSpeed float32 `json:"autoRotateSpeed,omitempty"`
+}
+
+// FuncOpts is the option set for handling function type.
+func FuncOpts(fn string) string {
+	return replaceJsFuncs(fn)
 }

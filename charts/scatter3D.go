@@ -10,9 +10,9 @@ type Scatter3D struct {
 func (Scatter3D) Type() string { return types.ChartScatter3D }
 
 // NewScatter3D creates a new 3D scatter chart.
-func NewScatter3D(routers ...RouterOpts) *Scatter3D {
-	chart := new(Scatter3D)
-	chart.initBaseOpts(routers...)
+func NewScatter3D() *Scatter3D {
+	chart := &Scatter3D{}
+	chart.initBaseConfiguration()
 	chart.initChart3D()
 	return chart
 }
@@ -25,7 +25,7 @@ func (c *Scatter3D) AddXYAxis(xAxis, yAxis interface{}) *Scatter3D {
 }
 
 // AddZAxis adds the Z axis.
-func (c *Scatter3D) AddZAxis(name string, zAxis interface{}, options ...SeriesOptser) *Scatter3D {
-	c.addZAxis(ChartType.Scatter3D, name, zAxis, options...)
+func (c *Scatter3D) AddZAxis(name string, zAxis interface{}, opts ...SeriesOpts) *Scatter3D {
+	c.addZAxis(types.ChartScatter3D, name, zAxis, opts...)
 	return c
 }

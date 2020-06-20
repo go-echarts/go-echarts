@@ -2,6 +2,7 @@ package charts
 
 import (
 	"fmt"
+	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/types"
 	"io"
 	"log"
@@ -21,7 +22,7 @@ type Geo struct {
 	GeoComponentOpts
 }
 
-func (Geo) chartType() string { return types.ChartGeo }
+func (Geo) Type() string { return types.ChartGeo }
 
 var geoFormatter = `function (params) {
 		return params.name + ' : ' + params.value[2];
@@ -29,7 +30,7 @@ var geoFormatter = `function (params) {
 
 // NewGeo creates a new geo chart.
 func NewGeo(mapType string) *Geo {
-	chart := new(Geo)
+	chart := &Geo{}
 	chart.initBaseConfiguration()
 	chart.HasGeo = true
 	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
@@ -70,16 +71,16 @@ func (c *Geo) SetGlobalOptions(opts ...GlobalOpts) *Geo {
 	return c
 }
 
-func (c *Geo) validateOpts() {
-	if c.TooltipOpts.Formatter == "" {
-		c.TooltipOpts.Formatter = FuncOpts(geoFormatter)
+func (c *Geo) Validate() {
+	if c.Tooltip.Formatter == "" {
+		c.Tooltip.Formatter = opts.FuncOpts(geoFormatter)
 	}
-	c.validateAssets(c.AssetsHost)
+	c.Assets.Validate(c.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.
 func (c *Geo) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
-	c.validateOpts()
+	c.Validate()
 	return renderToWriter(c, "chart", []string{}, w...)
 }

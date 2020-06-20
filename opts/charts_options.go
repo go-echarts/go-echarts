@@ -19,22 +19,27 @@ type BarChart struct {
 	YAxisIndex int
 }
 
-// GraphOpts is the option set for graph chart.
-type GraphChart struct {
-	//图的布局。可选：
-	// "none" 不采用任何布局，使用节点中提供的 x， y 作为节点的位置。
-	// "circular" 采用环形布局
-	// "force" 采用力引导布局
-	Layout string
-	// "force", "circular" 布局详细配置项
-	Force GraphForce
-	// 是否开启鼠标缩放和平移漫游。默认不开启。
-	Roam bool
-	// 是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点
-	FocusNodeAdjacency bool
-	//
-	Categories []GraphCategory
+type BarChartItem struct {
+	Name  string      `json:"name,omitempty"`
+	Value interface{} `json:"value,omitempty"`
 }
+
+// GraphOpts is the option set for graph chart.
+//type GraphChart struct {
+//	//图的布局。可选：
+//	// "none" 不采用任何布局，使用节点中提供的 x， y 作为节点的位置。
+//	// "circular" 采用环形布局
+//	// "force" 采用力引导布局
+//	Layout string
+//	// "force", "circular" 布局详细配置项
+//	Force GraphForce
+//	// 是否开启鼠标缩放和平移漫游。默认不开启。
+//	Roam bool
+//	// 是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点
+//	FocusNodeAdjacency bool
+//	//
+//	Categories []GraphCategory
+//}
 
 // HeatMapOpts is the option set for a heatmap chart.
 type HeatMapChart struct {
@@ -114,4 +119,22 @@ type WordCloudChart struct {
 	SizeRange []float32
 	// range of font rotation angle
 	RotationRange []float32
+}
+
+// SankeyLink represents relationship between two data nodes.
+type SankeyLink struct {
+	// 边的源节点名称的字符串，也支持使用数字表示源节点的索引
+	Source interface{} `json:"source,omitempty"`
+	// 边的目标节点名称的字符串，也支持使用数字表示源节点的索引
+	Target interface{} `json:"target,omitempty"`
+	// 边的数值，可以在力引导布局中用于映射到边的长度
+	Value float32 `json:"value,omitempty"`
+}
+
+// SankeyNode represents a data node.
+type SankeyNode struct {
+	// 数据项名称
+	Name string `json:"name,omitempty"`
+	// 数据项值
+	Value string `json:"value,omitempty"`
 }

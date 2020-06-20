@@ -17,7 +17,7 @@ type EffectScatterChartOpts struct {
 
 // NewEffectScatter creates a new effect scatter chart.
 func NewEffectScatter() *EffectScatter {
-	chart := new(EffectScatter)
+	chart := &EffectScatter{}
 	chart.initBaseConfiguration()
 	chart.initXYAxis()
 	chart.HasXYAxis = true

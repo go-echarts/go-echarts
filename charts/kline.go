@@ -11,7 +11,7 @@ func (Kline) Type() string { return types.ChartKline }
 
 // NewKLine creates a new kline chart.
 func NewKLine() *Kline {
-	chart := new(Kline)
+	chart := &Kline{}
 	chart.initBaseConfiguration()
 	chart.initXYAxis()
 	chart.HasXYAxis = true

@@ -11,7 +11,7 @@ func (Scatter) Type() string { return types.ChartScatter }
 
 // NewScatter creates a new scatter chart.
 func NewScatter() *Scatter {
-	chart := new(Scatter)
+	chart := &Scatter{}
 	chart.initBaseConfiguration()
 	chart.initXYAxis()
 	chart.HasXYAxis = true

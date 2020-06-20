@@ -27,6 +27,7 @@ type BaseConfiguration struct {
 	opts.XAxis3D
 	opts.YAxis3D
 	opts.ZAxis3D
+	opts.Grid3D
 
 	legends     []string
 	Colors      []string // 全局颜色列表
@@ -43,14 +44,12 @@ type BaseConfiguration struct {
 	HasSingleAxis bool // 图形是否拥有 singleAxis 组件
 }
 
-// 初始化 BaseOpts
 func (bc *BaseConfiguration) initBaseConfiguration() {
 	bc.initSeriesColors()
 	bc.InitAssets()
-	//bc.Validate()
+	bc.Initialization.Validate()
 }
 
-// 初始化全局颜色列表
 func (bc *BaseConfiguration) initSeriesColors() {
 	bc.Colors = []string{
 		"#c23531", "#2f4554", "#61a0a8", "#d48265", "#91c7ae",
@@ -58,10 +57,8 @@ func (bc *BaseConfiguration) initSeriesColors() {
 	}
 }
 
-// 插入颜色到颜色列表首部
 func (bc *BaseConfiguration) insertSeriesColors(cs opts.Colors) {
-	tmpCl := reverseSlice(cs) // 翻转颜色列表
-	// 颜色追加至首部
+	tmpCl := reverseSlice(cs)
 	for i := 0; i < len(tmpCl); i++ {
 		bc.Colors = append(bc.Colors, "")
 		copy(bc.Colors[1:], bc.Colors[0:])
@@ -69,40 +66,52 @@ func (bc *BaseConfiguration) insertSeriesColors(cs opts.Colors) {
 	}
 }
 
+func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
+	for _, opt := range opts {
+		opt(bc)
+	}
+}
+
+// WithTitleOpts
 func WithTitleOpts(opt opts.Title) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Title = opt
 	}
 }
 
+// WithToolboxOpts
 func WithToolboxOpts(opt opts.Toolbox) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Toolbox = opt
 	}
 }
 
+// WithTooltipOpts
 func WithTooltipOpts(opt opts.Tooltip) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Tooltip = opt
 	}
 }
 
+// WithLegendOpts
 func WithLegendOpts(opt opts.Legend) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Legend = opt
 	}
 }
 
+// WithInitializationOpts
 func WithInitializationOpts(opt opts.Initialization) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Initialization = opt
 		if bc.Initialization.Theme != "" {
 			bc.JSAssets.Add("themes/" + opt.Theme + ".js")
 		}
-		//bc.Validate()
+		bc.Initialization.Validate()
 	}
 }
 
+// WithDataZoomOpts
 func WithDataZoomOpts(opt ...opts.DataZoom) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		for _, o := range opt {
@@ -111,6 +120,7 @@ func WithDataZoomOpts(opt ...opts.DataZoom) GlobalOpts {
 	}
 }
 
+// WithVisualMapOpts
 func WithVisualMapOpts(opt ...opts.VisualMap) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		for _, o := range opt {
@@ -119,34 +129,31 @@ func WithVisualMapOpts(opt ...opts.VisualMap) GlobalOpts {
 	}
 }
 
+// WithRadarComponentOpts
 func WithRadarComponentOpts(opt opts.RadarComponent) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.RadarComponent = opt
 	}
 }
 
+// WithParallelComponentOpts
 func WithParallelComponentOpts(opt opts.ParallelComponent) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.ParallelComponent = opt
 	}
 }
 
+// WithColorsOpts
 func WithColorsOpts(opt opts.Colors) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.insertSeriesColors(opt)
 	}
 }
 
+// WithRouterOpts
 func WithRouterOpts(opt opts.Router) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Routers = append(bc.Routers, opt)
-	}
-}
-
-// 设置 BaseOptions 全局配置项
-func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
-	for _, opt := range opts {
-		opt(bc)
 	}
 }
 

@@ -11,7 +11,7 @@ func (Surface3D) Type() string { return types.ChartSurface3D }
 
 // NewSurface3D creates a new 3d surface chart.
 func NewSurface3D() *Surface3D {
-	chart := new(Surface3D)
+	chart := &Surface3D{}
 	chart.initBaseConfiguration()
 	chart.initChart3D()
 	return chart

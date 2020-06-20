@@ -1,8 +1,9 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/types"
 	"io"
+
+	"github.com/go-echarts/go-echarts/types"
 )
 
 // Funnel represents a funnel chart.
@@ -15,8 +16,8 @@ func (Funnel) Type() string { return types.ChartFunnel }
 
 // NewFunnel creates a new funnel chart.
 func NewFunnel() *Funnel {
-	chart := new(Funnel)
-	//chart.initBaseOpts(routers...)
+	chart := &Funnel{}
+	chart.initBaseConfiguration()
 	return chart
 }
 
@@ -39,7 +40,7 @@ func (c *Funnel) SetGlobalOptions(opts ...GlobalOpts) *Funnel {
 }
 
 func (c *Funnel) validateOpts() {
-	c.validateAssets(c.AssetsHost)
+	c.Assets.Validate(c.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.

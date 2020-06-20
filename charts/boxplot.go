@@ -11,21 +11,21 @@ func (BoxPlot) Type() string { return types.ChartBoxPlot }
 
 // NewBoxPlot creates a new boxplot chart.
 func NewBoxPlot() *BoxPlot {
-	chart := new(BoxPlot)
+	chart := &BoxPlot{}
 	chart.initBaseConfiguration()
 	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }
 
-// AddXAxis adds the X axis.
-func (c *BoxPlot) AddXAxis(xAxis interface{}) *BoxPlot {
+// SetXAxis adds the X axis.
+func (c *BoxPlot) SetXAxis(xAxis interface{}) *BoxPlot {
 	c.xAxisData = xAxis
 	return c
 }
 
-// AddYAxis adds the Y axis.
-func (c *BoxPlot) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *BoxPlot {
+// AddSeries adds the Y axis.
+func (c *BoxPlot) AddSeries(name string, yAxis interface{}, opts ...SeriesOpts) *BoxPlot {
 	series := SingleSeries{Name: name, Type: types.ChartBoxPlot, Data: yAxis}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)

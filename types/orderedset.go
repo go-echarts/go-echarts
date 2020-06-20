@@ -1,7 +1,6 @@
 package types
 
 // OrderedSet represents an ordered set.
-// TODO: make it a true **Ordered** set.
 type OrderedSet struct {
 	filter map[string]bool
 	Values []string

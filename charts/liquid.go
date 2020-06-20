@@ -16,7 +16,7 @@ func (Liquid) Type() string { return types.ChartLiquid }
 
 // NewLiquid creates a new liquid chart.
 func NewLiquid() *Liquid {
-	chart := new(Liquid)
+	chart := &Liquid{}
 	chart.JSAssets.Add("echarts-liquidfill.min.js")
 	return chart
 }
@@ -35,13 +35,13 @@ func (c *Liquid) SetGlobalOptions(opts ...GlobalOpts) *Liquid {
 	return c
 }
 
-func (c *Liquid) validateOpts() {
-	c.ValidateAssets(c.AssetsHost)
+func (c *Liquid) Validate() {
+	c.Assets.Validate(c.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.
 func (c *Liquid) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
-	c.validateOpts()
+	c.Validate()
 	return renderToWriter(c, "chart", []string{`"outline":{"show":false},?`, `"waveAnimation":false,?`}, w...)
 }

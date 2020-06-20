@@ -3,6 +3,7 @@ package charts
 import (
 	"io"
 
+	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/types"
 )
 
@@ -13,9 +14,10 @@ type Bar struct {
 	isXYReversal bool
 }
 
+// Type returns the chart type.
 func (Bar) Type() string { return types.ChartBar }
 
-// NewBar creates a new bar chart.
+// NewBar creates a new bar chart instance.
 func NewBar() *Bar {
 	chart := &Bar{}
 	chart.initBaseConfiguration()
@@ -24,15 +26,15 @@ func NewBar() *Bar {
 	return chart
 }
 
-// AddXAxis adds the X axis.
-func (c *Bar) AddXAxis(xAxis interface{}) *Bar {
+// SetXAxis sets the X axis.
+func (c *Bar) SetXAxis(xAxis interface{}) *Bar {
 	c.xAxisData = xAxis
 	return c
 }
 
-// AddYAxis adds the Y axis.
-func (c *Bar) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *Bar {
-	series := SingleSeries{Name: name, Type: types.ChartBar, Data: yAxis}
+// AddSeries adds the new series.
+func (c *Bar) AddSeries(name string, data []opts.BarChartItem, opts ...SeriesOpts) *Bar {
+	series := SingleSeries{Name: name, Type: types.ChartBar, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
@@ -44,14 +46,13 @@ func (c *Bar) XYReversal() *Bar {
 	return c
 }
 
-func (c *Bar) validateOpts() {
+// Validate validates the given configuration.
+func (c *Bar) Validate() {
 	c.XAxisList[0].Data = c.xAxisData
-	// XY 轴翻转
 	if c.isXYReversal {
 		c.YAxisList[0].Data = c.xAxisData
 		c.XAxisList[0].Data = nil
 	}
-	// 确保 Y 轴数标签正确显示
 	for i := 0; i < len(c.YAxisList); i++ {
 		c.YAxisList[i].AxisLabel.Show = true
 	}
@@ -61,6 +62,6 @@ func (c *Bar) validateOpts() {
 // Render renders the chart and writes the output to given writers.
 func (c *Bar) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
-	c.validateOpts()
+	c.Validate()
 	return renderToWriter(c, "chart", []string{}, w...)
 }

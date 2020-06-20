@@ -5,17 +5,7 @@ import (
 	tpls "github.com/go-echarts/go-echarts/templates"
 	"html/template"
 	"io"
-	"reflect"
 	"regexp"
-	"strconv"
-)
-
-const (
-	letterBytes   = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	letterIdxBits = 6                    // 6 bits to represent a letter index
-	letterIdxMask = 1<<letterIdxBits - 1 // All 1-bits, as many as letterIdxBits
-	letterIdxMax  = 63 / letterIdxBits   // # of letter indices fitting in 63 bits
-	chartIDSize   = 12
 )
 
 // 渲染图表
@@ -106,35 +96,4 @@ func removeNotReplace(unusedObj []string, removeStr ...string) []string {
 		}
 	}
 	return res
-}
-
-// 为结构体设置默认值
-// 部分代码参考 https://github.com/mcuadros/go-defaults
-func setDefaultValue(ptr interface{}) {
-	elem := reflect.ValueOf(ptr).Elem()
-	t := elem.Type()
-
-	for i := 0; i < t.NumField(); i++ {
-		//如果没有 `default` tag 则不作处理
-		if defaultVal := t.Field(i).Tag.Get("default"); defaultVal != "" {
-			setField(elem.Field(i), defaultVal)
-		}
-	}
-}
-
-// 为具体字段设置默认值
-func setField(field reflect.Value, defaultVal string) {
-	// 目前只判断 string, bool 两种变量类型
-	switch field.Kind() {
-	// string 类型
-	case reflect.String:
-		if field.String() == "" {
-			field.Set(reflect.ValueOf(defaultVal).Convert(field.Type()))
-		}
-		// bool 类型
-	case reflect.Bool:
-		if val, err := strconv.ParseBool(defaultVal); err == nil {
-			field.Set(reflect.ValueOf(val).Convert(field.Type()))
-		}
-	}
 }

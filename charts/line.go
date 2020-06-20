@@ -7,11 +7,12 @@ type Line struct {
 	RectChart
 }
 
+// Type returns the chart type.
 func (Line) Type() string { return types.ChartLine }
 
 // NewLine creates a new line chart.
 func NewLine() *Line {
-	chart := new(Line)
+	chart := &Line{}
 	chart.initBaseConfiguration()
 	chart.initXYAxis()
 	chart.HasXYAxis = true

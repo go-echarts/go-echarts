@@ -6,6 +6,10 @@ import (
 	"github.com/go-echarts/go-echarts/opts"
 )
 
+type Overlaper interface {
+	overlap() MultiSeries
+}
+
 // XYAxis represent the X and Y axis in the rectangular coordinate.
 type XYAxis struct {
 	XAxisList []opts.XAxis
@@ -68,6 +72,11 @@ type RectChart struct {
 	xAxisData interface{}
 }
 
+// 设置 RectOptions 全局配置项
+func (rc *RectChart) overlap() MultiSeries {
+	return rc.MultiSeries
+}
+
 // SetGlobalOptions sets options for the RectChart instance.
 func (rc *RectChart) SetGlobalOptions(opts ...GlobalOpts) *RectChart {
 	rc.RectConfiguration.setRectGlobalOptions(opts...)
@@ -80,25 +89,25 @@ func (rc *RectChart) SetGlobalOptions(opts ...GlobalOpts) *RectChart {
 // RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
 // 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
 // 而全局配置使用的是调用者的配置项
-func (rc *RectChart) Overlap(a ...rectCharter) {
+func (rc *RectChart) Overlap(a ...Overlaper) {
 	for i := 0; i < len(a); i++ {
-		rc.MultiSeries = append(rc.MultiSeries, a[i].exportSeries()...)
+		rc.MultiSeries = append(rc.MultiSeries, a[i].overlap()...)
 	}
 }
 
 // RectChart 校验器
-func (rc *RectChart) validateOpts() {
+func (rc *RectChart) Validate() {
 	// 确保 X 轴数据不会因为设置了 XAxisOpts 而被抹除
-	rc.XAxisOptsList[0].Data = rc.xAxisData
+	rc.XAxisList[0].Data = rc.xAxisData
 	// 确保 Y 轴数标签正确显示
-	for i := 0; i < len(rc.YAxisOptsList); i++ {
-		rc.YAxisOptsList[i].AxisLabel.Show = true
+	for i := 0; i < len(rc.YAxisList); i++ {
+		rc.YAxisList[i].AxisLabel.Show = true
 	}
-	rc.validateAssets(rc.AssetsHost)
+	rc.Assets.Validate(rc.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.
 func (rc *RectChart) Render(w ...io.Writer) error {
-	rc.validateOpts()
+	rc.Validate()
 	return renderToWriter(rc, "chart", []string{}, w...)
 }

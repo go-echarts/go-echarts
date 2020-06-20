@@ -47,7 +47,7 @@ func (Parallel) Type() string { return types.ChartParallel }
 
 // NewParallel creates a new parallel instance.
 func NewParallel() *Parallel {
-	chart := new(Parallel)
+	chart := &Parallel{}
 	chart.initBaseConfiguration()
 	chart.HasParallel = true
 	return chart
@@ -67,13 +67,13 @@ func (c *Parallel) SetGlobalOptions(opts ...GlobalOpts) *Parallel {
 	return c
 }
 
-func (c *Parallel) validateOpts() {
-	c.validateAssets(c.AssetsHost)
+func (c *Parallel) Validate() {
+	c.Assets.Validate(c.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.
 func (c *Parallel) Render(w ...io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
-	c.validateOpts()
+	c.Validate()
 	return renderToWriter(c, "chart", []string{}, w...)
 }
