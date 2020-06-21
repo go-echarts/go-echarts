@@ -14,19 +14,18 @@ func (Line) Type() string { return types.ChartLine }
 func NewLine() *Line {
 	chart := &Line{}
 	chart.initBaseConfiguration()
-	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }
 
-// AddXAxis adds the X axis.
-func (c *Line) AddXAxis(xAxis interface{}) *Line {
+// SetXAxis adds the X axis.
+func (c *Line) SetXAxis(xAxis interface{}) *Line {
 	c.xAxisData = xAxis
 	return c
 }
 
-// AddYAxis adds the Y axis.
-func (c *Line) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *Line {
+// AddSeries adds the Y axis.
+func (c *Line) AddSeries(name string, yAxis interface{}, opts ...SeriesOpts) *Line {
 	series := SingleSeries{Name: name, Type: types.ChartLine, Data: yAxis}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)

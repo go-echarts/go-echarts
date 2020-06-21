@@ -19,19 +19,18 @@ type EffectScatterChartOpts struct {
 func NewEffectScatter() *EffectScatter {
 	chart := &EffectScatter{}
 	chart.initBaseConfiguration()
-	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }
 
 // AddXAxis adds the X axis.
-func (c *EffectScatter) AddXAxis(xAxis interface{}) *EffectScatter {
+func (c *EffectScatter) SetXAxis(xAxis interface{}) *EffectScatter {
 	c.xAxisData = xAxis
 	return c
 }
 
 // AddYAxis adds the Y axis.
-func (c *EffectScatter) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *EffectScatter {
+func (c *EffectScatter) AddSeries(name string, yAxis interface{}, opts ...SeriesOpts) *EffectScatter {
 	series := SingleSeries{Name: name, Type: types.ChartEffectScatter, Data: yAxis}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)

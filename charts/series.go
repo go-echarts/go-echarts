@@ -58,44 +58,44 @@ type SingleSeries struct {
 	Data interface{} `json:"data"`
 
 	// 系列配置项
-	opts.ItemStyle    `json:"itemStyle,omitempty"`
-	opts.LabelText    `json:"label,omitempty"`
-	opts.Emphasis     `json:"emphasis,omitempty"`
-	opts.MarkLines    `json:"markLine,omitempty"`
-	opts.MarkPoints   `json:"markPoint,omitempty"`
-	opts.RippleEffect `json:"rippleEffect,omitempty"`
-	opts.LineStyle    `json:"lineStyle,omitempty"`
-	opts.AreaStyle    `json:"areaStyle,omitempty"`
-	opts.TextStyle    `json:"textStyle,omitempty"`
+	*opts.ItemStyle    `json:"itemStyle,omitempty"`
+	*opts.Label        `json:"label,omitempty"`
+	*opts.Emphasis     `json:"emphasis,omitempty"`
+	*opts.MarkLines    `json:"markLine,omitempty"`
+	*opts.MarkPoints   `json:"markPoint,omitempty"`
+	*opts.RippleEffect `json:"rippleEffect,omitempty"`
+	*opts.LineStyle    `json:"lineStyle,omitempty"`
+	*opts.AreaStyle    `json:"areaStyle,omitempty"`
+	*opts.TextStyle    `json:"textStyle,omitempty"`
 }
 
 type SeriesOpts func(s *SingleSeries)
 
 // WithLabelTextOpts
-func WithLabelTextOpts(opt opts.LabelText) SeriesOpts {
+func WithLabelOpts(opt opts.Label) SeriesOpts {
 	return func(s *SingleSeries) {
-		s.LabelText = opt
+		s.Label = &opt
 	}
 }
 
 // WithEmphasisOpts
 func WithEmphasisOpts(opt opts.Emphasis) SeriesOpts {
 	return func(s *SingleSeries) {
-		s.Emphasis = opt
+		s.Emphasis = &opt
 	}
 }
 
 // WithRippleEffectOpts
 func WithRippleEffectOpts(opt opts.RippleEffect) SeriesOpts {
 	return func(s *SingleSeries) {
-		s.RippleEffect = opt
+		s.RippleEffect = &opt
 	}
 }
 
 // WithLineStyleOpts
 func WithLineStyleOpts(opt opts.LineStyle) SeriesOpts {
 	return func(s *SingleSeries) {
-		s.LineStyle = opt
+		s.LineStyle = &opt
 	}
 }
 
@@ -186,6 +186,9 @@ func WithWorldCloudChartOpts(opt opts.WordCloudChart) SeriesOpts {
 // WithMarkLineNameTypeItemOpts
 func WithMarkLineNameTypeItemOpts(opt opts.MarkLineNameTypeItem) SeriesOpts {
 	return func(s *SingleSeries) {
+		if s.MarkLines == nil {
+			s.MarkLines = &opts.MarkLines{}
+		}
 		s.MarkLines.Data = append(s.MarkLines.Data, opt)
 	}
 }
@@ -193,6 +196,9 @@ func WithMarkLineNameTypeItemOpts(opt opts.MarkLineNameTypeItem) SeriesOpts {
 // WithMarkLineNameXAxisItemOpts
 func WithMarkLineNameXAxisItemOpts(opt opts.MarkLineNameXAxisItem) SeriesOpts {
 	return func(s *SingleSeries) {
+		if s.MarkLines == nil {
+			s.MarkLines = &opts.MarkLines{}
+		}
 		s.MarkLines.Data = append(s.MarkLines.Data, opt)
 	}
 }
@@ -200,6 +206,9 @@ func WithMarkLineNameXAxisItemOpts(opt opts.MarkLineNameXAxisItem) SeriesOpts {
 // WithMarkLineNameYAxisItemOpts
 func WithMarkLineNameYAxisItemOpts(opt opts.MarkLineNameYAxisItem) SeriesOpts {
 	return func(s *SingleSeries) {
+		if s.MarkLines == nil {
+			s.MarkLines = &opts.MarkLines{}
+		}
 		s.MarkLines.Data = append(s.MarkLines.Data, opt)
 	}
 }

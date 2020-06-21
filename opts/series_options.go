@@ -1,9 +1,9 @@
 package opts
 
-// LabelTextOpts contains options for a label text.
-type LabelText struct {
+// Label contains options for a label text.
+type Label struct {
 	// 是否显示标签
-	Show bool `json:"show"`
+	Show bool `json:"show,omitempty"`
 	// 文字的颜色
 	Color string `json:"color,omitempty"`
 	// 标签的位置
@@ -42,9 +42,9 @@ type LabelText struct {
 
 type Emphasis struct {
 	// 高亮的标签样式
-	Label LabelText `json:"label,omitempty"`
+	Label `json:"label,omitempty"`
 	// 高亮的图形样式
-	ItemStyle ItemStyle `json:"itemStyle,omitempty"`
+	ItemStyle `json:"itemStyle,omitempty"`
 }
 
 // ItemStyleOpts contains styling options for a MarkLine.
@@ -71,7 +71,7 @@ type MarkLineStyle struct {
 	// 图元的大小
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 	// 标线文本配置项
-	Label LabelText `json:"label,omitempty"`
+	Label `json:"label,omitempty"`
 }
 
 // MPStyleOpts contains styling options for a MarkPoint.
@@ -82,7 +82,7 @@ type MarkPointStyle struct {
 	// 图元的大小
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 	// 标注文本配置项
-	Label LabelText `json:"label,omitempty"`
+	Label `json:"label,omitempty"`
 }
 
 // RippleEffectOpts is the option set for the ripple effect.
@@ -164,7 +164,7 @@ type MarkPointNameCoordItem struct {
 	// 标记点名称
 	Name string `json:"name"`
 	// 标记点坐标
-	Coord []interface{} `json:"coord"`
+	Coordinate []interface{} `json:"coord"`
 	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
 	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
 	// candlestick 图时可以是 open、close 等维度名称。
@@ -198,9 +198,9 @@ type MarkLineNameCoordItem struct {
 	// 标记线名称
 	Name string
 	// 标记线起始坐标
-	Coord0 []interface{}
+	Coordinate0 []interface{}
 	// 标记线结束坐标
-	Coord1 []interface{}
+	Coordinate1 []interface{}
 	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
 	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
 	// candlestick 图时可以是 open、close 等维度名称。

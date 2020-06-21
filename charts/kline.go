@@ -19,13 +19,13 @@ func NewKLine() *Kline {
 }
 
 // AddXAxis adds the X axis.
-func (c *Kline) AddXAxis(xAxis interface{}) *Kline {
+func (c *Kline) SetXAxis(xAxis interface{}) *Kline {
 	c.xAxisData = xAxis
 	return c
 }
 
 // AddYAxis adds the Y axis.
-func (c *Kline) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *Kline {
+func (c *Kline) AddSeries(name string, yAxis interface{}, opts ...SeriesOpts) *Kline {
 	series := SingleSeries{Name: name, Type: types.ChartKline, Data: yAxis}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)

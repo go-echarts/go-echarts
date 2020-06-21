@@ -54,7 +54,7 @@ func NewParallel() *Parallel {
 }
 
 // Add adds new data sets.
-func (c *Parallel) Add(name string, data interface{}, opts ...SeriesOpts) *Parallel {
+func (c *Parallel) AddSeries(name string, data interface{}, opts ...SeriesOpts) *Parallel {
 	series := SingleSeries{Name: name, Type: types.ChartParallel, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
@@ -72,8 +72,8 @@ func (c *Parallel) Validate() {
 }
 
 // Render renders the chart and writes the output to given writers.
-func (c *Parallel) Render(w ...io.Writer) error {
+func (c *Parallel) Render(w io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.Validate()
-	return renderToWriter(c, "chart", []string{}, w...)
+	return renderToWriter(c, "chart", []string{}, w)
 }

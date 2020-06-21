@@ -22,7 +22,7 @@ func NewGauge() *Gauge {
 }
 
 // Add adds new data sets.
-func (c *Gauge) Add(name string, data map[string]interface{}, opts ...SeriesOpts) *Gauge {
+func (c *Gauge) AddSeries(name string, data map[string]interface{}, opts ...SeriesOpts) *Gauge {
 	nvs := make([]types.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, types.NameValueItem{Name: k, Value: v})

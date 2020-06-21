@@ -22,7 +22,7 @@ func NewSankey() *Sankey {
 }
 
 // Add adds new data sets.
-func (c *Sankey) Add(name string, nodes []opts.SankeyNode, links []opts.SankeyLink, opts ...SeriesOpts) *Sankey {
+func (c *Sankey) AddSeries(name string, nodes []opts.SankeyNode, links []opts.SankeyLink, opts ...SeriesOpts) *Sankey {
 	series := SingleSeries{Name: name, Type: types.ChartSankey, Data: nodes, Links: links}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
@@ -40,8 +40,7 @@ func (c *Sankey) Validate() {
 }
 
 // Render renders the chart and writes the output to given writers.
-func (c *Sankey) Render(w ...io.Writer) error {
-	c.insertSeriesColors(c.appendColor)
+func (c *Sankey) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, "chart", []string{}, w...)
+	return renderToWriter(c, "chart", []string{}, w)
 }

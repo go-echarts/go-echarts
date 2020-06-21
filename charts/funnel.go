@@ -22,7 +22,7 @@ func NewFunnel() *Funnel {
 }
 
 // Add adds new data sets.
-func (c *Funnel) Add(name string, data map[string]interface{}, opts ...SeriesOpts) *Funnel {
+func (c *Funnel) AddSeries(name string, data map[string]interface{}, opts ...SeriesOpts) *Funnel {
 	nvs := make([]types.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, types.NameValueItem{Name: k, Value: v})
@@ -39,13 +39,12 @@ func (c *Funnel) SetGlobalOptions(opts ...GlobalOpts) *Funnel {
 	return c
 }
 
-func (c *Funnel) validateOpts() {
+func (c *Funnel) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.
-func (c *Funnel) Render(w ...io.Writer) error {
-	c.insertSeriesColors(c.appendColor)
-	c.validateOpts()
-	return renderToWriter(c, "chart", []string{}, w...)
+func (c *Funnel) Render(w io.Writer) error {
+	c.Validate()
+	return renderToWriter(c, "chart", []string{}, w)
 }

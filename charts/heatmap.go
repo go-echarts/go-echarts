@@ -11,7 +11,7 @@ func (HeatMap) Type() string { return types.ChartHeatMap }
 
 // NewHeatMap creates a new heatmap chart.
 func NewHeatMap() *HeatMap {
-	chart := new(HeatMap)
+	chart := &HeatMap{}
 	chart.initBaseConfiguration()
 	chart.initXYAxis()
 	chart.HasXYAxis = true

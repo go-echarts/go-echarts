@@ -20,8 +20,20 @@ type BarChart struct {
 }
 
 type BarChartItem struct {
-	Name  string      `json:"name,omitempty"`
-	Value interface{} `json:"value,omitempty"`
+	Name       string      `json:"name,omitempty"`
+	Value      interface{} `json:"value,omitempty"`
+	*Label     `json:"label,omitempty"`
+	*ItemStyle `json:"itemStyle,omitempty"`
+	*Tooltip   `json:"tooltip,omitempty"`
+}
+
+type PieChartItem struct {
+	Name       string      `json:"name"`
+	Value      interface{} `json:"value"`
+	Selected   bool        `json:"selected,omitempty"`
+	*Label     `json:"label,omitempty"`
+	*ItemStyle `json:"itemStyle,omitempty"`
+	*Tooltip   `json:"tooltip,omitempty"`
 }
 
 // GraphOpts is the option set for graph chart.

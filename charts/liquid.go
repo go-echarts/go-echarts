@@ -22,7 +22,7 @@ func NewLiquid() *Liquid {
 }
 
 // Add adds new data sets.
-func (c *Liquid) Add(name string, data interface{}, opts ...SeriesOpts) *Liquid {
+func (c *Liquid) AddSeries(name string, data interface{}, opts ...SeriesOpts) *Liquid {
 	series := SingleSeries{Name: name, Type: types.ChartLiquid, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
@@ -40,8 +40,8 @@ func (c *Liquid) Validate() {
 }
 
 // Render renders the chart and writes the output to given writers.
-func (c *Liquid) Render(w ...io.Writer) error {
+func (c *Liquid) Render(w io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.Validate()
-	return renderToWriter(c, "chart", []string{`"outline":{"show":false},?`, `"waveAnimation":false,?`}, w...)
+	return renderToWriter(c, "chart", []string{`"outline":{"show":false},?`, `"waveAnimation":false,?`}, w)
 }

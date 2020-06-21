@@ -19,13 +19,13 @@ func NewScatter() *Scatter {
 }
 
 // AddXAxis adds the X axis.
-func (c *Scatter) AddXAxis(xAxis interface{}) *Scatter {
+func (c *Scatter) SetXAxis(xAxis interface{}) *Scatter {
 	c.xAxisData = xAxis
 	return c
 }
 
 // AddYAxis adds the Y axis.
-func (c *Scatter) AddYAxis(name string, yAxis interface{}, opts ...SeriesOpts) *Scatter {
+func (c *Scatter) AddSeries(name string, yAxis interface{}, opts ...SeriesOpts) *Scatter {
 	series := SingleSeries{Name: name, Type: types.ChartScatter, Data: yAxis}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)

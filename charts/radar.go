@@ -1,8 +1,9 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/types"
 	"io"
+
+	"github.com/go-echarts/go-echarts/types"
 )
 
 // Radar represents a radar chart.
@@ -22,7 +23,7 @@ func NewRadar() *Radar {
 }
 
 // Add adds new data sets.
-func (c *Radar) Add(name string, data interface{}, opts ...SeriesOpts) *Radar {
+func (c *Radar) AddSeries(name string, data interface{}, opts ...SeriesOpts) *Radar {
 	series := SingleSeries{Name: name, Type: types.ChartRadar, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
@@ -43,7 +44,6 @@ func (c *Radar) Validate() {
 
 // Render renders the chart and writes the output to given writers.
 func (c *Radar) Render(w ...io.Writer) error {
-	c.insertSeriesColors(c.appendColor)
 	c.Validate()
 	return renderToWriter(c, "chart", []string{}, w...)
 }

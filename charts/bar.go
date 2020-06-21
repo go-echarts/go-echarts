@@ -21,7 +21,6 @@ func (Bar) Type() string { return types.ChartBar }
 func NewBar() *Bar {
 	chart := &Bar{}
 	chart.initBaseConfiguration()
-	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }
@@ -53,15 +52,11 @@ func (c *Bar) Validate() {
 		c.YAxisList[0].Data = c.xAxisData
 		c.XAxisList[0].Data = nil
 	}
-	for i := 0; i < len(c.YAxisList); i++ {
-		c.YAxisList[i].AxisLabel.Show = true
-	}
 	c.Assets.Validate(c.AssetsHost)
 }
 
 // Render renders the chart and writes the output to given writers.
-func (c *Bar) Render(w ...io.Writer) error {
-	c.insertSeriesColors(c.appendColor)
+func (c *Bar) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, "chart", []string{}, w...)
+	return renderToWriter(c, "chart", []string{}, w)
 }

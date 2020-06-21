@@ -10,7 +10,7 @@ import (
 	"github.com/go-echarts/go-echarts/types"
 )
 
-// InitOpts contains options for the canvas.
+// Initialization contains options for the canvas.
 type Initialization struct {
 	// 生成的 HTML 页面标题
 	PageTitle string `default:"Awesome go-echarts"`
@@ -28,22 +28,12 @@ type Initialization struct {
 	Theme string `default:"white"`
 }
 
-// 设置 InitOptions 字段默认值
-func (opt *Initialization) setDefault() {
+// 验证初始化参数，确保图形能够得到正确渲染
+func (opt *Initialization) Validate() {
 	setDefaultValue(opt)
-}
-
-// 确保 ChartID 不为空且唯一
-func (opt *Initialization) validateChartID() {
 	if opt.ChartID == "" {
 		opt.ChartID = genChartID()
 	}
-}
-
-// 验证初始化参数，确保图形能够得到正确渲染
-func (opt *Initialization) Validate() {
-	opt.setDefault()
-	opt.validateChartID()
 }
 
 // 为结构体设置默认值
@@ -104,7 +94,7 @@ func genChartID() string {
 	return string(b)
 }
 
-// LegendOpts is the option set for a legend component.
+// Legend is the option set for a legend component.
 type Legend struct {
 	// 图例组件离容器左侧的距离。
 	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
@@ -133,7 +123,7 @@ type Legend struct {
 	TextStyle TextStyle `json:"textStyle,omitempty"`
 }
 
-// TooltipOpts is the option set for a tooltip component.
+// Tooltip is the option set for a tooltip component.
 type Tooltip struct {
 	// 是否显示提示框
 	Show bool `json:"show,omitempty"`
@@ -177,15 +167,15 @@ type Tooltip struct {
 	Formatter string `json:"formatter,omitempty"`
 }
 
-// ToolboxOpts is the option set for a toolbox component.
+// Toolbox is the option set for a toolbox component.
 type Toolbox struct {
 	// 是否显示工具栏组件
 	Show bool `json:"show"`
 	// 工具箱功能种类，不支持自定义
-	TBFeature `json:"feature"`
+	ToolBoxFeature `json:"feature"`
 }
 
-// XAxisOpts is the option set for X axis.
+// XAxis is the option set for X axis.
 type XAxis struct {
 	// X 轴名称
 	Name string `json:"name,omitempty"`
@@ -219,12 +209,12 @@ type XAxis struct {
 	// 默认 0
 	GridIndex int `json:"gridIndex,omitempty"`
 	// X 轴在 grid 区域中的分隔区域配置项
-	SplitArea SplitArea `json:"splitArea,omitempty"`
+	*SplitArea `json:"splitArea,omitempty"`
 	// X 轴在 grid 区域中的分隔线配置项
-	SplitLine SplitLine `json:"splitLine,,omitempty"`
+	*SplitLine `json:"splitLine,,omitempty"`
 }
 
-// YAxisOpts is the option set for Y axis.
+// YAxis is the option set for Y axis.
 type YAxis struct {
 	// Y 轴名称
 	Name string `json:"name,omitempty"`
@@ -250,7 +240,7 @@ type YAxis struct {
 	//    }
 	//    return texts.join('/');
 	// }
-	AxisLabel LabelText `json:"axisLabel,omitempty"`
+	AxisLabel Label `json:"axisLabel,omitempty"`
 	// Y 轴数据项
 	Data interface{} `json:"data,omitempty"`
 	// Y 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，
@@ -272,13 +262,13 @@ type YAxis struct {
 	// 默认 0
 	GridIndex int `json:"gridIndex,omitempty"`
 	// Y 轴在 grid 区域中的分隔区域配置项
-	SplitArea SplitArea `json:"splitArea,omitempty"`
+	*SplitArea `json:"splitArea,omitempty"`
 	// Y 轴在 grid 区域中的分隔线配置项
-	SplitLine SplitLine `json:"splitLine,,omitempty"`
+	*SplitLine `json:"splitLine,,omitempty"`
 }
 
-// TBFeature is a feature component under toolbox.
-type TBFeature struct {
+// ToolBoxFeature is a feature component under toolbox.
+type ToolBoxFeature struct {
 	// 保存为图片
 	SaveAsImage struct{} `json:"saveAsImage"`
 	// 数据区域缩放。目前只支持直角坐标系的缩放
@@ -289,7 +279,7 @@ type TBFeature struct {
 	Restore struct{} `json:"restore"`
 }
 
-// TextStyleOpts is the option set for a text style component.
+// TextStyle is the option set for a text style component.
 type TextStyle struct {
 	// 文字字体颜色
 	Color string `json:"color,omitempty"`
@@ -302,23 +292,23 @@ type TextStyle struct {
 	Normal *TextStyle `json:"normal,omitempty"`
 }
 
-// SplitAreaOpts is the option set for a split area.
+// SplitArea is the option set for a split area.
 type SplitArea struct {
 	// 是否显示分隔区域
 	Show bool `json:"show"`
 	// 风格区域风格
-	AreaStyle AreaStyle `json:"areaStyle,omitempty"`
+	*AreaStyle `json:"areaStyle,omitempty"`
 }
 
-// SplitLineOpts is the option set for a split line.
+// SplitLine is the option set for a split line.
 type SplitLine struct {
 	// 是否显示分隔线
 	Show bool `json:"show"`
 	// 分割线风格
-	LineStyle LineStyle `json:"lineStyle,omitempty"`
+	*LineStyle `json:"lineStyle,omitempty"`
 }
 
-// VisualMapOpts is the option set for a visual map component.
+// VisualMap is the option set for a visual map component.
 // 用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）
 type VisualMap struct {
 	// 映射类型，可选 "continuous", "piecewise"
@@ -337,7 +327,7 @@ type VisualMap struct {
 	InRange VisualMapInRange `json:"inRange,omitempty"`
 }
 
-// VMInRange is a visual map instance in a range.
+// VisualMapInRange is a visual map instance in a range.
 type VisualMapInRange struct {
 	// 图元的颜色
 	Color []string `json:"color,omitempty"`
@@ -348,7 +338,7 @@ type VisualMapInRange struct {
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 }
 
-// SplitAreaOpts is the option set for a split area.
+// SplitArea is the option set for a split area.
 type SplitAreaOpts struct {
 	// 是否显示分隔区域
 	Show bool `json:"show"`
@@ -356,7 +346,7 @@ type SplitAreaOpts struct {
 	AreaStyle AreaStyle `json:"areaStyle,omitempty"`
 }
 
-// SplitLineOpts is the option set for a split line.
+// SplitLine is the option set for a split line.
 type SplitLineOpts struct {
 	// 是否显示分隔线
 	Show bool `json:"show"`
@@ -364,7 +354,7 @@ type SplitLineOpts struct {
 	LineStyle LineStyle `json:"lineStyle,omitempty"`
 }
 
-// DataZoomOpts is the option set for a zoom component.
+// DataZoom is the option set for a zoom component.
 type DataZoom struct {
 	// 缩放类型，可选 "inside", "slider"
 	Type string `json:"type" default:"inside"`
@@ -389,7 +379,7 @@ type DataZoom struct {
 	YAxisIndex interface{} `json:"yAxisIndex,omitempty"`
 }
 
-// TitleOpts is the option set for a title component.
+// Title is the option set for a title component.
 type Title struct {
 	// 主标题
 	Title string `json:"text,omitempty"`
@@ -425,7 +415,7 @@ type Title struct {
 	Right string `json:"right,omitempty"`
 }
 
-// SingleAxisOpts is the option set for single axis.
+// SingleAxis is the option set for single axis.
 type SingleAxis struct {
 	// 坐标轴刻度最小值。
 	// 可以设置成特殊值 "dataMin"，此时取数据在该轴上的最小值作为最小刻度
@@ -462,7 +452,7 @@ type SingleAxis struct {
 	Bottom string `json:"bottom,omitempty"`
 }
 
-// IndicatorOpts is the option set for a radar chart.
+// Indicator is the option set for a radar chart.
 type Indicator struct {
 	// 指示器名称
 	Name string `json:"name,omitempty"`
@@ -474,7 +464,7 @@ type Indicator struct {
 	Color string `json:"color,omitempty"`
 }
 
-// RadarComponentOpts is the option set for a radar component.
+// RadarComponent is the option set for a radar component.
 type RadarComponent struct {
 	// 雷达图的指示器，用来指定雷达图中的多个变量（维度）
 	Indicator []Indicator `json:"indicator,omitempty"`
@@ -488,7 +478,7 @@ type RadarComponent struct {
 	SplitLine SplitLine `json:"splitLine,omitempty"`
 }
 
-// ParallelComponentOpts is the option set for parallel component.
+// ParallelComponent is the option set for parallel component.
 type ParallelComponent struct {
 	// parallel 组件离容器左侧的距离。
 	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
@@ -566,17 +556,6 @@ func (opt *Assets) InitAssets() {
 	opt.CSSAssets.Init("bulma.min.css")
 }
 
-// 初始化静态资源配置项
-func (opt *Assets) InitAssetsOptsWithoutArg() {
-	opt.JSAssets.Init()
-	opt.CSSAssets.Init()
-}
-
-// 返回资源列表
-func (opt *Assets) yieldAssets() ([]string, []string) {
-	return opt.JSAssets.Values, opt.CSSAssets.Values
-}
-
 // 校验静态资源配置项，追加 host
 func (opt *Assets) Validate(host string) {
 	for i := 0; i < len(opt.JSAssets.Values); i++ {
@@ -587,7 +566,7 @@ func (opt *Assets) Validate(host string) {
 	}
 }
 
-// RouterOpts contains information for routing.
+// Router contains information for routing.
 type Router struct {
 	URL  string // 路由 URL
 	Text string // 路由显示文字
@@ -618,7 +597,7 @@ type XAxis3D struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
-// YAxis3DOpts contains options for Y axis in the 3D coordinate.
+// YAxis3D contains options for Y axis in the 3D coordinate.
 type YAxis3D struct {
 	// 是否显示 3D Y 轴
 	Show bool `json:"show,omitempty"`
@@ -643,7 +622,7 @@ type YAxis3D struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
-// ZAxis3DOpts contains options for Z axis in the 3D coordinate.
+// ZAxis3D contains options for Z axis in the 3D coordinate.
 type ZAxis3D struct {
 	// 是否显示 3D Z 轴
 	Show bool `json:"show,omitempty"`
@@ -668,7 +647,7 @@ type ZAxis3D struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
-// Grid3DOpts contains options for the 3D coordinate.
+// Grid3D contains options for the 3D coordinate.
 type Grid3D struct {
 	// 是否显示三维笛卡尔坐标系
 	Show bool `json:"show,omitempty"`
@@ -685,7 +664,7 @@ type Grid3D struct {
 	ViewControl ViewControl `json:"viewControl,omitempty"`
 }
 
-// ViewControlOpts contains options for view controlling.
+// ViewControl contains options for view controlling.
 type ViewControl struct {
 	// 是否开启视角绕物体的自动旋转查看
 	AutoRotate bool `json:"autoRotate,omitempty"`

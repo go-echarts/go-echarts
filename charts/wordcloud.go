@@ -1,10 +1,5 @@
 package charts
 
-//import (
-//	"io"
-//
-//	"github.com/go-echarts/go-echarts/types"
-//)
 //
 //// WordCloud represents a word cloud chart.
 //type WordCloud struct {
