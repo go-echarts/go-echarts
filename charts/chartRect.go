@@ -108,5 +108,5 @@ func (rc *RectChart) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (rc *RectChart) Render(w io.Writer) error {
 	rc.Validate()
-	return renderToWriter(rc, "chart", []string{}, w)
+	return renderToWriter(rc, "chart", w)
 }

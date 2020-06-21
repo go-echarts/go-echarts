@@ -43,5 +43,5 @@ func (c *Liquid) Validate() {
 func (c *Liquid) Render(w io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.Validate()
-	return renderToWriter(c, "chart", []string{`"outline":{"show":false},?`, `"waveAnimation":false,?`}, w)
+	return renderToWriter(c, "chart", w, `"outline":{"show":false},?`, `"waveAnimation":false,?`)
 }

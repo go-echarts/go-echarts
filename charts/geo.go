@@ -82,5 +82,5 @@ func (c *Geo) Validate() {
 func (c *Geo) Render(w io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.Validate()
-	return renderToWriter(c, "chart", []string{}, w)
+	return renderToWriter(c, "chart", w)
 }

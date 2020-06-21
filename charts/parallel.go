@@ -73,7 +73,6 @@ func (c *Parallel) Validate() {
 
 // Render renders the chart and writes the output to given writers.
 func (c *Parallel) Render(w io.Writer) error {
-	c.insertSeriesColors(c.appendColor)
 	c.Validate()
-	return renderToWriter(c, "chart", []string{}, w)
+	return renderToWriter(c, "chart", w)
 }

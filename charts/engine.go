@@ -28,19 +28,14 @@ func mustTpl(tpl *template.Template, html ...string) {
 	}
 }
 
-func renderToWriter(chart interface{}, renderName string, removeStr []string, w ...io.Writer) error {
+func renderToWriter(chart interface{}, renderName string, w io.Writer, removeStr ...string) error {
 	var b bytes.Buffer
 	if err := renderChart(chart, &b, renderName); err != nil {
 		return err
 	}
 	res := replaceRender(b, removeStr...)
-	for i := 0; i < len(w); i++ {
-		_, err := w[i].Write(res)
-		if err != nil {
-			return err
-		}
-	}
-	return nil
+	_, err := w.Write(res)
+	return err
 }
 
 // 过滤替换渲染结果

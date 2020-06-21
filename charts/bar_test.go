@@ -1,6 +1,7 @@
 package charts
 
 import (
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +15,7 @@ func TestBarAssetsBeforeRender(t *testing.T) {
 
 func TestBarAssetsAfterRender(t *testing.T) {
 	bar := NewBar()
-	err := bar.Render()
+	err := bar.Render(os.Stdout)
 	assert.NoError(t, err)
 	var host = "https://go-echarts.github.io/go-echarts-assets/assets/"
 	assert.Equal(t, bar.JSAssets.Values, []string{host + "echarts.min.js"})
@@ -23,7 +24,7 @@ func TestBarAssetsAfterRender(t *testing.T) {
 
 func TestBarDefaultValue(t *testing.T) {
 	bar := NewBar()
-	err := bar.Render()
+	err := bar.Render(os.Stdout)
 	assert.NoError(t, err)
 	assert.Equal(t, bar.Width, "900px")
 	assert.Equal(t, bar.Height, "500px")

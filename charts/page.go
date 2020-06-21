@@ -47,5 +47,5 @@ func (page *Page) AddCharts(charts ...Charter) *Page {
 func (page *Page) Render(w io.Writer) error {
 	page.Initialization.Validate()
 	page.Assets.Validate(page.AssetsHost)
-	return renderToWriter(page, "page", page.unusedStr.Values, w)
+	return renderToWriter(page, "page", w, page.unusedStr.Values...)
 }

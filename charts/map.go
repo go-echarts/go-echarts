@@ -51,5 +51,5 @@ func (c *Map) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (c *Map) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, "chart", []string{}, w)
+	return renderToWriter(c, "chart", w)
 }
