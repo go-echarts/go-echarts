@@ -1,6 +1,7 @@
 package charts
 
 import (
+	"github.com/go-echarts/go-echarts/opts"
 	"io"
 
 	"github.com/go-echarts/go-echarts/types"
@@ -22,7 +23,7 @@ func NewLiquid() *Liquid {
 }
 
 // Add adds new data sets.
-func (c *Liquid) AddSeries(name string, data interface{}, opts ...SeriesOpts) *Liquid {
+func (c *Liquid) AddSeries(name string, data []opts.LiquidChartItem, opts ...SeriesOpts) *Liquid {
 	series := SingleSeries{Name: name, Type: types.ChartLiquid, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
@@ -43,5 +44,5 @@ func (c *Liquid) Validate() {
 func (c *Liquid) Render(w io.Writer) error {
 	c.insertSeriesColors(c.appendColor)
 	c.Validate()
-	return renderToWriter(c, "chart", w, `"outline":{"show":false},?`, `"waveAnimation":false,?`)
+	return renderToWriter(c, ModChart, w, `"outline":{"show":false},?`, `"waveAnimation":false,?`)
 }

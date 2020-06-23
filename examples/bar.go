@@ -111,34 +111,65 @@ func barXYName() *charts.Bar {
 //	return bar
 //}
 //
-//func barSplitLine() *charts.Bar {
-//	bar := charts.NewBar()
-//	bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-显示分割线"})
-//	bar.AddXAxis(nameItems).
-//		AddYAxis("商家A", randInt()).
-//		AddYAxis("商家B", randInt())
-//	bar.SetGlobalOptions(charts.YAxisOpts{SplitLine: charts.SplitLineOpts{Show: true}})
-//	return bar
-//}
-//
-//func barGap() *charts.Bar {
-//	bar := charts.NewBar()
-//	bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-调整 bar 距离"})
-//	bar.AddXAxis(nameItems).AddYAxis("商家A", randInt())
-//	bar.SetSeriesOptions(charts.BarOpts{BarCategoryGap: "70%"})
-//	return bar
-//}
-//
-//func barYAxis() *charts.Bar {
-//	bar := charts.NewBar()
-//	bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-Y 轴格式"})
-//	bar.AddXAxis(nameItems).
-//		AddYAxis("商家A", randInt()).
-//		AddYAxis("商家B", randInt())
-//	bar.SetGlobalOptions(charts.YAxisOpts{AxisLabel: charts.LabelTextOpts{Formatter: "{value} 件/天"}})
-//	return bar
-//}
-//
+func barSplitLine() *charts.Bar {
+	bar := charts.NewBar()
+	bar.SetGlobalOptions(
+		charts.WithTitleOpts(opts.Title{
+			Title: "Bar-splitline",
+		}),
+		charts.WithXAxisOpts(opts.XAxis{
+			Name: "XAxisName",
+		}),
+		charts.WithYAxisOpts(opts.YAxis{
+			Name: "YAxisName",
+			SplitLine: &opts.SplitLine{
+				Show: true,
+			},
+		}),
+	)
+	bar.SetXAxis(nameItems).
+		AddSeries("Category A", generateBarItems()).
+		AddSeries("Category B", generateBarItems())
+	return bar
+}
+
+func barGap() *charts.Bar {
+	bar := charts.NewBar()
+	bar.SetGlobalOptions(
+		charts.WithTitleOpts(opts.Title{
+			Title: "Bar-bargap",
+		}),
+	)
+	bar.SetXAxis(nameItems).
+		AddSeries("Category A", generateBarItems()).
+		AddSeries("Category B", generateBarItems())
+	bar.SetSeriesOptions(
+		charts.WithBarChartOpts(opts.BarChart{
+			BarGap: "70%",
+		}),
+	)
+	return bar
+}
+
+func barYAxis() *charts.Bar {
+	bar := charts.NewBar()
+	bar.SetGlobalOptions(
+		charts.WithTitleOpts(opts.Title{
+			Title: "Bar-yaxis-formatter",
+		}),
+		charts.WithYAxisOpts(opts.YAxis{
+			AxisLabel: opts.Label{
+				Formatter: "{value} 件/天",
+			},
+		}),
+	)
+
+	bar.SetXAxis(nameItems).
+		AddSeries("Category A", generateBarItems()).
+		AddSeries("Category B", generateBarItems())
+	return bar
+}
+
 //func barMultiYAxis() *charts.Bar {
 //	bar := charts.NewBar()
 //	bar.SetGlobalOptions(
@@ -177,17 +208,22 @@ func barXYName() *charts.Bar {
 //		AddYAxis("商家B", randInt())
 //	return bar
 //}
-//
-//func barReverse() *charts.Bar {
-//	bar := charts.NewBar()
-//	bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-翻转 XY 轴"})
-//	bar.AddXAxis(nameItems).
-//		AddYAxis("商家A", randInt()).
-//		AddYAxis("商家B", randInt())
-//	bar.XYReversal()
-//	return bar
-//}
-//
+
+func barReverse() *charts.Bar {
+	bar := charts.NewBar()
+	bar.SetGlobalOptions(
+		charts.WithTitleOpts(opts.Title{
+			Title: "Bar-reverse-xy-axis",
+		}),
+	)
+
+	bar.SetXAxis(nameItems).
+		AddSeries("Category A", generateBarItems()).
+		AddSeries("Category B", generateBarItems())
+	bar.XYReversal()
+	return bar
+}
+
 //func barStack() *charts.Bar {
 //	bar := charts.NewBar()
 //	bar.SetGlobalOptions(charts.TitleOpts{Title: "Bar-堆叠效果"})
@@ -231,19 +267,23 @@ func barXYName() *charts.Bar {
 //		)
 //	return bar
 //}
-//
-//func barSize() *charts.Bar {
-//	bar := charts.NewBar()
-//	bar.SetGlobalOptions(
-//		charts.TitleOpts{Title: "Bar-画布大小"},
-//		charts.InitOpts{Width: "600px", Height: "400px"},
-//		charts.ToolboxOpts{Show: true},
-//	)
-//	bar.AddXAxis(nameItems).
-//		AddYAxis("商家A", randInt()).
-//		AddYAxis("商家B", randInt())
-//	return bar
-//}
+
+func barSize() *charts.Bar {
+	bar := charts.NewBar()
+	bar.SetGlobalOptions(
+		charts.WithTitleOpts(opts.Title{
+			Title: "Bar-display-axes-name",
+		}),
+		charts.WithInitializationOpts(opts.Initialization{
+			Width:  "800px",
+			Height: "600px",
+		}),
+	)
+	bar.SetXAxis(weeks).
+		AddSeries("Category A", generateBarItems()).
+		AddSeries("Category A", generateBarItems())
+	return bar
+}
 
 func barHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage()
@@ -253,17 +293,17 @@ func barHandler(w http.ResponseWriter, _ *http.Request) {
 		barShowLabel(),
 		barXYName(),
 		//barColor(),
-		//barSplitLine(),
-		//barGap(),
-		//barYAxis(),
+		barSplitLine(),
+		barGap(),
+		barYAxis(),
 		//barMultiYAxis(),
 		//barMultiXAxis(),
 		//barDataZoom(),
-		//barReverse(),
+		barReverse(),
 		//barStack(),
 		//barMark(),
 		//barMarkCustom(),
-		//barSize(),
+		barSize(),
 	)
 	f, err := os.Create(getRenderPath("bar.html"))
 	if err != nil {

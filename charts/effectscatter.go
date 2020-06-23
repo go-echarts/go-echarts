@@ -10,10 +10,10 @@ type EffectScatter struct {
 func (EffectScatter) Type() string { return types.ChartEffectScatter }
 
 // EffectScatterChartOpts is the option set for an effect scatter chart.
-type EffectScatterChartOpts struct {
-	XAxisIndex int
-	YAxisIndex int
-}
+//type EffectScatterChartOpts struct {
+//	XAxisIndex int
+//	YAxisIndex int
+//}
 
 // NewEffectScatter creates a new effect scatter chart.
 func NewEffectScatter() *EffectScatter {

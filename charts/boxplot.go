@@ -13,7 +13,6 @@ func (BoxPlot) Type() string { return types.ChartBoxPlot }
 func NewBoxPlot() *BoxPlot {
 	chart := &BoxPlot{}
 	chart.initBaseConfiguration()
-	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }

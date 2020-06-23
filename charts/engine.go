@@ -2,24 +2,32 @@ package charts
 
 import (
 	"bytes"
-	tpls "github.com/go-echarts/go-echarts/templates"
 	"html/template"
 	"io"
 	"regexp"
+
+	tpls "github.com/go-echarts/go-echarts/templates"
+)
+
+type RenderMod int
+
+const (
+	ModChart RenderMod = iota
+	ModPage
 )
 
 // 渲染图表
-func renderChart(chart interface{}, w io.Writer, name string) error {
+func renderChart(chart interface{}, w io.Writer, mod RenderMod) error {
 	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl}
-	switch name {
-	case "chart":
+	switch mod {
+	case ModChart:
 		contents = append(contents, tpls.ChartTpl)
-	case "page":
+	case ModPage:
 		contents = append(contents, tpls.PageTpl)
 	}
 	tpl := template.Must(template.New("").Parse(contents[0]))
 	mustTpl(tpl, contents[1:]...)
-	return tpl.ExecuteTemplate(w, name, chart)
+	return tpl.ExecuteTemplate(w, "", chart)
 }
 
 func mustTpl(tpl *template.Template, html ...string) {
@@ -28,9 +36,9 @@ func mustTpl(tpl *template.Template, html ...string) {
 	}
 }
 
-func renderToWriter(chart interface{}, renderName string, w io.Writer, removeStr ...string) error {
+func renderToWriter(chart interface{}, mod RenderMod, w io.Writer, removeStr ...string) error {
 	var b bytes.Buffer
-	if err := renderChart(chart, &b, renderName); err != nil {
+	if err := renderChart(chart, &b, mod); err != nil {
 		return err
 	}
 	res := replaceRender(b, removeStr...)

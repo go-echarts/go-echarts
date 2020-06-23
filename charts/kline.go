@@ -13,7 +13,6 @@ func (Kline) Type() string { return types.ChartKline }
 func NewKLine() *Kline {
 	chart := &Kline{}
 	chart.initBaseConfiguration()
-	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }

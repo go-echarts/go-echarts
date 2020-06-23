@@ -43,5 +43,5 @@ func (c *Pie) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (c *Pie) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, "chart", w)
+	return renderToWriter(c, ModChart, w)
 }

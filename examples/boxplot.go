@@ -27,22 +27,22 @@ var (
 func boxPlotBase() *charts.BoxPlot {
 	bp := charts.NewBoxPlot()
 	bp.SetGlobalOptions(charts.TitleOpts{Title: "BoxPlot-示例图"})
-	bp.AddXAxis(bpX).AddYAxis("boxplot", bpY)
+	bp.SetXAxis(bpX).AddSeries("boxplot", bpY)
 	return bp
 }
 
 func boxPlotMulti() *charts.BoxPlot {
 	bp := charts.NewBoxPlot()
 	bp.SetGlobalOptions(charts.TitleOpts{Title: "BoxPlot-多 Series"})
-	bp.AddXAxis(bpX[:2]).
-		AddYAxis("boxplot1", bpY[:2]).
-		AddYAxis("boxplot2", bpY[2:])
+	bp.SetXAxis(bpX[:2]).
+		AddSeries("boxplot1", bpY[:2]).
+		AddSeries("boxplot2", bpY[2:])
 	return bp
 }
 
 func boxPlotHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("boxPlot")...)
-	page.Add(
+	page.AddCharts(
 		boxPlotBase(),
 		boxPlotMulti(),
 	)

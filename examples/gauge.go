@@ -15,7 +15,7 @@ func gaugeBase() *charts.Gauge {
 	gauge.SetGlobalOptions(charts.TitleOpts{Title: "Gauge-示例图"})
 	m := make(map[string]interface{})
 	m["工作进度"] = rand.Intn(50)
-	gauge.Add("gauge", m)
+	gauge.AddSeries("gauge", m)
 	return gauge
 }
 
@@ -24,7 +24,7 @@ func gaugeTimer() *charts.Gauge {
 
 	m := make(map[string]interface{})
 	m["工作进度"] = rand.Intn(50)
-	gauge.Add("gauge1", m)
+	gauge.AddSeries("gauge1", m)
 	gauge.SetGlobalOptions(charts.TitleOpts{Title: "Gauge-定时器"})
 	fn := fmt.Sprintf(`setInterval(function () {
 			option_%s.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
@@ -36,7 +36,7 @@ func gaugeTimer() *charts.Gauge {
 
 func gaugeHandler(w http.ResponseWriter, _ *http.Request) {
 	page := charts.NewPage(orderRouters("gauge")...)
-	page.Add(
+	page.AddCharts(
 		gaugeBase(),
 		gaugeTimer(),
 	)

@@ -13,7 +13,6 @@ func (HeatMap) Type() string { return types.ChartHeatMap }
 func NewHeatMap() *HeatMap {
 	chart := &HeatMap{}
 	chart.initBaseConfiguration()
-	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }

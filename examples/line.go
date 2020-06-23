@@ -11,14 +11,14 @@ import (
 func lineBase() *charts.Line {
 	line := charts.NewLine()
 	line.SetGlobalOptions(charts.TitleOpts{Title: "Line-示例图"})
-	line.AddXAxis(nameItems).AddYAxis("商家A", randInt())
+	line.SetXAxis(nameItems).AddSeries("商家A", randInt())
 	return line
 }
 
 func lineShowLabel() *charts.Line {
 	line := charts.NewLine()
 	line.SetGlobalOptions(charts.TitleOpts{Title: "Line-显示 Label"})
-	line.AddXAxis(nameItems).AddYAxis("商家A", randInt(), charts.LabelTextOpts{Show: true})
+	line.SetXAxis(nameItems).AddSeries("商家A", randInt(), charts.LabelTextOpts{Show: true})
 	return line
 }
 
@@ -32,7 +32,7 @@ func lineMarkPoint() *charts.Line {
 		charts.MPNameTypeItem{Name: "最小值", Type: "min"},
 		charts.MPStyleOpts{Label: charts.LabelTextOpts{Show: true}},
 	}
-	line.AddXAxis(nameItems).AddYAxis("商家A", randInt(), markpoints...)
+	line.SetXAxis(nameItems).AddSeries("商家A", randInt(), markpoints...)
 	return line
 }
 

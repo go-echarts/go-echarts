@@ -18,16 +18,19 @@ type Map struct {
 func (Map) Type() string { return types.ChartMap }
 
 // NewMap creates a new map chart.
-func NewMap(mapType string) *Map {
+func NewMap() *Map {
 	chart := &Map{}
-	chart.mapType = mapType
 	chart.initBaseConfiguration()
-	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
 	return chart
 }
 
+func (c *Map) RegisterMapType(mapType string) {
+	c.mapType = mapType
+	c.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
+}
+
 // Add adds new data sets.
-func (c *Map) Add(name string, data map[string]float32, opts ...SeriesOpts) *Map {
+func (c *Map) AddSeries(name string, data map[string]float32, opts ...SeriesOpts) *Map {
 	nvs := make([]types.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, types.NameValueItem{Name: k, Value: v})
@@ -51,5 +54,5 @@ func (c *Map) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (c *Map) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, "chart", w)
+	return renderToWriter(c, ModChart, w)
 }

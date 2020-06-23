@@ -55,7 +55,7 @@ func (c *Chart3D) SetGlobalOptions(opts ...GlobalOpts) *Chart3D {
 	return c
 }
 
-func (c *Chart3D) validateOpts() {
+func (c *Chart3D) Validate() {
 	// 确保 XY 轴数据项不会被抹除
 	if c.XAxis3D.Data == nil {
 		c.XAxis3D.Data = c.xData
@@ -79,6 +79,6 @@ func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, opts ...Se
 
 // Render renders the chart and writes the output to given writers.
 func (c *Chart3D) Render(w io.Writer) error {
-	c.validateOpts()
+	c.Validate()
 	return renderToWriter(c, "chart", w)
 }

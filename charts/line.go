@@ -1,6 +1,9 @@
 package charts
 
-import "github.com/go-echarts/go-echarts/types"
+import (
+	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/types"
+)
 
 // Line represents a line chart.
 type Line struct {
@@ -25,8 +28,8 @@ func (c *Line) SetXAxis(xAxis interface{}) *Line {
 }
 
 // AddSeries adds the Y axis.
-func (c *Line) AddSeries(name string, yAxis interface{}, opts ...SeriesOpts) *Line {
-	series := SingleSeries{Name: name, Type: types.ChartLine, Data: yAxis}
+func (c *Line) AddSeries(name string, data []opts.LineChartItem, opts ...SeriesOpts) *Line {
+	series := SingleSeries{Name: name, Type: types.ChartLine, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c

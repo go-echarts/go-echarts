@@ -27,13 +27,10 @@ type BarChartItem struct {
 	*Tooltip   `json:"tooltip,omitempty"`
 }
 
-type PieChartItem struct {
-	Name       string      `json:"name"`
-	Value      interface{} `json:"value"`
-	Selected   bool        `json:"selected,omitempty"`
-	*Label     `json:"label,omitempty"`
-	*ItemStyle `json:"itemStyle,omitempty"`
-	*Tooltip   `json:"tooltip,omitempty"`
+type FunnelChartItem struct {
+}
+
+type GaugeChartItem struct {
 }
 
 // GraphOpts is the option set for graph chart.
@@ -77,6 +74,9 @@ type LineChart struct {
 	ConnectNulls bool
 }
 
+type LineChartItem struct {
+}
+
 type LiquidChart struct {
 	// 水球图形状，可选
 	// "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
@@ -85,6 +85,9 @@ type LiquidChart struct {
 	IsShowOutline bool
 	// 是否停止动画
 	IsWaveAnimation bool
+}
+
+type LiquidChartItem struct {
 }
 
 // PieOpts is the option set for a pie chart.
@@ -107,6 +110,15 @@ type PieChart struct {
 	// 每一项遵从上述 number string 的描述。
 	// 默认 [0, "75%"]
 	Radius interface{}
+}
+
+type PieChartItem struct {
+	Name       string      `json:"name"`
+	Value      interface{} `json:"value"`
+	Selected   bool        `json:"selected,omitempty"`
+	*Label     `json:"label,omitempty"`
+	*ItemStyle `json:"itemStyle,omitempty"`
+	*Tooltip   `json:"tooltip,omitempty"`
 }
 
 // ScatterOpts is the option set for a scatter chart.
@@ -149,4 +161,10 @@ type SankeyNode struct {
 	Name string `json:"name,omitempty"`
 	// 数据项值
 	Value string `json:"value,omitempty"`
+}
+
+type ThemeRiverChartItem struct {
+}
+
+type RadarChartItem struct {
 }

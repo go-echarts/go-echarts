@@ -13,7 +13,6 @@ func (Scatter) Type() string { return types.ChartScatter }
 func NewScatter() *Scatter {
 	chart := &Scatter{}
 	chart.initBaseConfiguration()
-	chart.initXYAxis()
 	chart.HasXYAxis = true
 	return chart
 }

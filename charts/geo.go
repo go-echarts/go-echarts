@@ -43,7 +43,7 @@ func NewGeo(mapType string) *Geo {
 // common.ChartType.Scatter
 // common.ChartType.EffectScatter
 // common.ChartType.HeatMap
-func (c *Geo) Add(name, geoType string, data map[string]float32, opts ...SeriesOpts) *Geo {
+func (c *Geo) AddSeries(name, geoType string, data map[string]float32, opts ...SeriesOpts) *Geo {
 	nvs := make([]types.NameValueItem, 0)
 	for k, v := range data {
 		nvs = append(nvs, types.NameValueItem{Name: k, Value: c.extendValue(k, v)})
@@ -80,7 +80,6 @@ func (c *Geo) Validate() {
 
 // Render renders the chart and writes the output to given writers.
 func (c *Geo) Render(w io.Writer) error {
-	c.insertSeriesColors(c.appendColor)
 	c.Validate()
-	return renderToWriter(c, "chart", w)
+	return renderToWriter(c, ModChart, w)
 }

@@ -1,6 +1,7 @@
 package charts
 
 import (
+	"github.com/go-echarts/go-echarts/opts"
 	"io"
 
 	"github.com/go-echarts/go-echarts/types"
@@ -22,12 +23,8 @@ func NewGauge() *Gauge {
 }
 
 // Add adds new data sets.
-func (c *Gauge) AddSeries(name string, data map[string]interface{}, opts ...SeriesOpts) *Gauge {
-	nvs := make([]types.NameValueItem, 0)
-	for k, v := range data {
-		nvs = append(nvs, types.NameValueItem{Name: k, Value: v})
-	}
-	series := SingleSeries{Name: name, Type: types.ChartGauge, Data: nvs}
+func (c *Gauge) AddSeries(name string, data []opts.GaugeChartItem, opts ...SeriesOpts) *Gauge {
+	series := SingleSeries{Name: name, Type: types.ChartGauge, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
@@ -45,7 +42,6 @@ func (c *Gauge) Validate() {
 
 // Render renders the chart and writes the output to given writers.
 func (c *Gauge) Render(w io.Writer) error {
-	c.insertSeriesColors(c.appendColor)
 	c.Validate()
-	return renderToWriter(c, "chart", w)
+	return renderToWriter(c, ModChart, w)
 }

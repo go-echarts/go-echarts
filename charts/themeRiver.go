@@ -1,6 +1,7 @@
 package charts
 
 import (
+	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/types"
 	"io"
 )
@@ -22,7 +23,7 @@ func NewThemeRiver() *ThemeRiver {
 }
 
 // Add adds new data sets.
-func (c *ThemeRiver) AddSeries(name string, data interface{}, opts ...SeriesOpts) *ThemeRiver {
+func (c *ThemeRiver) AddSeries(name string, data []opts.ThemeRiverChartItem, opts ...SeriesOpts) *ThemeRiver {
 	series := SingleSeries{Name: name, Type: types.ChartThemeRiver, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
@@ -41,7 +42,6 @@ func (c *ThemeRiver) Validate() {
 
 // Render renders the chart and writes the output to given writers.
 func (c *ThemeRiver) Render(w io.Writer) error {
-	c.insertSeriesColors(c.appendColor)
 	c.Validate()
-	return renderToWriter(c, "chart", w)
+	return renderToWriter(c, ModChart, w)
 }

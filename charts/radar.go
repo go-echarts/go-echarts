@@ -1,6 +1,7 @@
 package charts
 
 import (
+	"github.com/go-echarts/go-echarts/opts"
 	"io"
 
 	"github.com/go-echarts/go-echarts/types"
@@ -23,7 +24,7 @@ func NewRadar() *Radar {
 }
 
 // Add adds new data sets.
-func (c *Radar) AddSeries(name string, data interface{}, opts ...SeriesOpts) *Radar {
+func (c *Radar) AddSeries(name string, data []opts.RadarChartItem, opts ...SeriesOpts) *Radar {
 	series := SingleSeries{Name: name, Type: types.ChartRadar, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
@@ -45,5 +46,5 @@ func (c *Radar) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (c *Radar) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, "chart", w)
+	return renderToWriter(c, ModChart, w)
 }

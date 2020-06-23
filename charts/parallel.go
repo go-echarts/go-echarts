@@ -74,5 +74,5 @@ func (c *Parallel) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (c *Parallel) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, "chart", w)
+	return renderToWriter(c, ModChart, w)
 }
