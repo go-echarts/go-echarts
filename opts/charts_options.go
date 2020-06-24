@@ -1,5 +1,6 @@
 package opts
 
+// BarChart
 type BarChart struct {
 	// 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
 	Stack string
@@ -19,6 +20,7 @@ type BarChart struct {
 	YAxisIndex int
 }
 
+// BarChartItem
 type BarChartItem struct {
 	Name       string      `json:"name,omitempty"`
 	Value      interface{} `json:"value,omitempty"`

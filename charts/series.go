@@ -3,9 +3,7 @@ package charts
 import "github.com/go-echarts/go-echarts/opts"
 
 type SingleSeries struct {
-	// series name
 	Name string `json:"name,omitempty"`
-	// series type
 	Type string `json:"type"`
 
 	// Rectangular charts
@@ -98,6 +96,8 @@ func WithLineStyleOpts(opt opts.LineStyle) SeriesOpts {
 		s.LineStyle = &opt
 	}
 }
+
+/* Chart Options */
 
 // WithBarChartOpts
 func WithBarChartOpts(opt opts.BarChart) SeriesOpts {

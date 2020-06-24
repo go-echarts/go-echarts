@@ -18,8 +18,8 @@ func NewHeatMap() *HeatMap {
 }
 
 // AddXAxis adds the X axis.
-func (c *HeatMap) AddXAxis(xAxis interface{}) *HeatMap {
-	c.xAxisData = xAxis
+func (c *HeatMap) AddXAxis(x interface{}) *HeatMap {
+	c.xAxisData = x
 	return c
 }
 

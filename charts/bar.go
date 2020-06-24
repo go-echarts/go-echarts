@@ -4,6 +4,7 @@ import (
 	"io"
 
 	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 
@@ -26,8 +27,8 @@ func NewBar() *Bar {
 }
 
 // SetXAxis sets the X axis.
-func (c *Bar) SetXAxis(xAxis interface{}) *Bar {
-	c.xAxisData = xAxis
+func (c *Bar) SetXAxis(x interface{}) *Bar {
+	c.xAxisData = x
 	return c
 }
 
@@ -58,5 +59,5 @@ func (c *Bar) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (c *Bar) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, ModChart, w)
+	return render.Write(c, render.ModChart, w)
 }

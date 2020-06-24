@@ -1,4 +1,4 @@
-package charts
+package render
 
 import (
 	"bytes"
@@ -9,15 +9,15 @@ import (
 	tpls "github.com/go-echarts/go-echarts/templates"
 )
 
-type RenderMod int
+type Mod int
 
 const (
-	ModChart RenderMod = iota
+	ModChart Mod = iota
 	ModPage
 )
 
 // 渲染图表
-func renderChart(chart interface{}, w io.Writer, mod RenderMod) error {
+func renderChart(chart interface{}, w io.Writer, mod Mod) error {
 	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl}
 	switch mod {
 	case ModChart:
@@ -34,16 +34,6 @@ func mustTpl(tpl *template.Template, html ...string) {
 	for i := 0; i < len(html); i++ {
 		tpl = template.Must(tpl.Parse(html[i]))
 	}
-}
-
-func renderToWriter(chart interface{}, mod RenderMod, w io.Writer, removeStr ...string) error {
-	var b bytes.Buffer
-	if err := renderChart(chart, &b, mod); err != nil {
-		return err
-	}
-	res := replaceRender(b, removeStr...)
-	_, err := w.Write(res)
-	return err
 }
 
 // 过滤替换渲染结果
@@ -99,4 +89,14 @@ func removeNotReplace(unusedObj []string, removeStr ...string) []string {
 		}
 	}
 	return res
+}
+
+func Write(chart interface{}, mod Mod, w io.Writer, removeStr ...string) error {
+	var b bytes.Buffer
+	if err := renderChart(chart, &b, mod); err != nil {
+		return err
+	}
+	res := replaceRender(b, removeStr...)
+	_, err := w.Write(res)
+	return err
 }

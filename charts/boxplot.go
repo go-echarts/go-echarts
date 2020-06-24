@@ -18,8 +18,8 @@ func NewBoxPlot() *BoxPlot {
 }
 
 // SetXAxis adds the X axis.
-func (c *BoxPlot) SetXAxis(xAxis interface{}) *BoxPlot {
-	c.xAxisData = xAxis
+func (c *BoxPlot) SetXAxis(x interface{}) *BoxPlot {
+	c.xAxisData = x
 	return c
 }
 

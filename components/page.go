@@ -1,4 +1,4 @@
-package charts
+package components
 
 import (
 	"io"
@@ -6,6 +6,12 @@ import (
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/types"
 )
+
+type Charter interface {
+	Type() string
+	GetAssets() opts.Assets
+	Validate()
+}
 
 // Page represents a page chart.
 type Page struct {

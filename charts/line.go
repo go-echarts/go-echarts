@@ -22,8 +22,8 @@ func NewLine() *Line {
 }
 
 // SetXAxis adds the X axis.
-func (c *Line) SetXAxis(xAxis interface{}) *Line {
-	c.xAxisData = xAxis
+func (c *Line) SetXAxis(x interface{}) *Line {
+	c.xAxisData = x
 	return c
 }
 

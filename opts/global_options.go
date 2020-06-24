@@ -12,19 +12,19 @@ import (
 
 // Initialization contains options for the canvas.
 type Initialization struct {
-	// 生成的 HTML 页面标题
+	// HTML title
 	PageTitle string `default:"Awesome go-echarts"`
-	// 画布宽度
+	// Canvas width
 	Width string `default:"900px"`
-	// 画布高度
+	// Canvas Height
 	Height string `default:"500px"`
-	// 画布背景颜色
+	// Canvas Background Color
 	BackgroundColor string `json:"backgroundColor,omitempty"`
-	// 图表 ID，是图表唯一标识
+	// Chart unique ID
 	ChartID string
-	// 静态资源 host 地址
+	// Assets host
 	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
-	// 图表主题
+	// Chart Theme
 	Theme string `default:"white"`
 }
 
@@ -43,23 +43,19 @@ func setDefaultValue(ptr interface{}) {
 	t := elem.Type()
 
 	for i := 0; i < t.NumField(); i++ {
-		//如果没有 `default` tag 则不作处理
+		// handle `default` tag only
 		if defaultVal := t.Field(i).Tag.Get("default"); defaultVal != "" {
 			setField(elem.Field(i), defaultVal)
 		}
 	}
 }
 
-// 为具体字段设置默认值
 func setField(field reflect.Value, defaultVal string) {
-	// 目前只判断 string, bool 两种变量类型
 	switch field.Kind() {
-	// string 类型
 	case reflect.String:
 		if field.String() == "" {
 			field.Set(reflect.ValueOf(defaultVal).Convert(field.Type()))
 		}
-		// bool 类型
 	case reflect.Bool:
 		if val, err := strconv.ParseBool(defaultVal); err == nil {
 			field.Set(reflect.ValueOf(val).Convert(field.Type()))
@@ -92,6 +88,42 @@ func genChartID() string {
 		remain--
 	}
 	return string(b)
+}
+
+// Title is the option set for a title component.
+type Title struct {
+	// 主标题
+	Title string `json:"text,omitempty"`
+	// 主标题样式配置项
+	TitleStyle TextStyle `json:"textStyle,omitempty"`
+	// 副标题
+	Subtitle string `json:"subtext,omitempty"`
+	// 副标题样式配置项
+	SubtitleStyle TextStyle `json:"subtextStyle,omitempty"`
+	// 主标题文本超链接
+	Link string `json:"link,omitempty"`
+	// 指定窗口打开主标题超链接
+	// 'self' 当前窗口打开
+	// 'blank' 新窗口打开
+	Target string `json:"target,omitempty"`
+	// grid 组件离容器上侧的距离。
+	// top 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
+	// 也可以是 'top', 'middle', 'bottom'。
+	// 如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐
+	Top string `json:"top,omitempty"`
+	// 图例组件离容器下侧的距离。
+	// bottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
+	// 默认自适应。
+	Bottom string `json:"bottom,omitempty"`
+	// 图例组件离容器左侧的距离。
+	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
+	// 也可以是 'left', 'center', 'right'。
+	// 如果 left 的值为'left', 'center', 'right'，组件会根据相应的位置自动对齐。
+	Left string `json:"left,omitempty"`
+	// 图例组件离容器右侧的距离。
+	// right 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
+	// 默认自适应。
+	Right string `json:"right,omitempty"`
 }
 
 // Legend is the option set for a legend component.
@@ -170,9 +202,33 @@ type Tooltip struct {
 // Toolbox is the option set for a toolbox component.
 type Toolbox struct {
 	// 是否显示工具栏组件
-	Show bool `json:"show"`
+	Show bool `json:"show,omitempty"`
 	// 工具箱功能种类，不支持自定义
-	ToolBoxFeature `json:"feature"`
+	ToolBoxFeature `json:"feature,omitempty"`
+}
+
+// ToolBoxFeature is a feature component under toolbox.
+type ToolBoxFeature struct {
+	// 保存为图片
+	SaveAsImage *ToolBoxFeatureSaveAsImage `json:"saveAsImage"`
+	// 数据区域缩放。目前只支持直角坐标系的缩放
+	DataZoom *ToolBoxFeatureDataZoom `json:"dataZoom"`
+	// 数据视图工具，可以展现当前图表所用的数据，编辑后可以动态更新
+	DataView *ToolBoxFeatureDataView `json:"dataView"`
+	// 配置项还原
+	Restore *ToolBoxFeatureRestore `json:"restore"`
+}
+
+type ToolBoxFeatureSaveAsImage struct {
+}
+
+type ToolBoxFeatureDataZoom struct {
+}
+
+type ToolBoxFeatureDataView struct {
+}
+
+type ToolBoxFeatureRestore struct {
 }
 
 // XAxis is the option set for X axis.
@@ -267,18 +323,6 @@ type YAxis struct {
 	*SplitLine `json:"splitLine,,omitempty"`
 }
 
-// ToolBoxFeature is a feature component under toolbox.
-type ToolBoxFeature struct {
-	// 保存为图片
-	SaveAsImage struct{} `json:"saveAsImage"`
-	// 数据区域缩放。目前只支持直角坐标系的缩放
-	DataZoom struct{} `json:"dataZoom"`
-	// 数据视图工具，可以展现当前图表所用的数据，编辑后可以动态更新
-	DataView struct{} `json:"dataView"`
-	// 配置项还原
-	Restore struct{} `json:"restore"`
-}
-
 // TextStyle is the option set for a text style component.
 type TextStyle struct {
 	// 文字字体颜色
@@ -338,22 +382,6 @@ type VisualMapInRange struct {
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 }
 
-// SplitArea is the option set for a split area.
-type SplitAreaOpts struct {
-	// 是否显示分隔区域
-	Show bool `json:"show"`
-	// 风格区域风格
-	AreaStyle AreaStyle `json:"areaStyle,omitempty"`
-}
-
-// SplitLine is the option set for a split line.
-type SplitLineOpts struct {
-	// 是否显示分隔线
-	Show bool `json:"show"`
-	// 分割线风格
-	LineStyle LineStyle `json:"lineStyle,omitempty"`
-}
-
 // DataZoom is the option set for a zoom component.
 type DataZoom struct {
 	// 缩放类型，可选 "inside", "slider"
@@ -377,42 +405,6 @@ type DataZoom struct {
 	// 但是不建议使用默认值，建议显式指定。
 	// 如果是 number 表示控制一个轴，如果是 Array 表示控制多个轴。
 	YAxisIndex interface{} `json:"yAxisIndex,omitempty"`
-}
-
-// Title is the option set for a title component.
-type Title struct {
-	// 主标题
-	Title string `json:"text,omitempty"`
-	// 主标题样式配置项
-	TitleStyle TextStyle `json:"textStyle,omitempty"`
-	// 副标题
-	Subtitle string `json:"subtext,omitempty"`
-	// 副标题样式配置项
-	SubtitleStyle TextStyle `json:"subtextStyle,omitempty"`
-	// 主标题文本超链接
-	Link string `json:"link,omitempty"`
-	// 指定窗口打开主标题超链接
-	// 'self' 当前窗口打开
-	// 'blank' 新窗口打开
-	Target string `json:"target,omitempty"`
-	// grid 组件离容器上侧的距离。
-	// top 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
-	// 也可以是 'top', 'middle', 'bottom'。
-	// 如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐
-	Top string `json:"top,omitempty"`
-	// 图例组件离容器下侧的距离。
-	// bottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
-	// 默认自适应。
-	Bottom string `json:"bottom,omitempty"`
-	// 图例组件离容器左侧的距离。
-	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
-	// 也可以是 'left', 'center', 'right'。
-	// 如果 left 的值为'left', 'center', 'right'，组件会根据相应的位置自动对齐。
-	Left string `json:"left,omitempty"`
-	// 图例组件离容器右侧的距离。
-	// right 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
-	// 默认自适应。
-	Right string `json:"right,omitempty"`
 }
 
 // SingleAxis is the option set for single axis.

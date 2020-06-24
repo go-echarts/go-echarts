@@ -18,8 +18,8 @@ func NewScatter() *Scatter {
 }
 
 // AddXAxis adds the X axis.
-func (c *Scatter) SetXAxis(xAxis interface{}) *Scatter {
-	c.xAxisData = xAxis
+func (c *Scatter) SetXAxis(x interface{}) *Scatter {
+	c.xAxisData = x
 	return c
 }
 

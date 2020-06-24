@@ -7,12 +7,6 @@ import (
 // GlobalOpts sets tje Global options for charts.
 type GlobalOpts func(bc *BaseConfiguration)
 
-type Charter interface {
-	Type() string
-	GetAssets() opts.Assets
-	Validate()
-}
-
 // BaseConfiguration represents a option set needed by all chart types.
 type BaseConfiguration struct {
 	opts.Initialization    // 图形初始化配置项

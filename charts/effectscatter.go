@@ -9,12 +9,6 @@ type EffectScatter struct {
 
 func (EffectScatter) Type() string { return types.ChartEffectScatter }
 
-// EffectScatterChartOpts is the option set for an effect scatter chart.
-//type EffectScatterChartOpts struct {
-//	XAxisIndex int
-//	YAxisIndex int
-//}
-
 // NewEffectScatter creates a new effect scatter chart.
 func NewEffectScatter() *EffectScatter {
 	chart := &EffectScatter{}
@@ -24,8 +18,8 @@ func NewEffectScatter() *EffectScatter {
 }
 
 // AddXAxis adds the X axis.
-func (c *EffectScatter) SetXAxis(xAxis interface{}) *EffectScatter {
-	c.xAxisData = xAxis
+func (c *EffectScatter) SetXAxis(x interface{}) *EffectScatter {
+	c.xAxisData = x
 	return c
 }
 
