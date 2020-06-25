@@ -24,7 +24,7 @@ func NewRadar() *Radar {
 	return chart
 }
 
-// Add adds new data sets.
+// AddSeries adds new data sets.
 func (c *Radar) AddSeries(name string, data []opts.RadarChartItem, opts ...SeriesOpts) *Radar {
 	series := SingleSeries{Name: name, Type: types.ChartRadar, Data: data}
 	series.configureSeriesOpts(opts...)
@@ -39,6 +39,7 @@ func (c *Radar) SetGlobalOptions(opts ...GlobalOpts) *Radar {
 	return c
 }
 
+// Validate
 func (c *Radar) Validate() {
 	c.Legend.Data = c.legends
 	c.Assets.Validate(c.AssetsHost)

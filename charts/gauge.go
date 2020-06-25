@@ -23,7 +23,7 @@ func NewGauge() *Gauge {
 	return chart
 }
 
-// Add adds new data sets.
+// AddSeries adds new data sets.
 func (c *Gauge) AddSeries(name string, data []opts.GaugeChartItem, opts ...SeriesOpts) *Gauge {
 	series := SingleSeries{Name: name, Type: types.ChartGauge, Data: data}
 	series.configureSeriesOpts(opts...)
@@ -37,11 +37,12 @@ func (c *Gauge) SetGlobalOptions(opts ...GlobalOpts) *Gauge {
 	return c
 }
 
+// Validate
 func (c *Gauge) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }
 
-// Render renders the chart and writes the output to given writers.
+// Render renders the chart and writes the output to given writer.
 func (c *Gauge) Render(w io.Writer) error {
 	c.Validate()
 	return render.ChartRender(c, w)

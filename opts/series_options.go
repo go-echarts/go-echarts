@@ -2,44 +2,50 @@ package opts
 
 // Label contains options for a label text.
 type Label struct {
-	// 是否显示标签
+	// Whether to show label.
 	Show bool `json:"show,omitempty"`
-	// 文字的颜色
+
+	// text color.
+	// If set as 'auto', the color will assigned as visual color, such as series color.
 	Color string `json:"color,omitempty"`
-	// 标签的位置
-	// 通过相对的百分比或者绝对像素值表示标签相对于图形包围盒左上角的位置。示例：
-	// 绝对的像素值	position: [10, 10],
-	// 相对的百分比	position: ["50%", "50%"]
-	// "top", "left", "right", "bottom"
-	// "inside", "insideLeft", "insideRight", "insideTop", "insideBottom"
-	// "insideTopLeft", "insideBottomLeft", "insideTopRight", "insideBottomRight"
+
+	// Label position. Followings are the options:
+	//
+	// [x, y]
+	// Use relative percentage, or absolute pixel values to represent position of label
+	// relative to top-left corner of bounding box. For example:
+	//
+	// Absolute pixel values: position: [10, 10],
+	// Relative percentage: position: ['50%', '50%']
+	//
+	// 'top'
+	// 'left'
+	// 'right'
+	// 'bottom'
+	// 'inside'
+	// 'insideLeft'
+	// 'insideRight'
+	// 'insideTop'
+	// 'insideBottom'
+	// 'insideTopLeft'
+	// 'insideBottomLeft'
+	// 'insideTopRight'
+	// 'insideBottomRight'
 	Position string `json:"position,omitempty"`
-	// 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行。
-	// 1. 字符串模板 模板变量有：
-	// {a}：系列名。
-	// {b}：数据名。
-	// {c}：数据值。
-	// {@xxx}：数据中名为'xxx'的维度的值，如{@product}表示名为'product'`的维度的值。
-	// {@[n]}：数据中维度 n 的值，如{@[3]}` 表示维度 3 的值，从 0 开始计数。
-	// 2, 回调函数
-	// 回调函数格式：
-	// (params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string
-	// 第一个参数 params 是 formatter 需要的数据集。格式如下：
-	// {
-	//    componentType: 'series',
-	//    seriesType: string,	// 系列类型
-	//    seriesIndex: number,	// 系列在传入的 option.series 中的 index
-	//    seriesName: string,	// 系列名称
-	//    name: string,			// 数据名，类目名
-	//    dataIndex: number,	// 数据在传入的 data 数组中的 index
-	//    data: Object,			// 传入的原始数据项
-	//    value: number|Array,	// 传入的数据值
-	//    color: string,		// 数据图形的颜色
-	//    percent: number,		// 饼图的百分比
-	// }
+
+	// Data label formatter, which supports string template and callback function.
+	// In either form, \n is supported to represent a new line.
+	// String template, Model variation includes:
+	//
+	// {a}: series name.
+	// {b}: the name of a data item.
+	// {c}: the value of a data item.
+	// {@xxx}: the value of a dimension named'xxx', for example,{@product}refers the value of'product'` dimension.
+	// {@[n]}: the value of a dimension at the index ofn, for example,{@[3]}` refers the value at dimensions[3].
 	Formatter string `json:"formatter,omitempty"`
 }
 
+// Emphasis
 type Emphasis struct {
 	// 高亮的标签样式
 	Label `json:"label,omitempty"`
@@ -47,7 +53,7 @@ type Emphasis struct {
 	ItemStyle `json:"itemStyle,omitempty"`
 }
 
-// ItemStyleOpts contains styling options for a MarkLine.
+// ItemStyle
 type ItemStyle struct {
 	// 图形的颜色
 	// Kline 图中为 阳线图形颜色
@@ -63,7 +69,7 @@ type ItemStyle struct {
 	Opacity float32 `json:"opacity,omitempty"`
 }
 
-// MLStyleOpts contains styling options for a MarkLine.
+// MarkLineStyle contains styling options for a MarkLine.
 type MarkLineStyle struct {
 	// 图元的图形类别
 	// 可选 "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
@@ -74,7 +80,7 @@ type MarkLineStyle struct {
 	Label `json:"label,omitempty"`
 }
 
-// MPStyleOpts contains styling options for a MarkPoint.
+// MarkPointStyle contains styling options for a MarkPoint.
 type MarkPointStyle struct {
 	// 图元的图形类别
 	// 可选 "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
@@ -85,7 +91,7 @@ type MarkPointStyle struct {
 	Label `json:"label,omitempty"`
 }
 
-// RippleEffectOpts is the option set for the ripple effect.
+// RippleEffect is the option set for the ripple effect.
 type RippleEffect struct {
 	// 动画的周期，秒数
 	// 默认 4(s)
@@ -98,7 +104,7 @@ type RippleEffect struct {
 	BrushType string `json:"brushType,omitempty"`
 }
 
-// LineStyleOpts is the option set for a link style component.
+// LineStyle is the option set for a link style component.
 type LineStyle struct {
 	// 线的颜色
 	Color string `json:"color,omitempty"`
@@ -115,7 +121,7 @@ type LineStyle struct {
 	Curveness float32 `json:"curveness,omitempty"`
 }
 
-// AreaStyleOpts is the option set for an area style component.
+// AreaStyle is the option set for an area style component.
 type AreaStyle struct {
 	// 填充区域的颜色
 	Color string `json:"color,omitempty"`
@@ -123,7 +129,7 @@ type AreaStyle struct {
 	Opacity float32 `json:"opacity,omitempty"`
 }
 
-// MLNameTypeItem represents type for a MarkLine.
+// MarkLineNameTypeItem represents type for a MarkLine.
 type MarkLineNameTypeItem struct {
 	// 标记线名称
 	Name string `json:"name,omitempty"`

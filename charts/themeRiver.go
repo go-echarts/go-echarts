@@ -24,7 +24,7 @@ func NewThemeRiver() *ThemeRiver {
 	return chart
 }
 
-// Add adds new data sets.
+// AddSeries adds new data sets.
 func (c *ThemeRiver) AddSeries(name string, data []opts.ThemeRiverChartItem, opts ...SeriesOpts) *ThemeRiver {
 	series := SingleSeries{Name: name, Type: types.ChartThemeRiver, Data: data}
 	series.configureSeriesOpts(opts...)
@@ -38,6 +38,7 @@ func (c *ThemeRiver) SetGlobalOptions(opts ...GlobalOpts) *ThemeRiver {
 	return c
 }
 
+// Validate
 func (c *ThemeRiver) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

@@ -32,7 +32,7 @@ type Initialization struct {
 func (opt *Initialization) Validate() {
 	setDefaultValue(opt)
 	if opt.ChartID == "" {
-		opt.ChartID = genChartID()
+		opt.ChartID = generateUniqueID()
 	}
 }
 
@@ -74,7 +74,7 @@ const (
 var seed = rand.NewSource(time.Now().UnixNano())
 
 // 生成唯一且随机的图表 ID
-func genChartID() string {
+func generateUniqueID() string {
 	b := make([]byte, chartIDSize)
 	for i, cache, remain := chartIDSize-1, seed.Int63(), letterIdxMax; i >= 0; {
 		if remain == 0 {
@@ -92,37 +92,54 @@ func genChartID() string {
 
 // Title is the option set for a title component.
 type Title struct {
-	// 主标题
+	// The main title text, supporting for \n for newlines.
 	Title string `json:"text,omitempty"`
-	// 主标题样式配置项
+
+	// TextStyle of the main title.
 	TitleStyle TextStyle `json:"textStyle,omitempty"`
-	// 副标题
-	Subtitle string `json:"subtext,omitempty"`
-	// 副标题样式配置项
-	SubtitleStyle TextStyle `json:"subtextStyle,omitempty"`
-	// 主标题文本超链接
+
+	// The hyper link of main title text.
 	Link string `json:"link,omitempty"`
-	// 指定窗口打开主标题超链接
-	// 'self' 当前窗口打开
-	// 'blank' 新窗口打开
+
+	// Subtitle text, supporting for \n for newlines.
+	Subtitle string `json:"subtext,omitempty"`
+
+	// TextStyle of the sub title.
+	SubtitleStyle TextStyle `json:"subtextStyle,omitempty"`
+
+	// The hyper link of sub title text.
+	SubLink string `json:"sublink,omitempty"`
+
+	// Open the hyper link of main title in specified tab.
+	// options:
+	// 'self' opening it in current tab
+	// 'blank' opening it in a new tab
 	Target string `json:"target,omitempty"`
-	// grid 组件离容器上侧的距离。
-	// top 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
-	// 也可以是 'top', 'middle', 'bottom'。
-	// 如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐
+
+	// Distance between title component and the top side of the container.
+	// top value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
+	// If the left value is set to be 'top', 'middle', or 'bottom',
+	// then the component will be aligned automatically based on position.
 	Top string `json:"top,omitempty"`
-	// 图例组件离容器下侧的距离。
-	// bottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
-	// 默认自适应。
+
+	// Distance between title component and the bottom side of the container.
+	// bottom value can be instant pixel value like 20;
+	// it can also be a percentage value relative to container width like '20%'.
+	// Adaptive by default.
 	Bottom string `json:"bottom,omitempty"`
-	// 图例组件离容器左侧的距离。
-	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
-	// 也可以是 'left', 'center', 'right'。
-	// 如果 left 的值为'left', 'center', 'right'，组件会根据相应的位置自动对齐。
+
+	// Distance between title component and the left side of the container.
+	// left value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
+	// If the left value is set to be 'left', 'center', or 'right',
+	// then the component will be aligned automatically based on position.
 	Left string `json:"left,omitempty"`
-	// 图例组件离容器右侧的距离。
-	// right 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
-	// 默认自适应。
+
+	// Distance between title component and the right side of the container.
+	// right value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'.
+	//Adaptive by default.
 	Right string `json:"right,omitempty"`
 }
 
@@ -233,34 +250,49 @@ type ToolBoxFeatureRestore struct {
 
 // XAxis is the option set for X axis.
 type XAxis struct {
-	// X 轴名称
+	// Name of axis.
 	Name string `json:"name,omitempty"`
-	// X 坐标轴类型，可选：
-	// "value"：数值轴，适用于连续数据。
-	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-	// "time" 时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，
-	// 在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
-	// "log" 对数轴。适用于对数数据。
+
+	// Type of axis.
+	// Option:
+	// * 'value': Numerical axis, suitable for continuous data.
+	// * 'category': Category axis, suitable for discrete category data.
+	//   Category data can be auto retrieved from series.data or dataset.source,
+	//   or can be specified via xAxis.data.
+	// * 'time' Time axis, suitable for continuous time series data. As compared to value axis,
+	//   it has a better formatting for time and a different tick calculation method. For example,
+	//   it decides to use month, week, day or hour for tick based on the range of span.
+	// * 'log' Log axis, suitable for log data.
 	Type string `json:"type,omitempty"`
-	// 是否显示 X 轴
+
+	// Set this to false to prevent the axis from showing.
 	Show bool `json:"show,omitempty"`
-	// X 轴数据项
+
+	// Category data, available in type: 'category' axis.
 	Data interface{} `json:"data,omitempty"`
-	// X 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，
-	// 最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
-	// 在类目轴中无效
+
+	// Number of segments that the axis is split into. Note that this number serves only as a
+	// recommendation, and the true segments may be adjusted based on readability.
+	// This is unavailable for category axis.
 	SplitNumber int `json:"splitNumber,omitempty"`
-	// 只在数值轴中（type: 'value'）有效。
-	// 是否是脱离 0 值比例。设置成 true 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。
-	// 在设置 min 和 max 之后该配置项无效
-	// 默认为 false
+
+	// It is available only in numerical axis, i.e., type: 'value'.
+	// It specifies whether not to contain zero position of axis compulsively.
+	// When it is set to be true, the axis may not contain zero position,
+	// which is useful in the scatter chart for both value axes.
+	// This configuration item is unavailable when the min and max are set.
 	Scale bool `json:"scale,omitempty"`
-	// X 坐标轴刻度最小值
-	// 可以设置成特殊值 'dataMin'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
+
+	// The minimum value of axis.
+	// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
+	// It will be automatically computed to make sure axis tick is equally distributed when not set.
 	Min interface{} `json:"min,omitempty"`
-	// X 坐标轴刻度最大值
-	// 可以设置成特殊值 'dataMax'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
+
+	// The maximum value of axis.
+	// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
+	// It will be automatically computed to make sure axis tick is equally distributed when not set.
 	Max interface{} `json:"max,omitempty"`
+
 	// X 轴所在的 grid 的索引
 	// 默认 0
 	GridIndex int `json:"gridIndex,omitempty"`
@@ -272,17 +304,24 @@ type XAxis struct {
 
 // YAxis is the option set for Y axis.
 type YAxis struct {
-	// Y 轴名称
+	// Name of axis.
 	Name string `json:"name,omitempty"`
-	// Y 坐标轴类型，可选：
-	// "value"：数值轴，适用于连续数据。
-	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-	// "time" 时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，
-	// 在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
-	// "log" 对数轴。适用于对数数据。
+
+	// Type of axis.
+	// Option:
+	// * 'value': Numerical axis, suitable for continuous data.
+	// * 'category': Category axis, suitable for discrete category data.
+	//   Category data can be auto retrieved from series.data or dataset.source,
+	//   or can be specified via xAxis.data.
+	// * 'time' Time axis, suitable for continuous time series data. As compared to value axis,
+	//   it has a better formatting for time and a different tick calculation method. For example,
+	//   it decides to use month, week, day or hour for tick based on the range of span.
+	// * 'log' Log axis, suitable for log data.
 	Type string `json:"type,omitempty"`
-	// 是否显示 Y 轴
+
+	// Set this to false to prevent the axis from showing.
 	Show bool `json:"show,omitempty"`
+
 	// 刻度标签的内容格式器，支持字符串模板和回调函数两种形式
 	// 1.使用字符串模板，模板变量为刻度默认标签 {value}
 	// formatter: '{value} kg'
@@ -564,7 +603,7 @@ type Router struct {
 	Text string // 路由显示文字
 }
 
-// XAxis3DOpts contains options for X axis in the 3D coordinate.
+// XAxis3D contains options for X axis in the 3D coordinate.
 type XAxis3D struct {
 	// 是否显示 3D X 轴
 	Show bool `json:"show,omitempty"`

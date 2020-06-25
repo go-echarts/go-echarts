@@ -17,13 +17,13 @@ func NewScatter() *Scatter {
 	return chart
 }
 
-// AddXAxis adds the X axis.
+// SetXAxis adds the X axis.
 func (c *Scatter) SetXAxis(x interface{}) *Scatter {
 	c.xAxisData = x
 	return c
 }
 
-// AddYAxis adds the Y axis.
+// AddSeries adds the Y axis.
 func (c *Scatter) AddSeries(name string, yAxis interface{}, opts ...SeriesOpts) *Scatter {
 	series := SingleSeries{Name: name, Type: types.ChartScatter, Data: yAxis}
 	series.configureSeriesOpts(opts...)

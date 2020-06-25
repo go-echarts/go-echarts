@@ -23,7 +23,7 @@ func NewFunnel() *Funnel {
 	return chart
 }
 
-// Add adds new data sets.
+// AddSeries adds new data sets.
 func (c *Funnel) AddSeries(name string, data []opts.FunnelChartItem, opts ...SeriesOpts) *Funnel {
 	series := SingleSeries{Name: name, Type: types.ChartFunnel, Data: data}
 	series.configureSeriesOpts(opts...)
@@ -37,6 +37,7 @@ func (c *Funnel) SetGlobalOptions(opts ...GlobalOpts) *Funnel {
 	return c
 }
 
+// Validate
 func (c *Funnel) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

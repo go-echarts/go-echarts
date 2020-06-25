@@ -39,7 +39,7 @@ func NewGeo(mapType string) *Geo {
 	return chart
 }
 
-// Add adds new data sets.
+// AddSeries adds new data sets.
 // geoType 是 Geo 图形的种类，有以下三种类型可选
 // common.ChartType.Scatter
 // common.ChartType.EffectScatter
@@ -72,6 +72,7 @@ func (c *Geo) SetGlobalOptions(opts ...GlobalOpts) *Geo {
 	return c
 }
 
+// Validate
 func (c *Geo) Validate() {
 	if c.Tooltip.Formatter == "" {
 		c.Tooltip.Formatter = opts.FuncOpts(geoFormatter)

@@ -1,6 +1,9 @@
 package charts
 
-import "github.com/go-echarts/go-echarts/types"
+import (
+	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/types"
+)
 
 // BoxPlot represents a boxplot chart.
 type BoxPlot struct {
@@ -24,8 +27,8 @@ func (c *BoxPlot) SetXAxis(x interface{}) *BoxPlot {
 }
 
 // AddSeries adds the Y axis.
-func (c *BoxPlot) AddSeries(name string, yAxis interface{}, opts ...SeriesOpts) *BoxPlot {
-	series := SingleSeries{Name: name, Type: types.ChartBoxPlot, Data: yAxis}
+func (c *BoxPlot) AddSeries(name string, data []opts.BoxPlotChartItem, opts ...SeriesOpts) *BoxPlot {
+	series := SingleSeries{Name: name, Type: types.ChartBoxPlot, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c

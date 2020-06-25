@@ -32,6 +32,7 @@ func (xy *XYAxis) ExtendYAxis(yAxis ...opts.YAxis) {
 	xy.YAxisList = append(xy.YAxisList, yAxis...)
 }
 
+// WithXAxisOpts
 func WithXAxisOpts(opt opts.XAxis, index ...int) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		if len(index) == 0 {
@@ -43,6 +44,7 @@ func WithXAxisOpts(opt opts.XAxis, index ...int) GlobalOpts {
 	}
 }
 
+// WithYAxisOpts
 func WithYAxisOpts(opt opts.YAxis, index ...int) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		if len(index) == 0 {

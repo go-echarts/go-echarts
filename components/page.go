@@ -8,6 +8,7 @@ import (
 	"github.com/go-echarts/go-echarts/types"
 )
 
+// Charter
 type Charter interface {
 	Type() string
 	GetAssets() opts.Assets
@@ -33,7 +34,7 @@ func NewPage() *Page {
 	return page
 }
 
-// Add adds new charts to the page.
+// AddCharts adds new charts to the page.
 func (page *Page) AddCharts(charts ...Charter) *Page {
 	for i := 0; i < len(charts); i++ {
 		assets := charts[i].GetAssets()
@@ -50,7 +51,7 @@ func (page *Page) AddCharts(charts ...Charter) *Page {
 	return page
 }
 
-// Render renders the chart and writes the output to given writers.
+// Render renders the chart and writes the output to given writer.
 func (page *Page) Render(w io.Writer) error {
 	page.Initialization.Validate()
 	page.Assets.Validate(page.AssetsHost)

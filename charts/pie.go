@@ -23,7 +23,7 @@ func NewPie() *Pie {
 	return chart
 }
 
-// Add adds new data sets.
+// AddSeries adds new data sets.
 func (c *Pie) AddSeries(name string, data []opts.PieChartItem, opts ...SeriesOpts) *Pie {
 	series := SingleSeries{Name: name, Type: types.ChartPie, Data: data}
 	series.configureSeriesOpts(opts...)
@@ -37,6 +37,7 @@ func (c *Pie) SetGlobalOptions(opts ...GlobalOpts) *Pie {
 	return c
 }
 
+// Validate
 func (c *Pie) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

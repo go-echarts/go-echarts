@@ -48,6 +48,7 @@ func (c *Map) SetGlobalOptions(opts ...GlobalOpts) *Map {
 	return c
 }
 
+// Validate
 func (c *Map) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

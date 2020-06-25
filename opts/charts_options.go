@@ -2,36 +2,77 @@ package opts
 
 // BarChart
 type BarChart struct {
-	// 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
+	// Name of stack. On the same category axis, the series with the
+	// same stack name would be put on top of each other.
 	Stack string
-	// 不同系列的柱间距离，为百分比（如 "30%"，表示柱子宽度的 30%）。
-	// 如果想要两个系列的柱子重叠，可以设置 barGap 为 "-100%"。这在用柱子做背景的时候有用。
-	// 在同一坐标系上，此属性会被多个 "bar" 系列共享。
-	// 此属性应设置于此坐标系中最后一个 "bar" 系列上才会生效，并且是对此坐标系中所有 "bar" 系列生效
-	// 默认 "30%"
+
+	// The gap between bars between different series, is a percent value like '30%',
+	// which means 30% of the bar width.
+	// Set barGap as '-100%' can overlap bars that belong to different series,
+	// which is useful when making a series of bar be background.
+	// In a single coordinate system, this attribute is shared by multiple 'bar' series.
+	// This attribute should be set on the last 'bar' series in the coordinate system,
+	// then it will be adopted by all 'bar' series in the coordinate system.
 	BarGap string
-	// 同一系列的柱间距离，默认为类目间距的 20%，可设固定值
-	// 在同一坐标系上，此属性会被多个 "bar" 系列共享。
-	// 此属性应设置于此坐标系中最后一个 "bar" 系列上才会生效，并且是对此坐标系中所有 "bar" 系列生效
+
+	// The bar gap of a single series, defaults to be 20% of the category gap,
+	// can be set as a fixed value.
+	// In a single coordinate system, this attribute is shared by multiple 'bar' series.
+	// This attribute should be set on the last 'bar' series in the coordinate system,
+	// then it will be adopted by all 'bar' series in the coordinate system.
 	BarCategoryGap string
-	// 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
+
+	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
 	XAxisIndex int
-	// 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
+
+	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
 	YAxisIndex int
 }
 
 // BarChartItem
 type BarChartItem struct {
-	Name       string      `json:"name,omitempty"`
-	Value      interface{} `json:"value,omitempty"`
-	*Label     `json:"label,omitempty"`
+	// The name of data item.
+	Name string `json:"name,omitempty"`
+
+	// The value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+
+	// The style setting of the text label in a single bar.
+	*Label `json:"label,omitempty"`
+
+	// ItemStyle settings in this series data.
 	*ItemStyle `json:"itemStyle,omitempty"`
-	*Tooltip   `json:"tooltip,omitempty"`
+
+	// Tooltip settings in this series data.
+	*Tooltip `json:"tooltip,omitempty"`
 }
 
+// BoxPlotChartItem
+type BoxPlotChartItem struct {
+	// The name of data item.
+	Name string `json:"name,omitempty"`
+
+	// The value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+
+	// The style setting of the text label in a single bar.
+	*Label `json:"label,omitempty"`
+
+	// ItemStyle settings in this series data.
+	*ItemStyle `json:"itemStyle,omitempty"`
+
+	// Emphasis settings in this series data.
+	*Emphasis `json:"emphasis,omitempty"`
+
+	// Tooltip settings in this series data.
+	*Tooltip `json:"tooltip,omitempty"`
+}
+
+// FunnelChartItem
 type FunnelChartItem struct {
 }
 
+// GaugeChartItem
 type GaugeChartItem struct {
 }
 
@@ -52,7 +93,7 @@ type GaugeChartItem struct {
 //	Categories []GraphCategory
 //}
 
-// HeatMapOpts is the option set for a heatmap chart.
+// HeatMapChart is the option set for a heatmap chart.
 type HeatMapChart struct {
 	//使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
 	XAxisIndex int
@@ -60,7 +101,7 @@ type HeatMapChart struct {
 	YAxisIndex int
 }
 
-// LineOpts is the options set for a line chart.
+// LineChart is the options set for a line chart.
 type LineChart struct {
 	// 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
 	Stack string
@@ -76,9 +117,11 @@ type LineChart struct {
 	ConnectNulls bool
 }
 
+// LineChartItem
 type LineChartItem struct {
 }
 
+// LiquidChart
 type LiquidChart struct {
 	// 水球图形状，可选
 	// "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
@@ -89,10 +132,11 @@ type LiquidChart struct {
 	IsWaveAnimation bool
 }
 
+// LiquidChartItem
 type LiquidChartItem struct {
 }
 
-// PieOpts is the option set for a pie chart.
+// PieChart is the option set for a pie chart.
 type PieChart struct {
 	// 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
 	// 1."radius": 扇区圆心角展现数据的百分比，半径展现数据的大小。
@@ -114,6 +158,7 @@ type PieChart struct {
 	Radius interface{}
 }
 
+// PieChartItem
 type PieChartItem struct {
 	Name       string      `json:"name"`
 	Value      interface{} `json:"value"`
@@ -123,7 +168,7 @@ type PieChartItem struct {
 	*Tooltip   `json:"tooltip,omitempty"`
 }
 
-// ScatterOpts is the option set for a scatter chart.
+// ScatterChart is the option set for a scatter chart.
 type ScatterChart struct {
 	// 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
 	XAxisIndex int
@@ -131,12 +176,12 @@ type ScatterChart struct {
 	YAxisIndex int
 }
 
-// Bar3DOpts is the option set for a 3D bar chart.
+// Bar3DChart is the option set for a 3D bar chart.
 type Bar3DChart struct {
 	Shading string
 }
 
-// WordCloudOpts is the option set for a word cloud chart.
+// WordCloudChart is the option set for a word cloud chart.
 type WordCloudChart struct {
 	// shape of WordCloud
 	// Optional: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
@@ -165,8 +210,10 @@ type SankeyNode struct {
 	Value string `json:"value,omitempty"`
 }
 
+// ThemeRiverChartItem
 type ThemeRiverChartItem struct {
 }
 
+// RadarChartItem
 type RadarChartItem struct {
 }

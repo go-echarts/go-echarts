@@ -30,7 +30,7 @@ func NewWordCloud() *WordCloud {
 	return chart
 }
 
-// Add adds new data sets.
+// AddSeries adds new data sets.
 func (c *WordCloud) AddSeries(name string, data map[string]interface{}, opts ...SeriesOpts) *WordCloud {
 	nvs := make([]types.NameValueItem, 0)
 	for k, v := range data {
@@ -59,6 +59,7 @@ func (c *WordCloud) SetGlobalOptions(opts ...GlobalOpts) *WordCloud {
 	return c
 }
 
+// Validate
 func (c *WordCloud) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }
