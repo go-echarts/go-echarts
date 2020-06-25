@@ -27,7 +27,7 @@ func (c *BoxPlot) SetXAxis(x interface{}) *BoxPlot {
 }
 
 // AddSeries adds the Y axis.
-func (c *BoxPlot) AddSeries(name string, data []opts.BoxPlotChartItem, opts ...SeriesOpts) *BoxPlot {
+func (c *BoxPlot) AddSeries(name string, data []opts.BoxPlotData, opts ...SeriesOpts) *BoxPlot {
 	series := SingleSeries{Name: name, Type: types.ChartBoxPlot, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)

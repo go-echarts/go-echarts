@@ -25,7 +25,7 @@ func NewRadar() *Radar {
 }
 
 // AddSeries adds new data sets.
-func (c *Radar) AddSeries(name string, data []opts.RadarChartItem, opts ...SeriesOpts) *Radar {
+func (c *Radar) AddSeries(name string, data []opts.RadarData, opts ...SeriesOpts) *Radar {
 	series := SingleSeries{Name: name, Type: types.ChartRadar, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)

@@ -24,7 +24,7 @@ func NewLiquid() *Liquid {
 }
 
 // Add adds new data sets.
-func (c *Liquid) AddSeries(name string, data []opts.LiquidChartItem, opts ...SeriesOpts) *Liquid {
+func (c *Liquid) AddSeries(name string, data []opts.LiquidData, opts ...SeriesOpts) *Liquid {
 	series := SingleSeries{Name: name, Type: types.ChartLiquid, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)

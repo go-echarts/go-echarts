@@ -44,12 +44,12 @@ func NewGeo(mapType string) *Geo {
 // common.ChartType.Scatter
 // common.ChartType.EffectScatter
 // common.ChartType.HeatMap
-func (c *Geo) AddSeries(name, geoType string, data map[string]float32, opts ...SeriesOpts) *Geo {
-	nvs := make([]types.NameValueItem, 0)
-	for k, v := range data {
-		nvs = append(nvs, types.NameValueItem{Name: k, Value: c.extendValue(k, v)})
-	}
-	series := SingleSeries{Name: name, Type: geoType, Data: nvs, CoordSystem: types.ChartGeo}
+func (c *Geo) AddSeries(name, geoType string, data opts.GeoData, opts ...SeriesOpts) *Geo {
+	//nvs := make([]types.NameValueItem, 0)
+	//for k, v := range data {
+	//	nvs = append(nvs, types.NameValueItem{Name: k, Value: c.extendValue(k, v)})
+	//}
+	series := SingleSeries{Name: name, Type: geoType, Data: data, CoordSystem: types.ChartGeo}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c

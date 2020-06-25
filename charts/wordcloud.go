@@ -3,6 +3,7 @@ package charts
 import (
 	"io"
 
+	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
@@ -31,12 +32,8 @@ func NewWordCloud() *WordCloud {
 }
 
 // AddSeries adds new data sets.
-func (c *WordCloud) AddSeries(name string, data map[string]interface{}, opts ...SeriesOpts) *WordCloud {
-	nvs := make([]types.NameValueItem, 0)
-	for k, v := range data {
-		nvs = append(nvs, types.NameValueItem{Name: k, Value: v})
-	}
-	series := SingleSeries{Name: name, Type: types.ChartWordCloud, Data: nvs}
+func (c *WordCloud) AddSeries(name string, data []opts.WordCloudData, opts ...SeriesOpts) *WordCloud {
+	series := SingleSeries{Name: name, Type: types.ChartWordCloud, Data: data}
 	series.configureSeriesOpts(opts...)
 
 	// set default random color for WordCloud chart

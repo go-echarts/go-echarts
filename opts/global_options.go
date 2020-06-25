@@ -96,7 +96,7 @@ type Title struct {
 	Title string `json:"text,omitempty"`
 
 	// TextStyle of the main title.
-	TitleStyle TextStyle `json:"textStyle,omitempty"`
+	TitleStyle *TextStyle `json:"textStyle,omitempty"`
 
 	// The hyper link of main title text.
 	Link string `json:"link,omitempty"`
@@ -105,7 +105,7 @@ type Title struct {
 	Subtitle string `json:"subtext,omitempty"`
 
 	// TextStyle of the sub title.
-	SubtitleStyle TextStyle `json:"subtextStyle,omitempty"`
+	SubtitleStyle *TextStyle `json:"subtextStyle,omitempty"`
 
 	// The hyper link of sub title text.
 	SubLink string `json:"sublink,omitempty"`
@@ -169,7 +169,7 @@ type Legend struct {
 	// 除此之外也可以设成 "single" 或者 "multiple" 使用单选或者多选模式。默认 "multiple"
 	SelectedMode string `json:"selectedMode,omitempty"`
 	// 图例的公用文本样式
-	TextStyle TextStyle `json:"textStyle,omitempty"`
+	TextStyle *TextStyle `json:"textStyle,omitempty"`
 }
 
 // Tooltip is the option set for a tooltip component.
@@ -221,19 +221,19 @@ type Toolbox struct {
 	// 是否显示工具栏组件
 	Show bool `json:"show,omitempty"`
 	// 工具箱功能种类，不支持自定义
-	ToolBoxFeature `json:"feature,omitempty"`
+	Feature *ToolBoxFeature `json:"feature,omitempty"`
 }
 
 // ToolBoxFeature is a feature component under toolbox.
 type ToolBoxFeature struct {
 	// 保存为图片
-	SaveAsImage *ToolBoxFeatureSaveAsImage `json:"saveAsImage"`
+	SaveAsImage *ToolBoxFeatureSaveAsImage `json:"saveAsImage,omitempty"`
 	// 数据区域缩放。目前只支持直角坐标系的缩放
-	DataZoom *ToolBoxFeatureDataZoom `json:"dataZoom"`
+	DataZoom *ToolBoxFeatureDataZoom `json:"dataZoom,omitempty"`
 	// 数据视图工具，可以展现当前图表所用的数据，编辑后可以动态更新
-	DataView *ToolBoxFeatureDataView `json:"dataView"`
+	DataView *ToolBoxFeatureDataView `json:"dataView,omitempty"`
 	// 配置项还原
-	Restore *ToolBoxFeatureRestore `json:"restore"`
+	Restore *ToolBoxFeatureRestore `json:"restore,omitempty"`
 }
 
 type ToolBoxFeatureSaveAsImage struct {
@@ -335,7 +335,7 @@ type YAxis struct {
 	//    }
 	//    return texts.join('/');
 	// }
-	AxisLabel Label `json:"axisLabel,omitempty"`
+	AxisLabel *Label `json:"axisLabel,omitempty"`
 	// Y 轴数据项
 	Data interface{} `json:"data,omitempty"`
 	// Y 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，
@@ -407,7 +407,7 @@ type VisualMap struct {
 	// 两端的文本，如 ['High', 'Low']
 	Text []string `json:"text,omitempty"`
 	// 定义在选中范围中的视觉元素
-	InRange VisualMapInRange `json:"inRange,omitempty"`
+	InRange *VisualMapInRange `json:"inRange,omitempty"`
 }
 
 // VisualMapInRange is a visual map instance in a range.
@@ -504,9 +504,9 @@ type RadarComponent struct {
 	// 指示器轴的分割段数。默认 5
 	SplitNumber int `json:"splitNumber,omitempty"`
 	// 坐标轴在 grid 区域中的分隔区域
-	SplitArea SplitArea `json:"splitArea,omitempty"`
+	*SplitArea `json:"splitArea,omitempty"`
 	// 坐标轴在 grid 区域中的分隔线
-	SplitLine SplitLine `json:"splitLine,omitempty"`
+	*SplitLine `json:"splitLine,omitempty"`
 }
 
 // ParallelComponent is the option set for parallel component.

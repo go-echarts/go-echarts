@@ -1,6 +1,9 @@
 package charts
 
-import "github.com/go-echarts/go-echarts/types"
+import (
+	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/types"
+)
 
 // Scatter represents a scatter chart.
 type Scatter struct {
@@ -24,8 +27,8 @@ func (c *Scatter) SetXAxis(x interface{}) *Scatter {
 }
 
 // AddSeries adds the Y axis.
-func (c *Scatter) AddSeries(name string, yAxis interface{}, opts ...SeriesOpts) *Scatter {
-	series := SingleSeries{Name: name, Type: types.ChartScatter, Data: yAxis}
+func (c *Scatter) AddSeries(name string, data []opts.ScatterData, opts ...SeriesOpts) *Scatter {
+	series := SingleSeries{Name: name, Type: types.ChartScatter, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c

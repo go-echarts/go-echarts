@@ -1,6 +1,9 @@
 package charts
 
-import "github.com/go-echarts/go-echarts/types"
+import (
+	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/types"
+)
 
 // HeatMap represents a heatmap chart.
 type HeatMap struct {
@@ -24,8 +27,8 @@ func (c *HeatMap) SetXAxis(x interface{}) *HeatMap {
 }
 
 // AddSeries adds the Y axis.
-func (c *HeatMap) AddSeries(name string, yAxis interface{}, opts ...SeriesOpts) *HeatMap {
-	series := SingleSeries{Name: name, Type: types.ChartHeatMap, Data: yAxis}
+func (c *HeatMap) AddSeries(name string, data []opts.HeatMapData, opts ...SeriesOpts) *HeatMap {
+	series := SingleSeries{Name: name, Type: types.ChartHeatMap, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c

@@ -25,7 +25,7 @@ func NewThemeRiver() *ThemeRiver {
 }
 
 // AddSeries adds new data sets.
-func (c *ThemeRiver) AddSeries(name string, data []opts.ThemeRiverChartItem, opts ...SeriesOpts) *ThemeRiver {
+func (c *ThemeRiver) AddSeries(name string, data []opts.ThemeRiverData, opts ...SeriesOpts) *ThemeRiver {
 	series := SingleSeries{Name: name, Type: types.ChartThemeRiver, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)

@@ -13,8 +13,8 @@ type Overlaper interface {
 
 // XYAxis represent the X and Y axis in the rectangular coordinate.
 type XYAxis struct {
-	XAxisList []opts.XAxis
-	YAxisList []opts.YAxis
+	XAxisList []opts.XAxis `json:"xaxis"`
+	YAxisList []opts.YAxis `json:"yaxis"`
 }
 
 func (xy *XYAxis) initXYAxis() {

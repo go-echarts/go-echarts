@@ -30,7 +30,7 @@ type BarChart struct {
 }
 
 // BarChartItem
-type BarChartItem struct {
+type BarData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
 
@@ -48,7 +48,7 @@ type BarChartItem struct {
 }
 
 // BoxPlotChartItem
-type BoxPlotChartItem struct {
+type BoxPlotData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
 
@@ -69,11 +69,11 @@ type BoxPlotChartItem struct {
 }
 
 // FunnelChartItem
-type FunnelChartItem struct {
+type FunnelData struct {
 }
 
 // GaugeChartItem
-type GaugeChartItem struct {
+type GaugeData struct {
 }
 
 // GraphOpts is the option set for graph chart.
@@ -118,7 +118,7 @@ type LineChart struct {
 }
 
 // LineChartItem
-type LineChartItem struct {
+type LineData struct {
 }
 
 // LiquidChart
@@ -133,7 +133,7 @@ type LiquidChart struct {
 }
 
 // LiquidChartItem
-type LiquidChartItem struct {
+type LiquidData struct {
 }
 
 // PieChart is the option set for a pie chart.
@@ -159,7 +159,7 @@ type PieChart struct {
 }
 
 // PieChartItem
-type PieChartItem struct {
+type PieData struct {
 	Name       string      `json:"name"`
 	Value      interface{} `json:"value"`
 	Selected   bool        `json:"selected,omitempty"`
@@ -211,9 +211,30 @@ type SankeyNode struct {
 }
 
 // ThemeRiverChartItem
-type ThemeRiverChartItem struct {
+type ThemeRiverData struct {
 }
 
 // RadarChartItem
-type RadarChartItem struct {
+type RadarData struct {
+}
+
+type KlineData struct {
+}
+
+type ScatterData struct {
+}
+
+type MapData struct {
+}
+
+type HeatMapData struct {
+}
+
+type WordCloudData struct {
+}
+
+type GeoData struct {
+}
+
+type EffectScatterData struct {
 }

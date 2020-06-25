@@ -33,7 +33,7 @@ func (c *Bar) SetXAxis(x interface{}) *Bar {
 }
 
 // AddSeries adds the new series.
-func (c *Bar) AddSeries(name string, data []opts.BarChartItem, opts ...SeriesOpts) *Bar {
+func (c *Bar) AddSeries(name string, data []opts.BarData, opts ...SeriesOpts) *Bar {
 	series := SingleSeries{Name: name, Type: types.ChartBar, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)

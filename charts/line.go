@@ -28,7 +28,7 @@ func (c *Line) SetXAxis(x interface{}) *Line {
 }
 
 // AddSeries adds the Y axis.
-func (c *Line) AddSeries(name string, data []opts.LineChartItem, opts ...SeriesOpts) *Line {
+func (c *Line) AddSeries(name string, data []opts.LineData, opts ...SeriesOpts) *Line {
 	series := SingleSeries{Name: name, Type: types.ChartLine, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)

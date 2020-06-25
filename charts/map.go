@@ -4,6 +4,7 @@ import (
 	"io"
 
 	"github.com/go-echarts/go-echarts/datasets"
+	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
@@ -31,12 +32,8 @@ func (c *Map) RegisterMapType(mapType string) {
 }
 
 // Add adds new data sets.
-func (c *Map) AddSeries(name string, data map[string]float32, opts ...SeriesOpts) *Map {
-	nvs := make([]types.NameValueItem, 0)
-	for k, v := range data {
-		nvs = append(nvs, types.NameValueItem{Name: k, Value: v})
-	}
-	series := SingleSeries{Name: name, Type: types.ChartMap, MapType: c.mapType, Data: nvs}
+func (c *Map) AddSeries(name string, data []opts.MapData, opts ...SeriesOpts) *Map {
+	series := SingleSeries{Name: name, Type: types.ChartMap, MapType: c.mapType, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c

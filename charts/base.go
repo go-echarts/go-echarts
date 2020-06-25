@@ -9,21 +9,21 @@ type GlobalOpts func(bc *BaseConfiguration)
 
 // BaseConfiguration represents a option set needed by all chart types.
 type BaseConfiguration struct {
-	opts.Initialization    // 图形初始化配置项
-	opts.Legend            // 图例组件配置项
-	opts.Tooltip           // 提示框组件配置项
-	opts.Toolbox           // 工具箱组件配置项
-	opts.Title             // 标题组件配置项
-	opts.Assets            // 静态资源配置项
+	opts.Initialization    `json:"-"`
+	opts.Legend            `json:"legend"`
+	opts.Tooltip           `json:"tooltip"`
+	opts.Toolbox           `json:"toolbox"`
+	opts.Title             `json:"title"`
+	opts.Assets            `json:"-"`
 	opts.RadarComponent    // 雷达图组件配置项
 	opts.ParallelComponent // 平行坐标系组件配置项
 	opts.JSFunctions       // JS 函数列表
 	opts.SingleAxis        // 单轴组件
 
-	HasXYAxis bool // 图形是否拥有 XY 轴
+	HasXYAxis bool `json:"-"`
 	XYAxis
 
-	Has3DAxis bool // 图形是否拥有 3D XYZ 轴
+	Has3DAxis bool `json:"-"`
 	opts.XAxis3D
 	opts.YAxis3D
 	opts.ZAxis3D
@@ -33,15 +33,15 @@ type BaseConfiguration struct {
 	Colors      []string // 全局颜色列表
 	appendColor []string // 追加全局颜色列表
 
-	Routers          []opts.Router       // 路由列表
-	DataZoomList     []opts.DataZoom     // 区域缩放组件配置项列表
-	VisualMapList    []opts.VisualMap    // 视觉映射组件配置项列表
+	Routers          []opts.Router       `json:"-"`
+	DataZoomList     []opts.DataZoom     `json:"datazoom,omitempty"`
+	VisualMapList    []opts.VisualMap    `json:"visualmap,omitempty"`
 	ParallelAxisList []opts.ParallelAxis // 平行坐标系中的坐标轴组件配置项
 
-	HasGeo        bool // 图形是否拥有 Geo 组件
-	HasRadar      bool // 图形是否拥有 Radar 组件
-	HasParallel   bool // 图形是否拥有 Parallel 组件
-	HasSingleAxis bool // 图形是否拥有 singleAxis 组件
+	HasGeo        bool `json:"-"`
+	HasRadar      bool `json:"-"`
+	HasParallel   bool `json:"-"`
+	HasSingleAxis bool `json:"-"`
 }
 
 func (bc *BaseConfiguration) GetAssets() opts.Assets {
