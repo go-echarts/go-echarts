@@ -91,7 +91,7 @@ func removeNotReplace(unusedObj []string, removeStr ...string) []string {
 	return res
 }
 
-func Write(chart interface{}, mod Mod, w io.Writer, removeStr ...string) error {
+func render(chart interface{}, mod Mod, w io.Writer, removeStr ...string) error {
 	var b bytes.Buffer
 	if err := renderChart(chart, &b, mod); err != nil {
 		return err
@@ -99,4 +99,12 @@ func Write(chart interface{}, mod Mod, w io.Writer, removeStr ...string) error {
 	res := replaceRender(b, removeStr...)
 	_, err := w.Write(res)
 	return err
+}
+
+func ChartRender(chart interface{}, w io.Writer, removeStr ...string) error {
+	return render(chart, ModChart, w, removeStr...)
+}
+
+func PageRender(chart interface{}, w io.Writer, removeStr ...string) error {
+	return render(chart, ModPage, w, removeStr...)
 }

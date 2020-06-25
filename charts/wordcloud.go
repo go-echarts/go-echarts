@@ -3,6 +3,7 @@ package charts
 import (
 	"io"
 
+	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 
@@ -65,5 +66,5 @@ func (c *WordCloud) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (c *WordCloud) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, ModChart, w)
+	return render.ChartRender(c, w)
 }

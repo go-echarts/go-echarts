@@ -2,12 +2,13 @@ package charts
 
 import (
 	"fmt"
-	"github.com/go-echarts/go-echarts/opts"
-	"github.com/go-echarts/go-echarts/types"
 	"io"
 	"log"
 
 	"github.com/go-echarts/go-echarts/datasets"
+	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
+	"github.com/go-echarts/go-echarts/types"
 )
 
 // GeoComponentOpts is the option set for geo component.
@@ -81,5 +82,5 @@ func (c *Geo) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (c *Geo) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, ModChart, w)
+	return render.ChartRender(c, w)
 }

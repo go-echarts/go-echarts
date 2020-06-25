@@ -59,5 +59,5 @@ func (c *Bar) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (c *Bar) Render(w io.Writer) error {
 	c.Validate()
-	return render.Write(c, render.ModChart, w)
+	return render.ChartRender(c, w)
 }

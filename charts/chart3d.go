@@ -1,9 +1,12 @@
 package charts
 
 import (
+	"io"
+
+	"github.com/go-echarts/go-echarts/render"
+
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/types"
-	"io"
 )
 
 // Chart3D is a chart in 3D coordinate.
@@ -80,5 +83,5 @@ func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, opts ...Se
 // Render renders the chart and writes the output to given writers.
 func (c *Chart3D) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, "chart", w)
+	return render.ChartRender(c, w)
 }

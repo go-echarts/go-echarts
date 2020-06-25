@@ -1,10 +1,11 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/types"
 	"io"
 
 	"github.com/go-echarts/go-echarts/datasets"
+	"github.com/go-echarts/go-echarts/render"
+	"github.com/go-echarts/go-echarts/types"
 )
 
 // Map represents a map chart.
@@ -54,5 +55,5 @@ func (c *Map) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (c *Map) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, ModChart, w)
+	return render.ChartRender(c, w)
 }

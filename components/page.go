@@ -4,6 +4,7 @@ import (
 	"io"
 
 	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 
@@ -53,5 +54,5 @@ func (page *Page) AddCharts(charts ...Charter) *Page {
 func (page *Page) Render(w io.Writer) error {
 	page.Initialization.Validate()
 	page.Assets.Validate(page.AssetsHost)
-	return renderToWriter(page, ModPage, w, page.unusedStr.Values...)
+	return render.PageRender(page, w, page.unusedStr.Values...)
 }

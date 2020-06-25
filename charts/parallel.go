@@ -1,8 +1,10 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/types"
 	"io"
+
+	"github.com/go-echarts/go-echarts/render"
+	"github.com/go-echarts/go-echarts/types"
 )
 
 // ParallelAxisOpts is a list of ParallelAxisOpts.
@@ -74,5 +76,5 @@ func (c *Parallel) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (c *Parallel) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, ModChart, w)
+	return render.ChartRender(c, w)
 }

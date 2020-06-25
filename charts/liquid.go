@@ -1,9 +1,10 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/opts"
 	"io"
 
+	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 
@@ -42,7 +43,6 @@ func (c *Liquid) Validate() {
 
 // Render renders the chart and writes the output to given writers.
 func (c *Liquid) Render(w io.Writer) error {
-	c.insertSeriesColors(c.appendColor)
 	c.Validate()
-	return renderToWriter(c, ModChart, w, `"outline":{"show":false},?`, `"waveAnimation":false,?`)
+	return render.ChartRender(c, w, `"outline":{"show":false},?`, `"waveAnimation":false,?`)
 }

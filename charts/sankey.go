@@ -1,9 +1,11 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/opts"
-	"github.com/go-echarts/go-echarts/types"
 	"io"
+
+	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
+	"github.com/go-echarts/go-echarts/types"
 )
 
 // Sankey represents a sankey chart.
@@ -42,5 +44,5 @@ func (c *Sankey) Validate() {
 // Render renders the chart and writes the output to given writers.
 func (c *Sankey) Render(w io.Writer) error {
 	c.Validate()
-	return renderToWriter(c, ModChart, w)
+	return render.ChartRender(c, w)
 }
