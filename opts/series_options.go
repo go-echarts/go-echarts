@@ -69,6 +69,12 @@ type ItemStyle struct {
 	Opacity float32 `json:"opacity,omitempty"`
 }
 
+// MarkLine represents a mark line.
+type MarkLines struct {
+	Data []interface{} `json:"data,omitempty"`
+	MarkLineStyle
+}
+
 // MarkLineStyle contains styling options for a MarkLine.
 type MarkLineStyle struct {
 	// 图元的图形类别
@@ -80,6 +86,62 @@ type MarkLineStyle struct {
 	Label `json:"label,omitempty"`
 }
 
+// MarkLineNameTypeItem represents type for a MarkLine.
+type MarkLineNameTypeItem struct {
+	// 标记线名称
+	Name string `json:"name,omitempty"`
+	// 内置类型，可选 "average", "min", "max"
+	Type string `json:"type,omitempty"`
+	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
+	// candlestick 图时可以是 open、close 等维度名称。
+	ValueDim string `json:"valueDim,omitempty"`
+}
+
+// MarkLineNameYAxisItem
+type MarkLineNameYAxisItem struct {
+	// 标记线名称
+	Name string `json:"name,omitempty"`
+	// Y 轴数据
+	YAxis interface{} `json:"yAxis,omitempty"`
+	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
+	// candlestick 图时可以是 open、close 等维度名称。
+	ValueDim string `json:"valueDim,omitempty"`
+}
+
+// MarkLineNameXAxisItem
+type MarkLineNameXAxisItem struct {
+	// 标记线名称
+	Name string `json:"name,omitempty"`
+	// X 轴数据
+	XAxis interface{} `json:"xAxis,omitempty"`
+	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
+	// candlestick 图时可以是 open、close 等维度名称。
+	ValueDim string `json:"valueDim,omitempty"`
+}
+
+// MarkLineNameCoordItem represents coordinates for a MarkLine.
+type MarkLineNameCoordItem struct {
+	// 标记线名称
+	Name string
+	// 标记线起始坐标
+	Coordinate0 []interface{}
+	// 标记线结束坐标
+	Coordinate1 []interface{}
+	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
+	// candlestick 图时可以是 open、close 等维度名称。
+	ValueDim string `json:"valueDim,omitempty"`
+}
+
+// MarkPoint represents a mark point.
+type MarkPoints struct {
+	Data []interface{} `json:"data,omitempty"`
+	MarkPointStyle
+}
+
 // MarkPointStyle contains styling options for a MarkPoint.
 type MarkPointStyle struct {
 	// 图元的图形类别
@@ -89,6 +151,31 @@ type MarkPointStyle struct {
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 	// 标注文本配置项
 	Label `json:"label,omitempty"`
+}
+
+// MarkPointNameTypeItem represents type for a MarkPoint.
+type MarkPointNameTypeItem struct {
+	// 标记点名称
+	Name string `json:"name"`
+	// 内置类型，可选 "average", "min", "max"
+	Type string `json:"type"`
+	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
+	// candlestick 图时可以是 open、close 等维度名称。
+	ValueDim string `json:"valueDim,omitempty"`
+}
+
+// MarkPointNameCoordItem represents coordinates for a MarkPoint.
+type MarkPointNameCoordItem struct {
+	// 标记点名称
+	Name string `json:"name,omitempty"`
+	// 标记点坐标
+	Coordinate []interface{} `json:"coord,omitempty"`
+	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
+	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
+	// candlestick 图时可以是 open、close 等维度名称。
+	ValueDim string `json:"valueDim,omitempty"`
+	*Label   `json:"label,omitempty"`
 }
 
 // RippleEffect is the option set for the ripple effect.
@@ -127,88 +214,4 @@ type AreaStyle struct {
 	Color string `json:"color,omitempty"`
 	// 填充区域的透明度。支持从 0 到 1 的数字，为 0 时不填充区域
 	Opacity float32 `json:"opacity,omitempty"`
-}
-
-// MarkLineNameTypeItem represents type for a MarkLine.
-type MarkLineNameTypeItem struct {
-	// 标记线名称
-	Name string `json:"name,omitempty"`
-	// 内置类型，可选 "average", "min", "max"
-	Type string `json:"type,omitempty"`
-	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
-	// candlestick 图时可以是 open、close 等维度名称。
-	ValueDim string `json:"valueDim,omitempty"`
-}
-
-// MarkLine represents a mark line.
-type MarkLines struct {
-	Data []interface{} `json:"data,omitempty"`
-	MarkLineStyle
-}
-
-// MarkPoint represents a mark point.
-type MarkPoints struct {
-	Data []interface{} `json:"data,omitempty"`
-	MarkPointStyle
-}
-
-// MPNameTypeItem represents type for a MarkPoint.
-type MarkPointNameTypeItem struct {
-	// 标记点名称
-	Name string `json:"name"`
-	// 内置类型，可选 "average", "min", "max"
-	Type string `json:"type"`
-	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
-	// candlestick 图时可以是 open、close 等维度名称。
-	ValueDim string `json:"valueDim,omitempty"`
-}
-
-// MPNameCoordItem represents coordinates for a MarkPoint.
-type MarkPointNameCoordItem struct {
-	// 标记点名称
-	Name string `json:"name,omitempty"`
-	// 标记点坐标
-	Coordinate []interface{} `json:"coord,omitempty"`
-	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
-	// candlestick 图时可以是 open、close 等维度名称。
-	ValueDim string `json:"valueDim,omitempty"`
-}
-
-type MarkLineNameYAxisItem struct {
-	// 标记线名称
-	Name string `json:"name,omitempty"`
-	// Y 轴数据
-	YAxis interface{} `json:"yAxis,omitempty"`
-	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
-	// candlestick 图时可以是 open、close 等维度名称。
-	ValueDim string `json:"valueDim,omitempty"`
-}
-
-type MarkLineNameXAxisItem struct {
-	// 标记线名称
-	Name string `json:"name,omitempty"`
-	// X 轴数据
-	XAxis interface{} `json:"xAxis,omitempty"`
-	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
-	// candlestick 图时可以是 open、close 等维度名称。
-	ValueDim string `json:"valueDim,omitempty"`
-}
-
-// MLNameCoordItem represents coordinates for a MarkLine.
-type MarkLineNameCoordItem struct {
-	// 标记线名称
-	Name string
-	// 标记线起始坐标
-	Coordinate0 []interface{}
-	// 标记线结束坐标
-	Coordinate1 []interface{}
-	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
-	// candlestick 图时可以是 open、close 等维度名称。
-	ValueDim string `json:"valueDim,omitempty"`
 }

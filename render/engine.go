@@ -25,9 +25,9 @@ func renderChart(chart interface{}, w io.Writer, mod Mod) error {
 	case ModPage:
 		contents = append(contents, tpls.PageTpl)
 	}
-	tpl := template.Must(template.New("").Parse(contents[0]))
+	tpl := template.Must(template.New("page").Parse(contents[0]))
 	mustTpl(tpl, contents[1:]...)
-	return tpl.ExecuteTemplate(w, "", chart)
+	return tpl.ExecuteTemplate(w, "page", chart)
 }
 
 func mustTpl(tpl *template.Template, html ...string) {

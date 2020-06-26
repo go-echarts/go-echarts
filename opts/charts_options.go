@@ -238,3 +238,6 @@ type GeoData struct {
 
 type EffectScatterData struct {
 }
+
+type ParallelData struct {
+}

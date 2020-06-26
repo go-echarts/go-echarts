@@ -3,15 +3,16 @@ package charts
 import (
 	"io"
 
+	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 
 // ParallelAxisOpts is a list of ParallelAxisOpts.
 // 平行坐标系中的坐标轴组件配置项
-type ParallelAxisOpts []PAOpts
-
-func (ParallelAxisOpts) MarkGlobal() {}
+//type ParallelAxisOpts []PAOpts
+//
+//func (ParallelAxisOpts) MarkGlobal() {}
 
 // PAOpts is the option set for a parallel axis.
 type PAOpts struct {
@@ -56,7 +57,7 @@ func NewParallel() *Parallel {
 }
 
 // Add adds new data sets.
-func (c *Parallel) AddSeries(name string, data interface{}, opts ...SeriesOpts) *Parallel {
+func (c *Parallel) AddSeries(name string, data []opts.ParallelData, opts ...SeriesOpts) *Parallel {
 	series := SingleSeries{Name: name, Type: types.ChartParallel, Data: data}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)

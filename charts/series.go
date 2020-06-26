@@ -184,32 +184,62 @@ func WithWorldCloudChartOpts(opt opts.WordCloudChart) SeriesOpts {
 }
 
 // WithMarkLineNameTypeItemOpts
-func WithMarkLineNameTypeItemOpts(opt opts.MarkLineNameTypeItem) SeriesOpts {
+func WithMarkLineNameTypeItemOpts(opt ...opts.MarkLineNameTypeItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkLines == nil {
 			s.MarkLines = &opts.MarkLines{}
 		}
-		s.MarkLines.Data = append(s.MarkLines.Data, opt)
+		for _, o := range opt {
+			s.MarkLines.Data = append(s.MarkLines.Data, o)
+		}
 	}
 }
 
 // WithMarkLineNameXAxisItemOpts
-func WithMarkLineNameXAxisItemOpts(opt opts.MarkLineNameXAxisItem) SeriesOpts {
+func WithMarkLineNameXAxisItemOpts(opt ...opts.MarkLineNameXAxisItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkLines == nil {
 			s.MarkLines = &opts.MarkLines{}
 		}
-		s.MarkLines.Data = append(s.MarkLines.Data, opt)
+		for _, o := range opt {
+			s.MarkLines.Data = append(s.MarkLines.Data, o)
+		}
 	}
 }
 
 // WithMarkLineNameYAxisItemOpts
-func WithMarkLineNameYAxisItemOpts(opt opts.MarkLineNameYAxisItem) SeriesOpts {
+func WithMarkLineNameYAxisItemOpts(opt ...opts.MarkLineNameYAxisItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkLines == nil {
 			s.MarkLines = &opts.MarkLines{}
 		}
-		s.MarkLines.Data = append(s.MarkLines.Data, opt)
+		for _, o := range opt {
+			s.MarkLines.Data = append(s.MarkLines.Data, o)
+		}
+	}
+}
+
+// WithMarkPointNameTypeItemOpts
+func WithMarkPointNameTypeItemOpts(opt ...opts.MarkPointNameTypeItem) SeriesOpts {
+	return func(s *SingleSeries) {
+		if s.MarkPoints == nil {
+			s.MarkPoints = &opts.MarkPoints{}
+		}
+		for _, o := range opt {
+			s.MarkPoints.Data = append(s.MarkPoints.Data, o)
+		}
+	}
+}
+
+// WithMarkPointNameCoordItemOpts
+func WithMarkPointNameCoordItemOpts(opt ...opts.MarkPointNameCoordItem) SeriesOpts {
+	return func(s *SingleSeries) {
+		if s.MarkPoints == nil {
+			s.MarkPoints = &opts.MarkPoints{}
+		}
+		for _, o := range opt {
+			s.MarkPoints.Data = append(s.MarkPoints.Data, o)
+		}
 	}
 }
 
