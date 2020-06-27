@@ -14,6 +14,7 @@ type Liquid struct {
 	MultiSeries
 }
 
+// Type returns the chart type.
 func (Liquid) Type() string { return types.ChartLiquid }
 
 // NewLiquid creates a new liquid chart.

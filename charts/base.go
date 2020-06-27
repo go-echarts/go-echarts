@@ -4,6 +4,8 @@ import (
 	"github.com/go-echarts/go-echarts/opts"
 )
 
+// todo: RegisterRouter()
+
 // GlobalOpts sets tje Global options for charts.
 type GlobalOpts func(bc *BaseConfiguration)
 

@@ -46,6 +46,7 @@ type Parallel struct {
 	MultiSeries
 }
 
+// Type returns the chart type.
 func (Parallel) Type() string { return types.ChartParallel }
 
 // NewParallel creates a new parallel instance.

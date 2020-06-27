@@ -17,6 +17,7 @@ type Map struct {
 	mapType string
 }
 
+// Type returns the chart type.
 func (Map) Type() string { return types.ChartMap }
 
 // NewMap creates a new map chart.

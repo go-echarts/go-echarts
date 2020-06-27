@@ -9,15 +9,13 @@ import (
 	tpls "github.com/go-echarts/go-echarts/templates"
 )
 
-type Mod int
-
 const (
-	ModChart Mod = iota
-	ModPage
+	ModChart = "chart"
+	ModPage  = "page"
 )
 
 // 渲染图表
-func renderChart(chart interface{}, w io.Writer, mod Mod) error {
+func renderChart(chart interface{}, w io.Writer, mod string) error {
 	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl}
 	switch mod {
 	case ModChart:
@@ -25,9 +23,9 @@ func renderChart(chart interface{}, w io.Writer, mod Mod) error {
 	case ModPage:
 		contents = append(contents, tpls.PageTpl)
 	}
-	tpl := template.Must(template.New("page").Parse(contents[0]))
+	tpl := template.Must(template.New(mod).Parse(contents[0]))
 	mustTpl(tpl, contents[1:]...)
-	return tpl.ExecuteTemplate(w, "page", chart)
+	return tpl.ExecuteTemplate(w, mod, chart)
 }
 
 func mustTpl(tpl *template.Template, html ...string) {
@@ -91,7 +89,7 @@ func removeNotReplace(unusedObj []string, removeStr ...string) []string {
 	return res
 }
 
-func render(chart interface{}, mod Mod, w io.Writer, removeStr ...string) error {
+func render(chart interface{}, mod string, w io.Writer, removeStr ...string) error {
 	var b bytes.Buffer
 	if err := renderChart(chart, &b, mod); err != nil {
 		return err

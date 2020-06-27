@@ -4,7 +4,7 @@ import "github.com/go-echarts/go-echarts/opts"
 
 type SingleSeries struct {
 	Name string `json:"name,omitempty"`
-	Type string `json:"type"`
+	Type string `json:"type,omitempty"`
 
 	// Rectangular charts
 	Stack      string `json:"stack,omitempty"`

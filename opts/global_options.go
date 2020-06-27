@@ -28,7 +28,7 @@ type Initialization struct {
 	Theme string `default:"white"`
 }
 
-// 验证初始化参数，确保图形能够得到正确渲染
+// Validate validates the initialization configurations.
 func (opt *Initialization) Validate() {
 	setDefaultValue(opt)
 	if opt.ChartID == "" {
@@ -36,8 +36,8 @@ func (opt *Initialization) Validate() {
 	}
 }
 
-// 为结构体设置默认值
-// 部分代码参考 https://github.com/mcuadros/go-defaults
+// set default values for the struct field.
+// origin from: https://github.com/mcuadros/go-defaults
 func setDefaultValue(ptr interface{}) {
 	elem := reflect.ValueOf(ptr).Elem()
 	t := elem.Type()
@@ -50,6 +50,7 @@ func setDefaultValue(ptr interface{}) {
 	}
 }
 
+// setField handles String/Bool types only.
 func setField(field reflect.Value, defaultVal string) {
 	switch field.Kind() {
 	case reflect.String:
@@ -71,10 +72,9 @@ const (
 	chartIDSize   = 12
 )
 
-var seed = rand.NewSource(time.Now().UnixNano())
-
-// 生成唯一且随机的图表 ID
+// generate the unique ID for each chart.
 func generateUniqueID() string {
+	seed := rand.NewSource(time.Now().UnixNano())
 	b := make([]byte, chartIDSize)
 	for i, cache, remain := chartIDSize-1, seed.Int63(), letterIdxMax; i >= 0; {
 		if remain == 0 {
@@ -145,82 +145,177 @@ type Title struct {
 
 // Legend is the option set for a legend component.
 type Legend struct {
-	// 图例组件离容器左侧的距离。
-	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
-	// 也可以是 'left', 'center', 'right'。
-	// 如果 left 的值为'left', 'center', 'right'，组件会根据相应的位置自动对齐。
+	// Distance between legend component and the left side of the container.
+	// left value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
+	// If the left value is set to be 'left', 'center', or 'right', then the component
+	// will be aligned automatically based on position.
 	Left string `json:"left,omitempty"`
-	// 图例组件离容器上侧的距离。
-	// top 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
-	// 也可以是 'top', 'middle', 'bottom'。
-	// 如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐。
+
+	// Distance between legend component and the top side of the container.
+	// top value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
+	// If the left value is set to be 'top', 'middle', or 'bottom', then the component
+	// will be aligned automatically based on position.
 	Top string `json:"top,omitempty"`
-	// 图例组件离容器右侧的距离。
-	// right 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
-	// 默认自适应。
+
+	// Distance between legend component and the right side of the container.
+	// right value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'.
+	// Adaptive by default.
 	Right string `json:"right,omitempty"`
-	// 图例组件离容器下侧的距离。
-	// bottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
-	// 默认自适应。
+
+	// Distance between legend component and the bottom side of the container.
+	// bottom value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'.
+	// Adaptive by default.
 	Bottom string `json:"bottom,omitempty"`
-	// Legend 数据项
-	// 如果需要隐藏 Legend 则把 Data 设置为 []string{}
+
+	// Data array of legend. An array item is usually a name representing string.
+	// set Data as []string{} if you wants to hide the legend.
 	Data interface{} `json:"data,omitempty"`
-	// 除此之外也可以设成 "single" 或者 "multiple" 使用单选或者多选模式。默认 "multiple"
+
+	// The layout orientation of legend.
+	// Options: 'horizontal', 'vertical'
+	Orient string `json:"orient,omitempty"`
+
+	// Legend color when not selected.
+	InactiveColor string `json:"inactiveColor,omitempty"`
+
+	// State table of selected legend.
+	// example:
+	// var selected = map[string]bool{}
+	// selected["series1"] = true
+	// selected["series2"] = false
+	Selected map[string]bool `json:"selected,omitempty"`
+
+	// Selected mode of legend, which controls whether series can be toggled displaying by clicking legends.
+	// It is enabled by default, and you may set it to be false to disabled it.
+	// Besides, it can be set to 'single' or 'multiple', for single selection and multiple selection.
 	SelectedMode string `json:"selectedMode,omitempty"`
-	// 图例的公用文本样式
-	TextStyle *TextStyle `json:"textStyle,omitempty"`
+
+	// Legend text style.
+	*TextStyle `json:"textStyle,omitempty"`
 }
 
 // Tooltip is the option set for a tooltip component.
 type Tooltip struct {
-	// 是否显示提示框
-	Show bool `json:"show,omitempty"`
-	// 触发类型。
-	// "item": 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
-	// "axis": 坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。
-	// "none": 什么都不触发。
+	// Whether to show the tooltip component, including tooltip floating layer and axisPointer.
+	Show bool `json:"show"`
+
+	// Type of triggering.
+	// Options:
+	// * 'item': Triggered by data item, which is mainly used for charts that
+	//    don't have a category axis like scatter charts or pie charts.
+	// * 'axis': Triggered by axes, which is mainly used for charts that have category axes,
+	//    like bar charts or line charts.
+	// * 'none': Trigger nothing.
 	Trigger string `json:"trigger,omitempty"`
-	// 提示框触发的条件，可选：
-	// "mousemove": 鼠标移动时触发。
-	// "click": 鼠标点击时触发。
-	// "mousemove|click": 同时鼠标移动和点击时触发。
-	// "none": 不在 "mousemove" 或 "click" 时触发
+
+	// Conditions to trigger tooltip. Options:
+	// * 'mousemove': Trigger when mouse moves.
+	// * 'click': Trigger when mouse clicks.
+	// * 'mousemove|click': Trigger when mouse clicks and moves.
+	// * 'none': Do not triggered by 'mousemove' and 'click'. Tooltip can be triggered and hidden
+	//    manually by calling action.tooltip.showTip and action.tooltip.hideTip.
+	//    It can also be triggered by axisPointer.handle in this case.
 	TriggerOn string `json:"triggerOn,omitempty"`
-	// 1, 字符串模板
-	// 模板变量有 {a}, {b}，{c}，{d}，{e}，分别表示系列名，数据名，数据值等。
-	// 在 trigger 为 'axis' 的时候，会有多个系列的数据，此时可以通过 {a0}, {a1}, {a2}
-	// 这种后面加索引的方式表示系列的索引。 不同图表类型下的 {a}，{b}，{c}，{d} 含义不一样。
-	// 其中变量{a}, {b}, {c}, {d} 在不同图表类型下代表数据含义为：
-	// 折线（区域）图、柱状（条形）图、K 线图 : {a}（系列名称），{b}（类目值），{c}（数值）, {d}（无）
-	// 散点图（气泡）图 : {a}（系列名称），{b}（数据名称），{c}（数值数组）, {d}（无）
-	// 地图 : {a}（系列名称），{b}（区域名称），{c}（合并数值）, {d}（无）
-	// 饼图、仪表盘、漏斗图: {a}（系列名称），{b}（数据项名称），{c}（数值）, {d}（百分比）
+
+	// The content formatter of tooltip's floating layer which supports string template and callback function.
 	//
-	// 2, 回调函数
-	// 回调函数格式：
+	// 1. String template
+	// The template variables are {a}, {b}, {c}, {d} and {e}, which stands for series name,
+	// data name and data value and ect. When trigger is set to be 'axis', there may be data from multiple series.
+	// In this time, series index can be refereed as {a0}, {a1}, or {a2}.
+	// {a}, {b}, {c}, {d} have different meanings for different series types:
+	//
+	// * Line (area) charts, bar (column) charts, K charts: {a} for series name,
+	//   {b} for category name, {c} for data value, {d} for none;
+	// * Scatter (bubble) charts: {a} for series name, {b} for data name, {c} for data value, {d} for none;
+	// * Map: {a} for series name, {b} for area name, {c} for merging data, {d} for none;
+	// * Pie charts, gauge charts, funnel charts: {a} for series name, {b} for data item name,
+	//   {c} for data value, {d} for percentage.
+	//
+	// 2. Callback function
+	// The format of callback function:
 	// (params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string
-	// 第一个参数 params 是 formatter 需要的数据集。格式如下：
+	// The first parameter params is the data that the formatter needs. Its format is shown as follows:
 	// {
 	//    componentType: 'series',
-	//    seriesType: string,	// 系列类型
-	//    seriesIndex: number,	// 系列在传入的 option.series 中的 index
-	//    seriesName: string,	// 系列名称
-	//    name: string,			// 数据名，类目名
-	//    dataIndex: number,	// 数据在传入的 data 数组中的 index
-	//    data: Object,			// 传入的原始数据项
-	//    value: number|Array,	// 传入的数据值
-	//    color: string,		// 数据图形的颜色
-	//    percent: number,		// 饼图的百分比
+	//    // Series type
+	//    seriesType: string,
+	//    // Series index in option.series
+	//    seriesIndex: number,
+	//    // Series name
+	//    seriesName: string,
+	//    // Data name, or category name
+	//    name: string,
+	//    // Data index in input data array
+	//    dataIndex: number,
+	//    // Original data as input
+	//    data: Object,
+	//    // Value of data. In most series it is the same as data.
+	//    // But in some series it is some part of the data (e.g., in map, radar)
+	//    value: number|Array|Object,
+	//    // encoding info of coordinate system
+	//    // Key: coord, like ('x' 'y' 'radius' 'angle')
+	//    // value: Must be an array, not null/undefined. Contain dimension indices, like:
+	//    // {
+	//    //     x: [2] // values on dimension index 2 are mapped to x axis.
+	//    //     y: [0] // values on dimension index 0 are mapped to y axis.
+	//    // }
+	//    encode: Object,
+	//    // dimension names list
+	//    dimensionNames: Array<String>,
+	//    // data dimension index, for example 0 or 1 or 2 ...
+	//    // Only work in `radar` series.
+	//    dimensionIndex: number,
+	//    // Color of data
+	//    color: string,
+	//
+	//    // the percentage of pie chart
+	//    percent: number,
 	// }
 	Formatter string `json:"formatter,omitempty"`
 }
 
 // Toolbox is the option set for a toolbox component.
 type Toolbox struct {
-	// 是否显示工具栏组件
-	Show bool `json:"show,omitempty"`
-	// 工具箱功能种类，不支持自定义
+	// Whether to show toolbox component.
+	Show bool `json:"show"`
+
+	// The layout orientation of toolbox's icon.
+	// Options: 'horizontal','vertical'
+	Orient string `json:"orient,omitempty"`
+
+	// Distance between toolbox component and the left side of the container.
+	// left value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
+	// If the left value is set to be 'left', 'center', or 'right', then the component
+	// will be aligned automatically based on position.
+	Left string `json:"left,omitempty"`
+
+	// Distance between toolbox component and the top side of the container.
+	// top value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
+	// If the left value is set to be 'top', 'middle', or 'bottom', then the component
+	// will be aligned automatically based on position.
+	Top string `json:"top,omitempty"`
+
+	// Distance between toolbox component and the right side of the container.
+	// right value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'.
+	// Adaptive by default.
+	Right string `json:"right,omitempty"`
+
+	// Distance between toolbox component and the bottom side of the container.
+	// bottom value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'.
+	// Adaptive by default.
+	Bottom string `json:"bottom,omitempty"`
+
+	// The configuration item for each tool.
+	// Besides the tools we provide, user-defined toolbox is also supported.
 	Feature *ToolBoxFeature `json:"feature,omitempty"`
 }
 
@@ -236,16 +331,53 @@ type ToolBoxFeature struct {
 	Restore *ToolBoxFeatureRestore `json:"restore,omitempty"`
 }
 
+// ToolBoxFeatureSaveAsImage is the option for saving chart as image.
 type ToolBoxFeatureSaveAsImage struct {
+	// Whether to show the tool.
+	Show bool `json:"show"`
+
+	// toolbox.feature.saveAsImage. type = 'png'
+	// File suffix of the image saved.
+	// If the renderer is set to be 'canvas' when chart initialized (default), t
+	// hen 'png' (default) and 'jpeg' are supported.
+	// If the renderer is set to be 'svg' when when chart initialized, then only 'svg' is supported
+	// for type ('svg' type is supported since v4.8.0).
+	Type string `json:"png,omitempty"`
+
+	// Name to save the image, whose default value is title.text.
+	Name string `json:"name,omitempty"`
+
+	// title for the tool.
+	Title string `json:"title,omitempty"`
 }
 
+// ToolBoxFeatureDataZoom
 type ToolBoxFeatureDataZoom struct {
+	// Whether to show the tool.
+	Show bool `json:"show"`
+
+	// Restored and zoomed title text.
+	// m["zoom"] = 'area zooming'
+	// m["back"] = 'restore area zooming'
+	Title map[string]string `json:"title"`
 }
 
+// ToolBoxFeatureDataView
 type ToolBoxFeatureDataView struct {
+	// Whether to show the tool.
+	Show bool `json:"show"`
+
+	// title for the tool.
+	Title string `json:"title,omitempty"`
 }
 
+// ToolBoxFeatureRestore
 type ToolBoxFeatureRestore struct {
+	// Whether to show the tool.
+	Show bool `json:"show"`
+
+	// title for the tool.
+	Title string `json:"title,omitempty"`
 }
 
 // XAxis is the option set for X axis.
@@ -338,20 +470,27 @@ type YAxis struct {
 	AxisLabel *Label `json:"axisLabel,omitempty"`
 	// Y 轴数据项
 	Data interface{} `json:"data,omitempty"`
-	// Y 坐标轴的分割段数，需要注意的是这个分割段数只是个预估值，
-	// 最后实际显示的段数会在这个基础上根据分割后坐标轴刻度显示的易读程度作调整。
-	// 在类目轴中无效
+
+	// Number of segments that the axis is split into. Note that this number serves only as a
+	// recommendation, and the true segments may be adjusted based on readability.
+	// This is unavailable for category axis.
 	SplitNumber int `json:"splitNumber,omitempty"`
-	// 只在数值轴中（type: 'value'）有效。
-	// 是否是脱离 0 值比例。设置成 true 后坐标刻度不会强制包含零刻度。在双数值轴的散点图中比较有用。
-	// 在设置 min 和 max 之后该配置项无效
-	// 默认为 false
+
+	// It is available only in numerical axis, i.e., type: 'value'.
+	// It specifies whether not to contain zero position of axis compulsively.
+	// When it is set to be true, the axis may not contain zero position,
+	// which is useful in the scatter chart for both value axes.
+	// This configuration item is unavailable when the min and max are set.
 	Scale bool `json:"scale,omitempty"`
-	// Y 坐标轴刻度最小值
-	// 可以设置成特殊值 'dataMin'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
+
+	// The minimum value of axis.
+	// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
+	// It will be automatically computed to make sure axis tick is equally distributed when not set.
 	Min interface{} `json:"min,omitempty"`
-	// Y 坐标轴刻度最大值
-	// 可以设置成特殊值 'dataMax'，此时取数据在该轴上的最小值作为最小刻度，数值轴有效
+
+	// The maximum value of axis.
+	// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
+	// It will be automatically computed to make sure axis tick is equally distributed when not set.
 	Max interface{} `json:"max,omitempty"`
 	// Y 轴所在的 grid 的索引
 	// 默认 0
@@ -392,7 +531,6 @@ type SplitLine struct {
 }
 
 // VisualMap is the option set for a visual map component.
-// 用于进行『视觉编码』，也就是将数据映射到视觉元素（视觉通道）
 type VisualMap struct {
 	// 映射类型，可选 "continuous", "piecewise"
 	Type string `json:"type,omitempty" default:"continuous"`
@@ -448,38 +586,50 @@ type DataZoom struct {
 
 // SingleAxis is the option set for single axis.
 type SingleAxis struct {
-	// 坐标轴刻度最小值。
-	// 可以设置成特殊值 "dataMin"，此时取数据在该轴上的最小值作为最小刻度
+	// The minimum value of axis.
+	// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
+	// It will be automatically computed to make sure axis tick is equally distributed when not set.
 	Min interface{} `json:"min,omitempty"`
-	// 坐标轴刻度最大值。
-	// 可以设置成特殊值 "dataMax"，此时取数据在该轴上的最大值作为最大刻度
+
+	// The maximum value of axis.
+	// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
+	// It will be automatically computed to make sure axis tick is equally distributed when not set.
 	Max interface{} `json:"max,omitempty"`
-	// 坐标轴类型
-	// "value" 数值轴，适用于连续数据。
-	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-	// "time" 时间轴，适用于连续的时序数据，与数值轴相比时间轴带有时间的格式化，
-	// 在刻度计算上也有所不同，例如会根据跨度的范围来决定使用月，星期，日还是小时范围的刻度。
-	// "log" 对数轴。适用于对数数据。
+
+	// Type of axis.
+	// Option:
+	// * 'value': Numerical axis, suitable for continuous data.
+	// * 'category': Category axis, suitable for discrete category data.
+	//   Category data can be auto retrieved from series.data or dataset.source,
+	//   or can be specified via xAxis.data.
+	// * 'time' Time axis, suitable for continuous time series data. As compared to value axis,
+	//   it has a better formatting for time and a different tick calculation method. For example,
+	//   it decides to use month, week, day or hour for tick based on the range of span.
+	// * 'log' Log axis, suitable for log data.
 	Type string `json:"type,omitempty"`
-	// single 组件离容器左侧的距离。
-	// left 的值可以是像 20 这样的具体像素值，可以是像 "20%" 这样相对于容器高宽的百分比，
-	// 也可以是 "left", "center", "right"。
-	// 如果 left 的值为 "left", "center", "right"，组件会根据相应的位置自动对齐
+
+	// Distance between grid component and the left side of the container.
+	// left value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
+	// If the left value is set to be 'left', 'center', or 'right',
+	// then the component will be aligned automatically based on position.
 	Left string `json:"left,omitempty"`
-	// single 组件离容器右侧的距离。
-	// left 的值可以是像 20 这样的具体像素值，可以是像 "20%" 这样相对于容器高宽的百分比，
-	// 也可以是 "left", "center", "right"。
-	// 如果 left 的值为 "left", "center", "right"，组件会根据相应的位置自动对齐
+
+	// Distance between grid component and the right side of the container.
+	//right value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'.
 	Right string `json:"right,omitempty"`
-	// single 组件离容器顶侧的距离。
-	// left 的值可以是像 20 这样的具体像素值，可以是像 "20%" 这样相对于容器高宽的百分比，
-	// 也可以是 "left", "center", "right"。
-	// 如果 left 的值为 "left", "center", "right"，组件会根据相应的位置自动对齐
+
+	// Distance between grid component and the top side of the container.
+	// top value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
+	// If the left value is set to be 'top', 'middle', or 'bottom',
+	// then the component will be aligned automatically based on position.
 	Top string `json:"top,omitempty"`
-	// single 组件离容器底侧的距离。
-	// left 的值可以是像 20 这样的具体像素值，可以是像 "20%" 这样相对于容器高宽的百分比，
-	// 也可以是 "left", "center", "right"。
-	// 如果 left 的值为 "left", "center", "right"，组件会根据相应的位置自动对齐
+
+	// Distance between grid component and the bottom side of the container.
+	// bottom value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'.
 	Bottom string `json:"bottom,omitempty"`
 }
 

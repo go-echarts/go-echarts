@@ -14,6 +14,7 @@ type Funnel struct {
 	MultiSeries
 }
 
+// Type returns the chart type.
 func (Funnel) Type() string { return types.ChartFunnel }
 
 // NewFunnel creates a new funnel chart.

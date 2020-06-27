@@ -10,6 +10,7 @@ type BoxPlot struct {
 	RectChart
 }
 
+// Type returns the chart type.
 func (BoxPlot) Type() string { return types.ChartBoxPlot }
 
 // NewBoxPlot creates a new boxplot chart.

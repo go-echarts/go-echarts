@@ -14,6 +14,7 @@ type Sankey struct {
 	MultiSeries
 }
 
+// Type returns the chart type.
 func (Sankey) Type() string { return types.ChartSankey }
 
 // NewSankey creates a new sankey chart.

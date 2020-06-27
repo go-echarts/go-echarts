@@ -29,7 +29,7 @@ type BarChart struct {
 	YAxisIndex int
 }
 
-// BarChartItem
+// BarData
 type BarData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -47,7 +47,7 @@ type BarData struct {
 	*Tooltip `json:"tooltip,omitempty"`
 }
 
-// BoxPlotChartItem
+// BoxPlotData
 type BoxPlotData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -68,12 +68,20 @@ type BoxPlotData struct {
 	*Tooltip `json:"tooltip,omitempty"`
 }
 
-// FunnelChartItem
-type FunnelData struct {
+// EffectScatterData
+type EffectScatterData struct {
 }
 
-// GaugeChartItem
+// FunnelData
+type FunnelData struct {
+	Name  string      `json:"name,omitempty"`
+	Value interface{} `json:"value,omitempty"`
+}
+
+// GaugeData
 type GaugeData struct {
+	Name  string      `json:"name,omitempty"`
+	Value interface{} `json:"value,omitempty"`
 }
 
 // GraphOpts is the option set for graph chart.
@@ -117,8 +125,16 @@ type LineChart struct {
 	ConnectNulls bool
 }
 
-// LineChartItem
+// LineData
 type LineData struct {
+	// Name
+	Name string `json:"name,omitempty"`
+	// Value
+	Value interface{} `json:"value,omitempty"`
+	// Symbol
+	Symbol string `json:"symbol,omitempty"`
+	// SymbolSize
+	SymbolSize int `json:"symbolSize,omitempty"`
 }
 
 // LiquidChart
@@ -132,7 +148,7 @@ type LiquidChart struct {
 	IsWaveAnimation bool
 }
 
-// LiquidChartItem
+// LiquidData
 type LiquidData struct {
 }
 
@@ -158,10 +174,10 @@ type PieChart struct {
 	Radius interface{}
 }
 
-// PieChartItem
+// PieData
 type PieData struct {
-	Name       string      `json:"name"`
-	Value      interface{} `json:"value"`
+	Name       string      `json:"name,omitempty"`
+	Value      interface{} `json:"value,omitempty"`
 	Selected   bool        `json:"selected,omitempty"`
 	*Label     `json:"label,omitempty"`
 	*ItemStyle `json:"itemStyle,omitempty"`
@@ -218,26 +234,32 @@ type ThemeRiverData struct {
 type RadarData struct {
 }
 
+// KlineData
 type KlineData struct {
 }
 
+// ScatterData
 type ScatterData struct {
 }
 
+// MapData
 type MapData struct {
 }
 
+// HeatMapData
 type HeatMapData struct {
 }
 
+// WordCloudData
 type WordCloudData struct {
+	Name  string      `json:"name,omitempty"`
+	Value interface{} `json:"value,omitempty"`
 }
 
+// GeoData
 type GeoData struct {
 }
 
-type EffectScatterData struct {
-}
-
+// ParallelData
 type ParallelData struct {
 }

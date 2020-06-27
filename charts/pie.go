@@ -14,6 +14,7 @@ type Pie struct {
 	MultiSeries
 }
 
+// Type returns the chart type.
 func (Pie) Type() string { return types.ChartPie }
 
 // NewPie creates a new gauge chart.

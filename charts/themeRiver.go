@@ -14,6 +14,7 @@ type ThemeRiver struct {
 	MultiSeries
 }
 
+// Type returns the chart type.
 func (ThemeRiver) Type() string { return types.ChartThemeRiver }
 
 // NewThemeRiver creates a new theme river chart.

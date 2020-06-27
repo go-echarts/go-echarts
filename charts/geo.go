@@ -39,6 +39,11 @@ func NewGeo(mapType string) *Geo {
 	return chart
 }
 
+//func (c *Geo) RegisterMapType(mapType string) {
+//	c.mapType = mapType
+//	c.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
+//}
+
 // AddSeries adds new data sets.
 // geoType 是 Geo 图形的种类，有以下三种类型可选
 // common.ChartType.Scatter
