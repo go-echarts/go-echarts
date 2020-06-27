@@ -38,11 +38,12 @@ func (c *Sankey) SetGlobalOptions(opts ...GlobalOpts) *Sankey {
 	return c
 }
 
+// Validate
 func (c *Sankey) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }
 
-// Render renders the chart and writes the output to given writers.
+// Render renders the chart and writes the output to given writer.
 func (c *Sankey) Render(w io.Writer) error {
 	c.Validate()
 	return render.ChartRender(c, w)

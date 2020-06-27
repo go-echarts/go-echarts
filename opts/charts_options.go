@@ -135,6 +135,12 @@ type LineData struct {
 	Symbol string `json:"symbol,omitempty"`
 	// SymbolSize
 	SymbolSize int `json:"symbolSize,omitempty"`
+
+	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
+	XAxisIndex int
+
+	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
+	YAxisIndex int
 }
 
 // LiquidChart

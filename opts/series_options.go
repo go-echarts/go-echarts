@@ -1,5 +1,7 @@
 package opts
 
+// todo: replace ' with " overall
+
 // Label contains options for a label text.
 type Label struct {
 	// Whether to show label.

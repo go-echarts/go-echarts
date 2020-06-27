@@ -26,7 +26,7 @@ func (c *HeatMap) SetXAxis(x interface{}) *HeatMap {
 	return c
 }
 
-// AddSeries adds the Y axis.
+// AddSeries adds the new series.
 func (c *HeatMap) AddSeries(name string, data []opts.HeatMapData, opts ...SeriesOpts) *HeatMap {
 	series := SingleSeries{Name: name, Type: types.ChartHeatMap, Data: data}
 	series.configureSeriesOpts(opts...)

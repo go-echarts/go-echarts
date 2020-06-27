@@ -85,7 +85,7 @@ func (c *Geo) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }
 
-// Render renders the chart and writes the output to given writers.
+// Render renders the chart and writes the output to given writer.
 func (c *Geo) Render(w io.Writer) error {
 	c.Validate()
 	return render.ChartRender(c, w)

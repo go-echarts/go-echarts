@@ -14,7 +14,6 @@ const (
 	ModPage  = "page"
 )
 
-// 渲染图表
 func renderChart(chart interface{}, w io.Writer, mod string) error {
 	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl}
 	switch mod {
@@ -23,22 +22,17 @@ func renderChart(chart interface{}, w io.Writer, mod string) error {
 	case ModPage:
 		contents = append(contents, tpls.PageTpl)
 	}
+
 	tpl := template.Must(template.New(mod).Parse(contents[0]))
-	mustTpl(tpl, contents[1:]...)
+	for _, cont := range contents[1:] {
+		tpl = template.Must(tpl.Parse(cont))
+	}
 	return tpl.ExecuteTemplate(w, mod, chart)
 }
 
-func mustTpl(tpl *template.Template, html ...string) {
-	for i := 0; i < len(html); i++ {
-		tpl = template.Must(tpl.Parse(html[i]))
-	}
-}
-
-// 过滤替换渲染结果
 func replaceRender(b bytes.Buffer, notReplace ...string) []byte {
-	// __x__ 与模板占位符相匹配
+	// set `__x__` as placeholder.
 	idPat, _ := regexp.Compile(`(__x__")|("__x__)`)
-	// 替换并转为 []byte 类型
 	content := idPat.ReplaceAllString(b.String(), "")
 	unusedObj := []string{
 		`geo: {},?`,
@@ -60,8 +54,7 @@ func replaceRender(b bytes.Buffer, notReplace ...string) []byte {
 		`"force":{},?`,
 	}
 	unusedObj = removeNotReplace(unusedObj, notReplace...)
-	// 移除无用的 JSON object
-	// 另一种解决方案是使用 *struct
+	// remove unused JSON object.
 	var unusedPat string
 	for i := 0; i < len(unusedObj); i++ {
 		unusedPat += unusedObj[i] + "|"
@@ -71,7 +64,6 @@ func replaceRender(b bytes.Buffer, notReplace ...string) []byte {
 	return []byte(res)
 }
 
-// 针对某些图表移除
 func removeNotReplace(unusedObj []string, removeStr ...string) []string {
 	res := make([]string, 0)
 	for i := 0; i < len(unusedObj); i++ {
@@ -99,10 +91,12 @@ func render(chart interface{}, mod string, w io.Writer, removeStr ...string) err
 	return err
 }
 
+// ChartRender renders the Chart types.
 func ChartRender(chart interface{}, w io.Writer, removeStr ...string) error {
 	return render(chart, ModChart, w, removeStr...)
 }
 
+// PageRender renders the Page component.
 func PageRender(chart interface{}, w io.Writer, removeStr ...string) error {
 	return render(chart, ModPage, w, removeStr...)
 }

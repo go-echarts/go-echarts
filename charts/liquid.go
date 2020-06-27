@@ -24,7 +24,7 @@ func NewLiquid() *Liquid {
 	return chart
 }
 
-// Add adds new data sets.
+// AddSeries adds new data sets.
 func (c *Liquid) AddSeries(name string, data []opts.LiquidData, opts ...SeriesOpts) *Liquid {
 	series := SingleSeries{Name: name, Type: types.ChartLiquid, Data: data}
 	series.configureSeriesOpts(opts...)
@@ -38,6 +38,7 @@ func (c *Liquid) SetGlobalOptions(opts ...GlobalOpts) *Liquid {
 	return c
 }
 
+// Validate
 func (c *Liquid) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

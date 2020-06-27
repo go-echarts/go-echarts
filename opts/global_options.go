@@ -321,13 +321,16 @@ type Toolbox struct {
 
 // ToolBoxFeature is a feature component under toolbox.
 type ToolBoxFeature struct {
-	// 保存为图片
+	// Save as image tool
 	SaveAsImage *ToolBoxFeatureSaveAsImage `json:"saveAsImage,omitempty"`
-	// 数据区域缩放。目前只支持直角坐标系的缩放
+
+	// Data area zooming, which only supports rectangular coordinate by now.
 	DataZoom *ToolBoxFeatureDataZoom `json:"dataZoom,omitempty"`
-	// 数据视图工具，可以展现当前图表所用的数据，编辑后可以动态更新
+
+	// Data view tool, which could display data in current chart and updates chart after being edited.
 	DataView *ToolBoxFeatureDataView `json:"dataView,omitempty"`
-	// 配置项还原
+
+	// Restore configuration item.
 	Restore *ToolBoxFeatureRestore `json:"restore,omitempty"`
 }
 
@@ -468,7 +471,8 @@ type YAxis struct {
 	//    return texts.join('/');
 	// }
 	AxisLabel *Label `json:"axisLabel,omitempty"`
-	// Y 轴数据项
+
+	// Category data, available in type: 'category' axis.
 	Data interface{} `json:"data,omitempty"`
 
 	// Number of segments that the axis is split into. Note that this number serves only as a
@@ -633,6 +637,7 @@ type SingleAxis struct {
 	Bottom string `json:"bottom,omitempty"`
 }
 
+// todo: chart option
 // Indicator is the option set for a radar chart.
 type Indicator struct {
 	// 指示器名称
@@ -645,6 +650,7 @@ type Indicator struct {
 	Color string `json:"color,omitempty"`
 }
 
+// todo: chart option
 // RadarComponent is the option set for a radar component.
 type RadarComponent struct {
 	// 雷达图的指示器，用来指定雷达图中的多个变量（维度）
@@ -659,6 +665,7 @@ type RadarComponent struct {
 	*SplitLine `json:"splitLine,omitempty"`
 }
 
+// todo: chart option
 // ParallelComponent is the option set for parallel component.
 type ParallelComponent struct {
 	// parallel 组件离容器左侧的距离。

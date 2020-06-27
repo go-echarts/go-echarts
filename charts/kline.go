@@ -20,13 +20,13 @@ func NewKLine() *Kline {
 	return chart
 }
 
-// AddXAxis adds the X axis.
+// SetXAxis adds the X axis.
 func (c *Kline) SetXAxis(xAxis interface{}) *Kline {
 	c.xAxisData = xAxis
 	return c
 }
 
-// AddYAxis adds the Y axis.
+// AddSeries adds the new series.
 func (c *Kline) AddSeries(name string, data []opts.KlineData, opts ...SeriesOpts) *Kline {
 	series := SingleSeries{Name: name, Type: types.ChartKline, Data: data}
 	series.configureSeriesOpts(opts...)

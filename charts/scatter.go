@@ -26,7 +26,7 @@ func (c *Scatter) SetXAxis(x interface{}) *Scatter {
 	return c
 }
 
-// AddSeries adds the Y axis.
+// AddSeries adds the new series.
 func (c *Scatter) AddSeries(name string, data []opts.ScatterData, opts ...SeriesOpts) *Scatter {
 	series := SingleSeries{Name: name, Type: types.ChartScatter, Data: data}
 	series.configureSeriesOpts(opts...)
