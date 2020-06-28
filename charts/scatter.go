@@ -2,6 +2,7 @@ package charts
 
 import (
 	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 
@@ -16,6 +17,7 @@ func (Scatter) Type() string { return types.ChartScatter }
 func NewScatter() *Scatter {
 	chart := &Scatter{}
 	chart.initBaseConfiguration()
+	chart.Renderer = render.NewChartRender(chart, chart.Validate)
 	chart.HasXYAxis = true
 	return chart
 }

@@ -2,12 +2,11 @@ package charts
 
 import (
 	"fmt"
-	"io"
+	"github.com/go-echarts/go-echarts/render"
 	"log"
 
 	"github.com/go-echarts/go-echarts/datasets"
 	"github.com/go-echarts/go-echarts/opts"
-	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 
@@ -33,6 +32,7 @@ var geoFormatter = `function (params) {
 func NewGeo(mapType string) *Geo {
 	chart := &Geo{}
 	chart.initBaseConfiguration()
+	chart.Renderer = render.NewChartRender(chart, chart.Validate)
 	chart.HasGeo = true
 	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
 	chart.GeoComponentOpts.Map = mapType
@@ -83,10 +83,4 @@ func (c *Geo) Validate() {
 		c.Tooltip.Formatter = opts.FuncOpts(geoFormatter)
 	}
 	c.Assets.Validate(c.AssetsHost)
-}
-
-// Render renders the chart and writes the output to given writer.
-func (c *Geo) Render(w io.Writer) error {
-	c.Validate()
-	return render.ChartRender(c, w)
 }

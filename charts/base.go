@@ -2,6 +2,7 @@ package charts
 
 import (
 	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
 )
 
 // todo: RegisterRouter()
@@ -11,6 +12,8 @@ type GlobalOpts func(bc *BaseConfiguration)
 
 // BaseConfiguration represents a option set needed by all chart types.
 type BaseConfiguration struct {
+	render.Renderer `json:"-"`
+
 	opts.Initialization    `json:"-"`
 	opts.Legend            `json:"legend"`
 	opts.Tooltip           `json:"tooltip"`

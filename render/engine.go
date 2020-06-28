@@ -9,10 +9,63 @@ import (
 	tpls "github.com/go-echarts/go-echarts/templates"
 )
 
+// todo: renderer interface abstraction
+type Renderer interface {
+	Render(w io.Writer) error
+}
+
 const (
 	ModChart = "chart"
 	ModPage  = "page"
 )
+
+type PageRender struct {
+	c      interface{}
+	before func()
+}
+
+func NewPageRender(c interface{}, before func()) Renderer {
+	return &PageRender{c: c, before: before}
+}
+
+func (r *PageRender) Render(w io.Writer) error {
+	r.before()
+
+	mod := "page"
+	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl, tpls.PageTpl}
+	tpl := MustTemplate(mod, contents)
+	return tpl.ExecuteTemplate(w, mod, r.c)
+}
+
+type chartRender struct {
+	c      interface{}
+	before func()
+}
+
+func NewChartRender(c interface{}, before func()) Renderer {
+	return &chartRender{c: c, before: before}
+}
+
+func (r *chartRender) Render(w io.Writer) error {
+	r.before()
+	mod := "chart"
+	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl, tpls.ChartTpl}
+	tpl := MustTemplate(mod, contents)
+
+	//var b bytes.Buffer
+	//idPat, _ := regexp.Compile(`(__x__")|("__x__)`)
+	//content := idPat.ReplaceAllString(b.String(), "")
+
+	return tpl.ExecuteTemplate(w, mod, r.c)
+}
+
+func MustTemplate(name string, contents []string) *template.Template {
+	tpl := template.Must(template.New(name).Parse(contents[0]))
+	for _, cont := range contents[1:] {
+		tpl = template.Must(tpl.Parse(cont))
+	}
+	return tpl
+}
 
 func renderChart(chart interface{}, w io.Writer, mod string) error {
 	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl}
@@ -30,6 +83,7 @@ func renderChart(chart interface{}, w io.Writer, mod string) error {
 	return tpl.ExecuteTemplate(w, mod, chart)
 }
 
+// todo: Is it necessary?
 func replaceRender(b bytes.Buffer, notReplace ...string) []byte {
 	// set `__x__` as placeholder.
 	idPat, _ := regexp.Compile(`(__x__")|("__x__)`)
@@ -64,6 +118,7 @@ func replaceRender(b bytes.Buffer, notReplace ...string) []byte {
 	return []byte(res)
 }
 
+// todo: Is it necessary?
 func removeNotReplace(unusedObj []string, removeStr ...string) []string {
 	res := make([]string, 0)
 	for i := 0; i < len(unusedObj); i++ {
@@ -92,11 +147,11 @@ func render(chart interface{}, mod string, w io.Writer, removeStr ...string) err
 }
 
 // ChartRender renders the Chart types.
-func ChartRender(chart interface{}, w io.Writer, removeStr ...string) error {
-	return render(chart, ModChart, w, removeStr...)
-}
+//func ChartRender(chart interface{}, w io.Writer, removeStr ...string) error {
+//	return render(chart, ModChart, w, removeStr...)
+//}
 
 // PageRender renders the Page component.
-func PageRender(chart interface{}, w io.Writer, removeStr ...string) error {
-	return render(chart, ModPage, w, removeStr...)
-}
+//func PageRender(chart interface{}, w io.Writer, removeStr ...string) error {
+//	return render(chart, ModPage, w, removeStr...)
+//}

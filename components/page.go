@@ -1,8 +1,6 @@
 package components
 
 import (
-	"io"
-
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
@@ -17,6 +15,8 @@ type Charter interface {
 
 // Page represents a page chart.
 type Page struct {
+	render.Renderer
+
 	opts.Initialization
 	opts.Assets
 
@@ -31,6 +31,7 @@ func NewPage() *Page {
 	page := &Page{}
 	page.Assets.InitAssets()
 	page.unusedStr.Init()
+	page.Renderer = render.NewChartRender(page, page.Validate)
 	return page
 }
 
@@ -52,8 +53,7 @@ func (page *Page) AddCharts(charts ...Charter) *Page {
 }
 
 // Render renders the chart and writes the output to given writer.
-func (page *Page) Render(w io.Writer) error {
+func (page *Page) Validate() {
 	page.Initialization.Validate()
 	page.Assets.Validate(page.AssetsHost)
-	return render.PageRender(page, w, page.unusedStr.Values...)
 }

@@ -1,8 +1,6 @@
 package charts
 
 import (
-	"io"
-
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
@@ -21,6 +19,7 @@ func (Sankey) Type() string { return types.ChartSankey }
 func NewSankey() *Sankey {
 	chart := &Sankey{}
 	chart.initBaseConfiguration()
+	chart.Renderer = render.NewChartRender(chart, chart.Validate)
 	return chart
 }
 
@@ -44,7 +43,7 @@ func (c *Sankey) Validate() {
 }
 
 // Render renders the chart and writes the output to given writer.
-func (c *Sankey) Render(w io.Writer) error {
-	c.Validate()
-	return render.ChartRender(c, w)
-}
+//func (c *Sankey) Render(w io.Writer) error {
+//	c.Validate()
+//	return render.ChartRender(c, w)
+//}

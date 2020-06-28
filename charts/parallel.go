@@ -1,8 +1,6 @@
 package charts
 
 import (
-	"io"
-
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
@@ -53,6 +51,7 @@ func (Parallel) Type() string { return types.ChartParallel }
 func NewParallel() *Parallel {
 	chart := &Parallel{}
 	chart.initBaseConfiguration()
+	chart.Renderer = render.NewChartRender(chart, chart.Validate)
 	chart.HasParallel = true
 	return chart
 }
@@ -77,7 +76,7 @@ func (c *Parallel) Validate() {
 }
 
 // Render renders the chart and writes the output to given writer.
-func (c *Parallel) Render(w io.Writer) error {
-	c.Validate()
-	return render.ChartRender(c, w)
-}
+//func (c *Parallel) Render(w io.Writer) error {
+//	c.Validate()
+//	return render.ChartRender(c, w)
+//}

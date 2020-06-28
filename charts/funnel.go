@@ -1,8 +1,6 @@
 package charts
 
 import (
-	"io"
-
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
@@ -21,6 +19,7 @@ func (Funnel) Type() string { return types.ChartFunnel }
 func NewFunnel() *Funnel {
 	chart := &Funnel{}
 	chart.initBaseConfiguration()
+	chart.Renderer = render.NewChartRender(chart, chart.Validate)
 	return chart
 }
 
@@ -41,10 +40,4 @@ func (c *Funnel) SetGlobalOptions(opts ...GlobalOpts) *Funnel {
 // Validate
 func (c *Funnel) Validate() {
 	c.Assets.Validate(c.AssetsHost)
-}
-
-// Render renders the chart and writes the output to given writer.
-func (c *Funnel) Render(w io.Writer) error {
-	c.Validate()
-	return render.ChartRender(c, w)
 }

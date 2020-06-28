@@ -1,8 +1,6 @@
 package charts
 
 import (
-	"io"
-
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
@@ -20,6 +18,7 @@ func (Radar) Type() string { return types.ChartRadar }
 func NewRadar() *Radar {
 	chart := &Radar{}
 	chart.initBaseConfiguration()
+	chart.Renderer = render.NewChartRender(chart, chart.Validate)
 	chart.HasRadar = true
 	return chart
 }
@@ -46,7 +45,7 @@ func (c *Radar) Validate() {
 }
 
 // Render renders the chart and writes the output to given writer.
-func (c *Radar) Render(w io.Writer) error {
-	c.Validate()
-	return render.ChartRender(c, w)
-}
+//func (c *Radar) Render(w io.Writer) error {
+//	c.Validate()
+//	return render.ChartRender(c, w)
+//}

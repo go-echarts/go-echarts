@@ -1,10 +1,7 @@
 package charts
 
 import (
-	"io"
-
 	"github.com/go-echarts/go-echarts/opts"
-	"github.com/go-echarts/go-echarts/render"
 )
 
 type Overlaper interface {
@@ -108,7 +105,7 @@ func (rc *RectChart) Validate() {
 }
 
 // Render renders the chart and writes the output to given writer.
-func (rc *RectChart) Render(w io.Writer) error {
-	rc.Validate()
-	return render.ChartRender(rc, w)
-}
+//func (rc *RectChart) Render(w io.Writer) error {
+//	rc.Validate()
+//	return render.ChartRender(rc, w)
+//}

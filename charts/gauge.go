@@ -1,8 +1,6 @@
 package charts
 
 import (
-	"io"
-
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
@@ -20,6 +18,7 @@ func (Gauge) Type() string { return types.ChartGauge }
 func NewGauge() *Gauge {
 	chart := &Gauge{}
 	chart.initBaseConfiguration()
+	chart.Renderer = render.NewChartRender(chart, chart.Validate)
 	return chart
 }
 
@@ -40,10 +39,4 @@ func (c *Gauge) SetGlobalOptions(opts ...GlobalOpts) *Gauge {
 // Validate
 func (c *Gauge) Validate() {
 	c.Assets.Validate(c.AssetsHost)
-}
-
-// Render renders the chart and writes the output to given writer.
-func (c *Gauge) Render(w io.Writer) error {
-	c.Validate()
-	return render.ChartRender(c, w)
 }

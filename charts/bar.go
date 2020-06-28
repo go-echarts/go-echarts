@@ -1,8 +1,6 @@
 package charts
 
 import (
-	"io"
-
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
@@ -22,6 +20,7 @@ func (Bar) Type() string { return types.ChartBar }
 func NewBar() *Bar {
 	chart := &Bar{}
 	chart.initBaseConfiguration()
+	chart.Renderer = render.NewChartRender(chart, chart.Validate)
 	chart.HasXYAxis = true
 	return chart
 }
@@ -54,10 +53,4 @@ func (c *Bar) Validate() {
 		c.XAxisList[0].Data = nil
 	}
 	c.Assets.Validate(c.AssetsHost)
-}
-
-// Render renders the chart and writes the output to given writers.
-func (c *Bar) Render(w io.Writer) error {
-	c.Validate()
-	return render.ChartRender(c, w)
 }

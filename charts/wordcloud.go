@@ -1,8 +1,6 @@
 package charts
 
 import (
-	"io"
-
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
@@ -27,6 +25,7 @@ var wcTextColor = `function () {
 func NewWordCloud() *WordCloud {
 	chart := &WordCloud{}
 	chart.initBaseConfiguration()
+	chart.Renderer = render.NewChartRender(chart, chart.Validate)
 	chart.JSAssets.Add("echarts-wordcloud.min.js")
 	return chart
 }
@@ -62,7 +61,7 @@ func (c *WordCloud) Validate() {
 }
 
 // Render renders the chart and writes the output to given writer.
-func (c *WordCloud) Render(w io.Writer) error {
-	c.Validate()
-	return render.ChartRender(c, w)
-}
+//func (c *WordCloud) Render(w io.Writer) error {
+//	c.Validate()
+//	return render.ChartRender(c, w)
+//}

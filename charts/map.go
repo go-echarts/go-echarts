@@ -1,8 +1,6 @@
 package charts
 
 import (
-	"io"
-
 	"github.com/go-echarts/go-echarts/datasets"
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
@@ -24,6 +22,7 @@ func (Map) Type() string { return types.ChartMap }
 func NewMap() *Map {
 	chart := &Map{}
 	chart.initBaseConfiguration()
+	chart.Renderer = render.NewChartRender(chart, chart.Validate)
 	return chart
 }
 
@@ -52,7 +51,7 @@ func (c *Map) Validate() {
 }
 
 // Render renders the chart and writes the output to given writer.
-func (c *Map) Render(w io.Writer) error {
-	c.Validate()
-	return render.ChartRender(c, w)
-}
+//func (c *Map) Render(w io.Writer) error {
+//	c.Validate()
+//	return render.ChartRender(c, w)
+//}

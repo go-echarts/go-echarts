@@ -1,10 +1,6 @@
 package charts
 
 import (
-	"io"
-
-	"github.com/go-echarts/go-echarts/render"
-
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/types"
 )
@@ -78,10 +74,4 @@ func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, opts ...Se
 	}
 	series.configureSeriesOpts(opts...)
 	c.MultiSeries = append(c.MultiSeries, series)
-}
-
-// Render renders the chart and writes the output to given writers.
-func (c *Chart3D) Render(w io.Writer) error {
-	c.Validate()
-	return render.ChartRender(c, w)
 }

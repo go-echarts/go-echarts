@@ -1,8 +1,6 @@
 package charts
 
 import (
-	"io"
-
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
@@ -20,6 +18,8 @@ func (Liquid) Type() string { return types.ChartLiquid }
 // NewLiquid creates a new liquid chart.
 func NewLiquid() *Liquid {
 	chart := &Liquid{}
+	chart.initBaseConfiguration()
+	chart.Renderer = render.NewChartRender(chart, chart.Validate)
 	chart.JSAssets.Add("echarts-liquidfill.min.js")
 	return chart
 }
@@ -44,7 +44,7 @@ func (c *Liquid) Validate() {
 }
 
 // Render renders the chart and writes the output to given writers.
-func (c *Liquid) Render(w io.Writer) error {
-	c.Validate()
-	return render.ChartRender(c, w, `"outline":{"show":false},?`, `"waveAnimation":false,?`)
-}
+//func (c *Liquid) Render(w io.Writer) error {
+//	c.Validate()
+//	return render.ChartRender(c, w, `"outline":{"show":false},?`, `"waveAnimation":false,?`)
+//}
