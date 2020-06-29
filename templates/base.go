@@ -16,7 +16,7 @@ var BaseTpl = `
      {{- if .HasGeo }}
          geo: {{ .GeoComponent }},
      {{- end }}
- {{- if .HasRadar }}
+     {{- if .HasRadar }}
          radar: {{ .RadarComponent }},
      {{- end }}
      {{- if .HasParallel }}
@@ -63,7 +63,7 @@ var BaseTpl = `
 
      {{- range .JSFunctions.Fns }}
      {{ . }}
-   {{- end }}
+     {{- end }}
  </script>
 {{ end }}
 `

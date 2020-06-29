@@ -1,6 +1,9 @@
 package charts
 
-import "github.com/go-echarts/go-echarts/types"
+import (
+	"github.com/go-echarts/go-echarts/render"
+	"github.com/go-echarts/go-echarts/types"
+)
 
 // Line3D represents a 3D line chart.
 type Line3D struct {
@@ -11,10 +14,11 @@ func (Line3D) Type() string { return types.ChartLine3D }
 
 // NewLine3D creates a new 3D line chart.
 func NewLine3D() *Line3D {
-	chart := &Line3D{}
-	chart.initBaseConfiguration()
-	chart.initChart3D()
-	return chart
+	c := &Line3D{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.initChart3D()
+	return c
 }
 
 // AddXYAxis adds both the X axis and the Y axis.

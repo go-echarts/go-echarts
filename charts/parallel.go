@@ -49,11 +49,11 @@ func (Parallel) Type() string { return types.ChartParallel }
 
 // NewParallel creates a new parallel instance.
 func NewParallel() *Parallel {
-	chart := &Parallel{}
-	chart.initBaseConfiguration()
-	chart.Renderer = render.NewChartRender(chart, chart.Validate)
-	chart.HasParallel = true
-	return chart
+	c := &Parallel{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.HasParallel = true
+	return c
 }
 
 // Add adds new data sets.
