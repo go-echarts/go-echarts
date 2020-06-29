@@ -15,11 +15,11 @@ func (Scatter) Type() string { return types.ChartScatter }
 
 // NewScatter creates a new scatter chart.
 func NewScatter() *Scatter {
-	chart := &Scatter{}
-	chart.initBaseConfiguration()
-	chart.Renderer = render.NewChartRender(chart, chart.Validate)
-	chart.HasXYAxis = true
-	return chart
+	c := &Scatter{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.HasXYAxis = true
+	return c
 }
 
 // SetXAxis adds the X axis.

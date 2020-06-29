@@ -17,10 +17,10 @@ func (Pie) Type() string { return types.ChartPie }
 
 // NewPie creates a new gauge chart.
 func NewPie() *Pie {
-	chart := &Pie{}
-	chart.initBaseConfiguration()
-	chart.Renderer = render.NewChartRender(chart, chart.Validate)
-	return chart
+	c := &Pie{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	return c
 }
 
 // AddSeries adds new data sets.

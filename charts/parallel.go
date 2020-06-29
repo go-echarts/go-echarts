@@ -74,9 +74,3 @@ func (c *Parallel) SetGlobalOptions(opts ...GlobalOpts) *Parallel {
 func (c *Parallel) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }
-
-// Render renders the chart and writes the output to given writer.
-//func (c *Parallel) Render(w io.Writer) error {
-//	c.Validate()
-//	return render.ChartRender(c, w)
-//}

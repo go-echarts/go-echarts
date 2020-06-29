@@ -16,10 +16,10 @@ func (Gauge) Type() string { return types.ChartGauge }
 
 // NewGauge creates a new gauge chart.
 func NewGauge() *Gauge {
-	chart := &Gauge{}
-	chart.initBaseConfiguration()
-	chart.Renderer = render.NewChartRender(chart, chart.Validate)
-	return chart
+	c := &Gauge{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	return c
 }
 
 // AddSeries adds new data sets.

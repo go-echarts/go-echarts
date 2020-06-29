@@ -2,6 +2,7 @@ package charts
 
 import (
 	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 
@@ -14,10 +15,11 @@ func (EffectScatter) Type() string { return types.ChartEffectScatter }
 
 // NewEffectScatter creates a new effect scatter chart.
 func NewEffectScatter() *EffectScatter {
-	chart := &EffectScatter{}
-	chart.initBaseConfiguration()
-	chart.HasXYAxis = true
-	return chart
+	c := &EffectScatter{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.HasXYAxis = true
+	return c
 }
 
 // AddXAxis adds the X axis.

@@ -23,11 +23,11 @@ var wcTextColor = `function () {
 
 // NewWordCloud creates a new word cloud chart.
 func NewWordCloud() *WordCloud {
-	chart := &WordCloud{}
-	chart.initBaseConfiguration()
-	chart.Renderer = render.NewChartRender(chart, chart.Validate)
-	chart.JSAssets.Add("echarts-wordcloud.min.js")
-	return chart
+	c := &WordCloud{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.JSAssets.Add("echarts-wordcloud.min.js")
+	return c
 }
 
 // AddSeries adds new data sets.
@@ -59,9 +59,3 @@ func (c *WordCloud) SetGlobalOptions(opts ...GlobalOpts) *WordCloud {
 func (c *WordCloud) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }
-
-// Render renders the chart and writes the output to given writer.
-//func (c *WordCloud) Render(w io.Writer) error {
-//	c.Validate()
-//	return render.ChartRender(c, w)
-//}

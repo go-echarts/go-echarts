@@ -2,6 +2,7 @@ package charts
 
 import (
 	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 
@@ -14,10 +15,11 @@ func (HeatMap) Type() string { return types.ChartHeatMap }
 
 // NewHeatMap creates a new heatmap chart.
 func NewHeatMap() *HeatMap {
-	chart := &HeatMap{}
-	chart.initBaseConfiguration()
-	chart.HasXYAxis = true
-	return chart
+	c := &HeatMap{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.HasXYAxis = true
+	return c
 }
 
 // SetXAxis adds the X axis.

@@ -1,6 +1,9 @@
 package charts
 
-import "github.com/go-echarts/go-echarts/types"
+import (
+	"github.com/go-echarts/go-echarts/render"
+	"github.com/go-echarts/go-echarts/types"
+)
 
 // Bar3D represents a 3D bar chart.
 type Bar3D struct {
@@ -12,10 +15,11 @@ func (Bar3D) Type() string { return types.ChartBar3D }
 
 // NewBar3D creates a new 3D bar chart.
 func NewBar3D() *Bar3D {
-	chart := &Bar3D{}
-	chart.initBaseConfiguration()
-	chart.initChart3D()
-	return chart
+	c := &Bar3D{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.initChart3D()
+	return c
 }
 
 // AddXYAxis adds both the X axis and the Y axis.

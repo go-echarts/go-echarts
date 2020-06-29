@@ -18,11 +18,11 @@ func (Bar) Type() string { return types.ChartBar }
 
 // NewBar creates a new bar chart instance.
 func NewBar() *Bar {
-	chart := &Bar{}
-	chart.initBaseConfiguration()
-	chart.Renderer = render.NewChartRender(chart, chart.Validate)
-	chart.HasXYAxis = true
-	return chart
+	c := &Bar{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.HasXYAxis = true
+	return c
 }
 
 // SetXAxis sets the X axis.

@@ -30,13 +30,13 @@ var geoFormatter = `function (params) {
 
 // NewGeo creates a new geo chart.
 func NewGeo(mapType string) *Geo {
-	chart := &Geo{}
-	chart.initBaseConfiguration()
-	chart.Renderer = render.NewChartRender(chart, chart.Validate)
-	chart.HasGeo = true
-	chart.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
-	chart.GeoComponentOpts.Map = mapType
-	return chart
+	c := &Geo{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.HasGeo = true
+	c.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
+	c.GeoComponentOpts.Map = mapType
+	return c
 }
 
 //func (c *Geo) RegisterMapType(mapType string) {

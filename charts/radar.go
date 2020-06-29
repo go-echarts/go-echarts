@@ -16,11 +16,11 @@ func (Radar) Type() string { return types.ChartRadar }
 
 // NewRadar creates a new radar chart.
 func NewRadar() *Radar {
-	chart := &Radar{}
-	chart.initBaseConfiguration()
-	chart.Renderer = render.NewChartRender(chart, chart.Validate)
-	chart.HasRadar = true
-	return chart
+	c := &Radar{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.HasRadar = true
+	return c
 }
 
 // AddSeries adds new data sets.

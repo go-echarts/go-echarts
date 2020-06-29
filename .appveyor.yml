@@ -1,11 +1,14 @@
 build: off
 
-clone_folder: c:\gopath\src\github.com\chenjiandongx\go-echarts
+clone_folder: c:\gopath\src\github.com\go-echarts\go-echarts
 
 environment:
   GOPATH: c:\gopath
 
-stack: go 1.10
+stack:
+  - go 1.11
+  - go 1.12
+  - go 1.13
 
 before_test:
   - go get -t -v ./...

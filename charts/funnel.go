@@ -17,10 +17,10 @@ func (Funnel) Type() string { return types.ChartFunnel }
 
 // NewFunnel creates a new funnel chart.
 func NewFunnel() *Funnel {
-	chart := &Funnel{}
-	chart.initBaseConfiguration()
-	chart.Renderer = render.NewChartRender(chart, chart.Validate)
-	return chart
+	c := &Funnel{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	return c
 }
 
 // AddSeries adds new data sets.

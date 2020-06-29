@@ -103,9 +103,3 @@ func (rc *RectChart) Validate() {
 	}
 	rc.Assets.Validate(rc.AssetsHost)
 }
-
-// Render renders the chart and writes the output to given writer.
-//func (rc *RectChart) Render(w io.Writer) error {
-//	rc.Validate()
-//	return render.ChartRender(rc, w)
-//}

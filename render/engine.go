@@ -9,7 +9,6 @@ import (
 	tpls "github.com/go-echarts/go-echarts/templates"
 )
 
-// todo: renderer interface abstraction
 type Renderer interface {
 	Render(w io.Writer) error
 }
@@ -19,68 +18,65 @@ const (
 	ModPage  = "page"
 )
 
-type PageRender struct {
+type pageRender struct {
 	c      interface{}
-	before func()
+	before []func()
 }
 
-func NewPageRender(c interface{}, before func()) Renderer {
-	return &PageRender{c: c, before: before}
+// NewPageRender
+func NewPageRender(c interface{}, before ...func()) Renderer {
+	return &pageRender{c: c, before: before}
 }
 
-func (r *PageRender) Render(w io.Writer) error {
-	r.before()
+// Render
+func (r *pageRender) Render(w io.Writer) error {
+	for _, fn := range r.before {
+		fn()
+	}
 
-	mod := "page"
 	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl, tpls.PageTpl}
-	tpl := MustTemplate(mod, contents)
-	return tpl.ExecuteTemplate(w, mod, r.c)
+	tpl := MustTemplate(ModPage, contents)
+	return tpl.ExecuteTemplate(w, ModPage, r.c)
 }
 
 type chartRender struct {
 	c      interface{}
-	before func()
+	before []func()
 }
 
-func NewChartRender(c interface{}, before func()) Renderer {
+// NewChartRender
+func NewChartRender(c interface{}, before ...func()) Renderer {
 	return &chartRender{c: c, before: before}
 }
 
+// Render
 func (r *chartRender) Render(w io.Writer) error {
-	r.before()
-	mod := "chart"
+	for _, fn := range r.before {
+		fn()
+	}
+
 	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl, tpls.ChartTpl}
-	tpl := MustTemplate(mod, contents)
+	tpl := MustTemplate(ModChart, contents)
 
-	//var b bytes.Buffer
-	//idPat, _ := regexp.Compile(`(__x__")|("__x__)`)
-	//content := idPat.ReplaceAllString(b.String(), "")
+	var buf bytes.Buffer
+	if err := tpl.ExecuteTemplate(&buf, ModChart, r.c); err != nil {
+		return err
+	}
 
-	return tpl.ExecuteTemplate(w, mod, r.c)
+	pat, _ := regexp.Compile(`(__x__")|("__x__)`)
+	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
+
+	_, err := w.Write(content)
+	return err
 }
 
+// MustTemplate
 func MustTemplate(name string, contents []string) *template.Template {
 	tpl := template.Must(template.New(name).Parse(contents[0]))
 	for _, cont := range contents[1:] {
 		tpl = template.Must(tpl.Parse(cont))
 	}
 	return tpl
-}
-
-func renderChart(chart interface{}, w io.Writer, mod string) error {
-	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl}
-	switch mod {
-	case ModChart:
-		contents = append(contents, tpls.ChartTpl)
-	case ModPage:
-		contents = append(contents, tpls.PageTpl)
-	}
-
-	tpl := template.Must(template.New(mod).Parse(contents[0]))
-	for _, cont := range contents[1:] {
-		tpl = template.Must(tpl.Parse(cont))
-	}
-	return tpl.ExecuteTemplate(w, mod, chart)
 }
 
 // todo: Is it necessary?
@@ -135,23 +131,3 @@ func removeNotReplace(unusedObj []string, removeStr ...string) []string {
 	}
 	return res
 }
-
-func render(chart interface{}, mod string, w io.Writer, removeStr ...string) error {
-	var b bytes.Buffer
-	if err := renderChart(chart, &b, mod); err != nil {
-		return err
-	}
-	res := replaceRender(b, removeStr...)
-	_, err := w.Write(res)
-	return err
-}
-
-// ChartRender renders the Chart types.
-//func ChartRender(chart interface{}, w io.Writer, removeStr ...string) error {
-//	return render(chart, ModChart, w, removeStr...)
-//}
-
-// PageRender renders the Page component.
-//func PageRender(chart interface{}, w io.Writer, removeStr ...string) error {
-//	return render(chart, ModPage, w, removeStr...)
-//}

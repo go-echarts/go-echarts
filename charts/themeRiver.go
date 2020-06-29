@@ -17,11 +17,11 @@ func (ThemeRiver) Type() string { return types.ChartThemeRiver }
 
 // NewThemeRiver creates a new theme river chart.
 func NewThemeRiver() *ThemeRiver {
-	chart := &ThemeRiver{}
-	chart.initBaseConfiguration()
-	chart.Renderer = render.NewChartRender(chart, chart.Validate)
-	chart.HasSingleAxis = true
-	return chart
+	c := &ThemeRiver{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.HasSingleAxis = true
+	return c
 }
 
 // AddSeries adds new data sets.
@@ -42,9 +42,3 @@ func (c *ThemeRiver) SetGlobalOptions(opts ...GlobalOpts) *ThemeRiver {
 func (c *ThemeRiver) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }
-
-// Render renders the chart and writes the output to given writer.
-//func (c *ThemeRiver) Render(w io.Writer) error {
-//	c.Validate()
-//	return render.ChartRender(c, w)
-//}

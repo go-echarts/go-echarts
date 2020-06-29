@@ -17,10 +17,10 @@ func (Sankey) Type() string { return types.ChartSankey }
 
 // NewSankey creates a new sankey chart.
 func NewSankey() *Sankey {
-	chart := &Sankey{}
-	chart.initBaseConfiguration()
-	chart.Renderer = render.NewChartRender(chart, chart.Validate)
-	return chart
+	c := &Sankey{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	return c
 }
 
 // Add adds new data sets.

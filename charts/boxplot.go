@@ -2,6 +2,7 @@ package charts
 
 import (
 	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 
@@ -15,10 +16,11 @@ func (BoxPlot) Type() string { return types.ChartBoxPlot }
 
 // NewBoxPlot creates a new boxplot chart.
 func NewBoxPlot() *BoxPlot {
-	chart := &BoxPlot{}
-	chart.initBaseConfiguration()
-	chart.HasXYAxis = true
-	return chart
+	c := &BoxPlot{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.HasXYAxis = true
+	return c
 }
 
 // SetXAxis adds the X axis.

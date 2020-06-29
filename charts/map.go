@@ -20,10 +20,10 @@ func (Map) Type() string { return types.ChartMap }
 
 // NewMap creates a new map chart.
 func NewMap() *Map {
-	chart := &Map{}
-	chart.initBaseConfiguration()
-	chart.Renderer = render.NewChartRender(chart, chart.Validate)
-	return chart
+	c := &Map{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	return c
 }
 
 func (c *Map) RegisterMapType(mapType string) {
@@ -49,9 +49,3 @@ func (c *Map) SetGlobalOptions(opts ...GlobalOpts) *Map {
 func (c *Map) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }
-
-// Render renders the chart and writes the output to given writer.
-//func (c *Map) Render(w io.Writer) error {
-//	c.Validate()
-//	return render.ChartRender(c, w)
-//}

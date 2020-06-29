@@ -2,6 +2,7 @@ package charts
 
 import (
 	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 
@@ -15,10 +16,11 @@ func (Line) Type() string { return types.ChartLine }
 
 // NewLine creates a new line chart.
 func NewLine() *Line {
-	chart := &Line{}
-	chart.initBaseConfiguration()
-	chart.HasXYAxis = true
-	return chart
+	c := &Line{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.HasXYAxis = true
+	return c
 }
 
 // SetXAxis adds the X axis.

@@ -2,6 +2,7 @@ package charts
 
 import (
 	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 
@@ -14,10 +15,11 @@ func (Kline) Type() string { return types.ChartKline }
 
 // NewKLine creates a new kline chart.
 func NewKLine() *Kline {
-	chart := &Kline{}
-	chart.initBaseConfiguration()
-	chart.HasXYAxis = true
-	return chart
+	c := &Kline{}
+	c.initBaseConfiguration()
+	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.HasXYAxis = true
+	return c
 }
 
 // SetXAxis adds the X axis.
