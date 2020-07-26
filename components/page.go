@@ -20,8 +20,7 @@ type Page struct {
 	opts.Initialization
 	opts.Assets
 
-	Routers []opts.Router
-	Charts  []interface{}
+	Charts []interface{}
 
 	unusedStr types.OrderedSet
 }
@@ -31,7 +30,7 @@ func NewPage() *Page {
 	page := &Page{}
 	page.Assets.InitAssets()
 	page.unusedStr.Init()
-	page.Renderer = render.NewChartRender(page, page.Validate)
+	page.Renderer = render.NewPageRender(page, page.Validate)
 	return page
 }
 

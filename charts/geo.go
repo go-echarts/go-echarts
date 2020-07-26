@@ -2,11 +2,11 @@ package charts
 
 import (
 	"fmt"
-	"github.com/go-echarts/go-echarts/render"
 	"log"
 
 	"github.com/go-echarts/go-echarts/datasets"
 	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/render"
 	"github.com/go-echarts/go-echarts/types"
 )
 

@@ -6,7 +6,6 @@ var PageTpl = `
 <html>
 {{- template "header" . }}
 <body>
-{{- template "routers" . }}
 {{- range .Charts }}
     {{ template "base" . }}
     <br/>

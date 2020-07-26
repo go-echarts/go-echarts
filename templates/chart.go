@@ -6,7 +6,6 @@ var ChartTpl = `
 <html>
 {{- template "header" . }}
 <body>
-{{- template "routers" . }}
 {{- template "base" . }}
 <style>
     .container {margin-top:30px; display: flex;justify-content: center;align-items: center;}

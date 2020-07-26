@@ -34,9 +34,19 @@ func (r *pageRender) Render(w io.Writer) error {
 		fn()
 	}
 
-	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl, tpls.PageTpl}
+	contents := []string{tpls.HeaderTpl, tpls.BaseTpl, tpls.PageTpl}
 	tpl := MustTemplate(ModPage, contents)
-	return tpl.ExecuteTemplate(w, ModPage, r.c)
+
+	var buf bytes.Buffer
+	if err := tpl.ExecuteTemplate(&buf, ModPage, r.c); err != nil {
+		return err
+	}
+
+	pat, _ := regexp.Compile(`(__x__")|("__x__)`)
+	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
+
+	_, err := w.Write(content)
+	return err
 }
 
 type chartRender struct {
@@ -55,7 +65,7 @@ func (r *chartRender) Render(w io.Writer) error {
 		fn()
 	}
 
-	contents := []string{tpls.HeaderTpl, tpls.RoutersTpl, tpls.BaseTpl, tpls.ChartTpl}
+	contents := []string{tpls.HeaderTpl, tpls.BaseTpl, tpls.ChartTpl}
 	tpl := MustTemplate(ModChart, contents)
 
 	var buf bytes.Buffer

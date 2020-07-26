@@ -5,8 +5,6 @@ import (
 	"github.com/go-echarts/go-echarts/render"
 )
 
-// todo: RegisterRouter()
-
 // GlobalOpts sets tje Global options for charts.
 type GlobalOpts func(bc *BaseConfiguration)
 
@@ -38,7 +36,6 @@ type BaseConfiguration struct {
 	Colors      []string // 全局颜色列表
 	appendColor []string // 追加全局颜色列表
 
-	Routers          []opts.Router       `json:"-"`
 	DataZoomList     []opts.DataZoom     `json:"datazoom,omitempty"`
 	VisualMapList    []opts.VisualMap    `json:"visualmap,omitempty"`
 	ParallelAxisList []opts.ParallelAxis // 平行坐标系中的坐标轴组件配置项
@@ -157,13 +154,6 @@ func WithParallelComponentOpts(opt opts.ParallelComponent) GlobalOpts {
 func WithColorsOpts(opt opts.Colors) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.insertSeriesColors(opt)
-	}
-}
-
-// WithRouterOpts
-func WithRouterOpts(opt opts.Router) GlobalOpts {
-	return func(bc *BaseConfiguration) {
-		bc.Routers = append(bc.Routers, opt)
 	}
 }
 
