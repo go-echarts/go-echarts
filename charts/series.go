@@ -231,6 +231,18 @@ func WithMarkPointNameTypeItemOpts(opt ...opts.MarkPointNameTypeItem) SeriesOpts
 	}
 }
 
+// WithMarkPointStyleOpts
+func WithMarkPointStyleOpts(opt ...opts.MarkPointStyle) SeriesOpts {
+	return func(s *SingleSeries) {
+		if s.MarkPoints == nil {
+			s.MarkPoints = &opts.MarkPoints{}
+		}
+		for _, o := range opt {
+			s.MarkPoints.Data = append(s.MarkPoints.Data, o)
+		}
+	}
+}
+
 // WithMarkPointNameCoordItemOpts
 func WithMarkPointNameCoordItemOpts(opt ...opts.MarkPointNameCoordItem) SeriesOpts {
 	return func(s *SingleSeries) {
