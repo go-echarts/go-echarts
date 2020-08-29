@@ -83,6 +83,13 @@ func WithEmphasisOpts(opt opts.Emphasis) SeriesOpts {
 	}
 }
 
+// WithAreaStyleOpts
+func WithAreaStyleOpts(opt opts.AreaStyle) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.AreaStyle = &opt
+	}
+}
+
 // WithRippleEffectOpts
 func WithRippleEffectOpts(opt opts.RippleEffect) SeriesOpts {
 	return func(s *SingleSeries) {
