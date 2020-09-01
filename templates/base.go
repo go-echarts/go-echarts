@@ -62,7 +62,7 @@ var BaseTpl = `
      myChart___x__{{ .ChartID }}__x__.setOption(option___x__{{ .ChartID }}__x__);
 
      {{- range .JSFunctions.Fns }}
-     {{ . }}
+     {{ . | safeJS }}
      {{- end }}
  </script>
 {{ end }}
