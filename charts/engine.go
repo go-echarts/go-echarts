@@ -2,6 +2,7 @@ package charts
 
 import (
 	"bytes"
+	"fmt"
 	"html/template"
 	"io"
 	"math/rand"
@@ -30,7 +31,11 @@ func renderChart(chart interface{}, w io.Writer, name string) error {
 	case "page":
 		contents = append(contents, tpls.PageTpl)
 	}
-	tpl := template.Must(template.New("").Parse(contents[0]))
+	tpl := template.Must(template.New("").Parse(contents[0])).Funcs(template.FuncMap{
+		"safeJS": func(s interface{}) template.JS {
+			return template.JS(fmt.Sprint(s))
+		},
+	})
 	mustTpl(tpl, contents[1:]...)
 	return tpl.ExecuteTemplate(w, name, chart)
 }

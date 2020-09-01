@@ -1,8 +1,9 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/datatypes"
 	"regexp"
+
+	"github.com/go-echarts/go-echarts/datatypes"
 )
 
 type GlobalOptser interface {
@@ -225,6 +226,5 @@ func reverseSlice(s []string) []string {
 // replace and clear up js functions string
 func replaceJsFuncs(fn string) string {
 	pat, _ := regexp.Compile(`\n|\t`)
-	fn = pat.ReplaceAllString(fn, "")
-	return "__x__" + fn + "__x__"
+	return pat.ReplaceAllString(fn, "")
 }
