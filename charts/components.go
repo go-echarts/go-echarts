@@ -370,5 +370,5 @@ func (YAxisOpts) MarkGlobal() {}
 
 // FuncOpts is the option set for handling function type.
 func FuncOpts(fn string) string {
-	return replaceJsFuncs(fn)
+	return replaceJsFuncsX(fn)
 }

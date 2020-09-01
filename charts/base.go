@@ -228,3 +228,10 @@ func replaceJsFuncs(fn string) string {
 	pat, _ := regexp.Compile(`\n|\t`)
 	return pat.ReplaceAllString(fn, "")
 }
+
+// replace and clear up js functions string
+func replaceJsFuncsX(fn string) string {
+	pat, _ := regexp.Compile(`\n|\t`)
+	fn = pat.ReplaceAllString(fn, "")
+	return "__x__" + fn + "__x__"
+}
