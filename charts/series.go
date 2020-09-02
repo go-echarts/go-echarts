@@ -90,6 +90,13 @@ func WithAreaStyleOpts(opt opts.AreaStyle) SeriesOpts {
 	}
 }
 
+// WithItemStyleOpts
+func WithItemStyleOpts(opt opts.ItemStyle) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.ItemStyle = &opt
+	}
+}
+
 // WithRippleEffectOpts
 func WithRippleEffectOpts(opt opts.RippleEffect) SeriesOpts {
 	return func(s *SingleSeries) {
