@@ -238,6 +238,10 @@ type ThemeRiverData struct {
 
 // RadarChartItem
 type RadarData struct {
+	// Name
+	Name string `json:"name,omitempty"`
+	// Value
+	Value interface{} `json:"value,omitempty"`
 }
 
 // KlineData

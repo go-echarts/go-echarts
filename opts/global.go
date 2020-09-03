@@ -659,6 +659,9 @@ type RadarComponent struct {
 	Shape string `json:"shape,omitempty"`
 	// 指示器轴的分割段数。默认 5
 	SplitNumber int `json:"splitNumber,omitempty"`
+	// 中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。
+	// 支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度。
+	Center interface{} `json:"center,omitempty"`
 	// 坐标轴在 grid 区域中的分隔区域
 	*SplitArea `json:"splitArea,omitempty"`
 	// 坐标轴在 grid 区域中的分隔线
