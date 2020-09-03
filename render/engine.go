@@ -2,6 +2,7 @@ package render
 
 import (
 	"bytes"
+	"fmt"
 	"html/template"
 	"io"
 	"regexp"
@@ -42,7 +43,7 @@ func (r *pageRender) Render(w io.Writer) error {
 		return err
 	}
 
-	pat, _ := regexp.Compile(`(__x__")|("__x__)`)
+	pat, _ := regexp.Compile(`(__x__")|("__x__)|(__x__)`)
 	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
 
 	_, err := w.Write(content)
@@ -82,7 +83,11 @@ func (r *chartRender) Render(w io.Writer) error {
 
 // MustTemplate
 func MustTemplate(name string, contents []string) *template.Template {
-	tpl := template.Must(template.New(name).Parse(contents[0]))
+	tpl := template.Must(template.New(name).Parse(contents[0])).Funcs(template.FuncMap{
+		"safeJS": func(s interface{}) template.JS {
+			return template.JS(fmt.Sprint(s))
+		},
+	})
 	for _, cont := range contents[1:] {
 		tpl = template.Must(tpl.Parse(cont))
 	}
