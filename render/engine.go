@@ -43,7 +43,7 @@ func (r *pageRender) Render(w io.Writer) error {
 		return err
 	}
 
-	pat, _ := regexp.Compile(`(__x__")|("__x__)`)
+	pat, _ := regexp.Compile(`(__x__")|("__x__)|(__x__)`)
 	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
 
 	_, err := w.Write(content)
