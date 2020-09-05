@@ -36,3 +36,10 @@ func (c *BoxPlot) AddSeries(name string, data []opts.BoxPlotData, opts ...Series
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
+
+// Validate validates the given configuration.
+// TODO: add more BoxPlot validate cases
+func (c *BoxPlot) Validate() {
+	c.XAxisList[0].Data = c.xAxisData
+	c.Assets.Validate(c.AssetsHost)
+}
