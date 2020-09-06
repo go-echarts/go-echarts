@@ -155,7 +155,12 @@ type LiquidChart struct {
 }
 
 // LiquidData
+// reference https://github.com/ecomfe/echarts-liquidfill
 type LiquidData struct {
+	// Name
+	Name string `json:"name,omitempty"`
+	// Value
+	Value interface{} `json:"value,omitempty"`
 }
 
 // PieChart is the option set for a pie chart.
