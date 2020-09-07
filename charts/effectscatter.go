@@ -37,7 +37,7 @@ func (c *EffectScatter) AddSeries(name string, data []opts.EffectScatterData, op
 }
 
 // Validate validates the given configuration.
-// TODO: add more Line validate cases
+// TODO: add more EffectScatter validate cases
 func (c *EffectScatter) Validate() {
 	c.XAxisList[0].Data = c.xAxisData
 	c.Assets.Validate(c.AssetsHost)
