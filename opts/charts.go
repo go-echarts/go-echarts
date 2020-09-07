@@ -70,6 +70,8 @@ type BoxPlotData struct {
 
 // EffectScatterData
 type EffectScatterData struct {
+	Name  string      `json:"name,omitempty"`
+	Value interface{} `json:"value,omitempty"`
 }
 
 // FunnelData
