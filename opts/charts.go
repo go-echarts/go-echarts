@@ -285,6 +285,8 @@ type MapData struct {
 
 // HeatMapData
 type HeatMapData struct {
+	Name  string      `json:"name,omitempty"`
+	Value interface{} `json:"value,omitempty"`
 }
 
 // WordCloudData
