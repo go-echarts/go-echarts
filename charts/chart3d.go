@@ -13,7 +13,6 @@ type Chart3D struct {
 	XAxis3D opts.XAxis3D
 	YAxis3D opts.YAxis3D
 	ZAxis3D opts.ZAxis3D
-	Grid3D  opts.Grid3D
 
 	xData interface{}
 	yData interface{}
