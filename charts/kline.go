@@ -35,3 +35,9 @@ func (c *Kline) AddSeries(name string, data []opts.KlineData, opts ...SeriesOpts
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
+
+// TODO: add more Kline validate cases
+func (c *Kline) Validate() {
+	c.XAxisList[0].Data = c.xAxisData
+	c.Assets.Validate(c.AssetsHost)
+}

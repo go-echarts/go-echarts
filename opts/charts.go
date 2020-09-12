@@ -253,6 +253,10 @@ type RadarData struct {
 
 // KlineData
 type KlineData struct {
+	// Name
+	Name string `json:"name,omitempty"`
+	// Value
+	Value interface{} `json:"value,omitempty"`
 }
 
 // ScatterData
