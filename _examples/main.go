@@ -172,5 +172,5 @@ func main() {
 	http.HandleFunc("/page", logTracing(pageHandler))
 
 	log.Println("Run server at " + host)
-	http.ListenAndServe(":8080", nil)
+	http.ListenAndServe("127.0.0.1:8080", nil)
 }
