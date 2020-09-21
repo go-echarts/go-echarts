@@ -14,7 +14,7 @@ const (
 	ChartHeatMap       = "heatmap"
 	ChartKline         = "candlestick"
 	ChartLine          = "line"
-	ChartLine3D        = "line3d"
+	ChartLine3D        = "line3D"
 	ChartLiquid        = "liquidFill"
 	ChartMap           = "map"
 	ChartParallel      = "parallel"
