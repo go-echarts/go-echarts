@@ -285,6 +285,8 @@ type ScatterData struct {
 
 // MapData
 type MapData struct {
+	Name  string      `json:"name,omitempty"`
+	Value interface{} `json:"value,omitempty"`
 }
 
 // HeatMapData
