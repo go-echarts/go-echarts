@@ -303,6 +303,8 @@ type WordCloudData struct {
 
 // GeoData
 type GeoData struct {
+	Name  string      `json:"name,omitempty"`
+	Value interface{} `json:"value,omitempty"`
 }
 
 // ParallelData
