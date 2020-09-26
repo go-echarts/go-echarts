@@ -10,8 +10,6 @@ import (
 	"github.com/go-echarts/go-echarts/types"
 )
 
-
-
 // Geo represents a geo chart.
 type Geo struct {
 	BaseConfiguration
