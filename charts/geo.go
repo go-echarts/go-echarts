@@ -49,7 +49,7 @@ func NewGeo(mapType string) *Geo {
 // common.ChartType.Scatter
 // common.ChartType.EffectScatter
 // common.ChartType.HeatMap
-func (c *Geo) AddSeries(name, geoType string, data opts.GeoData, opts ...SeriesOpts) *Geo {
+func (c *Geo) AddSeries(name, geoType string, data []opts.GeoData, opts ...SeriesOpts) *Geo {
 	//nvs := make([]types.NameValueItem, 0)
 	//for k, v := range data {
 	//	nvs = append(nvs, types.NameValueItem{Name: k, Value: c.extendValue(k, v)})
