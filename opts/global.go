@@ -668,6 +668,14 @@ type RadarComponent struct {
 	*SplitLine `json:"splitLine,omitempty"`
 }
 
+// GeoComponent is the option set for geo component.
+type GeoComponent struct {
+	Map       string    `json:"map,omitempty"`
+	ItemStyle ItemStyle `json:"itemStyle,omitempty"`
+	// 禁止图形响应鼠标事件
+	Silent bool `json:"silent,omitempty"`
+}
+
 // todo: chart option
 // ParallelComponent is the option set for parallel component.
 type ParallelComponent struct {

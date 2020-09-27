@@ -10,16 +10,10 @@ import (
 	"github.com/go-echarts/go-echarts/types"
 )
 
-// GeoComponentOpts is the option set for geo component.
-type GeoComponentOpts struct {
-	Map string `json:"map,omitempty"`
-}
-
 // Geo represents a geo chart.
 type Geo struct {
 	BaseConfiguration
 	MultiSeries
-	GeoComponentOpts
 }
 
 func (Geo) Type() string { return types.ChartGeo }
@@ -29,13 +23,11 @@ var geoFormatter = `function (params) {
 }`
 
 // NewGeo creates a new geo chart.
-func NewGeo(mapType string) *Geo {
+func NewGeo() *Geo {
 	c := &Geo{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
 	c.HasGeo = true
-	c.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
-	c.GeoComponentOpts.Map = mapType
 	return c
 }
 

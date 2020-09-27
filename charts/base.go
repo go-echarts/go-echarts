@@ -1,6 +1,7 @@
 package charts
 
 import (
+	"github.com/go-echarts/go-echarts/datasets"
 	"github.com/go-echarts/go-echarts/opts"
 	"github.com/go-echarts/go-echarts/render"
 )
@@ -19,6 +20,7 @@ type BaseConfiguration struct {
 	opts.Title             `json:"title"`
 	opts.Assets            `json:"-"`
 	opts.RadarComponent    // 雷达图组件配置项
+	opts.GeoComponent      // 地理图组件配置项
 	opts.ParallelComponent // 平行坐标系组件配置项
 	opts.JSFunctions       // JS 函数列表
 	opts.SingleAxis        // 单轴组件
@@ -141,6 +143,15 @@ func WithRadarComponentOpts(opt opts.RadarComponent) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.RadarComponent = opt
 	}
+}
+
+// WithGeoComponentOpts
+func WithGeoComponentOpts(opt opts.GeoComponent) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.GeoComponent = opt
+		bc.JSAssets.Add("maps/" + datasets.MapFileNames[opt.Map] + ".js")
+	}
+
 }
 
 // WithParallelComponentOpts
