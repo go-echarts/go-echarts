@@ -194,6 +194,47 @@ type Legend struct {
 	// Besides, it can be set to 'single' or 'multiple', for single selection and multiple selection.
 	SelectedMode string `json:"selectedMode,omitempty"`
 
+	// Legend space around content. The unit is px.
+	// Default values for each position are 5.
+	// And they can be set to different values with left, right, top, and bottom.
+	// Examples:
+	// 1. Set padding to be 5
+	//    padding: 5
+	// 2. Set the top and bottom paddings to be 5, and left and right paddings to be 10
+	//    padding: [5, 10]
+	// 3. Set each of the four paddings seperately
+	//    padding: [
+	//      5,  // up
+	//      10, // right
+	//      5,  // down
+	//      10, // left
+	//    ]
+	Padding interface{} `json:"padding,omitempty"`
+
+	// Image width of legend symbol.
+	ItemWidth int `json:"itemWidth,omitempty"`
+
+	// Image height of legend symbol.
+	ItemHeight int `json:"itemHeight,omitempty"`
+
+	// Legend X position, right/left/center
+	X string `json:"x,omitempty"`
+
+	// Legend Y position, right/left/center
+	Y string `json:"y,omitempty"`
+
+	// Width of legend component. Adaptive by default.
+	Width string `json:"width,omitempty"`
+
+	// Height of legend component. Adaptive by default.
+	Height string `json:"height,omitempty"`
+
+	// Legend marker and text aligning.
+	// By default, it automatically calculates from component location and orientation.
+	// When left value of this component is 'right' and orient is 'vertical', it would be aligned to 'right'.
+	// Options: auto/left/right
+	Align string `json:"align,omitempty"`
+
 	// Legend text style.
 	*TextStyle `json:"textStyle,omitempty"`
 }
