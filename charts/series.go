@@ -124,6 +124,7 @@ func WithBarChartOpts(opt opts.BarChart) SeriesOpts {
 	}
 }
 
+// WithGraphChartOpts
 func WithGraphChartOpts(opt opts.GraphChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Layout = opt.Layout
