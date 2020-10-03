@@ -217,3 +217,21 @@ type AreaStyle struct {
 	// 填充区域的透明度。支持从 0 到 1 的数字，为 0 时不填充区域
 	Opacity float32 `json:"opacity,omitempty"`
 }
+
+// GraphForce is the option set for graph force layout.
+type GraphForce struct {
+	// 进行力引导布局前的初始化布局，初始化布局会影响到力引导的效果
+	//InitLayout string `json:"initLayout,omitempty"`
+	// 节点之间的斥力因子。
+	// 支持设置成数组表达斥力的范围，此时不同大小的值会线性映射到不同的斥力。
+	// 值越大则斥力越大。默认为 50
+	Repulsion float32 `json:"repulsion,omitempty"`
+	// 节点受到的向中心的引力因子。该值越大节点越往中心点靠拢
+	// 默认为 0.1
+	Gravity float32 `json:"gravity,omitempty"`
+	// 边的两个节点之间的距离，这个距离也会受 Repulsion 影响。
+	// 支持设置成数组表达边长的范围，此时不同大小的值会线性映射到不同的长度。值越小则长度越长。
+	// 如下示例：值最大的边长度会趋向于 10，值最小的边长度会趋向于 50
+	// edgeLength: [10, 50]
+	EdgeLength float32 `json:"edgeLength,omitempty"`
+}
