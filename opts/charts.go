@@ -86,7 +86,7 @@ type GaugeData struct {
 	Value interface{} `json:"value,omitempty"`
 }
 
-// GraphOpts is the option set for graph chart.
+// GraphChart is the option set for graph chart.
 type GraphChart struct {
 	//图的布局。可选：
 	// "none" 不采用任何布局，使用节点中提供的 x， y 作为节点的位置。
