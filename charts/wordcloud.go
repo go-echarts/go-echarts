@@ -31,27 +31,25 @@ func NewWordCloud() *WordCloud {
 }
 
 // AddSeries adds new data sets.
-func (c *WordCloud) AddSeries(name string, data []opts.WordCloudData, opts ...SeriesOpts) *WordCloud {
+func (c *WordCloud) AddSeries(name string, data []opts.WordCloudData, options ...SeriesOpts) *WordCloud {
 	series := SingleSeries{Name: name, Type: types.ChartWordCloud, Data: data}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 
 	// set default random color for WordCloud chart
-	//if series.TextStyle.Normal == nil {
-	//
-	//	series.TextStyle.Normal = &opts{Color: FuncOpts(wcTextColor)}
-	//} else {
-	//	if series.TextStyle.Normal.Color == "" {
-	//		series.TextStyle.Normal.Color = FuncOpts(wcTextColor)
-	//	}
-	//}
+	if series.TextStyle == nil {
+		series.TextStyle = &opts.TextStyle{Normal: &opts.TextStyle{}}
+	}
+	if series.TextStyle.Normal.Color == "" {
+		series.TextStyle.Normal.Color = opts.FuncOpts(wcTextColor)
+	}
 
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the WordCloud instance.
-func (c *WordCloud) SetGlobalOptions(opts ...GlobalOpts) *WordCloud {
-	c.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (c *WordCloud) SetGlobalOptions(options ...GlobalOpts) *WordCloud {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 

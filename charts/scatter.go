@@ -11,6 +11,7 @@ type Scatter struct {
 	RectChart
 }
 
+// Type returns the chart type.
 func (Scatter) Type() string { return types.ChartScatter }
 
 // NewScatter creates a new scatter chart.
@@ -29,9 +30,9 @@ func (c *Scatter) SetXAxis(x interface{}) *Scatter {
 }
 
 // AddSeries adds the new series.
-func (c *Scatter) AddSeries(name string, data []opts.ScatterData, opts ...SeriesOpts) *Scatter {
+func (c *Scatter) AddSeries(name string, data []opts.ScatterData, options ...SeriesOpts) *Scatter {
 	series := SingleSeries{Name: name, Type: types.ChartScatter, Data: data}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
@@ -42,4 +43,3 @@ func (c *Scatter) Validate() {
 	c.XAxisList[0].Data = c.xAxisData
 	c.Assets.Validate(c.AssetsHost)
 }
-

@@ -1,6 +1,7 @@
 package opts
 
 import (
+	"fmt"
 	"math/rand"
 	"reflect"
 	"regexp"
@@ -777,11 +778,17 @@ func (f *JSFunctions) AddJSFuncs(fn ...string) {
 	}
 }
 
+// FuncOpts is the option set for handling function type.
+func FuncOpts(fn string) string {
+	return replaceJsFuncs(fn)
+}
+
+const funcMarker = "__x__"
+
 // replace and clear up js functions string
 func replaceJsFuncs(fn string) string {
-	pat, _ := regexp.Compile(`\n|\t`)
-	fn = pat.ReplaceAllString(fn, "")
-	return "__x__" + fn + "__x__"
+	pat := regexp.MustCompile(`\n|\t`)
+	return fmt.Sprintf("%s%s%s", funcMarker, pat.ReplaceAllString(fn, ""), funcMarker)
 }
 
 type Colors []string
@@ -912,9 +919,4 @@ type ViewControl struct {
 	AutoRotate bool `json:"autoRotate,omitempty"`
 	// 物体自转的速度。单位为角度 / 秒，默认为 10 ，也就是 36 秒转一圈
 	AutoRotateSpeed float32 `json:"autoRotateSpeed,omitempty"`
-}
-
-// FuncOpts is the option set for handling function type.
-func FuncOpts(fn string) string {
-	return replaceJsFuncs(fn)
 }

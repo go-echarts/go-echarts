@@ -58,9 +58,8 @@ type RectConfiguration struct {
 	BaseConfiguration
 }
 
-// 设置 RectOptions 全局配置项
-func (rect *RectConfiguration) setRectGlobalOptions(opts ...GlobalOpts) {
-	rect.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (rect *RectConfiguration) setRectGlobalOptions(options ...GlobalOpts) {
+	rect.BaseConfiguration.setBaseGlobalOptions(options...)
 }
 
 // RectChart is a chart in RectChart coordinate.
@@ -76,8 +75,8 @@ func (rc *RectChart) overlap() MultiSeries {
 }
 
 // SetGlobalOptions sets options for the RectChart instance.
-func (rc *RectChart) SetGlobalOptions(opts ...GlobalOpts) *RectChart {
-	rc.RectConfiguration.setRectGlobalOptions(opts...)
+func (rc *RectChart) SetGlobalOptions(options ...GlobalOpts) *RectChart {
+	rc.RectConfiguration.setRectGlobalOptions(options...)
 	return rc
 }
 
@@ -93,7 +92,7 @@ func (rc *RectChart) Overlap(a ...Overlaper) {
 	}
 }
 
-// RectChart 校验器
+// Validate
 func (rc *RectChart) Validate() {
 	// 确保 X 轴数据不会因为设置了 XAxisOpts 而被抹除
 	rc.XAxisList[0].Data = rc.xAxisData

@@ -24,16 +24,16 @@ func NewFunnel() *Funnel {
 }
 
 // AddSeries adds new data sets.
-func (c *Funnel) AddSeries(name string, data []opts.FunnelData, opts ...SeriesOpts) *Funnel {
+func (c *Funnel) AddSeries(name string, data []opts.FunnelData, options ...SeriesOpts) *Funnel {
 	series := SingleSeries{Name: name, Type: types.ChartFunnel, Data: data}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the Funnel instance.
-func (c *Funnel) SetGlobalOptions(opts ...GlobalOpts) *Funnel {
-	c.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (c *Funnel) SetGlobalOptions(options ...GlobalOpts) *Funnel {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 

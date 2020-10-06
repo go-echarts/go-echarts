@@ -23,17 +23,17 @@ func NewSankey() *Sankey {
 	return c
 }
 
-// Add adds new data sets.
-func (c *Sankey) AddSeries(name string, nodes []opts.SankeyNode, links []opts.SankeyLink, opts ...SeriesOpts) *Sankey {
+// AddSeries adds new data sets.
+func (c *Sankey) AddSeries(name string, nodes []opts.SankeyNode, links []opts.SankeyLink, options ...SeriesOpts) *Sankey {
 	series := SingleSeries{Name: name, Type: types.ChartSankey, Data: nodes, Links: links}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the Sankey instance.
-func (c *Sankey) SetGlobalOptions(opts ...GlobalOpts) *Sankey {
-	c.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (c *Sankey) SetGlobalOptions(options ...GlobalOpts) *Sankey {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 

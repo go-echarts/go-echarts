@@ -29,7 +29,7 @@ func (c *Line3D) AddXYAxis(xAxis, yAxis interface{}) *Line3D {
 }
 
 // AddZAxis adds the Z axis.
-func (c *Line3D) AddZAxis(name string, zAxis interface{}, opts ...SeriesOpts) *Line3D {
-	c.addZAxis(types.ChartLine3D, name, zAxis, opts...)
+func (c *Line3D) AddZAxis(name string, zAxis interface{}, options ...SeriesOpts) *Line3D {
+	c.addZAxis(types.ChartLine3D, name, zAxis, options...)
 	return c
 }

@@ -1,7 +1,6 @@
 package charts
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/go-echarts/go-echarts/datasets"
@@ -16,6 +15,7 @@ type Geo struct {
 	MultiSeries
 }
 
+// Type returns the chart type.
 func (Geo) Type() string { return types.ChartGeo }
 
 var geoFormatter = `function (params) {
@@ -31,23 +31,14 @@ func NewGeo() *Geo {
 	return c
 }
 
-//func (c *Geo) RegisterMapType(mapType string) {
-//	c.mapType = mapType
-//	c.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
-//}
-
 // AddSeries adds new data sets.
-// geoType 是 Geo 图形的种类，有以下三种类型可选
-// common.ChartType.Scatter
-// common.ChartType.EffectScatter
-// common.ChartType.HeatMap
-func (c *Geo) AddSeries(name, geoType string, data []opts.GeoData, opts ...SeriesOpts) *Geo {
-	//nvs := make([]types.NameValueItem, 0)
-	//for k, v := range data {
-	//	nvs = append(nvs, types.NameValueItem{Name: k, Value: c.extendValue(k, v)})
-	//}
+// geoType options:
+// * types.ChartScatter
+// * types.ChartEffectScatter
+// * types.ChartHeatMap
+func (c *Geo) AddSeries(name, geoType string, data []opts.GeoData, options ...SeriesOpts) *Geo {
 	series := SingleSeries{Name: name, Type: geoType, Data: data, CoordSystem: types.ChartGeo}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
@@ -56,7 +47,7 @@ func (c *Geo) extendValue(region string, v float32) []float32 {
 	res := make([]float32, 0)
 	tv := datasets.Coordinates[region]
 	if tv == [2]float32{0, 0} {
-		log.Println(fmt.Sprintf("No coordinate is specified for %s", region))
+		log.Printf("goecharts: No coordinate is specified for %s\n", region)
 	} else {
 		res = append(tv[:], v)
 	}
@@ -64,8 +55,8 @@ func (c *Geo) extendValue(region string, v float32) []float32 {
 }
 
 // SetGlobalOptions sets options for the Geo instance.
-func (c *Geo) SetGlobalOptions(opts ...GlobalOpts) *Geo {
-	c.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (c *Geo) SetGlobalOptions(options ...GlobalOpts) *Geo {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 

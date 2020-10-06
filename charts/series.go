@@ -52,10 +52,10 @@ type SingleSeries struct {
 	SizeRange     []float32 `json:"sizeRange,omitempty"`
 	RotationRange []float32 `json:"rotationRange,omitempty"`
 
-	// 系列数据项
+	// series data
 	Data interface{} `json:"data"`
 
-	// 系列配置项
+	// series options
 	*opts.ItemStyle    `json:"itemStyle,omitempty"`
 	*opts.Label        `json:"label,omitempty"`
 	*opts.Emphasis     `json:"emphasis,omitempty"`
@@ -269,48 +269,11 @@ func WithMarkPointNameCoordItemOpts(opt ...opts.MarkPointNameCoordItem) SeriesOp
 	}
 }
 
-func (s *SingleSeries) configureSeriesOpts(opts ...SeriesOpts) {
-	for _, opt := range opts {
+func (s *SingleSeries) configureSeriesOpts(options ...SeriesOpts) {
+	for _, opt := range options {
 		opt(s)
 	}
 }
-
-// 设置 singleSeries 配置项
-//func (s *singleSeries) switchSeriesOpts(options ...SeriesOptser) {
-//	// 实际 MarkLevel Name Coordinates 结构
-//	type MLNameCoord struct {
-//		Name  string        `json:"name,omitempty"`
-//		Coord []interface{} `json:"coord"`
-//	}
-//
-//	for i := 0; i < len(options); i++ {
-//		option := options[i]
-//		switch option := option.(type) {
-//		case TextStyleOpts:
-//			s.TextStyleOpts = option
-//			s.TextStyleOpts.Normal = &TextStyleOpts{
-//				Color:     s.TextStyleOpts.Color,
-//				FontSize:  s.TextStyleOpts.FontSize,
-//				FontStyle: s.TextStyleOpts.FontStyle,
-//			}
-//
-//		case MLNameCoordItem:
-//			m := option
-//			s.MarkLine.Data = append(
-//				s.MarkLine.Data, []MLNameCoord{{Name: m.Name, Coord: m.Coord0}, {Coord: m.Coord1}})
-//		//case MLStyleOpts:
-//		//	s.MarkLine.MLStyleOpts = option
-//
-//		// MarkPoint 配置项
-//		case MPNameTypeItem:
-//			s.MarkPoint.Data = append(s.MarkPoint.Data, option)
-//		case MPNameCoordItem:
-//			s.MarkPoint.Data = append(s.MarkPoint.Data, option)
-//		case MPStyleOpts:
-//			s.MarkPoint.MPStyleOpts = option
-//		}
-//	}
-//}
 
 // Series represents multiple series.
 type MultiSeries []SingleSeries

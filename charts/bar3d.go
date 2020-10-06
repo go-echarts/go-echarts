@@ -30,7 +30,7 @@ func (c *Bar3D) AddXYAxis(xAxis, yAxis interface{}) *Bar3D {
 }
 
 // AddZAxis adds the Z axis.
-func (c *Bar3D) AddZAxis(name string, zAxis interface{}, opts ...SeriesOpts) *Bar3D {
-	c.addZAxis(types.ChartBar3D, name, zAxis, opts...)
+func (c *Bar3D) AddZAxis(name string, zAxis interface{}, options ...SeriesOpts) *Bar3D {
+	c.addZAxis(types.ChartBar3D, name, zAxis, options...)
 	return c
 }

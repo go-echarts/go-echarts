@@ -10,6 +10,7 @@ type Surface3D struct {
 	Chart3D
 }
 
+// Type returns the chart type.
 func (Surface3D) Type() string { return types.ChartSurface3D }
 
 // NewSurface3D creates a new 3d surface chart.
@@ -29,7 +30,7 @@ func (c *Surface3D) AddXYAxis(xAxis, yAxis interface{}) *Surface3D {
 }
 
 // AddZAxis adds the Z axis.
-func (c *Surface3D) AddZAxis(name string, zAxis interface{}, opts ...SeriesOpts) *Surface3D {
-	c.addZAxis(types.ChartSurface3D, name, zAxis, opts...)
+func (c *Surface3D) AddZAxis(name string, zAxis interface{}, options ...SeriesOpts) *Surface3D {
+	c.addZAxis(types.ChartSurface3D, name, zAxis, options...)
 	return c
 }

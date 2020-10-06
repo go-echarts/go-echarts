@@ -18,24 +18,28 @@ type Chart3D struct {
 	yData interface{}
 }
 
+// WithXAxis3DOpts
 func WithXAxis3DOpts(opt opts.XAxis3D) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.XAxis3D = opt
 	}
 }
 
+// WithYAxis3DOpts
 func WithYAxis3DOpts(opt opts.YAxis3D) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.YAxis3D = opt
 	}
 }
 
+// WithZAxis3DOpts
 func WithZAxis3DOpts(opt opts.ZAxis3D) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.ZAxis3D = opt
 	}
 }
 
+// WithGrid3DOpts
 func WithGrid3DOpts(opt opts.Grid3D) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Grid3D = opt
@@ -48,13 +52,13 @@ func (c *Chart3D) initChart3D() {
 }
 
 // SetGlobalOptions sets options for the Chart3D instance.
-func (c *Chart3D) SetGlobalOptions(opts ...GlobalOpts) *Chart3D {
-	c.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (c *Chart3D) SetGlobalOptions(options ...GlobalOpts) *Chart3D {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 
 func (c *Chart3D) Validate() {
-	// 确保 XY 轴数据项不会被抹除
+	// retain X/Y axes data
 	if c.XAxis3D.Data == nil {
 		c.XAxis3D.Data = c.xData
 	}
@@ -64,13 +68,13 @@ func (c *Chart3D) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }
 
-func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, opts ...SeriesOpts) {
+func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, options ...SeriesOpts) {
 	series := SingleSeries{
 		Name:        name,
 		Type:        chartType,
 		Data:        zAxis,
 		CoordSystem: types.ChartCartesian3D,
 	}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 }

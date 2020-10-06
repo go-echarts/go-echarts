@@ -6,12 +6,6 @@ import (
 	"github.com/go-echarts/go-echarts/types"
 )
 
-// ParallelAxisOpts is a list of ParallelAxisOpts.
-// 平行坐标系中的坐标轴组件配置项
-//type ParallelAxisOpts []PAOpts
-//
-//func (ParallelAxisOpts) MarkGlobal() {}
-
 // PAOpts is the option set for a parallel axis.
 type PAOpts struct {
 	// 坐标轴的维度序号
@@ -36,8 +30,6 @@ type PAOpts struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
-//func (ParallelComponentOpts) MarkGlobal() {}
-
 // Parallel represents a parallel axis.
 type Parallel struct {
 	BaseConfiguration
@@ -56,17 +48,17 @@ func NewParallel() *Parallel {
 	return c
 }
 
-// Add adds new data sets.
-func (c *Parallel) AddSeries(name string, data []opts.ParallelData, opts ...SeriesOpts) *Parallel {
+// AddSeries adds new data sets.
+func (c *Parallel) AddSeries(name string, data []opts.ParallelData, options ...SeriesOpts) *Parallel {
 	series := SingleSeries{Name: name, Type: types.ChartParallel, Data: data}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the Parallel instance.
-func (c *Parallel) SetGlobalOptions(opts ...GlobalOpts) *Parallel {
-	c.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (c *Parallel) SetGlobalOptions(options ...GlobalOpts) *Parallel {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 

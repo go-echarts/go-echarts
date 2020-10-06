@@ -11,19 +11,19 @@ type GlobalOpts func(bc *BaseConfiguration)
 
 // BaseConfiguration represents a option set needed by all chart types.
 type BaseConfiguration struct {
-	render.Renderer `json:"-"`
+	opts.Legend  `json:"legend"`
+	opts.Tooltip `json:"tooltip"`
+	opts.Toolbox `json:"toolbox"`
+	opts.Title   `json:"title"`
 
+	render.Renderer        `json:"-"`
 	opts.Initialization    `json:"-"`
-	opts.Legend            `json:"legend"`
-	opts.Tooltip           `json:"tooltip"`
-	opts.Toolbox           `json:"toolbox"`
-	opts.Title             `json:"title"`
 	opts.Assets            `json:"-"`
-	opts.RadarComponent    // 雷达图组件配置项
-	opts.GeoComponent      // 地理图组件配置项
-	opts.ParallelComponent // 平行坐标系组件配置项
-	opts.JSFunctions       // JS 函数列表
-	opts.SingleAxis        // 单轴组件
+	opts.RadarComponent    `json:"-"`
+	opts.GeoComponent      `json:"-"`
+	opts.ParallelComponent `json:"-"`
+	opts.JSFunctions       `json:"-"`
+	opts.SingleAxis        `json:"-"`
 
 	HasXYAxis bool `json:"-"`
 	XYAxis

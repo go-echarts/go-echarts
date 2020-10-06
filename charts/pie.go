@@ -24,16 +24,16 @@ func NewPie() *Pie {
 }
 
 // AddSeries adds new data sets.
-func (c *Pie) AddSeries(name string, data []opts.PieData, opts ...SeriesOpts) *Pie {
+func (c *Pie) AddSeries(name string, data []opts.PieData, options ...SeriesOpts) *Pie {
 	series := SingleSeries{Name: name, Type: types.ChartPie, Data: data}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the Pie instance.
-func (c *Pie) SetGlobalOptions(opts ...GlobalOpts) *Pie {
-	c.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (c *Pie) SetGlobalOptions(options ...GlobalOpts) *Pie {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 
@@ -41,9 +41,3 @@ func (c *Pie) SetGlobalOptions(opts ...GlobalOpts) *Pie {
 func (c *Pie) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }
-
-// Render renders the chart and writes the output to given writer.
-//func (c *Pie) Render(w io.Writer) error {
-//	c.Validate()
-//	return render.ChartRender(c, w)
-//}

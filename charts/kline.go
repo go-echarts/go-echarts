@@ -11,6 +11,7 @@ type Kline struct {
 	RectChart
 }
 
+// Type returns the chart type.
 func (Kline) Type() string { return types.ChartKline }
 
 // NewKLine creates a new kline chart.
@@ -29,14 +30,14 @@ func (c *Kline) SetXAxis(xAxis interface{}) *Kline {
 }
 
 // AddSeries adds the new series.
-func (c *Kline) AddSeries(name string, data []opts.KlineData, opts ...SeriesOpts) *Kline {
+func (c *Kline) AddSeries(name string, data []opts.KlineData, options ...SeriesOpts) *Kline {
 	series := SingleSeries{Name: name, Type: types.ChartKline, Data: data}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
-// TODO: add more Kline validate cases
+// Validate
 func (c *Kline) Validate() {
 	c.XAxisList[0].Data = c.xAxisData
 	c.Assets.Validate(c.AssetsHost)

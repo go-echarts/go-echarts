@@ -23,16 +23,16 @@ func NewGauge() *Gauge {
 }
 
 // AddSeries adds new data sets.
-func (c *Gauge) AddSeries(name string, data []opts.GaugeData, opts ...SeriesOpts) *Gauge {
+func (c *Gauge) AddSeries(name string, data []opts.GaugeData, options ...SeriesOpts) *Gauge {
 	series := SingleSeries{Name: name, Type: types.ChartGauge, Data: data}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the Gauge instance.
-func (c *Gauge) SetGlobalOptions(opts ...GlobalOpts) *Gauge {
-	c.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (c *Gauge) SetGlobalOptions(options ...GlobalOpts) *Gauge {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 

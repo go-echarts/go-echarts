@@ -10,6 +10,7 @@ type Scatter3D struct {
 	Chart3D
 }
 
+// Type returns the chart type.
 func (Scatter3D) Type() string { return types.ChartScatter3D }
 
 // NewScatter3D creates a new 3D scatter chart.
@@ -29,7 +30,7 @@ func (c *Scatter3D) AddXYAxis(xAxis, yAxis interface{}) *Scatter3D {
 }
 
 // AddZAxis adds the Z axis.
-func (c *Scatter3D) AddZAxis(name string, zAxis interface{}, opts ...SeriesOpts) *Scatter3D {
-	c.addZAxis(types.ChartScatter3D, name, zAxis, opts...)
+func (c *Scatter3D) AddZAxis(name string, zAxis interface{}, options ...SeriesOpts) *Scatter3D {
+	c.addZAxis(types.ChartScatter3D, name, zAxis, options...)
 	return c
 }

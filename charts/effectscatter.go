@@ -22,16 +22,16 @@ func NewEffectScatter() *EffectScatter {
 	return c
 }
 
-// AddXAxis adds the X axis.
+// SetXAxis adds the X axis.
 func (c *EffectScatter) SetXAxis(x interface{}) *EffectScatter {
 	c.xAxisData = x
 	return c
 }
 
-// AddYAxis adds the Y axis.
-func (c *EffectScatter) AddSeries(name string, data []opts.EffectScatterData, opts ...SeriesOpts) *EffectScatter {
+// AddSeries adds the Y axis.
+func (c *EffectScatter) AddSeries(name string, data []opts.EffectScatterData, options ...SeriesOpts) *EffectScatter {
 	series := SingleSeries{Name: name, Type: types.ChartEffectScatter, Data: data}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

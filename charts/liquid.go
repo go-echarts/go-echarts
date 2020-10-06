@@ -25,16 +25,16 @@ func NewLiquid() *Liquid {
 }
 
 // AddSeries adds new data sets.
-func (c *Liquid) AddSeries(name string, data []opts.LiquidData, opts ...SeriesOpts) *Liquid {
+func (c *Liquid) AddSeries(name string, data []opts.LiquidData, options ...SeriesOpts) *Liquid {
 	series := SingleSeries{Name: name, Type: types.ChartLiquid, Data: data}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the Liquid instance.
-func (c *Liquid) SetGlobalOptions(opts ...GlobalOpts) *Liquid {
-	c.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (c *Liquid) SetGlobalOptions(options ...GlobalOpts) *Liquid {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 

@@ -25,16 +25,16 @@ func NewThemeRiver() *ThemeRiver {
 }
 
 // AddSeries adds new data sets.
-func (c *ThemeRiver) AddSeries(name string, data []opts.ThemeRiverData, opts ...SeriesOpts) *ThemeRiver {
+func (c *ThemeRiver) AddSeries(name string, data []opts.ThemeRiverData, options ...SeriesOpts) *ThemeRiver {
 	series := SingleSeries{Name: name, Type: types.ChartThemeRiver, Data: data}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the ThemeRiver instance.
-func (c *ThemeRiver) SetGlobalOptions(opts ...GlobalOpts) *ThemeRiver {
-	c.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (c *ThemeRiver) SetGlobalOptions(options ...GlobalOpts) *ThemeRiver {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 

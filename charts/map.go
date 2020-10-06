@@ -31,17 +31,17 @@ func (c *Map) RegisterMapType(mapType string) {
 	c.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
 }
 
-// Add adds new data sets.
-func (c *Map) AddSeries(name string, data []opts.MapData, opts ...SeriesOpts) *Map {
+// AddSeries adds new data sets.
+func (c *Map) AddSeries(name string, data []opts.MapData, options ...SeriesOpts) *Map {
 	series := SingleSeries{Name: name, Type: types.ChartMap, MapType: c.mapType, Data: data}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the Map instance.
-func (c *Map) SetGlobalOptions(opts ...GlobalOpts) *Map {
-	c.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (c *Map) SetGlobalOptions(options ...GlobalOpts) *Map {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 

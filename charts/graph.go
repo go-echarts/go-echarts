@@ -11,6 +11,7 @@ type Graph struct {
 	MultiSeries
 }
 
+// Type returns the chart type.
 func (Graph) Type() string { return types.ChartGraph }
 
 // NewGraph creates a new graph chart.
@@ -21,16 +22,16 @@ func NewGraph() *Graph {
 }
 
 // AddSeries adds the new series.
-func (c *Graph) AddSeries(name string, nodes []opts.GraphNode, links []opts.GraphLink, opts ...SeriesOpts) *Graph {
+func (c *Graph) AddSeries(name string, nodes []opts.GraphNode, links []opts.GraphLink, options ...SeriesOpts) *Graph {
 	series := SingleSeries{Name: name, Type: types.ChartGraph, Links: links, Data: nodes}
-	series.configureSeriesOpts(opts...)
+	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
 // SetGlobalOptions sets options for the Graph instance.
-func (c *Graph) SetGlobalOptions(opts ...GlobalOpts) *Graph {
-	c.BaseConfiguration.setBaseGlobalOptions(opts...)
+func (c *Graph) SetGlobalOptions(options ...GlobalOpts) *Graph {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 
