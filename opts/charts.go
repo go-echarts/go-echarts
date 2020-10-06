@@ -86,22 +86,22 @@ type GaugeData struct {
 	Value interface{} `json:"value,omitempty"`
 }
 
-// GraphOpts is the option set for graph chart.
-//type GraphChart struct {
-//	//图的布局。可选：
-//	// "none" 不采用任何布局，使用节点中提供的 x， y 作为节点的位置。
-//	// "circular" 采用环形布局
-//	// "force" 采用力引导布局
-//	Layout string
-//	// "force", "circular" 布局详细配置项
-//	Force GraphForce
-//	// 是否开启鼠标缩放和平移漫游。默认不开启。
-//	Roam bool
-//	// 是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点
-//	FocusNodeAdjacency bool
-//	//
-//	Categories []GraphCategory
-//}
+// GraphChart is the option set for graph chart.
+type GraphChart struct {
+	//图的布局。可选：
+	// "none" 不采用任何布局，使用节点中提供的 x， y 作为节点的位置。
+	// "circular" 采用环形布局
+	// "force" 采用力引导布局
+	Layout string
+	// "force", "circular" 布局详细配置项
+	Force GraphForce
+	// 是否开启鼠标缩放和平移漫游。默认不开启。
+	Roam bool
+	// 是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点
+	FocusNodeAdjacency bool
+	//
+	Categories []GraphCategory
+}
 
 // HeatMapChart is the option set for a heatmap chart.
 type HeatMapChart struct {
@@ -309,4 +309,46 @@ type GeoData struct {
 
 // ParallelData
 type ParallelData struct {
+}
+
+// GraphNode represents a data node in graph chart.
+type GraphNode struct {
+	// 数据项名称
+	Name string `json:"name,omitempty"`
+	// 节点的初始 x 值。在布局为 "none" 时生效
+	X float32 `json:"x,omitempty"`
+	// 节点的初始 y 值。在布局为 "none" 时生效
+	Y float32 `json:"y,omitempty"`
+	// 数据项值
+	Value float32 `json:"value,omitempty"`
+	// 节点在力引导布局中是否固定
+	Fixed bool `json:"fixed,omitempty"`
+	// 数据项所在类目的 index
+	Category int `json:"category,omitempty"`
+	// 该类目节点标记的图形，可选
+	// 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	Symbol string `json:"symbol,omitempty"`
+	// 该类目节点标记的大小，可以设置成诸如 10 这样单一的数字，
+	// 也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10
+	SymbolSize interface{} `json:"symbolSize,omitempty"`
+	// 该节点的样式
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+}
+
+// GraphLink represents relationship between two data nodes.
+type GraphLink struct {
+	// 边的源节点名称的字符串，也支持使用数字表示源节点的索引
+	Source interface{} `json:"source,omitempty"`
+	// 边的目标节点名称的字符串，也支持使用数字表示源节点的索引
+	Target interface{} `json:"target,omitempty"`
+	// 边的数值，可以在力引导布局中用于映射到边的长度
+	Value float32 `json:"value,omitempty"`
+}
+
+// GraphCategory represents a category for data nodes.
+type GraphCategory struct {
+	// 类目名称，用于和 legend 对应以及格式化 tooltip 的内容
+	Name string `json:"name"`
+	// 该类目节点标签的样式
+	Label *Label `json:"label,omitempty"`
 }

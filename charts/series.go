@@ -19,12 +19,12 @@ type SingleSeries struct {
 	Shading string `json:"shading,omitempty"`
 
 	// Graph
-	Links  interface{} `json:"links,omitempty"`
-	Layout string      `json:"layout,omitempty"`
-	//Force              GraphForce      `json:"force,omitempty"`
-	//Categories         []GraphCategory `json:"categories,omitempty"`
-	Roam               bool `json:"roam,omitempty"`
-	FocusNodeAdjacency bool `json:"focusNodeAdjacency,omitempty"`
+	Links              interface{} `json:"links,omitempty"`
+	Layout             string      `json:"layout,omitempty"`
+	Force              interface{} `json:"force,omitempty"`
+	Categories         interface{} `json:"categories,omitempty"`
+	Roam               bool        `json:"roam,omitempty"`
+	FocusNodeAdjacency bool        `json:"focusNodeAdjacency,omitempty"`
 
 	// Line
 	Step         bool `json:"step,omitempty"`
@@ -124,15 +124,16 @@ func WithBarChartOpts(opt opts.BarChart) SeriesOpts {
 	}
 }
 
-//func WithGraphChartOpts(opt opts.GraphChart) SeriesOpts {
-//	return func(s *SingleSeries) {
-//		s.Layout = opt.Layout
-//		s.Force = opt.Force
-//		s.Roam = opt.Roam
-//		s.FocusNodeAdjacency = opt.FocusNodeAdjacency
-//		s.Categories = opt.Categories
-//	}
-//}
+// WithGraphChartOpts
+func WithGraphChartOpts(opt opts.GraphChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.Layout = opt.Layout
+		s.Force = opt.Force
+		s.Roam = opt.Roam
+		s.FocusNodeAdjacency = opt.FocusNodeAdjacency
+		s.Categories = opt.Categories
+	}
+}
 
 // WithHeatMapChartOpts
 func WithHeatMapChartOpts(opt opts.HeatMapChart) SeriesOpts {
