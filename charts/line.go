@@ -38,7 +38,6 @@ func (c *Line) AddSeries(name string, data []opts.LineData, options ...SeriesOpt
 }
 
 // Validate validates the given configuration.
-// TODO: add more Line validate cases
 func (c *Line) Validate() {
 	c.XAxisList[0].Data = c.xAxisData
 	c.Assets.Validate(c.AssetsHost)

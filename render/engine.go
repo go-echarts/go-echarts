@@ -43,7 +43,7 @@ func (r *pageRender) Render(w io.Writer) error {
 		return err
 	}
 
-	pat, _ := regexp.Compile(`(__x__")|("__x__)|(__x__)`)
+	pat := regexp.MustCompile(`(__x__")|("__x__)|(__x__)`)
 	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
 
 	_, err := w.Write(content)
@@ -74,7 +74,7 @@ func (r *chartRender) Render(w io.Writer) error {
 		return err
 	}
 
-	pat, _ := regexp.Compile(`(__x__")|("__x__)`)
+	pat := regexp.MustCompile(`(__x__")|("__x__)|(__x__)`)
 	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
 
 	_, err := w.Write(content)
@@ -88,6 +88,7 @@ func MustTemplate(name string, contents []string) *template.Template {
 			return template.JS(fmt.Sprint(s))
 		},
 	})
+
 	for _, cont := range contents[1:] {
 		tpl = template.Must(tpl.Parse(cont))
 	}

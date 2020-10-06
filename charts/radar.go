@@ -12,6 +12,7 @@ type Radar struct {
 	MultiSeries
 }
 
+// Type returns the chart type.
 func (Radar) Type() string { return types.ChartRadar }
 
 // NewRadar creates a new radar chart.

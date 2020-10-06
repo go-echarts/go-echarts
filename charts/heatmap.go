@@ -11,6 +11,7 @@ type HeatMap struct {
 	RectChart
 }
 
+// Type returns the chart type.
 func (HeatMap) Type() string { return types.ChartHeatMap }
 
 // NewHeatMap creates a new heatmap chart.

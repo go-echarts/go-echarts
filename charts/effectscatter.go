@@ -11,6 +11,7 @@ type EffectScatter struct {
 	RectChart
 }
 
+// Type returns the chart type.
 func (EffectScatter) Type() string { return types.ChartEffectScatter }
 
 // NewEffectScatter creates a new effect scatter chart.

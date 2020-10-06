@@ -10,6 +10,7 @@ type Line3D struct {
 	Chart3D
 }
 
+// Type returns the chart type.
 func (Line3D) Type() string { return types.ChartLine3D }
 
 // NewLine3D creates a new 3D line chart.
