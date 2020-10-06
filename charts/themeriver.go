@@ -26,7 +26,11 @@ func NewThemeRiver() *ThemeRiver {
 
 // AddSeries adds new data sets.
 func (c *ThemeRiver) AddSeries(name string, data []opts.ThemeRiverData, options ...SeriesOpts) *ThemeRiver {
-	series := SingleSeries{Name: name, Type: types.ChartThemeRiver, Data: data}
+	cd := make([][3]interface{}, len(data))
+	for i := 0; i < len(data); i++ {
+		cd[i] = data[i].ToList()
+	}
+	series := SingleSeries{Name: name, Type: types.ChartThemeRiver, Data: cd}
 	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c

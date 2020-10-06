@@ -95,6 +95,13 @@ func WithToolboxOpts(opt opts.Toolbox) GlobalOpts {
 	}
 }
 
+// WithSingleAxisOpts
+func WithSingleAxisOpts(opt opts.SingleAxis) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.SingleAxis = opt
+	}
+}
+
 // WithTooltipOpts
 func WithTooltipOpts(opt opts.Tooltip) GlobalOpts {
 	return func(bc *BaseConfiguration) {

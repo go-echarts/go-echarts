@@ -12,6 +12,7 @@ type WordCloud struct {
 	MultiSeries
 }
 
+// Type returns the chart type.
 func (WordCloud) Type() string { return types.ChartWordCloud }
 
 var wcTextColor = `function () {

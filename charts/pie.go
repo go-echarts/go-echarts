@@ -15,7 +15,7 @@ type Pie struct {
 // Type returns the chart type.
 func (Pie) Type() string { return types.ChartPie }
 
-// NewPie creates a new gauge chart.
+// NewPie creates a new pie chart.
 func NewPie() *Pie {
 	c := &Pie{}
 	c.initBaseConfiguration()

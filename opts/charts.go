@@ -241,9 +241,16 @@ type SankeyNode struct {
 
 // ThemeRiverChartItem
 type ThemeRiverData struct {
+	Date  string
+	Value float64
+	Name  string
 }
 
-// RadarChartItem
+func (trd ThemeRiverData) ToList() [3]interface{} {
+	return [3]interface{}{trd.Date, trd.Value, trd.Name}
+}
+
+// RadarData
 type RadarData struct {
 	// Name
 	Name string `json:"name,omitempty"`

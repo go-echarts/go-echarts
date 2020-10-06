@@ -12,6 +12,7 @@ type Gauge struct {
 	MultiSeries
 }
 
+// Type returns the chart type.
 func (Gauge) Type() string { return types.ChartGauge }
 
 // NewGauge creates a new gauge chart.
