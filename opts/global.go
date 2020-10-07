@@ -472,12 +472,12 @@ type XAxis struct {
 	// It will be automatically computed to make sure axis tick is equally distributed when not set.
 	Max interface{} `json:"max,omitempty"`
 
-	// X 轴所在的 grid 的索引
-	// 默认 0
+	// The index of grid which the x axis belongs to. Defaults to be in the first grid.
+	// default 0
 	GridIndex int `json:"gridIndex,omitempty"`
-	// X 轴在 grid 区域中的分隔区域配置项
+	// Split area of X axis in grid area.
 	*SplitArea `json:"splitArea,omitempty"`
-	// X 轴在 grid 区域中的分隔线配置项
+	// Split line of X axis in grid area.
 	*SplitLine `json:"splitLine,,omitempty"`
 }
 
@@ -540,23 +540,23 @@ type YAxis struct {
 	// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
 	// It will be automatically computed to make sure axis tick is equally distributed when not set.
 	Max interface{} `json:"max,omitempty"`
-	// Y 轴所在的 grid 的索引
-	// 默认 0
+	// The index of grid which the Y axis belongs to. Defaults to be in the first grid.
+	// default 0
 	GridIndex int `json:"gridIndex,omitempty"`
-	// Y 轴在 grid 区域中的分隔区域配置项
+	// Split area of Y axis in grid area.
 	*SplitArea `json:"splitArea,omitempty"`
-	// Y 轴在 grid 区域中的分隔线配置项
+	// Split line of Y axis in grid area.
 	*SplitLine `json:"splitLine,,omitempty"`
 }
 
 // TextStyle is the option set for a text style component.
 type TextStyle struct {
-	// 文字字体颜色
+	// Font color
 	Color string `json:"color,omitempty"`
-	// 文字字体的风格
-	// 可选  'normal', 'italic', 'oblique'
+	// Font style
+	// Options:  'normal', 'italic', 'oblique'
 	FontStyle string `json:"fontStyle,omitempty"`
-	// 字体大小
+	// Font size
 	FontSize int `json:"fontSize,omitempty"`
 	// 递归结构，为了兼容 wordCloud
 	Normal *TextStyle `json:"normal,omitempty"`
@@ -564,46 +564,50 @@ type TextStyle struct {
 
 // SplitArea is the option set for a split area.
 type SplitArea struct {
-	// 是否显示分隔区域
+	// Set this to true to show the splitArea.
 	Show bool `json:"show"`
-	// 风格区域风格
+	// Split area style.
 	*AreaStyle `json:"areaStyle,omitempty"`
 }
 
 // SplitLine is the option set for a split line.
 type SplitLine struct {
-	// 是否显示分隔线
+	// Set this to true to show the splitLine.
 	Show bool `json:"show"`
-	// 分割线风格
+	// Split line style.
 	*LineStyle `json:"lineStyle,omitempty"`
 }
 
 // VisualMap is the option set for a visual map component.
+// visualMap is a type of component for visual encoding, which maps the data to visual channels.
 type VisualMap struct {
-	// 映射类型，可选 "continuous", "piecewise"
+	// Mapping type.
+	// Options: "continuous", "piecewise"
 	Type string `json:"type,omitempty" default:"continuous"`
-	// 是否显示拖拽用的手柄（手柄能拖拽调整选中范围）
+	// Whether show handles, which can be dragged to adjust "selected range".
 	Calculable bool `json:"calculable"`
-	// VisualMap 组件的允许的最小值
+	// Specify the min dataValue for the visualMap component.
+	// [visualMap.min, visualMax.max] make up the domain of visual mapping.
 	Min float32 `json:"min,omitempty"`
-	// VisualMap 组件的允许的最大值
+	// Specify the max dataValue for the visualMap component.
+	// [visualMap.min, visualMax.max] make up the domain of visual mapping.
 	Max float32 `json:"max,omitempty"`
-	// 指定手柄对应数值的位置。range 应在 min max 范围内
+	// Specify selected range, that is, the dataValue corresponding to the two handles.
 	Range []float32 `json:"range,omitempty"`
-	// 两端的文本，如 ['High', 'Low']
+	// The label text on both ends, such as ['High', 'Low'].
 	Text []string `json:"text,omitempty"`
-	// 定义在选中范围中的视觉元素
+	// Define visual channels that will mapped from dataValues that are in selected range.
 	InRange *VisualMapInRange `json:"inRange,omitempty"`
 }
 
 // VisualMapInRange is a visual map instance in a range.
 type VisualMapInRange struct {
-	// 图元的颜色
+	// Color
 	Color []string `json:"color,omitempty"`
-	// 图元的图形类别
-	// 可选 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	// Symbol type at the two ends of the mark line. It can be an array for two ends, or assigned separately.
+	// Options: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
 	Symbol string `json:"symbol,omitempty"`
-	// 图元的大小
+	// Symbol size.
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 }
 
@@ -681,34 +685,33 @@ type SingleAxis struct {
 	Bottom string `json:"bottom,omitempty"`
 }
 
-// todo: chart option
 // Indicator is the option set for a radar chart.
 type Indicator struct {
-	// 指示器名称
+	// Indicator name
 	Name string `json:"name,omitempty"`
-	// 指示器的最大值，可选，建议设置
+	// The maximum value of indicator. It is an optional configuration, but we recommend to set it manually.
 	Max float32 `json:"max,omitempty"`
-	// 指示器的最小值，可选，默认为 0
+	// The minimum value of indicator. It it an optional configuration, with default value of 0.
 	Min float32 `json:"min,omitempty"`
-	// 标签特定的颜色
+	// Specify a color the the indicator.
 	Color string `json:"color,omitempty"`
 }
 
-// todo: chart option
 // RadarComponent is the option set for a radar component.
 type RadarComponent struct {
-	// 雷达图的指示器，用来指定雷达图中的多个变量（维度）
+	// Indicator of radar chart, which is used to assign multiple variables(dimensions) in radar chart.
 	Indicator []Indicator `json:"indicator,omitempty"`
-	// 雷达图绘制类型，支持 "polygon" 和 "circle"
+	// Radar render type, in which 'polygon' and 'circle' are supported.
 	Shape string `json:"shape,omitempty"`
-	// 指示器轴的分割段数。默认 5
+	// Segments of indicator axis.
+	// default 5
 	SplitNumber int `json:"splitNumber,omitempty"`
-	// 中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。
-	// 支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度。
+    // Center position of , the first of which is the horizontal position, and the second is the vertical position.
+	// Percentage is supported. When set in percentage, the item is relative to the container width and height.
 	Center interface{} `json:"center,omitempty"`
-	// 坐标轴在 grid 区域中的分隔区域
+	// Split area of axis in grid area.
 	*SplitArea `json:"splitArea,omitempty"`
-	// 坐标轴在 grid 区域中的分隔线
+	// Split line of axis in grid area.
 	*SplitLine `json:"splitLine,omitempty"`
 }
 
@@ -716,11 +719,10 @@ type RadarComponent struct {
 type GeoComponent struct {
 	Map       string    `json:"map,omitempty"`
 	ItemStyle ItemStyle `json:"itemStyle,omitempty"`
-	// 禁止图形响应鼠标事件
+	// Set this to true, to prevent interaction with the axis.
 	Silent bool `json:"silent,omitempty"`
 }
 
-// todo: chart option
 // ParallelComponent is the option set for parallel component.
 type ParallelComponent struct {
 	// parallel 组件离容器左侧的距离。
