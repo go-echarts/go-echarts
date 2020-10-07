@@ -316,6 +316,8 @@ type GeoData struct {
 
 // ParallelData
 type ParallelData struct {
+	Name  string      `json:"name,omitempty"`
+	Value interface{} `json:"value,omitempty"`
 }
 
 // GraphNode represents a data node in graph chart.

@@ -21,7 +21,7 @@ var BaseTpl = `
      {{- end }}
      {{- if .HasParallel }}
          parallel: {{ .ParallelComponent }},
-         parallelAxis: {{ .ParallelAxis }},
+         parallelAxis: {{ .ParallelAxisList }},
      {{- end }}
      {{- if .HasSingleAxis }}
          singleAxis: {{ .SingleAxis }},

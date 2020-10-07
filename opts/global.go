@@ -743,7 +743,7 @@ type ParallelComponent struct {
 	Bottom string `json:"bottom,omitempty"`
 }
 
-// PAOpts is the option set for a parallel axis.
+// ParallelAxis is the option set for a parallel axis.
 type ParallelAxis struct {
 	// 坐标轴的维度序号
 	Dim int `json:"dim,omitempty"`
