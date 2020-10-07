@@ -815,84 +815,144 @@ func (opt *Assets) Validate(host string) {
 	}
 }
 
-// Router contains information for routing.
-type Router struct {
-	URL  string // 路由 URL
-	Text string // 路由显示文字
-}
-
 // XAxis3D contains options for X axis in the 3D coordinate.
 type XAxis3D struct {
-	// 是否显示 3D X 轴
+	// Whether to display the x-axis.
 	Show bool `json:"show,omitempty"`
-	// X 坐标轴名称
+
+	// The name of the axis.
 	Name bool `json:"name,omitempty"`
-	// X 坐标轴使用的 grid3D 组件的索引。默认使用第一个 grid3D 组件
+
+	// The index of the grid3D component used by the axis. The default is to use the first grid3D component.
 	Grid3DIndex int `json:"grid3DIndex,omitempty"`
-	// X 坐标轴类型，可选：
-	// "value" 数值轴，适用于连续数据。
-	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-	// "log" 对数轴。适用于对数数据。
+
+	// The type of the axis.
+	// Optional:
+	// * 'value' The value axis. Suitable for continuous data.
+	// * 'category' The category axis. Suitable for the discrete category data.
+	//  For this type, the category data must be set through data.
+	// * 'time' The timeline. Suitable for the continuous timing data. The time axis has a
+	//  time format compared to the value axis, and the scale calculation is also different.
+	//  For example, the scale of the month, week, day, and hour ranges can be determined according to the range of the span.
+	// * 'log' Logarithmic axis. Suitable for the logarithmic data.
 	Type string `json:"type,omitempty"`
-	// X 坐标轴刻度最小值。
-	// 可以设置成特殊值 "dataMin"，此时取数据在该轴上的最小值作为最小刻度。
-	// 不设置时会自动计算最小值保证坐标轴刻度的均匀分布
+
+	// The minimum value of axis.
+	// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
+	// It will be automatically computed to make sure the axis tick is equally distributed when not set.
+	// In the category axis, it can also be set as the ordinal number. For example,
+	// if a category axis has data: ['categoryA', 'categoryB', 'categoryC'],
+	// and the ordinal 2 represents 'categoryC'. Moreover, it can be set as a negative number, like -3.
 	Min interface{} `json:"min,omitempty"`
-	// X 坐标轴刻度最大值。
-	// 可以设置成特殊值 "dataMax"，此时取数据在该轴上的最大值作为最大刻度。
-	// 不设置时会自动计算最大值保证坐标轴刻度的均匀分布
+
+	// The maximum value of the axis.
+	// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
+	// It will be automatically computed to make sure the axis tick is equally distributed when not set.
+	// In the category axis, it can also be set as the ordinal number. For example, if a category axis
+	// has data: ['categoryA', 'categoryB', 'categoryC'], and the ordinal 2 represents 'categoryC'.
+	// Moreover, it can be set as a negative number, like -3.
 	Max interface{} `json:"max,omitempty"`
-	// 类目数据，在类目轴（type: 'category'）中有效
+
+	// Category data, available in type: 'category' axis.
+	// If type is specified as 'category', but axis.data is not specified, axis.data will be auto
+	// collected from series.data. It brings convenience, but we should notice that axis.data provides
+	// then value range of the 'category' axis. If it is auto collected from series.data,
+	// Only the values appearing in series.data can be collected. For example,
+	// if series.data is empty, nothing will be collected.
 	Data interface{} `json:"data,omitempty"`
 }
 
 // YAxis3D contains options for Y axis in the 3D coordinate.
 type YAxis3D struct {
-	// 是否显示 3D Y 轴
+	// Whether to display the y-axis.
 	Show bool `json:"show,omitempty"`
-	// Y 坐标轴名称
+
+	// The name of the axis.
 	Name bool `json:"name,omitempty"`
-	// Y 坐标轴使用的 grid3D 组件的索引。默认使用第一个 grid3D 组件
+
+	// The index of the grid3D component used by the axis. The default is to use the first grid3D component.
 	Grid3DIndex int `json:"grid3DIndex,omitempty"`
-	// Y 坐标轴类型，可选：
-	// "value" 数值轴，适用于连续数据。
-	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-	// "log" 对数轴。适用于对数数据。
+
+	// The type of the axis.
+	// Optional:
+	// * 'value' The value axis. Suitable for continuous data.
+	// * 'category' The category axis. Suitable for the discrete category data.
+	//  For this type, the category data must be set through data.
+	// * 'time' The timeline. Suitable for the continuous timing data. The time axis has a
+	//  time format compared to the value axis, and the scale calculation is also different.
+	//  For example, the scale of the month, week, day, and hour ranges can be determined according to the range of the span.
+	// * 'log' Logarithmic axis. Suitable for the logarithmic data.
 	Type string `json:"type,omitempty"`
-	// Y 坐标轴刻度最小值。
-	// 可以设置成特殊值 "dataMin"，此时取数据在该轴上的最小值作为最小刻度。
-	// 不设置时会自动计算最小值保证坐标轴刻度的均匀分布
+
+	// The minimum value of axis.
+	// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
+	// It will be automatically computed to make sure the axis tick is equally distributed when not set.
+	// In the category axis, it can also be set as the ordinal number. For example,
+	// if a category axis has data: ['categoryA', 'categoryB', 'categoryC'],
+	// and the ordinal 2 represents 'categoryC'. Moreover, it can be set as a negative number, like -3.
 	Min interface{} `json:"min,omitempty"`
-	// Y 坐标轴刻度最大值。
-	// 可以设置成特殊值 "dataMax"，此时取数据在该轴上的最大值作为最大刻度。
-	// 不设置时会自动计算最大值保证坐标轴刻度的均匀分布
+
+	// The maximum value of the axis.
+	// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
+	// It will be automatically computed to make sure the axis tick is equally distributed when not set.
+	// In the category axis, it can also be set as the ordinal number. For example, if a category axis
+	// has data: ['categoryA', 'categoryB', 'categoryC'], and the ordinal 2 represents 'categoryC'.
+	// Moreover, it can be set as a negative number, like -3.
 	Max interface{} `json:"max,omitempty"`
-	// 类目数据，在类目轴（type: 'category'）中有效
+
+	// Category data, available in type: 'category' axis.
+	// If type is specified as 'category', but axis.data is not specified, axis.data will be auto
+	// collected from series.data. It brings convenience, but we should notice that axis.data provides
+	// then value range of the 'category' axis. If it is auto collected from series.data,
+	// Only the values appearing in series.data can be collected. For example,
+	// if series.data is empty, nothing will be collected.
 	Data interface{} `json:"data,omitempty"`
 }
 
 // ZAxis3D contains options for Z axis in the 3D coordinate.
 type ZAxis3D struct {
-	// 是否显示 3D Z 轴
+	// Whether to display the z-axis.
 	Show bool `json:"show,omitempty"`
-	// Z 坐标轴名称
+
+	// The name of the axis.
 	Name bool `json:"name,omitempty"`
-	// Z 坐标轴使用的 grid3D 组件的索引。默认使用第一个 grid3D 组件
+
+	// The index of the grid3D component used by the axis. The default is to use the first grid3D component.
 	Grid3DIndex int `json:"grid3DIndex,omitempty"`
-	// Z 坐标轴类型，可选：
-	// "value" 数值轴，适用于连续数据。
-	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-	// "log" 对数轴。适用于对数数据。
+
+	// The type of the axis.
+	// Optional:
+	// * 'value' The value axis. Suitable for continuous data.
+	// * 'category' The category axis. Suitable for the discrete category data.
+	//  For this type, the category data must be set through data.
+	// * 'time' The timeline. Suitable for the continuous timing data. The time axis has a
+	//  time format compared to the value axis, and the scale calculation is also different.
+	//  For example, the scale of the month, week, day, and hour ranges can be determined according to the range of the span.
+	// * 'log' Logarithmic axis. Suitable for the logarithmic data.
 	Type string `json:"type,omitempty"`
-	// Z 坐标轴刻度最小值。
-	// 可以设置成特殊值 "dataMin"，此时取数据在该轴上的最小值作为最小刻度。
-	// 不设置时会自动计算最小值保证坐标轴刻度的均匀分布
+
+	// The minimum value of axis.
+	// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
+	// It will be automatically computed to make sure the axis tick is equally distributed when not set.
+	// In the category axis, it can also be set as the ordinal number. For example,
+	// if a category axis has data: ['categoryA', 'categoryB', 'categoryC'],
+	// and the ordinal 2 represents 'categoryC'. Moreover, it can be set as a negative number, like -3.
 	Min interface{} `json:"min,omitempty"`
-	// Z 坐标轴刻度最大值。
-	// 可以设置成特殊值 "dataMax"，此时取数据在该轴上的最大值作为最大刻度。
-	// 不设置时会自动计算最大值保证坐标轴刻度的均匀分布
+
+	// The maximum value of the axis.
+	// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
+	// It will be automatically computed to make sure the axis tick is equally distributed when not set.
+	// In the category axis, it can also be set as the ordinal number. For example, if a category axis
+	// has data: ['categoryA', 'categoryB', 'categoryC'], and the ordinal 2 represents 'categoryC'.
+	// Moreover, it can be set as a negative number, like -3.
 	Max interface{} `json:"max,omitempty"`
-	// 类目数据，在类目轴（type: 'category'）中有效
+
+	// Category data, available in type: 'category' axis.
+	// If type is specified as 'category', but axis.data is not specified, axis.data will be auto
+	// collected from series.data. It brings convenience, but we should notice that axis.data provides
+	// then value range of the 'category' axis. If it is auto collected from series.data,
+	// Only the values appearing in series.data can be collected. For example,
+	// if series.data is empty, nothing will be collected.
 	Data interface{} `json:"data,omitempty"`
 }
 

@@ -51,7 +51,7 @@ func (page *Page) AddCharts(charts ...Charter) *Page {
 	return page
 }
 
-// Render renders the chart and writes the output to given writer.
+// Validate
 func (page *Page) Validate() {
 	page.Initialization.Validate()
 	page.Assets.Validate(page.AssetsHost)

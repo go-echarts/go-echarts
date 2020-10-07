@@ -37,6 +37,7 @@ func (c *HeatMap) AddSeries(name string, data []opts.HeatMapData, options ...Ser
 	return c
 }
 
+// Validate
 func (c *HeatMap) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

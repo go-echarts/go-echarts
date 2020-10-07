@@ -51,23 +51,6 @@ func (c *Chart3D) initChart3D() {
 	c.Has3DAxis = true
 }
 
-// SetGlobalOptions sets options for the Chart3D instance.
-func (c *Chart3D) SetGlobalOptions(options ...GlobalOpts) *Chart3D {
-	c.BaseConfiguration.setBaseGlobalOptions(options...)
-	return c
-}
-
-func (c *Chart3D) Validate() {
-	// retain X/Y axes data
-	if c.XAxis3D.Data == nil {
-		c.XAxis3D.Data = c.xData
-	}
-	if c.YAxis3D.Data == nil {
-		c.YAxis3D.Data = c.yData
-	}
-	c.Assets.Validate(c.AssetsHost)
-}
-
 func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, options ...SeriesOpts) {
 	series := SingleSeries{
 		Name:        name,
@@ -77,4 +60,22 @@ func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, options ..
 	}
 	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
+}
+
+// SetGlobalOptions sets options for the Chart3D instance.
+func (c *Chart3D) SetGlobalOptions(options ...GlobalOpts) *Chart3D {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
+	return c
+}
+
+// Validate
+func (c *Chart3D) Validate() {
+	// retain X/Y axes data
+	if c.XAxis3D.Data == nil {
+		c.XAxis3D.Data = c.xData
+	}
+	if c.YAxis3D.Data == nil {
+		c.YAxis3D.Data = c.yData
+	}
+	c.Assets.Validate(c.AssetsHost)
 }

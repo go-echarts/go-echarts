@@ -70,36 +70,54 @@ type BoxPlotData struct {
 
 // EffectScatterData
 type EffectScatterData struct {
-	Name  string      `json:"name,omitempty"`
+	// The name of data item.
+	Name string `json:"name,omitempty"`
+
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
 // FunnelData
 type FunnelData struct {
-	Name  string      `json:"name,omitempty"`
+	// The name of data item.
+	Name string `json:"name,omitempty"`
+
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
 // GaugeData
 type GaugeData struct {
-	Name  string      `json:"name,omitempty"`
+	// The name of data item.
+	Name string `json:"name,omitempty"`
+
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
 // GraphChart is the option set for graph chart.
 type GraphChart struct {
-	//图的布局。可选：
-	// "none" 不采用任何布局，使用节点中提供的 x， y 作为节点的位置。
-	// "circular" 采用环形布局
-	// "force" 采用力引导布局
+	// Graph layout.
+	// * 'none' No any layout, use x, y provided in node as the position of node.
+	// * 'circular' Adopt circular layout, see the example Les Miserables.
+	// * 'force' Adopt force-directed layout, see the example Force, the
+	// detail about configrations of layout are in graph.force
 	Layout string
-	// "force", "circular" 布局详细配置项
+
+	// Force is the option set for graph force layout.
 	Force GraphForce
-	// 是否开启鼠标缩放和平移漫游。默认不开启。
+
+	// Whether to enable mouse zooming and translating. false by default.
+	// If either zooming or translating is wanted, it can be set to 'scale' or 'move'.
+	// Otherwise, set it to be true to enable both.
 	Roam bool
-	// 是否在鼠标移到节点上的时候突出显示节点以及节点的边和邻接节点
+
+	// Whether to focus/highlight the hover node and it's adjacencies.
 	FocusNodeAdjacency bool
-	//
+
+	// The categories of node, which is optional. If there is a classification of nodes,
+	// the category of each node can be assigned through data[i].category.
+	// And the style of category will also be applied to the style of nodes. categories can also be used in legend.
 	Categories []GraphCategory
 }
 
@@ -215,8 +233,10 @@ type WordCloudChart struct {
 	// shape of WordCloud
 	// Optional: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
 	Shape string
+
 	// range of font size
 	SizeRange []float32
+
 	// range of font rotation angle
 	RotationRange []float32
 }
@@ -322,42 +342,55 @@ type ParallelData struct {
 
 // GraphNode represents a data node in graph chart.
 type GraphNode struct {
-	// 数据项名称
+	// Name of data item.
 	Name string `json:"name,omitempty"`
-	// 节点的初始 x 值。在布局为 "none" 时生效
+
+	// x value of node position.
 	X float32 `json:"x,omitempty"`
-	// 节点的初始 y 值。在布局为 "none" 时生效
+
+	// y value of node position.
 	Y float32 `json:"y,omitempty"`
-	// 数据项值
+
+	// Value of data item.
 	Value float32 `json:"value,omitempty"`
-	// 节点在力引导布局中是否固定
+
+	// If node are fixed when doing force directed layout.
 	Fixed bool `json:"fixed,omitempty"`
-	// 数据项所在类目的 index
+
+	// Index of category which the data item belongs to.
 	Category int `json:"category,omitempty"`
-	// 该类目节点标记的图形，可选
+
+	// Symbol of node of this category.
+	// Icon types provided by ECharts includes
 	// 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
 	Symbol string `json:"symbol,omitempty"`
-	// 该类目节点标记的大小，可以设置成诸如 10 这样单一的数字，
-	// 也可以用数组分开表示宽和高，例如 [20, 10] 表示标记宽为20，高为10
+
+	// node of this category symbol size. It can be set to single numbers like 10,
+	// or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10.
 	SymbolSize interface{} `json:"symbolSize,omitempty"`
-	// 该节点的样式
+
+	// The style of this node.
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
 // GraphLink represents relationship between two data nodes.
 type GraphLink struct {
-	// 边的源节点名称的字符串，也支持使用数字表示源节点的索引
+	// A string representing the name of source node on edge. Can also be a number representing the node index.
 	Source interface{} `json:"source,omitempty"`
-	// 边的目标节点名称的字符串，也支持使用数字表示源节点的索引
+
+	// A string representing the name of target node on edge. Can also be a number representing node index.
 	Target interface{} `json:"target,omitempty"`
-	// 边的数值，可以在力引导布局中用于映射到边的长度
+
+	// value of edge, can be mapped to edge length in force graph.
 	Value float32 `json:"value,omitempty"`
 }
 
 // GraphCategory represents a category for data nodes.
 type GraphCategory struct {
-	// 类目名称，用于和 legend 对应以及格式化 tooltip 的内容
+	// Name of category, which is used to correspond with legend and the content of tooltip.
 	Name string `json:"name"`
-	// 该类目节点标签的样式
+
+	// The label style of node in this category.
 	Label *Label `json:"label,omitempty"`
 }

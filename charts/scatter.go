@@ -38,7 +38,6 @@ func (c *Scatter) AddSeries(name string, data []opts.ScatterData, options ...Ser
 }
 
 // Validate validates the given configuration.
-// TODO: add more Scatter validate cases
 func (c *Scatter) Validate() {
 	c.XAxisList[0].Data = c.xAxisData
 	c.Assets.Validate(c.AssetsHost)
