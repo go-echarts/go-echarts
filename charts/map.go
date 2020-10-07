@@ -26,6 +26,7 @@ func NewMap() *Map {
 	return c
 }
 
+// RegisterMapType
 func (c *Map) RegisterMapType(mapType string) {
 	c.mapType = mapType
 	c.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")

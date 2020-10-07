@@ -275,7 +275,7 @@ func (s *SingleSeries) configureSeriesOpts(options ...SeriesOpts) {
 	}
 }
 
-// Series represents multiple series.
+// MultiSeries represents multiple series.
 type MultiSeries []SingleSeries
 
 // SetSeriesOptions sets options for the series.
