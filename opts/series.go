@@ -1,7 +1,5 @@
 package opts
 
-// todo: replace ' with " overall
-
 // Label contains options for a label text.
 type Label struct {
 	// Whether to show label.
@@ -48,26 +46,27 @@ type Label struct {
 }
 
 // Emphasis
+// Emphasis is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect.
 type Emphasis struct {
-	// 高亮的标签样式
+	// the emphasis style of label
 	Label `json:"label,omitempty"`
-	// 高亮的图形样式
+	// the emphasis style of item
 	ItemStyle `json:"itemStyle,omitempty"`
 }
 
 // ItemStyle
 type ItemStyle struct {
-	// 图形的颜色
-	// Kline 图中为 阳线图形颜色
+	// Chart color.
+	// Kline Up candle color
 	Color string `json:"color,omitempty"`
-	// Kline 图中为 阴线图形颜色
+	// Kline Down candle color
 	Color0 string `json:"color0,omitempty"`
-	// 图形的描边颜色
-	// Kline 途中为 阳线图形的描边颜色
+	// Chart border color
+	// Kline  Up candle border color
 	BorderColor string `json:"borderColor,omitempty"`
-	// Kline 途中为 阴线图形的描边颜色
+	// Kline Down candle border color
 	BorderColor0 string `json:"borderColor0,omitempty"`
-	// 图形透明度。支持从 0 到 1 的数字，为 0 时不绘制该图形
+	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
 }
 
@@ -79,62 +78,66 @@ type MarkLines struct {
 
 // MarkLineStyle contains styling options for a MarkLine.
 type MarkLineStyle struct {
-	// 图元的图形类别
-	// 可选 "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
+	// Symbol type at the two ends of the mark line. It can be an array for two ends, or assigned separately.
+	// Options: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
 	Symbol []string `json:"symbol,omitempty"`
-	// 图元的大小
+	// Symbol size.
 	SymbolSize float32 `json:"symbolSize,omitempty"`
-	// 标线文本配置项
+	// Mark line text options.
 	*Label `json:"label,omitempty"`
 }
 
 // MarkLineNameTypeItem represents type for a MarkLine.
 type MarkLineNameTypeItem struct {
-	// 标记线名称
+	// Mark line name.
 	Name string `json:"name,omitempty"`
-	// 内置类型，可选 "average", "min", "max"
+	// Mark line type, options: "average", "min", "max".
 	Type string `json:"type,omitempty"`
-	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
-	// candlestick 图时可以是 open、close 等维度名称。
+	// Works only when type is assigned.
+	// It is used to state the dimension used to calculate maximum value or minimum value.
+	// It may be the direct name of a dimension, like x,
+	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
 // MarkLineNameYAxisItem
 type MarkLineNameYAxisItem struct {
-	// 标记线名称
+	// Mark line name
 	Name string `json:"name,omitempty"`
-	// Y 轴数据
+	// Y axis data
 	YAxis interface{} `json:"yAxis,omitempty"`
-	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
-	// candlestick 图时可以是 open、close 等维度名称。
+	// Works only when type is assigned.
+	// It is used to state the dimension used to calculate maximum value or minimum value.
+	// It may be the direct name of a dimension, like x,
+	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
 // MarkLineNameXAxisItem
 type MarkLineNameXAxisItem struct {
-	// 标记线名称
+	// Mark line name
 	Name string `json:"name,omitempty"`
-	// X 轴数据
+	// X axis data
 	XAxis interface{} `json:"xAxis,omitempty"`
-	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
-	// candlestick 图时可以是 open、close 等维度名称。
+	// Works only when type is assigned.
+	// It is used to state the dimension used to calculate maximum value or minimum value.
+	// It may be the direct name of a dimension, like x,
+	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
 // MarkLineNameCoordItem represents coordinates for a MarkLine.
 type MarkLineNameCoordItem struct {
-	// 标记线名称
+	// Mark line name
 	Name string `json:"name,omitempty"`
-	// 标记线起始坐标
+	// Mark line start coordinate
 	Coordinate0 []interface{}
-	// 标记线结束坐标
+	// Mark line end coordinate
 	Coordinate1 []interface{}
-	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
-	// candlestick 图时可以是 open、close 等维度名称。
+	// Works only when type is assigned.
+	// It is used to state the dimension used to calculate maximum value or minimum value.
+	// It may be the direct name of a dimension, like x,
+	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
@@ -146,75 +149,79 @@ type MarkPoints struct {
 
 // MarkPointStyle contains styling options for a MarkPoint.
 type MarkPointStyle struct {
-	// 图元的图形类别
-	// 可选 "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
-	Symbol string `json:"symbol,omitempty"`
-	// 图元的大小
+	// Symbol type at the two ends of the mark line. It can be an array for two ends, or assigned separately.
+	// Options: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
+	Symbol []string `json:"symbol,omitempty"`
+	// Symbol size.
 	SymbolSize float32 `json:"symbolSize,omitempty"`
-	// 标注文本配置项
+	// Mark point text options.
 	*Label `json:"label,omitempty"`
 }
 
 // MarkPointNameTypeItem represents type for a MarkPoint.
 type MarkPointNameTypeItem struct {
-	// 标记点名称
+	// Mark point name
 	Name string `json:"name,omitempty"`
-	// 内置类型，可选 "average", "min", "max"
+	// Mark point type, options: "average", "min", "max".
 	Type string `json:"type,omitempty"`
-	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
-	// candlestick 图时可以是 open、close 等维度名称。
+	// Works only when type is assigned.
+	// It is used to state the dimension used to calculate maximum value or minimum value.
+	// It may be the direct name of a dimension, like x,
+	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
 // MarkPointNameCoordItem represents coordinates for a MarkPoint.
 type MarkPointNameCoordItem struct {
-	// 标记点名称
+	// Mark point name
 	Name string `json:"name,omitempty"`
-	// 标记点坐标
+	// Mark point coordinate
 	Coordinate []interface{} `json:"coord,omitempty"`
-	// 在使用 type 时有效，用于指定在哪个维度上指定最大值最小值。
-	// 可以是维度的直接名称，例如折线图时可以是 x、angle 等
-	// candlestick 图时可以是 open、close 等维度名称。
+	// Works only when type is assigned.
+	// It is used to state the dimension used to calculate maximum value or minimum value.
+	// It may be the direct name of a dimension, like x,
+	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
-	*Label   `json:"label,omitempty"`
+	// Mark point text options.
+	*Label `json:"label,omitempty"`
 }
 
 // RippleEffect is the option set for the ripple effect.
 type RippleEffect struct {
-	// 动画的周期，秒数
-	// 默认 4(s)
+	// The period duration of animation, in seconds.
+	// default 4(s)
 	Period float32 `json:"period,omitempty"`
-	// 动画中波纹的最大缩放比例
-	// 默认 2.5
+	// The maximum zooming scale of ripples in animation.
+	// default 2.5
 	Scale float32 `json:"scale,omitempty"`
-	// 波纹的绘制方式，可选 "stroke" 和 "fill"
-	// 默认 "fill"
+	// The brush type for ripples. options: 'stroke' and 'fill'.
+	// default "fill"
 	BrushType string `json:"brushType,omitempty"`
 }
 
 // LineStyle is the option set for a link style component.
 type LineStyle struct {
-	// 线的颜色
+	// Line color
 	Color string `json:"color,omitempty"`
-	// 线的宽度
-	// 默认 1
+	// Line width.
+	// default 1
 	Width float32 `json:"width,omitempty"`
-	// 线的类型，可选 "solid", "dashed", "dotted"
-	// 默认 "solid"
+	// Line type，options: "solid", "dashed", "dotted"
+	// default "solid"
 	Type string `json:"type,omitempty"`
-	// 线的透明度。支持从 0 到 1 的数字，为 0 时不绘制线
+	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
-	// 线的曲度，支持从 0 到 1 的值，值越大曲度越大
-	// 默认 0
+	// The curveness of edge. The values from 0 to 1 could be set.
+	// The curveness would be larger as the the value becomes larger.
+	// default 0
 	Curveness float32 `json:"curveness,omitempty"`
 }
 
 // AreaStyle is the option set for an area style component.
 type AreaStyle struct {
-	// 填充区域的颜色
+	// Fill area color.
 	Color string `json:"color,omitempty"`
-	// 填充区域的透明度。支持从 0 到 1 的数字，为 0 时不填充区域
+	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
 }
 
