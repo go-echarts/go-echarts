@@ -168,6 +168,13 @@ func WithParallelComponentOpts(opt opts.ParallelComponent) GlobalOpts {
 	}
 }
 
+// WithParallelAxisList
+func WithParallelAxisList(opt []opts.ParallelAxis) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.ParallelAxisList = opt
+	}
+}
+
 // WithColorsOpts
 func WithColorsOpts(opt opts.Colors) GlobalOpts {
 	return func(bc *BaseConfiguration) {
