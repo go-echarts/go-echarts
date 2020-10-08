@@ -509,12 +509,12 @@ type YAxis struct {
 	// Set this to false to prevent the axis from showing.
 	Show bool `json:"show,omitempty"`
 
-	// 刻度标签的内容格式器，支持字符串模板和回调函数两种形式
-	// 1.使用字符串模板，模板变量为刻度默认标签 {value}
+	// Formatter of axis label, which supports string template and callback function.
+	// 1. Use string template; template variable is the default label of axis {value}
 	// formatter: '{value} kg'
-	// 2.使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
+	// 2. Use callback function; function parameters are axis index
 	// formatter: function (value, index) {
-	//    // 格式化成月/日，只在第一个刻度显示年份
+	//    // Formatted to be month/day; display year only in the first label
 	//    var date = new Date(value);
 	//    var texts = [(date.getMonth() + 1), date.getDate()];
 	//    if (index === 0) {
@@ -636,26 +636,37 @@ type VisualMapInRange struct {
 
 // DataZoom is the option set for a zoom component.
 type DataZoom struct {
-	// 缩放类型，可选 "inside", "slider"
+	// Data zoom component of inside type, Options: "inside", "slider"
 	Type string `json:"type" default:"inside"`
-	// 数据窗口范围的起始百分比。范围是：0 ~ 100。表示 0% ~ 100%。
-	// 默认: 0
+
+	// The start percentage of the window out of the data extent, in the range of 0 ~ 100.
+	// default 0
 	Start float32 `json:"start,omitempty"`
-	// 数据窗口范围的结束百分比。范围是：0 ~ 100。
-	// 默认: 100
+
+	// The end percentage of the window out of the data extent, in the range of 0 ~ 100.
+	// default 100
 	End float32 `json:"end,omitempty"`
-	// 触发视图刷新的频率。单位为毫秒（ms）。
-	// 默认: 100
+
+	// Specify the frame rate of views refreshing, with unit millisecond (ms).
+	// If animation set as true and animationDurationUpdate set as bigger than 0,
+	// you can keep throttle as the default value 100 (or set it as a value bigger than 0),
+	// otherwise it might be not smooth when dragging.
+	// If animation set as false or animationDurationUpdate set as 0, and data size is not very large,
+	// and it seems to be not smooth when dragging, you can set throttle as 0 to improve that.
 	Throttle float32 `json:"throttle,omitempty"`
-	// 设置 dataZoom 组件控制的 X 轴
-	// 不指定时，当 dataZoom-inside.orient 为 'horizontal'时，默认控制和 dataZoom 平行的第一个 xAxis。
-	// 但是不建议使用默认值，建议显式指定。
-	// 如果是 number 表示控制一个轴，如果是 Array 表示控制多个轴。
+
+	// Specify which xAxis is/are controlled by the dataZoom-inside when Cartesian coordinate system is used.
+	// By default the first xAxis that parallel to dataZoom are controlled when dataZoom-inside.
+	// Orient is set as 'horizontal'. But it is recommended to specify it explicitly but not use default value.
+	// If it is set as a single number, one axis is controlled, while if it is set as an Array ,
+	// multiple axes are controlled.
 	XAxisIndex interface{} `json:"xAxisIndex,omitempty"`
-	// 设置 dataZoom 组件控制的 Y 轴
-	// 不指定时，当 dataZoom-slider.orient 为 'vertical'时，默认控制和 dataZoom 平行的第一个 yAxis。
-	// 但是不建议使用默认值，建议显式指定。
-	// 如果是 number 表示控制一个轴，如果是 Array 表示控制多个轴。
+
+	// Specify which yAxis is/are controlled by the dataZoom-inside when Cartesian coordinate system is used.
+	// By default the first yAxis that parallel to dataZoom are controlled when dataZoom-inside.
+	// Orient is set as 'vertical'. But it is recommended to specify it explicitly but not use default value.
+	// If it is set as a single number, one axis is controlled, while if it is set as an Array ,
+	// multiple axes are controlled.
 	YAxisIndex interface{} `json:"yAxisIndex,omitempty"`
 }
 
@@ -712,10 +723,13 @@ type SingleAxis struct {
 type Indicator struct {
 	// Indicator name
 	Name string `json:"name,omitempty"`
+
 	// The maximum value of indicator. It is an optional configuration, but we recommend to set it manually.
 	Max float32 `json:"max,omitempty"`
+
 	// The minimum value of indicator. It it an optional configuration, with default value of 0.
 	Min float32 `json:"min,omitempty"`
+
 	// Specify a color the the indicator.
 	Color string `json:"color,omitempty"`
 }
@@ -724,16 +738,21 @@ type Indicator struct {
 type RadarComponent struct {
 	// Indicator of radar chart, which is used to assign multiple variables(dimensions) in radar chart.
 	Indicator []Indicator `json:"indicator,omitempty"`
+
 	// Radar render type, in which 'polygon' and 'circle' are supported.
 	Shape string `json:"shape,omitempty"`
+
 	// Segments of indicator axis.
 	// default 5
 	SplitNumber int `json:"splitNumber,omitempty"`
+
 	// Center position of , the first of which is the horizontal position, and the second is the vertical position.
 	// Percentage is supported. When set in percentage, the item is relative to the container width and height.
 	Center interface{} `json:"center,omitempty"`
+
 	// Split area of axis in grid area.
 	*SplitArea `json:"splitArea,omitempty"`
+
 	// Split line of axis in grid area.
 	*SplitLine `json:"splitLine,omitempty"`
 }
@@ -748,47 +767,62 @@ type GeoComponent struct {
 
 // ParallelComponent is the option set for parallel component.
 type ParallelComponent struct {
-	// parallel 组件离容器左侧的距离。
-	// left 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
-	// 也可以是 'left', 'center', 'right'。
-	// 如果 left 的值为'left', 'center', 'right'，组件会根据相应的位置自动对齐。
+	// Distance between parallel component and the left side of the container.
+	// Left value can be instant pixel value like 20.
+	// It can also be a percentage value relative to container width like '20%';
+	// and it can also be 'left', 'center', or 'right'.
+	// If the left value is set to be 'left', 'center', or 'right',
+	// then the component will be aligned automatically based on position.
 	Left string `json:"left,omitempty"`
-	// parallel 组件离容器上侧的距离。
-	// top 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比
-	// 也可以是 'top', 'middle', 'bottom'。
-	// 如果 top 的值为'top', 'middle', 'bottom'，组件会根据相应的位置自动对齐。
+
+	// Distance between parallel component and the top side of the container.
+	// Top value can be instant pixel value like 20.
+	// It can also be a percentage value relative to container width like '20%'.
+	// and it can also be 'top', 'middle', or 'bottom'.
+	// If the left value is set to be 'top', 'middle', or 'bottom',
+	// then the component will be aligned automatically based on position.
 	Top string `json:"top,omitempty"`
-	// parallel 组件离容器右侧的距离。
-	// right 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
-	// 默认自适应。
+
+	// Distance between parallel component and the right side of the container.
+	// Right value can be instant pixel value like 20.
+	// It can also be a percentage value relative to container width like '20%'.
 	Right string `json:"right,omitempty"`
-	// parallel 组件离容器下侧的距离。
-	// bottom 的值可以是像 20 这样的具体像素值，可以是像 '20%' 这样相对于容器高宽的百分比。
-	// 默认自适应
+
+	// Distance between parallel component and the bottom side of the container.
+	// Bottom value can be instant pixel value like 20.
+	// It can also be a percentage value relative to container width like '20%'.
 	Bottom string `json:"bottom,omitempty"`
 }
 
 // ParallelAxis is the option set for a parallel axis.
 type ParallelAxis struct {
-	// 坐标轴的维度序号
+	// Dimension index of coordinate axis.
 	Dim int `json:"dim,omitempty"`
-	// 坐标轴名称
+
+	// Name of axis.
 	Name string `json:"name,omitempty"`
-	// 坐标轴刻度最大值。
-	// 可以设置成特殊值 "dataMax"，此时取数据在该轴上的最大值作为最大刻度。
-	// 不设置时会自动计算最大值保证坐标轴刻度的均匀分布
+
+	// The maximum value of axis.
+	// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
+	// It will be automatically computed to make sure axis tick is equally distributed when not set.
+	// In category axis, it can also be set as the ordinal number.
 	Max interface{} `json:"max,omitempty"`
-	// 是否是反向坐标轴
+
+	// Compulsively set segmentation interval for axis.
 	Inverse bool `json:"inverse,omitempty"`
-	// 坐标轴名称显示位置，可选 "start", "middle", "center", "end"
-	// 默认 "end"
+
+	// Location of axis name. Options: "start", "middle", "center", "end"
+	// default "end"
 	NameLocation string `json:"nameLocation,omitempty"`
-	// 坐标轴类型，可选：
-	// "value"：数值轴，适用于连续数据。
-	// "category" 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
-	// "log" 对数轴。适用于对数数据。
+
+	// Type of axis.
+	// Options：
+	// "value"：Numerical axis, suitable for continuous data.
+	// "category" Category axis, suitable for discrete category data. Category data can be auto retrieved from series.
+	// "log"  Log axis, suitable for log data.
 	Type string `json:"type,omitempty"`
-	// 类目数据，在类目轴（type: "category"）中有效
+
+	// Category data，works on (type: "category").
 	Data interface{} `json:"data,omitempty"`
 }
 
@@ -824,13 +858,13 @@ type Assets struct {
 	CSSAssets types.OrderedSet
 }
 
-// 初始化静态资源配置项
+// InitAssets static assets initial options
 func (opt *Assets) InitAssets() {
 	opt.JSAssets.Init("echarts.min.js")
 	opt.CSSAssets.Init("bulma.min.css")
 }
 
-// 校验静态资源配置项，追加 host
+// Validate static assets checks options, append host
 func (opt *Assets) Validate(host string) {
 	for i := 0; i < len(opt.JSAssets.Values); i++ {
 		opt.JSAssets.Values[i] = host + opt.JSAssets.Values[i]
@@ -983,25 +1017,31 @@ type ZAxis3D struct {
 
 // Grid3D contains options for the 3D coordinate.
 type Grid3D struct {
-	// 是否显示三维笛卡尔坐标系
+	// Whether to show the coordinate.
 	Show bool `json:"show,omitempty"`
-	// 三维笛卡尔坐标系组件在三维场景中的宽度
-	// 默认 100
+
+	// 3D Cartesian coordinates width
+	// default 100
 	BoxWidth float32 `json:"boxWidth,omitempty"`
-	// 三维笛卡尔坐标系组件在三维场景中的高度
-	// 默认 100
+
+	// 3D Cartesian coordinates height
+	// default 100
 	BoxHeight float32 `json:"boxHeight,omitempty"`
-	// 三维笛卡尔坐标系组件在三维场景中的深度
-	// 默认 100
+
+	// 3D Cartesian coordinates depth
+	// default 100
 	BoxDepth float32 `json:"boxDepth,omitempty"`
-	// 用于鼠标的旋转，缩放等视角控制
+
+	// Rotate or scale fellows the mouse
 	ViewControl ViewControl `json:"viewControl,omitempty"`
 }
 
 // ViewControl contains options for view controlling.
 type ViewControl struct {
-	// 是否开启视角绕物体的自动旋转查看
+	// Whether to rotate automatically.
 	AutoRotate bool `json:"autoRotate,omitempty"`
-	// 物体自转的速度。单位为角度 / 秒，默认为 10 ，也就是 36 秒转一圈
+
+	// Rotate Speed, (angle/s).
+	// default 10
 	AutoRotateSpeed float32 `json:"autoRotateSpeed,omitempty"`
 }
