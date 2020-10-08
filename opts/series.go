@@ -6,7 +6,7 @@ type Label struct {
 	Show bool `json:"show,omitempty"`
 
 	// text color.
-	// If set as 'auto', the color will assigned as visual color, such as series color.
+	// If set as "auto", the color will assigned as visual color, such as series color.
 	Color string `json:"color,omitempty"`
 
 	// Label position. Followings are the options:
@@ -16,21 +16,21 @@ type Label struct {
 	// relative to top-left corner of bounding box. For example:
 	//
 	// Absolute pixel values: position: [10, 10],
-	// Relative percentage: position: ['50%', '50%']
+	// Relative percentage: position: ["50%", "50%"]
 	//
-	// 'top'
-	// 'left'
-	// 'right'
-	// 'bottom'
-	// 'inside'
-	// 'insideLeft'
-	// 'insideRight'
-	// 'insideTop'
-	// 'insideBottom'
-	// 'insideTopLeft'
-	// 'insideBottomLeft'
-	// 'insideTopRight'
-	// 'insideBottomRight'
+	// "top"
+	// "left"
+	// "right"
+	// "bottom"
+	// "inside"
+	// "insideLeft"
+	// "insideRight"
+	// "insideTop"
+	// "insideBottom"
+	// "insideTopLeft"
+	// "insideBottomLeft"
+	// "insideTopRight"
+	// "insideBottomRight"
 	Position string `json:"position,omitempty"`
 
 	// Data label formatter, which supports string template and callback function.
@@ -40,16 +40,16 @@ type Label struct {
 	// {a}: series name.
 	// {b}: the name of a data item.
 	// {c}: the value of a data item.
-	// {@xxx}: the value of a dimension named'xxx', for example,{@product}refers the value of'product'` dimension.
+	// {@xxx}: the value of a dimension named"xxx", for example,{@product}refers the value of"product"` dimension.
 	// {@[n]}: the value of a dimension at the index ofn, for example,{@[3]}` refers the value at dimensions[3].
 	Formatter string `json:"formatter,omitempty"`
 }
 
-// Emphasis
 // Emphasis is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect.
 type Emphasis struct {
 	// the emphasis style of label
 	Label `json:"label,omitempty"`
+
 	// the emphasis style of item
 	ItemStyle `json:"itemStyle,omitempty"`
 }
@@ -59,13 +59,17 @@ type ItemStyle struct {
 	// Chart color.
 	// Kline Up candle color
 	Color string `json:"color,omitempty"`
+
 	// Kline Down candle color
 	Color0 string `json:"color0,omitempty"`
+
 	// Chart border color
 	// Kline  Up candle border color
 	BorderColor string `json:"borderColor,omitempty"`
+
 	// Kline Down candle border color
 	BorderColor0 string `json:"borderColor0,omitempty"`
+
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
 }
@@ -81,8 +85,10 @@ type MarkLineStyle struct {
 	// Symbol type at the two ends of the mark line. It can be an array for two ends, or assigned separately.
 	// Options: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
 	Symbol []string `json:"symbol,omitempty"`
+
 	// Symbol size.
 	SymbolSize float32 `json:"symbolSize,omitempty"`
+
 	// Mark line text options.
 	*Label `json:"label,omitempty"`
 }
@@ -91,8 +97,10 @@ type MarkLineStyle struct {
 type MarkLineNameTypeItem struct {
 	// Mark line name.
 	Name string `json:"name,omitempty"`
+
 	// Mark line type, options: "average", "min", "max".
 	Type string `json:"type,omitempty"`
+
 	// Works only when type is assigned.
 	// It is used to state the dimension used to calculate maximum value or minimum value.
 	// It may be the direct name of a dimension, like x,
@@ -104,8 +112,10 @@ type MarkLineNameTypeItem struct {
 type MarkLineNameYAxisItem struct {
 	// Mark line name
 	Name string `json:"name,omitempty"`
+
 	// Y axis data
 	YAxis interface{} `json:"yAxis,omitempty"`
+
 	// Works only when type is assigned.
 	// It is used to state the dimension used to calculate maximum value or minimum value.
 	// It may be the direct name of a dimension, like x,
@@ -117,8 +127,10 @@ type MarkLineNameYAxisItem struct {
 type MarkLineNameXAxisItem struct {
 	// Mark line name
 	Name string `json:"name,omitempty"`
+
 	// X axis data
 	XAxis interface{} `json:"xAxis,omitempty"`
+
 	// Works only when type is assigned.
 	// It is used to state the dimension used to calculate maximum value or minimum value.
 	// It may be the direct name of a dimension, like x,
@@ -130,10 +142,13 @@ type MarkLineNameXAxisItem struct {
 type MarkLineNameCoordItem struct {
 	// Mark line name
 	Name string `json:"name,omitempty"`
+
 	// Mark line start coordinate
 	Coordinate0 []interface{}
+
 	// Mark line end coordinate
 	Coordinate1 []interface{}
+
 	// Works only when type is assigned.
 	// It is used to state the dimension used to calculate maximum value or minimum value.
 	// It may be the direct name of a dimension, like x,
@@ -152,8 +167,10 @@ type MarkPointStyle struct {
 	// Symbol type at the two ends of the mark line. It can be an array for two ends, or assigned separately.
 	// Options: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
 	Symbol []string `json:"symbol,omitempty"`
+
 	// Symbol size.
 	SymbolSize float32 `json:"symbolSize,omitempty"`
+
 	// Mark point text options.
 	*Label `json:"label,omitempty"`
 }
@@ -162,8 +179,10 @@ type MarkPointStyle struct {
 type MarkPointNameTypeItem struct {
 	// Mark point name
 	Name string `json:"name,omitempty"`
+
 	// Mark point type, options: "average", "min", "max".
 	Type string `json:"type,omitempty"`
+
 	// Works only when type is assigned.
 	// It is used to state the dimension used to calculate maximum value or minimum value.
 	// It may be the direct name of a dimension, like x,
@@ -175,13 +194,16 @@ type MarkPointNameTypeItem struct {
 type MarkPointNameCoordItem struct {
 	// Mark point name
 	Name string `json:"name,omitempty"`
+
 	// Mark point coordinate
 	Coordinate []interface{} `json:"coord,omitempty"`
+
 	// Works only when type is assigned.
 	// It is used to state the dimension used to calculate maximum value or minimum value.
 	// It may be the direct name of a dimension, like x,
 	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
+
 	// Mark point text options.
 	*Label `json:"label,omitempty"`
 }
@@ -191,10 +213,12 @@ type RippleEffect struct {
 	// The period duration of animation, in seconds.
 	// default 4(s)
 	Period float32 `json:"period,omitempty"`
+
 	// The maximum zooming scale of ripples in animation.
 	// default 2.5
 	Scale float32 `json:"scale,omitempty"`
-	// The brush type for ripples. options: 'stroke' and 'fill'.
+
+	// The brush type for ripples. options: "stroke" and "fill".
 	// default "fill"
 	BrushType string `json:"brushType,omitempty"`
 }
@@ -203,14 +227,18 @@ type RippleEffect struct {
 type LineStyle struct {
 	// Line color
 	Color string `json:"color,omitempty"`
+
 	// Line width.
 	// default 1
 	Width float32 `json:"width,omitempty"`
+
 	// Line type，options: "solid", "dashed", "dotted"
 	// default "solid"
 	Type string `json:"type,omitempty"`
+
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
+
 	// The curveness of edge. The values from 0 to 1 could be set.
 	// The curveness would be larger as the the value becomes larger.
 	// default 0
@@ -221,6 +249,7 @@ type LineStyle struct {
 type AreaStyle struct {
 	// Fill area color.
 	Color string `json:"color,omitempty"`
+
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
 }
@@ -234,8 +263,8 @@ type AreaStyle struct {
 type GraphForce struct {
 	// The initial layout before force-directed layout, which will influence on the result of force-directed layout.
 	// It defaults not to do any layout and use x, y provided in node as the position of node.
-	// If it doesn't exist, the position will be generated randomly.
-	// You can also use circular layout 'circular'.
+	// If it doesn"t exist, the position will be generated randomly.
+	// You can also use circular layout "circular".
 	InitLayout string `json:"initLayout,omitempty"`
 
 	// The repulsion factor between nodes. The repulsion will be stronger and the distance

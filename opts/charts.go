@@ -123,37 +123,53 @@ type GraphChart struct {
 
 // HeatMapChart is the option set for a heatmap chart.
 type HeatMapChart struct {
-	//使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
+	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
 	XAxisIndex int
-	//使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
+
+	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
 	YAxisIndex int
 }
 
 // LineChart is the options set for a line chart.
 type LineChart struct {
-	// 数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置
+	// If stack the value. On the same category axis, the series with the same stack name would be put on top of each other.
+	// The effect of the below example could be seen through stack switching of toolbox on the top right corner:
 	Stack string
-	// 曲线是否平滑
+
+	// Whether to show as smooth curve.
+	// If is typed in boolean, then it means whether to enable smoothing. If is
+	// typed in number, valued from 0 to 1, then it means smoothness. A smaller value makes it less smooth.
 	Smooth bool
-	// 是否使用阶梯图
+
+	// Whether to show as a step line. It can be true, false. Or 'start', 'middle', 'end'.
+	// Which will configure the turn point of step line.
 	Step bool
-	// 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
+
+	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
 	XAxisIndex int
-	// 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
+
+	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
 	YAxisIndex int
-	// 是否连接空数据。
+
+	// Whether to connect the line across null points.
 	ConnectNulls bool
 }
 
 // LineData
 type LineData struct {
-	// Name
+	// The name of data item.
 	Name string `json:"name,omitempty"`
-	// Value
+
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
-	// Symbol
+
+	// Symbol of single data.
+	// Icon types provided by ECharts includes 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
 	Symbol string `json:"symbol,omitempty"`
-	// SymbolSize
+
+	// single data symbol size. It can be set to single numbers like 10, or
+	// use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10
 	SymbolSize int `json:"symbolSize,omitempty"`
 
 	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
@@ -165,61 +181,82 @@ type LineData struct {
 
 // LiquidChart
 type LiquidChart struct {
-	// 水球图形状，可选
-	// "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
+	// Shape of single data.
+	// Icon types provided by ECharts includes 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
 	Shape string
-	// 是否显示水球轮廓
+
+	// Whether to show outline
 	IsShowOutline bool
-	// 是否停止动画
+
+	// Whether to stop animation
 	IsWaveAnimation bool
 }
 
 // LiquidData
 // reference https://github.com/ecomfe/echarts-liquidfill
 type LiquidData struct {
-	// Name
+	// The name of data item.
 	Name string `json:"name,omitempty"`
-	// Value
+
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
 // PieChart is the option set for a pie chart.
 type PieChart struct {
-	// 是否展示成南丁格尔图，通过半径区分数据大小。可选择两种模式：
-	// 1."radius": 扇区圆心角展现数据的百分比，半径展现数据的大小。
-	// 2."area": 所有扇区圆心角相同，仅通过半径展现数据大小。
+	// Whether to show as Nightingale chart, which distinguishs data through radius. There are 2 optional modes:
+	// * 'radius' Use central angle to show the percentage of data, radius to show data size.
+	// * 'area' All the sectors will share the same central angle, the data size is shown only through radiuses.
 	RoseType string
-	// 饼图的中心（圆心）坐标，数组的第一项是横坐标，第二项是纵坐标。
-	// 支持设置成百分比，设置成百分比时第一项是相对于容器宽度，第二项是相对于容器高度
-	// 使用示例
-	// 设置成绝对的像素值: center: [400, 300]
-	// 设置成相对的百分比: center: ['50%', '50%']
-	// 默认 ["50%", "50%"]
+
+	// Center position of Pie chart, the first of which is the horizontal position, and the second is the vertical position.
+	// Percentage is supported. When set in percentage, the item is relative to the container width,
+	// and the second item to the height.
+	//
+	// Example:
+	//
+	// Set to absolute pixel values ->> center: [400, 300]
+	// Set to relative percent ->> center: ['50%', '50%']
 	Center interface{}
-	// 饼图的半径。可以为如下类型：
-	// 1.number：直接指定外半径值。
-	// 2.string：例如，'20%'，表示外半径为可视区尺寸（容器高宽中较小一项）的 20% 长度。
-	// 3.Array.<number|string>：数组的第一项是内半径，第二项是外半径。
-	// 每一项遵从上述 number string 的描述。
-	// 默认 [0, "75%"]
+
+	// Radius of Pie chart. Value can be:
+	// * number: Specify outside radius directly.
+	// * string: For example, '20%', means that the outside radius is 20% of the viewport
+	// size (the little one between width and height of the chart container).
+	//
+	// Array.<number|string>: The first item specifies the inside radius, and the
+	// second item specifies the outside radius. Each item follows the definitions above.
 	Radius interface{}
 }
 
 // PieData
 type PieData struct {
-	Name       string      `json:"name,omitempty"`
-	Value      interface{} `json:"value,omitempty"`
-	Selected   bool        `json:"selected,omitempty"`
-	*Label     `json:"label,omitempty"`
+	// The name of data item.
+	Name string `json:"name,omitempty"`
+
+	// The value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+
+	// Whether the data item is selected.
+	Selected bool `json:"selected,omitempty"`
+
+	// The label configuration of a single sector.
+	*Label `json:"label,omitempty"`
+
+	// Graphic style of , emphasis is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect.
 	*ItemStyle `json:"itemStyle,omitempty"`
-	*Tooltip   `json:"tooltip,omitempty"`
+
+	// tooltip settings in this series data.
+	*Tooltip `json:"tooltip,omitempty"`
 }
 
 // ScatterChart is the option set for a scatter chart.
 type ScatterChart struct {
-	// 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用
+	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
 	XAxisIndex int
-	// 使用的 y 轴的 index，在单个图表实例中存在多个 y 轴的时候有用
+
+	// Index of x axis to combine with, which is useful for multiple y axes in one chart.
 	YAxisIndex int
 }
 
@@ -243,27 +280,35 @@ type WordCloudChart struct {
 
 // SankeyLink represents relationship between two data nodes.
 type SankeyLink struct {
-	// 边的源节点名称的字符串，也支持使用数字表示源节点的索引
+	// The name of source node of edge
 	Source interface{} `json:"source,omitempty"`
-	// 边的目标节点名称的字符串，也支持使用数字表示源节点的索引
+
+	// The name of target node of edge
 	Target interface{} `json:"target,omitempty"`
-	// 边的数值，可以在力引导布局中用于映射到边的长度
+
+	// The value of edge, which decides the width of edge.
 	Value float32 `json:"value,omitempty"`
 }
 
 // SankeyNode represents a data node.
 type SankeyNode struct {
-	// 数据项名称
+	// The name of data item.
 	Name string `json:"name,omitempty"`
-	// 数据项值
+
+	// The value of a single data item.
 	Value string `json:"value,omitempty"`
 }
 
 // ThemeRiverChartItem
 type ThemeRiverData struct {
-	Date  string
+	// the time attribute of time and theme.
+	Date string
+
+	// the value of an event or theme at a time point.
 	Value float64
-	Name  string
+
+	// the name of an event or theme.
+	Name string
 }
 
 func (trd ThemeRiverData) ToList() [3]interface{} {
@@ -272,26 +317,28 @@ func (trd ThemeRiverData) ToList() [3]interface{} {
 
 // RadarData
 type RadarData struct {
-	// Name
+	// The name of data item.
 	Name string `json:"name,omitempty"`
-	// Value
+
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
 // KlineData
 type KlineData struct {
-	// Name
+	// The name of data item.
 	Name string `json:"name,omitempty"`
-	// Value
+
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
 // ScatterData
 type ScatterData struct {
-	// Name
+	// The name of data item.
 	Name string `json:"name,omitempty"`
 
-	// Value
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 
 	// Symbol
@@ -312,31 +359,46 @@ type ScatterData struct {
 
 // MapData
 type MapData struct {
-	Name  string      `json:"name,omitempty"`
+	// The name of data item.
+	Name string `json:"name,omitempty"`
+
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
 // HeatMapData
 type HeatMapData struct {
-	Name  string      `json:"name,omitempty"`
+	// The name of data item.
+	Name string `json:"name,omitempty"`
+
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
 // WordCloudData
 type WordCloudData struct {
-	Name  string      `json:"name,omitempty"`
+	// The name of data item.
+	Name string `json:"name,omitempty"`
+
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
 // GeoData
 type GeoData struct {
-	Name  string      `json:"name,omitempty"`
+	// The name of data item.
+	Name string `json:"name,omitempty"`
+
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
 // ParallelData
 type ParallelData struct {
-	Name  string      `json:"name,omitempty"`
+	// The name of data item.
+	Name string `json:"name,omitempty"`
+
+	// The value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
