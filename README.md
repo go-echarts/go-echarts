@@ -39,7 +39,7 @@ $ go get -u github.com/go-echarts/go-echarts/...
 
 Use gomod
 ```shell
-require "github.com/go-echarts/go-echarts"
+require "github.com/go-echarts/go-echarts/v2"
 ```
 
 ### ⏳ Version
