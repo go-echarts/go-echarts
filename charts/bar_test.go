@@ -12,7 +12,6 @@ const host = "https://go-echarts.github.io/go-echarts-assets/assets/"
 func TestBarAssetsBeforeRender(t *testing.T) {
 	bar := NewBar()
 	assert.Equal(t, bar.JSAssets.Values, []string{"echarts.min.js"})
-	assert.Equal(t, bar.CSSAssets.Values, []string{"bulma.min.css"})
 }
 
 func TestBarAssetsAfterRender(t *testing.T) {
