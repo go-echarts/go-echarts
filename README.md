@@ -26,15 +26,28 @@
 
 > If a language can be used to build web scrapers, it definitely needs to provide a graceful data visualizing library. --- by chenjiandongx
 
-In the Golang ecosystem, there are not many choices for data visualizing libraries. The development of [go-echarts](https://github.com/go-echarts/go-echarts) aims to provide a simple yet powerful data visualizing library for Golang. [Echarts](https://echarts.baidu.com) is an outstanding charting and visualizing library opensourced by Baidu, it supports adorable chart types and various interactive features. There are many language bindings for Echarts, for example, [pyecharts](https://github.com/pyecharts/pyecharts). go-echarts learns from pyecharts and has evolved a lot.
+In the Golang ecosystem, there are not many choices for data visualizing libraries. The development of [go-echarts](https://github.com/go-echarts/go-echarts) aims to provide a simple yet powerful data visualizing library for Golang. [Echarts](https://echarts.apache.org/) is an outstanding charting and visualizing library opensourced by Baidu, it supports adorable chart types and various interactive features. There are many language bindings for Echarts, for example, [pyecharts](https://github.com/pyecharts/pyecharts). go-echarts learns from pyecharts and has evolved a lot.
 
 [中文 README](README_CN.md)
 
 ### 🔰 Installation
 
+Classic way to install go-echarts
 ```shell
 $ go get -u github.com/go-echarts/go-echarts/...
 ```
+
+Use gomod
+```shell
+require "github.com/go-echarts/go-echarts"
+```
+
+### ⏳ Version
+
+The go-echarts project is being developed under v2 version and the codebase is on the master branch now.
+
+v1 and v2 is incompatible which is mean that you cannot upgrade go-echarts from v1 to v2 smoothly. But I think is worth trying the new version.
+
 
 ### ✨ Features
 
@@ -48,24 +61,54 @@ $ go get -u github.com/go-echarts/go-echarts/...
 
 It's easy to get started with go-echarts. In this example, we create a simple bar chart with only a few lines of code.
 
-<p align="center">
-<img src="https://user-images.githubusercontent.com/19553554/52524229-bf42e800-2cd5-11e9-9eb8-47d8e3f4052b.png" width="80%" height="80%" />
-</p>
+```golang
+package examples
+
+import (
+	"io"
+	"math/rand"
+	"os"
+
+	"github.com/go-echarts/go-echarts/charts"
+	"github.com/go-echarts/go-echarts/components"
+	"github.com/go-echarts/go-echarts/opts"
+)
+
+var (
+	itemCnt = 7
+	weeks   = []string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}
+)
+
+func generateBarItems() []opts.BarData {
+	items := make([]opts.BarData, 0)
+	for i := 0; i < itemCnt; i++ {
+		items = append(items, opts.BarData{Value: rand.Intn(300)})
+	}
+	return items
+}
+
+func barBasic() *charts.Bar {
+	bar := charts.NewBar()
+	bar.SetGlobalOptions(
+        charts.WithTitleOpts(opts.Title{Title: "Bar-basic-example", Subtitle: "This is the subtitle."}),
+        )
+	bar.SetXAxis(weeks).
+		AddSeries("Category A", generateBarItems()).
+		AddSeries("Category B", generateBarItems())
+	return bar
+}
+
+func main() {
+    bar := barBasic()
+    bar.Render()
+}
+```
 
 And the generated bar.html is rendered as below. Isn't that cool！
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/19553554/52524101-34152280-2cd4-11e9-87c6-bbf5e388fe23.png" width="80%" height="80%" />
+<img src="https://user-images.githubusercontent.com/19553554/97107442-85f91880-1702-11eb-8b73-d0d8daedf549.png" width="80%" />
 </p>
-
-Of course we can also start a listening web server with `net/http`.
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/19553554/52524272-2c567d80-2cd6-11e9-8a73-29ba059b8bb5.png"
- width="80%" height="80%" />
-</p>
-
-Now visit http://localhost:8081 in your browser and you'll see the same bar chart.
 
 ### 🔖 Gallery
 
@@ -96,14 +139,7 @@ Now visit http://localhost:8081 in your browser and you'll see the same bar char
 <img src="https://user-images.githubusercontent.com/19553554/52349544-c2ce3900-2a61-11e9-82af-28aaaaae0d67.gif" width="33%" height="33%" alt="overlap"/>
 </div>
 
-Run the demo program under `_examples/` to view all the above chart examples.
-```shell
-$ cd your/gopath/src/github.com/go-echarts/go-echarts/_examples
-$ go build .
-$ ./_examples
-```
-
-For more information, please refer to [go-echarts.github.io/go-echarts/](https://go-echarts.github.io/go-echarts/).
+For more information, please refer to [go-echarts/examples](https://github.com/go-echarts/examples).
 
 ### 📃 LICENSE
 
