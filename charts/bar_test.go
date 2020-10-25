@@ -20,7 +20,6 @@ func TestBarAssetsAfterRender(t *testing.T) {
 	err := bar.Render(os.Stdout)
 	assert.NoError(t, err)
 	assert.Equal(t, bar.JSAssets.Values, []string{host + "echarts.min.js"})
-	assert.Equal(t, bar.CSSAssets.Values, []string{host + "bulma.min.css"})
 }
 
 func TestBarDefaultValue(t *testing.T) {

@@ -861,7 +861,7 @@ type Assets struct {
 // InitAssets static assets initial options
 func (opt *Assets) InitAssets() {
 	opt.JSAssets.Init("echarts.min.js")
-	opt.CSSAssets.Init("bulma.min.css")
+	opt.CSSAssets.Init()
 }
 
 // Validate static assets checks options, append host
