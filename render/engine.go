@@ -7,7 +7,7 @@ import (
 	"io"
 	"regexp"
 
-	tpls "github.com/go-echarts/go-echarts/templates"
+	tpls "github.com/go-echarts/go-echarts/v2/templates"
 )
 
 type Renderer interface {

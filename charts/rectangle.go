@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/opts"
+	"github.com/go-echarts/go-echarts/v2/opts"
 )
 
 type Overlaper interface {

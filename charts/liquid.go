@@ -1,9 +1,9 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/opts"
-	"github.com/go-echarts/go-echarts/render"
-	"github.com/go-echarts/go-echarts/types"
+	"github.com/go-echarts/go-echarts/v2/opts"
+	"github.com/go-echarts/go-echarts/v2/render"
+	"github.com/go-echarts/go-echarts/v2/types"
 )
 
 // Liquid represents a liquid chart.

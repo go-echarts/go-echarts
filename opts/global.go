@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/go-echarts/go-echarts/types"
+	"github.com/go-echarts/go-echarts/v2/types"
 )
 
 // Initialization contains options for the canvas.

@@ -1,8 +1,8 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/render"
-	"github.com/go-echarts/go-echarts/types"
+	"github.com/go-echarts/go-echarts/v2/render"
+	"github.com/go-echarts/go-echarts/v2/types"
 )
 
 // Surface3D represents a 3D surface chart.

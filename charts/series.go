@@ -1,6 +1,6 @@
 package charts
 
-import "github.com/go-echarts/go-echarts/opts"
+import "github.com/go-echarts/go-echarts/v2/opts"
 
 type SingleSeries struct {
 	Name string `json:"name,omitempty"`
