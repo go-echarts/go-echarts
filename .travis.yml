@@ -4,11 +4,6 @@ go:
   - 1.13.x
   - 1.14.x
   - 1.15.x
-install:
-  - # Do nothing. This is needed to prevent default install action
-  - # "go get -t -v ./..." from happening here (we want it to happen inside script step).
+go_import_path: github.com/go-echarts/go-echarts/v2
 script:
-  - go get -t -v ./...
-  - diff -u <(echo -n) <(gofmt -d -s .)
-  - go tool vet .
-  - go test -v -race ./...
+  - go test -v ./...
