@@ -1,6 +1,7 @@
 package opts
 
 // Label contains options for a label text.
+// https://echarts.apache.org/en/option.html#series-line.label
 type Label struct {
 	// Whether to show label.
 	Show bool `json:"show,omitempty"`

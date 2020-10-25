@@ -98,6 +98,7 @@ func generateUniqueID() string {
 }
 
 // Title is the option set for a title component.
+// https://echarts.apache.org/en/option.html#title
 type Title struct {
 	// The main title text, supporting for \n for newlines.
 	Title string `json:"text,omitempty"`
@@ -151,6 +152,7 @@ type Title struct {
 }
 
 // Legend is the option set for a legend component.
+// https://echarts.apache.org/en/option.html#legend
 type Legend struct {
 	// Whether to show the Legend, default true.
 	Show bool `json:"show"`
@@ -330,6 +332,7 @@ type Tooltip struct {
 }
 
 // Toolbox is the option set for a toolbox component.
+// https://echarts.apache.org/en/option.html#toolbox
 type Toolbox struct {
 	// Whether to show toolbox component.
 	Show bool `json:"show"`
@@ -370,6 +373,7 @@ type Toolbox struct {
 }
 
 // ToolBoxFeature is a feature component under toolbox.
+// https://echarts.apache.org/en/option.html#toolbox
 type ToolBoxFeature struct {
 	// Save as image tool
 	SaveAsImage *ToolBoxFeatureSaveAsImage `json:"saveAsImage,omitempty"`
@@ -385,6 +389,7 @@ type ToolBoxFeature struct {
 }
 
 // ToolBoxFeatureSaveAsImage is the option for saving chart as image.
+// https://echarts.apache.org/en/option.html#toolbox.feature.saveAsImage
 type ToolBoxFeatureSaveAsImage struct {
 	// Whether to show the tool.
 	Show bool `json:"show"`
@@ -405,6 +410,7 @@ type ToolBoxFeatureSaveAsImage struct {
 }
 
 // ToolBoxFeatureDataZoom
+// https://echarts.apache.org/en/option.html#toolbox.feature.dataZoom
 type ToolBoxFeatureDataZoom struct {
 	// Whether to show the tool.
 	Show bool `json:"show"`
@@ -416,6 +422,7 @@ type ToolBoxFeatureDataZoom struct {
 }
 
 // ToolBoxFeatureDataView
+// https://echarts.apache.org/en/option.html#toolbox.feature.dataView
 type ToolBoxFeatureDataView struct {
 	// Whether to show the tool.
 	Show bool `json:"show"`
@@ -425,6 +432,7 @@ type ToolBoxFeatureDataView struct {
 }
 
 // ToolBoxFeatureRestore
+// https://echarts.apache.org/en/option.html#toolbox.feature.restore
 type ToolBoxFeatureRestore struct {
 	// Whether to show the tool.
 	Show bool `json:"show"`
@@ -434,6 +442,7 @@ type ToolBoxFeatureRestore struct {
 }
 
 // XAxis is the option set for X axis.
+// https://echarts.apache.org/en/option.html#xAxis
 type XAxis struct {
 	// Name of axis.
 	Name string `json:"name,omitempty"`
@@ -490,6 +499,7 @@ type XAxis struct {
 }
 
 // YAxis is the option set for Y axis.
+// https://echarts.apache.org/en/option.html#yAxis
 type YAxis struct {
 	// Name of axis.
 	Name string `json:"name,omitempty"`

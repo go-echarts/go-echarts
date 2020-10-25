@@ -1,6 +1,7 @@
 package opts
 
 // BarChart
+// https://echarts.apache.org/en/option.html#series-bar
 type BarChart struct {
 	// Name of stack. On the same category axis, the series with the
 	// same stack name would be put on top of each other.
@@ -30,6 +31,7 @@ type BarChart struct {
 }
 
 // BarData
+// https://echarts.apache.org/en/option.html#series-bar.data
 type BarData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -48,6 +50,7 @@ type BarData struct {
 }
 
 // BoxPlotData
+// https://echarts.apache.org/en/option.html#series-boxplot.data
 type BoxPlotData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`

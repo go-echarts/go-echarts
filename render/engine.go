@@ -10,6 +10,8 @@ import (
 	tpls "github.com/go-echarts/go-echarts/v2/templates"
 )
 
+// Renderer
+// Any kinds of charts have their render implementation and you can define your own render logic easily.
 type Renderer interface {
 	Render(w io.Writer) error
 }
@@ -24,7 +26,7 @@ type pageRender struct {
 	before []func()
 }
 
-// NewPageRender
+// NewPageRender returns a render implementation for Page.
 func NewPageRender(c interface{}, before ...func()) Renderer {
 	return &pageRender{c: c, before: before}
 }
@@ -55,7 +57,7 @@ type chartRender struct {
 	before []func()
 }
 
-// NewChartRender
+// NewChartRender returns a render implementation for Chart.
 func NewChartRender(c interface{}, before ...func()) Renderer {
 	return &chartRender{c: c, before: before}
 }
