@@ -16,7 +16,7 @@
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT License">
     </a>
-        <a href="https://godoc.org/github.com/go-echarts/go-echarts">
+        <a href="https://pkg.go.dev/github.com/go-echarts/go-echarts/v2">
         <img src="https://godoc.org/github.com/go-echarts/go-echarts?status.svg" alt="GoDoc">
     </a>
 </p>
@@ -35,6 +35,7 @@ $ go get -u github.com/go-echarts/go-echarts/...
 ```
 
 GoMod
+
 ```shell
 require "github.com/go-echarts/go-echarts/v2"
 ```
@@ -123,7 +124,7 @@ func main() {
 <img src="https://user-images.githubusercontent.com/19553554/52349544-c2ce3900-2a61-11e9-82af-28aaaaae0d67.gif" width="33%" alt="overlap"/>
 </div>
 
-了解更多文档的内容请访问 [go-echarts/examples](https://github.com/go-echarts/examples)
+了解更多文档的内容请访问 [go-echarts/examples](https://github.com/go-echarts/examples) 以及 [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2)
 
 ### 📃 License
 
