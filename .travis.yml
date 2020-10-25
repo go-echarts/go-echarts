@@ -4,7 +4,6 @@ go:
   - 1.13.x
   - 1.14.x
   - 1.15.x
-install: false
-go_import_path: github.com/go-echarts/go-echarts
+go_import_path: github.com/go-echarts/go-echarts/v2
 script:
-  - env GO111MODULE=on go test
+  - go test -v ./...
