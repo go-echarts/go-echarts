@@ -32,6 +32,11 @@ GOPATH
 
 ```shell
 $ go get -u github.com/go-echarts/go-echarts/...
+
+# 因为 gomod 的特殊的版本管理方式，使用 go get 方式并不能直接使用 v2 go-echarts 🐶
+# 不过可以通过以下方法使用新版本...
+$ cd $go-echarts-project
+$ mkdir v2 && mv charts components datasets opts render templates types v2
 ```
 
 GoMod
