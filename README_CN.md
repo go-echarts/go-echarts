@@ -57,16 +57,17 @@ go-echarts 现在有 v1 和 v2 两个大版本，v1 版本的代码位于 v1 分
 仅需要几行核心代码就可画出美观的图表
 
 ```golang
-package examples
+package main
 
 import (
 	"math/rand"
+	"os"
 
 	"github.com/go-echarts/go-echarts/v2/charts"
-	"github.com/go-echarts/go-echarts/v2/components"
 	"github.com/go-echarts/go-echarts/v2/opts"
 )
 
+// generate random data for bar chart
 func generateBarItems() []opts.BarData {
 	items := make([]opts.BarData, 0)
 	for i := 0; i < 7; i++ {
@@ -76,10 +77,10 @@ func generateBarItems() []opts.BarData {
 }
 
 func main() {
-    // create a new bar instance
-    bar := charts.NewBar()
-    
-    // set some global options like Title/Legend/ToolTip or anything else
+	// create a new bar instance
+	bar := charts.NewBar()
+
+	// set some global options like Title/Legend/ToolTip or anything else
 	bar.SetGlobalOptions(
 		charts.WithTitleOpts(opts.Title{
 			Title:    "Bar-basic-example",
@@ -87,11 +88,19 @@ func main() {
 		}),
 	)
 
-    // Put some data in instance
+	// iowriter
+	f, err := os.Create("bar.html")
+	if err != nil {
+		panic(err)
+	}
+
+	// Put some data in instance
 	bar.SetXAxis([]string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}).
 		AddSeries("Category A", generateBarItems()).
-        AddSeries("Category B", generateBarItems()).
-        Render()
+		AddSeries("Category B", generateBarItems())
+
+	// Where the magic happens
+	bar.Render(f)
 }
 ```
 
