@@ -34,7 +34,8 @@ Classic way to get go-echarts
 ```shell
 $ go get -u github.com/go-echarts/go-echarts/...
 
-# this may be a stuip way to use v2 go-echarts which gomod because of the gomod version management system... 🐶
+# this may be a stuip way to use v2 go-echarts without gomod because of 
+# the gomod version management system... 🐶
 # if you get a better workaround, please let me know....
 $ cd $go-echarts-project
 $ mkdir v2 && mv charts components datasets opts render templates types v2
