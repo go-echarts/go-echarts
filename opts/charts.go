@@ -72,6 +72,7 @@ type BoxPlotData struct {
 }
 
 // EffectScatterData
+// https://echarts.apache.org/en/option.html#series-effectScatter.data
 type EffectScatterData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -81,6 +82,7 @@ type EffectScatterData struct {
 }
 
 // FunnelData
+// https://echarts.apache.org/en/option.html#series-funnel.data
 type FunnelData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -90,6 +92,7 @@ type FunnelData struct {
 }
 
 // GaugeData
+// https://echarts.apache.org/en/option.html#series-gauge.data
 type GaugeData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -99,6 +102,7 @@ type GaugeData struct {
 }
 
 // GraphChart is the option set for graph chart.
+// https://echarts.apache.org/en/option.html#series-graph
 type GraphChart struct {
 	// Graph layout.
 	// * 'none' No any layout, use x, y provided in node as the position of node.
@@ -125,6 +129,7 @@ type GraphChart struct {
 }
 
 // HeatMapChart is the option set for a heatmap chart.
+// https://echarts.apache.org/en/option.html#series-heatmap
 type HeatMapChart struct {
 	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
 	XAxisIndex int
@@ -134,6 +139,7 @@ type HeatMapChart struct {
 }
 
 // LineChart is the options set for a line chart.
+// https://echarts.apache.org/en/option.html#series-line
 type LineChart struct {
 	// If stack the value. On the same category axis, the series with the same stack name would be put on top of each other.
 	// The effect of the below example could be seen through stack switching of toolbox on the top right corner:
@@ -159,6 +165,7 @@ type LineChart struct {
 }
 
 // LineData
+// https://echarts.apache.org/en/option.html#series-line.data
 type LineData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -183,6 +190,7 @@ type LineData struct {
 }
 
 // LiquidChart
+// reference https://github.com/ecomfe/echarts-liquidfill
 type LiquidChart struct {
 	// Shape of single data.
 	// Icon types provided by ECharts includes 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
@@ -207,6 +215,7 @@ type LiquidData struct {
 }
 
 // PieChart is the option set for a pie chart.
+// https://echarts.apache.org/en/option.html#series-pie
 type PieChart struct {
 	// Whether to show as Nightingale chart, which distinguishs data through radius. There are 2 optional modes:
 	// * 'radius' Use central angle to show the percentage of data, radius to show data size.
@@ -234,6 +243,7 @@ type PieChart struct {
 }
 
 // PieData
+// https://echarts.apache.org/en/option.html#series-pie.data
 type PieData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -255,6 +265,7 @@ type PieData struct {
 }
 
 // ScatterChart is the option set for a scatter chart.
+// https://echarts.apache.org/en/option.html#series-scatter
 type ScatterChart struct {
 	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
 	XAxisIndex int
@@ -282,6 +293,7 @@ type WordCloudChart struct {
 }
 
 // SankeyLink represents relationship between two data nodes.
+// https://echarts.apache.org/en/option.html#series-sankey.links
 type SankeyLink struct {
 	// The name of source node of edge
 	Source interface{} `json:"source,omitempty"`
@@ -294,6 +306,7 @@ type SankeyLink struct {
 }
 
 // SankeyNode represents a data node.
+// https://echarts.apache.org/en/option.html#series-sankey.nodes
 type SankeyNode struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -303,6 +316,7 @@ type SankeyNode struct {
 }
 
 // ThemeRiverChartItem
+// https://echarts.apache.org/en/option.html#series-themeRiver
 type ThemeRiverData struct {
 	// the time attribute of time and theme.
 	Date string
@@ -319,6 +333,7 @@ func (trd ThemeRiverData) ToList() [3]interface{} {
 }
 
 // RadarData
+// https://echarts.apache.org/en/option.html#series-radar
 type RadarData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -328,6 +343,7 @@ type RadarData struct {
 }
 
 // KlineData
+// https://echarts.apache.org/en/option.html#series-candlestick.data
 type KlineData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -337,6 +353,7 @@ type KlineData struct {
 }
 
 // ScatterData
+// https://echarts.apache.org/en/option.html#series-scatter.data
 type ScatterData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -361,6 +378,7 @@ type ScatterData struct {
 }
 
 // MapData
+// https://echarts.apache.org/en/option.html#series-map.data
 type MapData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -370,6 +388,7 @@ type MapData struct {
 }
 
 // HeatMapData
+// https://echarts.apache.org/en/option.html#series-heatmap.data
 type HeatMapData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -397,6 +416,7 @@ type GeoData struct {
 }
 
 // ParallelData
+// https://echarts.apache.org/en/option.html#series-parallel.data
 type ParallelData struct {
 	// The name of data item.
 	Name string `json:"name,omitempty"`
@@ -406,6 +426,7 @@ type ParallelData struct {
 }
 
 // GraphNode represents a data node in graph chart.
+// https://echarts.apache.org/en/option.html#series-graph.data
 type GraphNode struct {
 	// Name of data item.
 	Name string `json:"name,omitempty"`
@@ -440,6 +461,7 @@ type GraphNode struct {
 }
 
 // GraphLink represents relationship between two data nodes.
+// https://echarts.apache.org/en/option.html#series-graph.links
 type GraphLink struct {
 	// A string representing the name of source node on edge. Can also be a number representing the node index.
 	Source interface{} `json:"source,omitempty"`
@@ -452,6 +474,10 @@ type GraphLink struct {
 }
 
 // GraphCategory represents a category for data nodes.
+// The categories of node, which is optional. If there is a classification of nodes,
+// the category of each node can be assigned through data[i].category.
+// And the style of category will also be applied to the style of nodes. categories can also be used in legend.
+// https://echarts.apache.org/en/option.html#series-graph.categories
 type GraphCategory struct {
 	// Name of category, which is used to correspond with legend and the content of tooltip.
 	Name string `json:"name"`

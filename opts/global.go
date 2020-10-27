@@ -152,6 +152,7 @@ type Title struct {
 }
 
 // Legend is the option set for a legend component.
+// Legend component shows symbol, color and name of different series. You can click legends to toggle displaying series in the chart.
 // https://echarts.apache.org/en/option.html#legend
 type Legend struct {
 	// Whether to show the Legend, default true.
@@ -605,6 +606,7 @@ type SplitLine struct {
 }
 
 // VisualMap is a type of component for visual encoding, which maps the data to visual channels.
+// https://echarts.apache.org/en/option.html#visualMap
 type VisualMap struct {
 	// Mapping type.
 	// Options: "continuous", "piecewise"
@@ -645,6 +647,9 @@ type VisualMapInRange struct {
 }
 
 // DataZoom is the option set for a zoom component.
+// dataZoom component is used for zooming a specific area, which enables user to
+// investigate data in detail, or get an overview of the data, or get rid of outlier points.
+// https://echarts.apache.org/en/option.html#dataZoom
 type DataZoom struct {
 	// Data zoom component of inside type, Options: "inside", "slider"
 	Type string `json:"type" default:"inside"`
@@ -681,6 +686,7 @@ type DataZoom struct {
 }
 
 // SingleAxis is the option set for single axis.
+// https://echarts.apache.org/en/option.html#singleAxis
 type SingleAxis struct {
 	// The minimum value of axis.
 	// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
@@ -745,6 +751,7 @@ type Indicator struct {
 }
 
 // RadarComponent is the option set for a radar component.
+// https://echarts.apache.org/en/option.html#radar
 type RadarComponent struct {
 	// Indicator of radar chart, which is used to assign multiple variables(dimensions) in radar chart.
 	Indicator []Indicator `json:"indicator,omitempty"`
@@ -768,9 +775,15 @@ type RadarComponent struct {
 }
 
 // GeoComponent is the option set for geo component.
+// https://echarts.apache.org/en/option.html#geo
 type GeoComponent struct {
+	// Map charts.
 	Map       string    `json:"map,omitempty"`
+
+	// Graphic style of Map Area Border, emphasis is the style when it is highlighted,
+	// like being hovered by mouse, or highlighted via legend connect.
 	ItemStyle ItemStyle `json:"itemStyle,omitempty"`
+
 	// Set this to true, to prevent interaction with the axis.
 	Silent bool `json:"silent,omitempty"`
 }

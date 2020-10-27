@@ -13,6 +13,9 @@
     <a href="https://goreportcard.com/report/github.com/go-echarts/go-echarts">
         <img src="https://goreportcard.com/badge/github.com/go-echarts/go-echarts" alt="Go Report Card">
     </a>
+	<a href="https://github.com/go-echarts/go-echarts/pulls">
+        <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions welcome">
+    </a>
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT License">
     </a>
@@ -147,6 +150,16 @@ And the generated bar.html is rendered as below. Isn't that cool！
 </div>
 
 For more information, please refer to [go-echarts/examples](https://github.com/go-echarts/examples) and the [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
+
+### 💡 Contributing
+
+go-echarts is an open source project and built on the top of other open-source projects, hence we are always very happy to have contributions, whether for typo fix, bug fix or big new features. Please do not ever hesitate to ask a question or send a pull request.
+
+We strongly value documentation and integration with other projects so we are very glad to accept improvements for these aspects.
+
+### 😉 Authors
+
+Code with ❤️ by [chenjiandongx](https://github.com/chenjiandongx) / [Koooooo-7](https://github.com/Koooooo-7) and lovely [contributors](https://github.com/go-echarts/go-echarts/graphs/contributors)
 
 ### 📃 License
 
