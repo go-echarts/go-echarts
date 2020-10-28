@@ -430,6 +430,13 @@ type ToolBoxFeatureDataView struct {
 
 	// title for the tool.
 	Title string `json:"title,omitempty"`
+
+	// There are 3 names in data view
+	// you could set them like this: []string["data view", "turn off", "refresh"]
+	Lang []string `json:"lang"`
+
+	// Background color of the floating layer in data view.
+	BackgroundColor string `json:"backgroundColor"`
 }
 
 // ToolBoxFeatureRestore
@@ -778,7 +785,7 @@ type RadarComponent struct {
 // https://echarts.apache.org/en/option.html#geo
 type GeoComponent struct {
 	// Map charts.
-	Map       string    `json:"map,omitempty"`
+	Map string `json:"map,omitempty"`
 
 	// Graphic style of Map Area Border, emphasis is the style when it is highlighted,
 	// like being hovered by mouse, or highlighted via legend connect.
