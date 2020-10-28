@@ -81,11 +81,8 @@ func (rc *RectChart) SetGlobalOptions(options ...GlobalOpts) *RectChart {
 }
 
 // Overlap composites multiple charts into one single canvas.
-// 结合不同类型图表叠加画在同张图上
-// 只适用于 RectChart 图表，其实现了 rectCharter 接口
-// RectChart 图表包括 Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
-// 将 RectChart 图表的 Series 追加到调用者的 Series 里面，Series 是完全独立的
-// 而全局配置使用的是调用者的配置项
+// It is only suit for some of the charts which are in rectangular coordinate.
+// Support charts: Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
 func (rc *RectChart) Overlap(a ...Overlaper) {
 	for i := 0; i < len(a); i++ {
 		rc.MultiSeries = append(rc.MultiSeries, a[i].overlap()...)
@@ -94,9 +91,9 @@ func (rc *RectChart) Overlap(a ...Overlaper) {
 
 // Validate
 func (rc *RectChart) Validate() {
-	// 确保 X 轴数据不会因为设置了 XAxisOpts 而被抹除
+	// Make sure that the data of X axis won't be cleaned for XAxisOpts
 	rc.XAxisList[0].Data = rc.xAxisData
-	// 确保 Y 轴数标签正确显示
+	// Make sure that the labels of Y axis show correctly
 	for i := 0; i < len(rc.YAxisList); i++ {
 		rc.YAxisList[i].AxisLabel.Show = true
 	}
