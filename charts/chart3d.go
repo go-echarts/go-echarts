@@ -5,7 +5,7 @@ import (
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
-// Chart3D is a chart in 3D coordinate.
+// Chart3D is a chart in 3D coordinates.
 type Chart3D struct {
 	BaseConfiguration
 	MultiSeries

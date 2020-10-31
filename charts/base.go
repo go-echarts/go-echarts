@@ -6,10 +6,10 @@ import (
 	"github.com/go-echarts/go-echarts/v2/render"
 )
 
-// GlobalOpts sets tje Global options for charts.
+// GlobalOpts sets the Global options for charts.
 type GlobalOpts func(bc *BaseConfiguration)
 
-// BaseConfiguration represents a option set needed by all chart types.
+// BaseConfiguration represents an option set needed by all chart types.
 type BaseConfiguration struct {
 	opts.Legend  `json:"legend"`
 	opts.Tooltip `json:"tooltip"`
