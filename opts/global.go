@@ -590,6 +590,15 @@ type TextStyle struct {
 	// Font size
 	FontSize int `json:"fontSize,omitempty"`
 
+	// Font family the main title font family.
+	// Options: "sans-serif", 'serif' , 'monospace', 'Arial', 'Courier New', 'Microsoft YaHei', ...
+	FontFamily string `json:"fontFamily,omitempty"`
+
+	// Padding title space around content.
+	// The unit is px. Default values for each position are 5.
+	// And they can be set to different values with left, right, top, and bottom.
+	Padding interface{} `json:"padding,omitempty"`
+
 	// compatible for WordCloud
 	Normal *TextStyle `json:"normal,omitempty"`
 }
