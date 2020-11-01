@@ -10,7 +10,7 @@ type BarChart struct {
 	// The gap between bars between different series, is a percent value like '30%',
 	// which means 30% of the bar width.
 	// Set barGap as '-100%' can overlap bars that belong to different series,
-	// which is useful when making a series of bar be background.
+	// which is useful when putting a series of bar as background.
 	// In a single coordinate system, this attribute is shared by multiple 'bar' series.
 	// This attribute should be set on the last 'bar' series in the coordinate system,
 	// then it will be adopted by all 'bar' series in the coordinate system.
@@ -105,10 +105,10 @@ type GaugeData struct {
 // https://echarts.apache.org/en/option.html#series-graph
 type GraphChart struct {
 	// Graph layout.
-	// * 'none' No any layout, use x, y provided in node as the position of node.
+	// * 'none' No layout, use x, y provided in node as the position of node.
 	// * 'circular' Adopt circular layout, see the example Les Miserables.
 	// * 'force' Adopt force-directed layout, see the example Force, the
-	// detail about configrations of layout are in graph.force
+	// detail about layout configurations are in graph.force
 	Layout string
 
 	// Force is the option set for graph force layout.
@@ -217,7 +217,7 @@ type LiquidData struct {
 // PieChart is the option set for a pie chart.
 // https://echarts.apache.org/en/option.html#series-pie
 type PieChart struct {
-	// Whether to show as Nightingale chart, which distinguishs data through radius. There are 2 optional modes:
+	// Whether to show as Nightingale chart, which distinguishes data through radius. There are 2 optional modes:
 	// * 'radius' Use central angle to show the percentage of data, radius to show data size.
 	// * 'area' All the sectors will share the same central angle, the data size is shown only through radiuses.
 	RoseType string

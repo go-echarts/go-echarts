@@ -100,7 +100,7 @@ func generateUniqueID() string {
 // Title is the option set for a title component.
 // https://echarts.apache.org/en/option.html#title
 type Title struct {
-	// The main title text, supporting for \n for newlines.
+	// The main title text, supporting \n for newlines.
 	Title string `json:"text,omitempty"`
 
 	// TextStyle of the main title.
@@ -109,7 +109,7 @@ type Title struct {
 	// The hyper link of main title text.
 	Link string `json:"link,omitempty"`
 
-	// Subtitle text, supporting for \n for newlines.
+	// Subtitle text, supporting \n for newlines.
 	Subtitle string `json:"subtext,omitempty"`
 
 	// TextStyle of the sub title.

@@ -8,7 +8,7 @@ type Overlaper interface {
 	overlap() MultiSeries
 }
 
-// XYAxis represent the X and Y axis in the rectangular coordinate.
+// XYAxis represent the X and Y axis in the rectangular coordinates.
 type XYAxis struct {
 	XAxisList []opts.XAxis `json:"xaxis"`
 	YAxisList []opts.YAxis `json:"yaxis"`
@@ -53,7 +53,7 @@ func WithYAxisOpts(opt opts.YAxis, index ...int) GlobalOpts {
 	}
 }
 
-// RectConfiguration contains options for the rectangular coordinate.
+// RectConfiguration contains options for the rectangular coordinates.
 type RectConfiguration struct {
 	BaseConfiguration
 }
@@ -80,9 +80,9 @@ func (rc *RectChart) SetGlobalOptions(options ...GlobalOpts) *RectChart {
 	return rc
 }
 
-// Overlap composites multiple charts into one single canvas.
-// It is only suit for some of the charts which are in rectangular coordinate.
-// Support charts: Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
+// Overlap composes multiple charts into one single canvas.
+// It is only suited for some of the charts which are in rectangular coordinate.
+// Supported charts: Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
 func (rc *RectChart) Overlap(a ...Overlaper) {
 	for i := 0; i < len(a); i++ {
 		rc.MultiSeries = append(rc.MultiSeries, a[i].overlap()...)

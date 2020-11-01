@@ -37,7 +37,7 @@ func (c *Graph) SetGlobalOptions(options ...GlobalOpts) *Graph {
 
 // Validate validates the given configuration.
 func (c *Graph) Validate() {
-	// If there is no setting of layout, default layout "force".
+	// If there is no layout setting, default layout is set to "force".
 	for i := 0; i < len(c.MultiSeries); i++ {
 		if c.MultiSeries[i].Layout == "" {
 			c.MultiSeries[i].Layout = "force"
