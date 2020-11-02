@@ -35,8 +35,8 @@ type BaseConfiguration struct {
 	opts.Grid3D
 
 	legends     []string
-	Colors      []string // 全局颜色列表
-	appendColor []string // 追加全局颜色列表
+	Colors      []opts.Color // 全局颜色列表
+	appendColor []opts.Color // 追加全局颜色列表
 
 	DataZoomList     []opts.DataZoom     `json:"datazoom,omitempty"`
 	VisualMapList    []opts.VisualMap    `json:"visualmap,omitempty"`
@@ -60,7 +60,7 @@ func (bc *BaseConfiguration) initBaseConfiguration() {
 }
 
 func (bc *BaseConfiguration) initSeriesColors() {
-	bc.Colors = []string{
+	bc.Colors = []opts.Color{
 		"#c23531", "#2f4554", "#61a0a8", "#d48265", "#91c7ae",
 		"#749f83", "#ca8622", "#bda29a", "#6e7074", "#546570",
 	}
@@ -183,7 +183,7 @@ func WithColorsOpts(opt opts.Colors) GlobalOpts {
 }
 
 // reverseSlice reverse string slice
-func reverseSlice(s []string) []string {
+func reverseSlice(s []opts.Color) []opts.Color {
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
 		s[i], s[j] = s[j], s[i]
 	}

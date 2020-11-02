@@ -581,7 +581,7 @@ type YAxis struct {
 // TextStyle is the option set for a text style component.
 type TextStyle struct {
 	// Font color
-	Color string `json:"color,omitempty"`
+	Color Color `json:"color,omitempty"`
 
 	// Font style
 	// Options: 'normal', 'italic', 'oblique'
@@ -652,7 +652,7 @@ type VisualMap struct {
 // VisualMapInRange is a visual map instance in a range.
 type VisualMapInRange struct {
 	// Color
-	Color []string `json:"color,omitempty"`
+	Color []Color `json:"color,omitempty"`
 
 	// Symbol type at the two ends of the mark line. It can be an array for two ends, or assigned separately.
 	// Options: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
@@ -763,7 +763,7 @@ type Indicator struct {
 	Min float32 `json:"min,omitempty"`
 
 	// Specify a color the the indicator.
-	Color string `json:"color,omitempty"`
+	Color Color `json:"color,omitempty"`
 }
 
 // RadarComponent is the option set for a radar component.
@@ -889,7 +889,7 @@ func replaceJsFuncs(fn string) string {
 	return fmt.Sprintf("%s%s%s", funcMarker, pat.ReplaceAllString(fn, ""), funcMarker)
 }
 
-type Colors []string
+type Colors []Color
 
 // AssetsOpts contains options for static assets.
 type Assets struct {
