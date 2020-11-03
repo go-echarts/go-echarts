@@ -1,14 +1,16 @@
 package opts
 
+import "fmt"
+
 // Label contains options for a label text.
 // https://echarts.apache.org/en/option.html#series-line.label
 type Label struct {
 	// Whether to show label.
 	Show bool `json:"show,omitempty"`
 
-	// text color.
+	// Color is the text color.
 	// If set as "auto", the color will assigned as visual color, such as series color.
-	Color ColorVar `json:"color,omitempty"`
+	Color string `json:"color,omitempty"`
 
 	// Label position. Followings are the options:
 	//
@@ -57,19 +59,19 @@ type Emphasis struct {
 
 // ItemStyle
 type ItemStyle struct {
-	// Chart color.
+	// Color of chart
 	// Kline Up candle color
-	Color ColorVar `json:"color,omitempty"`
+	Color string `json:"color,omitempty"`
 
 	// Kline Down candle color
-	Color0 ColorVar `json:"color0,omitempty"`
+	Color0 string `json:"color0,omitempty"`
 
-	// Chart border color
+	// BorderColor is the hart border color
 	// Kline  Up candle border color
-	BorderColor ColorVar `json:"borderColor,omitempty"`
+	BorderColor string `json:"borderColor,omitempty"`
 
 	// Kline Down candle border color
-	BorderColor0 ColorVar `json:"borderColor0,omitempty"`
+	BorderColor0 string `json:"borderColor0,omitempty"`
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
@@ -227,7 +229,7 @@ type RippleEffect struct {
 // LineStyle is the option set for a link style component.
 type LineStyle struct {
 	// Line color
-	Color ColorVar `json:"color,omitempty"`
+	Color string `json:"color,omitempty"`
 
 	// Line width.
 	// default 1
@@ -249,7 +251,7 @@ type LineStyle struct {
 // AreaStyle is the option set for an area style component.
 type AreaStyle struct {
 	// Fill area color.
-	Color ColorVar `json:"color,omitempty"`
+	Color string `json:"color,omitempty"`
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
@@ -283,4 +285,24 @@ type GraphForce struct {
 	// value will be shorter, which means two nodes are closer. And edge with smaller value will be longer.
 	// default 30
 	EdgeLength float32 `json:"edgeLength,omitempty"`
+}
+
+// RGBColor returns the color with RGB format
+func RGBColor(r, g, b uint16) string {
+	return fmt.Sprintf("rgb(%d,%d,%d)", r, g, b)
+}
+
+// RGBAColor returns the color with RGBA format
+func RGBAColor(r, g, b uint16, a float32) string {
+	return fmt.Sprintf("rgba(%d,%d,%d,%f)", r, g, b, a)
+}
+
+// HSLColor returns the color with HSL format
+func HSLColor(h, s, l float32) string {
+	return fmt.Sprintf("hsl(%f,%f%%,%f%%)", h, s, l)
+}
+
+// HSLAColor returns the color with HSLA format
+func HSLAColor(h, s, l, a float32) string {
+	return fmt.Sprintf("hsla(%f,%f%%,%f%%,%f)", h, s, l, a)
 }

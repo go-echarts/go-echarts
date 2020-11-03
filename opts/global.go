@@ -16,10 +16,10 @@ type Initialization struct {
 	// HTML title
 	PageTitle string `default:"Awesome go-echarts"`
 
-	// Canvas width
+	// Width of canvas
 	Width string `default:"900px"`
 
-	// Canvas Height
+	// Height of canvas
 	Height string `default:"500px"`
 
 	// Canvas Background Color
@@ -31,7 +31,7 @@ type Initialization struct {
 	// Assets host
 	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
 
-	// Chart Theme
+	// Theme of chart
 	Theme string `default:"white"`
 }
 
@@ -157,6 +157,7 @@ type Title struct {
 type Legend struct {
 	// Whether to show the Legend, default true.
 	Show bool `json:"show"`
+
 	// Distance between legend component and the left side of the container.
 	// left value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
@@ -581,7 +582,7 @@ type YAxis struct {
 // TextStyle is the option set for a text style component.
 type TextStyle struct {
 	// Font color
-	Color ColorVar `json:"color,omitempty"`
+	Color string `json:"color,omitempty"`
 
 	// Font style
 	// Options: 'normal', 'italic', 'oblique'
@@ -652,7 +653,7 @@ type VisualMap struct {
 // VisualMapInRange is a visual map instance in a range.
 type VisualMapInRange struct {
 	// Color
-	Color []ColorVar `json:"color,omitempty"`
+	Color []string `json:"color,omitempty"`
 
 	// Symbol type at the two ends of the mark line. It can be an array for two ends, or assigned separately.
 	// Options: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
@@ -763,7 +764,7 @@ type Indicator struct {
 	Min float32 `json:"min,omitempty"`
 
 	// Specify a color the the indicator.
-	Color ColorVar `json:"color,omitempty"`
+	Color string `json:"color,omitempty"`
 }
 
 // RadarComponent is the option set for a radar component.
@@ -889,7 +890,7 @@ func replaceJsFuncs(fn string) string {
 	return fmt.Sprintf("%s%s%s", funcMarker, pat.ReplaceAllString(fn, ""), funcMarker)
 }
 
-type Colors []ColorVar
+type Colors []string
 
 // AssetsOpts contains options for static assets.
 type Assets struct {

@@ -40,8 +40,8 @@ func (c *WordCloud) AddSeries(name string, data []opts.WordCloudData, options ..
 	if series.TextStyle == nil {
 		series.TextStyle = &opts.TextStyle{Normal: &opts.TextStyle{}}
 	}
-	if series.TextStyle.Normal.Color == nil {
-		series.TextStyle.Normal.Color = opts.ColorString(opts.FuncOpts(wcTextColor))
+	if series.TextStyle.Normal.Color == "" {
+		series.TextStyle.Normal.Color = opts.FuncOpts(wcTextColor)
 	}
 
 	c.MultiSeries = append(c.MultiSeries, series)

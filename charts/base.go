@@ -34,13 +34,18 @@ type BaseConfiguration struct {
 	opts.ZAxis3D
 	opts.Grid3D
 
-	legends     []string
-	Colors      []opts.ColorVar // 全局颜色列表
-	appendColor []opts.ColorVar // 追加全局颜色列表
+	legends []string
+	// Colors is the color list of palette.
+	// If no color is set in series, the colors would be adopted sequentially and circularly
+	// from this list as the colors of series.
+	Colors      []string
+	appendColor []string // append customize color to the Colors(reverse order)
 
-	DataZoomList     []opts.DataZoom     `json:"datazoom,omitempty"`
-	VisualMapList    []opts.VisualMap    `json:"visualmap,omitempty"`
-	ParallelAxisList []opts.ParallelAxis // 平行坐标系中的坐标轴组件配置项
+	DataZoomList  []opts.DataZoom  `json:"datazoom,omitempty"`
+	VisualMapList []opts.VisualMap `json:"visualmap,omitempty"`
+
+	// ParallelAxisList represents the component list which is the coordinate axis for parallel coordinate.
+	ParallelAxisList []opts.ParallelAxis
 
 	HasGeo        bool `json:"-"`
 	HasRadar      bool `json:"-"`
@@ -60,18 +65,18 @@ func (bc *BaseConfiguration) initBaseConfiguration() {
 }
 
 func (bc *BaseConfiguration) initSeriesColors() {
-	bc.Colors = []opts.ColorVar{
-		opts.ColorString("#c23531"), opts.ColorString("#2f4554"), opts.ColorString("#61a0a8"), opts.ColorString("#d48265"), opts.ColorString("#91c7ae"),
-		opts.ColorString("#749f83"), opts.ColorString("#ca8622"), opts.ColorString("#bda29a"), opts.ColorString("#6e7074"), opts.ColorString("#546570"),
+	bc.Colors = []string{
+		"#c23531", "#2f4554", "#61a0a8", "#d48265", "#91c7ae",
+		"#749f83", "#ca8622", "#bda29a", "#6e7074", "#546570",
 	}
 }
 
-func (bc *BaseConfiguration) insertSeriesColors(cs opts.Colors) {
-	tmpCl := reverseSlice(cs)
-	for i := 0; i < len(tmpCl); i++ {
-		bc.Colors = append(bc.Colors, opts.ColorString(""))
+func (bc *BaseConfiguration) insertSeriesColors(colors []string) {
+	reversed := reverseSlice(colors)
+	for i := 0; i < len(reversed); i++ {
+		bc.Colors = append(bc.Colors, "")
 		copy(bc.Colors[1:], bc.Colors[0:])
-		bc.Colors[0] = tmpCl[i]
+		bc.Colors[0] = reversed[i]
 	}
 }
 
@@ -176,14 +181,14 @@ func WithParallelAxisList(opt []opts.ParallelAxis) GlobalOpts {
 }
 
 // WithColorsOpts
-func WithColorsOpts(opt opts.Colors) GlobalOpts {
+func WithColorsOpts(opt ...string) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.insertSeriesColors(opt)
 	}
 }
 
 // reverseSlice reverse string slice
-func reverseSlice(s []opts.ColorVar) []opts.ColorVar {
+func reverseSlice(s []string) []string {
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
 		s[i], s[j] = s[j], s[i]
 	}
