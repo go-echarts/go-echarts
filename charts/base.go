@@ -34,13 +34,18 @@ type BaseConfiguration struct {
 	opts.ZAxis3D
 	opts.Grid3D
 
-	legends     []string
-	Colors      []string // 全局颜色列表
-	appendColor []string // 追加全局颜色列表
+	legends []string
+	// Colors is the color list of palette.
+	// If no color is set in series, the colors would be adopted sequentially and circularly
+	// from this list as the colors of series.
+	Colors      []string
+	appendColor []string // append customize color to the Colors(reverse order)
 
-	DataZoomList     []opts.DataZoom     `json:"datazoom,omitempty"`
-	VisualMapList    []opts.VisualMap    `json:"visualmap,omitempty"`
-	ParallelAxisList []opts.ParallelAxis // 平行坐标系中的坐标轴组件配置项
+	DataZoomList  []opts.DataZoom  `json:"datazoom,omitempty"`
+	VisualMapList []opts.VisualMap `json:"visualmap,omitempty"`
+
+	// ParallelAxisList represents the component list which is the coordinate axis for parallel coordinate.
+	ParallelAxisList []opts.ParallelAxis
 
 	HasGeo        bool `json:"-"`
 	HasRadar      bool `json:"-"`
@@ -66,12 +71,12 @@ func (bc *BaseConfiguration) initSeriesColors() {
 	}
 }
 
-func (bc *BaseConfiguration) insertSeriesColors(cs opts.Colors) {
-	tmpCl := reverseSlice(cs)
-	for i := 0; i < len(tmpCl); i++ {
+func (bc *BaseConfiguration) insertSeriesColors(colors []string) {
+	reversed := reverseSlice(colors)
+	for i := 0; i < len(reversed); i++ {
 		bc.Colors = append(bc.Colors, "")
 		copy(bc.Colors[1:], bc.Colors[0:])
-		bc.Colors[0] = tmpCl[i]
+		bc.Colors[0] = reversed[i]
 	}
 }
 
@@ -176,7 +181,7 @@ func WithParallelAxisList(opt []opts.ParallelAxis) GlobalOpts {
 }
 
 // WithColorsOpts
-func WithColorsOpts(opt opts.Colors) GlobalOpts {
+func WithColorsOpts(opt ...string) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.insertSeriesColors(opt)
 	}

@@ -1,12 +1,14 @@
 package opts
 
+import "fmt"
+
 // Label contains options for a label text.
 // https://echarts.apache.org/en/option.html#series-line.label
 type Label struct {
 	// Whether to show label.
 	Show bool `json:"show,omitempty"`
 
-	// text color.
+	// Color is the text color.
 	// If set as "auto", the color will assigned as visual color, such as series color.
 	Color string `json:"color,omitempty"`
 
@@ -57,14 +59,14 @@ type Emphasis struct {
 
 // ItemStyle
 type ItemStyle struct {
-	// Chart color.
+	// Color of chart
 	// Kline Up candle color
 	Color string `json:"color,omitempty"`
 
 	// Kline Down candle color
 	Color0 string `json:"color0,omitempty"`
 
-	// Chart border color
+	// BorderColor is the hart border color
 	// Kline  Up candle border color
 	BorderColor string `json:"borderColor,omitempty"`
 
@@ -283,4 +285,24 @@ type GraphForce struct {
 	// value will be shorter, which means two nodes are closer. And edge with smaller value will be longer.
 	// default 30
 	EdgeLength float32 `json:"edgeLength,omitempty"`
+}
+
+// RGBColor returns the color with RGB format
+func RGBColor(r, g, b uint16) string {
+	return fmt.Sprintf("rgb(%d,%d,%d)", r, g, b)
+}
+
+// RGBAColor returns the color with RGBA format
+func RGBAColor(r, g, b uint16, a float32) string {
+	return fmt.Sprintf("rgba(%d,%d,%d,%f)", r, g, b, a)
+}
+
+// HSLColor returns the color with HSL format
+func HSLColor(h, s, l float32) string {
+	return fmt.Sprintf("hsl(%f,%f%%,%f%%)", h, s, l)
+}
+
+// HSLAColor returns the color with HSLA format
+func HSLAColor(h, s, l, a float32) string {
+	return fmt.Sprintf("hsla(%f,%f%%,%f%%,%f)", h, s, l, a)
 }

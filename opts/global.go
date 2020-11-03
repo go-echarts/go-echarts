@@ -16,10 +16,10 @@ type Initialization struct {
 	// HTML title
 	PageTitle string `default:"Awesome go-echarts"`
 
-	// Canvas width
+	// Width of canvas
 	Width string `default:"900px"`
 
-	// Canvas Height
+	// Height of canvas
 	Height string `default:"500px"`
 
 	// Canvas Background Color
@@ -31,7 +31,7 @@ type Initialization struct {
 	// Assets host
 	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
 
-	// Chart Theme
+	// Theme of chart
 	Theme string `default:"white"`
 }
 
@@ -157,6 +157,7 @@ type Title struct {
 type Legend struct {
 	// Whether to show the Legend, default true.
 	Show bool `json:"show"`
+
 	// Distance between legend component and the left side of the container.
 	// left value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
