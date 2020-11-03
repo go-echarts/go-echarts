@@ -1,117 +1,84 @@
 package opts
 
 import (
-	"bytes"
+	"encoding/json"
 	"fmt"
-	"strings"
 )
 
-type Color string
-
 type ColorVar interface {
-	Text() Color
+	json.Marshaler
 }
 
-type rgb struct {
-	r uint16
-	g uint16
-	b uint16
-	a *float32
+type ColorString string
+
+func (h ColorString) MarshalJSON() ([]byte, error) {
+	return []byte(fmt.Sprintf(`"%s"`, h)), nil
 }
 
-func (c rgb) Text() Color {
-	if c.a == nil {
-		return Color(fmt.Sprintf("rgb(%d, %d, %d)", c.r, c.g, c.b))
-	}
-	return Color(fmt.Sprintf("rgba(%d, %d, %d, %f)", c.r, c.g, c.b, *c.a))
+type RGB struct {
+	R uint16
+	G uint16
+	B uint16
+	A *float32
 }
 
-func HexColor(str string) Color {
-	defaultVar := Color("#eeeeee")
-	if len(str) == 0 {
-		return defaultVar
+func NewRGB(R, G, B uint16) RGB {
+	return RGB{
+		R: R,
+		G: G,
+		B: B,
 	}
-
-	if str[0] != '#' {
-		return defaultVar
-	}
-
-	if len(str) == 7 {
-		buf := bytes.NewBufferString(strings.ToLower(str))
-		var r, g, b uint16
-		_, err := fmt.Fscanf(buf, "#%02d%02d%02d", &r, &g, &b)
-		if err != nil {
-			return defaultVar
-		}
-		return RGB(r, g, b)
-	}
-
-	if len(str) == 4 {
-		c1 := fmt.Sprintf("%c%c", str[1], str[1])
-		c2 := fmt.Sprintf("%c%c", str[2], str[2])
-		c3 := fmt.Sprintf("%c%c", str[3], str[3])
-
-		text := "#" + c1 + c2 + c3
-		buf := bytes.NewBufferString(strings.ToLower(text))
-		var r, g, b uint16
-		_, err := fmt.Fscanf(buf, "#%02d%02d%02d", &r, &g, &b)
-		if err != nil {
-			return defaultVar
-		}
-		return RGB(r, g, b)
-	}
-
-	return defaultVar
 }
 
-func RGB(r, g, b uint16) Color {
-	color := rgb{
-		r: r,
-		g: g,
-		b: b,
+func NewRGBA(R, G, B uint16, A float32) RGB {
+	return RGB{
+		R: R,
+		G: G,
+		B: B,
+		A: &A,
 	}
-	return color.Text()
 }
 
-func RGBA(r, g, b uint16, a float32) Color {
-	color := rgb{
-		r: r,
-		g: g,
-		b: b,
-		a: &a,
+func (r RGB) MarshalJSON() ([]byte, error) {
+	var text string
+	if r.A == nil {
+		text = fmt.Sprintf("rgb(%d, %d, %d)", r.R, r.G, r.B)
+	} else {
+		text = fmt.Sprintf("rgba(%d, %d, %d, %f)", r.R, r.G, r.B, *r.A)
 	}
-	return color.Text()
+	return []byte(fmt.Sprintf(`"%s"`, text)), nil
 }
 
-type hsl struct {
-	h float32
-	s float32
-	l float32
-	a *float32
+type HSL struct {
+	H float32
+	S float32
+	L float32
+	A *float32
 }
 
-func (c hsl) Text() Color {
-	if c.a == nil {
-		return Color(fmt.Sprintf("hsl(%f, %f%%, %f%%)", c.h, c.s, c.l))
+func NewHSL(H, S, L float32) HSL {
+	return HSL{
+		H: H,
+		S: S,
+		L: L,
 	}
-	return Color(fmt.Sprintf("hsla(%f, %f%%, %f%%, %f)", c.h, c.s, c.l, *c.a))
 }
 
-func HSL(h, s, l float32) Color {
-	color := hsl{
-		h: h,
-		s: s,
-		l: l,
+func NewHSLA(H, S, L, A float32) HSL {
+	return HSL{
+		H: H,
+		S: S,
+		L: L,
+		A: &A,
 	}
-	return color.Text()
 }
 
-func HSLA(h, s, l, a float32) Color {
-	color := hsl{
-		h: h,
-		s: s,
-		l: l,
-		a: &a,
+func (h HSL) MarshalJSON() ([]byte, error) {
+	var text string
+	if h.A == nil {
+		text = fmt.Sprintf("hsl(%f, %f%%, %f%%)", h.H, h.S, h.L)
+	} else {
+		text = fmt.Sprintf("hsla(%f, %f%%, %f%%, %f)", h.H, h.S, h.L, *h.A)
 	}
-	return color.Text()
+	return []byte(fmt.Sprintf(`"%s"`, text)), nil
 }

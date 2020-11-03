@@ -8,7 +8,7 @@ type Label struct {
 
 	// text color.
 	// If set as "auto", the color will assigned as visual color, such as series color.
-	Color Color `json:"color,omitempty"`
+	Color ColorVar `json:"color,omitempty"`
 
 	// Label position. Followings are the options:
 	//
@@ -59,17 +59,17 @@ type Emphasis struct {
 type ItemStyle struct {
 	// Chart color.
 	// Kline Up candle color
-	Color Color `json:"color,omitempty"`
+	Color ColorVar `json:"color,omitempty"`
 
 	// Kline Down candle color
-	Color0 Color `json:"color0,omitempty"`
+	Color0 ColorVar `json:"color0,omitempty"`
 
 	// Chart border color
 	// Kline  Up candle border color
-	BorderColor Color `json:"borderColor,omitempty"`
+	BorderColor ColorVar `json:"borderColor,omitempty"`
 
 	// Kline Down candle border color
-	BorderColor0 Color `json:"borderColor0,omitempty"`
+	BorderColor0 ColorVar `json:"borderColor0,omitempty"`
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
@@ -227,7 +227,7 @@ type RippleEffect struct {
 // LineStyle is the option set for a link style component.
 type LineStyle struct {
 	// Line color
-	Color Color `json:"color,omitempty"`
+	Color ColorVar `json:"color,omitempty"`
 
 	// Line width.
 	// default 1
@@ -249,7 +249,7 @@ type LineStyle struct {
 // AreaStyle is the option set for an area style component.
 type AreaStyle struct {
 	// Fill area color.
-	Color Color `json:"color,omitempty"`
+	Color ColorVar `json:"color,omitempty"`
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`

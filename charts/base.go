@@ -35,8 +35,8 @@ type BaseConfiguration struct {
 	opts.Grid3D
 
 	legends     []string
-	Colors      []opts.Color // 全局颜色列表
-	appendColor []opts.Color // 追加全局颜色列表
+	Colors      []opts.ColorVar // 全局颜色列表
+	appendColor []opts.ColorVar // 追加全局颜色列表
 
 	DataZoomList     []opts.DataZoom     `json:"datazoom,omitempty"`
 	VisualMapList    []opts.VisualMap    `json:"visualmap,omitempty"`
@@ -60,16 +60,16 @@ func (bc *BaseConfiguration) initBaseConfiguration() {
 }
 
 func (bc *BaseConfiguration) initSeriesColors() {
-	bc.Colors = []opts.Color{
-		"#c23531", "#2f4554", "#61a0a8", "#d48265", "#91c7ae",
-		"#749f83", "#ca8622", "#bda29a", "#6e7074", "#546570",
+	bc.Colors = []opts.ColorVar{
+		opts.ColorString("#c23531"), opts.ColorString("#2f4554"), opts.ColorString("#61a0a8"), opts.ColorString("#d48265"), opts.ColorString("#91c7ae"),
+		opts.ColorString("#749f83"), opts.ColorString("#ca8622"), opts.ColorString("#bda29a"), opts.ColorString("#6e7074"), opts.ColorString("#546570"),
 	}
 }
 
 func (bc *BaseConfiguration) insertSeriesColors(cs opts.Colors) {
 	tmpCl := reverseSlice(cs)
 	for i := 0; i < len(tmpCl); i++ {
-		bc.Colors = append(bc.Colors, "")
+		bc.Colors = append(bc.Colors, opts.ColorString(""))
 		copy(bc.Colors[1:], bc.Colors[0:])
 		bc.Colors[0] = tmpCl[i]
 	}
@@ -183,7 +183,7 @@ func WithColorsOpts(opt opts.Colors) GlobalOpts {
 }
 
 // reverseSlice reverse string slice
-func reverseSlice(s []opts.Color) []opts.Color {
+func reverseSlice(s []opts.ColorVar) []opts.ColorVar {
 	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
 		s[i], s[j] = s[j], s[i]
 	}
