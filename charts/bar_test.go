@@ -18,15 +18,15 @@ func TestBarAssetsAfterRender(t *testing.T) {
 	bar := NewBar()
 	err := bar.Render(os.Stdout)
 	assert.NoError(t, err)
-	assert.Equal(t, bar.JSAssets.Values, []string{host + "echarts.min.js"})
+	assert.Equal(t, []string{host + "echarts.min.js"}, bar.JSAssets.Values)
 }
 
 func TestBarDefaultValue(t *testing.T) {
 	bar := NewBar()
 	err := bar.Render(os.Stdout)
 	assert.NoError(t, err)
-	assert.Equal(t, bar.Initialization.Width, "900px")
-	assert.Equal(t, bar.Initialization.Height, "500px")
-	assert.Equal(t, bar.PageTitle, "Awesome go-echarts")
-	assert.Equal(t, bar.AssetsHost, host)
+	assert.Equal(t, "900px", bar.Initialization.Width)
+	assert.Equal(t, "500px", bar.Initialization.Height)
+	assert.Equal(t, "Awesome go-echarts", bar.PageTitle)
+	assert.Equal(t, host, bar.AssetsHost)
 }

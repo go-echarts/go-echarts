@@ -22,7 +22,7 @@ type Initialization struct {
 	// Height of canvas
 	Height string `default:"500px"`
 
-	// Canvas Background Color
+	// BackgroundColor of canvas
 	BackgroundColor string `json:"backgroundColor,omitempty"`
 
 	// Chart unique ID
@@ -896,21 +896,50 @@ type Colors []string
 type Assets struct {
 	JSAssets  types.OrderedSet
 	CSSAssets types.OrderedSet
+
+	customizedJSAssets  types.OrderedSet
+	customizedCSSAssets types.OrderedSet
 }
 
-// InitAssets static assets initial options
+// InitAssets inits the static assets storage.
 func (opt *Assets) InitAssets() {
 	opt.JSAssets.Init("echarts.min.js")
 	opt.CSSAssets.Init()
+
+	opt.customizedJSAssets.Init()
+	opt.customizedCSSAssets.Init()
 }
 
-// Validate static assets checks options, append host
+// AddCustomizedJSAssets adds the customized javascript assets which will not be added the `host` prefix.
+func (opt *Assets) AddCustomizedJSAssets(assets ...string) {
+	for i := 0; i < len(assets); i++ {
+		opt.customizedJSAssets.Add(assets[i])
+	}
+}
+
+// AddCustomizedCSSAssets adds the customized css assets which will not be added the `host` prefix.
+func (opt *Assets) AddCustomizedCSSAssets(assets ...string) {
+	for i := 0; i < len(assets); i++ {
+		opt.customizedCSSAssets.Add(assets[i])
+	}
+}
+
+// Validate validates the static assets configurations
 func (opt *Assets) Validate(host string) {
 	for i := 0; i < len(opt.JSAssets.Values); i++ {
 		opt.JSAssets.Values[i] = host + opt.JSAssets.Values[i]
 	}
+
+	for _, v := range opt.customizedJSAssets.Values {
+		opt.JSAssets.Add(v)
+	}
+
 	for j := 0; j < len(opt.CSSAssets.Values); j++ {
 		opt.CSSAssets.Values[j] = host + opt.CSSAssets.Values[j]
+	}
+
+	for _, v := range opt.customizedCSSAssets.Values {
+		opt.CSSAssets.Add(v)
 	}
 }
 
