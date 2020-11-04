@@ -8,13 +8,13 @@ import (
 )
 
 func TestPieAssetsBeforeRender(t *testing.T) {
-	bar := NewBar()
-	assert.Equal(t, bar.JSAssets.Values, []string{"echarts.min.js"})
+	pie := NewPie()
+	assert.Equal(t, []string{"echarts.min.js"}, pie.JSAssets.Values)
 }
 
 func TestPieAssetsAfterRender(t *testing.T) {
-	bar := NewBar()
-	err := bar.Render(os.Stdout)
+	pie := NewPie()
+	err := pie.Render(os.Stdout)
 	assert.NoError(t, err)
-	assert.Equal(t, bar.JSAssets.Values, []string{host + "echarts.min.js"})
+	assert.Equal(t, []string{host + "echarts.min.js"}, pie.JSAssets.Values)
 }

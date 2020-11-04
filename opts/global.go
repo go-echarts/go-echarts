@@ -929,15 +929,17 @@ func (opt *Assets) Validate(host string) {
 	for i := 0; i < len(opt.JSAssets.Values); i++ {
 		opt.JSAssets.Values[i] = host + opt.JSAssets.Values[i]
 	}
-	for i := 0; i < len(opt.customizedJSAssets.Values); i++ {
-		opt.JSAssets.Add(opt.customizedJSAssets.Values[i])
+
+	for _, v := range opt.customizedJSAssets.Values {
+		opt.JSAssets.Add(v)
 	}
 
 	for j := 0; j < len(opt.CSSAssets.Values); j++ {
 		opt.CSSAssets.Values[j] = host + opt.CSSAssets.Values[j]
 	}
-	for i := 0; i < len(opt.customizedCSSAssets.Values); i++ {
-		opt.CSSAssets.Add(opt.customizedCSSAssets.Values[i])
+
+	for _, v := range opt.customizedCSSAssets.Values {
+		opt.CSSAssets.Add(v)
 	}
 }
 
