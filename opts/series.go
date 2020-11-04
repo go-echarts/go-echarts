@@ -77,7 +77,7 @@ type ItemStyle struct {
 	Opacity float32 `json:"opacity,omitempty"`
 }
 
-// MarkLine represents a mark line.
+// MarkLines represents a series of marklines.
 type MarkLines struct {
 	Data []interface{} `json:"data,omitempty"`
 	MarkLineStyle
@@ -159,7 +159,7 @@ type MarkLineNameCoordItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
-// MarkPoint represents a mark point.
+// MarkPoints represents a series of markpoints.
 type MarkPoints struct {
 	Data []interface{} `json:"data,omitempty"`
 	MarkPointStyle
@@ -180,7 +180,7 @@ type MarkPointStyle struct {
 
 // MarkPointNameTypeItem represents type for a MarkPoint.
 type MarkPointNameTypeItem struct {
-	// Mark point name
+	// Name of markpoint
 	Name string `json:"name,omitempty"`
 
 	// Mark point type, options: "average", "min", "max".
@@ -195,7 +195,7 @@ type MarkPointNameTypeItem struct {
 
 // MarkPointNameCoordItem represents coordinates for a MarkPoint.
 type MarkPointNameCoordItem struct {
-	// Mark point name
+	// Name of markpoint
 	Name string `json:"name,omitempty"`
 
 	// Mark point coordinate
@@ -231,20 +231,17 @@ type LineStyle struct {
 	// Line color
 	Color string `json:"color,omitempty"`
 
-	// Line width.
-	// default 1
+	// Width of line. default 1
 	Width float32 `json:"width,omitempty"`
 
-	// Line type，options: "solid", "dashed", "dotted"
-	// default "solid"
+	// Type of line，options: "solid", "dashed", "dotted". default "solid"
 	Type string `json:"type,omitempty"`
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
 
-	// The curveness of edge. The values from 0 to 1 could be set.
-	// The curveness would be larger as the the value becomes larger.
-	// default 0
+	// Curveness of edge. The values from 0 to 1 could be set.
+	// it would be larger as the the value becomes larger. default 0
 	Curveness float32 `json:"curveness,omitempty"`
 }
 
