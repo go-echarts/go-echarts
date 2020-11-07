@@ -4,7 +4,7 @@ var PageTpl = `
 {{- define "page" }}
 <!DOCTYPE html>
 <html>
-{{- template "header" . }}
+    {{- template "header" . }}
 <body>
 {{- range .Charts }}
     {{ template "base" . }}

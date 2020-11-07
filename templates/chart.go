@@ -4,9 +4,9 @@ var ChartTpl = `
 {{- define "chart" }}
 <!DOCTYPE html>
 <html>
-{{- template "header" . }}
+    {{- template "header" . }}
 <body>
-{{- template "base" . }}
+    {{- template "base" . }}
 <style>
     .container {margin-top:30px; display: flex;justify-content: center;align-items: center;}
     .item {margin: auto;}
