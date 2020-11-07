@@ -6,6 +6,7 @@ import (
 	"reflect"
 	"regexp"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/go-echarts/go-echarts/v2/types"
@@ -927,15 +928,19 @@ func (opt *Assets) AddCustomizedCSSAssets(assets ...string) {
 // Validate validates the static assets configurations
 func (opt *Assets) Validate(host string) {
 	for i := 0; i < len(opt.JSAssets.Values); i++ {
-		opt.JSAssets.Values[i] = host + opt.JSAssets.Values[i]
+		if !strings.HasPrefix(opt.JSAssets.Values[i], host) {
+			opt.JSAssets.Values[i] = host + opt.JSAssets.Values[i]
+		}
 	}
 
 	for _, v := range opt.customizedJSAssets.Values {
 		opt.JSAssets.Add(v)
 	}
 
-	for j := 0; j < len(opt.CSSAssets.Values); j++ {
-		opt.CSSAssets.Values[j] = host + opt.CSSAssets.Values[j]
+	for i := 0; i < len(opt.CSSAssets.Values); i++ {
+		if !strings.HasPrefix(opt.CSSAssets.Values[i], host) {
+			opt.CSSAssets.Values[i] = host + opt.CSSAssets.Values[i]
+		}
 	}
 
 	for _, v := range opt.customizedCSSAssets.Values {
