@@ -8,8 +8,8 @@ var BaseTpl = `
 </div>
   <script type="text/javascript">
      "use strict";
-     var myChart___x__{{ .ChartID }}__x__ = echarts.init(document.getElementById('{{ .ChartID }}'), "{{ .Theme }}");
-     var option___x__{{ .ChartID }}__x__ = {
+     var goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID | safeJS }}'), "{{ .Theme }}");
+     var option_{{ .ChartID | safeJS }} = {
          title: {{ .Title  }},
          tooltip: {{ .Tooltip }},
          legend: {{ .Legend }},
@@ -48,9 +48,9 @@ var BaseTpl = `
          grid3D: {{ .Grid3D }},
      {{- end }}
          series: [
-         {{ range .MultiSeries }}
-         {{- . }},
-         {{ end -}}
+			{{ range .MultiSeries }}
+				{{- . }},
+			{{ end -}}
          ],
      {{- if eq .Theme "white" }}
          color: {{ .Colors }},
@@ -59,11 +59,11 @@ var BaseTpl = `
          backgroundColor: {{ .BackgroundColor }}
      {{- end }}
      };
-     myChart___x__{{ .ChartID }}__x__.setOption(option___x__{{ .ChartID }}__x__);
+     goecharts_{{ .ChartID | safeJS }}.setOption(option_{{ .ChartID | safeJS }});
 
-     {{- range .JSFunctions.Fns }}
-     {{ . | safeJS }}
-     {{- end }}
+	{{- range .JSFunctions.Fns }}
+		{{ . | safeJS }}
+	{{- end }}
  </script>
 {{ end }}
 `
