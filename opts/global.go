@@ -867,6 +867,10 @@ type ParallelAxis struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
+var funcPat = regexp.MustCompile(`\n|\t`)
+
+const funcMarker = "__f__"
+
 type JSFunctions struct {
 	Fns []string
 }
@@ -874,7 +878,7 @@ type JSFunctions struct {
 // AddJSFuncs adds a new JS function.
 func (f *JSFunctions) AddJSFuncs(fn ...string) {
 	for i := 0; i < len(fn); i++ {
-		f.Fns = append(f.Fns, replaceJsFuncs(fn[i]))
+		f.Fns = append(f.Fns, funcPat.ReplaceAllString(fn[i], ""))
 	}
 }
 
@@ -883,12 +887,9 @@ func FuncOpts(fn string) string {
 	return replaceJsFuncs(fn)
 }
 
-const funcMarker = "__x__"
-
 // replace and clear up js functions string
 func replaceJsFuncs(fn string) string {
-	pat := regexp.MustCompile(`\n|\t`)
-	return fmt.Sprintf("%s%s%s", funcMarker, pat.ReplaceAllString(fn, ""), funcMarker)
+	return fmt.Sprintf("%s%s%s", funcMarker, funcPat.ReplaceAllString(fn, ""), funcMarker)
 }
 
 type Colors []string

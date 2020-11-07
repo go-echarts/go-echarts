@@ -11,7 +11,8 @@ import (
 )
 
 // Renderer
-// Any kinds of charts have their render implementation and you can define your own render logic easily.
+// Any kinds of charts have their render implementation and
+// you can define your own render logic easily.
 type Renderer interface {
 	Render(w io.Writer) error
 }
@@ -45,7 +46,7 @@ func (r *pageRender) Render(w io.Writer) error {
 		return err
 	}
 
-	pat := regexp.MustCompile(`(__x__")|("__x__)|(__x__)`)
+	pat := regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
 
 	_, err := w.Write(content)
@@ -76,7 +77,7 @@ func (r *chartRender) Render(w io.Writer) error {
 		return err
 	}
 
-	pat := regexp.MustCompile(`(__x__")|("__x__)|(__x__)`)
+	pat := regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
 
 	_, err := w.Write(content)
