@@ -181,7 +181,7 @@ func WithParallelAxisList(opt []opts.ParallelAxis) GlobalOpts {
 }
 
 // WithColorsOpts
-func WithColorsOpts(opt ...string) GlobalOpts {
+func WithColorsOpts(opt opts.Colors) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.insertSeriesColors(opt)
 	}
