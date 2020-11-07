@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"os"
+	"io/ioutil"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +14,7 @@ func TestWordCloudAssetsBeforeRender(t *testing.T) {
 
 func TestWordCloudAssetsAfterRender(t *testing.T) {
 	wc := NewWordCloud()
-	err := wc.Render(os.Stdout)
+	err := wc.Render(ioutil.Discard)
 	assert.NoError(t, err)
 	assert.Equal(t, []string{host + "echarts.min.js", host + "echarts-wordcloud.min.js"}, wc.JSAssets.Values)
 }

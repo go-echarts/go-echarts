@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"os"
+	"io/ioutil"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +14,7 @@ func TestPieAssetsBeforeRender(t *testing.T) {
 
 func TestPieAssetsAfterRender(t *testing.T) {
 	pie := NewPie()
-	err := pie.Render(os.Stdout)
+	err := pie.Render(ioutil.Discard)
 	assert.NoError(t, err)
 	assert.Equal(t, []string{host + "echarts.min.js"}, pie.JSAssets.Values)
 }

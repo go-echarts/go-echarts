@@ -33,10 +33,10 @@ type BarChart struct {
 // BarData
 // https://echarts.apache.org/en/option.html#series-bar.data
 type BarData struct {
-	// The name of data item.
+	// Name of data item.
 	Name string `json:"name,omitempty"`
 
-	// The value of a single data item.
+	// Value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 
 	// The style setting of the text label in a single bar.
@@ -49,13 +49,28 @@ type BarData struct {
 	*Tooltip `json:"tooltip,omitempty"`
 }
 
+// Bar3DChart is the option set for a 3D bar chart.
+type Bar3DChart struct {
+	// Shading is the coloring effect of 3D graphics in 3D Bar.
+	// The following three coloring methods are supported in echarts-gl:
+	// Options:
+	//
+	// * "color": Only display colors, not affected by other factors such as lighting.
+	// * "lambert": Through the classic [lambert] coloring, can express the light and dark that the light shows.
+	// * "realistic": Realistic rendering, combined with light.ambientCubemap and postEffect,
+	//   can improve the quality and texture of the display.
+	//   [Physical Based Rendering (PBR)] (https://www.marmoset.co/posts/physically-based-rendering-and-you-can-too/)
+	//   is used in ECharts GL to represent realistic materials.
+	Shading string
+}
+
 // BoxPlotData
 // https://echarts.apache.org/en/option.html#series-boxplot.data
 type BoxPlotData struct {
-	// The name of data item.
+	// Name of data item.
 	Name string `json:"name,omitempty"`
 
-	// The value of a single data item.
+	// Value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 
 	// The style setting of the text label in a single bar.
@@ -74,30 +89,39 @@ type BoxPlotData struct {
 // EffectScatterData
 // https://echarts.apache.org/en/option.html#series-effectScatter.data
 type EffectScatterData struct {
-	// The name of data item.
+	// Name of data item.
 	Name string `json:"name,omitempty"`
 
-	// The value of a single data item.
+	// Value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
 // FunnelData
 // https://echarts.apache.org/en/option.html#series-funnel.data
 type FunnelData struct {
-	// The name of data item.
+	// Name of data item.
 	Name string `json:"name,omitempty"`
 
-	// The value of a single data item.
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+}
+
+// GeoData
+type GeoData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
 // GaugeData
 // https://echarts.apache.org/en/option.html#series-gauge.data
 type GaugeData struct {
-	// The name of data item.
+	// Name of data item.
 	Name string `json:"name,omitempty"`
 
-	// The value of a single data item.
+	// Value of a single data item.
 	Value interface{} `json:"value,omitempty"`
 }
 
@@ -126,303 +150,6 @@ type GraphChart struct {
 	// the category of each node can be assigned through data[i].category.
 	// And the style of category will also be applied to the style of nodes. categories can also be used in legend.
 	Categories []GraphCategory
-}
-
-// HeatMapChart is the option set for a heatmap chart.
-// https://echarts.apache.org/en/option.html#series-heatmap
-type HeatMapChart struct {
-	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
-	XAxisIndex int
-
-	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
-	YAxisIndex int
-}
-
-// LineChart is the options set for a line chart.
-// https://echarts.apache.org/en/option.html#series-line
-type LineChart struct {
-	// If stack the value. On the same category axis, the series with the same stack name would be put on top of each other.
-	// The effect of the below example could be seen through stack switching of toolbox on the top right corner:
-	Stack string
-
-	// Whether to show as smooth curve.
-	// If is typed in boolean, then it means whether to enable smoothing. If is
-	// typed in number, valued from 0 to 1, then it means smoothness. A smaller value makes it less smooth.
-	Smooth bool
-
-	// Whether to show as a step line. It can be true, false. Or 'start', 'middle', 'end'.
-	// Which will configure the turn point of step line.
-	Step bool
-
-	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
-	XAxisIndex int
-
-	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
-	YAxisIndex int
-
-	// Whether to connect the line across null points.
-	ConnectNulls bool
-}
-
-// LineData
-// https://echarts.apache.org/en/option.html#series-line.data
-type LineData struct {
-	// The name of data item.
-	Name string `json:"name,omitempty"`
-
-	// The value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-
-	// Symbol of single data.
-	// Icon types provided by ECharts includes 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
-	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
-	Symbol string `json:"symbol,omitempty"`
-
-	// single data symbol size. It can be set to single numbers like 10, or
-	// use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10
-	SymbolSize int `json:"symbolSize,omitempty"`
-
-	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
-	XAxisIndex int
-
-	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
-	YAxisIndex int
-}
-
-// LiquidChart
-// reference https://github.com/ecomfe/echarts-liquidfill
-type LiquidChart struct {
-	// Shape of single data.
-	// Icon types provided by ECharts includes 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
-	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
-	Shape string
-
-	// Whether to show outline
-	IsShowOutline bool
-
-	// Whether to stop animation
-	IsWaveAnimation bool
-}
-
-// LiquidData
-// reference https://github.com/ecomfe/echarts-liquidfill
-type LiquidData struct {
-	// The name of data item.
-	Name string `json:"name,omitempty"`
-
-	// The value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-}
-
-// PieChart is the option set for a pie chart.
-// https://echarts.apache.org/en/option.html#series-pie
-type PieChart struct {
-	// Whether to show as Nightingale chart, which distinguishes data through radius. There are 2 optional modes:
-	// * 'radius' Use central angle to show the percentage of data, radius to show data size.
-	// * 'area' All the sectors will share the same central angle, the data size is shown only through radiuses.
-	RoseType string
-
-	// Center position of Pie chart, the first of which is the horizontal position, and the second is the vertical position.
-	// Percentage is supported. When set in percentage, the item is relative to the container width,
-	// and the second item to the height.
-	//
-	// Example:
-	//
-	// Set to absolute pixel values ->> center: [400, 300]
-	// Set to relative percent ->> center: ['50%', '50%']
-	Center interface{}
-
-	// Radius of Pie chart. Value can be:
-	// * number: Specify outside radius directly.
-	// * string: For example, '20%', means that the outside radius is 20% of the viewport
-	// size (the little one between width and height of the chart container).
-	//
-	// Array.<number|string>: The first item specifies the inside radius, and the
-	// second item specifies the outside radius. Each item follows the definitions above.
-	Radius interface{}
-}
-
-// PieData
-// https://echarts.apache.org/en/option.html#series-pie.data
-type PieData struct {
-	// The name of data item.
-	Name string `json:"name,omitempty"`
-
-	// The value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-
-	// Whether the data item is selected.
-	Selected bool `json:"selected,omitempty"`
-
-	// The label configuration of a single sector.
-	*Label `json:"label,omitempty"`
-
-	// Graphic style of , emphasis is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect.
-	*ItemStyle `json:"itemStyle,omitempty"`
-
-	// tooltip settings in this series data.
-	*Tooltip `json:"tooltip,omitempty"`
-}
-
-// ScatterChart is the option set for a scatter chart.
-// https://echarts.apache.org/en/option.html#series-scatter
-type ScatterChart struct {
-	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
-	XAxisIndex int
-
-	// Index of x axis to combine with, which is useful for multiple y axes in one chart.
-	YAxisIndex int
-}
-
-// Bar3DChart is the option set for a 3D bar chart.
-type Bar3DChart struct {
-	Shading string
-}
-
-// WordCloudChart is the option set for a word cloud chart.
-type WordCloudChart struct {
-	// shape of WordCloud
-	// Optional: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
-	Shape string
-
-	// range of font size
-	SizeRange []float32
-
-	// range of font rotation angle
-	RotationRange []float32
-}
-
-// SankeyLink represents relationship between two data nodes.
-// https://echarts.apache.org/en/option.html#series-sankey.links
-type SankeyLink struct {
-	// The name of source node of edge
-	Source interface{} `json:"source,omitempty"`
-
-	// The name of target node of edge
-	Target interface{} `json:"target,omitempty"`
-
-	// The value of edge, which decides the width of edge.
-	Value float32 `json:"value,omitempty"`
-}
-
-// SankeyNode represents a data node.
-// https://echarts.apache.org/en/option.html#series-sankey.nodes
-type SankeyNode struct {
-	// The name of data item.
-	Name string `json:"name,omitempty"`
-
-	// The value of a single data item.
-	Value string `json:"value,omitempty"`
-}
-
-// ThemeRiverChartItem
-// https://echarts.apache.org/en/option.html#series-themeRiver
-type ThemeRiverData struct {
-	// the time attribute of time and theme.
-	Date string
-
-	// the value of an event or theme at a time point.
-	Value float64
-
-	// the name of an event or theme.
-	Name string
-}
-
-func (trd ThemeRiverData) ToList() [3]interface{} {
-	return [3]interface{}{trd.Date, trd.Value, trd.Name}
-}
-
-// RadarData
-// https://echarts.apache.org/en/option.html#series-radar
-type RadarData struct {
-	// The name of data item.
-	Name string `json:"name,omitempty"`
-
-	// The value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-}
-
-// KlineData
-// https://echarts.apache.org/en/option.html#series-candlestick.data
-type KlineData struct {
-	// The name of data item.
-	Name string `json:"name,omitempty"`
-
-	// The value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-}
-
-// ScatterData
-// https://echarts.apache.org/en/option.html#series-scatter.data
-type ScatterData struct {
-	// The name of data item.
-	Name string `json:"name,omitempty"`
-
-	// The value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-
-	// Symbol
-	Symbol string `json:"symbol,omitempty"`
-
-	// SymbolSize
-	SymbolSize int `json:"symbolSize,omitempty"`
-
-	// SymbolRotate
-	SymbolRotate int `json:"symbolRotate,omitempty"`
-
-	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
-	XAxisIndex int
-
-	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
-	YAxisIndex int
-}
-
-// MapData
-// https://echarts.apache.org/en/option.html#series-map.data
-type MapData struct {
-	// The name of data item.
-	Name string `json:"name,omitempty"`
-
-	// The value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-}
-
-// HeatMapData
-// https://echarts.apache.org/en/option.html#series-heatmap.data
-type HeatMapData struct {
-	// The name of data item.
-	Name string `json:"name,omitempty"`
-
-	// The value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-}
-
-// WordCloudData
-type WordCloudData struct {
-	// The name of data item.
-	Name string `json:"name,omitempty"`
-
-	// The value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-}
-
-// GeoData
-type GeoData struct {
-	// The name of data item.
-	Name string `json:"name,omitempty"`
-
-	// The value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-}
-
-// ParallelData
-// https://echarts.apache.org/en/option.html#series-parallel.data
-type ParallelData struct {
-	// The name of data item.
-	Name string `json:"name,omitempty"`
-
-	// The value of a single data item.
-	Value interface{} `json:"value,omitempty"`
 }
 
 // GraphNode represents a data node in graph chart.
@@ -484,4 +211,303 @@ type GraphCategory struct {
 
 	// The label style of node in this category.
 	Label *Label `json:"label,omitempty"`
+}
+
+// HeatMapChart is the option set for a heatmap chart.
+// https://echarts.apache.org/en/option.html#series-heatmap
+type HeatMapChart struct {
+	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
+	XAxisIndex int
+
+	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
+	YAxisIndex int
+}
+
+// HeatMapData
+// https://echarts.apache.org/en/option.html#series-heatmap.data
+type HeatMapData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+}
+
+// KlineData
+// https://echarts.apache.org/en/option.html#series-candlestick.data
+type KlineData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+}
+
+// LineChart is the options set for a line chart.
+// https://echarts.apache.org/en/option.html#series-line
+type LineChart struct {
+	// If stack the value. On the same category axis, the series with the same stack name would be put on top of each other.
+	// The effect of the below example could be seen through stack switching of toolbox on the top right corner:
+	Stack string
+
+	// Whether to show as smooth curve.
+	// If is typed in boolean, then it means whether to enable smoothing. If is
+	// typed in number, valued from 0 to 1, then it means smoothness. A smaller value makes it less smooth.
+	Smooth bool
+
+	// Whether to show as a step line. It can be true, false. Or 'start', 'middle', 'end'.
+	// Which will configure the turn point of step line.
+	Step bool
+
+	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
+	XAxisIndex int
+
+	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
+	YAxisIndex int
+
+	// Whether to connect the line across null points.
+	ConnectNulls bool
+}
+
+// LineData
+// https://echarts.apache.org/en/option.html#series-line.data
+type LineData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+
+	// Symbol of single data.
+	// Icon types provided by ECharts includes 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
+	Symbol string `json:"symbol,omitempty"`
+
+	// single data symbol size. It can be set to single numbers like 10, or
+	// use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10
+	SymbolSize int `json:"symbolSize,omitempty"`
+
+	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
+	XAxisIndex int
+
+	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
+	YAxisIndex int
+}
+
+// LiquidChart
+// reference https://github.com/ecomfe/echarts-liquidfill
+type LiquidChart struct {
+	// Shape of single data.
+	// Icon types provided by ECharts includes 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
+	Shape string
+
+	// Whether to show outline
+	IsShowOutline bool
+
+	// Whether to stop animation
+	IsWaveAnimation bool
+}
+
+// LiquidData
+// reference https://github.com/ecomfe/echarts-liquidfill
+type LiquidData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+}
+
+// MapData
+// https://echarts.apache.org/en/option.html#series-map.data
+type MapData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+}
+
+// ParallelData
+// https://echarts.apache.org/en/option.html#series-parallel.data
+type ParallelData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+}
+
+// PieChart is the option set for a pie chart.
+// https://echarts.apache.org/en/option.html#series-pie
+type PieChart struct {
+	// Whether to show as Nightingale chart, which distinguishes data through radius. There are 2 optional modes:
+	// * 'radius' Use central angle to show the percentage of data, radius to show data size.
+	// * 'area' All the sectors will share the same central angle, the data size is shown only through radiuses.
+	RoseType string
+
+	// Center position of Pie chart, the first of which is the horizontal position, and the second is the vertical position.
+	// Percentage is supported. When set in percentage, the item is relative to the container width,
+	// and the second item to the height.
+	//
+	// Example:
+	//
+	// Set to absolute pixel values ->> center: [400, 300]
+	// Set to relative percent ->> center: ['50%', '50%']
+	Center interface{}
+
+	// Radius of Pie chart. Value can be:
+	// * number: Specify outside radius directly.
+	// * string: For example, '20%', means that the outside radius is 20% of the viewport
+	// size (the little one between width and height of the chart container).
+	//
+	// Array.<number|string>: The first item specifies the inside radius, and the
+	// second item specifies the outside radius. Each item follows the definitions above.
+	Radius interface{}
+}
+
+// PieData
+// https://echarts.apache.org/en/option.html#series-pie.data
+type PieData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+
+	// Whether the data item is selected.
+	Selected bool `json:"selected,omitempty"`
+
+	// The label configuration of a single sector.
+	*Label `json:"label,omitempty"`
+
+	// Graphic style of , emphasis is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect.
+	*ItemStyle `json:"itemStyle,omitempty"`
+
+	// tooltip settings in this series data.
+	*Tooltip `json:"tooltip,omitempty"`
+}
+
+// RadarData
+// https://echarts.apache.org/en/option.html#series-radar
+type RadarData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+}
+
+// SankeyLink represents relationship between two data nodes.
+// https://echarts.apache.org/en/option.html#series-sankey.links
+type SankeyLink struct {
+	// The name of source node of edge
+	Source interface{} `json:"source,omitempty"`
+
+	// The name of target node of edge
+	Target interface{} `json:"target,omitempty"`
+
+	// The value of edge, which decides the width of edge.
+	Value float32 `json:"value,omitempty"`
+}
+
+// SankeyNode represents a data node.
+// https://echarts.apache.org/en/option.html#series-sankey.nodes
+type SankeyNode struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value string `json:"value,omitempty"`
+}
+
+// ScatterChart is the option set for a scatter chart.
+// https://echarts.apache.org/en/option.html#series-scatter
+type ScatterChart struct {
+	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
+	XAxisIndex int
+
+	// Index of x axis to combine with, which is useful for multiple y axes in one chart.
+	YAxisIndex int
+}
+
+// ScatterData
+// https://echarts.apache.org/en/option.html#series-scatter.data
+type ScatterData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+
+	// Symbol
+	Symbol string `json:"symbol,omitempty"`
+
+	// SymbolSize
+	SymbolSize int `json:"symbolSize,omitempty"`
+
+	// SymbolRotate
+	SymbolRotate int `json:"symbolRotate,omitempty"`
+
+	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
+	XAxisIndex int
+
+	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
+	YAxisIndex int
+}
+
+// ThemeRiverData
+// https://echarts.apache.org/en/option.html#series-themeRiver
+type ThemeRiverData struct {
+	// the time attribute of time and theme.
+	Date string `json:"date,omitempty"`
+
+	// the value of an event or theme at a time point.
+	Value float64 `json:"value,omitempty"`
+
+	// the name of an event or theme.
+	Name string `json:"name,omitempty"`
+}
+
+// ToList converts the themeriver data to a list
+func (trd ThemeRiverData) ToList() [3]interface{} {
+	return [3]interface{}{trd.Date, trd.Value, trd.Name}
+}
+
+// WordCloudChart is the option set for a word cloud chart.
+type WordCloudChart struct {
+	// Shape of WordCloud
+	// Optional: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow"
+	Shape string
+
+	// range of font size
+	SizeRange []float32
+
+	// range of font rotation angle
+	RotationRange []float32
+}
+
+// WordCloudData
+type WordCloudData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+}
+
+type Chart3DData struct {
+	// Name of the data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of the data item.
+	// []interface{}{1, 2, 3}
+	Value []interface{} `json:"value,omitempty"`
+
+	// ItemStyle settings in this series data.
+	*ItemStyle `json:"itemStyle,omitempty"`
+
+	// The style setting of the text label in a single bar.
+	*Label `json:"label,omitempty"`
 }

@@ -955,7 +955,7 @@ type XAxis3D struct {
 	Show bool `json:"show,omitempty"`
 
 	// The name of the axis.
-	Name bool `json:"name,omitempty"`
+	Name string `json:"name,omitempty"`
 
 	// The index of the grid3D component used by the axis. The default is to use the first grid3D component.
 	Grid3DIndex int `json:"grid3DIndex,omitempty"`
@@ -1002,7 +1002,7 @@ type YAxis3D struct {
 	Show bool `json:"show,omitempty"`
 
 	// The name of the axis.
-	Name bool `json:"name,omitempty"`
+	Name string `json:"name,omitempty"`
 
 	// The index of the grid3D component used by the axis. The default is to use the first grid3D component.
 	Grid3DIndex int `json:"grid3DIndex,omitempty"`
@@ -1049,7 +1049,7 @@ type ZAxis3D struct {
 	Show bool `json:"show,omitempty"`
 
 	// The name of the axis.
-	Name bool `json:"name,omitempty"`
+	Name string `json:"name,omitempty"`
 
 	// The index of the grid3D component used by the axis. The default is to use the first grid3D component.
 	Grid3DIndex int `json:"grid3DIndex,omitempty"`

@@ -69,7 +69,7 @@ type SingleSeries struct {
 
 type SeriesOpts func(s *SingleSeries)
 
-// WithLabelTextOpts
+// WithLabelOpts
 func WithLabelOpts(opt opts.Label) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Label = &opt
