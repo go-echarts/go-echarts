@@ -1,7 +1,6 @@
 #!/bin/bash
 
-version="v2.0.2"
-app="go-echarts"
+version="v2.1.0"
 
 function pre_check() {
   info=$(diff -u <(echo -n) <(format))
@@ -24,10 +23,10 @@ function release() {
     pre_check
 
     echo ">> Building tag..."
-    git tag -a $v -m "Release: $v"
+    git tag -a $version -m "Release: $version"
 
     echo ">> Pushing tag to the remote...."
-    git push origin $v
+    git push origin $version
 }
 
 function help() {
