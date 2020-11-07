@@ -1,5 +1,7 @@
 package opts
 
+import "encoding/json"
+
 // BarChart
 // https://echarts.apache.org/en/option.html#series-bar
 type BarChart struct {
@@ -484,4 +486,34 @@ type GraphCategory struct {
 
 	// The label style of node in this category.
 	Label *Label `json:"label,omitempty"`
+}
+
+// Scatter3DData
+// https://echarts.apache.org/en/option-gl.html#series-scatter3D.data
+type Scatter3DData struct {
+	// name of date item
+	// when name is "", itemStyle is useless
+	Name string `json:"name"`
+
+	// value of date item
+	Value [3]int `json:"value"`
+
+	// user-defined special itemStyle that only useful for this data item
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	// whether use visualMap style
+	VisualMap bool `json:"visualMap"`
+}
+
+func (s Scatter3DData) MarshalJSON() ([]byte, error) {
+	if s.Name == "" {
+		return json.Marshal(s.Value)
+	}
+	m := map[string]interface{}{
+		"name":      s.Name,
+		"value":     s.Value,
+		"itemStyle": s.ItemStyle,
+		"visualMap": s.VisualMap,
+	}
+	return json.Marshal(&m)
 }
