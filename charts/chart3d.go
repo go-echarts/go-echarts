@@ -9,13 +9,6 @@ import (
 type Chart3D struct {
 	BaseConfiguration
 	MultiSeries
-
-	XAxis3D opts.XAxis3D
-	YAxis3D opts.YAxis3D
-	ZAxis3D opts.ZAxis3D
-
-	xData interface{}
-	yData interface{}
 }
 
 // WithXAxis3DOpts
@@ -51,11 +44,11 @@ func (c *Chart3D) initChart3D() {
 	c.Has3DAxis = true
 }
 
-func (c *Chart3D) addZAxis(chartType, name string, zAxis interface{}, options ...SeriesOpts) {
+func (c *Chart3D) addSeries(chartType, name string, data []opts.Chart3DData, options ...SeriesOpts) {
 	series := SingleSeries{
 		Name:        name,
 		Type:        chartType,
-		Data:        zAxis,
+		Data:        data,
 		CoordSystem: types.ChartCartesian3D,
 	}
 	series.configureSeriesOpts(options...)
@@ -70,12 +63,5 @@ func (c *Chart3D) SetGlobalOptions(options ...GlobalOpts) *Chart3D {
 
 // Validate
 func (c *Chart3D) Validate() {
-	// retain X/Y axes data
-	if c.XAxis3D.Data == nil {
-		c.XAxis3D.Data = c.xData
-	}
-	if c.YAxis3D.Data == nil {
-		c.YAxis3D.Data = c.yData
-	}
 	c.Assets.Validate(c.AssetsHost)
 }

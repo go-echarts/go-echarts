@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"os"
+	"io/ioutil"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -16,14 +16,14 @@ func TestBarAssetsBeforeRender(t *testing.T) {
 
 func TestBarAssetsAfterRender(t *testing.T) {
 	bar := NewBar()
-	err := bar.Render(os.Stdout)
+	err := bar.Render(ioutil.Discard)
 	assert.NoError(t, err)
 	assert.Equal(t, []string{host + "echarts.min.js"}, bar.JSAssets.Values)
 }
 
 func TestBarDefaultValue(t *testing.T) {
 	bar := NewBar()
-	err := bar.Render(os.Stdout)
+	err := bar.Render(ioutil.Discard)
 	assert.NoError(t, err)
 	assert.Equal(t, "900px", bar.Initialization.Width)
 	assert.Equal(t, "500px", bar.Initialization.Height)

@@ -1,6 +1,7 @@
 package charts
 
 import (
+	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/render"
 	"github.com/go-echarts/go-echarts/v2/types"
 )
@@ -22,15 +23,8 @@ func NewBar3D() *Bar3D {
 	return c
 }
 
-// AddXYAxis adds both the X axis and the Y axis.
-func (c *Bar3D) AddXYAxis(xAxis, yAxis interface{}) *Bar3D {
-	c.xData = xAxis
-	c.yData = yAxis
-	return c
-}
-
-// AddZAxis adds the Z axis.
-func (c *Bar3D) AddZAxis(name string, zAxis interface{}, options ...SeriesOpts) *Bar3D {
-	c.addZAxis(types.ChartBar3D, name, zAxis, options...)
+// AddSeries adds the new series.
+func (c *Bar3D) AddSeries(name string, data []opts.Chart3DData, options ...SeriesOpts) *Bar3D {
+	c.addSeries(types.ChartScatter3D, name, data, options...)
 	return c
 }
