@@ -1,7 +1,5 @@
 package opts
 
-import "encoding/json"
-
 // BarChart
 // https://echarts.apache.org/en/option.html#series-bar
 type BarChart struct {
@@ -503,17 +501,4 @@ type Scatter3DData struct {
 
 	// whether use visualMap style
 	VisualMap bool `json:"visualMap"`
-}
-
-func (s Scatter3DData) MarshalJSON() ([]byte, error) {
-	if s.Name == "" {
-		return json.Marshal(s.Value)
-	}
-	m := map[string]interface{}{
-		"name":      s.Name,
-		"value":     s.Value,
-		"itemStyle": s.ItemStyle,
-		"visualMap": s.VisualMap,
-	}
-	return json.Marshal(&m)
 }
