@@ -9,7 +9,6 @@ import (
 // Pie represents a pie chart.
 type Pie struct {
 	BaseConfiguration
-	MultiSeries
 }
 
 // Type returns the chart type.

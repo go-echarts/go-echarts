@@ -9,7 +9,6 @@ import (
 // Sankey represents a sankey chart.
 type Sankey struct {
 	BaseConfiguration
-	MultiSeries
 }
 
 // Type returns the chart type.

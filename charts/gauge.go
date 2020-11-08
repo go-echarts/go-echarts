@@ -9,7 +9,6 @@ import (
 // Gauge represents a gauge chart.
 type Gauge struct {
 	BaseConfiguration
-	MultiSeries
 }
 
 // Type returns the chart type.

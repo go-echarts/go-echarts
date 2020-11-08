@@ -9,7 +9,6 @@ import (
 // WordCloud represents a word cloud chart.
 type WordCloud struct {
 	BaseConfiguration
-	MultiSeries
 }
 
 // Type returns the chart type.

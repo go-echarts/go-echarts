@@ -19,7 +19,7 @@ func NewKLine() *Kline {
 	c := &Kline{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.HasXYAxis = true
+	c.hasXYAxis = true
 	return c
 }
 

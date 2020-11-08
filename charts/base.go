@@ -25,10 +25,9 @@ type BaseConfiguration struct {
 	opts.JSFunctions       `json:"-"`
 	opts.SingleAxis        `json:"-"`
 
-	HasXYAxis bool `json:"-"`
+	MultiSeries
 	XYAxis
 
-	Has3DAxis bool `json:"-"`
 	opts.XAxis3D
 	opts.YAxis3D
 	opts.ZAxis3D
@@ -47,12 +46,79 @@ type BaseConfiguration struct {
 	// ParallelAxisList represents the component list which is the coordinate axis for parallel coordinate.
 	ParallelAxisList []opts.ParallelAxis
 
-	HasGeo        bool `json:"-"`
-	HasRadar      bool `json:"-"`
-	HasParallel   bool `json:"-"`
-	HasSingleAxis bool `json:"-"`
+	has3DAxis     bool
+	hasXYAxis     bool
+	hasGeo        bool
+	hasRadar      bool
+	hasParallel   bool
+	hasSingleAxis bool
 }
 
+// JSON wraps all the options to a map so that it could be used in the base template
+//
+// Get data in bytes
+// bs, _ : = json.Marshal(bar.JSON())
+func (bc *BaseConfiguration) JSON() map[string]interface{} {
+	obj := map[string]interface{}{
+		"title":   bc.Title,
+		"legend":  bc.Legend,
+		"tooltip": bc.Tooltip,
+		"series":  bc.MultiSeries,
+	}
+
+	if bc.hasGeo {
+		obj["geo"] = bc.GeoComponent
+	}
+
+	if bc.hasRadar {
+		obj["radar"] = bc.RadarComponent
+	}
+
+	if bc.hasParallel {
+		obj["parallel"] = bc.ParallelComponent
+		obj["parallelAxis"] = bc.ParallelAxisList
+	}
+
+	if bc.hasSingleAxis {
+		obj["singleAxis"] = bc.SingleAxis
+	}
+
+	if bc.Toolbox.Show {
+		obj["toolbox"] = bc.Toolbox
+	}
+
+	if len(bc.DataZoomList) > 0 {
+		obj["dataZoom"] = bc.DataZoomList
+	}
+
+	if len(bc.VisualMapList) > 0 {
+		obj["visualMap"] = bc.VisualMapList
+	}
+
+	if bc.hasXYAxis {
+		obj["xAxis"] = bc.XAxisList
+		obj["yAxis"] = bc.YAxisList
+	}
+
+	if bc.has3DAxis {
+		obj["xAxis3D"] = bc.XAxis3D
+		obj["yAxis3D"] = bc.YAxis3D
+		obj["zAxis3D"] = bc.ZAxis3D
+		obj["grid3D"] = bc.Grid3D
+	}
+
+	if bc.Theme == "white" {
+		obj["color"] = bc.Colors
+	}
+
+	if bc.BackgroundColor != "" {
+		obj["backgroundColor"] = bc.BackgroundColor
+	}
+
+	return obj
+}
+
+// GetAssets returns the Assets options
 func (bc *BaseConfiguration) GetAssets() opts.Assets {
 	return bc.Assets
 }

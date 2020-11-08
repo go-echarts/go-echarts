@@ -9,7 +9,6 @@ import (
 // Funnel represents a funnel chart.
 type Funnel struct {
 	BaseConfiguration
-	MultiSeries
 }
 
 // Type returns the chart type.
