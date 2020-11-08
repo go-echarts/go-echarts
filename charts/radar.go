@@ -9,7 +9,6 @@ import (
 // Radar represents a radar chart.
 type Radar struct {
 	BaseConfiguration
-	MultiSeries
 }
 
 // Type returns the chart type.
@@ -20,7 +19,7 @@ func NewRadar() *Radar {
 	c := &Radar{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.HasRadar = true
+	c.hasRadar = true
 	return c
 }
 

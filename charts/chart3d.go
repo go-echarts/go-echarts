@@ -8,7 +8,6 @@ import (
 // Chart3D is a chart in 3D coordinates.
 type Chart3D struct {
 	BaseConfiguration
-	MultiSeries
 }
 
 // WithXAxis3DOpts
@@ -41,7 +40,7 @@ func WithGrid3DOpts(opt opts.Grid3D) GlobalOpts {
 
 func (c *Chart3D) initChart3D() {
 	c.JSAssets.Add("echarts-gl.min.js")
-	c.Has3DAxis = true
+	c.has3DAxis = true
 }
 
 func (c *Chart3D) addSeries(chartType, name string, data []opts.Chart3DData, options ...SeriesOpts) {

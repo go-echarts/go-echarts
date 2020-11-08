@@ -9,7 +9,6 @@ import (
 // Liquid represents a liquid chart.
 type Liquid struct {
 	BaseConfiguration
-	MultiSeries
 }
 
 // Type returns the chart type.

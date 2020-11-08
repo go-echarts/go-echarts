@@ -65,7 +65,6 @@ func (rect *RectConfiguration) setRectGlobalOptions(options ...GlobalOpts) {
 // RectChart is a chart in RectChart coordinate.
 type RectChart struct {
 	RectConfiguration
-	MultiSeries
 
 	xAxisData interface{}
 }

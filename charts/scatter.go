@@ -19,7 +19,7 @@ func NewScatter() *Scatter {
 	c := &Scatter{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.HasXYAxis = true
+	c.hasXYAxis = true
 	return c
 }
 

@@ -12,7 +12,6 @@ import (
 // Geo represents a geo chart.
 type Geo struct {
 	BaseConfiguration
-	MultiSeries
 }
 
 // Type returns the chart type.
@@ -27,7 +26,7 @@ func NewGeo() *Geo {
 	c := &Geo{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.HasGeo = true
+	c.hasGeo = true
 	return c
 }
 

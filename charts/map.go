@@ -10,7 +10,6 @@ import (
 // Map represents a map chart.
 type Map struct {
 	BaseConfiguration
-	MultiSeries
 
 	mapType string
 }

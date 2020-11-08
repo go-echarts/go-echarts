@@ -19,7 +19,7 @@ func NewHeatMap() *HeatMap {
 	c := &HeatMap{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.HasXYAxis = true
+	c.hasXYAxis = true
 	return c
 }
 

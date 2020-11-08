@@ -19,7 +19,7 @@ func NewLine() *Line {
 	c := &Line{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.HasXYAxis = true
+	c.hasXYAxis = true
 	return c
 }
 

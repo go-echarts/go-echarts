@@ -9,7 +9,6 @@ import (
 // ThemeRiver represents a theme river chart.
 type ThemeRiver struct {
 	BaseConfiguration
-	MultiSeries
 }
 
 // Type returns the chart type.
@@ -20,7 +19,7 @@ func NewThemeRiver() *ThemeRiver {
 	c := &ThemeRiver{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.HasSingleAxis = true
+	c.hasSingleAxis = true
 	return c
 }
 

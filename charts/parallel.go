@@ -9,7 +9,6 @@ import (
 // Parallel represents a parallel axis.
 type Parallel struct {
 	BaseConfiguration
-	MultiSeries
 }
 
 // Type returns the chart type.
@@ -20,7 +19,7 @@ func NewParallel() *Parallel {
 	c := &Parallel{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.HasParallel = true
+	c.hasParallel = true
 	return c
 }
 

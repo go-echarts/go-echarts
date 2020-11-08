@@ -8,7 +8,6 @@ import (
 // Graph represents a graph chart.
 type Graph struct {
 	BaseConfiguration
-	MultiSeries
 }
 
 // Type returns the chart type.
