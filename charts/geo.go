@@ -26,7 +26,7 @@ func NewGeo() *Geo {
 	c := &Geo{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.hasGeo = true
+	c.addJSOMConfig(c.jsonConfig("geo", c.GeoComponent))
 	return c
 }
 

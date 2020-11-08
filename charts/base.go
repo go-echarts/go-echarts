@@ -9,6 +9,8 @@ import (
 // GlobalOpts sets the Global options for charts.
 type GlobalOpts func(bc *BaseConfiguration)
 
+type jsonConfig func(p map[string]interface{})
+
 // BaseConfiguration represents an option set needed by all chart types.
 type BaseConfiguration struct {
 	opts.Legend  `json:"legend"`
@@ -48,10 +50,11 @@ type BaseConfiguration struct {
 
 	has3DAxis     bool
 	hasXYAxis     bool
-	hasGeo        bool
 	hasRadar      bool
 	hasParallel   bool
 	hasSingleAxis bool
+
+	jsonConfigs []jsonConfig
 }
 
 func (bc *BaseConfiguration) JSON() map[string]interface{} {
@@ -62,54 +65,7 @@ func (bc *BaseConfiguration) JSON() map[string]interface{} {
 		"series":  bc.MultiSeries,
 	}
 
-	if bc.hasGeo {
-		obj["geo"] = bc.GeoComponent
-	}
-
-	if bc.hasRadar {
-		obj["radar"] = bc.RadarComponent
-	}
-
-	if bc.hasParallel {
-		obj["parallel"] = bc.ParallelComponent
-		obj["parallelAxis"] = bc.ParallelAxisList
-	}
-
-	if bc.hasSingleAxis {
-		obj["singleAxis"] = bc.SingleAxis
-	}
-
-	if bc.Toolbox.Show {
-		obj["toolbox"] = bc.Toolbox
-	}
-
-	if len(bc.DataZoomList) > 0 {
-		obj["dataZoom"] = bc.DataZoomList
-	}
-
-	if len(bc.VisualMapList) > 0 {
-		obj["visualMap"] = bc.VisualMapList
-	}
-
-	if bc.hasXYAxis {
-		obj["xAxis"] = bc.XAxisList
-		obj["yAxis"] = bc.YAxisList
-	}
-
-	if bc.has3DAxis {
-		obj["xAxis3D"] = bc.XAxis3D
-		obj["yAxis3D"] = bc.YAxis3D
-		obj["zAxis3D"] = bc.ZAxis3D
-		obj["grid3D"] = bc.Grid3D
-	}
-
-	if bc.Theme == "white" {
-		obj["color"] = bc.Colors
-	}
-
-	if bc.BackgroundColor != "" {
-		obj["backgroundColor"] = bc.BackgroundColor
-	}
+	bc.configJson(obj)
 
 	return obj
 }
@@ -123,6 +79,22 @@ func (bc *BaseConfiguration) initBaseConfiguration() {
 	bc.InitAssets()
 	bc.initXYAxis()
 	bc.Initialization.Validate()
+}
+
+func (bc *BaseConfiguration) jsonConfig(k string, v interface{}) jsonConfig {
+	return func(p map[string]interface{}) {
+		p[k] = v
+	}
+}
+
+func (bc *BaseConfiguration) addJSOMConfig(config ...jsonConfig) {
+	bc.jsonConfigs = append(bc.jsonConfigs, config...)
+}
+
+func (bc *BaseConfiguration) configJson(data map[string]interface{}) {
+	for _, config := range bc.jsonConfigs {
+		config(data)
+	}
 }
 
 func (bc *BaseConfiguration) initSeriesColors() {
@@ -157,7 +129,8 @@ func WithTitleOpts(opt opts.Title) GlobalOpts {
 // WithToolboxOpts
 func WithToolboxOpts(opt opts.Toolbox) GlobalOpts {
 	return func(bc *BaseConfiguration) {
-		bc.Toolbox = opt
+		bc.Toolbox = opt // should remove this?
+		bc.addJSOMConfig(bc.jsonConfig("toolbox", opt))
 	}
 }
 

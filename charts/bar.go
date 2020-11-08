@@ -21,7 +21,10 @@ func NewBar() *Bar {
 	c := &Bar{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.hasXYAxis = true
+	c.addJSOMConfig(
+		c.jsonConfig("xAxis", c.XAxisList),
+		c.jsonConfig("yAxis", c.YAxisList),
+	)
 	return c
 }
 
