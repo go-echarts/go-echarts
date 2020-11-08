@@ -48,12 +48,6 @@ type BaseConfiguration struct {
 	// ParallelAxisList represents the component list which is the coordinate axis for parallel coordinate.
 	ParallelAxisList []opts.ParallelAxis
 
-	has3DAxis     bool
-	hasXYAxis     bool
-	hasRadar      bool
-	hasParallel   bool
-	hasSingleAxis bool
-
 	jsonConfigs []jsonConfig
 }
 
