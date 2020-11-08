@@ -54,6 +54,10 @@ type BaseConfiguration struct {
 	hasSingleAxis bool
 }
 
+// JSON wraps all the options to a map so that it could be used in the base template
+//
+// Get data in bytes
+// bs, _ : = json.Marshal(bar.JSON())
 func (bc *BaseConfiguration) JSON() map[string]interface{} {
 	obj := map[string]interface{}{
 		"title":   bc.Title,
@@ -114,6 +118,7 @@ func (bc *BaseConfiguration) JSON() map[string]interface{} {
 	return obj
 }
 
+// GetAssets returns the Assets options
 func (bc *BaseConfiguration) GetAssets() opts.Assets {
 	return bc.Assets
 }
