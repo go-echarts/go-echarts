@@ -3,7 +3,14 @@ package components
 import (
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/render"
-	"github.com/go-echarts/go-echarts/v2/types"
+)
+
+type Layout string
+
+const (
+	PageNoneLayout   Layout = "none"
+	PageCenterLayout Layout = "center"
+	PageFlexLayout   Layout = "flex"
 )
 
 // Charter
@@ -16,21 +23,24 @@ type Charter interface {
 // Page represents a page chart.
 type Page struct {
 	render.Renderer
-
 	opts.Initialization
 	opts.Assets
 
 	Charts []interface{}
-
-	unusedStr types.OrderedSet
+	Layout Layout
 }
 
 // NewPage creates a new page.
 func NewPage() *Page {
 	page := &Page{}
 	page.Assets.InitAssets()
-	page.unusedStr.Init()
 	page.Renderer = render.NewPageRender(page, page.Validate)
+	page.Layout = PageCenterLayout
+	return page
+}
+
+func (page *Page) SetLayout(layout Layout) *Page {
+	page.Layout = layout
 	return page
 }
 
