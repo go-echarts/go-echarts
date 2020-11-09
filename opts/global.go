@@ -24,7 +24,7 @@ type Initialization struct {
 	Height string `default:"500px"`
 
 	// BackgroundColor of canvas
-	BackgroundColor string `json:"backgroundColor,omitempty"`
+	BackgroundColor string
 
 	// Chart unique ID
 	ChartID string
@@ -250,7 +250,7 @@ type Legend struct {
 	Align string `json:"align,omitempty"`
 
 	// Legend text style.
-	*TextStyle `json:"textStyle,omitempty"`
+	TextStyle *TextStyle `json:"textStyle,omitempty"`
 }
 
 // Tooltip is the option set for a tooltip component.
@@ -408,7 +408,7 @@ type ToolBoxFeatureSaveAsImage struct {
 	// Name to save the image, whose default value is title.text.
 	Name string `json:"name,omitempty"`
 
-	// title for the tool.
+	// Title for the tool.
 	Title string `json:"title,omitempty"`
 }
 
@@ -419,8 +419,8 @@ type ToolBoxFeatureDataZoom struct {
 	Show bool `json:"show"`
 
 	// Restored and zoomed title text.
-	// m["zoom"] = 'area zooming'
-	// m["back"] = 'restore area zooming'
+	// m["zoom"] = "area zooming"
+	// m["back"] = "restore area zooming"
 	Title map[string]string `json:"title"`
 }
 
@@ -449,6 +449,64 @@ type ToolBoxFeatureRestore struct {
 
 	// title for the tool.
 	Title string `json:"title,omitempty"`
+}
+
+// AxisLabel settings related to axis label.
+// https://echarts.apache.org/en/option.html#xAxis.axisLabel
+type AxisLabel struct {
+	// Set this to false to prevent the axis label from appearing.
+	Show bool `json:"show,omitempty"`
+
+	// Set this to true so the axis labels face the inside direction.
+	Inside bool `json:"inside,omitempty"`
+
+	// Rotation degree of axis label, which is especially useful when there is no enough space for category axis.
+	// Rotation degree is from -90 to 90.
+	Rotate float64 `json:"rotate,omitempty"`
+
+	// The margin between the axis label and the axis line.
+	Margin float64 `json:"margin,omitempty"`
+
+	// Interval of Axis label, which is available in category axis.
+	// It uses a strategy that labels do not overlap by default.
+	// You may set it to be 0 to display all labels compulsively.
+	// If it is set to be 1, it means that labels are shown once after one label.
+	// And if it is set to be 2, it means labels are shown once after two labels, and so on.
+	Interval string `json:"interval,omitempty"`
+
+	// Formatter of axis label, which supports string template and callback function.
+	//
+	// Example:
+	//
+	// Use string template; template variable is the default label of axis {value}
+	// formatter: '{value} kg'
+	//
+	// Use callback function; function parameters are axis index
+	//
+	//
+	//  formatter: function (value, index) {
+	//    // Formatted to be month/day; display year only in the first label
+	//    var date = new Date(value);
+	//    var texts = [(date.getMonth() + 1), date.getDate()];
+	//    if (idx === 0) {
+	//        texts.unshift(date.getYear());
+	//    }
+	//    return texts.join('/');
+	//}
+	Formatter string `json:"formatter,omitempty"`
+
+	// Color of axis label is set to be axisLine.lineStyle.color by default. Callback function is supported,
+	// in the following format:
+	//
+	// (val: string) => Color
+	// Parameter is the text of label, and return value is the color. See the following example:
+	//
+	// textStyle: {
+	//    color: function (value, index) {
+	//        return value >= 0 ? 'green' : 'red';
+	//    }
+	// }
+	Color string `json:"color,omitempty"`
 }
 
 // XAxis is the option set for X axis.
@@ -502,10 +560,13 @@ type XAxis struct {
 	GridIndex int `json:"gridIndex,omitempty"`
 
 	// Split area of X axis in grid area.
-	*SplitArea `json:"splitArea,omitempty"`
+	SplitArea *SplitArea `json:"splitArea,omitempty"`
 
 	// Split line of X axis in grid area.
-	*SplitLine `json:"splitLine,,omitempty"`
+	SplitLine *SplitLine `json:"splitLine,omitempty"`
+
+	// Settings related to axis label.
+	AxisLabel *AxisLabel `json:"axisLabel,omitempty"`
 }
 
 // YAxis is the option set for Y axis.
@@ -528,21 +589,6 @@ type YAxis struct {
 
 	// Set this to false to prevent the axis from showing.
 	Show bool `json:"show,omitempty"`
-
-	// Formatter of axis label, which supports string template and callback function.
-	// 1. Use string template; template variable is the default label of axis {value}
-	// formatter: '{value} kg'
-	// 2. Use callback function; function parameters are axis index
-	// formatter: function (value, index) {
-	//    // Formatted to be month/day; display year only in the first label
-	//    var date = new Date(value);
-	//    var texts = [(date.getMonth() + 1), date.getDate()];
-	//    if (index === 0) {
-	//        texts.unshift(date.getYear());
-	//    }
-	//    return texts.join('/');
-	// }
-	AxisLabel *Label `json:"axisLabel,omitempty"`
 
 	// Category data, available in type: 'category' axis.
 	Data interface{} `json:"data,omitempty"`
@@ -574,10 +620,13 @@ type YAxis struct {
 	GridIndex int `json:"gridIndex,omitempty"`
 
 	// Split area of Y axis in grid area.
-	*SplitArea `json:"splitArea,omitempty"`
+	SplitArea *SplitArea `json:"splitArea,omitempty"`
 
 	// Split line of Y axis in grid area.
-	*SplitLine `json:"splitLine,,omitempty"`
+	SplitLine *SplitLine `json:"splitLine,omitempty"`
+
+	// Settings related to axis label.
+	AxisLabel *AxisLabel `json:"axisLabel,omitempty"`
 }
 
 // TextStyle is the option set for a text style component.
@@ -611,7 +660,7 @@ type SplitArea struct {
 	Show bool `json:"show"`
 
 	// Split area style.
-	*AreaStyle `json:"areaStyle,omitempty"`
+	AreaStyle *AreaStyle `json:"areaStyle,omitempty"`
 }
 
 // SplitLine is the option set for a split line.
@@ -620,7 +669,7 @@ type SplitLine struct {
 	Show bool `json:"show"`
 
 	// Split line style.
-	*LineStyle `json:"lineStyle,omitempty"`
+	LineStyle *LineStyle `json:"lineStyle,omitempty"`
 }
 
 // VisualMap is a type of component for visual encoding, which maps the data to visual channels.
@@ -772,7 +821,7 @@ type Indicator struct {
 // https://echarts.apache.org/en/option.html#radar
 type RadarComponent struct {
 	// Indicator of radar chart, which is used to assign multiple variables(dimensions) in radar chart.
-	Indicator []Indicator `json:"indicator,omitempty"`
+	Indicator []*Indicator `json:"indicator,omitempty"`
 
 	// Radar render type, in which 'polygon' and 'circle' are supported.
 	Shape string `json:"shape,omitempty"`
@@ -786,10 +835,10 @@ type RadarComponent struct {
 	Center interface{} `json:"center,omitempty"`
 
 	// Split area of axis in grid area.
-	*SplitArea `json:"splitArea,omitempty"`
+	SplitArea *SplitArea `json:"splitArea,omitempty"`
 
 	// Split line of axis in grid area.
-	*SplitLine `json:"splitLine,omitempty"`
+	SplitLine *SplitLine `json:"splitLine,omitempty"`
 }
 
 // GeoComponent is the option set for geo component.
@@ -800,7 +849,7 @@ type GeoComponent struct {
 
 	// Graphic style of Map Area Border, emphasis is the style when it is highlighted,
 	// like being hovered by mouse, or highlighted via legend connect.
-	ItemStyle ItemStyle `json:"itemStyle,omitempty"`
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 
 	// Set this to true, to prevent interaction with the axis.
 	Silent bool `json:"silent,omitempty"`
@@ -1108,7 +1157,7 @@ type Grid3D struct {
 	BoxDepth float32 `json:"boxDepth,omitempty"`
 
 	// Rotate or scale fellows the mouse
-	ViewControl ViewControl `json:"viewControl,omitempty"`
+	ViewControl *ViewControl `json:"viewControl,omitempty"`
 }
 
 // ViewControl contains options for view controlling.

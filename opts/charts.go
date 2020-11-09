@@ -40,13 +40,13 @@ type BarData struct {
 	Value interface{} `json:"value,omitempty"`
 
 	// The style setting of the text label in a single bar.
-	*Label `json:"label,omitempty"`
+	Label *Label `json:"label,omitempty"`
 
 	// ItemStyle settings in this series data.
-	*ItemStyle `json:"itemStyle,omitempty"`
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 
 	// Tooltip settings in this series data.
-	*Tooltip `json:"tooltip,omitempty"`
+	Tooltip *Tooltip `json:"tooltip,omitempty"`
 }
 
 // Bar3DChart is the option set for a 3D bar chart.
@@ -74,16 +74,16 @@ type BoxPlotData struct {
 	Value interface{} `json:"value,omitempty"`
 
 	// The style setting of the text label in a single bar.
-	*Label `json:"label,omitempty"`
+	Label *Label `json:"label,omitempty"`
 
 	// ItemStyle settings in this series data.
-	*ItemStyle `json:"itemStyle,omitempty"`
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 
 	// Emphasis settings in this series data.
-	*Emphasis `json:"emphasis,omitempty"`
+	Emphasis *Emphasis `json:"emphasis,omitempty"`
 
 	// Tooltip settings in this series data.
-	*Tooltip `json:"tooltip,omitempty"`
+	Tooltip *Tooltip `json:"tooltip,omitempty"`
 }
 
 // EffectScatterData
@@ -136,7 +136,7 @@ type GraphChart struct {
 	Layout string
 
 	// Force is the option set for graph force layout.
-	Force GraphForce
+	Force *GraphForce
 
 	// Whether to enable mouse zooming and translating. false by default.
 	// If either zooming or translating is wanted, it can be set to 'scale' or 'move'.
@@ -149,7 +149,7 @@ type GraphChart struct {
 	// The categories of node, which is optional. If there is a classification of nodes,
 	// the category of each node can be assigned through data[i].category.
 	// And the style of category will also be applied to the style of nodes. categories can also be used in legend.
-	Categories []GraphCategory
+	Categories []*GraphCategory
 }
 
 // GraphNode represents a data node in graph chart.
@@ -380,13 +380,13 @@ type PieData struct {
 	Selected bool `json:"selected,omitempty"`
 
 	// The label configuration of a single sector.
-	*Label `json:"label,omitempty"`
+	Label *Label `json:"label,omitempty"`
 
 	// Graphic style of , emphasis is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect.
-	*ItemStyle `json:"itemStyle,omitempty"`
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 
 	// tooltip settings in this series data.
-	*Tooltip `json:"tooltip,omitempty"`
+	Tooltip *Tooltip `json:"tooltip,omitempty"`
 }
 
 // RadarData
@@ -451,10 +451,10 @@ type ScatterData struct {
 	SymbolRotate int `json:"symbolRotate,omitempty"`
 
 	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
-	XAxisIndex int
+	XAxisIndex int `json:"xAxisIndex,omitempty"`
 
 	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
-	YAxisIndex int
+	YAxisIndex int `json:"yAxisIndex,omitempty"`
 }
 
 // ThemeRiverData
@@ -506,8 +506,8 @@ type Chart3DData struct {
 	Value []interface{} `json:"value,omitempty"`
 
 	// ItemStyle settings in this series data.
-	*ItemStyle `json:"itemStyle,omitempty"`
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 
 	// The style setting of the text label in a single bar.
-	*Label `json:"label,omitempty"`
+	Label *Label `json:"label,omitempty"`
 }

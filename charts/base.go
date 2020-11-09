@@ -201,18 +201,14 @@ func WithInitializationOpts(opt opts.Initialization) GlobalOpts {
 // WithDataZoomOpts
 func WithDataZoomOpts(opt ...opts.DataZoom) GlobalOpts {
 	return func(bc *BaseConfiguration) {
-		for _, o := range opt {
-			bc.DataZoomList = append(bc.DataZoomList, o)
-		}
+		bc.DataZoomList = append(bc.DataZoomList, opt...)
 	}
 }
 
 // WithVisualMapOpts
 func WithVisualMapOpts(opt ...opts.VisualMap) GlobalOpts {
 	return func(bc *BaseConfiguration) {
-		for _, o := range opt {
-			bc.VisualMapList = append(bc.VisualMapList, o)
-		}
+		bc.VisualMapList = append(bc.VisualMapList, opt...)
 	}
 }
 

@@ -51,10 +51,10 @@ type Label struct {
 // Emphasis is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect.
 type Emphasis struct {
 	// the emphasis style of label
-	Label `json:"label,omitempty"`
+	Label *Label `json:"label,omitempty"`
 
 	// the emphasis style of item
-	ItemStyle `json:"itemStyle,omitempty"`
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
 // ItemStyle
@@ -93,7 +93,7 @@ type MarkLineStyle struct {
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 
 	// Mark line text options.
-	*Label `json:"label,omitempty"`
+	Label *Label `json:"label,omitempty"`
 }
 
 // MarkLineNameTypeItem represents type for a MarkLine.
@@ -175,7 +175,7 @@ type MarkPointStyle struct {
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 
 	// Mark point text options.
-	*Label `json:"label,omitempty"`
+	Label *Label `json:"label,omitempty"`
 }
 
 // MarkPointNameTypeItem represents type for a MarkPoint.
@@ -208,7 +208,7 @@ type MarkPointNameCoordItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 
 	// Mark point text options.
-	*Label `json:"label,omitempty"`
+	Label *Label `json:"label,omitempty"`
 }
 
 // RippleEffect is the option set for the ripple effect.
