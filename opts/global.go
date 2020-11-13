@@ -948,8 +948,8 @@ type Assets struct {
 	JSAssets  types.OrderedSet
 	CSSAssets types.OrderedSet
 
-	customizedJSAssets  types.OrderedSet
-	customizedCSSAssets types.OrderedSet
+	CustomizedJSAssets  types.OrderedSet
+	CustomizedCSSAssets types.OrderedSet
 }
 
 // InitAssets inits the static assets storage.
@@ -957,21 +957,21 @@ func (opt *Assets) InitAssets() {
 	opt.JSAssets.Init("echarts.min.js")
 	opt.CSSAssets.Init()
 
-	opt.customizedJSAssets.Init()
-	opt.customizedCSSAssets.Init()
+	opt.CustomizedJSAssets.Init()
+	opt.CustomizedCSSAssets.Init()
 }
 
 // AddCustomizedJSAssets adds the customized javascript assets which will not be added the `host` prefix.
 func (opt *Assets) AddCustomizedJSAssets(assets ...string) {
 	for i := 0; i < len(assets); i++ {
-		opt.customizedJSAssets.Add(assets[i])
+		opt.CustomizedJSAssets.Add(assets[i])
 	}
 }
 
 // AddCustomizedCSSAssets adds the customized css assets which will not be added the `host` prefix.
 func (opt *Assets) AddCustomizedCSSAssets(assets ...string) {
 	for i := 0; i < len(assets); i++ {
-		opt.customizedCSSAssets.Add(assets[i])
+		opt.CustomizedCSSAssets.Add(assets[i])
 	}
 }
 
@@ -983,18 +983,10 @@ func (opt *Assets) Validate(host string) {
 		}
 	}
 
-	for _, v := range opt.customizedJSAssets.Values {
-		opt.JSAssets.Add(v)
-	}
-
 	for i := 0; i < len(opt.CSSAssets.Values); i++ {
 		if !strings.HasPrefix(opt.CSSAssets.Values[i], host) {
 			opt.CSSAssets.Values[i] = host + opt.CSSAssets.Values[i]
 		}
-	}
-
-	for _, v := range opt.customizedCSSAssets.Values {
-		opt.CSSAssets.Add(v)
 	}
 }
 

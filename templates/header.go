@@ -8,7 +8,13 @@ var HeaderTpl = `
 {{- range .JSAssets.Values }}
     <script src="{{ . }}"></script>
 {{- end }}
+{{- range .CustomizedJSAssets.Values }}
+    <script src="{{ . }}"></script>
+{{- end }}
 {{- range .CSSAssets.Values }}
+    <link href="{{ . }}" rel="stylesheet">
+{{- end }}
+{{- range .CustomizedCSSAssets.Values }}
     <link href="{{ . }}" rel="stylesheet">
 {{- end }}
 </head>

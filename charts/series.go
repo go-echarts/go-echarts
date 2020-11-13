@@ -278,7 +278,11 @@ func (s *SingleSeries) configureSeriesOpts(options ...SeriesOpts) {
 // MultiSeries represents multiple series.
 type MultiSeries []SingleSeries
 
-// SetSeriesOptions sets options for the series.
+// SetSeriesOptions sets options for all the series.
+// Previous options will be overwrote every time hence setting them on the `AddSeries` if you want
+// to customize each series individually
+// 															 here -> ↓ <-
+// func (c *Bar) AddSeries(name string, data []opts.BarData, options ...SeriesOpts)
 func (ms *MultiSeries) SetSeriesOptions(opts ...SeriesOpts) {
 	s := *ms
 	for i := 0; i < len(s); i++ {
