@@ -19,5 +19,6 @@ func TestAssets(t *testing.T) {
 	const host = "https://go-echarts.github.io/go-echarts-assets/assets/"
 
 	assetsEntity.Validate(host)
-	assert.Equal(t, []string{host + "echarts.min.js", host + "jquery.min.js", "http://myhost/my.assets.js"}, assetsEntity.JSAssets.Values)
+	assert.Equal(t, []string{host + "echarts.min.js", host + "jquery.min.js"}, assetsEntity.JSAssets.Values)
+	assert.Equal(t, []string{"http://myhost/my.assets.js"}, assetsEntity.CustomizedJSAssets.Values)
 }
