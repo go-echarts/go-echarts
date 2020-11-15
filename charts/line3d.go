@@ -25,6 +25,6 @@ func NewLine3D() *Line3D {
 
 // AddSeries adds the new series.
 func (c *Line3D) AddSeries(name string, data []opts.Chart3DData, options ...SeriesOpts) *Line3D {
-	c.addSeries(types.ChartScatter3D, name, data, options...)
+	c.addSeries(types.ChartLine3D, name, data, options...)
 	return c
 }
