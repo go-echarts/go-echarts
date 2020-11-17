@@ -36,13 +36,7 @@ In the Golang ecosystem, there are not many choices for data visualization libra
 Classic way to get go-echarts
 
 ```shell
-$ go get -u github.com/go-echarts/go-echarts/...
-
-# this may be a stupid way to use v2 go-echarts without gomod(GO111MODULE=off) because of
-# the gomod version management system... 🐶
-# if you get a better workaround, please let me know....
-$ cd $go-echarts-project
-$ mkdir v2 && mv charts components datasets opts render templates types v2
+$ go get -u github.com/go-echarts/go-echarts/v2/...
 ```
 
 Use gomod style
