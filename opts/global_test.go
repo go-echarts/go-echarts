@@ -22,3 +22,12 @@ func TestAssets(t *testing.T) {
 	assert.Equal(t, []string{host + "echarts.min.js", host + "jquery.min.js"}, assetsEntity.JSAssets.Values)
 	assert.Equal(t, []string{"http://myhost/my.assets.js"}, assetsEntity.CustomizedJSAssets.Values)
 }
+
+func TestGenerateUniqueID(t *testing.T) {
+	var old string
+	for i := 0; i < 10; i++ {
+		new := generateUniqueID()
+		assert.NotSame(t, old, new)
+		old = new
+	}
+}

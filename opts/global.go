@@ -12,6 +12,10 @@ import (
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
 // Initialization contains options for the canvas.
 type Initialization struct {
 	// HTML title
@@ -73,29 +77,24 @@ func setField(field reflect.Value, defaultVal string) {
 }
 
 const (
-	letterBytes   = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-	letterIdxBits = 6                    // 6 bits to represent a letter index
-	letterIdxMask = 1<<letterIdxBits - 1 // All 1-bits, as many as letterIdxBits
-	letterIdxMax  = 63 / letterIdxBits   // # of letter indices fitting in 63 bits
-	chartIDSize   = 12
+	chartIDSize = 12
 )
 
 // generate the unique ID for each chart.
 func generateUniqueID() string {
-	seed := rand.NewSource(time.Now().UnixNano())
-	b := make([]byte, chartIDSize)
-	for i, cache, remain := chartIDSize-1, seed.Int63(), letterIdxMax; i >= 0; {
-		if remain == 0 {
-			cache, remain = seed.Int63(), letterIdxMax
-		}
-		if idx := int(cache & letterIdxMask); idx < len(letterBytes) {
-			b[i] = letterBytes[idx]
-			i--
-		}
-		cache >>= letterIdxBits
-		remain--
+	var b [chartIDSize]byte
+	for i := range b {
+		b[i] = randByte()
 	}
-	return string(b)
+	return string(b[:])
+}
+
+func randByte() byte {
+	c := 65 // A
+	if rand.Intn(10) > 5 {
+		c = 97 // a
+	}
+	return byte(c + rand.Intn(26))
 }
 
 // Title is the option set for a title component.
