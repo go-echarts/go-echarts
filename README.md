@@ -20,7 +20,7 @@
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT License">
     </a>
-        <a href="https://pkg.go.dev/github.com/go-echarts/go-echarts/v2">
+    <a href="https://pkg.go.dev/github.com/go-echarts/go-echarts/v2">
         <img src="https://godoc.org/github.com/go-echarts/go-echarts?status.svg" alt="GoDoc">
     </a>
 </p>
@@ -36,11 +36,11 @@ In the Golang ecosystem, there are not many choices for data visualization libra
 Classic way to get go-echarts
 
 ```shell
-$ go get -u github.com/go-echarts/go-echarts/...
-
 # this may be a stupid way to use v2 go-echarts without gomod(GO111MODULE=off) because of
-# the gomod version management system... 🐶
+# the next generation version management system... 🐶
 # if you get a better workaround, please let me know....
+
+$ go get -u github.com/go-echarts/go-echarts/...
 $ cd $go-echarts-project
 $ mkdir v2 && mv charts components datasets opts render templates types v2
 ```
@@ -48,6 +48,14 @@ $ mkdir v2 && mv charts components datasets opts render templates types v2
 Use gomod style
 
 ```shell
+$ go get -u github.com/go-echarts/go-echarts/v2/...
+```
+
+OR
+
+```shell
+# go.mod
+
 require github.com/go-echarts/go-echarts/v2
 ```
 
@@ -55,7 +63,7 @@ require github.com/go-echarts/go-echarts/v2
 
 The go-echarts project is being developed under v2 version and the active codebase is on the master branch now.
 
-v1 and v2 are incompatible which means that you cannot upgrade go-echarts from v1 to v2 smoothly. But I think it is worth trying the new version.
+v1 and v2 are incompatible which means that you cannot upgrade go-echarts from v1 to v2 smoothly. But I think it is worth trying that new version.
 
 ### ✨ Features
 
