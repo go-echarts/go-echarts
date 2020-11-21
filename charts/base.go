@@ -54,6 +54,10 @@ type BaseConfiguration struct {
 	hasSingleAxis bool
 }
 
+func (bc *BaseConfiguration) ID() string {
+	return bc.ChartID
+}
+
 // JSON wraps all the options to a map so that it could be used in the base template
 //
 // Get data in bytes

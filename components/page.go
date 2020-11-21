@@ -18,6 +18,7 @@ type Charter interface {
 	Type() string
 	GetAssets() opts.Assets
 	Validate()
+	ID() string
 }
 
 // Page represents a page chart.
@@ -26,7 +27,7 @@ type Page struct {
 	opts.Initialization
 	opts.Assets
 
-	Charts []interface{}
+	Charts []Charter
 	Layout Layout
 }
 
