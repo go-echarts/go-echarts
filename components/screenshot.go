@@ -36,6 +36,7 @@ type ScreenshotOption struct {
 	Mobile      bool
 }
 
+// ScreenshotAll screenshot the charts you need
 func (page *Page) Screenshot(ctx context.Context, opt ScreenshotOption) ([]Image, error) {
 	tmpDir, err := createTmpDir(opt.TmpDir)
 	if err != nil {
@@ -82,6 +83,7 @@ func (page *Page) Screenshot(ctx context.Context, opt ScreenshotOption) ([]Image
 	return images, nil
 }
 
+// ScreenshotAll screenshot all charts in page
 func (page *Page) ScreenshotAll(ctx context.Context, opt ScreenshotOption) ([]Image, error) {
 	tmpDir, err := createTmpDir(opt.TmpDir)
 	if err != nil {
@@ -165,60 +167,67 @@ func elementsScreenshot(url string, images []Image, wait time.Duration, scale fl
 				return fmt.Errorf("selector %q did not return any nodes", sel)
 			}
 
-			// get layout metrics
-			_, _, contentSize, err := page.GetLayoutMetrics().Do(ctx)
-			if err != nil {
+			if err := deviceMetricsOverride(ctx, scale, mobile); err != nil {
 				return err
 			}
 
-			width, height := int64(math.Ceil(contentSize.Width)), int64(math.Ceil(contentSize.Height))
-
-			// force viewport emulation
-			err = emulation.SetDeviceMetricsOverride(width, height, scale, mobile).
-				WithScreenOrientation(&emulation.ScreenOrientation{
-					Type:  emulation.OrientationTypePortraitPrimary,
-					Angle: 0,
-				}).
-				Do(ctx)
-			if err != nil {
-				return err
-			}
-
-			// get box model
-			box, err := dom.GetBoxModel().WithNodeID(nodes[0].NodeID).Do(ctx)
-			if err != nil {
-				return err
-			}
-			if len(box.Margin) != 8 {
-				return chromedp.ErrInvalidBoxModel
-			}
-
-			format := page.CaptureScreenshotFormatPng
-			if img.Type == JPEG {
-				format = page.CaptureScreenshotFormatJpeg
-			}
-
-			// take screenshot of the box
-			buf, err := page.CaptureScreenshot().
-				WithFormat(format).
-				WithClip(&page.Viewport{
-					// Round the dimensions, as otherwise we might
-					// lose one pixel in either dimension.
-					X:      math.Round(box.Margin[0]),
-					Y:      math.Round(box.Margin[1]),
-					Width:  math.Round(box.Margin[4] - box.Margin[0]),
-					Height: math.Round(box.Margin[5] - box.Margin[1]),
-					Scale:  1,
-				}).Do(ctx)
-			if err != nil {
-				return err
-			}
-
-			*img.Buff = buf
-			return nil
+			return screenshot(ctx, img.Type, scale, img.Buff, nodes...)
 		}, []chromedp.QueryOption{chromedp.ByID, chromedp.NodeVisible}...))
 	}
 	return tasks, nil
+}
+
+func screenshot(ctx context.Context, sType ScreenshotType, scale float64, res *[]byte, nodes ...*cdp.Node) error {
+	// get box model
+	box, err := dom.GetBoxModel().WithNodeID(nodes[0].NodeID).Do(ctx)
+	if err != nil {
+		return err
+	}
+	if len(box.Margin) != 8 {
+		return chromedp.ErrInvalidBoxModel
+	}
+
+	format := page.CaptureScreenshotFormatPng
+	if sType == JPEG {
+		format = page.CaptureScreenshotFormatJpeg
+	}
+
+	// take screenshot of the box
+	buf, err := page.CaptureScreenshot().
+		WithFormat(format).
+		WithClip(&page.Viewport{
+			// Round the dimensions, as otherwise we might lose one pixel in either dimension.
+			X:      math.Round(box.Margin[0]),
+			Y:      math.Round(box.Margin[1]),
+			Width:  math.Round(box.Margin[4] - box.Margin[0]),
+			Height: math.Round(box.Margin[5] - box.Margin[1]),
+			Scale:  scale,
+		}).Do(ctx)
+	if err != nil {
+		return err
+	}
+
+	*res = buf
+	return nil
+}
+
+func deviceMetricsOverride(ctx context.Context, scale float64, mobile bool) error {
+	// get layout metrics
+	_, _, contentSize, err := page.GetLayoutMetrics().Do(ctx)
+	if err != nil {
+		return err
+	}
+
+	width, height := int64(math.Ceil(contentSize.Width)), int64(math.Ceil(contentSize.Height))
+
+	// force viewport emulation
+	err = emulation.SetDeviceMetricsOverride(width, height, scale, mobile).
+		WithScreenOrientation(&emulation.ScreenOrientation{
+			Type:  emulation.OrientationTypePortraitPrimary,
+			Angle: 0,
+		}).
+		Do(ctx)
+	return err
 }
 
 func createTmpDir(tmpDir string) (string, error) {
