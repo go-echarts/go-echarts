@@ -3,6 +3,7 @@ package opts
 // BarChart
 // https://echarts.apache.org/en/option.html#series-bar
 type BarChart struct {
+	Type string
 	// Name of stack. On the same category axis, the series with the
 	// same stack name would be put on top of each other.
 	Stack string
@@ -28,6 +29,10 @@ type BarChart struct {
 
 	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
 	YAxisIndex int
+
+	ShowBackground bool
+	RoundCap       bool
+	CoordSystem    string
 }
 
 // BarData

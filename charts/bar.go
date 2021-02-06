@@ -17,11 +17,11 @@ type Bar struct {
 func (Bar) Type() string { return types.ChartBar }
 
 // NewBar creates a new bar chart instance.
-func NewBar() *Bar {
+func NewBar(hasXYAxis bool) *Bar {
 	c := &Bar{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.hasXYAxis = true
+	c.hasXYAxis = hasXYAxis
 	return c
 }
 

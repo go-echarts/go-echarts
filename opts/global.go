@@ -34,7 +34,7 @@ type Initialization struct {
 	ChartID string
 
 	// Assets host
-	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
+	AssetsHost string `default:"https://cdn.jsdelivr.net/npm/echarts@5.0.2/dist/"`
 
 	// Theme of chart
 	Theme string `default:"white"`
@@ -913,6 +913,22 @@ type ParallelAxis struct {
 
 	// Category data，works on (type: "category").
 	Data interface{} `json:"data,omitempty"`
+}
+
+type Polar struct {
+	ID     string `json:"id,omitempty"`
+	Zlevel int    `json:"zlevel,omitempty"`
+	z      int
+}
+
+type AngleAxis struct {
+	StartAngle int  `json:"startAngle,omitempty"`
+	Clockwise  bool `json:"clockwise,omitempty"`
+}
+
+type RadiusAxis struct {
+	Type string `json:"type,omitempty"`
+	Z    int    `json:"z,omitempty"`
 }
 
 var funcPat = regexp.MustCompile(`\n|\t`)

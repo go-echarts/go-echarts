@@ -14,6 +14,8 @@ type SingleSeries struct {
 	// Bar
 	BarGap         string `json:"barGap,omitempty"`
 	BarCategoryGap string `json:"barCategoryGap,omitempty"`
+	ShowBackground bool   `json:"showBackground,omitempty"`
+	RoundCap       bool   `json:"roundCap,omitempty"`
 
 	// Bar3D
 	Shading string `json:"shading,omitempty"`
@@ -121,6 +123,10 @@ func WithBarChartOpts(opt opts.BarChart) SeriesOpts {
 		s.BarCategoryGap = opt.BarCategoryGap
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
+		s.ShowBackground = opt.ShowBackground
+		s.RoundCap = opt.RoundCap
+		s.CoordSystem = opt.CoordSystem
+		s.Type = opt.Type
 	}
 }
 

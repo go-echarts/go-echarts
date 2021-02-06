@@ -27,7 +27,7 @@
 
 > If a language can be used to build web scrapers, it definitely needs to provide a graceful data visualization library. --- by dongdong.
 
-In the Golang ecosystem, there are not many choices for data visualization libraries. The development of [go-echarts](https://github.com/go-echarts/go-echarts) aims to provide a simple yet powerful data visualization library for Golang. [Echarts](https://echarts.apache.org/) is an outstanding charting and visualization library opensourced by Baidu, it supports adorable chart types and various interactive features. There are many language bindings for Echarts, for example, [pyecharts](https://github.com/pyecharts/pyecharts). go-echarts learns from pyecharts and has evolved a lot.
+In the Golang ecosystem, there are not many choices for data visualization libraries. The development of [go-echarts](https://github.com/go-echarts/go-echarts) aims to provide a simple yet powerful data visualization library for Golang. [Apache ECharts](https://echarts.apache.org/) is an outstanding charting and visualization library, it supports adorable chart types and various interactive features. There are many language bindings for Echarts, for example, [pyecharts](https://github.com/pyecharts/pyecharts). go-echarts learns from pyecharts and has evolved a lot.
 
 [中文 README](README_CN.md)
 
