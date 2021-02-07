@@ -25,6 +25,12 @@ func NewBar() *Bar {
 	return c
 }
 
+// EablePolorType enable polar bar
+func (c *Bar) EablePolorType() *Bar {
+	c.hasXYAxis = false
+	return c
+}
+
 // SetXAxis sets the X axis.
 func (c *Bar) SetXAxis(x interface{}) *Bar {
 	c.xAxisData = x
