@@ -55,6 +55,7 @@ type BaseConfiguration struct {
 	hasRadar      bool
 	hasParallel   bool
 	hasSingleAxis bool
+	hasPolar      bool
 }
 
 // JSON wraps all the options to a map so that it could be used in the base template
@@ -63,13 +64,16 @@ type BaseConfiguration struct {
 // bs, _ : = json.Marshal(bar.JSON())
 func (bc *BaseConfiguration) JSON() map[string]interface{} {
 	obj := map[string]interface{}{
-		"title":      bc.Title,
-		"legend":     bc.Legend,
-		"tooltip":    bc.Tooltip,
-		"series":     bc.MultiSeries,
-		"polar":      bc.Polar,
-		"angleAxis":  bc.AngleAxis,
-		"radiusAxis": bc.RadiusAxis,
+		"title":   bc.Title,
+		"legend":  bc.Legend,
+		"tooltip": bc.Tooltip,
+		"series":  bc.MultiSeries,
+	}
+
+	if bc.hasPolar {
+		obj["polar"] = bc.Polar
+		obj["angleAxis"] = bc.AngleAxis
+		obj["radiusAxis"] = bc.RadiusAxis
 	}
 
 	if bc.hasGeo {
