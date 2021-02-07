@@ -222,7 +222,9 @@ func WithLegendOpts(opt opts.Legend) GlobalOpts {
 func WithInitializationOpts(opt opts.Initialization) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Initialization = opt
-		if bc.Initialization.Theme != "" {
+		if bc.Initialization.Theme != "" &&
+			bc.Initialization.Theme != "white" &&
+			bc.Initialization.Theme != "dark" {
 			bc.JSAssets.Add("themes/" + opt.Theme + ".js")
 		}
 		bc.Initialization.Validate()
