@@ -25,8 +25,8 @@ func NewBar() *Bar {
 	return c
 }
 
-// EablePolarType enable polar bar
-func (c *Bar) EablePolarType() *Bar {
+// EnablePolarType enable polar bar
+func (c *Bar) EnablePolarType() *Bar {
 	c.hasXYAxis = false
 	c.hasPolar = true
 	return c
