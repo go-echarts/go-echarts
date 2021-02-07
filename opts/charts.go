@@ -30,6 +30,21 @@ type BarChart struct {
 	YAxisIndex int
 }
 
+type SunburstChart struct {
+	NodeClick               string `json:"nodeClick,omitempty"`
+	Sort                    string `json:"sort,omitempty"`
+	RenderLabelForZeroData  bool   `json:"renderLabelForZeroData"`
+	SelectedMode            bool   `json:"selectedMode"`
+	Animation               bool   `json:"animation"`
+	AnimationThreshold      int    `json:"animationThreshold,omitempty"`
+	AnimationDuration       int    `json:"animationDuration,omitempty"`
+	AnimationEasing         string `json:"animationEasing,omitempty"`
+	AnimationDelay          int    `json:"animationDelay,omitempty"`
+	AnimationDurationUpdate int    `json:"animationDurationUpdate,omitempty"`
+	AnimationEasingUpdate   string `json:"animationEasingUpdate,omitempty"`
+	AnimationDelayUpdate    int    `json:"animationDelayUpdate,omitempty"`
+}
+
 // BarData
 // https://echarts.apache.org/en/option.html#series-bar.data
 type BarData struct {
@@ -510,4 +525,11 @@ type Chart3DData struct {
 
 	// The style setting of the text label in a single bar.
 	Label *Label `json:"label,omitempty"`
+}
+
+// SunBurstData data
+type SunBurstData struct {
+	Name     string          `json:"name,omitempty"`
+	Value    float64         `json:"value,omitempty"`
+	Children []*SunBurstData `json:"children,omitempty"`
 }

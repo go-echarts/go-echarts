@@ -456,6 +456,13 @@ type AxisLabel struct {
 	// Set this to false to prevent the axis label from appearing.
 	Show bool `json:"show,omitempty"`
 
+	// Interval of Axis label, which is available in category axis.
+	// It uses a strategy that labels do not overlap by default.
+	// You may set it to be 0 to display all labels compulsively.
+	// If it is set to be 1, it means that labels are shown once after one label.
+	// And if it is set to be 2, it means labels are shown once after two labels, and so on.
+	Interval string `json:"interval,omitempty"`
+
 	// Set this to true so the axis labels face the inside direction.
 	Inside bool `json:"inside,omitempty"`
 
@@ -465,13 +472,6 @@ type AxisLabel struct {
 
 	// The margin between the axis label and the axis line.
 	Margin float64 `json:"margin,omitempty"`
-
-	// Interval of Axis label, which is available in category axis.
-	// It uses a strategy that labels do not overlap by default.
-	// You may set it to be 0 to display all labels compulsively.
-	// If it is set to be 1, it means that labels are shown once after one label.
-	// And if it is set to be 2, it means labels are shown once after two labels, and so on.
-	Interval string `json:"interval,omitempty"`
 
 	// Formatter of axis label, which supports string template and callback function.
 	//
@@ -494,6 +494,9 @@ type AxisLabel struct {
 	//}
 	Formatter string `json:"formatter,omitempty"`
 
+	ShowMinLabel bool `json:"showMinLabel"`
+	ShowMaxLabel bool `json:"showMaxLabel"`
+
 	// Color of axis label is set to be axisLine.lineStyle.color by default. Callback function is supported,
 	// in the following format:
 	//
@@ -506,6 +509,14 @@ type AxisLabel struct {
 	//    }
 	// }
 	Color string `json:"color,omitempty"`
+
+	FontStyle     string `json:"fontStyle,omitempty"`
+	FontWeight    string `json:"fontWeight,omitempty"`
+	FontFamily    string `json:"fontFamily,omitempty"`
+	FontSize      string `json:"fontSize,omitempty"`
+	Align         string `json:"align,omitempty"`
+	VerticalAlign string `json:"verticalAlign,omitempty"`
+	LineHeight    string `json:"lineHeight,omitempty"`
 }
 
 // XAxis is the option set for X axis.
