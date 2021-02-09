@@ -915,6 +915,49 @@ type ParallelAxis struct {
 	Data interface{} `json:"data,omitempty"`
 }
 
+// Polar Bar options
+type Polar struct {
+	ID      string    `json:"id,omitempty"`
+	Zlevel  int       `json:"zlevel,omitempty"`
+	Z       int       `json:"z,omitempty"`
+	Center  [2]string `json:"center,omitempty"`
+	Radius  [2]string `json:"radius,omitempty"`
+	Tooltip Tooltip   `json:"tooltip,omitempty"`
+}
+
+type PolarAxisBase struct {
+	ID           string  `json:"id,omitempty"`
+	PolarIndex   int     `json:"polarIndex,omitempty"`
+	StartAngle   float64 `json:"startAngle,omitempty"`
+	Type         string  `json:"type,omitempty"`
+	BoundaryGap  bool    `json:"boundaryGap,omitempty"`
+	Min          float64 `json:"min,omitempty"`
+	Max          float64 `json:"max,omitempty"`
+	Scale        bool    `json:"scale,omitempty"`
+	SplitNumber  int     `json:"splitNumber,omitempty"`
+	MinInterval  float64 `json:"minInterval,omitempty"`
+	MaxInterval  float64 `json:"maxInterval,omitempty"`
+	Interval     float64 `json:"interval,omitempty"`
+	LogBase      float64 `json:"logBase,omitempty"`
+	Silent       bool    `json:"silent,omitempty"`
+	TriggerEvent bool    `json:"triggerEvent,omitempty"`
+}
+
+type AngleAxis struct {
+	PolarAxisBase
+	Clockwise bool `json:"clockwise,omitempty"`
+}
+
+type RadiusAxis struct {
+	PolarAxisBase
+	Name          string    `json:"name,omitempty"`
+	NameLocation  string    `json:"nameLocation,omitempty"`
+	NameTextStyle TextStyle `json:"nameTextStyle,omitempty"`
+	NameGap       float64   `json:"nameGap,omitempty"`
+	NameRadius    float64   `json:"nameRotate,omitempty"`
+	Inverse       bool      `json:"inverse,omitempty"`
+}
+
 var funcPat = regexp.MustCompile(`\n|\t`)
 
 const funcMarker = "__f__"
