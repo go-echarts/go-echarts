@@ -54,6 +54,10 @@ type SingleSeries struct {
 	ExpandAndCollapse bool        `json:"expandAndCollapse,omitempty"`
 	InitialTreeDepth  int         `json:"initialTreeDepth,omitempty"`
 	Leaves            interface{} `json:"leaves,omitempty"`
+	Left              string      `json:"left,omitempty"`
+	Right             string      `json:"right,omitempty"`
+	Top               string      `json:"top,omitempty"`
+	Bottom            string      `json:"bottom,omitempty"`
 
 	// WordCloud
 	Shape         string    `json:"shape,omitempty"`
@@ -211,6 +215,10 @@ func WithTreeOpts(opt opts.TreeChart) SeriesOpts {
 		s.Roam = opt.Roam
 		s.Label = opt.Label
 		s.Leaves = opt.Leaves
+		s.Right = opt.Right
+		s.Left = opt.Left
+		s.Top = opt.Top
+		s.Bottom = opt.Bottom
 	}
 }
 

@@ -548,6 +548,14 @@ type TreeChart struct {
 
 	// Leaf node special configuration, the leaf node and non-leaf node label location is different.
 	Leaves *TreeLeaves `json:"leaves,omitempty"`
+
+	// Distance between tree component and the sides of the container.
+	// value can be instant pixel value like 20;
+	// It can also be a percentage value relative to container width like '20%';
+	Left   string `json:"left,omitempty"`
+	Right  string `json:"right,omitempty"`
+	Top    string `json:"top,omitempty"`
+	Bottom string `json:"bottom,omitempty"`
 }
 
 type TreeData struct {
