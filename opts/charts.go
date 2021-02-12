@@ -566,6 +566,7 @@ type TreeData struct {
 	Value int `json:"value,omitempty"`
 
 	Children []*TreeData `json:"children,omitempty"`
+
 	// Symbol of node of this category.
 	// Icon types provided by ECharts includes
 	// 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
@@ -575,4 +576,7 @@ type TreeData struct {
 	// node of this category symbol size. It can be set to single numbers like 10,
 	// or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10.
 	SymbolSize interface{} `json:"symbolSize,omitempty"`
+
+	// If set as `true`, the node is collpased in the initialization.
+	Collapsed bool `json:"collapsed,omitempty"`
 }
