@@ -284,6 +284,18 @@ type GraphForce struct {
 	EdgeLength float32 `json:"edgeLength,omitempty"`
 }
 
+// Leaf node special configuration, the leaf node and non-leaf node label location is different.
+type TreeLeaves struct {
+	// The style setting of the text label in a single bar.
+	Label *Label `json:"label,omitempty"`
+
+	// ItemStyle settings in this series data.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	// Emphasis settings in this series data.
+	Emphasis *Emphasis `json:"emphasis,omitempty"`
+}
+
 // RGBColor returns the color with RGB format
 func RGBColor(r, g, b uint16) string {
 	return fmt.Sprintf("rgb(%d,%d,%d)", r, g, b)

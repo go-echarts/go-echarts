@@ -542,6 +542,12 @@ type TreeChart struct {
 	// This configuration item is primarily used in conjunction with collapsing and expansion interactions.
 	// The purpose is to prevent the nodes from obscuring each other. If set as -1 or null or undefined, all nodes are expanded.
 	InitialTreeDepth int `json:"initialTreeDepth,omitempty"`
+
+	// The style setting of the text label in a single bar.
+	Label *Label `json:"label,omitempty"`
+
+	// Leaf node special configuration, the leaf node and non-leaf node label location is different.
+	Leaves *TreeLeaves `json:"leaves,omitempty"`
 }
 
 type TreeData struct {
