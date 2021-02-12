@@ -533,10 +533,10 @@ type TreeChart struct {
 	// Whether to enable mouse zooming and translating. false by default.
 	// If either zooming or translating is wanted, it can be set to 'scale' or 'move'.
 	// Otherwise, set it to be true to enable both.
-	Roam bool
+	Roam bool `json:"roam"`
 
 	// Subtree collapses and expands interaction, default true.
-	ExpandAndCollapse bool `json:"expandAndCollapse"`
+	ExpandAndCollapse bool `json:"expandAndCollapse,omitempty"`
 
 	// The initial level (depth) of the tree. The root node is the 0th layer, then the first layer, the second layer, ... , until the leaf node.
 	// This configuration item is primarily used in conjunction with collapsing and expansion interactions.

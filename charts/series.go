@@ -51,7 +51,7 @@ type SingleSeries struct {
 
 	// Tree
 	Orient            string `json:"orient,omitempty"`
-	ExpandAndCollapse bool   `json:"expandAndCollapse"`
+	ExpandAndCollapse bool   `json:"expandAndCollapse,omitempty"`
 	InitialTreeDepth  int    `json:"initialTreeDepth,omitempty"`
 
 	// WordCloud
