@@ -11,10 +11,13 @@ type GlobalOpts func(bc *BaseConfiguration)
 
 // BaseConfiguration represents an option set needed by all chart types.
 type BaseConfiguration struct {
-	opts.Legend  `json:"legend"`
-	opts.Tooltip `json:"tooltip"`
-	opts.Toolbox `json:"toolbox"`
-	opts.Title   `json:"title"`
+	opts.Legend     `json:"legend"`
+	opts.Tooltip    `json:"tooltip"`
+	opts.Toolbox    `json:"toolbox"`
+	opts.Title      `json:"title"`
+	opts.Polar      `json:"polar"`
+	opts.AngleAxis  `json:"angleAxis"`
+	opts.RadiusAxis `json:"radiusAxis"`
 
 	render.Renderer        `json:"-"`
 	opts.Initialization    `json:"-"`
@@ -52,6 +55,7 @@ type BaseConfiguration struct {
 	hasRadar      bool
 	hasParallel   bool
 	hasSingleAxis bool
+	hasPolar      bool
 }
 
 // JSON wraps all the options to a map so that it could be used in the base template
@@ -64,6 +68,12 @@ func (bc *BaseConfiguration) JSON() map[string]interface{} {
 		"legend":  bc.Legend,
 		"tooltip": bc.Tooltip,
 		"series":  bc.MultiSeries,
+	}
+
+	if bc.hasPolar {
+		obj["polar"] = bc.Polar
+		obj["angleAxis"] = bc.AngleAxis
+		obj["radiusAxis"] = bc.RadiusAxis
 	}
 
 	if bc.hasGeo {
@@ -132,8 +142,8 @@ func (bc *BaseConfiguration) initBaseConfiguration() {
 
 func (bc *BaseConfiguration) initSeriesColors() {
 	bc.Colors = []string{
-		"#c23531", "#2f4554", "#61a0a8", "#d48265", "#91c7ae",
-		"#749f83", "#ca8622", "#bda29a", "#6e7074", "#546570",
+		"#5470c6", "#91cc75", "#fac858", "#ee6666", "#73c0de",
+		"#3ba272", "#fc8452", "#9a60b4", "#ea7ccc",
 	}
 }
 
@@ -149,6 +159,27 @@ func (bc *BaseConfiguration) insertSeriesColors(colors []string) {
 func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
 	for _, opt := range opts {
 		opt(bc)
+	}
+}
+
+// WithPolarOps set angleAxis
+func WithAngleAxisOps(opt opts.AngleAxis) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.AngleAxis = opt
+	}
+}
+
+// WithPolarOps set radiusAxis
+func WithRadiusAxisOps(opt opts.RadiusAxis) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.RadiusAxis = opt
+	}
+}
+
+// WithPolarOps set polar
+func WithPolarOps(opt opts.Polar) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.Polar = opt
 	}
 }
 
@@ -191,7 +222,9 @@ func WithLegendOpts(opt opts.Legend) GlobalOpts {
 func WithInitializationOpts(opt opts.Initialization) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Initialization = opt
-		if bc.Initialization.Theme != "" {
+		if bc.Initialization.Theme != "" &&
+			bc.Initialization.Theme != "white" &&
+			bc.Initialization.Theme != "dark" {
 			bc.JSAssets.Add("themes/" + opt.Theme + ".js")
 		}
 		bc.Initialization.Validate()

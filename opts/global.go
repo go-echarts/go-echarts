@@ -253,6 +253,7 @@ type Legend struct {
 }
 
 // Tooltip is the option set for a tooltip component.
+// https://echarts.apache.org/en/option.html#tooltip
 type Tooltip struct {
 	// Whether to show the tooltip component, including tooltip floating layer and axisPointer.
 	Show bool `json:"show"`
@@ -331,6 +332,26 @@ type Tooltip struct {
 	//    percent: number,
 	// }
 	Formatter string `json:"formatter,omitempty"`
+
+	// Configuration item for axisPointer
+	AxisPointer *AxisPointer `json:"axisPointer,omitempty"`
+}
+
+// AxisPointer is the option set for an axisPointer component
+// https://echarts.apache.org/en/option.html#axisPointer
+type AxisPointer struct {
+
+	// Indicator type.
+	// Options:
+	//   - 'line' line indicator.
+	//   - 'shadow' shadow crosshair indicator.
+	//   - 'none' no indicator displayed.
+	//   - 'cross' crosshair indicator, which is actually the shortcut of enable two axisPointers of two orthometric axes.
+	Type string `json:"type,omitempty"`
+
+	// 	Whether snap to point automatically. The default value is auto determined.
+	// This feature usually makes sense in value axis and time axis, where tiny points can be seeked automatically.
+	Snap bool `json:"snap,omitempty"`
 }
 
 // Toolbox is the option set for a toolbox component.
@@ -924,6 +945,49 @@ type ParallelAxis struct {
 
 	// Category data，works on (type: "category").
 	Data interface{} `json:"data,omitempty"`
+}
+
+// Polar Bar options
+type Polar struct {
+	ID      string    `json:"id,omitempty"`
+	Zlevel  int       `json:"zlevel,omitempty"`
+	Z       int       `json:"z,omitempty"`
+	Center  [2]string `json:"center,omitempty"`
+	Radius  [2]string `json:"radius,omitempty"`
+	Tooltip Tooltip   `json:"tooltip,omitempty"`
+}
+
+type PolarAxisBase struct {
+	ID           string  `json:"id,omitempty"`
+	PolarIndex   int     `json:"polarIndex,omitempty"`
+	StartAngle   float64 `json:"startAngle,omitempty"`
+	Type         string  `json:"type,omitempty"`
+	BoundaryGap  bool    `json:"boundaryGap,omitempty"`
+	Min          float64 `json:"min,omitempty"`
+	Max          float64 `json:"max,omitempty"`
+	Scale        bool    `json:"scale,omitempty"`
+	SplitNumber  int     `json:"splitNumber,omitempty"`
+	MinInterval  float64 `json:"minInterval,omitempty"`
+	MaxInterval  float64 `json:"maxInterval,omitempty"`
+	Interval     float64 `json:"interval,omitempty"`
+	LogBase      float64 `json:"logBase,omitempty"`
+	Silent       bool    `json:"silent,omitempty"`
+	TriggerEvent bool    `json:"triggerEvent,omitempty"`
+}
+
+type AngleAxis struct {
+	PolarAxisBase
+	Clockwise bool `json:"clockwise,omitempty"`
+}
+
+type RadiusAxis struct {
+	PolarAxisBase
+	Name          string    `json:"name,omitempty"`
+	NameLocation  string    `json:"nameLocation,omitempty"`
+	NameTextStyle TextStyle `json:"nameTextStyle,omitempty"`
+	NameGap       float64   `json:"nameGap,omitempty"`
+	NameRadius    float64   `json:"nameRotate,omitempty"`
+	Inverse       bool      `json:"inverse,omitempty"`
 }
 
 var funcPat = regexp.MustCompile(`\n|\t`)
