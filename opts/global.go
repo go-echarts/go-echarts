@@ -253,6 +253,7 @@ type Legend struct {
 }
 
 // Tooltip is the option set for a tooltip component.
+// https://echarts.apache.org/en/option.html#tooltip
 type Tooltip struct {
 	// Whether to show the tooltip component, including tooltip floating layer and axisPointer.
 	Show bool `json:"show"`
@@ -331,6 +332,26 @@ type Tooltip struct {
 	//    percent: number,
 	// }
 	Formatter string `json:"formatter,omitempty"`
+
+	// Configuration item for axisPointer
+	AxisPointer *AxisPointer `json:"axisPointer,omitempty"`
+}
+
+// AxisPointer is the option set for an axisPointer component
+// https://echarts.apache.org/en/option.html#axisPointer
+type AxisPointer struct {
+
+	// Indicator type.
+	// Options:
+	//   - 'line' line indicator.
+	//   - 'shadow' shadow crosshair indicator.
+	//   - 'none' no indicator displayed.
+	//   - 'cross' crosshair indicator, which is actually the shortcut of enable two axisPointers of two orthometric axes.
+	Type string `json:"type,omitempty"`
+
+	// 	Whether snap to point automatically. The default value is auto determined.
+	// This feature usually makes sense in value axis and time axis, where tiny points can be seeked automatically.
+	Snap bool `json:"snap,omitempty"`
 }
 
 // Toolbox is the option set for a toolbox component.
