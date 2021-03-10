@@ -531,13 +531,20 @@ type AxisLabel struct {
 	// }
 	Color string `json:"color,omitempty"`
 
-	FontStyle     string `json:"fontStyle,omitempty"`
-	FontWeight    string `json:"fontWeight,omitempty"`
-	FontFamily    string `json:"fontFamily,omitempty"`
-	FontSize      string `json:"fontSize,omitempty"`
-	Align         string `json:"align,omitempty"`
+	// axis label font style
+	FontStyle string `json:"fontStyle,omitempty"`
+	// axis label font weight
+	FontWeight string `json:"fontWeight,omitempty"`
+	// axis label font family
+	FontFamily string `json:"fontFamily,omitempty"`
+	// axis label font size
+	FontSize string `json:"fontSize,omitempty"`
+	// Horizontal alignment of axis label
+	Align string `json:"align,omitempty"`
+	// Vertical alignment of axis label
 	VerticalAlign string `json:"verticalAlign,omitempty"`
-	LineHeight    string `json:"lineHeight,omitempty"`
+	// Line height of the axis label
+	LineHeight string `json:"lineHeight,omitempty"`
 }
 
 // XAxis is the option set for X axis.

@@ -35,19 +35,33 @@ type BarChart struct {
 	CoordSystem    string
 }
 
+// SunburstChart
+// https://echarts.apache.org/en/option.html#series-sunburst
 type SunburstChart struct {
-	NodeClick               string `json:"nodeClick,omitempty"`
-	Sort                    string `json:"sort,omitempty"`
-	RenderLabelForZeroData  bool   `json:"renderLabelForZeroData"`
-	SelectedMode            bool   `json:"selectedMode"`
-	Animation               bool   `json:"animation"`
-	AnimationThreshold      int    `json:"animationThreshold,omitempty"`
-	AnimationDuration       int    `json:"animationDuration,omitempty"`
-	AnimationEasing         string `json:"animationEasing,omitempty"`
-	AnimationDelay          int    `json:"animationDelay,omitempty"`
-	AnimationDurationUpdate int    `json:"animationDurationUpdate,omitempty"`
-	AnimationEasingUpdate   string `json:"animationEasingUpdate,omitempty"`
-	AnimationDelayUpdate    int    `json:"animationDelayUpdate,omitempty"`
+	// The action of clicking a sector
+	NodeClick string `json:"nodeClick,omitempty"`
+	// Sorting method that sectors use based on value
+	Sort string `json:"sort,omitempty"`
+	// If there is no name, whether need to render it.
+	RenderLabelForZeroData bool `json:"renderLabelForZeroData"`
+	// Selected mode
+	SelectedMode bool `json:"selectedMode"`
+	// Whether to enable animation.
+	Animation bool `json:"animation"`
+	// Whether to set graphic number threshold to animation
+	AnimationThreshold int `json:"animationThreshold,omitempty"`
+	// Duration of the first animation
+	AnimationDuration int `json:"animationDuration,omitempty"`
+	// Easing method used for the first animation
+	AnimationEasing string `json:"animationEasing,omitempty"`
+	// Delay before updating the first animation
+	AnimationDelay int `json:"animationDelay,omitempty"`
+	// Time for animation to complete
+	AnimationDurationUpdate int `json:"animationDurationUpdate,omitempty"`
+	// Easing method used for animation.
+	AnimationEasingUpdate string `json:"animationEasingUpdate,omitempty"`
+	// Delay before updating animation
+	AnimationDelayUpdate int `json:"animationDelayUpdate,omitempty"`
 }
 
 // BarData
@@ -534,7 +548,10 @@ type Chart3DData struct {
 
 // SunBurstData data
 type SunBurstData struct {
-	Name     string          `json:"name,omitempty"`
-	Value    float64         `json:"value,omitempty"`
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+	// Value of data item.
+	Value float64 `json:"value,omitempty"`
+	// sub item of data item
 	Children []*SunBurstData `json:"children,omitempty"`
 }

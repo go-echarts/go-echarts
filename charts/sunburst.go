@@ -12,7 +12,7 @@ type Sunburst struct {
 }
 
 // Type returns the chart type.
-func (Sunburst) Type() string { return types.Sunburst }
+func (Sunburst) Type() string { return types.ChartSunburst }
 
 // NewSunburst creates a new sunburst chart instance.
 func NewSunburst() *Sunburst {
@@ -23,7 +23,7 @@ func NewSunburst() *Sunburst {
 }
 
 func (c *Sunburst) AddSeries(name string, data []opts.SunBurstData, options ...SeriesOpts) *Sunburst {
-	series := SingleSeries{Name: name, Type: types.Sunburst, Data: data}
+	series := SingleSeries{Name: name, Type: types.ChartSunburst, Data: data}
 	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c

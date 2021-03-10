@@ -48,13 +48,20 @@ type Label struct {
 	Formatter string `json:"formatter,omitempty"`
 }
 
+// LabelLine Configuration of label guide line.
 type LabelLine struct {
-	Show         bool    `json:"show"`
-	ShowAbove    bool    `json:"showAbove"`
-	Length2      float64 `json:"length2,omitempty"`
-	Smooth       bool    `json:"smooth"`
+	// Whether to show the label guide line.
+	Show bool `json:"show"`
+	// Whether to show the label guide line above the corresponding element.
+	ShowAbove bool `json:"showAbove"`
+	// The length of the second segment of guide line.
+	Length2 float64 `json:"length2,omitempty"`
+	// smoothness of guide line.
+	Smooth bool `json:"smooth"`
+	// Minimum turn angle between two segments of guide line
 	MinTurnAngle float64 `json:"minTurnAngle,omitempty"`
-	LineStyle
+	// The style of label line
+	LineStyle *LineStyle `json:"lineStyle,omitempty"`
 }
 
 // Emphasis is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect.
