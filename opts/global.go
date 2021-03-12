@@ -477,6 +477,13 @@ type AxisLabel struct {
 	// Set this to false to prevent the axis label from appearing.
 	Show bool `json:"show,omitempty"`
 
+	// Interval of Axis label, which is available in category axis.
+	// It uses a strategy that labels do not overlap by default.
+	// You may set it to be 0 to display all labels compulsively.
+	// If it is set to be 1, it means that labels are shown once after one label.
+	// And if it is set to be 2, it means labels are shown once after two labels, and so on.
+	Interval string `json:"interval,omitempty"`
+
 	// Set this to true so the axis labels face the inside direction.
 	Inside bool `json:"inside,omitempty"`
 
@@ -486,13 +493,6 @@ type AxisLabel struct {
 
 	// The margin between the axis label and the axis line.
 	Margin float64 `json:"margin,omitempty"`
-
-	// Interval of Axis label, which is available in category axis.
-	// It uses a strategy that labels do not overlap by default.
-	// You may set it to be 0 to display all labels compulsively.
-	// If it is set to be 1, it means that labels are shown once after one label.
-	// And if it is set to be 2, it means labels are shown once after two labels, and so on.
-	Interval string `json:"interval,omitempty"`
 
 	// Formatter of axis label, which supports string template and callback function.
 	//
@@ -515,6 +515,9 @@ type AxisLabel struct {
 	//}
 	Formatter string `json:"formatter,omitempty"`
 
+	ShowMinLabel bool `json:"showMinLabel"`
+	ShowMaxLabel bool `json:"showMaxLabel"`
+
 	// Color of axis label is set to be axisLine.lineStyle.color by default. Callback function is supported,
 	// in the following format:
 	//
@@ -527,6 +530,21 @@ type AxisLabel struct {
 	//    }
 	// }
 	Color string `json:"color,omitempty"`
+
+	// axis label font style
+	FontStyle string `json:"fontStyle,omitempty"`
+	// axis label font weight
+	FontWeight string `json:"fontWeight,omitempty"`
+	// axis label font family
+	FontFamily string `json:"fontFamily,omitempty"`
+	// axis label font size
+	FontSize string `json:"fontSize,omitempty"`
+	// Horizontal alignment of axis label
+	Align string `json:"align,omitempty"`
+	// Vertical alignment of axis label
+	VerticalAlign string `json:"verticalAlign,omitempty"`
+	// Line height of the axis label
+	LineHeight string `json:"lineHeight,omitempty"`
 }
 
 // XAxis is the option set for X axis.

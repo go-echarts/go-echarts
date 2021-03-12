@@ -54,12 +54,27 @@ type SingleSeries struct {
 	SizeRange     []float32 `json:"sizeRange,omitempty"`
 	RotationRange []float32 `json:"rotationRange,omitempty"`
 
+	// Sunburst
+	NodeClick               string `json:"nodeClick,omitempty"`
+	Sort                    string `json:"sort,omitempty"`
+	RenderLabelForZeroData  bool   `json:"renderLabelForZeroData"`
+	SelectedMode            bool   `json:"selectedMode"`
+	Animation               bool   `json:"animation"`
+	AnimationThreshold      int    `json:"animationThreshold,omitempty"`
+	AnimationDuration       int    `json:"animationDuration,omitempty"`
+	AnimationEasing         string `json:"animationEasing,omitempty"`
+	AnimationDelay          int    `json:"animationDelay,omitempty"`
+	AnimationDurationUpdate int    `json:"animationDurationUpdate,omitempty"`
+	AnimationEasingUpdate   string `json:"animationEasingUpdate,omitempty"`
+	AnimationDelayUpdate    int    `json:"animationDelayUpdate,omitempty"`
+
 	// series data
 	Data interface{} `json:"data"`
 
 	// series options
 	*opts.ItemStyle    `json:"itemStyle,omitempty"`
 	*opts.Label        `json:"label,omitempty"`
+	*opts.LabelLine    `json:"labelLine,omitempty"`
 	*opts.Emphasis     `json:"emphasis,omitempty"`
 	*opts.MarkLines    `json:"markLine,omitempty"`
 	*opts.MarkPoints   `json:"markPoint,omitempty"`
@@ -127,6 +142,23 @@ func WithBarChartOpts(opt opts.BarChart) SeriesOpts {
 		s.RoundCap = opt.RoundCap
 		s.CoordSystem = opt.CoordSystem
 		s.Type = opt.Type
+	}
+}
+
+func WithSunburstOpts(opt opts.SunburstChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.NodeClick = opt.NodeClick
+		s.Sort = opt.Sort
+		s.RenderLabelForZeroData = opt.RenderLabelForZeroData
+		s.SelectedMode = opt.SelectedMode
+		s.Animation = opt.Animation
+		s.AnimationThreshold = opt.AnimationThreshold
+		s.AnimationDuration = opt.AnimationDuration
+		s.AnimationEasing = opt.AnimationEasing
+		s.AnimationDelay = opt.AnimationDelay
+		s.AnimationDurationUpdate = opt.AnimationDurationUpdate
+		s.AnimationEasingUpdate = opt.AnimationEasingUpdate
+		s.AnimationDelayUpdate = opt.AnimationDelayUpdate
 	}
 }
 

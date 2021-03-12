@@ -35,6 +35,35 @@ type BarChart struct {
 	CoordSystem    string
 }
 
+// SunburstChart
+// https://echarts.apache.org/en/option.html#series-sunburst
+type SunburstChart struct {
+	// The action of clicking a sector
+	NodeClick string `json:"nodeClick,omitempty"`
+	// Sorting method that sectors use based on value
+	Sort string `json:"sort,omitempty"`
+	// If there is no name, whether need to render it.
+	RenderLabelForZeroData bool `json:"renderLabelForZeroData"`
+	// Selected mode
+	SelectedMode bool `json:"selectedMode"`
+	// Whether to enable animation.
+	Animation bool `json:"animation"`
+	// Whether to set graphic number threshold to animation
+	AnimationThreshold int `json:"animationThreshold,omitempty"`
+	// Duration of the first animation
+	AnimationDuration int `json:"animationDuration,omitempty"`
+	// Easing method used for the first animation
+	AnimationEasing string `json:"animationEasing,omitempty"`
+	// Delay before updating the first animation
+	AnimationDelay int `json:"animationDelay,omitempty"`
+	// Time for animation to complete
+	AnimationDurationUpdate int `json:"animationDurationUpdate,omitempty"`
+	// Easing method used for animation.
+	AnimationEasingUpdate string `json:"animationEasingUpdate,omitempty"`
+	// Delay before updating animation
+	AnimationDelayUpdate int `json:"animationDelayUpdate,omitempty"`
+}
+
 // BarData
 // https://echarts.apache.org/en/option.html#series-bar.data
 type BarData struct {
@@ -515,4 +544,14 @@ type Chart3DData struct {
 
 	// The style setting of the text label in a single bar.
 	Label *Label `json:"label,omitempty"`
+}
+
+// SunBurstData data
+type SunBurstData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+	// Value of data item.
+	Value float64 `json:"value,omitempty"`
+	// sub item of data item
+	Children []*SunBurstData `json:"children,omitempty"`
 }
