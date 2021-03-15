@@ -27,4 +27,5 @@ const (
 	ChartThemeRiver    = "themeRiver"
 	ChartWordCloud     = "wordCloud"
 	Tree               = "tree"
+	ChartSunburst      = "sunburst"
 )
