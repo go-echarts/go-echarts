@@ -608,6 +608,7 @@ type TreeData struct {
 
 	// If set as `true`, the node is collpased in the initialization.
 	Collapsed bool `json:"collapsed,omitempty"`
+}
 
 // SunBurstData data
 type SunBurstData struct {
