@@ -26,6 +26,6 @@ const (
 	ChartSurface3D     = "surface"
 	ChartThemeRiver    = "themeRiver"
 	ChartWordCloud     = "wordCloud"
-	Tree               = "tree"
+	ChartTree          = "tree"
 	ChartSunburst      = "sunburst"
 )
