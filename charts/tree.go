@@ -12,7 +12,7 @@ type Tree struct {
 }
 
 // Type returns the chart type.
-func (Tree) Type() string { return types.Tree }
+func (Tree) Type() string { return types.ChartTree }
 
 // NewTree creates a new Tree chart instance.
 func NewTree() *Tree {
@@ -23,7 +23,7 @@ func NewTree() *Tree {
 }
 
 func (c *Tree) AddSeries(name string, data []opts.TreeData, options ...SeriesOpts) *Tree {
-	series := SingleSeries{Name: name, Type: types.Tree, Data: data}
+	series := SingleSeries{Name: name, Type: types.ChartTree, Data: data}
 	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
