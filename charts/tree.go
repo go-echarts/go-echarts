@@ -8,7 +8,7 @@ import (
 
 // Tree represents a Tree chart.
 type Tree struct {
-	RectChart
+	BaseConfiguration
 }
 
 // Type returns the chart type.
