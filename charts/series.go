@@ -49,6 +49,16 @@ type SingleSeries struct {
 	// Scatter
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 
+	// Tree
+	Orient            string      `json:"orient,omitempty"`
+	ExpandAndCollapse bool        `json:"expandAndCollapse,omitempty"`
+	InitialTreeDepth  int         `json:"initialTreeDepth,omitempty"`
+	Leaves            interface{} `json:"leaves,omitempty"`
+	Left              string      `json:"left,omitempty"`
+	Right             string      `json:"right,omitempty"`
+	Top               string      `json:"top,omitempty"`
+	Bottom            string      `json:"bottom,omitempty"`
+
 	// WordCloud
 	Shape         string    `json:"shape,omitempty"`
 	SizeRange     []float32 `json:"sizeRange,omitempty"`
@@ -224,6 +234,23 @@ func WithLiquidChartOpts(opt opts.LiquidChart) SeriesOpts {
 func WithBar3DChartOpts(opt opts.Bar3DChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Shading = opt.Shading
+	}
+}
+
+// WithTreeOpts
+func WithTreeOpts(opt opts.TreeChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.Layout = opt.Layout
+		s.Orient = opt.Orient
+		s.ExpandAndCollapse = opt.ExpandAndCollapse
+		s.InitialTreeDepth = opt.InitialTreeDepth
+		s.Roam = opt.Roam
+		s.Label = opt.Label
+		s.Leaves = opt.Leaves
+		s.Right = opt.Right
+		s.Left = opt.Left
+		s.Top = opt.Top
+		s.Bottom = opt.Bottom
 	}
 }
 

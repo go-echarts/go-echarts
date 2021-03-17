@@ -546,6 +546,70 @@ type Chart3DData struct {
 	Label *Label `json:"label,omitempty"`
 }
 
+type TreeChart struct {
+	// The layout of the tree, which can be orthogonal and radial.
+	// * 'orthogonal' refer to the horizontal and vertical direction.
+	// * 'radial' refers to the view that the root node as the center and each layer of nodes as the ring.
+	Layout string
+
+	// The direction of the orthogonal layout in the tree diagram.
+	// * 'from left to right' or 'LR'
+	// * 'from right to left' or 'RL'
+	// * 'from top to bottom' or 'TB'
+	// * 'from bottom to top' or 'BT'
+	Orient string `json:"orient,omitempty"`
+
+	// Whether to enable mouse zooming and translating. false by default.
+	// If either zooming or translating is wanted, it can be set to 'scale' or 'move'.
+	// Otherwise, set it to be true to enable both.
+	Roam bool `json:"roam"`
+
+	// Subtree collapses and expands interaction, default true.
+	ExpandAndCollapse bool `json:"expandAndCollapse,omitempty"`
+
+	// The initial level (depth) of the tree. The root node is the 0th layer, then the first layer, the second layer, ... , until the leaf node.
+	// This configuration item is primarily used in conjunction with collapsing and expansion interactions.
+	// The purpose is to prevent the nodes from obscuring each other. If set as -1 or null or undefined, all nodes are expanded.
+	InitialTreeDepth int `json:"initialTreeDepth,omitempty"`
+
+	// The style setting of the text label in a single bar.
+	Label *Label `json:"label,omitempty"`
+
+	// Leaf node special configuration, the leaf node and non-leaf node label location is different.
+	Leaves *TreeLeaves `json:"leaves,omitempty"`
+
+	// Distance between tree component and the sides of the container.
+	// value can be instant pixel value like 20;
+	// It can also be a percentage value relative to container width like '20%';
+	Left   string `json:"left,omitempty"`
+	Right  string `json:"right,omitempty"`
+	Top    string `json:"top,omitempty"`
+	Bottom string `json:"bottom,omitempty"`
+}
+
+type TreeData struct {
+	// Name of the data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of the data item.
+	Value int `json:"value,omitempty"`
+
+	Children []*TreeData `json:"children,omitempty"`
+
+	// Symbol of node of this category.
+	// Icon types provided by ECharts includes
+	// 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
+	Symbol string `json:"symbol,omitempty"`
+
+	// node of this category symbol size. It can be set to single numbers like 10,
+	// or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10.
+	SymbolSize interface{} `json:"symbolSize,omitempty"`
+
+	// If set as `true`, the node is collpased in the initialization.
+	Collapsed bool `json:"collapsed,omitempty"`
+}
+
 // SunBurstData data
 type SunBurstData struct {
 	// Name of data item.
