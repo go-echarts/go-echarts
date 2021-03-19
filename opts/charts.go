@@ -608,6 +608,12 @@ type TreeData struct {
 
 	// If set as `true`, the node is collpased in the initialization.
 	Collapsed bool `json:"collapsed,omitempty"`
+
+	// LineStyle settings in this series data.
+	LineStyle *LineStyle `json:"lineStyle,omitempty"`
+
+	// ItemStyle settings in this series data.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
 // SunBurstData data
