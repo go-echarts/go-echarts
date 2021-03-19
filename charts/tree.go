@@ -29,6 +29,12 @@ func (c *Tree) AddSeries(name string, data []opts.TreeData, options ...SeriesOpt
 	return c
 }
 
+// SetGlobalOptions sets options for the Graph instance.
+func (c *Tree) SetGlobalOptions(options ...GlobalOpts) *Tree {
+	c.BaseConfiguration.setBaseGlobalOptions(options...)
+	return c
+}
+
 // Validate validates the given configuration.
 func (c *Tree) Validate() {
 	c.Assets.Validate(c.AssetsHost)
