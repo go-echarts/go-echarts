@@ -25,6 +25,6 @@ func NewBar3D() *Bar3D {
 
 // AddSeries adds the new series.
 func (c *Bar3D) AddSeries(name string, data []opts.Chart3DData, options ...SeriesOpts) *Bar3D {
-	c.addSeries(types.ChartScatter3D, name, data, options...)
+	c.addSeries(types.ChartBar3D, name, data, options...)
 	return c
 }
