@@ -454,6 +454,12 @@ type SankeyNode struct {
 
 	// Value of a single data item.
 	Value string `json:"value,omitempty"`
+
+	// Depth of the node within the chart
+	Depth *int `json:"depth,omitempty"`
+
+	// ItemStyle settings in this series data.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
 // ScatterChart is the option set for a scatter chart.
