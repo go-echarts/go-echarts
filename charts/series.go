@@ -275,6 +275,33 @@ func WithMarkLineNameTypeItemOpts(opt ...opts.MarkLineNameTypeItem) SeriesOpts {
 	}
 }
 
+// WithMarkLineStyleOpts
+func WithMarkLineStyleOpts(opt opts.MarkLineStyle) SeriesOpts {
+	return func(s *SingleSeries) {
+		if s.MarkLines == nil {
+			s.MarkLines = &opts.MarkLines{}
+		}
+
+		s.MarkLines.MarkLineStyle = opt
+	}
+}
+
+// WithMarkLineNameCoordItemOpts
+func WithMarkLineNameCoordItemOpts(opt ...opts.MarkLineNameCoordItem) SeriesOpts {
+	type MLNameCoord struct {
+		Name  string        `json:"name,omitempty"`
+		Coord []interface{} `json:"coord"`
+	}
+	return func(s *SingleSeries) {
+		if s.MarkLines == nil {
+			s.MarkLines = &opts.MarkLines{}
+		}
+		for _, o := range opt {
+			s.MarkLines.Data = append(s.MarkLines.Data, []MLNameCoord{{Name: o.Name, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
+		}
+	}
+}
+
 // WithMarkLineNameXAxisItemOpts
 func WithMarkLineNameXAxisItemOpts(opt ...opts.MarkLineNameXAxisItem) SeriesOpts {
 	return func(s *SingleSeries) {

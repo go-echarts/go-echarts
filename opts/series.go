@@ -217,6 +217,9 @@ type MarkPointNameCoordItem struct {
 	// Mark point coordinate
 	Coordinate []interface{} `json:"coord,omitempty"`
 
+	// Value in mark point
+	Value string `json:"value,omitempty"`
+
 	// Works only when type is assigned.
 	// It is used to state the dimension used to calculate maximum value or minimum value.
 	// It may be the direct name of a dimension, like x,
