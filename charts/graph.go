@@ -2,6 +2,7 @@ package charts
 
 import (
 	"github.com/go-echarts/go-echarts/v2/opts"
+	"github.com/go-echarts/go-echarts/v2/render"
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
@@ -17,6 +18,7 @@ func (Graph) Type() string { return types.ChartGraph }
 func NewGraph() *Graph {
 	chart := new(Graph)
 	chart.initBaseConfiguration()
+	chart.Renderer = render.NewChartRender(chart, chart.Validate)
 	return chart
 }
 
