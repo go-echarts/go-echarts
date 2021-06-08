@@ -177,6 +177,17 @@ type GraphChart struct {
 	// Otherwise, set it to be true to enable both.
 	Roam bool
 
+	// EdgeSymbol is the symbols of two ends of edge line.
+	// * 'circle'
+	// * 'arrow'
+	// * 'none'
+	// example: ["circle", "arrow"] or "circle"
+	EdgeSymbol interface{}
+
+	// EdgeSymbolSize is size of symbol of two ends of edge line. Can be an array or a single number
+	// example: [5,10] or 5
+	EdgeSymbolSize interface{}
+
 	// Draggable allows you to move the nodes with the mouse if they are not fixed.
 	Draggable bool
 
