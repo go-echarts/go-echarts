@@ -188,6 +188,9 @@ type GraphChart struct {
 	// example: [5,10] or 5
 	EdgeSymbolSize interface{}
 
+	// Draggable allows you to move the nodes with the mouse if they are not fixed.
+	Draggable bool
+
 	// Whether to focus/highlight the hover node and it's adjacencies.
 	FocusNodeAdjacency bool
 

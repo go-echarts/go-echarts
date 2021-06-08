@@ -28,6 +28,7 @@ type SingleSeries struct {
 	Roam               bool        `json:"roam,omitempty"`
 	EdgeSymbol         interface{} `json:"edgeSymbol,omitempty"`
 	EdgeSymbolSize     interface{} `json:"edgeSymbolSize,omitempty"`
+	Draggable          bool        `json:"draggable,omitempty"`
 	FocusNodeAdjacency bool        `json:"focusNodeAdjacency,omitempty"`
 
 	// Line
@@ -182,6 +183,7 @@ func WithGraphChartOpts(opt opts.GraphChart) SeriesOpts {
 		s.Roam = opt.Roam
 		s.EdgeSymbol = opt.EdgeSymbol
 		s.EdgeSymbolSize = opt.EdgeSymbolSize
+		s.Draggable = opt.Draggable
 		s.FocusNodeAdjacency = opt.FocusNodeAdjacency
 		s.Categories = opt.Categories
 	}
