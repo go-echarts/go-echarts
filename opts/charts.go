@@ -177,6 +177,9 @@ type GraphChart struct {
 	// Otherwise, set it to be true to enable both.
 	Roam bool
 
+	// Draggable allows you to move the nodes with the mouse if they are not fixed.
+	Draggable bool
+
 	// Whether to focus/highlight the hover node and it's adjacencies.
 	FocusNodeAdjacency bool
 
