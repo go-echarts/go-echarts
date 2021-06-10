@@ -198,6 +198,9 @@ type GraphChart struct {
 	// the category of each node can be assigned through data[i].category.
 	// And the style of category will also be applied to the style of nodes. categories can also be used in legend.
 	Categories []*GraphCategory
+
+	// EdgeLabel is the properties of an label of edge.
+	EdgeLabel *EdgeLabel `json:"edgeLabel"`
 }
 
 // GraphNode represents a data node in graph chart.

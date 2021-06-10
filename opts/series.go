@@ -337,3 +337,61 @@ func HSLColor(h, s, l float32) string {
 func HSLAColor(h, s, l, a float32) string {
 	return fmt.Sprintf("hsla(%f,%f%%,%f%%,%f)", h, s, l, a)
 }
+
+// EdgeLabel is the properties of an label of edge.
+// https://echarts.apache.org/en/option.html#series-graph.edgeLabel
+type EdgeLabel struct {
+
+	// Show is true to show label on edge.
+	Show bool `json:"show,omitempty"`
+
+	// Position is the label's position in line of edge.
+	// * "start"
+	// * "middle"
+	// * "end"
+	Position string `json:"position,omitempty"`
+
+	// Color is the text color
+	Color string `json:"color,omitempty"`
+
+	// FontStyle
+	// * "normal"
+	// * "italic"
+	// * "oblique"
+	FontStyle string `json:"fontStyle,omitempty"`
+
+	// FontWeight can be the string or a number
+	// * "normal"
+	// * "bold"
+	// * "bolder"
+	// * "lighter"
+	// 100 | 200 | 300| 400 ...
+	FontWeight interface{} `json:"fontWeight,omitempty"`
+
+	// FontSize
+	FontSize float32 `json:"fontSize,omitempty"`
+
+	// Align is a horizontal alignment of text, automatic by default.
+	// * "left"
+	// * "center"
+	// * "right"
+	Align string `json:"align,omitempty"`
+
+	// Align is a horizontal alignment of text, automatic by default.
+	// * "top"
+	// * "middle"
+	// * "bottom"
+	VerticalAlign string `json:"verticalAlign,omitempty"`
+
+	// Padding of the text fragment, for example:
+	// Padding: [3, 4, 5, 6]: represents padding of [top, right, bottom, left].
+	// Padding: 4: represents padding: [4, 4, 4, 4].
+	// Padding: [3, 4]: represents padding: [3, 4, 3, 4].
+	Padding interface{} `json:"padding,omitempty"`
+
+	// Width of text block
+	Width float32 `json:"width,omitempty"`
+
+	// Height of text block
+	Height float32 `json:"height,omitempty"`
+}
