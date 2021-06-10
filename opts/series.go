@@ -394,4 +394,15 @@ type EdgeLabel struct {
 
 	// Height of text block
 	Height float32 `json:"height,omitempty"`
+
+	// Edge label formatter, which supports string template and callback function.
+	// In either form, \n is supported to represent a new line.
+	// String template, Model variation includes:
+	//
+	// {a}: series name.
+	// {b}: the name of a data item.
+	// {c}: the value of a data item.
+	// {@xxx}: the value of a dimension named"xxx", for example,{@product}refers the value of"product"` dimension.
+	// {@[n]}: the value of a dimension at the index ofn, for example,{@[3]}` refers the value at dimensions[3].
+	Formatter string `json:"formatter,omitempty"`
 }
