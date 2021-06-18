@@ -282,7 +282,7 @@ type AreaStyle struct {
 type GraphForce struct {
 	// The initial layout before force-directed layout, which will influence on the result of force-directed layout.
 	// It defaults not to do any layout and use x, y provided in node as the position of node.
-	// If it doesn"t exist, the position will be generated randomly.
+	// If it doesn't exist, the position will be generated randomly.
 	// You can also use circular layout "circular".
 	InitLayout string `json:"initLayout,omitempty"`
 
