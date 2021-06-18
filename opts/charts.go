@@ -318,6 +318,9 @@ type LineChart struct {
 
 	// Whether to connect the line across null points.
 	ConnectNulls bool
+
+	// Whether to show symbol. It would be shown during tooltip hover.
+	ShowSymbol bool
 }
 
 // LineData
