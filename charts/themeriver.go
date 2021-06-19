@@ -41,7 +41,7 @@ func (c *ThemeRiver) SetGlobalOptions(options ...GlobalOpts) *ThemeRiver {
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *ThemeRiver) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

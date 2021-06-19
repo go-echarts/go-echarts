@@ -13,7 +13,7 @@ const (
 	PageFlexLayout   Layout = "flex"
 )
 
-// Charter
+// Charter represents a chart value which provides its type, assets and can be validated.
 type Charter interface {
 	Type() string
 	GetAssets() opts.Assets
@@ -39,6 +39,7 @@ func NewPage() *Page {
 	return page
 }
 
+// SetLayout sets the layout of the Page.
 func (page *Page) SetLayout(layout Layout) *Page {
 	page.Layout = layout
 	return page
@@ -61,7 +62,7 @@ func (page *Page) AddCharts(charts ...Charter) *Page {
 	return page
 }
 
-// Validate
+// Validate validates the given configuration.
 func (page *Page) Validate() {
 	page.Initialization.Validate()
 	page.Assets.Validate(page.AssetsHost)

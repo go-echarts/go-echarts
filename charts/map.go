@@ -25,7 +25,7 @@ func NewMap() *Map {
 	return c
 }
 
-// RegisterMapType
+// RegisterMapType registers the given mapType.
 func (c *Map) RegisterMapType(mapType string) {
 	c.mapType = mapType
 	c.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
@@ -45,7 +45,7 @@ func (c *Map) SetGlobalOptions(options ...GlobalOpts) *Map {
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *Map) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

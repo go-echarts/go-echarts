@@ -10,28 +10,28 @@ type Chart3D struct {
 	BaseConfiguration
 }
 
-// WithXAxis3DOpts
+// WithXAxis3DOpts sets the X axis of the Chart3D instance.
 func WithXAxis3DOpts(opt opts.XAxis3D) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.XAxis3D = opt
 	}
 }
 
-// WithYAxis3DOpts
+// WithYAxis3DOpts sets the Y axis of the Chart3D instance.
 func WithYAxis3DOpts(opt opts.YAxis3D) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.YAxis3D = opt
 	}
 }
 
-// WithZAxis3DOpts
+// WithZAxis3DOpts sets the Z axis of the Chart3D instance.
 func WithZAxis3DOpts(opt opts.ZAxis3D) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.ZAxis3D = opt
 	}
 }
 
-// WithGrid3DOpts
+// WithGrid3DOpts sets the grid of the Chart3D instance.
 func WithGrid3DOpts(opt opts.Grid3D) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Grid3D = opt
@@ -60,7 +60,7 @@ func (c *Chart3D) SetGlobalOptions(options ...GlobalOpts) *Chart3D {
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *Chart3D) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

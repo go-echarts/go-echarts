@@ -37,7 +37,7 @@ func (c *HeatMap) AddSeries(name string, data []opts.HeatMapData, options ...Ser
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *HeatMap) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

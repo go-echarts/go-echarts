@@ -22,6 +22,7 @@ func NewTree() *Tree {
 	return c
 }
 
+// AddSeries adds new data sets.
 func (c *Tree) AddSeries(name string, data []opts.TreeData, options ...SeriesOpts) *Tree {
 	series := SingleSeries{Name: name, Type: types.ChartTree, Data: data}
 	series.configureSeriesOpts(options...)
