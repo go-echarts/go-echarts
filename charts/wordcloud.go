@@ -53,7 +53,7 @@ func (c *WordCloud) SetGlobalOptions(options ...GlobalOpts) *WordCloud {
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *WordCloud) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

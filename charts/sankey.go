@@ -36,7 +36,7 @@ func (c *Sankey) SetGlobalOptions(options ...GlobalOpts) *Sankey {
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *Sankey) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

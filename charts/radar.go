@@ -38,7 +38,7 @@ func (c *Radar) SetGlobalOptions(options ...GlobalOpts) *Radar {
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *Radar) Validate() {
 	c.Legend.Data = c.legends
 	c.Assets.Validate(c.AssetsHost)

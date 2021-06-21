@@ -32,7 +32,7 @@ func NewPageRender(c interface{}, before ...func()) Renderer {
 	return &pageRender{c: c, before: before}
 }
 
-// Render
+// Render renders the page into the given io.Writer.
 func (r *pageRender) Render(w io.Writer) error {
 	for _, fn := range r.before {
 		fn()
@@ -63,7 +63,7 @@ func NewChartRender(c interface{}, before ...func()) Renderer {
 	return &chartRender{c: c, before: before}
 }
 
-// Render
+// Render renders the chart into the given io.Writer.
 func (r *chartRender) Render(w io.Writer) error {
 	for _, fn := range r.before {
 		fn()
@@ -84,7 +84,7 @@ func (r *chartRender) Render(w io.Writer) error {
 	return err
 }
 
-// MustTemplate
+// MustTemplate creates a new template with the given name and parsed contents.
 func MustTemplate(name string, contents []string) *template.Template {
 	tpl := template.Must(template.New(name).Parse(contents[0])).Funcs(template.FuncMap{
 		"safeJS": func(s interface{}) template.JS {
