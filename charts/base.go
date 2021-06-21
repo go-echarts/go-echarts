@@ -1,6 +1,10 @@
 package charts
 
 import (
+	"bytes"
+	"encoding/json"
+	"html/template"
+
 	"github.com/go-echarts/go-echarts/v2/datasets"
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/render"
@@ -63,6 +67,21 @@ type BaseConfiguration struct {
 // Get data in bytes
 // bs, _ : = json.Marshal(bar.JSON())
 func (bc *BaseConfiguration) JSON() map[string]interface{} {
+	return bc.json()
+}
+
+// JSONNotEscaped works like method JSON, but it returns a marshaled object whose characters will not be escaped in the template
+func (bc *BaseConfiguration) JSONNotEscaped() template.HTML {
+	obj := bc.json()
+	buff := bytes.NewBufferString("")
+	enc := json.NewEncoder(buff)
+	enc.SetEscapeHTML(false)
+	enc.Encode(obj)
+
+	return template.HTML(buff.String())
+}
+
+func (bc *BaseConfiguration) json() map[string]interface{} {
 	obj := map[string]interface{}{
 		"title":   bc.Title,
 		"legend":  bc.Legend,

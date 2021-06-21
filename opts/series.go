@@ -1,6 +1,8 @@
 package opts
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Label contains options for a label text.
 // https://echarts.apache.org/en/option.html#series-line.label
