@@ -475,7 +475,7 @@ type ToolBoxFeatureRestore struct {
 // https://echarts.apache.org/en/option.html#xAxis.axisLabel
 type AxisLabel struct {
 	// Set this to false to prevent the axis label from appearing.
-	Show bool `json:"show,omitempty"`
+	Show bool `json:"show"`
 
 	// Interval of Axis label, which is available in category axis.
 	// It uses a strategy that labels do not overlap by default.
@@ -547,6 +547,11 @@ type AxisLabel struct {
 	LineHeight string `json:"lineHeight,omitempty"`
 }
 
+type AxisTick struct {
+	Show     bool   `json:"show"`
+	Interval string `json:"interval,omitempty"`
+}
+
 // XAxis is the option set for X axis.
 // https://echarts.apache.org/en/option.html#xAxis
 type XAxis struct {
@@ -611,6 +616,8 @@ type XAxis struct {
 
 	// Settings related to axis label.
 	AxisLabel *AxisLabel `json:"axisLabel,omitempty"`
+
+	AxisTick *AxisTick `json:"axisTick,omitempty"`
 }
 
 // YAxis is the option set for Y axis.
