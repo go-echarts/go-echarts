@@ -222,7 +222,7 @@ type GraphNode struct {
 	Fixed bool `json:"fixed,omitempty"`
 
 	// Index of category which the data item belongs to.
-	Category int `json:"category,omitempty"`
+	Category interface{} `json:"category,omitempty"`
 
 	// Symbol of node of this category.
 	// Icon types provided by ECharts includes
