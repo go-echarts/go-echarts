@@ -1,6 +1,8 @@
 package opts
 
-import "fmt"
+import (
+	"fmt"
+)
 
 // Label contains options for a label text.
 // https://echarts.apache.org/en/option.html#series-line.label
@@ -73,7 +75,7 @@ type Emphasis struct {
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
-// ItemStyle
+// ItemStyle represents a style of an item.
 type ItemStyle struct {
 	// Color of chart
 	// Kline Up candle color
@@ -127,7 +129,7 @@ type MarkLineNameTypeItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
-// MarkLineNameYAxisItem
+// MarkLineNameYAxisItem defines a MarkLine on a Y axis.
 type MarkLineNameYAxisItem struct {
 	// Mark line name
 	Name string `json:"name,omitempty"`
@@ -142,7 +144,7 @@ type MarkLineNameYAxisItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
-// MarkLineNameXAxisItem
+// MarkLineNameXAxisItem defines a MarkLine on a X axis.
 type MarkLineNameXAxisItem struct {
 	// Mark line name
 	Name string `json:"name,omitempty"`

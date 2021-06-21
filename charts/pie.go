@@ -36,7 +36,7 @@ func (c *Pie) SetGlobalOptions(options ...GlobalOpts) *Pie {
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *Pie) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

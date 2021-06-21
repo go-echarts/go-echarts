@@ -29,7 +29,7 @@ func (xy *XYAxis) ExtendYAxis(yAxis ...opts.YAxis) {
 	xy.YAxisList = append(xy.YAxisList, yAxis...)
 }
 
-// WithXAxisOpts
+// WithXAxisOpts sets the X axis.
 func WithXAxisOpts(opt opts.XAxis, index ...int) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		if len(index) == 0 {
@@ -41,7 +41,7 @@ func WithXAxisOpts(opt opts.XAxis, index ...int) GlobalOpts {
 	}
 }
 
-// WithYAxisOpts
+// WithYAxisOpts sets the Y axis.
 func WithYAxisOpts(opt opts.YAxis, index ...int) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		if len(index) == 0 {
@@ -88,7 +88,7 @@ func (rc *RectChart) Overlap(a ...Overlaper) {
 	}
 }
 
-// Validate
+// Validate validates the given configuration.
 func (rc *RectChart) Validate() {
 	// Make sure that the data of X axis won't be cleaned for XAxisOpts
 	rc.XAxisList[0].Data = rc.xAxisData

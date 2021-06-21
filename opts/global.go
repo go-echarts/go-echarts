@@ -147,7 +147,7 @@ type Title struct {
 	// Distance between title component and the right side of the container.
 	// right value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'.
-	//Adaptive by default.
+	// Adaptive by default.
 	Right string `json:"right,omitempty"`
 }
 
@@ -512,7 +512,7 @@ type AxisLabel struct {
 	//        texts.unshift(date.getYear());
 	//    }
 	//    return texts.join('/');
-	//}
+	// }
 	Formatter string `json:"formatter,omitempty"`
 
 	ShowMinLabel bool `json:"showMinLabel"`
@@ -823,7 +823,7 @@ type SingleAxis struct {
 	Left string `json:"left,omitempty"`
 
 	// Distance between grid component and the right side of the container.
-	//right value can be instant pixel value like 20; it can also be a percentage
+	// right value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'.
 	Right string `json:"right,omitempty"`
 
@@ -1024,7 +1024,7 @@ func replaceJsFuncs(fn string) string {
 
 type Colors []string
 
-// AssetsOpts contains options for static assets.
+// Assets contains options for static assets.
 type Assets struct {
 	JSAssets  types.OrderedSet
 	CSSAssets types.OrderedSet
