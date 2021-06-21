@@ -36,7 +36,7 @@ func (c *Gauge) SetGlobalOptions(options ...GlobalOpts) *Gauge {
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *Gauge) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }
