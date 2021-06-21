@@ -36,7 +36,7 @@ func (c *Funnel) SetGlobalOptions(options ...GlobalOpts) *Funnel {
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *Funnel) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

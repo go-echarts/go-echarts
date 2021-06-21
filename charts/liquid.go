@@ -37,7 +37,7 @@ func (c *Liquid) SetGlobalOptions(options ...GlobalOpts) *Liquid {
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *Liquid) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

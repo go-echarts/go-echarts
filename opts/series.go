@@ -75,7 +75,7 @@ type Emphasis struct {
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
-// ItemStyle
+// ItemStyle represents a style of an item.
 type ItemStyle struct {
 	// Color of chart
 	// Kline Up candle color
@@ -129,7 +129,7 @@ type MarkLineNameTypeItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
-// MarkLineNameYAxisItem
+// MarkLineNameYAxisItem defines a MarkLine on a Y axis.
 type MarkLineNameYAxisItem struct {
 	// Mark line name
 	Name string `json:"name,omitempty"`
@@ -144,7 +144,7 @@ type MarkLineNameYAxisItem struct {
 	ValueDim string `json:"valueDim,omitempty"`
 }
 
-// MarkLineNameXAxisItem
+// MarkLineNameXAxisItem defines a MarkLine on a X axis.
 type MarkLineNameXAxisItem struct {
 	// Mark line name
 	Name string `json:"name,omitempty"`
@@ -284,7 +284,7 @@ type AreaStyle struct {
 type GraphForce struct {
 	// The initial layout before force-directed layout, which will influence on the result of force-directed layout.
 	// It defaults not to do any layout and use x, y provided in node as the position of node.
-	// If it doesn"t exist, the position will be generated randomly.
+	// If it doesn't exist, the position will be generated randomly.
 	// You can also use circular layout "circular".
 	InitLayout string `json:"initLayout,omitempty"`
 
