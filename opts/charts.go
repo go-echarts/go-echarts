@@ -632,7 +632,7 @@ type TreeData struct {
 	// or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10.
 	SymbolSize interface{} `json:"symbolSize,omitempty"`
 
-	// If set as `true`, the node is collpased in the initialization.
+	// If set as `true`, the node is collapsed in the initialization.
 	Collapsed bool `json:"collapsed,omitempty"`
 
 	// LineStyle settings in this series data.
