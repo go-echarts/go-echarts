@@ -593,6 +593,12 @@ type XAxis struct {
 	// It will be automatically computed to make sure axis tick is equally distributed when not set.
 	Max interface{} `json:"max,omitempty"`
 
+	// Minimum gap between split lines. For 'time' axis, MinInterval is in unit of milliseconds.
+	MinInterval float64 `json:"minInterval,omitempty"`
+
+	// Maximum gap between split lines. For 'time' axis, MaxInterval is in unit of milliseconds.
+	MaxInterval float64 `json:"maxInterval,omitempty"`
+
 	// The index of grid which the x axis belongs to. Defaults to be in the first grid.
 	// default 0
 	GridIndex int `json:"gridIndex,omitempty"`
