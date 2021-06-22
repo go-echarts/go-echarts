@@ -655,6 +655,7 @@ type XAxis struct {
 	// Settings related to axis label.
 	AxisLabel *AxisLabel `json:"axisLabel,omitempty"`
 
+	// Settings related to axis tick.
 	AxisTick *AxisTick `json:"axisTick,omitempty"`
 }
 
@@ -717,6 +718,7 @@ type YAxis struct {
 	// Settings related to axis label.
 	AxisLabel *AxisLabel `json:"axisLabel,omitempty"`
 
+	// Settings related to axis line.
 	AxisLine *AxisLine `json:"axisLine,omitempty"`
 }
 
