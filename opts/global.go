@@ -552,6 +552,35 @@ type AxisTick struct {
 	Interval string `json:"interval,omitempty"`
 }
 
+// AxisLine controls settings related to axis line.
+// https://echarts.apache.org/en/option.html#yAxis.axisLine
+type AxisLine struct {
+	// Set this to false to prevent the axis line from showing.
+	Show bool `json:"show"`
+
+	// Specifies whether X or Y axis lies on the other's origin position, where value is 0 on axis.
+	// Valid only if the other axis is of value type, and contains 0 value.
+	OnZero bool `json:"onZero"`
+
+	// When multiple axes exists, this option can be used to specify which axis can be "onZero" to.
+	OnZeroAxisIndex int `json:"onZeroAxisIndex"`
+
+	// Symbol of the two ends of the axis. It could be a string, representing the same symbol for two ends; or an array
+	// with two string elements, representing the two ends separately. It's set to be 'none' by default, meaning no
+	//arrow for either end. If it is set to be 'arrow', there shall be two arrows. If there should only one arrow
+	//at the end, it should set to be ['none', 'arrow'].
+	Symbol string `json:"symbol"`
+
+	// Size of the arrows at two ends. The first is the width perpendicular to the axis, the next is the width parallel to the axis.
+	SymbolSize []float64 `json:"symbolSize"`
+
+	// Arrow offset of axis. If is array, the first number is the offset of the arrow at the beginning, and the second
+	// number is the offset of the arrow at the end. If is number, it means the arrows have the same offset.
+	SymbolOffset []float64 `json:"symbolOffset"`
+
+	LineStyle *LineStyle `json:"lineStyle,omitempty"`
+}
+
 // XAxis is the option set for X axis.
 // https://echarts.apache.org/en/option.html#xAxis
 type XAxis struct {
@@ -678,6 +707,8 @@ type YAxis struct {
 
 	// Settings related to axis label.
 	AxisLabel *AxisLabel `json:"axisLabel,omitempty"`
+
+	AxisLine *AxisLine `json:"axisLine,omitempty"`
 }
 
 // TextStyle is the option set for a text style component.
