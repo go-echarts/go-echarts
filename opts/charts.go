@@ -177,6 +177,20 @@ type GraphChart struct {
 	// Otherwise, set it to be true to enable both.
 	Roam bool
 
+	// EdgeSymbol is the symbols of two ends of edge line.
+	// * 'circle'
+	// * 'arrow'
+	// * 'none'
+	// example: ["circle", "arrow"] or "circle"
+	EdgeSymbol interface{}
+
+	// EdgeSymbolSize is size of symbol of two ends of edge line. Can be an array or a single number
+	// example: [5,10] or 5
+	EdgeSymbolSize interface{}
+
+	// Draggable allows you to move the nodes with the mouse if they are not fixed.
+	Draggable bool
+
 	// Whether to focus/highlight the hover node and it's adjacencies.
 	FocusNodeAdjacency bool
 
@@ -184,6 +198,9 @@ type GraphChart struct {
 	// the category of each node can be assigned through data[i].category.
 	// And the style of category will also be applied to the style of nodes. categories can also be used in legend.
 	Categories []*GraphCategory
+
+	// EdgeLabel is the properties of an label of edge.
+	EdgeLabel *EdgeLabel `json:"edgeLabel"`
 }
 
 // GraphNode represents a data node in graph chart.
@@ -205,7 +222,7 @@ type GraphNode struct {
 	Fixed bool `json:"fixed,omitempty"`
 
 	// Index of category which the data item belongs to.
-	Category int `json:"category,omitempty"`
+	Category interface{} `json:"category,omitempty"`
 
 	// Symbol of node of this category.
 	// Icon types provided by ECharts includes
@@ -301,6 +318,9 @@ type LineChart struct {
 
 	// Whether to connect the line across null points.
 	ConnectNulls bool
+
+	// Whether to show symbol. It would be shown during tooltip hover.
+	ShowSymbol bool
 }
 
 // LineData
@@ -454,6 +474,12 @@ type SankeyNode struct {
 
 	// Value of a single data item.
 	Value string `json:"value,omitempty"`
+
+	// Depth of the node within the chart
+	Depth *int `json:"depth,omitempty"`
+
+	// ItemStyle settings in this series data.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
 // ScatterChart is the option set for a scatter chart.
@@ -606,7 +632,7 @@ type TreeData struct {
 	// or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10.
 	SymbolSize interface{} `json:"symbolSize,omitempty"`
 
-	// If set as `true`, the node is collpased in the initialization.
+	// If set as `true`, the node is collapsed in the initialization.
 	Collapsed bool `json:"collapsed,omitempty"`
 
 	// LineStyle settings in this series data.

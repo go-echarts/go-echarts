@@ -59,7 +59,7 @@ func (c *Geo) SetGlobalOptions(options ...GlobalOpts) *Geo {
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *Geo) Validate() {
 	if c.Tooltip.Formatter == "" {
 		c.Tooltip.Formatter = opts.FuncOpts(geoFormatter)
