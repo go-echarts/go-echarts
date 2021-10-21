@@ -642,6 +642,48 @@ type TreeData struct {
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
+type TreeMapChart struct {
+	// Whether to enable animation.
+	Animation bool `json:"animation"`
+
+	// leafDepth represents how many levels are shown at most. For example, when leafDepth is set to 1, only one level will be shown.
+	// leafDepth is null/undefined by default, which means that "drill down" is disabled.
+	LeafDepth int `json:"leafDeapth,omitempty"`
+
+	// Roam describes whether to enable mouse zooming and translating. false by default.
+	Roam bool `json:"roam"`
+
+	// Label decribes the style of the label in each node.
+	Label *Label `json:"label,omitempty"`
+
+	// UpperLabel is used to specify whether show label when the treemap node has children.
+	UpperLabel *UpperLabel `json:"upperLabel,omitempty"`
+
+	// ColorMappingBy specifies the rule according to which each node obtain color from color list.
+	ColorMappingBy string `json:"colorMappingBy,omitempty"`
+
+	// Levels provide configration for each node level
+	Levels *[]TreeMapLevel `json:"levels,omitempty"`
+
+	// Distance between treemap component and the sides of the container.
+	// value can be instant pixel value like 20;
+	// It can also be a percentage value relative to container width like '20%';
+	Left   string `json:"left,omitempty"`
+	Right  string `json:"right,omitempty"`
+	Top    string `json:"top,omitempty"`
+	Bottom string `json:"bottom,omitempty"`
+}
+
+type TreeMapNode struct {
+	// Name of the tree node item.
+	Name string `json:"name"`
+
+	// Value of the tree node item.
+	Value int `json:"value,omitempty"`
+
+	Children []TreeMapNode `json:"children,omitempty"`
+}
+
 // SunBurstData data
 type SunBurstData struct {
 	// Name of data item.

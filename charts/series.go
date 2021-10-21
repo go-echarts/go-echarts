@@ -64,6 +64,11 @@ type SingleSeries struct {
 	Top               string      `json:"top,omitempty"`
 	Bottom            string      `json:"bottom,omitempty"`
 
+	// TreeMap
+	LeafDepth  int         `json:"leafDepth,omitempty"`
+	Levels     interface{} `json:"levels,omitempty"`
+	UpperLabel interface{} `json:"upperLabel,omitempty"`
+
 	// WordCloud
 	Shape         string    `json:"shape,omitempty"`
 	SizeRange     []float32 `json:"sizeRange,omitempty"`
@@ -256,6 +261,21 @@ func WithTreeOpts(opt opts.TreeChart) SeriesOpts {
 		s.Roam = opt.Roam
 		s.Label = opt.Label
 		s.Leaves = opt.Leaves
+		s.Right = opt.Right
+		s.Left = opt.Left
+		s.Top = opt.Top
+		s.Bottom = opt.Bottom
+	}
+}
+
+// WithTreeMapOpts sets the TreeMapChart options.
+func WithTreeMapOpts(opt opts.TreeMapChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.Animation = opt.Animation
+		s.LeafDepth = opt.LeafDepth
+		s.Roam = opt.Roam
+		s.Levels = opt.Levels
+		s.UpperLabel = opt.UpperLabel
 		s.Right = opt.Right
 		s.Left = opt.Left
 		s.Top = opt.Top
