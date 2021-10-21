@@ -158,6 +158,11 @@ type Legend struct {
 	// Whether to show the Legend, default true.
 	Show bool `json:"show"`
 
+	// Type of legend. Optional values:
+	// "plain": Simple legend. (default)
+	// "scroll": Scrollable legend. It helps when too many legend items needed to be shown.
+	Type string `json:"type"`
+
 	// Distance between legend component and the left side of the container.
 	// left value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
