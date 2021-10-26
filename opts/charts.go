@@ -249,6 +249,9 @@ type GraphLink struct {
 
 	// value of edge, can be mapped to edge length in force graph.
 	Value float32 `json:"value,omitempty"`
+
+	// Label for this link.
+	Label *EdgeLabel `json:"label,omitempty"`
 }
 
 // GraphCategory represents a category for data nodes.
