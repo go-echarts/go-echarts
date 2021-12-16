@@ -102,6 +102,7 @@ type SingleSeries struct {
 	*opts.LineStyle    `json:"lineStyle,omitempty"`
 	*opts.AreaStyle    `json:"areaStyle,omitempty"`
 	*opts.TextStyle    `json:"textStyle,omitempty"`
+	*opts.CircularStyle `json:"circular,omitempty"`
 }
 
 type SeriesOpts func(s *SingleSeries)
@@ -145,6 +146,13 @@ func WithRippleEffectOpts(opt opts.RippleEffect) SeriesOpts {
 func WithLineStyleOpts(opt opts.LineStyle) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.LineStyle = &opt
+	}
+}
+
+// With CircularStyle Opts
+func WithCircularStyleOpts(opt opts.CircularStyle) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.CircularStyle = &opt
 	}
 }
 

@@ -126,6 +126,11 @@ type MarkLineStyle struct {
 	Label *Label `json:"label,omitempty"`
 }
 
+// CircularStyle contains styling options for circular layout.
+type CircularStyle struct {
+	RotateLabel bool `json:"rotateLabel,omitempty"`
+}
+
 // MarkLineNameTypeItem represents type for a MarkLine.
 type MarkLineNameTypeItem struct {
 	// Mark line name.
