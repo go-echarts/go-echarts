@@ -92,16 +92,16 @@ type SingleSeries struct {
 	Data interface{} `json:"data"`
 
 	// series options
-	*opts.ItemStyle    `json:"itemStyle,omitempty"`
-	*opts.Label        `json:"label,omitempty"`
-	*opts.LabelLine    `json:"labelLine,omitempty"`
-	*opts.Emphasis     `json:"emphasis,omitempty"`
-	*opts.MarkLines    `json:"markLine,omitempty"`
-	*opts.MarkPoints   `json:"markPoint,omitempty"`
-	*opts.RippleEffect `json:"rippleEffect,omitempty"`
-	*opts.LineStyle    `json:"lineStyle,omitempty"`
-	*opts.AreaStyle    `json:"areaStyle,omitempty"`
-	*opts.TextStyle    `json:"textStyle,omitempty"`
+	*opts.ItemStyle     `json:"itemStyle,omitempty"`
+	*opts.Label         `json:"label,omitempty"`
+	*opts.LabelLine     `json:"labelLine,omitempty"`
+	*opts.Emphasis      `json:"emphasis,omitempty"`
+	*opts.MarkLines     `json:"markLine,omitempty"`
+	*opts.MarkPoints    `json:"markPoint,omitempty"`
+	*opts.RippleEffect  `json:"rippleEffect,omitempty"`
+	*opts.LineStyle     `json:"lineStyle,omitempty"`
+	*opts.AreaStyle     `json:"areaStyle,omitempty"`
+	*opts.TextStyle     `json:"textStyle,omitempty"`
 	*opts.CircularStyle `json:"circular,omitempty"`
 }
 
