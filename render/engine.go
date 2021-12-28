@@ -22,6 +22,10 @@ const (
 	ModPage  = "page"
 )
 
+var (
+	pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
+)
+
 type pageRender struct {
 	c      interface{}
 	before []func()
@@ -46,7 +50,6 @@ func (r *pageRender) Render(w io.Writer) error {
 		return err
 	}
 
-	pat := regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
 
 	_, err := w.Write(content)
@@ -77,7 +80,6 @@ func (r *chartRender) Render(w io.Writer) error {
 		return err
 	}
 
-	pat := regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
 
 	_, err := w.Write(content)
