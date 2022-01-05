@@ -40,7 +40,7 @@ Classic way to get go-echarts
 # the next generation version management system... 🐶
 # if you get a better workaround, please let me know....
 
-$ go get -u github.com/go-echarts/go-echarts/...
+$ go get -u github.com/marin1995/go-echarts/...
 $ cd $go-echarts-project
 $ mkdir v2 && mv charts components datasets opts render templates types v2
 ```
@@ -48,7 +48,7 @@ $ mkdir v2 && mv charts components datasets opts render templates types v2
 Use gomod style
 
 ```shell
-$ go get -u github.com/go-echarts/go-echarts/v2/...
+$ go get -u github.com/marin1995/go-echarts/v2/...
 ```
 
 OR
@@ -56,7 +56,7 @@ OR
 ```shell
 # go.mod
 
-require github.com/go-echarts/go-echarts/v2
+require github.com/marin1995/go-echarts/v2
 ```
 
 ### ⏳ Version
