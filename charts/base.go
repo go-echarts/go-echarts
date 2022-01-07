@@ -60,6 +60,8 @@ type BaseConfiguration struct {
 	hasParallel   bool
 	hasSingleAxis bool
 	hasPolar      bool
+
+	GridList []opts.Grid `json:"grid,omitempty"`
 }
 
 // JSON wraps all the options to a map so that it could be used in the base template
@@ -142,6 +144,10 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 
 	if bc.BackgroundColor != "" {
 		obj["backgroundColor"] = bc.BackgroundColor
+	}
+
+	if len(bc.GridList) > 0 {
+		obj["grid"] = bc.GridList
 	}
 
 	return obj
@@ -307,4 +313,11 @@ func reverseSlice(s []string) []string {
 		s[i], s[j] = s[j], s[i]
 	}
 	return s
+}
+
+// WithGridOpts sets the List of the grid.
+func WithGridOpts(opt ...opts.Grid) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.GridList = append(bc.GridList, opt...)
+	}
 }

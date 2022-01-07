@@ -1326,3 +1326,19 @@ type ViewControl struct {
 	// default 10
 	AutoRotateSpeed float32 `json:"autoRotateSpeed,omitempty"`
 }
+
+// Grid Drawing grid in rectangular coordinate.
+// https://echarts.apache.org/en/option.html#grid
+type Grid struct {
+	// Distance between grid component and the left side of the container.
+	Left string `json:"left,omitempty"`
+
+	// Distance between grid component and the right side of the container.
+	Right string `json:"right,omitempty"`
+
+	// Distance between grid component and the top side of the container.
+	Top string `json:"top,omitempty"`
+
+	// Distance between grid component and the bottom side of the container.
+	Bottom string `json:"bottom,omitempty"`
+}
