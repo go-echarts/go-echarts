@@ -92,16 +92,17 @@ type SingleSeries struct {
 	Data interface{} `json:"data"`
 
 	// series options
-	*opts.ItemStyle    `json:"itemStyle,omitempty"`
-	*opts.Label        `json:"label,omitempty"`
-	*opts.LabelLine    `json:"labelLine,omitempty"`
-	*opts.Emphasis     `json:"emphasis,omitempty"`
-	*opts.MarkLines    `json:"markLine,omitempty"`
-	*opts.MarkPoints   `json:"markPoint,omitempty"`
-	*opts.RippleEffect `json:"rippleEffect,omitempty"`
-	*opts.LineStyle    `json:"lineStyle,omitempty"`
-	*opts.AreaStyle    `json:"areaStyle,omitempty"`
-	*opts.TextStyle    `json:"textStyle,omitempty"`
+	*opts.ItemStyle     `json:"itemStyle,omitempty"`
+	*opts.Label         `json:"label,omitempty"`
+	*opts.LabelLine     `json:"labelLine,omitempty"`
+	*opts.Emphasis      `json:"emphasis,omitempty"`
+	*opts.MarkLines     `json:"markLine,omitempty"`
+	*opts.MarkPoints    `json:"markPoint,omitempty"`
+	*opts.RippleEffect  `json:"rippleEffect,omitempty"`
+	*opts.LineStyle     `json:"lineStyle,omitempty"`
+	*opts.AreaStyle     `json:"areaStyle,omitempty"`
+	*opts.TextStyle     `json:"textStyle,omitempty"`
+	*opts.CircularStyle `json:"circular,omitempty"`
 }
 
 type SeriesOpts func(s *SingleSeries)
@@ -145,6 +146,13 @@ func WithRippleEffectOpts(opt opts.RippleEffect) SeriesOpts {
 func WithLineStyleOpts(opt opts.LineStyle) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.LineStyle = &opt
+	}
+}
+
+// With CircularStyle Opts
+func WithCircularStyleOpts(opt opts.CircularStyle) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.CircularStyle = &opt
 	}
 }
 
