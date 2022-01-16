@@ -796,6 +796,30 @@ type VisualMap struct {
 
 	// Define visual channels that will mapped from dataValues that are in selected range.
 	InRange *VisualMapInRange `json:"inRange,omitempty"`
+
+	// Distance between visualMap component and the left side of the container.
+	// left value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
+	// If the left value is set to be 'left', 'center', or 'right',
+	// then the component will be aligned automatically based on position.
+	Left string `json:"left,omitempty"`
+
+	// Distance between visualMap component and the right side of the container.
+	// right value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'.
+	Right string `json:"right,omitempty"`
+
+	// Distance between visualMap component and the top side of the container.
+	// top value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
+	// If the left value is set to be 'top', 'middle', or 'bottom',
+	// then the component will be aligned automatically based on position.
+	Top string `json:"top,omitempty"`
+
+	// Distance between visualMap component and the bottom side of the container.
+	// bottom value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'.
+	Bottom string `json:"bottom,omitempty"`
 }
 
 // VisualMapInRange is a visual map instance in a range.
@@ -1301,4 +1325,20 @@ type ViewControl struct {
 	// Rotate Speed, (angle/s).
 	// default 10
 	AutoRotateSpeed float32 `json:"autoRotateSpeed,omitempty"`
+}
+
+// Grid Drawing grid in rectangular coordinate.
+// https://echarts.apache.org/en/option.html#grid
+type Grid struct {
+	// Distance between grid component and the left side of the container.
+	Left string `json:"left,omitempty"`
+
+	// Distance between grid component and the right side of the container.
+	Right string `json:"right,omitempty"`
+
+	// Distance between grid component and the top side of the container.
+	Top string `json:"top,omitempty"`
+
+	// Distance between grid component and the bottom side of the container.
+	Bottom string `json:"bottom,omitempty"`
 }
