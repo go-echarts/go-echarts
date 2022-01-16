@@ -33,10 +33,10 @@ type SingleSeries struct {
 	FocusNodeAdjacency bool        `json:"focusNodeAdjacency,omitempty"`
 
 	// Line
-	Step         bool `json:"step,omitempty"`
-	Smooth       bool `json:"smooth,omitempty"`
-	ConnectNulls bool `json:"connectNulls,omitempty"`
-	ShowSymbol   bool `json:"showSymbol"`
+	Step         interface{} `json:"step,omitempty"`
+	Smooth       bool        `json:"smooth,omitempty"`
+	ConnectNulls bool        `json:"connectNulls,omitempty"`
+	ShowSymbol   bool        `json:"showSymbol"`
 
 	// Liquid
 	IsLiquidOutline bool `json:"outline,omitempty"`
