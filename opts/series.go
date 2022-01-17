@@ -47,7 +47,7 @@ type Label struct {
 	BorderColor string `json:"borderColor,omitempty"`
 
 	// Border width of the text fragment.
-	BorderWidth string `json:"borderWidth,omitempty"`
+	BorderWidth float32 `json:"borderWidth,omitempty"`
 
 	// the text fragment border type.
 	// Possible values are: 'solid', 'dashed', 'dotted'
