@@ -308,6 +308,16 @@ type MarkPointNameCoordItem struct {
 
 	// ItemStyle settings
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	// Symbol type
+	// Options: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
+	Symbol string `json:"symbol,omitempty"`
+
+	// Symbol size.
+	SymbolSize float32 `json:"symbolSize,omitempty"`
+
+	// Symbol rotate.
+	SymbolRotate float32 `json:"symbolRotate,omitempty"`
 }
 
 // RippleEffect is the option set for the ripple effect.
