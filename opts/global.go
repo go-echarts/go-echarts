@@ -797,6 +797,11 @@ type VisualMap struct {
 	// Define visual channels that will mapped from dataValues that are in selected range.
 	InRange *VisualMapInRange `json:"inRange,omitempty"`
 
+	// Whether to show visualMap-piecewise component. If set as false,
+	// visualMap-piecewise component will not show,
+	// but it can still perform visual mapping from dataValue to visual channel in chart.
+	Show bool `json:"show"`
+
 	// Distance between visualMap component and the left side of the container.
 	// left value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
