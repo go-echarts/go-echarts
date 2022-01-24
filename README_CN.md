@@ -108,7 +108,7 @@ func main() {
 
 ![](https://user-images.githubusercontent.com/19553554/98435974-5094f780-2112-11eb-81f6-b31d68f4d535.png)
 
-当然也可以使用启动 http 服务将图标直接渲染出来
+当然也可以使用启动 http 服务将图表直接渲染出来
 
 ```golang
 package main
