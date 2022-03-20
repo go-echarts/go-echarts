@@ -26,12 +26,17 @@ type SingleSeries struct {
 	Force              interface{} `json:"force,omitempty"`
 	Categories         interface{} `json:"categories,omitempty"`
 	Roam               bool        `json:"roam,omitempty"`
+	EdgeSymbol         interface{} `json:"edgeSymbol,omitempty"`
+	EdgeSymbolSize     interface{} `json:"edgeSymbolSize,omitempty"`
+	EdgeLabel          interface{} `json:"edgeLabel,omitempty"`
+	Draggable          bool        `json:"draggable,omitempty"`
 	FocusNodeAdjacency bool        `json:"focusNodeAdjacency,omitempty"`
 
 	// Line
-	Step         bool `json:"step,omitempty"`
-	Smooth       bool `json:"smooth,omitempty"`
-	ConnectNulls bool `json:"connectNulls,omitempty"`
+	Step         interface{} `json:"step,omitempty"`
+	Smooth       bool        `json:"smooth,omitempty"`
+	ConnectNulls bool        `json:"connectNulls,omitempty"`
+	ShowSymbol   bool        `json:"showSymbol"`
 
 	// Liquid
 	IsLiquidOutline bool `json:"outline,omitempty"`
@@ -59,6 +64,11 @@ type SingleSeries struct {
 	Top               string      `json:"top,omitempty"`
 	Bottom            string      `json:"bottom,omitempty"`
 
+	// TreeMap
+	LeafDepth  int         `json:"leafDepth,omitempty"`
+	Levels     interface{} `json:"levels,omitempty"`
+	UpperLabel interface{} `json:"upperLabel,omitempty"`
+
 	// WordCloud
 	Shape         string    `json:"shape,omitempty"`
 	SizeRange     []float32 `json:"sizeRange,omitempty"`
@@ -82,65 +92,73 @@ type SingleSeries struct {
 	Data interface{} `json:"data"`
 
 	// series options
-	*opts.ItemStyle    `json:"itemStyle,omitempty"`
-	*opts.Label        `json:"label,omitempty"`
-	*opts.LabelLine    `json:"labelLine,omitempty"`
-	*opts.Emphasis     `json:"emphasis,omitempty"`
-	*opts.MarkLines    `json:"markLine,omitempty"`
-	*opts.MarkPoints   `json:"markPoint,omitempty"`
-	*opts.RippleEffect `json:"rippleEffect,omitempty"`
-	*opts.LineStyle    `json:"lineStyle,omitempty"`
-	*opts.AreaStyle    `json:"areaStyle,omitempty"`
-	*opts.TextStyle    `json:"textStyle,omitempty"`
+	*opts.ItemStyle     `json:"itemStyle,omitempty"`
+	*opts.Label         `json:"label,omitempty"`
+	*opts.LabelLine     `json:"labelLine,omitempty"`
+	*opts.Emphasis      `json:"emphasis,omitempty"`
+	*opts.MarkLines     `json:"markLine,omitempty"`
+	*opts.MarkPoints    `json:"markPoint,omitempty"`
+	*opts.RippleEffect  `json:"rippleEffect,omitempty"`
+	*opts.LineStyle     `json:"lineStyle,omitempty"`
+	*opts.AreaStyle     `json:"areaStyle,omitempty"`
+	*opts.TextStyle     `json:"textStyle,omitempty"`
+	*opts.CircularStyle `json:"circular,omitempty"`
 }
 
 type SeriesOpts func(s *SingleSeries)
 
-// WithLabelOpts
+// WithLabelOpts sets the label.
 func WithLabelOpts(opt opts.Label) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Label = &opt
 	}
 }
 
-// WithEmphasisOpts
+// WithEmphasisOpts sets the emphasis.
 func WithEmphasisOpts(opt opts.Emphasis) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Emphasis = &opt
 	}
 }
 
-// WithAreaStyleOpts
+// WithAreaStyleOpts sets the area style.
 func WithAreaStyleOpts(opt opts.AreaStyle) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.AreaStyle = &opt
 	}
 }
 
-// WithItemStyleOpts
+// WithItemStyleOpts sets the item style.
 func WithItemStyleOpts(opt opts.ItemStyle) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.ItemStyle = &opt
 	}
 }
 
-// WithRippleEffectOpts
+// WithRippleEffectOpts sets the ripple effect.
 func WithRippleEffectOpts(opt opts.RippleEffect) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.RippleEffect = &opt
 	}
 }
 
-// WithLineStyleOpts
+// WithLineStyleOpts sets the line style.
 func WithLineStyleOpts(opt opts.LineStyle) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.LineStyle = &opt
 	}
 }
 
+// With CircularStyle Opts
+func WithCircularStyleOpts(opt opts.CircularStyle) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.CircularStyle = &opt
+	}
+}
+
 /* Chart Options */
 
-// WithBarChartOpts
+// WithBarChartOpts sets the BarChart option.
 func WithBarChartOpts(opt opts.BarChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Stack = opt.Stack
@@ -151,10 +169,10 @@ func WithBarChartOpts(opt opts.BarChart) SeriesOpts {
 		s.ShowBackground = opt.ShowBackground
 		s.RoundCap = opt.RoundCap
 		s.CoordSystem = opt.CoordSystem
-		s.Type = opt.Type
 	}
 }
 
+// WithSunburstOpts sets the SunburstChart option.
 func WithSunburstOpts(opt opts.SunburstChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.NodeClick = opt.NodeClick
@@ -172,18 +190,22 @@ func WithSunburstOpts(opt opts.SunburstChart) SeriesOpts {
 	}
 }
 
-// WithGraphChartOpts
+// WithGraphChartOpts sets the GraphChart option.
 func WithGraphChartOpts(opt opts.GraphChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Layout = opt.Layout
 		s.Force = opt.Force
 		s.Roam = opt.Roam
+		s.EdgeSymbol = opt.EdgeSymbol
+		s.EdgeSymbolSize = opt.EdgeSymbolSize
+		s.Draggable = opt.Draggable
 		s.FocusNodeAdjacency = opt.FocusNodeAdjacency
 		s.Categories = opt.Categories
+		s.EdgeLabel = opt.EdgeLabel
 	}
 }
 
-// WithHeatMapChartOpts
+// WithHeatMapChartOpts sets the HeatMapChart option.
 func WithHeatMapChartOpts(opt opts.HeatMapChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.XAxisIndex = opt.XAxisIndex
@@ -191,7 +213,7 @@ func WithHeatMapChartOpts(opt opts.HeatMapChart) SeriesOpts {
 	}
 }
 
-// WithLineChartOpts
+// WithLineChartOpts sets the LineChart option.
 func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.YAxisIndex = opt.YAxisIndex
@@ -204,7 +226,7 @@ func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 	}
 }
 
-// WithPieChartOpts
+// WithPieChartOpts sets the PieChart option.
 func WithPieChartOpts(opt opts.PieChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.RoseType = opt.RoseType
@@ -213,7 +235,7 @@ func WithPieChartOpts(opt opts.PieChart) SeriesOpts {
 	}
 }
 
-// WithScatterChartOpts
+// WithScatterChartOpts sets the ScatterChart option.
 func WithScatterChartOpts(opt opts.ScatterChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.XAxisIndex = opt.XAxisIndex
@@ -221,7 +243,7 @@ func WithScatterChartOpts(opt opts.ScatterChart) SeriesOpts {
 	}
 }
 
-// WithLiquidChartOpts
+// WithLiquidChartOpts sets the LiquidChart option.
 func WithLiquidChartOpts(opt opts.LiquidChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Shape = opt.Shape
@@ -230,14 +252,14 @@ func WithLiquidChartOpts(opt opts.LiquidChart) SeriesOpts {
 	}
 }
 
-// WithBar3DChartOpts
+// WithBar3DChartOpts sets the Bar3DChart option.
 func WithBar3DChartOpts(opt opts.Bar3DChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Shading = opt.Shading
 	}
 }
 
-// WithTreeOpts
+// WithTreeOpts sets the TreeChart option.
 func WithTreeOpts(opt opts.TreeChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Layout = opt.Layout
@@ -254,7 +276,22 @@ func WithTreeOpts(opt opts.TreeChart) SeriesOpts {
 	}
 }
 
-// WithWorldCloudChartOpts
+// WithTreeMapOpts sets the TreeMapChart options.
+func WithTreeMapOpts(opt opts.TreeMapChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.Animation = opt.Animation
+		s.LeafDepth = opt.LeafDepth
+		s.Roam = opt.Roam
+		s.Levels = opt.Levels
+		s.UpperLabel = opt.UpperLabel
+		s.Right = opt.Right
+		s.Left = opt.Left
+		s.Top = opt.Top
+		s.Bottom = opt.Bottom
+	}
+}
+
+// WithWorldCloudChartOpts sets the WorldCloudChart option.
 func WithWorldCloudChartOpts(opt opts.WordCloudChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Shape = opt.Shape
@@ -263,7 +300,7 @@ func WithWorldCloudChartOpts(opt opts.WordCloudChart) SeriesOpts {
 	}
 }
 
-// WithMarkLineNameTypeItemOpts
+// WithMarkLineNameTypeItemOpts sets the type of the MarkLine.
 func WithMarkLineNameTypeItemOpts(opt ...opts.MarkLineNameTypeItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkLines == nil {
@@ -275,7 +312,34 @@ func WithMarkLineNameTypeItemOpts(opt ...opts.MarkLineNameTypeItem) SeriesOpts {
 	}
 }
 
-// WithMarkLineNameXAxisItemOpts
+// WithMarkLineStyleOpts sets the style of the MarkLine.
+func WithMarkLineStyleOpts(opt opts.MarkLineStyle) SeriesOpts {
+	return func(s *SingleSeries) {
+		if s.MarkLines == nil {
+			s.MarkLines = &opts.MarkLines{}
+		}
+
+		s.MarkLines.MarkLineStyle = opt
+	}
+}
+
+// WithMarkLineNameCoordItemOpts sets the coordinates of the MarkLine.
+func WithMarkLineNameCoordItemOpts(opt ...opts.MarkLineNameCoordItem) SeriesOpts {
+	type MLNameCoord struct {
+		Name  string        `json:"name,omitempty"`
+		Coord []interface{} `json:"coord"`
+	}
+	return func(s *SingleSeries) {
+		if s.MarkLines == nil {
+			s.MarkLines = &opts.MarkLines{}
+		}
+		for _, o := range opt {
+			s.MarkLines.Data = append(s.MarkLines.Data, []MLNameCoord{{Name: o.Name, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
+		}
+	}
+}
+
+// WithMarkLineNameXAxisItemOpts sets the X axis of the MarkLine.
 func WithMarkLineNameXAxisItemOpts(opt ...opts.MarkLineNameXAxisItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkLines == nil {
@@ -287,7 +351,7 @@ func WithMarkLineNameXAxisItemOpts(opt ...opts.MarkLineNameXAxisItem) SeriesOpts
 	}
 }
 
-// WithMarkLineNameYAxisItemOpts
+// WithMarkLineNameYAxisItemOpts sets the Y axis of the MarkLine.
 func WithMarkLineNameYAxisItemOpts(opt ...opts.MarkLineNameYAxisItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkLines == nil {
@@ -299,7 +363,7 @@ func WithMarkLineNameYAxisItemOpts(opt ...opts.MarkLineNameYAxisItem) SeriesOpts
 	}
 }
 
-// WithMarkPointNameTypeItemOpts
+// WithMarkPointNameTypeItemOpts sets the type of the MarkPoint.
 func WithMarkPointNameTypeItemOpts(opt ...opts.MarkPointNameTypeItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkPoints == nil {
@@ -311,7 +375,7 @@ func WithMarkPointNameTypeItemOpts(opt ...opts.MarkPointNameTypeItem) SeriesOpts
 	}
 }
 
-// WithMarkPointStyleOpts
+// WithMarkPointStyleOpts sets the style of the MarkPoint.
 func WithMarkPointStyleOpts(opt opts.MarkPointStyle) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkPoints == nil {
@@ -322,7 +386,7 @@ func WithMarkPointStyleOpts(opt opts.MarkPointStyle) SeriesOpts {
 	}
 }
 
-// WithMarkPointNameCoordItemOpts
+// WithMarkPointNameCoordItemOpts sets the coordinated of the MarkPoint.
 func WithMarkPointNameCoordItemOpts(opt ...opts.MarkPointNameCoordItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkPoints == nil {

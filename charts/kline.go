@@ -37,7 +37,7 @@ func (c *Kline) AddSeries(name string, data []opts.KlineData, options ...SeriesO
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *Kline) Validate() {
 	c.XAxisList[0].Data = c.xAxisData
 	c.Assets.Validate(c.AssetsHost)

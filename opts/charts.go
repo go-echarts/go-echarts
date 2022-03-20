@@ -177,6 +177,20 @@ type GraphChart struct {
 	// Otherwise, set it to be true to enable both.
 	Roam bool
 
+	// EdgeSymbol is the symbols of two ends of edge line.
+	// * 'circle'
+	// * 'arrow'
+	// * 'none'
+	// example: ["circle", "arrow"] or "circle"
+	EdgeSymbol interface{}
+
+	// EdgeSymbolSize is size of symbol of two ends of edge line. Can be an array or a single number
+	// example: [5,10] or 5
+	EdgeSymbolSize interface{}
+
+	// Draggable allows you to move the nodes with the mouse if they are not fixed.
+	Draggable bool
+
 	// Whether to focus/highlight the hover node and it's adjacencies.
 	FocusNodeAdjacency bool
 
@@ -184,6 +198,9 @@ type GraphChart struct {
 	// the category of each node can be assigned through data[i].category.
 	// And the style of category will also be applied to the style of nodes. categories can also be used in legend.
 	Categories []*GraphCategory
+
+	// EdgeLabel is the properties of an label of edge.
+	EdgeLabel *EdgeLabel `json:"edgeLabel"`
 }
 
 // GraphNode represents a data node in graph chart.
@@ -205,7 +222,7 @@ type GraphNode struct {
 	Fixed bool `json:"fixed,omitempty"`
 
 	// Index of category which the data item belongs to.
-	Category int `json:"category,omitempty"`
+	Category interface{} `json:"category,omitempty"`
 
 	// Symbol of node of this category.
 	// Icon types provided by ECharts includes
@@ -232,6 +249,9 @@ type GraphLink struct {
 
 	// value of edge, can be mapped to edge length in force graph.
 	Value float32 `json:"value,omitempty"`
+
+	// Label for this link.
+	Label *EdgeLabel `json:"label,omitempty"`
 }
 
 // GraphCategory represents a category for data nodes.
@@ -291,7 +311,7 @@ type LineChart struct {
 
 	// Whether to show as a step line. It can be true, false. Or 'start', 'middle', 'end'.
 	// Which will configure the turn point of step line.
-	Step bool
+	Step interface{}
 
 	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
 	XAxisIndex int
@@ -301,6 +321,9 @@ type LineChart struct {
 
 	// Whether to connect the line across null points.
 	ConnectNulls bool
+
+	// Whether to show symbol. It would be shown during tooltip hover.
+	ShowSymbol bool
 }
 
 // LineData
@@ -612,7 +635,7 @@ type TreeData struct {
 	// or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10.
 	SymbolSize interface{} `json:"symbolSize,omitempty"`
 
-	// If set as `true`, the node is collpased in the initialization.
+	// If set as `true`, the node is collapsed in the initialization.
 	Collapsed bool `json:"collapsed,omitempty"`
 
 	// LineStyle settings in this series data.
@@ -620,6 +643,48 @@ type TreeData struct {
 
 	// ItemStyle settings in this series data.
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+}
+
+type TreeMapChart struct {
+	// Whether to enable animation.
+	Animation bool `json:"animation"`
+
+	// leafDepth represents how many levels are shown at most. For example, when leafDepth is set to 1, only one level will be shown.
+	// leafDepth is null/undefined by default, which means that "drill down" is disabled.
+	LeafDepth int `json:"leafDeapth,omitempty"`
+
+	// Roam describes whether to enable mouse zooming and translating. false by default.
+	Roam bool `json:"roam"`
+
+	// Label decribes the style of the label in each node.
+	Label *Label `json:"label,omitempty"`
+
+	// UpperLabel is used to specify whether show label when the treemap node has children.
+	UpperLabel *UpperLabel `json:"upperLabel,omitempty"`
+
+	// ColorMappingBy specifies the rule according to which each node obtain color from color list.
+	ColorMappingBy string `json:"colorMappingBy,omitempty"`
+
+	// Levels provide configration for each node level
+	Levels *[]TreeMapLevel `json:"levels,omitempty"`
+
+	// Distance between treemap component and the sides of the container.
+	// value can be instant pixel value like 20;
+	// It can also be a percentage value relative to container width like '20%';
+	Left   string `json:"left,omitempty"`
+	Right  string `json:"right,omitempty"`
+	Top    string `json:"top,omitempty"`
+	Bottom string `json:"bottom,omitempty"`
+}
+
+type TreeMapNode struct {
+	// Name of the tree node item.
+	Name string `json:"name"`
+
+	// Value of the tree node item.
+	Value int `json:"value,omitempty"`
+
+	Children []TreeMapNode `json:"children,omitempty"`
 }
 
 // SunBurstData data

@@ -6,37 +6,37 @@ import (
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
-// Pie represents a pie chart.
-type Pie struct {
+// TreeMap represents a TreeMap chart.
+type TreeMap struct {
 	BaseConfiguration
 }
 
 // Type returns the chart type.
-func (Pie) Type() string { return types.ChartPie }
+func (TreeMap) Type() string { return types.ChartTreeMap }
 
-// NewPie creates a new pie chart.
-func NewPie() *Pie {
-	c := &Pie{}
+// NewTreeMap creates a new TreeMap chart instance.
+func NewTreeMap() *TreeMap {
+	c := &TreeMap{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
 	return c
 }
 
 // AddSeries adds new data sets.
-func (c *Pie) AddSeries(name string, data []opts.PieData, options ...SeriesOpts) *Pie {
-	series := SingleSeries{Name: name, Type: types.ChartPie, Data: data}
+func (c *TreeMap) AddSeries(name string, data []opts.TreeMapNode, options ...SeriesOpts) *TreeMap {
+	series := SingleSeries{Name: name, Type: types.ChartTreeMap, Data: data}
 	series.configureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
-// SetGlobalOptions sets options for the Pie instance.
-func (c *Pie) SetGlobalOptions(options ...GlobalOpts) *Pie {
+// SetGlobalOptions sets options for the Graph instance.
+func (c *TreeMap) SetGlobalOptions(options ...GlobalOpts) *TreeMap {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
 	return c
 }
 
 // Validate validates the given configuration.
-func (c *Pie) Validate() {
+func (c *TreeMap) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

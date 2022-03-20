@@ -22,6 +22,10 @@ const (
 	ModPage  = "page"
 )
 
+var (
+	pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
+)
+
 type pageRender struct {
 	c      interface{}
 	before []func()
@@ -32,7 +36,7 @@ func NewPageRender(c interface{}, before ...func()) Renderer {
 	return &pageRender{c: c, before: before}
 }
 
-// Render
+// Render renders the page into the given io.Writer.
 func (r *pageRender) Render(w io.Writer) error {
 	for _, fn := range r.before {
 		fn()
@@ -46,7 +50,6 @@ func (r *pageRender) Render(w io.Writer) error {
 		return err
 	}
 
-	pat := regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
 
 	_, err := w.Write(content)
@@ -63,7 +66,7 @@ func NewChartRender(c interface{}, before ...func()) Renderer {
 	return &chartRender{c: c, before: before}
 }
 
-// Render
+// Render renders the chart into the given io.Writer.
 func (r *chartRender) Render(w io.Writer) error {
 	for _, fn := range r.before {
 		fn()
@@ -77,14 +80,13 @@ func (r *chartRender) Render(w io.Writer) error {
 		return err
 	}
 
-	pat := regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
 
 	_, err := w.Write(content)
 	return err
 }
 
-// MustTemplate
+// MustTemplate creates a new template with the given name and parsed contents.
 func MustTemplate(name string, contents []string) *template.Template {
 	tpl := template.Must(template.New(name).Parse(contents[0])).Funcs(template.FuncMap{
 		"safeJS": func(s interface{}) template.JS {

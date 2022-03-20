@@ -37,7 +37,7 @@ func (c *Parallel) SetGlobalOptions(options ...GlobalOpts) *Parallel {
 	return c
 }
 
-// Validate
+// Validate validates the given configuration.
 func (c *Parallel) Validate() {
 	c.Assets.Validate(c.AssetsHost)
 }

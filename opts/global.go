@@ -147,7 +147,7 @@ type Title struct {
 	// Distance between title component and the right side of the container.
 	// right value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'.
-	//Adaptive by default.
+	// Adaptive by default.
 	Right string `json:"right,omitempty"`
 }
 
@@ -157,6 +157,11 @@ type Title struct {
 type Legend struct {
 	// Whether to show the Legend, default true.
 	Show bool `json:"show"`
+
+	// Type of legend. Optional values:
+	// "plain": Simple legend. (default)
+	// "scroll": Scrollable legend. It helps when too many legend items needed to be shown.
+	Type string `json:"type"`
 
 	// Distance between legend component and the left side of the container.
 	// left value can be instant pixel value like 20; it can also be a percentage
@@ -215,7 +220,7 @@ type Legend struct {
 	//    padding: 5
 	// 2. Set the top and bottom paddings to be 5, and left and right paddings to be 10
 	//    padding: [5, 10]
-	// 3. Set each of the four paddings seperately
+	// 3. Set each of the four paddings separately
 	//    padding: [
 	//      5,  // up
 	//      10, // right
@@ -475,7 +480,7 @@ type ToolBoxFeatureRestore struct {
 // https://echarts.apache.org/en/option.html#xAxis.axisLabel
 type AxisLabel struct {
 	// Set this to false to prevent the axis label from appearing.
-	Show bool `json:"show,omitempty"`
+	Show bool `json:"show"`
 
 	// Interval of Axis label, which is available in category axis.
 	// It uses a strategy that labels do not overlap by default.
@@ -512,7 +517,7 @@ type AxisLabel struct {
 	//        texts.unshift(date.getYear());
 	//    }
 	//    return texts.join('/');
-	//}
+	// }
 	Formatter string `json:"formatter,omitempty"`
 
 	ShowMinLabel bool `json:"showMinLabel"`
@@ -545,6 +550,49 @@ type AxisLabel struct {
 	VerticalAlign string `json:"verticalAlign,omitempty"`
 	// Line height of the axis label
 	LineHeight string `json:"lineHeight,omitempty"`
+}
+
+type AxisTick struct {
+	// Set this to false to prevent the axis tick from showing.
+	Show bool `json:"show"`
+
+	// interval of axisTick, which is available in category axis. is set to be the same as axisLabel.interval by default.
+	// It uses a strategy that labels do not overlap by default.
+	// You may set it to be 0 to display all labels compulsively.
+	// If it is set to be 1, it means that labels are shown once after one label. And if it is set to be 2, it means labels are shown once after two labels, and so on.
+	// On the other hand, you can control by callback function, whose format is shown below:
+	// (index:number, value: string) => boolean
+	// The first parameter is index of category, and the second parameter is the name of category. The return values decides whether to display label.
+	Interval string `json:"interval,omitempty"`
+}
+
+// AxisLine controls settings related to axis line.
+// https://echarts.apache.org/en/option.html#yAxis.axisLine
+type AxisLine struct {
+	// Set this to false to prevent the axis line from showing.
+	Show bool `json:"show"`
+
+	// Specifies whether X or Y axis lies on the other's origin position, where value is 0 on axis.
+	// Valid only if the other axis is of value type, and contains 0 value.
+	OnZero bool `json:"onZero,omitempty"`
+
+	// When multiple axes exists, this option can be used to specify which axis can be "onZero" to.
+	OnZeroAxisIndex int `json:"onZeroAxisIndex,omitempty"`
+
+	// Symbol of the two ends of the axis. It could be a string, representing the same symbol for two ends; or an array
+	// with two string elements, representing the two ends separately. It's set to be 'none' by default, meaning no
+	//arrow for either end. If it is set to be 'arrow', there shall be two arrows. If there should only one arrow
+	//at the end, it should set to be ['none', 'arrow'].
+	Symbol string `json:"symbol,omitempty"`
+
+	// Size of the arrows at two ends. The first is the width perpendicular to the axis, the next is the width parallel to the axis.
+	SymbolSize []float64 `json:"symbolSize,omitempty"`
+
+	// Arrow offset of axis. If is array, the first number is the offset of the arrow at the beginning, and the second
+	// number is the offset of the arrow at the end. If is number, it means the arrows have the same offset.
+	SymbolOffset []float64 `json:"symbolOffset,omitempty"`
+
+	LineStyle *LineStyle `json:"lineStyle,omitempty"`
 }
 
 // XAxis is the option set for X axis.
@@ -593,6 +641,12 @@ type XAxis struct {
 	// It will be automatically computed to make sure axis tick is equally distributed when not set.
 	Max interface{} `json:"max,omitempty"`
 
+	// Minimum gap between split lines. For 'time' axis, MinInterval is in unit of milliseconds.
+	MinInterval float64 `json:"minInterval,omitempty"`
+
+	// Maximum gap between split lines. For 'time' axis, MaxInterval is in unit of milliseconds.
+	MaxInterval float64 `json:"maxInterval,omitempty"`
+
 	// The index of grid which the x axis belongs to. Defaults to be in the first grid.
 	// default 0
 	GridIndex int `json:"gridIndex,omitempty"`
@@ -605,6 +659,9 @@ type XAxis struct {
 
 	// Settings related to axis label.
 	AxisLabel *AxisLabel `json:"axisLabel,omitempty"`
+
+	// Settings related to axis tick.
+	AxisTick *AxisTick `json:"axisTick,omitempty"`
 }
 
 // YAxis is the option set for Y axis.
@@ -665,6 +722,9 @@ type YAxis struct {
 
 	// Settings related to axis label.
 	AxisLabel *AxisLabel `json:"axisLabel,omitempty"`
+
+	// Settings related to axis line.
+	AxisLine *AxisLine `json:"axisLine,omitempty"`
 }
 
 // TextStyle is the option set for a text style component.
@@ -736,6 +796,35 @@ type VisualMap struct {
 
 	// Define visual channels that will mapped from dataValues that are in selected range.
 	InRange *VisualMapInRange `json:"inRange,omitempty"`
+
+	// Whether to show visualMap-piecewise component. If set as false,
+	// visualMap-piecewise component will not show,
+	// but it can still perform visual mapping from dataValue to visual channel in chart.
+	Show bool `json:"show"`
+
+	// Distance between visualMap component and the left side of the container.
+	// left value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
+	// If the left value is set to be 'left', 'center', or 'right',
+	// then the component will be aligned automatically based on position.
+	Left string `json:"left,omitempty"`
+
+	// Distance between visualMap component and the right side of the container.
+	// right value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'.
+	Right string `json:"right,omitempty"`
+
+	// Distance between visualMap component and the top side of the container.
+	// top value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
+	// If the left value is set to be 'top', 'middle', or 'bottom',
+	// then the component will be aligned automatically based on position.
+	Top string `json:"top,omitempty"`
+
+	// Distance between visualMap component and the bottom side of the container.
+	// bottom value can be instant pixel value like 20; it can also be a percentage
+	// value relative to container width like '20%'.
+	Bottom string `json:"bottom,omitempty"`
 }
 
 // VisualMapInRange is a visual map instance in a range.
@@ -823,7 +912,7 @@ type SingleAxis struct {
 	Left string `json:"left,omitempty"`
 
 	// Distance between grid component and the right side of the container.
-	//right value can be instant pixel value like 20; it can also be a percentage
+	// right value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'.
 	Right string `json:"right,omitempty"`
 
@@ -1024,7 +1113,7 @@ func replaceJsFuncs(fn string) string {
 
 type Colors []string
 
-// AssetsOpts contains options for static assets.
+// Assets contains options for static assets.
 type Assets struct {
 	JSAssets  types.OrderedSet
 	CSSAssets types.OrderedSet
@@ -1241,4 +1330,20 @@ type ViewControl struct {
 	// Rotate Speed, (angle/s).
 	// default 10
 	AutoRotateSpeed float32 `json:"autoRotateSpeed,omitempty"`
+}
+
+// Grid Drawing grid in rectangular coordinate.
+// https://echarts.apache.org/en/option.html#grid
+type Grid struct {
+	// Distance between grid component and the left side of the container.
+	Left string `json:"left,omitempty"`
+
+	// Distance between grid component and the right side of the container.
+	Right string `json:"right,omitempty"`
+
+	// Distance between grid component and the top side of the container.
+	Top string `json:"top,omitempty"`
+
+	// Distance between grid component and the bottom side of the container.
+	Bottom string `json:"bottom,omitempty"`
 }
