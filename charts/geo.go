@@ -37,7 +37,7 @@ func NewGeo() *Geo {
 // * types.ChartHeatMap
 func (c *Geo) AddSeries(name, geoType string, data []opts.GeoData, options ...SeriesOpts) *Geo {
 	series := SingleSeries{Name: name, Type: geoType, Data: data, CoordSystem: types.ChartGeo}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

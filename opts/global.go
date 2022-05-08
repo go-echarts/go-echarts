@@ -357,6 +357,17 @@ type AxisPointer struct {
 	// 	Whether snap to point automatically. The default value is auto determined.
 	// This feature usually makes sense in value axis and time axis, where tiny points can be seeked automatically.
 	Snap bool `json:"snap,omitempty"`
+
+	Link []AxisPointerLink `json:"link,omitempty"`
+
+	Axis string `json:"axis,omitempty"`
+}
+
+type AxisPointerLink struct {
+	XAxisIndex []int  `json:"xAxisIndex,omitempty"`
+	YAxisIndex []int  `json:"yAxisIndex,omitempty"`
+	XAxisName  string `json:"xAxisName,omitempty"`
+	YAxisName  string `json:"yAxisName,omitempty"`
 }
 
 // Toolbox is the option set for a toolbox component.
@@ -1346,4 +1357,12 @@ type Grid struct {
 
 	// Distance between grid component and the bottom side of the container.
 	Bottom string `json:"bottom,omitempty"`
+
+	// Width of grid component.
+	Width string `json:"width,omitempty"`
+
+	// Height of grid component.
+	Height string `json:"height,omitempty"`
+
+	ContainLabel bool `json:"containLabel,omitempty"`
 }

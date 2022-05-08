@@ -247,6 +247,8 @@ type MarkPointNameCoordItem struct {
 
 	// Mark point text options.
 	Label *Label `json:"label,omitempty"`
+	
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
 // RippleEffect is the option set for the ripple effect.

@@ -25,7 +25,7 @@ func NewSankey() *Sankey {
 // AddSeries adds new data sets.
 func (c *Sankey) AddSeries(name string, nodes []opts.SankeyNode, links []opts.SankeyLink, options ...SeriesOpts) *Sankey {
 	series := SingleSeries{Name: name, Type: types.ChartSankey, Data: nodes, Links: links}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

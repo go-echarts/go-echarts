@@ -32,7 +32,7 @@ func (c *Kline) SetXAxis(xAxis interface{}) *Kline {
 // AddSeries adds the new series.
 func (c *Kline) AddSeries(name string, data []opts.KlineData, options ...SeriesOpts) *Kline {
 	series := SingleSeries{Name: name, Type: types.ChartKline, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

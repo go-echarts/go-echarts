@@ -398,7 +398,7 @@ func WithMarkPointNameCoordItemOpts(opt ...opts.MarkPointNameCoordItem) SeriesOp
 	}
 }
 
-func (s *SingleSeries) configureSeriesOpts(options ...SeriesOpts) {
+func (s *SingleSeries) ConfigureSeriesOpts(options ...SeriesOpts) {
 	for _, opt := range options {
 		opt(s)
 	}
@@ -415,6 +415,6 @@ type MultiSeries []SingleSeries
 func (ms *MultiSeries) SetSeriesOptions(opts ...SeriesOpts) {
 	s := *ms
 	for i := 0; i < len(s); i++ {
-		s[i].configureSeriesOpts(opts...)
+		s[i].ConfigureSeriesOpts(opts...)
 	}
 }

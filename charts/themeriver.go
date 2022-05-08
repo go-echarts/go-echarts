@@ -30,7 +30,7 @@ func (c *ThemeRiver) AddSeries(name string, data []opts.ThemeRiverData, options 
 		cd[i] = data[i].ToList()
 	}
 	series := SingleSeries{Name: name, Type: types.ChartThemeRiver, Data: cd}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

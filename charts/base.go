@@ -15,13 +15,14 @@ type GlobalOpts func(bc *BaseConfiguration)
 
 // BaseConfiguration represents an option set needed by all chart types.
 type BaseConfiguration struct {
-	opts.Legend     `json:"legend"`
-	opts.Tooltip    `json:"tooltip"`
-	opts.Toolbox    `json:"toolbox"`
-	opts.Title      `json:"title"`
-	opts.Polar      `json:"polar"`
-	opts.AngleAxis  `json:"angleAxis"`
-	opts.RadiusAxis `json:"radiusAxis"`
+	opts.Legend       `json:"legend"`
+	opts.Tooltip      `json:"tooltip"`
+	opts.Toolbox      `json:"toolbox"`
+	opts.Title        `json:"title"`
+	opts.Polar        `json:"polar"`
+	opts.AngleAxis    `json:"angleAxis"`
+	opts.RadiusAxis   `json:"radiusAxis"`
+	*opts.AxisPointer `json:"axisPointer"`
 
 	render.Renderer        `json:"-"`
 	opts.Initialization    `json:"-"`
@@ -90,7 +91,9 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 		"tooltip": bc.Tooltip,
 		"series":  bc.MultiSeries,
 	}
-
+	if bc.AxisPointer != nil {
+		obj["axisPointer"] = bc.AxisPointer
+	}
 	if bc.hasPolar {
 		obj["polar"] = bc.Polar
 		obj["angleAxis"] = bc.AngleAxis
@@ -319,5 +322,12 @@ func reverseSlice(s []string) []string {
 func WithGridOpts(opt ...opts.Grid) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.GridList = append(bc.GridList, opt...)
+	}
+}
+
+// WithAxisPointerOpts sets the axis pointer.
+func WithAxisPointerOpts(opt *opts.AxisPointer) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.AxisPointer = opt
 	}
 }

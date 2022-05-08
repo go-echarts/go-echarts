@@ -32,7 +32,7 @@ func (c *EffectScatter) SetXAxis(x interface{}) *EffectScatter {
 // AddSeries adds the Y axis.
 func (c *EffectScatter) AddSeries(name string, data []opts.EffectScatterData, options ...SeriesOpts) *EffectScatter {
 	series := SingleSeries{Name: name, Type: types.ChartEffectScatter, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

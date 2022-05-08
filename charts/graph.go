@@ -25,7 +25,7 @@ func NewGraph() *Graph {
 // AddSeries adds the new series.
 func (c *Graph) AddSeries(name string, nodes []opts.GraphNode, links []opts.GraphLink, options ...SeriesOpts) *Graph {
 	series := SingleSeries{Name: name, Type: types.ChartGraph, Links: links, Data: nodes}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
