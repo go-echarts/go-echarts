@@ -1,9 +1,9 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/v2/opts"
-	"github.com/go-echarts/go-echarts/v2/render"
-	"github.com/go-echarts/go-echarts/v2/types"
+	"github.com/sebastianBD95/go-echarts/v2/opts"
+	"github.com/sebastianBD95/go-echarts/v2/render"
+	"github.com/sebastianBD95/go-echarts/v2/types"
 )
 
 // Bar3D represents a 3D bar chart.

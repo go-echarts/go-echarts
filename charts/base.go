@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"html/template"
 
-	"github.com/go-echarts/go-echarts/v2/datasets"
-	"github.com/go-echarts/go-echarts/v2/opts"
-	"github.com/go-echarts/go-echarts/v2/render"
+	"github.com/sebastianBD95/go-echarts/v2/datasets"
+	"github.com/sebastianBD95/go-echarts/v2/opts"
+	"github.com/sebastianBD95/go-echarts/v2/render"
 )
 
 // GlobalOpts sets the Global options for charts.
@@ -91,6 +91,7 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 		"legend":  bc.Legend,
 		"tooltip": bc.Tooltip,
 		"series":  bc.MultiSeries,
+		"dataset": bc.Dataset,
 	}
 
 	if bc.hasPolar {

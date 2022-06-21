@@ -20,7 +20,7 @@
     <a href="https://opensource.org/licenses/MIT">
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT License">
     </a>
-        <a href="https://pkg.go.dev/github.com/go-echarts/go-echarts/v2">
+        <a href="https://pkg.go.dev/github.com/sebastianBD95/go-echarts/v2">
         <img src="https://godoc.org/github.com/go-echarts/go-echarts?status.svg" alt="GoDoc">
     </a>
 </p>
@@ -46,7 +46,7 @@ $ mkdir v2 && mv charts components datasets opts render templates types v2
 GoMod
 
 ```shell
-require github.com/go-echarts/go-echarts/v2
+require github.com/sebastianBD95/go-echarts/v2
 ```
 
 ### ⏳ 版本
@@ -72,8 +72,8 @@ import (
 	"math/rand"
 	"os"
 
-	"github.com/go-echarts/go-echarts/v2/charts"
-	"github.com/go-echarts/go-echarts/v2/opts"
+	"github.com/sebastianBD95/go-echarts/v2/charts"
+	"github.com/sebastianBD95/go-echarts/v2/opts"
 )
 
 // generate random data for bar chart
@@ -117,9 +117,9 @@ import (
 	"math/rand"
 	"net/http"
 
-	"github.com/go-echarts/go-echarts/v2/charts"
-	"github.com/go-echarts/go-echarts/v2/opts"
-	"github.com/go-echarts/go-echarts/v2/types"
+	"github.com/sebastianBD95/go-echarts/v2/charts"
+	"github.com/sebastianBD95/go-echarts/v2/opts"
+	"github.com/sebastianBD95/go-echarts/v2/types"
 )
 
 // generate random data for line chart
@@ -188,7 +188,7 @@ func main() {
 <img src="https://user-images.githubusercontent.com/19553554/52349544-c2ce3900-2a61-11e9-82af-28aaaaae0d67.gif" width="33%" alt="overlap"/>
 </div>
 
-了解更多文档的内容请访问 [go-echarts/examples](https://github.com/go-echarts/examples) 以及 [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2)
+了解更多文档的内容请访问 [go-echarts/examples](https://github.com/go-echarts/examples) 以及 [GoDoc](https://pkg.go.dev/github.com/sebastianBD95/go-echarts/v2)
 
 ### 📃 License
 
