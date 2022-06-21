@@ -19,6 +19,7 @@ type BaseConfiguration struct {
 	opts.Tooltip    `json:"tooltip"`
 	opts.Toolbox    `json:"toolbox"`
 	opts.Title      `json:"title"`
+	opts.Dataset    `json: "dataset"`
 	opts.Polar      `json:"polar"`
 	opts.AngleAxis  `json:"angleAxis"`
 	opts.RadiusAxis `json:"radiusAxis"`
@@ -39,6 +40,7 @@ type BaseConfiguration struct {
 	opts.YAxis3D
 	opts.ZAxis3D
 	opts.Grid3D
+	opts.Grid
 
 	legends []string
 	// Colors is the color list of palette.

@@ -537,3 +537,9 @@ type EdgeLabel struct {
 	// {@[n]}: the value of a dimension at the index ofn, for example,{@[3]}` refers the value at dimensions[3].
 	Formatter string `json:"formatter,omitempty"`
 }
+
+type Encode struct {
+	x interface{} `json:"x"`
+
+	y interface{} `json:"y"`
+}

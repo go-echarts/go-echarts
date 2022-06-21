@@ -1346,4 +1346,11 @@ type Grid struct {
 
 	// Distance between grid component and the bottom side of the container.
 	Bottom string `json:"bottom,omitempty"`
+
+	Height string `json:"height,omitempty"`
+}
+
+type Dataset struct {
+	//source
+	source interface{} `json:"source"`
 }
