@@ -19,7 +19,7 @@ type BaseConfiguration struct {
 	opts.Tooltip    `json:"tooltip"`
 	opts.Toolbox    `json:"toolbox"`
 	opts.Title      `json:"title"`
-	opts.Dataset    `json: "dataset"`
+	opts.Dataset    `json:"dataset"`
 	opts.Polar      `json:"polar"`
 	opts.AngleAxis  `json:"angleAxis"`
 	opts.RadiusAxis `json:"radiusAxis"`
