@@ -539,7 +539,7 @@ type EdgeLabel struct {
 }
 
 type Encode struct {
-	x interface{} `json:"x"`
+	X interface{} `json:"x"`
 
-	y interface{} `json:"y"`
+	Y interface{} `json:"y"`
 }
