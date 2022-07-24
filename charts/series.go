@@ -92,6 +92,7 @@ type SingleSeries struct {
 	Data interface{} `json:"data"`
 
 	// series options
+	*opts.Encode        `json:"encode,omitempty"`
 	*opts.ItemStyle     `json:"itemStyle,omitempty"`
 	*opts.Label         `json:"label,omitempty"`
 	*opts.LabelLine     `json:"labelLine,omitempty"`
@@ -416,5 +417,12 @@ func (ms *MultiSeries) SetSeriesOptions(opts ...SeriesOpts) {
 	s := *ms
 	for i := 0; i < len(s); i++ {
 		s[i].configureSeriesOpts(opts...)
+	}
+}
+
+// WithEncodeOpts Set encodes for dataSets
+func WithEncodeOpts(opt opts.Encode) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.Encode = &opt
 	}
 }
