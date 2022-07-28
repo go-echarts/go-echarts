@@ -79,6 +79,13 @@ func (rc *RectChart) SetGlobalOptions(options ...GlobalOpts) *RectChart {
 	return rc
 }
 
+//DispatchActions
+
+func (rc *RectChart) DispatchActions(options ...GlobalOpts) *RectChart {
+	rc.RectConfiguration.setRectGlobalOptions(options...)
+	return rc
+}
+
 // Overlap composes multiple charts into one single canvas.
 // It is only suited for some of the charts which are in rectangular coordinate.
 // Supported charts: Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap

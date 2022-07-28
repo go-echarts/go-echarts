@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"html/template"
 
+	"github.com/sebastianBD95/go-echarts/v2/actions"
 	"github.com/sebastianBD95/go-echarts/v2/datasets"
 	"github.com/sebastianBD95/go-echarts/v2/opts"
 	"github.com/sebastianBD95/go-echarts/v2/render"
@@ -12,6 +13,8 @@ import (
 
 // GlobalOpts sets the Global options for charts.
 type GlobalOpts func(bc *BaseConfiguration)
+
+type GlobalActions func(ba *BaseActions)
 
 // BaseConfiguration represents an option set needed by all chart types.
 type BaseConfiguration struct {
@@ -66,6 +69,11 @@ type BaseConfiguration struct {
 	GridList []opts.Grid `json:"grid,omitempty"`
 }
 
+type BaseActions struct {
+	Type          string `json:"type,omitempty"`
+	actions.Areas `json:"areas,omitempty"`
+}
+
 // JSON wraps all the options to a map so that it could be used in the base template
 //
 // Get data in bytes
@@ -85,6 +93,15 @@ func (bc *BaseConfiguration) JSONNotEscaped() template.HTML {
 	return template.HTML(buff.String())
 }
 
+func (ba *BaseConfiguration) JSONNotEscapedAction() template.HTML {
+	obj := ba.json()
+	buff := bytes.NewBufferString("")
+	enc := json.NewEncoder(buff)
+	enc.SetEscapeHTML(false)
+	enc.Encode(obj)
+
+	return template.HTML(buff.String())
+}
 func (bc *BaseConfiguration) json() map[string]interface{} {
 	obj := map[string]interface{}{
 		"title":   bc.Title,
@@ -188,6 +205,14 @@ func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
 	for _, opt := range opts {
 		opt(bc)
 	}
+}
+
+func (ba *BaseActions) json() map[string]interface{} {
+	obj := map[string]interface{}{
+		"type":  ba.Type,
+		"areas": ba.Areas,
+	}
+	return obj
 }
 
 // WithAngleAxisOps sets the angle of the axis.
