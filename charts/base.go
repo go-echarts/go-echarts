@@ -26,6 +26,7 @@ type BaseConfiguration struct {
 	opts.Polar      `json:"polar"`
 	opts.AngleAxis  `json:"angleAxis"`
 	opts.RadiusAxis `json:"radiusAxis"`
+	opts.Brush      `json:"brush"`
 
 	render.Renderer        `json:"-"`
 	opts.Initialization    `json:"-"`
@@ -44,7 +45,6 @@ type BaseConfiguration struct {
 	opts.ZAxis3D
 	opts.Grid3D
 	opts.Grid
-	opts.Brush
 
 	legends []string
 	// Colors is the color list of palette.
@@ -66,6 +66,7 @@ type BaseConfiguration struct {
 	hasParallel   bool
 	hasSingleAxis bool
 	hasPolar      bool
+	hasBrush      bool
 
 	GridList []opts.Grid `json:"grid,omitempty"`
 }
@@ -171,6 +172,10 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 		obj["grid"] = bc.GridList
 	}
 
+	if bc.hasBrush {
+		obj["brush"] = bc.Brush
+	}
+
 	return obj
 }
 
@@ -250,6 +255,7 @@ func WithRadiusAxisOps(opt opts.RadiusAxis) GlobalOpts {
 
 func WithBrush(opt opts.Brush) GlobalOpts {
 	return func(bc *BaseConfiguration) {
+		bc.hasBrush = true
 		bc.Brush = opt
 	}
 }
