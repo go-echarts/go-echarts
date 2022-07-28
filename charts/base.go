@@ -207,6 +207,12 @@ func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
 	}
 }
 
+func (bc *BaseActions) setBaseGlobalActions(opts ...GlobalActions) {
+	for _, opt := range opts {
+		opt(bc)
+	}
+}
+
 func (ba *BaseActions) json() map[string]interface{} {
 	obj := map[string]interface{}{
 		"type":  ba.Type,
