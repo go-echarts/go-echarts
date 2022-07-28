@@ -359,6 +359,16 @@ type AxisPointer struct {
 	Snap bool `json:"snap,omitempty"`
 }
 
+type Brush struct {
+	XAxisIndex interface{}      `json:"xAxisIndex,omitempty"`
+	Brushlink  interface{}      `json:"brushlink,omitempty"`
+	OutOfBrush *BrushOutOfBrush `json:"outOfBrush,omitempty"`
+}
+
+type BrushOutOfBrush struct {
+	ColorAlpha float32 `json:"colorAlpha,omitempty"`
+}
+
 // Toolbox is the option set for a toolbox component.
 // https://echarts.apache.org/en/option.html#toolbox
 type Toolbox struct {
@@ -406,6 +416,8 @@ type ToolBoxFeature struct {
 	// Save as image tool
 	SaveAsImage *ToolBoxFeatureSaveAsImage `json:"saveAsImage,omitempty"`
 
+	Brush *ToolBoxFeatureBrush `json: "brush"`
+
 	// Data area zooming, which only supports rectangular coordinate by now.
 	DataZoom *ToolBoxFeatureDataZoom `json:"dataZoom,omitempty"`
 
@@ -437,11 +449,17 @@ type ToolBoxFeatureSaveAsImage struct {
 	Title string `json:"title,omitempty"`
 }
 
+type ToolBoxFeatureBrush struct {
+	Type []string `json:"type,omitempty"`
+}
+
 // ToolBoxFeatureDataZoom
 // https://echarts.apache.org/en/option.html#toolbox.feature.dataZoom
 type ToolBoxFeatureDataZoom struct {
 	// Whether to show the tool.
 	Show bool `json:"show"`
+
+	YAxisIndex interface{} `json:"yAxisIndex,omitempty"`
 
 	// Restored and zoomed title text.
 	// m["zoom"] = "area zooming"

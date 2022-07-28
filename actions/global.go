@@ -12,7 +12,7 @@ func init() {
 type Type string
 
 type Areas struct {
-	BrushType  string      `json:"BrushType,omitempty"`
+	BrushType  string      `json:"brushType,omitempty"`
 	CoordRange []string    `json:"coordRange,omitempty"`
 	XAxisIndex interface{} `json:"xAxisIndex,omitempty"`
 }

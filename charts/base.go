@@ -44,6 +44,7 @@ type BaseConfiguration struct {
 	opts.ZAxis3D
 	opts.Grid3D
 	opts.Grid
+	opts.Brush
 
 	legends []string
 	// Colors is the color list of palette.
@@ -244,6 +245,12 @@ func WithAngleAxisOps(opt opts.AngleAxis) GlobalOpts {
 func WithRadiusAxisOps(opt opts.RadiusAxis) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.RadiusAxis = opt
+	}
+}
+
+func WithBrush(opt opts.Brush) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.Brush = opt
 	}
 }
 
