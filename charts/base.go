@@ -70,7 +70,7 @@ type BaseConfiguration struct {
 }
 
 type BaseActions struct {
-	Type          string `json:"type,omitempty"`
+	actions.Type  `json:"type,omitempty"`
 	actions.Areas `json:"areas,omitempty"`
 }
 
@@ -219,6 +219,18 @@ func (ba *BaseActions) json() map[string]interface{} {
 		"areas": ba.Areas,
 	}
 	return obj
+}
+
+func WithAreas(act actions.Areas) GlobalActions {
+	return func(ba *BaseActions) {
+		ba.Areas = act
+	}
+}
+
+func WithType(act actions.Type) GlobalActions {
+	return func(ba *BaseActions) {
+		ba.Type = act
+	}
 }
 
 // WithAngleAxisOps sets the angle of the axis.
