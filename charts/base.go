@@ -93,7 +93,7 @@ func (bc *BaseConfiguration) JSONNotEscaped() template.HTML {
 	return template.HTML(buff.String())
 }
 
-func (ba *BaseConfiguration) JSONNotEscapedAction() template.HTML {
+func (ba *BaseActions) JSONNotEscapedAction() template.HTML {
 	obj := ba.json()
 	buff := bytes.NewBufferString("")
 	enc := json.NewEncoder(buff)
