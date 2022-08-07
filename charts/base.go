@@ -71,6 +71,7 @@ type BaseConfiguration struct {
 	GridList []opts.Grid `json:"grid,omitempty"`
 }
 
+// BaseActions represents a dispatchAction set needed by all chart types.
 type BaseActions struct {
 	actions.Type  `json:"type,omitempty"`
 	actions.Areas `json:"areas,omitempty"`
@@ -95,6 +96,7 @@ func (bc *BaseConfiguration) JSONNotEscaped() template.HTML {
 	return template.HTML(buff.String())
 }
 
+// JSONNotEscapedAction works like method JSON, but it returns a marshaled object whose characters will not be escaped in the template
 func (ba *BaseActions) JSONNotEscapedAction() template.HTML {
 	obj := ba.json()
 	buff := bytes.NewBufferString("")
@@ -104,6 +106,7 @@ func (ba *BaseActions) JSONNotEscapedAction() template.HTML {
 
 	return template.HTML(buff.String())
 }
+
 func (bc *BaseConfiguration) json() map[string]interface{} {
 	obj := map[string]interface{}{
 		"title":   bc.Title,
@@ -227,12 +230,14 @@ func (ba *BaseActions) json() map[string]interface{} {
 	return obj
 }
 
+// WithAreas sets the areas of the action
 func WithAreas(act actions.Areas) GlobalActions {
 	return func(ba *BaseActions) {
 		ba.Areas = act
 	}
 }
 
+// WithType sets the type of the action
 func WithType(act actions.Type) GlobalActions {
 	return func(ba *BaseActions) {
 		ba.Type = act
@@ -253,6 +258,7 @@ func WithRadiusAxisOps(opt opts.RadiusAxis) GlobalOpts {
 	}
 }
 
+// WithBrush sets the Brush.
 func WithBrush(opt opts.Brush) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.hasBrush = true

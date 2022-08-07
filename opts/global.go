@@ -359,12 +359,22 @@ type AxisPointer struct {
 	Snap bool `json:"snap,omitempty"`
 }
 
+//Brush is an area-selecting component, with which user can select part of data from a chart to display in detail, or do calculations with them.
+//https://echarts.apache.org/en/option.html#brush
 type Brush struct {
-	XAxisIndex interface{}      `json:"xAxisIndex,omitempty"`
-	Brushlink  interface{}      `json:"brushlink,omitempty"`
+
+	//XAxisIndex Assigns which of the xAxisIndex can use brush selecting.
+	XAxisIndex interface{} `json:"xAxisIndex,omitempty"`
+
+	//Brushlink is a mapping of dataIndex. So data of every series with brushLink should be guaranteed to correspond to the other.
+	Brushlink interface{} `json:"brushlink,omitempty"`
+
+	//OutOfBrush Defines visual effects of items out of selection
 	OutOfBrush *BrushOutOfBrush `json:"outOfBrush,omitempty"`
 }
 
+//BrushOutOfBrush
+//https://echarts.apache.org/en/option.html#brush.outOfBrush
 type BrushOutOfBrush struct {
 	ColorAlpha float32 `json:"colorAlpha,omitempty"`
 }
@@ -416,7 +426,8 @@ type ToolBoxFeature struct {
 	// Save as image tool
 	SaveAsImage *ToolBoxFeatureSaveAsImage `json:"saveAsImage,omitempty"`
 
-	Brush *ToolBoxFeatureBrush `json: "brush"`
+	// Data brush
+	Brush *ToolBoxFeatureBrush `json:"brush"`
 
 	// Data area zooming, which only supports rectangular coordinate by now.
 	DataZoom *ToolBoxFeatureDataZoom `json:"dataZoom,omitempty"`
@@ -449,7 +460,17 @@ type ToolBoxFeatureSaveAsImage struct {
 	Title string `json:"title,omitempty"`
 }
 
+//ToolBoxFeatureBrush  brush-selecting icon.
+//https://echarts.apache.org/en/option.html#toolbox.feature.brush
 type ToolBoxFeatureBrush struct {
+
+	//Icons used, whose values are:
+	// 'rect': Enabling selecting with rectangle area.
+	// 'polygon': Enabling selecting with any shape.
+	// 'lineX': Enabling horizontal selecting.
+	// 'lineY': Enabling vertical selecting.
+	// 'keep': Switching between single selecting and multiple selecting. The latter one can select multiple areas, while the former one cancels previous selection.
+	// 'clear': Clearing all selection.
 	Type []string `json:"type,omitempty"`
 }
 
@@ -459,6 +480,10 @@ type ToolBoxFeatureDataZoom struct {
 	// Whether to show the tool.
 	Show bool `json:"show"`
 
+	//Defines which yAxis should be controlled. By default, it controls all y axes.
+	//If it is set to be false, then no y axis is controlled.
+	//If it is set to be then it controls axis with axisIndex of 3.
+	//If it is set to be [0, 3], it controls the x-axes with axisIndex of 0 and 3.
 	YAxisIndex interface{} `json:"yAxisIndex,omitempty"`
 
 	// Restored and zoomed title text.
@@ -1365,9 +1390,13 @@ type Grid struct {
 	// Distance between grid component and the bottom side of the container.
 	Bottom string `json:"bottom,omitempty"`
 
+	// Height of grid component. Adaptive by default.
 	Height string `json:"height,omitempty"`
 }
 
+//Dataset brings convenience in data management separated with styles and enables data reuse by different series.
+//More importantly, it enables data encoding from data to visual, which brings convenience in some scenarios.
+//https://echarts.apache.org/en/option.html#dataset.id
 type Dataset struct {
 	//source
 	Source interface{} `json:"source"`

@@ -84,7 +84,7 @@ func (rc *RectChart) SetGlobalOptions(options ...GlobalOpts) *RectChart {
 	return rc
 }
 
-//SetDispatchActions
+//SetDispatchActions sets actions for the RectChart instance.
 func (rc *RectChart) SetDispatchActions(options ...GlobalActions) *RectChart {
 	rc.RectConfiguration.setRectGlobalActions(options...)
 	return rc

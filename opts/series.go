@@ -538,6 +538,8 @@ type EdgeLabel struct {
 	Formatter string `json:"formatter,omitempty"`
 }
 
+//Define what is encoded to for each dimension of data
+//https://echarts.apache.org/en/option.html#series-candlestick.encode
 type Encode struct {
 	X interface{} `json:"x"`
 
