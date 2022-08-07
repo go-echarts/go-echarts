@@ -14,6 +14,7 @@ import (
 // GlobalOpts sets the Global options for charts.
 type GlobalOpts func(bc *BaseConfiguration)
 
+// GlobalActions sets the Global actions for charts
 type GlobalActions func(ba *BaseActions)
 
 // BaseConfiguration represents an option set needed by all chart types.

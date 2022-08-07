@@ -9,6 +9,7 @@ import (
 // Pie represents a pie chart.
 type Pie struct {
 	BaseConfiguration
+	BaseActions
 }
 
 // Type returns the chart type.
@@ -33,6 +34,12 @@ func (c *Pie) AddSeries(name string, data []opts.PieData, options ...SeriesOpts)
 // SetGlobalOptions sets options for the Pie instance.
 func (c *Pie) SetGlobalOptions(options ...GlobalOpts) *Pie {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
+	return c
+}
+
+// SetDispatchActions sets actions for the Pie instance.
+func (c *Pie) SetDispatchActions(actions ...GlobalActions) *Pie {
+	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 
