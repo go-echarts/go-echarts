@@ -607,6 +607,9 @@ type AxisTick struct {
 	// (index:number, value: string) => boolean
 	// The first parameter is index of category, and the second parameter is the name of category. The return values decides whether to display label.
 	Interval string `json:"interval,omitempty"`
+
+	// Align axis tick with label, which is available only when boundaryGap is set to be true in category axis.
+	AlignWithLabel bool `json:"alignWithLabel,omitempty"`
 }
 
 // AxisLine controls settings related to axis line.
@@ -811,6 +814,9 @@ type SplitLine struct {
 
 	// Split line style.
 	LineStyle *LineStyle `json:"lineStyle,omitempty"`
+
+	// Align split line with label, which is available only when boundaryGap is set to be true in category axis.
+	AlignWithLabel bool `json:"alignWithLabel,omitempty"`
 }
 
 // VisualMap is a type of component for visual encoding, which maps the data to visual channels.
