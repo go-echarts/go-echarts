@@ -14,6 +14,58 @@ type Label struct {
 	// If set as "auto", the color will assigned as visual color, such as series color.
 	Color string `json:"color,omitempty"`
 
+	// font style.
+	// Options are: 'normal', 'italic', 'oblique'
+	FontStyle string `json:"fontStyle,omitempty"`
+
+	// font thick weight.
+	// Options are: 'normal', 'bold', 'bolder', 'lighter', 100 | 200 | 300 | 400...
+	FontWeight string `json:"fontWeight,omitempty"`
+
+	// font family.
+	// Can also be 'serif' , 'monospace', ...
+	FontFamily string `json:"fontFamily,omitempty"`
+
+	// font size.
+	FontSize float32 `json:"fontSize,omitempty"`
+
+	// Horizontal alignment of text, automatic by default.
+	// Options are: 'left', 'center', 'right'
+	Align string `json:"align,omitempty"`
+
+	// Vertical alignment of text, automatic by default.
+	// Options are: 'top', 'middle', 'bottom'
+	VerticalAlign string `json:"verticalAlign,omitempty"`
+
+	// Line height of the text fragment.
+	LineHeight float32 `json:"lineHeight,omitempty"`
+
+	// Background color of the text fragment.
+	BackgroundColor  string `json:"backgroundColor,omitempty"`
+
+	// Border color of the text fragment.
+	BorderColor string `json:"borderColor,omitempty"`
+
+	// Border width of the text fragment.
+	BorderWidth float32 `json:"borderWidth,omitempty"`
+
+	// the text fragment border type.
+	// Possible values are: 'solid', 'dashed', 'dotted'
+	BorderType string `json:"borderType,omitempty"`
+
+	// To set the line dash offset. With borderType , we can make the line style more flexible.
+	BorderDashOffset float32 `json:"borderDashOffset,omitempty"`
+
+	// Border radius of the text fragment.
+	BorderRadius float32 `json:"borderRadius,omitempty"`
+
+	// Padding of the text fragment, for example:
+	// padding: [3, 4, 5, 6]: represents padding of [top, right, bottom, left].
+	// padding: 4: represents padding: [4, 4, 4, 4].
+	// padding: [3, 4]: represents padding: [3, 4, 3, 4].
+	// Notice, width and height specifies the width and height of the content, without padding.
+	Padding string `json:"padding,omitempty"`
+
 	// Label position. Followings are the options:
 	//
 	// [x, y]
@@ -48,9 +100,6 @@ type Label struct {
 	// {@xxx}: the value of a dimension named"xxx", for example,{@product}refers the value of"product"` dimension.
 	// {@[n]}: the value of a dimension at the index ofn, for example,{@[3]}` refers the value at dimensions[3].
 	Formatter string `json:"formatter,omitempty"`
-
-	// Font size.
-	FontSize float32 `json:"fontSize,omitempty"`
 }
 
 // LabelLine Configuration of label guide line.
@@ -209,6 +258,9 @@ type MarkPointStyle struct {
 	// Symbol size.
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 
+	// Symbol rotate.
+	SymbolRotate float32 `json:"symbolRotate,omitempty"`
+
 	// Mark point text options.
 	Label *Label `json:"label,omitempty"`
 }
@@ -226,6 +278,9 @@ type MarkPointNameTypeItem struct {
 	// It may be the direct name of a dimension, like x,
 	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
+
+	// ItemStyle settings
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
 // MarkPointNameCoordItem represents coordinates for a MarkPoint.
@@ -247,6 +302,19 @@ type MarkPointNameCoordItem struct {
 
 	// Mark point text options.
 	Label *Label `json:"label,omitempty"`
+
+	// ItemStyle settings
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	// Symbol type
+	// Options: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
+	Symbol string `json:"symbol,omitempty"`
+
+	// Symbol size.
+	SymbolSize float32 `json:"symbolSize,omitempty"`
+
+	// Symbol rotate.
+	SymbolRotate float32 `json:"symbolRotate,omitempty"`
 }
 
 // RippleEffect is the option set for the ripple effect.
