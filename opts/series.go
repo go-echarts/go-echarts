@@ -605,3 +605,11 @@ type EdgeLabel struct {
 	// {@[n]}: the value of a dimension at the index ofn, for example,{@[3]}` refers the value at dimensions[3].
 	Formatter string `json:"formatter,omitempty"`
 }
+
+//Define what is encoded to for each dimension of data
+//https://echarts.apache.org/en/option.html#series-candlestick.encode
+type Encode struct {
+	X interface{} `json:"x"`
+
+	Y interface{} `json:"y"`
+}
