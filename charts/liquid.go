@@ -9,6 +9,7 @@ import (
 // Liquid represents a liquid chart.
 type Liquid struct {
 	BaseConfiguration
+	BaseActions
 }
 
 // Type returns the chart type.
@@ -34,6 +35,12 @@ func (c *Liquid) AddSeries(name string, data []opts.LiquidData, options ...Serie
 // SetGlobalOptions sets options for the Liquid instance.
 func (c *Liquid) SetGlobalOptions(options ...GlobalOpts) *Liquid {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
+	return c
+}
+
+// SetDispatchActions sets actions for the Liquid instance.
+func (c *Liquid) SetDispatchActions(actions ...GlobalActions) *Liquid {
+	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 
