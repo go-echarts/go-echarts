@@ -56,10 +56,15 @@ func WithYAxisOpts(opt opts.YAxis, index ...int) GlobalOpts {
 // RectConfiguration contains options for the rectangular coordinates.
 type RectConfiguration struct {
 	BaseConfiguration
+	BaseActions
 }
 
 func (rect *RectConfiguration) setRectGlobalOptions(options ...GlobalOpts) {
 	rect.BaseConfiguration.setBaseGlobalOptions(options...)
+}
+
+func (rect *RectConfiguration) setRectGlobalActions(options ...GlobalActions) {
+	rect.BaseActions.setBaseGlobalActions(options...)
 }
 
 // RectChart is a chart in RectChart coordinate.
@@ -76,6 +81,12 @@ func (rc *RectChart) overlap() MultiSeries {
 // SetGlobalOptions sets options for the RectChart instance.
 func (rc *RectChart) SetGlobalOptions(options ...GlobalOpts) *RectChart {
 	rc.RectConfiguration.setRectGlobalOptions(options...)
+	return rc
+}
+
+//SetDispatchActions sets actions for the RectChart instance.
+func (rc *RectChart) SetDispatchActions(options ...GlobalActions) *RectChart {
+	rc.RectConfiguration.setRectGlobalActions(options...)
 	return rc
 }
 

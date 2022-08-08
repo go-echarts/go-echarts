@@ -9,6 +9,7 @@ import (
 // Funnel represents a funnel chart.
 type Funnel struct {
 	BaseConfiguration
+	BaseActions
 }
 
 // Type returns the chart type.
@@ -33,6 +34,12 @@ func (c *Funnel) AddSeries(name string, data []opts.FunnelData, options ...Serie
 // SetGlobalOptions sets options for the Funnel instance.
 func (c *Funnel) SetGlobalOptions(options ...GlobalOpts) *Funnel {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
+	return c
+}
+
+// SetDispatchActions sets actions for the Gauge instance.
+func (c *Funnel) SetDispatchActions(actions ...GlobalActions) *Funnel {
+	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 
