@@ -26,7 +26,7 @@ func NewTreeMap() *TreeMap {
 // AddSeries adds new data sets.
 func (c *TreeMap) AddSeries(name string, data []opts.TreeMapNode, options ...SeriesOpts) *TreeMap {
 	series := SingleSeries{Name: name, Type: types.ChartTreeMap, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

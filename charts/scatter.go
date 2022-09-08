@@ -32,7 +32,7 @@ func (c *Scatter) SetXAxis(x interface{}) *Scatter {
 // AddSeries adds the new series.
 func (c *Scatter) AddSeries(name string, data []opts.ScatterData, options ...SeriesOpts) *Scatter {
 	series := SingleSeries{Name: name, Type: types.ChartScatter, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

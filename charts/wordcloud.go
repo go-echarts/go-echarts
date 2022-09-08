@@ -34,7 +34,7 @@ func NewWordCloud() *WordCloud {
 // AddSeries adds new data sets.
 func (c *WordCloud) AddSeries(name string, data []opts.WordCloudData, options ...SeriesOpts) *WordCloud {
 	series := SingleSeries{Name: name, Type: types.ChartWordCloud, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 
 	// set default random color for WordCloud chart
 	if series.TextStyle == nil {

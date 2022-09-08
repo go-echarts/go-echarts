@@ -50,7 +50,7 @@ func (c *Chart3D) addSeries(chartType, name string, data []opts.Chart3DData, opt
 		Data:        data,
 		CoordSystem: types.ChartCartesian3D,
 	}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 }
 
