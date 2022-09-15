@@ -27,7 +27,7 @@ func NewParallel() *Parallel {
 // AddSeries adds new data sets.
 func (c *Parallel) AddSeries(name string, data []opts.ParallelData, options ...SeriesOpts) *Parallel {
 	series := SingleSeries{Name: name, Type: types.ChartParallel, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

@@ -26,7 +26,7 @@ func NewPie() *Pie {
 // AddSeries adds new data sets.
 func (c *Pie) AddSeries(name string, data []opts.PieData, options ...SeriesOpts) *Pie {
 	series := SingleSeries{Name: name, Type: types.ChartPie, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
