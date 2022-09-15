@@ -26,7 +26,7 @@ func NewFunnel() *Funnel {
 // AddSeries adds new data sets.
 func (c *Funnel) AddSeries(name string, data []opts.FunnelData, options ...SeriesOpts) *Funnel {
 	series := SingleSeries{Name: name, Type: types.ChartFunnel, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

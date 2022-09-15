@@ -26,7 +26,7 @@ func NewGauge() *Gauge {
 // AddSeries adds new data sets.
 func (c *Gauge) AddSeries(name string, data []opts.GaugeData, options ...SeriesOpts) *Gauge {
 	series := SingleSeries{Name: name, Type: types.ChartGauge, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }

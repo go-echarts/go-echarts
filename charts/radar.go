@@ -27,7 +27,7 @@ func NewRadar() *Radar {
 // AddSeries adds new data sets.
 func (c *Radar) AddSeries(name string, data []opts.RadarData, options ...SeriesOpts) *Radar {
 	series := SingleSeries{Name: name, Type: types.ChartRadar, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	c.legends = append(c.legends, name)
 	return c

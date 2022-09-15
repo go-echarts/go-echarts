@@ -26,7 +26,7 @@ func NewSunburst() *Sunburst {
 // AddSeries adds new data sets.
 func (c *Sunburst) AddSeries(name string, data []opts.SunBurstData, options ...SeriesOpts) *Sunburst {
 	series := SingleSeries{Name: name, Type: types.ChartSunburst, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
