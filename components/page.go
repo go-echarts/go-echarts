@@ -1,6 +1,8 @@
 package components
 
 import (
+	"net/http"
+
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/render"
 )
@@ -18,6 +20,7 @@ type Charter interface {
 	Type() string
 	GetAssets() opts.Assets
 	Validate()
+	RegisterMux(mux ...*http.ServeMux)
 }
 
 // Page represents a page chart.
@@ -26,15 +29,16 @@ type Page struct {
 	opts.Initialization
 	opts.Assets
 
-	Charts []interface{}
+	Charts []Charter
 	Layout Layout
+	Mux    *http.ServeMux
 }
 
 // NewPage creates a new page.
 func NewPage() *Page {
 	page := &Page{}
 	page.Assets.InitAssets()
-	page.Renderer = render.NewPageRender(page, page.Validate)
+	page.Renderer = render.NewPageRender(page, page.Validate,page.ValidateMux)
 	page.Layout = PageCenterLayout
 	return page
 }
@@ -66,4 +70,10 @@ func (page *Page) AddCharts(charts ...Charter) *Page {
 func (page *Page) Validate() {
 	page.Initialization.Validate()
 	page.Assets.Validate(page.AssetsHost)
+}
+
+func (page *Page) ValidateMux() {
+	for _, v := range page.Charts {
+		v.RegisterMux(page.Mux)
+	}
 }

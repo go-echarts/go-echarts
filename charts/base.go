@@ -3,12 +3,16 @@ package charts
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"html/template"
+	"net/http"
+	"time"
 
 	"github.com/go-echarts/go-echarts/v2/actions"
 	"github.com/go-echarts/go-echarts/v2/datasets"
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/render"
+	"github.com/gorilla/websocket"
 )
 
 // GlobalOpts sets the Global options for charts.
@@ -29,6 +33,7 @@ type BaseConfiguration struct {
 	opts.RadiusAxis   `json:"radiusAxis"`
 	opts.Brush        `json:"brush"`
 	*opts.AxisPointer `json:"axisPointer"`
+	opts.Anime
 
 	render.Renderer        `json:"-"`
 	opts.Initialization    `json:"-"`
@@ -71,6 +76,9 @@ type BaseConfiguration struct {
 	hasBrush      bool
 
 	GridList []opts.Grid `json:"grid,omitempty"`
+
+	// UpdaterConfig use to update the chart option . if it's not nil, use RegisterMux to set handle.
+	*UpdaterConfig `json:"-"`
 }
 
 // BaseActions represents a dispatchAction set needed by all chart types.
@@ -218,6 +226,71 @@ func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
 	for _, opt := range opts {
 		opt(bc)
 	}
+}
+
+type UpdaterConfig struct {
+	UpdateCh chan Updater `json:"-"`
+	Handle   http.HandlerFunc
+}
+
+type Updater interface {
+	JSONNotEscaped() template.HTML
+}
+
+func (u *BaseConfiguration) SetOptionUpdater() chan<- Updater {
+	if u.UpdaterConfig == nil {
+		u.UpdaterConfig = &UpdaterConfig{}
+		u.UpdateCh = make(chan Updater)
+	}
+
+	u.Handle = func(w http.ResponseWriter, r *http.Request) {
+		conn, err := upgrader.Upgrade(w, r, nil)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+
+		defer conn.Close()
+		for chart := range u.UpdateCh {
+			if err := conn.WriteMessage(websocket.TextMessage, []byte(chart.JSONNotEscaped())); err != nil {
+				return
+			}
+		}
+	}
+	return u.UpdateCh
+}
+
+var upgrader = websocket.Upgrader{
+	ReadBufferSize:   1024,
+	WriteBufferSize:  1024,
+	HandshakeTimeout: 5 * time.Second,
+	CheckOrigin: func(r *http.Request) bool {
+		return true
+	},
+}
+
+func (bc *BaseConfiguration) RegisterMux(mux ...*http.ServeMux) {
+	if bc.UpdaterConfig == nil {
+		return
+	}
+	if len(mux) > 0 && mux[0] != nil {
+		mux[0].HandleFunc(fmt.Sprintf("/ws/%s", bc.GetChartID()), bc.Handle)
+		return
+	}
+	http.HandleFunc(fmt.Sprintf("/ws/%s", bc.GetChartID()), bc.Handle)
+
+}
+func (bc *BaseConfiguration) GetUpdaterHandlerFunc() http.HandlerFunc {
+	if bc.UpdaterConfig == nil {
+		bc.SetOptionUpdater()
+	}
+	return bc.Handle
+}
+func (bc *BaseConfiguration) GetChartID() string {
+	if bc.Initialization.ChartID == "" {
+		bc.Initialization.Validate()
+	}
+	return bc.ChartID
 }
 
 func (bc *BaseActions) setBaseGlobalActions(opts ...GlobalActions) {
@@ -395,5 +468,11 @@ func WithGridOpts(opt ...opts.Grid) GlobalOpts {
 func WithAxisPointerOpts(opt *opts.AxisPointer) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.AxisPointer = opt
+	}
+}
+
+func WithAnimationOpts(opt opts.Anime) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.Anime = opt
 	}
 }
