@@ -2,10 +2,13 @@ package charts
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"html/template"
 	"net/http"
+	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/go-echarts/go-echarts/v2/actions"
@@ -231,6 +234,38 @@ func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
 type UpdaterConfig struct {
 	UpdateCh chan Updater `json:"-"`
 	Handle   http.HandlerFunc
+	timeOut  time.Duration
+	subs     map[uint64]chan Updater
+	rwLk     sync.RWMutex
+	once     sync.Once
+	id       uint64
+}
+
+func (u *UpdaterConfig) addSub() (uint64, <-chan Updater) {
+	id := atomic.AddUint64(&u.id, 1)
+	u.rwLk.Lock()
+	defer u.rwLk.Unlock()
+	u.subs[id] = make(chan Updater, 1)
+	return id, u.subs[id]
+}
+
+func (u *UpdaterConfig) cancelSub(id uint64) {
+	u.rwLk.Lock()
+	defer u.rwLk.Unlock()
+	delete(u.subs, id)
+}
+func (u *UpdaterConfig) pubDate() {
+
+	for data := range u.UpdateCh {
+		u.rwLk.RLock()
+		for _, ch := range u.subs {
+			select {
+			case ch <- data:
+			default:
+			}
+		}
+		u.rwLk.RUnlock()
+	}
 }
 
 type Updater interface {
@@ -241,7 +276,11 @@ func (u *BaseConfiguration) SetOptionUpdater() chan<- Updater {
 	if u.UpdaterConfig == nil {
 		u.UpdaterConfig = &UpdaterConfig{}
 		u.UpdateCh = make(chan Updater)
+		u.subs = make(map[uint64]chan Updater)
 	}
+	u.once.Do(func() {
+		go u.pubDate()
+	})
 
 	u.Handle = func(w http.ResponseWriter, r *http.Request) {
 		conn, err := upgrader.Upgrade(w, r, nil)
@@ -249,10 +288,32 @@ func (u *BaseConfiguration) SetOptionUpdater() chan<- Updater {
 			fmt.Println(err)
 			return
 		}
-
+		id, ch := u.addSub()
+		defer u.cancelSub(id)
 		defer conn.Close()
-		for chart := range u.UpdateCh {
-			if err := conn.WriteMessage(websocket.TextMessage, []byte(chart.JSONNotEscaped())); err != nil {
+		ctx, cancel := context.WithCancel(context.Background())
+		defer cancel()
+		go func() {
+			for {
+				select {
+				case <-ctx.Done():
+					return
+				default:
+					_, _, err := conn.ReadMessage()
+					if err != nil {
+						cancel()
+						return
+					}
+				}
+			}
+		}()
+		for {
+			select {
+			case chart := <-ch:
+				if err := conn.WriteMessage(websocket.TextMessage, []byte(chart.JSONNotEscaped())); err != nil {
+					return
+				}
+			case <-ctx.Done():
 				return
 			}
 		}
