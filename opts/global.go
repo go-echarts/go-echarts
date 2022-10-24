@@ -281,6 +281,10 @@ type Tooltip struct {
 	//    It can also be triggered by axisPointer.handle in this case.
 	TriggerOn string `json:"triggerOn,omitempty"`
 
+	// Whether mouse is allowed to enter the floating layer of tooltip, whose default value is false.
+	// If you need to interact in the tooltip like with links or buttons, it can be set as true.
+	Enterable bool `json:"enterable,omitempty"`
+
 	// The content formatter of tooltip's floating layer which supports string template and callback function.
 	//
 	// 1. String template
