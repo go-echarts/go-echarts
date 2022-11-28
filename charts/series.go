@@ -33,10 +33,10 @@ type SingleSeries struct {
 	FocusNodeAdjacency bool        `json:"focusNodeAdjacency,omitempty"`
 
 	// Line
-	Step         bool `json:"step,omitempty"`
-	Smooth       bool `json:"smooth,omitempty"`
-	ConnectNulls bool `json:"connectNulls,omitempty"`
-	ShowSymbol   bool `json:"showSymbol"`
+	Step         interface{} `json:"step,omitempty"`
+	Smooth       bool        `json:"smooth,omitempty"`
+	ConnectNulls bool        `json:"connectNulls,omitempty"`
+	ShowSymbol   bool        `json:"showSymbol"`
 
 	// Liquid
 	IsLiquidOutline bool `json:"outline,omitempty"`
@@ -92,16 +92,18 @@ type SingleSeries struct {
 	Data interface{} `json:"data"`
 
 	// series options
-	*opts.ItemStyle    `json:"itemStyle,omitempty"`
-	*opts.Label        `json:"label,omitempty"`
-	*opts.LabelLine    `json:"labelLine,omitempty"`
-	*opts.Emphasis     `json:"emphasis,omitempty"`
-	*opts.MarkLines    `json:"markLine,omitempty"`
-	*opts.MarkPoints   `json:"markPoint,omitempty"`
-	*opts.RippleEffect `json:"rippleEffect,omitempty"`
-	*opts.LineStyle    `json:"lineStyle,omitempty"`
-	*opts.AreaStyle    `json:"areaStyle,omitempty"`
-	*opts.TextStyle    `json:"textStyle,omitempty"`
+	*opts.Encode        `json:"encode,omitempty"`
+	*opts.ItemStyle     `json:"itemStyle,omitempty"`
+	*opts.Label         `json:"label,omitempty"`
+	*opts.LabelLine     `json:"labelLine,omitempty"`
+	*opts.Emphasis      `json:"emphasis,omitempty"`
+	*opts.MarkLines     `json:"markLine,omitempty"`
+	*opts.MarkPoints    `json:"markPoint,omitempty"`
+	*opts.RippleEffect  `json:"rippleEffect,omitempty"`
+	*opts.LineStyle     `json:"lineStyle,omitempty"`
+	*opts.AreaStyle     `json:"areaStyle,omitempty"`
+	*opts.TextStyle     `json:"textStyle,omitempty"`
+	*opts.CircularStyle `json:"circular,omitempty"`
 }
 
 type SeriesOpts func(s *SingleSeries)
@@ -145,6 +147,13 @@ func WithRippleEffectOpts(opt opts.RippleEffect) SeriesOpts {
 func WithLineStyleOpts(opt opts.LineStyle) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.LineStyle = &opt
+	}
+}
+
+// With CircularStyle Opts
+func WithCircularStyleOpts(opt opts.CircularStyle) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.CircularStyle = &opt
 	}
 }
 
@@ -390,7 +399,7 @@ func WithMarkPointNameCoordItemOpts(opt ...opts.MarkPointNameCoordItem) SeriesOp
 	}
 }
 
-func (s *SingleSeries) configureSeriesOpts(options ...SeriesOpts) {
+func (s *SingleSeries) ConfigureSeriesOpts(options ...SeriesOpts) {
 	for _, opt := range options {
 		opt(s)
 	}
@@ -407,6 +416,13 @@ type MultiSeries []SingleSeries
 func (ms *MultiSeries) SetSeriesOptions(opts ...SeriesOpts) {
 	s := *ms
 	for i := 0; i < len(s); i++ {
-		s[i].configureSeriesOpts(opts...)
+		s[i].ConfigureSeriesOpts(opts...)
+	}
+}
+
+// WithEncodeOpts Set encodes for dataSets
+func WithEncodeOpts(opt opts.Encode) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.Encode = &opt
 	}
 }

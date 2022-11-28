@@ -9,6 +9,7 @@ import (
 // Sunburst represents a sunburst chart.
 type Sunburst struct {
 	BaseConfiguration
+	BaseActions
 }
 
 // Type returns the chart type.
@@ -25,7 +26,7 @@ func NewSunburst() *Sunburst {
 // AddSeries adds new data sets.
 func (c *Sunburst) AddSeries(name string, data []opts.SunBurstData, options ...SeriesOpts) *Sunburst {
 	series := SingleSeries{Name: name, Type: types.ChartSunburst, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
@@ -33,6 +34,12 @@ func (c *Sunburst) AddSeries(name string, data []opts.SunBurstData, options ...S
 // SetGlobalOptions sets options for the Pie instance.
 func (c *Sunburst) SetGlobalOptions(options ...GlobalOpts) *Sunburst {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
+	return c
+}
+
+// SetDispatchActions sets actions for the Sunburst instance.
+func (c *Sunburst) SetDispatchActions(actions ...GlobalActions) *Sunburst {
+	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 

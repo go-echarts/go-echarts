@@ -9,6 +9,7 @@ import (
 // Graph represents a graph chart.
 type Graph struct {
 	BaseConfiguration
+	BaseActions
 }
 
 // Type returns the chart type.
@@ -25,7 +26,7 @@ func NewGraph() *Graph {
 // AddSeries adds the new series.
 func (c *Graph) AddSeries(name string, nodes []opts.GraphNode, links []opts.GraphLink, options ...SeriesOpts) *Graph {
 	series := SingleSeries{Name: name, Type: types.ChartGraph, Links: links, Data: nodes}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
@@ -33,6 +34,12 @@ func (c *Graph) AddSeries(name string, nodes []opts.GraphNode, links []opts.Grap
 // SetGlobalOptions sets options for the Graph instance.
 func (c *Graph) SetGlobalOptions(options ...GlobalOpts) *Graph {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
+	return c
+}
+
+// SetDispatchActions sets actions for the Graph instance.
+func (c *Graph) SetDispatchActions(actions ...GlobalActions) *Graph {
+	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 

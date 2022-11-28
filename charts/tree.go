@@ -9,6 +9,7 @@ import (
 // Tree represents a Tree chart.
 type Tree struct {
 	BaseConfiguration
+	BaseActions
 }
 
 // Type returns the chart type.
@@ -25,14 +26,20 @@ func NewTree() *Tree {
 // AddSeries adds new data sets.
 func (c *Tree) AddSeries(name string, data []opts.TreeData, options ...SeriesOpts) *Tree {
 	series := SingleSeries{Name: name, Type: types.ChartTree, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
 
-// SetGlobalOptions sets options for the Graph instance.
+// SetGlobalOptions sets options for the Tree instance.
 func (c *Tree) SetGlobalOptions(options ...GlobalOpts) *Tree {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
+	return c
+}
+
+// SetDispatchActions sets actions for the Tree instance.
+func (c *Tree) SetDispatchActions(actions ...GlobalActions) *Tree {
+	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 

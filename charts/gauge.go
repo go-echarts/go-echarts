@@ -9,6 +9,7 @@ import (
 // Gauge represents a gauge chart.
 type Gauge struct {
 	BaseConfiguration
+	BaseActions
 }
 
 // Type returns the chart type.
@@ -25,7 +26,7 @@ func NewGauge() *Gauge {
 // AddSeries adds new data sets.
 func (c *Gauge) AddSeries(name string, data []opts.GaugeData, options ...SeriesOpts) *Gauge {
 	series := SingleSeries{Name: name, Type: types.ChartGauge, Data: data}
-	series.configureSeriesOpts(options...)
+	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c
 }
@@ -33,6 +34,12 @@ func (c *Gauge) AddSeries(name string, data []opts.GaugeData, options ...SeriesO
 // SetGlobalOptions sets options for the Gauge instance.
 func (c *Gauge) SetGlobalOptions(options ...GlobalOpts) *Gauge {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
+	return c
+}
+
+// SetDispatchActions sets actions for the Gauge instance.
+func (c *Gauge) SetDispatchActions(actions ...GlobalActions) *Gauge {
+	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 

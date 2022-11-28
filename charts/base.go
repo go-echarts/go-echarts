@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"html/template"
 
+	"github.com/go-echarts/go-echarts/v2/actions"
 	"github.com/go-echarts/go-echarts/v2/datasets"
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/render"
@@ -13,15 +14,21 @@ import (
 // GlobalOpts sets the Global options for charts.
 type GlobalOpts func(bc *BaseConfiguration)
 
+// GlobalActions sets the Global actions for charts
+type GlobalActions func(ba *BaseActions)
+
 // BaseConfiguration represents an option set needed by all chart types.
 type BaseConfiguration struct {
-	opts.Legend     `json:"legend"`
-	opts.Tooltip    `json:"tooltip"`
-	opts.Toolbox    `json:"toolbox"`
-	opts.Title      `json:"title"`
-	opts.Polar      `json:"polar"`
-	opts.AngleAxis  `json:"angleAxis"`
-	opts.RadiusAxis `json:"radiusAxis"`
+	opts.Legend       `json:"legend"`
+	opts.Tooltip      `json:"tooltip"`
+	opts.Toolbox      `json:"toolbox"`
+	opts.Title        `json:"title"`
+	opts.Dataset      `json:"dataset"`
+	opts.Polar        `json:"polar"`
+	opts.AngleAxis    `json:"angleAxis"`
+	opts.RadiusAxis   `json:"radiusAxis"`
+	opts.Brush        `json:"brush"`
+	*opts.AxisPointer `json:"axisPointer"`
 
 	render.Renderer        `json:"-"`
 	opts.Initialization    `json:"-"`
@@ -39,6 +46,7 @@ type BaseConfiguration struct {
 	opts.YAxis3D
 	opts.ZAxis3D
 	opts.Grid3D
+	opts.Grid
 
 	legends []string
 	// Colors is the color list of palette.
@@ -60,6 +68,15 @@ type BaseConfiguration struct {
 	hasParallel   bool
 	hasSingleAxis bool
 	hasPolar      bool
+	hasBrush      bool
+
+	GridList []opts.Grid `json:"grid,omitempty"`
+}
+
+// BaseActions represents a dispatchAction set needed by all chart types.
+type BaseActions struct {
+	actions.Type  `json:"type,omitempty"`
+	actions.Areas `json:"areas,omitempty"`
 }
 
 // JSON wraps all the options to a map so that it could be used in the base template
@@ -81,14 +98,28 @@ func (bc *BaseConfiguration) JSONNotEscaped() template.HTML {
 	return template.HTML(buff.String())
 }
 
+// JSONNotEscapedAction works like method JSON, but it returns a marshaled object whose characters will not be escaped in the template
+func (ba *BaseActions) JSONNotEscapedAction() template.HTML {
+	obj := ba.json()
+	buff := bytes.NewBufferString("")
+	enc := json.NewEncoder(buff)
+	enc.SetEscapeHTML(false)
+	enc.Encode(obj)
+
+	return template.HTML(buff.String())
+}
+
 func (bc *BaseConfiguration) json() map[string]interface{} {
 	obj := map[string]interface{}{
 		"title":   bc.Title,
 		"legend":  bc.Legend,
 		"tooltip": bc.Tooltip,
 		"series":  bc.MultiSeries,
+		"dataset": bc.Dataset,
 	}
-
+	if bc.AxisPointer != nil {
+		obj["axisPointer"] = bc.AxisPointer
+	}
 	if bc.hasPolar {
 		obj["polar"] = bc.Polar
 		obj["angleAxis"] = bc.AngleAxis
@@ -144,6 +175,14 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 		obj["backgroundColor"] = bc.BackgroundColor
 	}
 
+	if len(bc.GridList) > 0 {
+		obj["grid"] = bc.GridList
+	}
+
+	if bc.hasBrush {
+		obj["brush"] = bc.Brush
+	}
+
 	return obj
 }
 
@@ -181,6 +220,34 @@ func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
 	}
 }
 
+func (bc *BaseActions) setBaseGlobalActions(opts ...GlobalActions) {
+	for _, opt := range opts {
+		opt(bc)
+	}
+}
+
+func (ba *BaseActions) json() map[string]interface{} {
+	obj := map[string]interface{}{
+		"type":  ba.Type,
+		"areas": ba.Areas,
+	}
+	return obj
+}
+
+// WithAreas sets the areas of the action
+func WithAreas(act actions.Areas) GlobalActions {
+	return func(ba *BaseActions) {
+		ba.Areas = act
+	}
+}
+
+// WithType sets the type of the action
+func WithType(act actions.Type) GlobalActions {
+	return func(ba *BaseActions) {
+		ba.Type = act
+	}
+}
+
 // WithAngleAxisOps sets the angle of the axis.
 func WithAngleAxisOps(opt opts.AngleAxis) GlobalOpts {
 	return func(bc *BaseConfiguration) {
@@ -192,6 +259,14 @@ func WithAngleAxisOps(opt opts.AngleAxis) GlobalOpts {
 func WithRadiusAxisOps(opt opts.RadiusAxis) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.RadiusAxis = opt
+	}
+}
+
+// WithBrush sets the Brush.
+func WithBrush(opt opts.Brush) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.hasBrush = true
+		bc.Brush = opt
 	}
 }
 
@@ -307,4 +382,18 @@ func reverseSlice(s []string) []string {
 		s[i], s[j] = s[j], s[i]
 	}
 	return s
+}
+
+// WithGridOpts sets the List of the grid.
+func WithGridOpts(opt ...opts.Grid) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.GridList = append(bc.GridList, opt...)
+	}
+}
+
+// WithAxisPointerOpts sets the axis pointer.
+func WithAxisPointerOpts(opt *opts.AxisPointer) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.AxisPointer = opt
+	}
 }

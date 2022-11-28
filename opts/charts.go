@@ -249,6 +249,9 @@ type GraphLink struct {
 
 	// value of edge, can be mapped to edge length in force graph.
 	Value float32 `json:"value,omitempty"`
+
+	// Label for this link.
+	Label *EdgeLabel `json:"label,omitempty"`
 }
 
 // GraphCategory represents a category for data nodes.
@@ -308,7 +311,7 @@ type LineChart struct {
 
 	// Whether to show as a step line. It can be true, false. Or 'start', 'middle', 'end'.
 	// Which will configure the turn point of step line.
-	Step bool
+	Step interface{}
 
 	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
 	XAxisIndex int
