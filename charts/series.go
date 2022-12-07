@@ -399,7 +399,7 @@ func WithMarkAreaNameCoordItemOpts(opt ...opts.MarkAreaNameCoordItem) SeriesOpts
 			s.MarkAreas = &opts.MarkAreas{}
 		}
 		for _, o := range opt {
-			s.MarkLines.Data = append(s.MarkLines.Data, []MANameCoord{{Name: o.Name, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
+			s.MarkAreas.Data = append(s.MarkAreas.Data, []MANameCoord{{Name: o.Name, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
 		}
 	}
 }
