@@ -307,6 +307,9 @@ type MarkAreaNameCoordItem struct {
 	// It may be the direct name of a dimension, like x,
 	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
+
+	// ItemStyle settings
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
 // MarkPoints represents a series of markpoints.
