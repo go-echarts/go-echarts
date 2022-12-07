@@ -98,6 +98,7 @@ type SingleSeries struct {
 	*opts.LabelLine     `json:"labelLine,omitempty"`
 	*opts.Emphasis      `json:"emphasis,omitempty"`
 	*opts.MarkLines     `json:"markLine,omitempty"`
+	*opts.MarkAreas     `json:"markArea,omitempty"`
 	*opts.MarkPoints    `json:"markPoint,omitempty"`
 	*opts.RippleEffect  `json:"rippleEffect,omitempty"`
 	*opts.LineStyle     `json:"lineStyle,omitempty"`
@@ -364,6 +365,69 @@ func WithMarkLineNameYAxisItemOpts(opt ...opts.MarkLineNameYAxisItem) SeriesOpts
 	}
 }
 
+// WithMarkAreaNameTypeItemOpts sets the type of the MarkArea.
+func WithMarkAreaNameTypeItemOpts(opt ...opts.MarkAreaNameTypeItem) SeriesOpts {
+	return func(s *SingleSeries) {
+		if s.MarkAreas == nil {
+			s.MarkAreas = &opts.MarkAreas{}
+		}
+		for _, o := range opt {
+			s.MarkAreas.Data = append(s.MarkAreas.Data, o)
+		}
+	}
+}
+
+// WithMarkAreaStyleOpts sets the style of the MarkArea.
+func WithMarkAreaStyleOpts(opt opts.MarkAreaStyle) SeriesOpts {
+	return func(s *SingleSeries) {
+		if s.MarkAreas == nil {
+			s.MarkAreas = &opts.MarkAreas{}
+		}
+
+		s.MarkAreas.MarkAreaStyle = opt
+	}
+}
+
+// WithMarkAreaNameCoordItemOpts sets the coordinates of the MarkLine.
+func WithMarkAreaNameCoordItemOpts(opt ...opts.MarkAreaNameCoordItem) SeriesOpts {
+	type MANameCoord struct {
+		Name  string        `json:"name,omitempty"`
+		Coord []interface{} `json:"coord"`
+	}
+	return func(s *SingleSeries) {
+		if s.MarkAreas == nil {
+			s.MarkAreas = &opts.MarkAreas{}
+		}
+		for _, o := range opt {
+			s.MarkLines.Data = append(s.MarkLines.Data, []MANameCoord{{Name: o.Name, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
+		}
+	}
+}
+
+// WithMarkAreaNameXAxisItemOpts sets the X axis of the MarkLine.
+func WithMarkAreaNameXAxisItemOpts(opt ...opts.MarkAreaNameXAxisItem) SeriesOpts {
+	return func(s *SingleSeries) {
+		if s.MarkAreas == nil {
+			s.MarkAreas = &opts.MarkAreas{}
+		}
+		for _, o := range opt {
+			s.MarkAreas.Data = append(s.MarkAreas.Data, o)
+		}
+	}
+}
+
+// WithMarkAreaNameYAxisItemOpts sets the Y axis of the MarkLine.
+func WithMarkAreaNameYAxisItemOpts(opt ...opts.MarkAreaNameYAxisItem) SeriesOpts {
+	return func(s *SingleSeries) {
+		if s.MarkAreas == nil {
+			s.MarkAreas = &opts.MarkAreas{}
+		}
+		for _, o := range opt {
+			s.MarkAreas.Data = append(s.MarkAreas.Data, o)
+		}
+	}
+}
+
 // WithMarkPointNameTypeItemOpts sets the type of the MarkPoint.
 func WithMarkPointNameTypeItemOpts(opt ...opts.MarkPointNameTypeItem) SeriesOpts {
 	return func(s *SingleSeries) {
@@ -411,7 +475,9 @@ type MultiSeries []SingleSeries
 // SetSeriesOptions sets options for all the series.
 // Previous options will be overwrote every time hence setting them on the `AddSeries` if you want
 // to customize each series individually
-// 															 here -> ↓ <-
+//
+//	here -> ↓ <-
+//
 // func (c *Bar) AddSeries(name string, data []opts.BarData, options ...SeriesOpts)
 func (ms *MultiSeries) SetSeriesOptions(opts ...SeriesOpts) {
 	s := *ms
