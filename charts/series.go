@@ -391,15 +391,16 @@ func WithMarkAreaStyleOpts(opt opts.MarkAreaStyle) SeriesOpts {
 // WithMarkAreaNameCoordItemOpts sets the coordinates of the MarkLine.
 func WithMarkAreaNameCoordItemOpts(opt ...opts.MarkAreaNameCoordItem) SeriesOpts {
 	type MANameCoord struct {
-		Name  string        `json:"name,omitempty"`
-		Coord []interface{} `json:"coord"`
+		Name      string          `json:"name,omitempty"`
+		ItemStyle *opts.ItemStyle `json:"itemStyle"`
+		Coord     []interface{}   `json:"coord"`
 	}
 	return func(s *SingleSeries) {
 		if s.MarkAreas == nil {
 			s.MarkAreas = &opts.MarkAreas{}
 		}
 		for _, o := range opt {
-			s.MarkAreas.Data = append(s.MarkAreas.Data, []MANameCoord{{Name: o.Name, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
+			s.MarkAreas.Data = append(s.MarkAreas.Data, []MANameCoord{{Name: o.Name, ItemStyle: o.ItemStyle, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
 		}
 	}
 }

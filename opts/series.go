@@ -271,6 +271,9 @@ type MarkAreaNameTypeItem struct {
 	// It may be the direct name of a dimension, like x,
 	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
+
+	// ItemStyle settings
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
 // MarkAreaNameYAxisItem defines a MarkArea on a Y axis.
@@ -307,6 +310,9 @@ type MarkAreaNameCoordItem struct {
 	// It may be the direct name of a dimension, like x,
 	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
+
+	// Mark point text options.
+	Label *Label `json:"label,omitempty"`
 
 	// ItemStyle settings
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
