@@ -41,7 +41,7 @@ type Label struct {
 	LineHeight float32 `json:"lineHeight,omitempty"`
 
 	// Background color of the text fragment.
-	BackgroundColor  string `json:"backgroundColor,omitempty"`
+	BackgroundColor string `json:"backgroundColor,omitempty"`
 
 	// Border color of the text fragment.
 	BorderColor string `json:"borderColor,omitempty"`
@@ -241,6 +241,81 @@ type MarkLineNameCoordItem struct {
 	// It may be the direct name of a dimension, like x,
 	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
+}
+
+// MarkAreas represents a series of markareas.
+type MarkAreas struct {
+	Data []interface{} `json:"data,omitempty"`
+	MarkAreaStyle
+}
+
+// MarkAreaStyle contains styling options for a MarkArea.
+type MarkAreaStyle struct {
+	// Mark area text options.
+	Label *Label `json:"label,omitempty"`
+
+	// ItemStyle settings
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+}
+
+// MarkAreaNameTypeItem represents type for a MarkArea.
+type MarkAreaNameTypeItem struct {
+	// Mark area name.
+	Name string `json:"name,omitempty"`
+
+	// Mark area type, options: "average", "min", "max".
+	Type string `json:"type,omitempty"`
+
+	// Works only when type is assigned.
+	// It is used to state the dimension used to calculate maximum value or minimum value.
+	// It may be the direct name of a dimension, like x,
+	// or angle for line charts, or open, or close for candlestick charts.
+	ValueDim string `json:"valueDim,omitempty"`
+
+	// ItemStyle settings
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+}
+
+// MarkAreaNameYAxisItem defines a MarkArea on a Y axis.
+type MarkAreaNameYAxisItem struct {
+	// Mark area name
+	Name string `json:"name,omitempty"`
+
+	// Y axis data
+	YAxis interface{} `json:"yAxis,omitempty"`
+}
+
+// MarkAreaNameXAxisItem defines a MarkArea on a X axis.
+type MarkAreaNameXAxisItem struct {
+	// Mark area name
+	Name string `json:"name,omitempty"`
+
+	// X axis data
+	XAxis interface{} `json:"xAxis,omitempty"`
+}
+
+// MarkAreaNameCoordItem represents coordinates for a MarkArea.
+type MarkAreaNameCoordItem struct {
+	// Mark area name
+	Name string `json:"name,omitempty"`
+
+	// Mark area start coordinate
+	Coordinate0 []interface{}
+
+	// Mark area end coordinate
+	Coordinate1 []interface{}
+
+	// Works only when type is assigned.
+	// It is used to state the dimension used to calculate maximum value or minimum value.
+	// It may be the direct name of a dimension, like x,
+	// or angle for line charts, or open, or close for candlestick charts.
+	ValueDim string `json:"valueDim,omitempty"`
+
+	// Mark point text options.
+	Label *Label `json:"label,omitempty"`
+
+	// ItemStyle settings
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
 // MarkPoints represents a series of markpoints.
@@ -606,8 +681,8 @@ type EdgeLabel struct {
 	Formatter string `json:"formatter,omitempty"`
 }
 
-//Define what is encoded to for each dimension of data
-//https://echarts.apache.org/en/option.html#series-candlestick.encode
+// Define what is encoded to for each dimension of data
+// https://echarts.apache.org/en/option.html#series-candlestick.encode
 type Encode struct {
 	X interface{} `json:"x"`
 
