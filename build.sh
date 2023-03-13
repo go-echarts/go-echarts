@@ -30,7 +30,7 @@ function release() {
 }
 
 function help() {
-    echo "$0 --cmd [format|test|release]"
+    echo "$0 [format|test|release]"
 }
 
 if [ "$1" == "" ]; then
