@@ -32,6 +32,11 @@ type SingleSeries struct {
 	Draggable          bool        `json:"draggable,omitempty"`
 	FocusNodeAdjacency bool        `json:"focusNodeAdjacency,omitempty"`
 
+	// KLine
+	BarWidth    string `json:"barWidth,omitempty"`
+	BarMinWidth string `json:"barMinWidth,omitempty"`
+	BarMaxWidth string `json:"barMaxWidth,omitempty"`
+
 	// Line
 	Step         interface{} `json:"step,omitempty"`
 	Smooth       bool        `json:"smooth"`
@@ -229,6 +234,15 @@ func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 	}
 }
 
+// WithLineChartOpts sets the LineChart option.
+func WithKlineChartOpts(opt opts.KlineChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.BarWidth = opt.BarWidth
+		s.BarMinWidth = opt.BarMinWidth
+		s.BarMaxWidth = opt.BarMaxWidth
+	}
+}
+
 // WithPieChartOpts sets the PieChart option.
 func WithPieChartOpts(opt opts.PieChart) SeriesOpts {
 	return func(s *SingleSeries) {
@@ -337,7 +351,10 @@ func WithMarkLineNameCoordItemOpts(opt ...opts.MarkLineNameCoordItem) SeriesOpts
 			s.MarkLines = &opts.MarkLines{}
 		}
 		for _, o := range opt {
-			s.MarkLines.Data = append(s.MarkLines.Data, []MLNameCoord{{Name: o.Name, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
+			s.MarkLines.Data = append(
+				s.MarkLines.Data,
+				[]MLNameCoord{{Name: o.Name, Coord: o.Coordinate0}, {Coord: o.Coordinate1}},
+			)
 		}
 	}
 }
@@ -401,7 +418,13 @@ func WithMarkAreaNameCoordItemOpts(opt ...opts.MarkAreaNameCoordItem) SeriesOpts
 			s.MarkAreas = &opts.MarkAreas{}
 		}
 		for _, o := range opt {
-			s.MarkAreas.Data = append(s.MarkAreas.Data, []MANameCoord{{Name: o.Name, ItemStyle: o.ItemStyle, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
+			s.MarkAreas.Data = append(
+				s.MarkAreas.Data,
+				[]MANameCoord{
+					{Name: o.Name, ItemStyle: o.ItemStyle, Coord: o.Coordinate0},
+					{Coord: o.Coordinate1},
+				},
+			)
 		}
 	}
 }
