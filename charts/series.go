@@ -42,6 +42,8 @@ type SingleSeries struct {
 	Smooth       bool        `json:"smooth"`
 	ConnectNulls bool        `json:"connectNulls"`
 	ShowSymbol   bool        `json:"showSymbol"`
+	Symbol       string      `json:"symbol,omitempty"`
+	Color        string      `json:"color,omitempty"`
 
 	// Liquid
 	IsLiquidOutline bool `json:"outline,omitempty"`
@@ -227,10 +229,13 @@ func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 		s.Stack = opt.Stack
 		s.Smooth = opt.Smooth
 		s.ShowSymbol = opt.ShowSymbol
+		s.Symbol = opt.Symbol
+		s.SymbolSize = opt.SymbolSize
 		s.Step = opt.Step
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
 		s.ConnectNulls = opt.ConnectNulls
+		s.Color = opt.Color
 	}
 }
 
