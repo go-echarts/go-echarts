@@ -351,6 +351,8 @@ type Tooltip struct {
 	// }
 	Formatter string `json:"formatter,omitempty"`
 
+	ValueFormatter string `json:"valueFormatter,omitempty"`
+
 	// Configuration item for axisPointer
 	AxisPointer *AxisPointer `json:"axisPointer,omitempty"`
 }
@@ -374,6 +376,10 @@ type AxisPointer struct {
 	Link []AxisPointerLink `json:"link,omitempty"`
 
 	Axis string `json:"axis,omitempty"`
+
+	Show bool `json:"show,omitempty"`
+
+	Label *Label `json:"label,omitempty"`
 }
 
 type AxisPointerLink struct {
@@ -617,6 +623,8 @@ type AxisLabel struct {
 	VerticalAlign string `json:"verticalAlign,omitempty"`
 	// Line height of the axis label
 	LineHeight string `json:"lineHeight,omitempty"`
+
+	BackgroundColor string `json:"backgroundColor,omitempty"`
 }
 
 type AxisTick struct {
@@ -732,6 +740,9 @@ type XAxis struct {
 
 	// Settings related to axis tick.
 	AxisTick *AxisTick `json:"axisTick,omitempty"`
+
+	// Settings related to axis pointer.
+	AxisPointer *AxisPointer `json:"axisPointer,omitempty"`
 }
 
 // YAxis is the option set for Y axis.
@@ -795,6 +806,9 @@ type YAxis struct {
 
 	// Settings related to axis line.
 	AxisLine *AxisLine `json:"axisLine,omitempty"`
+
+	// Settings related to axis pointer.
+	AxisPointer *AxisPointer `json:"axisPointer,omitempty"`
 }
 
 // TextStyle is the option set for a text style component.
@@ -974,6 +988,20 @@ type DataZoom struct {
 	// If it is set as a single number, one axis is controlled, while if it is set as an Array ,
 	// multiple axes are controlled.
 	YAxisIndex interface{} `json:"yAxisIndex,omitempty"`
+
+	// LabelFormatter is the formatter tool for the label.
+	//
+	// If it is a string, it will be a template. For instance, aaaa{value}bbbb, where {value} will be replaced by the value of actual data value.
+	// It can also be a callback function. For example:
+	//
+	// /** @param {*} value If axis.type is 'category', `value` is the index of axis.data.
+	//  *                   else `value` is current value.
+	//  * @param {string} valueStr Inner formatted string.
+	//  * @return {string} Returns the label formatted.
+	//  labelFormatter: function (value, valueStr) {
+	//     return 'aaa' + value + 'bbb';
+	// }
+	LabelFormatter string `json:"labelFormatter,omitempty"`
 }
 
 // SingleAxis is the option set for single axis.
@@ -1214,7 +1242,7 @@ func FuncNoStripOpts(fn string) string {
 // replace and clear up js functions string
 func replaceJsFuncs(fn string) string {
 	fn = funcPat.ReplaceAllString(fn, "")
-	return fmt.Sprintf("%s%s%s", funcMarker, funcPat.ReplaceAllString(fn, ""), funcMarker)
+	return fmt.Sprintf("%s%s%s", funcMarker, fn, funcMarker)
 }
 
 type Colors []string
