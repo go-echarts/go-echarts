@@ -1183,6 +1183,7 @@ type RadiusAxis struct {
 	Inverse       bool      `json:"inverse,omitempty"`
 }
 
+var commentPat = regexp.MustCompile(`(//.*)\n`)
 var funcPat = regexp.MustCompile(`\n|\t`)
 
 const funcMarker = "__f__"
@@ -1200,11 +1201,19 @@ func (f *JSFunctions) AddJSFuncs(fn ...string) {
 
 // FuncOpts is the option set for handling function type.
 func FuncOpts(fn string) string {
+	fn = commentPat.ReplaceAllString(fn, "")
+	return replaceJsFuncs(fn)
+}
+
+// FuncStripCommentsOpts is the option set for handling function type,
+// stripping the '//' comments from the function string.
+func FuncNoStripOpts(fn string) string {
 	return replaceJsFuncs(fn)
 }
 
 // replace and clear up js functions string
 func replaceJsFuncs(fn string) string {
+	fn = funcPat.ReplaceAllString(fn, "")
 	return fmt.Sprintf("%s%s%s", funcMarker, funcPat.ReplaceAllString(fn, ""), funcMarker)
 }
 
