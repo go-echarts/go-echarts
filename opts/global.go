@@ -885,6 +885,9 @@ type VisualMap struct {
 	// The label text on both ends, such as ['High', 'Low'].
 	Text []string `json:"text,omitempty"`
 
+	// Specify which dimension should be used to fetch dataValue from series.data, and then map them to visual channel.
+	Dimension string `json:"dimension,omitempty"`
+
 	// Define visual channels that will mapped from dataValues that are in selected range.
 	InRange *VisualMapInRange `json:"inRange,omitempty"`
 
