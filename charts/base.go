@@ -191,11 +191,17 @@ func (bc *BaseConfiguration) GetAssets() opts.Assets {
 	return bc.Assets
 }
 
+// FillDefaultValues fill default values for chart options.
+func (bc *BaseConfiguration) FillDefaultValues() {
+	opts.SetDefaultValue(bc)
+}
+
 func (bc *BaseConfiguration) initBaseConfiguration() {
 	bc.initSeriesColors()
 	bc.InitAssets()
 	bc.initXYAxis()
 	bc.Initialization.Validate()
+	bc.FillDefaultValues()
 }
 
 func (bc *BaseConfiguration) initSeriesColors() {
