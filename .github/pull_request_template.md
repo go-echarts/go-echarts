@@ -3,6 +3,7 @@
 <!-- Thanks for you contribution !!! -->
 
 # Description
+> Please share your ideas and awesome changes.  
 
 
 <!-- Please include a summary of the change or which issue is fixed. Please also include relevant motivation and context.
@@ -13,8 +14,6 @@ Fixes # (issue)
 
 ---
 # Type of change
-
-Please delete options that are not relevant.
 
 - [ ] Bug fix (Non-breaking change which fixes an issue)
 - [ ] New feature (Non-breaking change which adds functionality)
