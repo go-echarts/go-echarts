@@ -1,37 +1,34 @@
-#
-# Thanks for your contribution !!!
-#
 
-name: 'Awesome Pull Request :rocket:'  
-description: Make a change to have go-echarts better.  
-body:
-  - type: textarea  
-    attributes:  
-    label: Description  
-    description: A description of your improvement changes.  
 
-  - type: dropdown
-    attributes:
-      label: Changes Type  
-      multiple: true  
-      options:  
-        - 'Brand New Charts'  
-        - 'Enrich Options'  
-        - 'Bug Fix'  
-        - 'New Feature'  
-        - 'Other'  
-    validations:   
-      required: true  
+<!-- Thanks for you contribution !!! -->
 
-  - type: checkboxes  
-    attributes:  
-      label: Are you willing to submit a PR on [Examples](https://github.com/go-echarts/examples)?  
-    description: >  
-        This is absolutely not required, but we are happy to see that you could share or update the related
-        charts examples to more users.  
-    options:  
-      - label: Yes, I am willing to submit a PR on [Examples](https://github.com/go-echarts/examples))!
+# Description
 
-  - type: markdown  
-    attributes:  
-      value: "Thanks for your contributions !!!"  
+
+<!-- Please include a summary of the change or which issue is fixed. Please also include relevant motivation and context.
+List any dependencies/documents that are required for this change is a plus.
+
+Fixes # (issue)
+-->
+
+---
+# Type of change
+
+Please delete options that are not relevant.
+
+- [ ] Bug fix (Non-breaking change which fixes an issue)
+- [ ] New feature (Non-breaking change which adds functionality)
+- [ ] Breaking change (Would cause existing functionality to not work as expected)
+- [ ] Others
+
+
+---
+# Examples:
+Are you willing to submit a PR on [go-echarts/Examples](https://github.com/go-echarts/examples)?
+> This is absolutely not required, but we are happy to see that you could share or update the related
+charts examples to more users.
+
+- [ ] Yes, I am willing to submit a PR on [Examples](https://github.com/go-echarts/examples)!
+
+<!-- The related PRs in Example : -->
+
