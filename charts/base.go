@@ -296,8 +296,8 @@ func WithTitleOpts(opt opts.Title) GlobalOpts {
 	}
 }
 
-// WithTitleOpts disable the animation.
-func DisableAnimation() GlobalOpts {
+// WithAnimation enable or disable the animation.
+func WithAnimation() GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Animation = false
 	}
