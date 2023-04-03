@@ -75,18 +75,11 @@ type SingleSeries struct {
 	RotationRange []float32 `json:"rotationRange,omitempty"`
 
 	// Sunburst
-	NodeClick               string `json:"nodeClick,omitempty"`
-	Sort                    string `json:"sort,omitempty"`
-	RenderLabelForZeroData  bool   `json:"renderLabelForZeroData"`
-	SelectedMode            bool   `json:"selectedMode"`
-	Animation               bool   `json:"animation"`
-	AnimationThreshold      int    `json:"animationThreshold,omitempty"`
-	AnimationDuration       int    `json:"animationDuration,omitempty"`
-	AnimationEasing         string `json:"animationEasing,omitempty"`
-	AnimationDelay          int    `json:"animationDelay,omitempty"`
-	AnimationDurationUpdate int    `json:"animationDurationUpdate,omitempty"`
-	AnimationEasingUpdate   string `json:"animationEasingUpdate,omitempty"`
-	AnimationDelayUpdate    int    `json:"animationDelayUpdate,omitempty"`
+	NodeClick              string `json:"nodeClick,omitempty"`
+	Sort                   string `json:"sort,omitempty"`
+	RenderLabelForZeroData bool   `json:"renderLabelForZeroData"`
+	SelectedMode           bool   `json:"selectedMode"`
+	opts.Anime
 
 	// series data
 	Data interface{} `json:"data"`
@@ -282,7 +275,7 @@ func WithTreeOpts(opt opts.TreeChart) SeriesOpts {
 // WithTreeMapOpts sets the TreeMapChart options.
 func WithTreeMapOpts(opt opts.TreeMapChart) SeriesOpts {
 	return func(s *SingleSeries) {
-		s.Animation = opt.Animation
+		s.Anime.Animation = opt.Animation
 		s.LeafDepth = opt.LeafDepth
 		s.Roam = opt.Roam
 		s.Levels = opt.Levels
@@ -492,5 +485,11 @@ func (ms *MultiSeries) SetSeriesOptions(opts ...SeriesOpts) {
 func WithEncodeOpts(opt opts.Encode) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Encode = &opt
+	}
+}
+
+func WithSeriesAnimationOpts(opt opts.Anime)SeriesOpts{
+	return func(s *SingleSeries) {
+		s.Anime=opt
 	}
 }

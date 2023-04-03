@@ -383,8 +383,8 @@ type AxisPointerLink struct {
 	YAxisName  string `json:"yAxisName,omitempty"`
 }
 
-//Brush is an area-selecting component, with which user can select part of data from a chart to display in detail, or do calculations with them.
-//https://echarts.apache.org/en/option.html#brush
+// Brush is an area-selecting component, with which user can select part of data from a chart to display in detail, or do calculations with them.
+// https://echarts.apache.org/en/option.html#brush
 type Brush struct {
 
 	//XAxisIndex Assigns which of the xAxisIndex can use brush selecting.
@@ -397,8 +397,8 @@ type Brush struct {
 	OutOfBrush *BrushOutOfBrush `json:"outOfBrush,omitempty"`
 }
 
-//BrushOutOfBrush
-//https://echarts.apache.org/en/option.html#brush.outOfBrush
+// BrushOutOfBrush
+// https://echarts.apache.org/en/option.html#brush.outOfBrush
 type BrushOutOfBrush struct {
 	ColorAlpha float32 `json:"colorAlpha,omitempty"`
 }
@@ -484,8 +484,8 @@ type ToolBoxFeatureSaveAsImage struct {
 	Title string `json:"title,omitempty"`
 }
 
-//ToolBoxFeatureBrush  brush-selecting icon.
-//https://echarts.apache.org/en/option.html#toolbox.feature.brush
+// ToolBoxFeatureBrush  brush-selecting icon.
+// https://echarts.apache.org/en/option.html#toolbox.feature.brush
 type ToolBoxFeatureBrush struct {
 
 	//Icons used, whose values are:
@@ -1453,10 +1453,23 @@ type Grid struct {
 	Height string `json:"height,omitempty"`
 }
 
-//Dataset brings convenience in data management separated with styles and enables data reuse by different series.
-//More importantly, it enables data encoding from data to visual, which brings convenience in some scenarios.
-//https://echarts.apache.org/en/option.html#dataset.id
+// Dataset brings convenience in data management separated with styles and enables data reuse by different series.
+// More importantly, it enables data encoding from data to visual, which brings convenience in some scenarios.
+// https://echarts.apache.org/en/option.html#dataset.id
 type Dataset struct {
 	//source
 	Source interface{} `json:"source"`
+}
+
+//Whether to use animation
+// https://echarts.apache.org/zh/option.html#animation
+type Anime struct {
+	Animation               bool   `json:"animation"`
+	AnimationThreshold      int    `json:"animationThreshold,omitempty"`
+	AnimationDuration       int    `json:"animationDuration,omitempty"`
+	AnimationEasing         string `json:"animationEasing,omitempty"`
+	AnimationDelay          int    `json:"animationDelay,omitempty"`
+	AnimationDurationUpdate int    `json:"animationDurationUpdate,omitempty"`
+	AnimationEasingUpdate   string `json:"animationEasingUpdate,omitempty"`
+	AnimationDelayUpdate    int    `json:"animationDelayUpdate,omitempty"`
 }
