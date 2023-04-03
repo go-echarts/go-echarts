@@ -42,22 +42,30 @@ type Initialization struct {
 
 // Validate validates the initialization configurations.
 func (opt *Initialization) Validate() {
-	setDefaultValue(opt)
+	SetDefaultValue(opt)
 	if opt.ChartID == "" {
 		opt.ChartID = generateUniqueID()
 	}
 }
 
 // set default values for the struct field.
-// origin from: https://github.com/mcuadros/go-defaults
-func setDefaultValue(ptr interface{}) {
+// inspired from: https://github.com/mcuadros/go-defaults
+func SetDefaultValue(ptr interface{}) {
 	elem := reflect.ValueOf(ptr).Elem()
-	t := elem.Type()
+	walkField(elem)
+}
+
+func walkField(val reflect.Value) {
+	t := val.Type()
 
 	for i := 0; i < t.NumField(); i++ {
-		// handle `default` tag only
+		f := val.Field(i)
+		if f.Kind() == reflect.Struct {
+			walkField(f)
+		}
+
 		if defaultVal := t.Field(i).Tag.Get("default"); defaultVal != "" {
-			setField(elem.Field(i), defaultVal)
+			setField(val.Field(i), defaultVal)
 		}
 	}
 }
@@ -156,7 +164,8 @@ type Title struct {
 // https://echarts.apache.org/en/option.html#legend
 type Legend struct {
 	// Whether to show the Legend, default true.
-	Show bool `json:"show"`
+	// Once you set other options, need to manually set it to true
+	Show bool `json:"show" default:"true"`
 
 	// Type of legend. Optional values:
 	// "plain": Simple legend. (default)
@@ -834,6 +843,24 @@ type SplitLine struct {
 	AlignWithLabel bool `json:"alignWithLabel,omitempty"`
 }
 
+// Used to customize how to slice continuous data, and some specific view style for some pieces.
+type Piece struct {
+	Min float32 `json:"min,omitempty"`
+
+	Max float32 `json:"max,omitempty"`
+
+	Lt float32 `json:"lt,omitempty"`
+
+	Lte float32 `json:"lte,omitempty"`
+
+	Gt float32 `json:"gt,omitempty"`
+
+	Gte float32 `json:"gte,omitempty"`
+
+	// Symbol color
+	Color string `json:"color,omitempty"`
+}
+
 // VisualMap is a type of component for visual encoding, which maps the data to visual channels.
 // https://echarts.apache.org/en/option.html#visualMap
 type VisualMap struct {
@@ -858,8 +885,14 @@ type VisualMap struct {
 	// The label text on both ends, such as ['High', 'Low'].
 	Text []string `json:"text,omitempty"`
 
+	// Specify which dimension should be used to fetch dataValue from series.data, and then map them to visual channel.
+	Dimension string `json:"dimension,omitempty"`
+
 	// Define visual channels that will mapped from dataValues that are in selected range.
 	InRange *VisualMapInRange `json:"inRange,omitempty"`
+
+	// Used to customize how to slice continuous data, and some specific view style for some pieces.
+	Pieces []Piece `json:"pieces,omitempty"`
 
 	// Whether to show visualMap-piecewise component. If set as false,
 	// visualMap-piecewise component will not show,

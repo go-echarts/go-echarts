@@ -34,8 +34,8 @@ type SingleSeries struct {
 
 	// Line
 	Step         interface{} `json:"step,omitempty"`
-	Smooth       bool        `json:"smooth,omitempty"`
-	ConnectNulls bool        `json:"connectNulls,omitempty"`
+	Smooth       bool        `json:"smooth"`
+	ConnectNulls bool        `json:"connectNulls"`
 	ShowSymbol   bool        `json:"showSymbol"`
 
 	// Liquid
@@ -214,6 +214,7 @@ func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 		s.YAxisIndex = opt.YAxisIndex
 		s.Stack = opt.Stack
 		s.Smooth = opt.Smooth
+		s.ShowSymbol = opt.ShowSymbol
 		s.Step = opt.Step
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex

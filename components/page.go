@@ -19,6 +19,7 @@ const (
 type Charter interface {
 	Type() string
 	GetAssets() opts.Assets
+	FillDefaultValues()
 	Validate()
 	RegisterMux(mux ...*http.ServeMux)
 }
