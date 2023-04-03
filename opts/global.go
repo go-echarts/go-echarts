@@ -843,6 +843,24 @@ type SplitLine struct {
 	AlignWithLabel bool `json:"alignWithLabel,omitempty"`
 }
 
+// Used to customize how to slice continuous data, and some specific view style for some pieces.
+type Piece struct {
+	Min float32 `json:"min,omitempty"`
+
+	Max float32 `json:"max,omitempty"`
+
+	Lt float32 `json:"lt,omitempty"`
+
+	Lte float32 `json:"lte,omitempty"`
+
+	Gt float32 `json:"gt,omitempty"`
+
+	Gte float32 `json:"gte,omitempty"`
+
+	// Symbol color
+	Color string `json:"color,omitempty"`
+}
+
 // VisualMap is a type of component for visual encoding, which maps the data to visual channels.
 // https://echarts.apache.org/en/option.html#visualMap
 type VisualMap struct {
@@ -867,8 +885,14 @@ type VisualMap struct {
 	// The label text on both ends, such as ['High', 'Low'].
 	Text []string `json:"text,omitempty"`
 
+	// Specify which dimension should be used to fetch dataValue from series.data, and then map them to visual channel.
+	Dimension string `json:"dimension,omitempty"`
+
 	// Define visual channels that will mapped from dataValues that are in selected range.
 	InRange *VisualMapInRange `json:"inRange,omitempty"`
+
+	// Used to customize how to slice continuous data, and some specific view style for some pieces.
+	Pieces []Piece `json:"pieces,omitempty"`
 
 	// Whether to show visualMap-piecewise component. If set as false,
 	// visualMap-piecewise component will not show,
