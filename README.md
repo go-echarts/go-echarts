@@ -8,8 +8,8 @@
 </p>
 
 <p align="center">
-    <a href="https://travis-ci.org/go-echarts/go-echarts">
-        <img src="https://travis-ci.org/go-echarts/go-echarts.svg?branch=master" alt="Build Status">
+    <a href="https://github.com/go-echarts/go-echarts/actions/workflows/ci.yml">
+        <img src="https://github.com/go-echarts/go-echarts/actions/workflows/ci.yml/badge.svg" alt="Build Status">
     </a>
     <a href="https://goreportcard.com/report/github.com/go-echarts/go-echarts">
         <img src="https://goreportcard.com/badge/github.com/go-echarts/go-echarts" alt="Go Report Card">
