@@ -59,7 +59,7 @@ type SingleSeries struct {
 	Radius   interface{} `json:"radius,omitempty"`
 
 	// Scatter
-	SymbolSize float32 `json:"symbolSize,omitempty"`
+	SymbolSize interface{} `json:"symbolSize,omitempty"`
 
 	// Tree
 	Orient            string      `json:"orient,omitempty"`

@@ -332,7 +332,7 @@ type LineChart struct {
 
 	// symbol size. It can be set to single numbers like 10, or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10.
 	// Full documentation: https://echarts.apache.org/en/option.html#series-line.symbolSize
-	SymbolSize float32
+	SymbolSize interface{}
 
 	// color for Line series. it affects Line series including symbols, unlike LineStyle.Color
 	Color string
