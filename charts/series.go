@@ -32,11 +32,18 @@ type SingleSeries struct {
 	Draggable          bool        `json:"draggable,omitempty"`
 	FocusNodeAdjacency bool        `json:"focusNodeAdjacency,omitempty"`
 
+	// KLine
+	BarWidth    string `json:"barWidth,omitempty"`
+	BarMinWidth string `json:"barMinWidth,omitempty"`
+	BarMaxWidth string `json:"barMaxWidth,omitempty"`
+
 	// Line
 	Step         interface{} `json:"step,omitempty"`
 	Smooth       bool        `json:"smooth"`
 	ConnectNulls bool        `json:"connectNulls"`
 	ShowSymbol   bool        `json:"showSymbol"`
+	Symbol       string      `json:"symbol,omitempty"`
+	Color        string      `json:"color,omitempty"`
 
 	// Liquid
 	IsLiquidOutline bool `json:"outline,omitempty"`
@@ -52,7 +59,7 @@ type SingleSeries struct {
 	Radius   interface{} `json:"radius,omitempty"`
 
 	// Scatter
-	SymbolSize float32 `json:"symbolSize,omitempty"`
+	SymbolSize interface{} `json:"symbolSize,omitempty"`
 
 	// Tree
 	Orient            string      `json:"orient,omitempty"`
@@ -228,10 +235,22 @@ func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 		s.Stack = opt.Stack
 		s.Smooth = opt.Smooth
 		s.ShowSymbol = opt.ShowSymbol
+		s.Symbol = opt.Symbol
+		s.SymbolSize = opt.SymbolSize
 		s.Step = opt.Step
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
 		s.ConnectNulls = opt.ConnectNulls
+		s.Color = opt.Color
+	}
+}
+
+// WithLineChartOpts sets the LineChart option.
+func WithKlineChartOpts(opt opts.KlineChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.BarWidth = opt.BarWidth
+		s.BarMinWidth = opt.BarMinWidth
+		s.BarMaxWidth = opt.BarMaxWidth
 	}
 }
 
@@ -343,7 +362,10 @@ func WithMarkLineNameCoordItemOpts(opt ...opts.MarkLineNameCoordItem) SeriesOpts
 			s.MarkLines = &opts.MarkLines{}
 		}
 		for _, o := range opt {
-			s.MarkLines.Data = append(s.MarkLines.Data, []MLNameCoord{{Name: o.Name, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
+			s.MarkLines.Data = append(
+				s.MarkLines.Data,
+				[]MLNameCoord{{Name: o.Name, Coord: o.Coordinate0}, {Coord: o.Coordinate1}},
+			)
 		}
 	}
 }
@@ -407,7 +429,13 @@ func WithMarkAreaNameCoordItemOpts(opt ...opts.MarkAreaNameCoordItem) SeriesOpts
 			s.MarkAreas = &opts.MarkAreas{}
 		}
 		for _, o := range opt {
-			s.MarkAreas.Data = append(s.MarkAreas.Data, []MANameCoord{{Name: o.Name, ItemStyle: o.ItemStyle, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
+			s.MarkAreas.Data = append(
+				s.MarkAreas.Data,
+				[]MANameCoord{
+					{Name: o.Name, ItemStyle: o.ItemStyle, Coord: o.Coordinate0},
+					{Coord: o.Coordinate1},
+				},
+			)
 		}
 	}
 }
