@@ -55,6 +55,9 @@ type BaseConfiguration struct {
 	Colors      []string
 	appendColor []string // append customize color to the Colors(reverse order)
 
+	// Animation whether enable the animation, default true
+	Animation bool `json:"animation" default:"true"`
+
 	DataZoomList  []opts.DataZoom  `json:"datazoom,omitempty"`
 	VisualMapList []opts.VisualMap `json:"visualmap,omitempty"`
 
@@ -111,15 +114,18 @@ func (ba *BaseActions) JSONNotEscapedAction() template.HTML {
 
 func (bc *BaseConfiguration) json() map[string]interface{} {
 	obj := map[string]interface{}{
-		"title":   bc.Title,
-		"legend":  bc.Legend,
-		"tooltip": bc.Tooltip,
-		"series":  bc.MultiSeries,
-		"dataset": bc.Dataset,
+		"title":     bc.Title,
+		"legend":    bc.Legend,
+		"animation": bc.Animation,
+		"tooltip":   bc.Tooltip,
+		"series":    bc.MultiSeries,
+		"dataset":   bc.Dataset,
 	}
+
 	if bc.AxisPointer != nil {
 		obj["axisPointer"] = bc.AxisPointer
 	}
+
 	if bc.hasPolar {
 		obj["polar"] = bc.Polar
 		obj["angleAxis"] = bc.AngleAxis
@@ -287,6 +293,13 @@ func WithPolarOps(opt opts.Polar) GlobalOpts {
 func WithTitleOpts(opt opts.Title) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Title = opt
+	}
+}
+
+// WithAnimation enable or disable the animation.
+func WithAnimation() GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.Animation = false
 	}
 }
 

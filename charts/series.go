@@ -86,7 +86,7 @@ type SingleSeries struct {
 	Sort                    string `json:"sort,omitempty"`
 	RenderLabelForZeroData  bool   `json:"renderLabelForZeroData"`
 	SelectedMode            bool   `json:"selectedMode"`
-	Animation               bool   `json:"animation"`
+	Animation               bool   `json:"animation" default:"true"`
 	AnimationThreshold      int    `json:"animationThreshold,omitempty"`
 	AnimationDuration       int    `json:"animationDuration,omitempty"`
 	AnimationEasing         string `json:"animationEasing,omitempty"`
@@ -115,6 +115,12 @@ type SingleSeries struct {
 }
 
 type SeriesOpts func(s *SingleSeries)
+
+func WithSeriesAnimation(enable bool) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.Animation = enable
+	}
+}
 
 // WithLabelOpts sets the label.
 func WithLabelOpts(opt opts.Label) SeriesOpts {
@@ -491,6 +497,12 @@ func WithMarkPointNameCoordItemOpts(opt ...opts.MarkPointNameCoordItem) SeriesOp
 			s.MarkPoints.Data = append(s.MarkPoints.Data, o)
 		}
 	}
+}
+
+func (s *SingleSeries) InitSeriesDefaultOpts(c BaseConfiguration) {
+	opts.SetDefaultValue(s)
+	// some special inherited options from BaseConfiguration
+	s.Animation = c.Animation
 }
 
 func (s *SingleSeries) ConfigureSeriesOpts(options ...SeriesOpts) {
