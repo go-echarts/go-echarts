@@ -48,7 +48,7 @@ func (opt *Initialization) Validate() {
 	}
 }
 
-// set default values for the struct field.
+// SetDefaultValue set default values for the struct field.
 // inspired from: https://github.com/mcuadros/go-defaults
 func SetDefaultValue(ptr interface{}) {
 	elem := reflect.ValueOf(ptr).Elem()
