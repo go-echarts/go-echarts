@@ -1211,8 +1211,8 @@ type RadiusAxis struct {
 	Inverse       bool      `json:"inverse,omitempty"`
 }
 
+var newlineTabPat = regexp.MustCompile(`\n|\t`)
 var commentPat = regexp.MustCompile(`(//.*)\n`)
-var funcPat = regexp.MustCompile(`\n|\t`)
 
 const funcMarker = "__f__"
 
@@ -1223,25 +1223,25 @@ type JSFunctions struct {
 // AddJSFuncs adds a new JS function.
 func (f *JSFunctions) AddJSFuncs(fn ...string) {
 	for i := 0; i < len(fn); i++ {
-		f.Fns = append(f.Fns, funcPat.ReplaceAllString(fn[i], ""))
+		f.Fns = append(f.Fns, newlineTabPat.ReplaceAllString(fn[i], ""))
 	}
 }
 
-// FuncOpts is the option set for handling function type.
+// FuncOpts returns a string suitable for options expecting JavaScript code.
 func FuncOpts(fn string) string {
-	fn = commentPat.ReplaceAllString(fn, "")
 	return replaceJsFuncs(fn)
 }
 
-// FuncStripCommentsOpts is the option set for handling function type,
-// stripping the '//' comments from the function string.
-func FuncNoStripOpts(fn string) string {
+// FuncStripCommentsOpts returns a string suitable for options expecting JavaScript code,
+// stripping '//' comments.
+func FuncStripCommentsOpts(fn string) string {
+	fn = commentPat.ReplaceAllString(fn, "")
 	return replaceJsFuncs(fn)
 }
 
 // replace and clear up js functions string
 func replaceJsFuncs(fn string) string {
-	fn = funcPat.ReplaceAllString(fn, "")
+	fn = newlineTabPat.ReplaceAllString(fn, "")
 	return fmt.Sprintf("%s%s%s", funcMarker, fn, funcMarker)
 }
 
