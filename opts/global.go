@@ -377,7 +377,7 @@ type AxisPointer struct {
 
 	Axis string `json:"axis,omitempty"`
 
-	Show bool `json:"show,omitempty"`
+	Show bool `json:"show"`
 
 	Label *Label `json:"label,omitempty"`
 }
