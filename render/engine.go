@@ -3,12 +3,11 @@ package render
 import (
 	"bytes"
 	"fmt"
+	tpls "github.com/go-echarts/go-echarts/v3/fixtures/templates"
 	"html/template"
 	"io"
 	"reflect"
 	"regexp"
-
-	tpls "github.com/go-echarts/go-echarts/v2/templates"
 )
 
 // Renderer

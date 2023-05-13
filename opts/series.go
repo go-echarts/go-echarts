@@ -2,13 +2,15 @@ package opts
 
 import (
 	"fmt"
+
+	"github.com/go-echarts/go-echarts/v3/primitive"
 )
 
 // Label contains options for a label text.
 // https://echarts.apache.org/en/option.html#series-line.label
 type Label struct {
 	// Whether to show label.
-	Show bool `json:"show"`
+	Show primitive.Bool `json:"show,omitempty"`
 
 	// Color is the text color.
 	// If set as "auto", the color will assigned as visual color, such as series color.
@@ -27,7 +29,7 @@ type Label struct {
 	FontFamily string `json:"fontFamily,omitempty"`
 
 	// font size.
-	FontSize float32 `json:"fontSize,omitempty"`
+	FontSize primitive.Float64 `json:"fontSize,omitempty"`
 
 	// Horizontal alignment of text, automatic by default.
 	// Options are: 'left', 'center', 'right'
@@ -38,7 +40,7 @@ type Label struct {
 	VerticalAlign string `json:"verticalAlign,omitempty"`
 
 	// Line height of the text fragment.
-	LineHeight float32 `json:"lineHeight,omitempty"`
+	LineHeight primitive.Float64 `json:"lineHeight,omitempty"`
 
 	// Background color of the text fragment.
 	BackgroundColor string `json:"backgroundColor,omitempty"`
@@ -47,17 +49,17 @@ type Label struct {
 	BorderColor string `json:"borderColor,omitempty"`
 
 	// Border width of the text fragment.
-	BorderWidth float32 `json:"borderWidth,omitempty"`
+	BorderWidth primitive.Float64 `json:"borderWidth,omitempty"`
 
 	// the text fragment border type.
 	// Possible values are: 'solid', 'dashed', 'dotted'
 	BorderType string `json:"borderType,omitempty"`
 
 	// To set the line dash offset. With borderType , we can make the line style more flexible.
-	BorderDashOffset float32 `json:"borderDashOffset,omitempty"`
+	BorderDashOffset primitive.Float64 `json:"borderDashOffset,omitempty"`
 
 	// Border radius of the text fragment.
-	BorderRadius float32 `json:"borderRadius,omitempty"`
+	BorderRadius primitive.Float64 `json:"borderRadius,omitempty"`
 
 	// Padding of the text fragment, for example:
 	// padding: [3, 4, 5, 6]: represents padding of [top, right, bottom, left].
@@ -105,15 +107,20 @@ type Label struct {
 // LabelLine Configuration of label guide line.
 type LabelLine struct {
 	// Whether to show the label guide line.
-	Show bool `json:"show"`
+	Show primitive.Bool `json:"show,omitempty"`
+
 	// Whether to show the label guide line above the corresponding element.
-	ShowAbove bool `json:"showAbove"`
+	ShowAbove primitive.Bool `json:"showAbove"`
+
 	// The length of the second segment of guide line.
-	Length2 float64 `json:"length2,omitempty"`
+	Length2 primitive.Float64 `json:"length2,omitempty"`
+
 	// smoothness of guide line.
-	Smooth bool `json:"smooth"`
+	Smooth primitive.Bool `json:"smooth,omitempty"`
+
 	// Minimum turn angle between two segments of guide line
-	MinTurnAngle float64 `json:"minTurnAngle,omitempty"`
+	MinTurnAngle primitive.Float64 `json:"minTurnAngle,omitempty"`
+
 	// The style of label line
 	LineStyle *LineStyle `json:"lineStyle,omitempty"`
 }
@@ -144,16 +151,16 @@ type ItemStyle struct {
 	BorderColor0 string `json:"borderColor0,omitempty"`
 
 	// Color saturation of a border or gap.
-	BorderColorSaturation float32 `json:"borderColorSaturation,omitempty"`
+	BorderColorSaturation primitive.Float64 `json:"borderColorSaturation,omitempty"`
 
 	// Border width of a node
-	BorderWidth float32 `json:"borderWidth,omitempty"`
+	BorderWidth primitive.Float64 `json:"borderWidth,omitempty"`
 
 	// Gaps between child nodes.
-	GapWidth float32 `json:"gapWidth,omitempty"`
+	GapWidth primitive.Float64 `json:"gapWidth,omitempty"`
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
-	Opacity float32 `json:"opacity,omitempty"`
+	Opacity primitive.Float64 `json:"opacity,omitempty"`
 }
 
 // MarkLines represents a series of marklines.
@@ -169,7 +176,7 @@ type MarkLineStyle struct {
 	Symbol []string `json:"symbol,omitempty"`
 
 	// Symbol size.
-	SymbolSize float32 `json:"symbolSize,omitempty"`
+	SymbolSize primitive.Float64 `json:"symbolSize,omitempty"`
 
 	// Mark line text options.
 	Label *Label `json:"label,omitempty"`
@@ -177,7 +184,7 @@ type MarkLineStyle struct {
 
 // CircularStyle contains styling options for circular layout.
 type CircularStyle struct {
-	RotateLabel bool `json:"rotateLabel,omitempty"`
+	RotateLabel primitive.Bool `json:"rotateLabel,omitempty"`
 }
 
 // MarkLineNameTypeItem represents type for a MarkLine.

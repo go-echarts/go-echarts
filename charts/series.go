@@ -1,6 +1,6 @@
 package charts
 
-import "github.com/go-echarts/go-echarts/v2/opts"
+import "github.com/go-echarts/go-echarts/v3/opts"
 
 type SingleSeries struct {
 	Name string `json:"name,omitempty"`
@@ -82,18 +82,19 @@ type SingleSeries struct {
 	RotationRange []float32 `json:"rotationRange,omitempty"`
 
 	// Sunburst
-	NodeClick               string `json:"nodeClick,omitempty"`
-	Sort                    string `json:"sort,omitempty"`
-	RenderLabelForZeroData  bool   `json:"renderLabelForZeroData"`
-	SelectedMode            bool   `json:"selectedMode"`
-	Animation               bool   `json:"animation" default:"true"`
-	AnimationThreshold      int    `json:"animationThreshold,omitempty"`
-	AnimationDuration       int    `json:"animationDuration,omitempty"`
-	AnimationEasing         string `json:"animationEasing,omitempty"`
-	AnimationDelay          int    `json:"animationDelay,omitempty"`
-	AnimationDurationUpdate int    `json:"animationDurationUpdate,omitempty"`
-	AnimationEasingUpdate   string `json:"animationEasingUpdate,omitempty"`
-	AnimationDelayUpdate    int    `json:"animationDelayUpdate,omitempty"`
+	*opts.SunburstChart `json:",inline"`
+	//NodeClick               string `json:"nodeClick,omitempty"`
+	//Sort                    string `json:"sort,omitempty"`
+	//RenderLabelForZeroData  bool   `json:"renderLabelForZeroData"`
+	//SelectedMode            bool   `json:"selectedMode"`
+	//Animation               bool   `json:"animation" default:"true"`
+	//AnimationThreshold      int    `json:"animationThreshold,omitempty"`
+	//AnimationDuration       int    `json:"animationDuration,omitempty"`
+	//AnimationEasing         string `json:"animationEasing,omitempty"`
+	//AnimationDelay          int    `json:"animationDelay,omitempty"`
+	//AnimationDurationUpdate int    `json:"animationDurationUpdate,omitempty"`
+	//AnimationEasingUpdate   string `json:"animationEasingUpdate,omitempty"`
+	//AnimationDelayUpdate    int    `json:"animationDelayUpdate,omitempty"`
 
 	// series data
 	Data interface{} `json:"data"`

@@ -1,8 +1,3 @@
-package templates
-
-// We should check the BaseActions field before call the JSONNotEscapedAction since the BaseActions only exist in RectCharts
-
-var BaseTpl = `
 {{- define "base" }}
 <div class="container">
     <div class="item" id="{{ .ChartID }}" style="width:{{ .Initialization.Width }};height:{{ .Initialization.Height }};"></div>
@@ -23,4 +18,3 @@ var BaseTpl = `
     {{- end }}
 </script>
 {{ end }}
-`
