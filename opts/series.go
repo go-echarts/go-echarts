@@ -338,10 +338,10 @@ type MarkPointStyle struct {
 	Symbol []string `json:"symbol,omitempty"`
 
 	// Symbol size.
-	SymbolSize float32 `json:"symbolSize,omitempty"`
+	SymbolSize primitive.Float64 `json:"symbolSize,omitempty"`
 
 	// Symbol rotate.
-	SymbolRotate float32 `json:"symbolRotate,omitempty"`
+	SymbolRotate primitive.Float64 `json:"symbolRotate,omitempty"`
 
 	// Mark point text options.
 	Label *Label `json:"label,omitempty"`
@@ -393,21 +393,21 @@ type MarkPointNameCoordItem struct {
 	Symbol string `json:"symbol,omitempty"`
 
 	// Symbol size.
-	SymbolSize float32 `json:"symbolSize,omitempty"`
+	SymbolSize primitive.Float64 `json:"symbolSize,omitempty"`
 
 	// Symbol rotate.
-	SymbolRotate float32 `json:"symbolRotate,omitempty"`
+	SymbolRotate primitive.Float64 `json:"symbolRotate,omitempty"`
 }
 
 // RippleEffect is the option set for the ripple effect.
 type RippleEffect struct {
 	// The period duration of animation, in seconds.
 	// default 4(s)
-	Period float32 `json:"period,omitempty"`
+	Period primitive.Float64 `json:"period,omitempty"`
 
 	// The maximum zooming scale of ripples in animation.
 	// default 2.5
-	Scale float32 `json:"scale,omitempty"`
+	Scale primitive.Float64 `json:"scale,omitempty"`
 
 	// The brush type for ripples. options: "stroke" and "fill".
 	// default "fill"
@@ -420,17 +420,17 @@ type LineStyle struct {
 	Color string `json:"color,omitempty"`
 
 	// Width of line. default 1
-	Width float32 `json:"width,omitempty"`
+	Width primitive.Float64 `json:"width,omitempty"`
 
 	// Type of line，options: "solid", "dashed", "dotted". default "solid"
 	Type string `json:"type,omitempty"`
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
-	Opacity float32 `json:"opacity,omitempty"`
+	Opacity primitive.Float64 `json:"opacity,omitempty"`
 
 	// Curveness of edge. The values from 0 to 1 could be set.
 	// it would be larger as the the value becomes larger. default 0
-	Curveness float32 `json:"curveness,omitempty"`
+	Curveness primitive.Float64 `json:"curveness,omitempty"`
 }
 
 // AreaStyle is the option set for an area style component.
@@ -439,7 +439,7 @@ type AreaStyle struct {
 	Color string `json:"color,omitempty"`
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
-	Opacity float32 `json:"opacity,omitempty"`
+	Opacity primitive.Float64 `json:"opacity,omitempty"`
 }
 
 // Configuration items about force-directed layout. Force-directed layout simulates
@@ -459,17 +459,17 @@ type GraphForce struct {
 	// between 2 nodes becomes further as this value becomes larger.
 	// It can be an array to represent the range of repulsion. In this case larger value have larger
 	// repulsion and smaller value will have smaller repulsion.
-	Repulsion float32 `json:"repulsion,omitempty"`
+	Repulsion primitive.Float64 `json:"repulsion,omitempty"`
 
 	// The gravity factor enforcing nodes approach to the center. The nodes will be
 	// closer to the center as the value becomes larger. default 0.1
-	Gravity float32 `json:"gravity,omitempty"`
+	Gravity primitive.Float64 `json:"gravity,omitempty"`
 
 	// The distance between 2 nodes on edge. This distance is also affected by repulsion.
 	// It can be an array to represent the range of edge length. In this case edge with larger
 	// value will be shorter, which means two nodes are closer. And edge with smaller value will be longer.
 	// default 30
-	EdgeLength float32 `json:"edgeLength,omitempty"`
+	EdgeLength primitive.Float64 `json:"edgeLength,omitempty"`
 }
 
 // Leaf node special configuration, the leaf node and non-leaf node label location is different.
@@ -535,10 +535,10 @@ type UpperLabel struct {
 
 	// Distance to the host graphic element.
 	// It is valid only when position is string value (like 'top', 'insideRight').
-	Distance float32 `json:"distance,omitempty"`
+	Distance primitive.Float64 `json:"distance,omitempty"`
 
 	// Rotate label, from -90 degree to 90, positive value represents rotate anti-clockwise.
-	Rotate float32 `json:"rotate,omitempty"`
+	Rotate primitive.Float64 `json:"rotate,omitempty"`
 
 	// Whether to move text slightly. For example: [30, 40] means move 30 horizontally and move 40 vertically.
 	Offset []float32 `json:"offset,omitempty"`

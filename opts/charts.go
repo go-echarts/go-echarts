@@ -368,12 +368,6 @@ type LineData struct {
 	// single data symbol size. It can be set to single numbers like 10, or
 	// use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10
 	SymbolSize int `json:"symbolSize,omitempty"`
-
-	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
-	XAxisIndex int
-
-	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
-	YAxisIndex int
 }
 
 // LiquidChart

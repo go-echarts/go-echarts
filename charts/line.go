@@ -2,44 +2,37 @@ package charts
 
 import (
 	"github.com/go-echarts/go-echarts/v3/opts"
-	"github.com/go-echarts/go-echarts/v3/render"
 	"github.com/go-echarts/go-echarts/v3/types"
 )
 
 // Line represents a line chart.
 type Line struct {
-	RectChart
+	commonConf CommonConfig
+
+	ID         string      `json:"id,omitempty"`
+	Name       string      `json:"name,omitempty"`
+	XAxisIndex int         `json:"xAxisIndex,omitempty"`
+	YAxisIndex int         `json:"yAxisIndex,omitempty"`
+	PolarIndex int         `json:"polarIndex,omitempty"`
+	Label      *opts.Label `json:"label,omitempty"`
+}
+
+// NewLine creates a new line chart.
+func NewLine(name string) *Line {
+	c := &Line{
+		Name: name,
+	}
+	return c
 }
 
 // Type returns the chart type.
-func (Line) Type() string { return types.ChartLine }
+func (c *Line) Type() string { return types.ChartLine }
 
-// NewLine creates a new line chart.
-func NewLine() *Line {
-	c := &Line{}
-	c.initBaseConfiguration()
-	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.hasXYAxis = true
-	return c
-}
-
-// SetXAxis adds the X axis.
-func (c *Line) SetXAxis(x interface{}) *Line {
-	c.xAxisData = x
-	return c
+func (c *Line) SetCommonConfig(commonConf CommonConfig) {
+	c.commonConf = commonConf
 }
 
 // AddSeries adds the new series.
-func (c *Line) AddSeries(name string, data []opts.LineData, options ...SeriesOpts) *Line {
-	series := SingleSeries{Name: name, Type: types.ChartLine, Data: data}
-	series.InitSeriesDefaultOpts(c.BaseConfiguration)
-	series.ConfigureSeriesOpts(options...)
-	c.MultiSeries = append(c.MultiSeries, series)
+func (c *Line) AddSeries(data ...opts.LineData) *Line {
 	return c
-}
-
-// Validate validates the given configuration.
-func (c *Line) Validate() {
-	c.XAxisList[0].Data = c.xAxisData
-	c.Assets.Validate(c.AssetsHost)
 }
