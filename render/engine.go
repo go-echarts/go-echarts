@@ -116,3 +116,8 @@ func MustTemplate(name string, contents []string) *template.Template {
 	}
 	return tpl
 }
+
+// service
+// render
+// data -> post -> image
+//

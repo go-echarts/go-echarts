@@ -2,6 +2,10 @@ package opts
 
 import "github.com/go-echarts/go-echarts/v3/primitive"
 
+func DefaultXAxis() {
+
+}
+
 // XAxis is the option set for X axis.
 // https://echarts.apache.org/en/option.html#xAxis
 type XAxis struct {

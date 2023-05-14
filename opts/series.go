@@ -110,7 +110,7 @@ type LabelLine struct {
 	Show primitive.Bool `json:"show,omitempty"`
 
 	// Whether to show the label guide line above the corresponding element.
-	ShowAbove primitive.Bool `json:"showAbove"`
+	ShowAbove primitive.Bool `json:"showAbove,omitempty"`
 
 	// The length of the second segment of guide line.
 	Length2 primitive.Float64 `json:"length2,omitempty"`

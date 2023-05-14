@@ -1,6 +1,8 @@
 package opts
 
-import "github.com/go-echarts/go-echarts/v3/primitive"
+import (
+	"github.com/go-echarts/go-echarts/v3/primitive"
+)
 
 // Radar is the option set for a radar component.
 // https://echarts.apache.org/en/option.html#radar
