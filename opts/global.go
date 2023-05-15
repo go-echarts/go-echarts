@@ -2,6 +2,7 @@ package opts
 
 import (
 	"fmt"
+	"github.com/go-echarts/go-echarts/v2/primitive"
 	"math/rand"
 	"reflect"
 	"regexp"
@@ -88,6 +89,11 @@ const (
 	chartIDSize = 12
 )
 
+func GenUUID() string {
+	return generateUniqueID()
+
+}
+
 // generate the unique ID for each chart.
 func generateUniqueID() string {
 	var b [chartIDSize]byte
@@ -165,49 +171,49 @@ type Title struct {
 type Legend struct {
 	// Whether to show the Legend, default true.
 	// Once you set other options, need to manually set it to true
-	Show bool `json:"show" default:"true"`
+	Show primitive.Bool `json:"show,omitempty"`
 
 	// Type of legend. Optional values:
 	// "plain": Simple legend. (default)
 	// "scroll": Scrollable legend. It helps when too many legend items needed to be shown.
-	Type string `json:"type"`
+	Type primitive.String `json:"type,omitempty"`
 
 	// Distance between legend component and the left side of the container.
 	// left value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
 	// If the left value is set to be 'left', 'center', or 'right', then the component
 	// will be aligned automatically based on position.
-	Left string `json:"left,omitempty"`
+	Left primitive.String `json:"left,omitempty"`
 
 	// Distance between legend component and the top side of the container.
 	// top value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
 	// If the left value is set to be 'top', 'middle', or 'bottom', then the component
 	// will be aligned automatically based on position.
-	Top string `json:"top,omitempty"`
+	Top primitive.String `json:"top,omitempty"`
 
 	// Distance between legend component and the right side of the container.
 	// right value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'.
 	// Adaptive by default.
-	Right string `json:"right,omitempty"`
+	Right primitive.String `json:"right,omitempty"`
 
 	// Distance between legend component and the bottom side of the container.
 	// bottom value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'.
 	// Adaptive by default.
-	Bottom string `json:"bottom,omitempty"`
+	Bottom primitive.String `json:"bottom,omitempty"`
 
 	// Data array of legend. An array item is usually a name representing string.
 	// set Data as []string{} if you wants to hide the legend.
-	Data interface{} `json:"data,omitempty"`
+	Data primitive.Mixed `json:"data,omitempty"`
 
 	// The layout orientation of legend.
 	// Options: 'horizontal', 'vertical'
-	Orient string `json:"orient,omitempty"`
+	Orient primitive.String `json:"orient,omitempty"`
 
 	// Legend color when not selected.
-	InactiveColor string `json:"inactiveColor,omitempty"`
+	InactiveColor primitive.String `json:"inactiveColor,omitempty"`
 
 	// State table of selected legend.
 	// example:
@@ -219,7 +225,7 @@ type Legend struct {
 	// Selected mode of legend, which controls whether series can be toggled displaying by clicking legends.
 	// It is enabled by default, and you may set it to be false to disabled it.
 	// Besides, it can be set to 'single' or 'multiple', for single selection and multiple selection.
-	SelectedMode string `json:"selectedMode,omitempty"`
+	SelectedMode primitive.String `json:"selectedMode,omitempty"`
 
 	// Legend space around content. The unit is px.
 	// Default values for each position are 5.
@@ -270,7 +276,7 @@ type Legend struct {
 // https://echarts.apache.org/en/option.html#tooltip
 type Tooltip struct {
 	// Whether to show the tooltip component, including tooltip floating layer and axisPointer.
-	Show bool `json:"show"`
+	Show primitive.Bool `json:"show,omitempty"`
 
 	// Type of triggering.
 	// Options:
@@ -292,7 +298,7 @@ type Tooltip struct {
 
 	// Whether mouse is allowed to enter the floating layer of tooltip, whose default value is false.
 	// If you need to interact in the tooltip like with links or buttons, it can be set as true.
-	Enterable bool `json:"enterable,omitempty"`
+	Enterable primitive.Bool `json:"enterable,omitempty"`
 
 	// The content formatter of tooltip's floating layer which supports string template and callback function.
 	//
@@ -413,7 +419,7 @@ type BrushOutOfBrush struct {
 // https://echarts.apache.org/en/option.html#toolbox
 type Toolbox struct {
 	// Whether to show toolbox component.
-	Show bool `json:"show"`
+	Show primitive.Bool `json:"show,omitempty"`
 
 	// The layout orientation of toolbox's icon.
 	// Options: 'horizontal','vertical'
@@ -673,83 +679,11 @@ type AxisLine struct {
 	LineStyle *LineStyle `json:"lineStyle,omitempty"`
 }
 
-// XAxis is the option set for X axis.
-// https://echarts.apache.org/en/option.html#xAxis
-type XAxis struct {
-	// Name of axis.
-	Name string `json:"name,omitempty"`
-
-	// Type of axis.
-	// Option:
-	// * 'value': Numerical axis, suitable for continuous data.
-	// * 'category': Category axis, suitable for discrete category data.
-	//   Category data can be auto retrieved from series.data or dataset.source,
-	//   or can be specified via xAxis.data.
-	// * 'time' Time axis, suitable for continuous time series data. As compared to value axis,
-	//   it has a better formatting for time and a different tick calculation method. For example,
-	//   it decides to use month, week, day or hour for tick based on the range of span.
-	// * 'log' Log axis, suitable for log data.
-	Type string `json:"type,omitempty"`
-
-	// Set this to false to prevent the axis from showing.
-	Show bool `json:"show,omitempty"`
-
-	// Category data, available in type: 'category' axis.
-	Data interface{} `json:"data,omitempty"`
-
-	// Number of segments that the axis is split into. Note that this number serves only as a
-	// recommendation, and the true segments may be adjusted based on readability.
-	// This is unavailable for category axis.
-	SplitNumber int `json:"splitNumber,omitempty"`
-
-	// It is available only in numerical axis, i.e., type: 'value'.
-	// It specifies whether not to contain zero position of axis compulsively.
-	// When it is set to be true, the axis may not contain zero position,
-	// which is useful in the scatter chart for both value axes.
-	// This configuration item is unavailable when the min and max are set.
-	Scale bool `json:"scale,omitempty"`
-
-	// The minimum value of axis.
-	// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
-	// It will be automatically computed to make sure axis tick is equally distributed when not set.
-	Min interface{} `json:"min,omitempty"`
-
-	// The maximum value of axis.
-	// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
-	// It will be automatically computed to make sure axis tick is equally distributed when not set.
-	Max interface{} `json:"max,omitempty"`
-
-	// Minimum gap between split lines. For 'time' axis, MinInterval is in unit of milliseconds.
-	MinInterval float64 `json:"minInterval,omitempty"`
-
-	// Maximum gap between split lines. For 'time' axis, MaxInterval is in unit of milliseconds.
-	MaxInterval float64 `json:"maxInterval,omitempty"`
-
-	// The index of grid which the x axis belongs to. Defaults to be in the first grid.
-	// default 0
-	GridIndex int `json:"gridIndex,omitempty"`
-
-	// Split area of X axis in grid area.
-	SplitArea *SplitArea `json:"splitArea,omitempty"`
-
-	// Split line of X axis in grid area.
-	SplitLine *SplitLine `json:"splitLine,omitempty"`
-
-	// Settings related to axis label.
-	AxisLabel *AxisLabel `json:"axisLabel,omitempty"`
-
-	// Settings related to axis tick.
-	AxisTick *AxisTick `json:"axisTick,omitempty"`
-
-	// Settings related to axis pointer.
-	AxisPointer *AxisPointer `json:"axisPointer,omitempty"`
-}
-
 // YAxis is the option set for Y axis.
 // https://echarts.apache.org/en/option.html#yAxis
 type YAxis struct {
 	// Name of axis.
-	Name string `json:"name,omitempty"`
+	Name primitive.String `json:"name,omitempty"`
 
 	// Type of axis.
 	// Option:
@@ -761,39 +695,39 @@ type YAxis struct {
 	//   it has a better formatting for time and a different tick calculation method. For example,
 	//   it decides to use month, week, day or hour for tick based on the range of span.
 	// * 'log' Log axis, suitable for log data.
-	Type string `json:"type,omitempty"`
+	Type primitive.String `json:"type,omitempty"`
 
 	// Set this to false to prevent the axis from showing.
-	Show bool `json:"show,omitempty"`
+	Show primitive.Bool `json:"show,omitempty"`
 
 	// Category data, available in type: 'category' axis.
-	Data interface{} `json:"data,omitempty"`
+	Data primitive.Mixed `json:"data,omitempty"`
 
 	// Number of segments that the axis is split into. Note that this number serves only as a
 	// recommendation, and the true segments may be adjusted based on readability.
 	// This is unavailable for category axis.
-	SplitNumber int `json:"splitNumber,omitempty"`
+	SplitNumber primitive.Int `json:"splitNumber,omitempty"`
 
 	// It is available only in numerical axis, i.e., type: 'value'.
 	// It specifies whether not to contain zero position of axis compulsively.
 	// When it is set to be true, the axis may not contain zero position,
 	// which is useful in the scatter chart for both value axes.
 	// This configuration item is unavailable when the min and max are set.
-	Scale bool `json:"scale,omitempty"`
+	Scale primitive.Bool `json:"scale,omitempty"`
 
 	// The minimum value of axis.
 	// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
 	// It will be automatically computed to make sure axis tick is equally distributed when not set.
-	Min interface{} `json:"min,omitempty"`
+	Min primitive.Mixed `json:"min,omitempty"`
 
 	// The maximum value of axis.
 	// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
 	// It will be automatically computed to make sure axis tick is equally distributed when not set.
-	Max interface{} `json:"max,omitempty"`
+	Max primitive.Mixed `json:"max,omitempty"`
 
 	// The index of grid which the Y axis belongs to. Defaults to be in the first grid.
 	// default 0
-	GridIndex int `json:"gridIndex,omitempty"`
+	GridIndex primitive.Int `json:"gridIndex,omitempty"`
 
 	// Split area of Y axis in grid area.
 	SplitArea *SplitArea `json:"splitArea,omitempty"`
@@ -809,6 +743,10 @@ type YAxis struct {
 
 	// Settings related to axis pointer.
 	AxisPointer *AxisPointer `json:"axisPointer,omitempty"`
+}
+
+func (yAxis YAxis) New() *YAxis {
+	return &YAxis{}
 }
 
 // TextStyle is the option set for a text style component.

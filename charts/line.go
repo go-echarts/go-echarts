@@ -1,45 +1,42 @@
 package charts
 
 import (
+	"github.com/go-echarts/go-echarts/v2/config"
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/render"
-	"github.com/go-echarts/go-echarts/v2/types"
+	"github.com/go-echarts/go-echarts/v2/series"
 )
+
+type LineConfiguration struct {
+	*config.BaseConfiguration
+	Series          *series.LineSeries `json:"series,omitempty"`
+	XAxis           *opts.XAxis        `json:"xAxis,omitempty"`
+	YAxis           *opts.YAxis        `json:"yAxis,omitempty"`
+	render.Renderer `json:"-"`
+}
 
 // Line represents a line chart.
 type Line struct {
-	RectChart
+	*LineConfiguration
 }
 
-// Type returns the chart type.
-func (Line) Type() string { return types.ChartLine }
-
-// NewLine creates a new line chart.
 func NewLine() *Line {
-	c := &Line{}
-	c.initBaseConfiguration()
-	c.Renderer = render.NewChartRender(c, c.Validate)
-	c.hasXYAxis = true
-	return c
-}
+	line := &Line{
+		&LineConfiguration{
+			BaseConfiguration: config.BaseConfiguration{}.New(),
+			XAxis:             opts.XAxis{}.New(),
+			YAxis:             opts.YAxis{}.New(),
+			Series:            series.LineSeries{Type: "line"}.New(),
+		},
+	}
 
-// SetXAxis adds the X axis.
-func (c *Line) SetXAxis(x interface{}) *Line {
-	c.xAxisData = x
-	return c
-}
+	// TODO need refine
+	line.Initialization = &opts.Initialization{}
+	opts.SetDefaultValue(line.Initialization)
+	line.Initialization.ChartID = opts.GenUUID()
+	line.Assets = &opts.Assets{}
+	line.Assets.JSAssets.Init("https://go-echarts.github.io/go-echarts-assets/assets/echarts.min.js")
 
-// AddSeries adds the new series.
-func (c *Line) AddSeries(name string, data []opts.LineData, options ...SeriesOpts) *Line {
-	series := SingleSeries{Name: name, Type: types.ChartLine, Data: data}
-	series.InitSeriesDefaultOpts(c.BaseConfiguration)
-	series.ConfigureSeriesOpts(options...)
-	c.MultiSeries = append(c.MultiSeries, series)
-	return c
-}
-
-// Validate validates the given configuration.
-func (c *Line) Validate() {
-	c.XAxisList[0].Data = c.xAxisData
-	c.Assets.Validate(c.AssetsHost)
+	line.Renderer = render.NewChartRender(line)
+	return line
 }

@@ -43,7 +43,8 @@ func (r *pageRender) Render(w io.Writer) error {
 		fn()
 	}
 
-	contents := []string{tpls.HeaderTpl, tpls.BaseTpl, tpls.PageTpl}
+	//contents := []string{tpls.HeaderTpl, tpls.BaseTpl, tpls.PageTpl}
+	contents := []string{tpls.Tpl}
 	tpl := MustTemplate(ModPage, contents)
 
 	var buf bytes.Buffer
@@ -73,8 +74,10 @@ func (r *chartRender) Render(w io.Writer) error {
 		fn()
 	}
 
-	contents := []string{tpls.HeaderTpl, tpls.BaseTpl, tpls.ChartTpl}
-	tpl := MustTemplate(ModChart, contents)
+	//contents := []string{tpls.HeaderTpl, tpls.BaseTpl, tpls.ChartTpl}
+	contents := []string{tpls.Tpl}
+	//tpl := MustTemplate(ModChart, contents)
+	tpl := MustTemplate("chart", contents)
 
 	var buf bytes.Buffer
 	if err := tpl.ExecuteTemplate(&buf, ModChart, r.c); err != nil {
@@ -105,15 +108,15 @@ func isSet(name string, data interface{}) bool {
 
 // MustTemplate creates a new template with the given name and parsed contents.
 func MustTemplate(name string, contents []string) *template.Template {
-	tpl := template.Must(template.New(name).Parse(contents[0])).Funcs(template.FuncMap{
+	tpl := template.Must(template.New(name).Funcs(template.FuncMap{
 		"safeJS": func(s interface{}) template.JS {
 			return template.JS(fmt.Sprint(s))
 		},
 		"isSet": isSet,
-	})
+	}).Parse(contents[0]))
 
-	for _, cont := range contents[1:] {
-		tpl = template.Must(tpl.Parse(cont))
-	}
+	//for _, cont := range contents[1:] {
+	//	tpl = template.Must(tpl.Parse(cont))
+	//}
 	return tpl
 }
