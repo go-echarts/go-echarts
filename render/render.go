@@ -15,10 +15,10 @@ var (
 	pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 )
 
-type RenderV3 struct {
+type Render struct {
 }
 
-func (r *RenderV3) Render(file string, page *components.Page) error {
+func (r *Render) Render(file string, page *components.Page) error {
 
 	f, _ := os.Create(file)
 	tpl := MustTemplate("chart", page.Templates)

@@ -16,5 +16,5 @@ type Chart interface {
 }
 
 func doRender(file string, page *components.Page) {
-	_ = (&render.RenderV3{}).Render(file, page)
+	_ = (&render.Render{}).Render(file, page)
 }
