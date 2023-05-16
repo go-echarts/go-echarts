@@ -3,6 +3,7 @@ package series
 import (
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/primitive"
+	"github.com/go-echarts/go-echarts/v2/types"
 )
 
 type LineSeries struct {
@@ -38,7 +39,7 @@ type LineSeries struct {
 
 func (ls LineSeries) New() *LineSeries {
 	return &LineSeries{
-		Type: ls.Type,
+		Type: types.ChartLine,
 	}
 
 }

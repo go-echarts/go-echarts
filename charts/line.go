@@ -58,7 +58,7 @@ func NewLine() *Line {
 		BaseConfiguration: config.BaseConfiguration{}.New(),
 		XAxis:             opts.XAxis{}.New(),
 		YAxis:             opts.YAxis{}.New(),
-		Series:            series.LineSeries{Type: types.ChartLine}.New(),
+		Series:            series.LineSeries{}.New(),
 	}
 
 	line.Container = components.NewDefaultContainer(line)

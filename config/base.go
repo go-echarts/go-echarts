@@ -27,9 +27,6 @@ type BaseConfiguration struct {
 
 	DataZooms  []*opts.DataZoom  `json:"datazoom,omitempty"`
 	VisualMaps []*opts.VisualMap `json:"visualmap,omitempty"`
-
-	*opts.Initialization
-	*opts.Assets `json:"-"`
 }
 
 func (bc BaseConfiguration) New() *BaseConfiguration {
