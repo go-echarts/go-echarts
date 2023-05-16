@@ -1,9 +1,14 @@
 package util
 
-import "reflect"
+import (
+	"reflect"
+	"strings"
+)
 
-// ConfigPrettier remove all the empty structs
-func ConfigPrettier(ptr interface{}) {
+const ReversedTag = "reserved"
+
+// Prettier remove all the empty structs
+func Prettier(ptr interface{}) {
 	elem := reflect.ValueOf(ptr).Elem()
 	doPretty(elem)
 }
@@ -19,7 +24,8 @@ func doPretty(val reflect.Value) {
 
 		if f.Kind() == reflect.Struct {
 
-			if f.IsZero() {
+			t.Field(i)
+			if f.IsZero() && !reserved(t.Field(i)) {
 				field := val.Field(i)
 				field.Set(reflect.Zero(field.Type()).Convert(field.Type()))
 				continue
@@ -28,4 +34,14 @@ func doPretty(val reflect.Value) {
 			}
 		}
 	}
+}
+
+func reserved(field reflect.StructField) bool {
+	var f string
+	if f = field.Tag.Get("json"); f == "" {
+		return false
+	}
+
+	return strings.Contains(f, ReversedTag)
+
 }

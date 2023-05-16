@@ -5,8 +5,7 @@ import (
 	"github.com/go-echarts/go-echarts/v2/primitive"
 )
 
-func main() {
-
+func NewLine() *charts.Line {
 	line := charts.NewLine()
 	line.JSAssets.Add("My.js")
 	line.Title.Text = "Title-Title"
@@ -26,8 +25,10 @@ func main() {
 	line.Container.Theme = "dark"
 	// change page title
 	line.Page.Title = "My go-echarts title"
+	return line
 
-	line.Render("line.html")
+}
 
-	//MultiCharts()
+func NewLineChart() {
+	NewLine().Render("line.html")
 }

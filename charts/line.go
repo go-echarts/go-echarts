@@ -11,8 +11,8 @@ import (
 type LineConfiguration struct {
 	*config.BaseConfiguration
 	Series *series.LineSeries `json:"series,omitempty"`
-	XAxis  *opts.XAxis        `json:"xAxis,omitempty"`
-	YAxis  *opts.YAxis        `json:"yAxis,omitempty"`
+	XAxis  *opts.XAxis        `json:"xAxis,reserved,omitempty"`
+	YAxis  *opts.YAxis        `json:"yAxis,reserved,omitempty"`
 }
 
 // Line represents a line chart.

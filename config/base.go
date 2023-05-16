@@ -32,7 +32,7 @@ type BaseConfiguration struct {
 func (bc BaseConfiguration) New() *BaseConfiguration {
 	return &BaseConfiguration{
 		Title:      &opts.Title{},
-		Legend:     &opts.Legend{},
+		Legend:     &opts.Legend{Show: primitive.True()},
 		Tooltip:    &opts.Tooltip{},
 		Toolbox:    &opts.Toolbox{},
 		Legends:    nil,

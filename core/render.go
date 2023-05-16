@@ -52,9 +52,9 @@ func isSet(name string, data interface{}) bool {
 	return v.FieldByName(name).IsValid()
 }
 
-func pretty() func(chart interface{}) interface{} {
+func prettier() func(chart interface{}) interface{} {
 	return func(c interface{}) interface{} {
-		util.ConfigPrettier(c)
+		util.Prettier(c)
 		return c
 	}
 }
@@ -65,8 +65,8 @@ func MustTemplate(name string, contents []string) *template.Template {
 		"safeJS": func(s interface{}) template.JS {
 			return template.JS(fmt.Sprint(s))
 		},
-		"isSet":  isSet,
-		"pretty": pretty(),
+		"isSet":    isSet,
+		"prettier": prettier(),
 	}).Parse(contents[0]))
 
 	//for _, cont := range contents[1:] {

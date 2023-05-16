@@ -21,7 +21,7 @@ var Tpl = `
 <script type="text/javascript">
     "use strict";
     let goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID }}'), "{{ .Theme }}");
-    let option_{{ .ChartID | safeJS }} = {{ .Chart | pretty }};
+    let option_{{ .ChartID | safeJS }} = {{ .Chart | prettier }};
     goecharts_{{ .ChartID | safeJS }}.setOption(option_{{ .ChartID | safeJS }});
 </script>
 <style>
