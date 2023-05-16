@@ -1,16 +1,19 @@
 package config
 
 import (
+	"github.com/go-echarts/go-echarts/v2/components"
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/primitive"
 )
 
 // BaseConfiguration represents basic options set needed by all chart types.
 type BaseConfiguration struct {
-	*opts.TitleV3 `json:"title,omitempty"`
-	*opts.Legend  `json:"legend,omitempty"`
-	*opts.Tooltip `json:"tooltip,omitempty"`
-	*opts.Toolbox `json:"toolbox,omitempty"`
+	*components.PageV3    `json:"-"`
+	*components.Container `json:"-"`
+	*opts.TitleV3         `json:"title,omitempty"`
+	*opts.Legend          `json:"legend,omitempty"`
+	*opts.Tooltip         `json:"tooltip,omitempty"`
+	*opts.Toolbox         `json:"toolbox,omitempty"`
 
 	Legends []primitive.String `json:"legends,omitempty"`
 	// Colors is the color list of palette.
@@ -31,6 +34,8 @@ type BaseConfiguration struct {
 
 func (bc BaseConfiguration) New() *BaseConfiguration {
 	return &BaseConfiguration{
+		Container:  nil,
+		PageV3:     nil,
 		TitleV3:    &opts.TitleV3{},
 		Legend:     &opts.Legend{},
 		Tooltip:    &opts.Tooltip{},

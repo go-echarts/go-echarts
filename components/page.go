@@ -1,70 +1,47 @@
 package components
 
 import (
-	"github.com/go-echarts/go-echarts/v2/opts"
-	"github.com/go-echarts/go-echarts/v2/render"
+	"github.com/go-echarts/go-echarts/v2/primitive"
+	"github.com/go-echarts/go-echarts/v2/templates"
+	"github.com/go-echarts/go-echarts/v2/types"
 )
 
-type Layout string
+const DefaultPageTitle = "Awesome go-echarts"
+const DefaultEchartsAsset = "https://go-echarts.github.io/go-echarts-assets/assets/echarts.min.js"
 
-const (
-	PageNoneLayout   Layout = "none"
-	PageCenterLayout Layout = "center"
-	PageFlexLayout   Layout = "flex"
-)
+// PageV3 represents a page chart.
+type PageV3 struct {
+	//PageTitle string `default:"Awesome go-echarts"`
+	Title primitive.String
 
-// Charter represents a chart value which provides its type, assets and can be validated.
-type Charter interface {
-	Type() string
-	GetAssets() opts.Assets
-	FillDefaultValues()
-	Validate()
+	// Assets host
+	//EchartsJsAsset string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
+	JSAssets  *types.OrderedSet
+	CSSAssets *types.OrderedSet
+
+	Templates []string
+	// Containers, one - one
+	Containers []*Container
 }
 
-// Page represents a page chart.
-type Page struct {
-	render.Renderer
-	opts.Initialization
-	opts.Assets
+func NewDefaultPage(containers ...*Container) *PageV3 {
 
-	Charts []interface{}
-	Layout Layout
-}
-
-// NewPage creates a new page.
-func NewPage() *Page {
-	page := &Page{}
-	page.Assets.InitAssets()
-	page.Renderer = render.NewPageRender(page, page.Validate)
-	page.Layout = PageCenterLayout
-	return page
-}
-
-// SetLayout sets the layout of the Page.
-func (page *Page) SetLayout(layout Layout) *Page {
-	page.Layout = layout
-	return page
-}
-
-// AddCharts adds new charts to the page.
-func (page *Page) AddCharts(charts ...Charter) *Page {
-	for i := 0; i < len(charts); i++ {
-		assets := charts[i].GetAssets()
-		for _, v := range assets.JSAssets.Values {
-			page.JSAssets.Add(v)
-		}
-
-		for _, v := range assets.CSSAssets.Values {
-			page.CSSAssets.Add(v)
-		}
-		charts[i].Validate()
-		page.Charts = append(page.Charts, charts[i])
+	return &PageV3{
+		Title:      DefaultPageTitle,
+		JSAssets:   (&types.OrderedSet{}).Add(DefaultEchartsAsset),
+		CSSAssets:  &types.OrderedSet{},
+		Templates:  []string{templates.Tpl},
+		Containers: containers,
 	}
+
+}
+
+func (page *PageV3) AddCharts(chart ...interface{}) *PageV3 {
+	// set page to chart
 	return page
 }
 
-// Validate validates the given configuration.
-func (page *Page) Validate() {
-	page.Initialization.Validate()
-	page.Assets.Validate(page.AssetsHost)
-}
+//func (page *PageV3) Render(file string) error {
+//	// set page to chart
+//	return page.RenderEngineer.Render(file, page)
+//}
