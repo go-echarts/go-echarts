@@ -42,7 +42,7 @@ Classic way to get go-echarts
 
 $ go get -u github.com/go-echarts/go-echarts/...
 $ cd $go-echarts-project
-$ mkdir v2 && mv charts components datasets opts render templates types v2
+$ mkdir v2 && mv charts components datasets opts core templates types v2
 ```
 
 Use gomod style

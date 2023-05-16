@@ -1,9 +1,8 @@
-package render
+package core
 
 import (
 	"bytes"
 	"fmt"
-	"github.com/go-echarts/go-echarts/v2/components"
 	"github.com/go-echarts/go-echarts/v2/util"
 	"html/template"
 	"os"
@@ -15,17 +14,19 @@ var (
 	pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 )
 
+const DefaultTplName = "__GO_ECHARTS__"
+
 type Render struct {
 }
 
-func (r *Render) Render(file string, page *components.Page) error {
+func (r *Render) Render(file string, page *Page) error {
 
 	f, _ := os.Create(file)
-	tpl := MustTemplate("chart", page.Templates)
+	tpl := MustTemplate(DefaultTplName, page.Templates)
 
 	var buf bytes.Buffer
 
-	if err := tpl.ExecuteTemplate(&buf, "chart", page); err != nil {
+	if err := tpl.ExecuteTemplate(&buf, DefaultTplName, page); err != nil {
 		return err
 	}
 

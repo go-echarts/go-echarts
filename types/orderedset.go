@@ -6,14 +6,6 @@ type OrderedSet struct {
 	Values []string
 }
 
-// Init creates a new OrderedSet instance, and adds any given items into this set.
-func (o *OrderedSet) Init(items ...string) {
-	o.filter = make(map[string]bool)
-	for _, item := range items {
-		o.Add(item)
-	}
-}
-
 // Add adds a new item into the ordered set.
 func (o *OrderedSet) Add(item string) *OrderedSet {
 	if o.filter == nil {

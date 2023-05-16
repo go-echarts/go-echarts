@@ -2,13 +2,13 @@ package main
 
 import (
 	"github.com/go-echarts/go-echarts/v2/charts"
+	"github.com/go-echarts/go-echarts/v2/core"
 	"github.com/go-echarts/go-echarts/v2/primitive"
 )
 
-func main() {
+func MultiCharts() {
 
 	line := charts.NewLine()
-	line.JSAssets.Add("My.js")
 	line.Title.Text = "Title-Title"
 	line.Title.SubText = "Subtitle-01"
 
@@ -24,10 +24,20 @@ func main() {
 	// change container
 	line.Container.ChartID = "customId"
 	line.Container.Theme = "dark"
-	// change page title
-	line.Page.Title = "My go-echarts title"
 
-	line.Render("line.html")
+	line1 := charts.NewLine()
+	line1.Title.Text = "Title-Title-1"
+	line1.Title.SubText = "Subtitle-01-1"
 
-	//MultiCharts()
+	line1.XAxis.Type = "category"
+	line1.XAxis.Data = []string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}
+
+	line1.YAxis.Type = "value"
+	line1.Series.Data = []int{150, 230, 224, 218, 135, 147, 260}
+
+	core.NewDefaultPage().AddCharts(
+		line,
+		line1,
+	).Render("new.html")
+
 }

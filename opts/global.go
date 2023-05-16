@@ -3,9 +3,7 @@ package opts
 import (
 	"fmt"
 	"github.com/go-echarts/go-echarts/v2/primitive"
-	"github.com/go-echarts/go-echarts/v2/types"
 	"regexp"
-	"strings"
 )
 
 // Legend is the option set for a legend component.
@@ -856,7 +854,7 @@ type RadarComponent struct {
 	// Indicator of radar chart, which is used to assign multiple variables(dimensions) in radar chart.
 	Indicator []*Indicator `json:"indicator,omitempty"`
 
-	// Radar render type, in which 'polygon' and 'circle' are supported.
+	// Radar core type, in which 'polygon' and 'circle' are supported.
 	Shape string `json:"shape,omitempty"`
 
 	// Segments of indicator axis.
@@ -1024,55 +1022,6 @@ func FuncStripCommentsOpts(fn string) string {
 func replaceJsFuncs(fn string) string {
 	fn = newlineTabPat.ReplaceAllString(fn, "")
 	return fmt.Sprintf("%s%s%s", funcMarker, fn, funcMarker)
-}
-
-type Colors []string
-
-// Assets contains options for static assets.
-type Assets struct {
-	JSAssets  types.OrderedSet
-	CSSAssets types.OrderedSet
-
-	CustomizedJSAssets  types.OrderedSet
-	CustomizedCSSAssets types.OrderedSet
-}
-
-// InitAssets inits the static assets storage.
-func (opt *Assets) InitAssets() {
-	opt.JSAssets.Init("echarts.min.js")
-	opt.CSSAssets.Init()
-
-	opt.CustomizedJSAssets.Init()
-	opt.CustomizedCSSAssets.Init()
-}
-
-// AddCustomizedJSAssets adds the customized javascript assets which will not be added the `host` prefix.
-func (opt *Assets) AddCustomizedJSAssets(assets ...string) {
-	for i := 0; i < len(assets); i++ {
-		opt.CustomizedJSAssets.Add(assets[i])
-	}
-}
-
-// AddCustomizedCSSAssets adds the customized css assets which will not be added the `host` prefix.
-func (opt *Assets) AddCustomizedCSSAssets(assets ...string) {
-	for i := 0; i < len(assets); i++ {
-		opt.CustomizedCSSAssets.Add(assets[i])
-	}
-}
-
-// Validate validates the static assets configurations
-func (opt *Assets) Validate(host string) {
-	for i := 0; i < len(opt.JSAssets.Values); i++ {
-		if !strings.HasPrefix(opt.JSAssets.Values[i], host) {
-			opt.JSAssets.Values[i] = host + opt.JSAssets.Values[i]
-		}
-	}
-
-	for i := 0; i < len(opt.CSSAssets.Values); i++ {
-		if !strings.HasPrefix(opt.CSSAssets.Values[i], host) {
-			opt.CSSAssets.Values[i] = host + opt.CSSAssets.Values[i]
-		}
-	}
 }
 
 // XAxis3D contains options for X axis in the 3D coordinate.

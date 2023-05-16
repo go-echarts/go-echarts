@@ -1,8 +1,8 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/v2/components"
 	"github.com/go-echarts/go-echarts/v2/config"
+	"github.com/go-echarts/go-echarts/v2/core"
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/series"
 	"github.com/go-echarts/go-echarts/v2/types"
@@ -28,27 +28,23 @@ func (line *Line) GetChart() interface{} {
 	return line
 }
 
-func (line *Line) GetContainer() *components.Container {
+func (line *Line) GetContainer() *core.Container {
 	if line.Container != nil {
 		return line.Container
 	}
 
-	line.Container = components.NewDefaultContainer(line)
+	line.Container = core.NewDefaultContainer(line)
 	return line.Container
 
 }
 
-func (line *Line) GetPage() *components.Page {
+func (line *Line) GetPage() *core.Page {
 	if line.Page != nil {
 		return line.Page
 	}
 
-	line.Page = components.NewDefaultPage(line.GetContainer())
+	line.Page = core.NewDefaultPage(line.GetContainer())
 	return line.Page
-}
-
-func (line *Line) Render(file string) {
-	doRender(file, line.GetPage())
 }
 
 func NewLine() *Line {
@@ -61,8 +57,8 @@ func NewLine() *Line {
 		Series:            series.LineSeries{}.New(),
 	}
 
-	line.Container = components.NewDefaultContainer(line)
-	line.Page = components.NewDefaultPage(line.Container)
+	line.Container = core.NewDefaultContainer(line)
+	line.Page = core.NewDefaultPage(line.Container)
 
 	return line
 }

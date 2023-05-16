@@ -1,5 +1,6 @@
 package opts
 
+// TODO : refactor to /series
 // BarChart
 // https://echarts.apache.org/en/option.html#series-bar
 type BarChart struct {

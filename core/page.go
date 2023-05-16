@@ -1,4 +1,4 @@
-package components
+package core
 
 import (
 	"github.com/go-echarts/go-echarts/v2/primitive"
@@ -24,6 +24,10 @@ type Page struct {
 	Containers []*Container
 }
 
+func (p *Page) Render(file string) {
+	_ = (&Render{}).Render(file, p)
+}
+
 func NewDefaultPage(containers ...*Container) *Page {
 
 	return &Page{
@@ -36,7 +40,9 @@ func NewDefaultPage(containers ...*Container) *Page {
 
 }
 
-func (page *Page) AddCharts(chart ...interface{}) *Page {
-	// TODO set page to chart in same page
+func (page *Page) AddCharts(charts ...Chart) *Page {
+	for _, c := range charts {
+		page.Containers = append(page.Containers, c.GetContainer())
+	}
 	return page
 }

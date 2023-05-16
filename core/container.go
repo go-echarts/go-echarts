@@ -1,4 +1,4 @@
-package components
+package core
 
 import (
 	"github.com/go-echarts/go-echarts/v2/util"
