@@ -4,7 +4,7 @@ import "github.com/go-echarts/go-echarts/v2/primitive"
 
 // Title is the option set for a title component.
 // https://echarts.apache.org/en/option.html#title
-type TitleV3 struct {
+type Title struct {
 	Id primitive.String `json:"id,omitempty"`
 
 	// Default is true, Set this to false to prevent the title from showing

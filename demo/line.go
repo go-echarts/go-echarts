@@ -8,8 +8,8 @@ import (
 func main() {
 
 	line := charts.NewLine()
-	line.TitleV3.Text = "Title-Title"
-	line.TitleV3.SubText = "Subtitle-01"
+	line.Title.Text = "Title-Title"
+	line.Title.SubText = "Subtitle-01"
 
 	line.XAxis.Type = "category"
 	line.XAxis.Data = []string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}
@@ -19,6 +19,12 @@ func main() {
 
 	// show Toolbox but no other empty structs, test
 	line.Toolbox.Show = primitive.True()
+
+	// change container
+	line.Container.ChartID = "customId"
+	line.Container.Theme = "dark"
+	// change page title
+	line.Page.Title = "My go-echarts title"
 
 	line.Render("line.html")
 }

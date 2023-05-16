@@ -2,9 +2,9 @@ package components
 
 import (
 	"github.com/go-echarts/go-echarts/v2/opts"
-	"github.com/go-echarts/go-echarts/v2/util"
 )
 
+// Container Each chart belongs to a Container, it is 1:1
 type Container struct {
 
 	// Width of canvas
@@ -27,7 +27,6 @@ type Container struct {
 }
 
 func NewDefaultContainer(chart interface{}) *Container {
-	util.ConfigPrettier(chart)
 	return &Container{
 		Width:   "900px",
 		Height:  "500px",

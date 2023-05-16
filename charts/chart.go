@@ -9,12 +9,12 @@ type Chart interface {
 	GetChart() interface{}
 	GetChartName() string
 	GetContainer() *components.Container
-	GetPage() *components.PageV3
+	GetPage() *components.Page
 	Render(file string)
-	// GetChartToJson() string
-	// GetChartToMap() string
+	// GetChartToJson()
+	// GetChartToMap()
 }
 
-func doRender(file string, page *components.PageV3) {
+func doRender(file string, page *components.Page) {
 	_ = (&render.RenderV3{}).Render(file, page)
 }

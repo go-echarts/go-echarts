@@ -38,13 +38,13 @@ func (line *Line) GetContainer() *components.Container {
 
 }
 
-func (line *Line) GetPage() *components.PageV3 {
-	if line.PageV3 != nil {
-		return line.PageV3
+func (line *Line) GetPage() *components.Page {
+	if line.Page != nil {
+		return line.Page
 	}
 
-	line.PageV3 = components.NewDefaultPage(line.GetContainer())
-	return line.PageV3
+	line.Page = components.NewDefaultPage(line.GetContainer())
+	return line.Page
 }
 
 func (line *Line) Render(file string) {
@@ -52,14 +52,17 @@ func (line *Line) Render(file string) {
 }
 
 func NewLine() *Line {
-	line := &Line{
-		LineConfiguration: &LineConfiguration{
-			BaseConfiguration: config.BaseConfiguration{}.New(),
-			XAxis:             opts.XAxis{}.New(),
-			YAxis:             opts.YAxis{}.New(),
-			Series:            series.LineSeries{Type: "line"}.New(),
-		},
+	line := &Line{}
+
+	line.LineConfiguration = &LineConfiguration{
+		BaseConfiguration: config.BaseConfiguration{}.New(),
+		XAxis:             opts.XAxis{}.New(),
+		YAxis:             opts.YAxis{}.New(),
+		Series:            series.LineSeries{Type: types.ChartLine}.New(),
 	}
+
+	line.Container = components.NewDefaultContainer(line)
+	line.Page = components.NewDefaultPage(line.Container)
 
 	return line
 }

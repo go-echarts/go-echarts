@@ -9,8 +9,8 @@ import (
 const DefaultPageTitle = "Awesome go-echarts"
 const DefaultEchartsAsset = "https://go-echarts.github.io/go-echarts-assets/assets/echarts.min.js"
 
-// PageV3 represents a page chart.
-type PageV3 struct {
+// Page represents a page chart.
+type Page struct {
 	//PageTitle string `default:"Awesome go-echarts"`
 	Title primitive.String
 
@@ -24,9 +24,9 @@ type PageV3 struct {
 	Containers []*Container
 }
 
-func NewDefaultPage(containers ...*Container) *PageV3 {
+func NewDefaultPage(containers ...*Container) *Page {
 
-	return &PageV3{
+	return &Page{
 		Title:      DefaultPageTitle,
 		JSAssets:   (&types.OrderedSet{}).Add(DefaultEchartsAsset),
 		CSSAssets:  &types.OrderedSet{},
@@ -36,12 +36,7 @@ func NewDefaultPage(containers ...*Container) *PageV3 {
 
 }
 
-func (page *PageV3) AddCharts(chart ...interface{}) *PageV3 {
-	// set page to chart
+func (page *Page) AddCharts(chart ...interface{}) *Page {
+	// TODO set page to chart in same page
 	return page
 }
-
-//func (page *PageV3) Render(file string) error {
-//	// set page to chart
-//	return page.RenderEngineer.Render(file, page)
-//}

@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"github.com/go-echarts/go-echarts/v2/components"
+	"github.com/go-echarts/go-echarts/v2/util"
 	"html/template"
 	"os"
 	"reflect"
@@ -17,7 +18,7 @@ var (
 type RenderV3 struct {
 }
 
-func (r *RenderV3) Render(file string, page *components.PageV3) error {
+func (r *RenderV3) Render(file string, page *components.Page) error {
 
 	f, _ := os.Create(file)
 	tpl := MustTemplate("chart", page.Templates)
@@ -50,13 +51,21 @@ func isSet(name string, data interface{}) bool {
 	return v.FieldByName(name).IsValid()
 }
 
+func pretty() func(chart interface{}) interface{} {
+	return func(c interface{}) interface{} {
+		util.ConfigPrettier(c)
+		return c
+	}
+}
+
 // MustTemplate creates a new template with the given name and parsed contents.
 func MustTemplate(name string, contents []string) *template.Template {
 	tpl := template.Must(template.New(name).Funcs(template.FuncMap{
 		"safeJS": func(s interface{}) template.JS {
 			return template.JS(fmt.Sprint(s))
 		},
-		"isSet": isSet,
+		"isSet":  isSet,
+		"pretty": pretty(),
 	}).Parse(contents[0]))
 
 	//for _, cont := range contents[1:] {

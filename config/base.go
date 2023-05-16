@@ -8,9 +8,9 @@ import (
 
 // BaseConfiguration represents basic options set needed by all chart types.
 type BaseConfiguration struct {
-	*components.PageV3    `json:"-"`
+	*components.Page      `json:"-"`
 	*components.Container `json:"-"`
-	*opts.TitleV3         `json:"title,omitempty"`
+	*opts.Title           `json:"title,omitempty"`
 	*opts.Legend          `json:"legend,omitempty"`
 	*opts.Tooltip         `json:"tooltip,omitempty"`
 	*opts.Toolbox         `json:"toolbox,omitempty"`
@@ -34,9 +34,7 @@ type BaseConfiguration struct {
 
 func (bc BaseConfiguration) New() *BaseConfiguration {
 	return &BaseConfiguration{
-		Container:  nil,
-		PageV3:     nil,
-		TitleV3:    &opts.TitleV3{},
+		Title:      &opts.Title{},
 		Legend:     &opts.Legend{},
 		Tooltip:    &opts.Tooltip{},
 		Toolbox:    &opts.Toolbox{},
