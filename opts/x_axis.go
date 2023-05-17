@@ -75,5 +75,7 @@ type XAxis struct {
 }
 
 func (xAxis XAxis) New() *XAxis {
-	return &XAxis{}
+	return &XAxis{
+		Type: "category",
+	}
 }

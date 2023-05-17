@@ -26,7 +26,7 @@ type Container struct {
 	Chart interface{}
 }
 
-func NewDefaultContainer(chart interface{}) *Container {
+func NewContainer(chart interface{}) *Container {
 	return &Container{
 		Width:   "900px",
 		Height:  "500px",

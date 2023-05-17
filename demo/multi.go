@@ -6,9 +6,15 @@ import (
 
 func MultiCharts() {
 
-	core.NewDefaultPage().AddCharts(
-		NewLine(),
+	page := core.NewPage()
+	page.Config(func(p *core.Page) {
+		p.Title = "New Title"
+		p.JSAssets.Add("New.js")
+
+	}).AddCharts(
+		NewBaseLine(),
 		NewBar(),
+		NewComplexLine(),
 	).Render("multi-charts.html")
 
 }

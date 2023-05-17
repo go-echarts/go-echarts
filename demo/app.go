@@ -1,6 +1,7 @@
 package main
 
 func main() {
+	NewComplexLine()
 	SingleCharts()
 	MultiCharts()
 }
@@ -8,5 +9,6 @@ func main() {
 func SingleCharts() {
 	NewBarChart()
 	NewLineChart()
+	NewComplexLine()
 
 }

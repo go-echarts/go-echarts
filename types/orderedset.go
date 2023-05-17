@@ -17,3 +17,9 @@ func (o *OrderedSet) Add(item string) *OrderedSet {
 	}
 	return o
 }
+
+func (o *OrderedSet) Reset() *OrderedSet {
+	o.filter = make(map[string]bool)
+	o.Values = []string{}
+	return o
+}

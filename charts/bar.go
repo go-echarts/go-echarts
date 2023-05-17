@@ -11,7 +11,7 @@ import (
 type BarConfiguration struct {
 	*config.BaseConfiguration
 	Series *series.BarSeries `json:"series,omitempty"`
-	XAxis  *opts.XAxis       `json:"xAxis,omitempty"`
+	XAxis  *opts.XAxis       `json:"xAxis,omitempty,reserved"`
 	YAxis  *opts.YAxis       `json:"yAxis,omitempty,reserved"`
 }
 
@@ -33,7 +33,7 @@ func (bar *Bar) GetContainer() *core.Container {
 		return bar.Container
 	}
 
-	bar.Container = core.NewDefaultContainer(bar)
+	bar.Container = core.NewContainer(bar)
 	return bar.Container
 
 }
@@ -43,7 +43,7 @@ func (bar *Bar) GetPage() *core.Page {
 		return bar.Page
 	}
 
-	bar.Page = core.NewDefaultPage(bar.GetContainer())
+	bar.Page = core.NewPage(bar.GetContainer())
 	return bar.Page
 }
 
@@ -57,8 +57,8 @@ func NewBar() *Bar {
 		Series:            series.BarSeries{}.New(),
 	}
 
-	bar.Container = core.NewDefaultContainer(bar)
-	bar.Page = core.NewDefaultPage(bar.Container)
+	bar.Container = core.NewContainer(bar)
+	bar.Page = core.NewPage(bar.Container)
 
 	return bar
 }

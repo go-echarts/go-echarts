@@ -11,8 +11,8 @@ type BaseConfiguration struct {
 	*core.Page      `json:"-"`
 	*core.Container `json:"-"`
 	*opts.Title     `json:"title,omitempty"`
-	*opts.Legend    `json:"legend,omitempty"`
-	*opts.Tooltip   `json:"tooltip,omitempty"`
+	*opts.Legend    `json:"legend,omitempty,reserved"`
+	*opts.Tooltip   `json:"tooltip,omitempty,reserved"`
 	*opts.Toolbox   `json:"toolbox,omitempty"`
 
 	Legends []primitive.String `json:"legends,omitempty"`
@@ -31,14 +31,9 @@ type BaseConfiguration struct {
 
 func (bc BaseConfiguration) New() *BaseConfiguration {
 	return &BaseConfiguration{
-		Title:      &opts.Title{},
-		Legend:     &opts.Legend{Show: primitive.True()},
-		Tooltip:    &opts.Tooltip{},
-		Toolbox:    &opts.Toolbox{},
-		Legends:    nil,
-		Colors:     nil,
-		Datasets:   nil,
-		DataZooms:  nil,
-		VisualMaps: nil,
+		Title:   &opts.Title{},
+		Legend:  &opts.Legend{},
+		Tooltip: &opts.Tooltip{},
+		Toolbox: &opts.Toolbox{},
 	}
 }

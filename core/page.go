@@ -19,22 +19,28 @@ type Page struct {
 	JSAssets  *types.OrderedSet
 	CSSAssets *types.OrderedSet
 
-	Templates []string
+	Templates []primitive.String
 	// Containers, one - one
 	Containers []*Container
 }
 
-func (p *Page) Render(file string) {
-	_ = (&Render{}).Render(file, p)
+type PageConfig func(p *Page)
+
+func (page *Page) Render(file string) {
+	_ = (&DefaultRender{}).Render(file, page)
 }
 
-func NewDefaultPage(containers ...*Container) *Page {
+func (page *Page) RenderWithCustomRender(file string, renderer Render) {
+	_ = renderer.Render(file, page)
+}
+
+func NewPage(containers ...*Container) *Page {
 
 	return &Page{
 		Title:      DefaultPageTitle,
 		JSAssets:   (&types.OrderedSet{}).Add(DefaultEchartsAsset),
 		CSSAssets:  &types.OrderedSet{},
-		Templates:  []string{templates.Tpl},
+		Templates:  []primitive.String{primitive.StringOf(templates.Tpl)},
 		Containers: containers,
 	}
 
@@ -43,6 +49,14 @@ func NewDefaultPage(containers ...*Container) *Page {
 func (page *Page) AddCharts(charts ...Chart) *Page {
 	for _, c := range charts {
 		page.Containers = append(page.Containers, c.GetContainer())
+	}
+	return page
+}
+
+func (page *Page) Config(configs ...PageConfig) *Page {
+
+	for _, fn := range configs {
+		fn(page)
 	}
 	return page
 }

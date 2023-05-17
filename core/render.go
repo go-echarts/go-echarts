@@ -3,6 +3,7 @@ package core
 import (
 	"bytes"
 	"fmt"
+	"github.com/go-echarts/go-echarts/v2/primitive"
 	"github.com/go-echarts/go-echarts/v2/util"
 	"html/template"
 	"os"
@@ -16,10 +17,14 @@ var (
 
 const DefaultTplName = "__GO_ECHARTS__"
 
-type Render struct {
+type Render interface {
+	Render(file string, page *Page) error
 }
 
-func (r *Render) Render(file string, page *Page) error {
+type DefaultRender struct {
+}
+
+func (r *DefaultRender) Render(file string, page *Page) error {
 
 	f, _ := os.Create(file)
 	tpl := MustTemplate(DefaultTplName, page.Templates)
@@ -60,14 +65,14 @@ func prettier() func(chart interface{}) interface{} {
 }
 
 // MustTemplate creates a new template with the given name and parsed contents.
-func MustTemplate(name string, contents []string) *template.Template {
+func MustTemplate(name string, contents []primitive.String) *template.Template {
 	tpl := template.Must(template.New(name).Funcs(template.FuncMap{
 		"safeJS": func(s interface{}) template.JS {
 			return template.JS(fmt.Sprint(s))
 		},
 		"isSet":    isSet,
 		"prettier": prettier(),
-	}).Parse(contents[0]))
+	}).Parse(contents[0].StringVal()))
 
 	//for _, cont := range contents[1:] {
 	//	tpl = template.Must(tpl.Parse(cont))

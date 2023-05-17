@@ -37,6 +37,19 @@ func Float0() Float {
 // String makes the primitive consistent
 type String string
 
+func (s String) StringVal() string {
+	return string(s)
+}
+
+func (s String) Strconv(data ...string) []String {
+	var ls []String
+	for _, e := range data {
+
+		ls = append(ls, StringOf(e))
+	}
+	return ls
+}
+
 func StringOf(val string) String {
 	return String(val)
 }

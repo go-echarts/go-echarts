@@ -10,9 +10,9 @@ import (
 
 type LineConfiguration struct {
 	*config.BaseConfiguration
-	Series *series.LineSeries `json:"series,omitempty"`
-	XAxis  *opts.XAxis        `json:"xAxis,reserved,omitempty"`
-	YAxis  *opts.YAxis        `json:"yAxis,reserved,omitempty"`
+	Series *series.LineSeries0 `json:"series,omitempty,reserved"`
+	XAxis  *opts.XAxis         `json:"xAxis,omitempty,reserved"`
+	YAxis  *opts.YAxis         `json:"yAxis,omitempty,reserved"`
 }
 
 // Line represents a line chart.
@@ -33,7 +33,7 @@ func (line *Line) GetContainer() *core.Container {
 		return line.Container
 	}
 
-	line.Container = core.NewDefaultContainer(line)
+	line.Container = core.NewContainer(line)
 	return line.Container
 
 }
@@ -43,7 +43,7 @@ func (line *Line) GetPage() *core.Page {
 		return line.Page
 	}
 
-	line.Page = core.NewDefaultPage(line.GetContainer())
+	line.Page = core.NewPage(line.GetContainer())
 	return line.Page
 }
 
@@ -54,11 +54,16 @@ func NewLine() *Line {
 		BaseConfiguration: config.BaseConfiguration{}.New(),
 		XAxis:             opts.XAxis{}.New(),
 		YAxis:             opts.YAxis{}.New(),
-		Series:            series.LineSeries{}.New(),
+		Series:            &series.LineSeries0{},
 	}
 
-	line.Container = core.NewDefaultContainer(line)
-	line.Page = core.NewDefaultPage(line.Container)
+	line.Container = core.NewContainer(line)
+	line.Page = core.NewPage(line.Container)
 
 	return line
+}
+
+func (line *Line) AddSeries(series *series.LineSeries) {
+	c := append(*line.Series, series)
+	line.Series = &c
 }

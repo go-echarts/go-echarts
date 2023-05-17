@@ -6,17 +6,19 @@ import (
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
+type LineSeries0 []*LineSeries
+
 type LineSeries struct {
 	Id   primitive.String `json:"id,omitempty"`
 	Name primitive.String `json:"name,omitempty"`
 	Type primitive.String `json:"type,omitempty"`
 
-	Step         primitive.Mixed  `json:"step,omitempty"`
-	Smooth       primitive.Bool   `json:"smooth,omitempty"`
-	ConnectNulls primitive.Bool   `json:"connectNulls,omitempty"`
-	ShowSymbol   primitive.Bool   `json:"showSymbol,omitempty"`
-	Symbol       primitive.String `json:"symbol,omitempty"`
-	Color        primitive.String `json:"color,omitempty"`
+	Step         primitive.Mixed    `json:"step,omitempty"`
+	Smooth       primitive.Bool     `json:"smooth,omitempty"`
+	ConnectNulls primitive.Bool     `json:"connectNulls,omitempty"`
+	ShowSymbol   primitive.Bool     `json:"showSymbol,omitempty"`
+	Symbol       primitive.String   `json:"symbol,omitempty"`
+	Color        []primitive.String `json:"color,omitempty"`
 
 	// series data
 	Data primitive.Mixed `json:"data"`
