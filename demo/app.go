@@ -8,6 +8,6 @@ func main() {
 func SingleCharts() {
 	NewBarChart()
 	NewLineChart()
-	NewComplexLine()
+	NewComplexLineChart()
 
 }
