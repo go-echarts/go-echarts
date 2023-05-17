@@ -118,9 +118,9 @@ func NewComplexLine() *charts.Line {
 }
 
 func NewLineChart() {
-	NewComplexLine().Render("line-complex.html")
+	NewBaseLine().Render("line.html")
 }
 
 func NewComplexLineChart() {
-	NewBaseLine().Render("line.html")
+	NewComplexLine().Render("line-complex.html")
 }

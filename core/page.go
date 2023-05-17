@@ -44,7 +44,6 @@ func NewPage(containers ...*Container) *Page {
 		Templates:  util.StrConv(templates.Tpl),
 		Containers: containers,
 	}
-
 }
 
 func (page *Page) AddCharts(charts ...Chart) *Page {

@@ -10,9 +10,9 @@ import (
 
 type BarConfiguration struct {
 	*config.BaseConfiguration
-	Series *series.BarSeries `json:"series,omitempty"`
-	XAxis  *opts.XAxis       `json:"xAxis,omitempty,reserved"`
-	YAxis  *opts.YAxis       `json:"yAxis,omitempty,reserved"`
+	Series *series.BarSeries0 `json:"series,omitempty"`
+	XAxis  *opts.XAxis        `json:"xAxis,omitempty,reserved"`
+	YAxis  *opts.YAxis        `json:"yAxis,omitempty,reserved"`
 }
 
 // Bar represents a bar chart.
@@ -54,11 +54,18 @@ func NewBar() *Bar {
 		BaseConfiguration: config.BaseConfiguration{}.New(),
 		XAxis:             opts.XAxis{}.New(),
 		YAxis:             opts.YAxis{}.New(),
-		Series:            series.BarSeries{}.New(),
+		Series:            &series.BarSeries0{},
 	}
 
 	bar.Container = core.NewContainer(bar)
 	bar.Page = core.NewPage(bar.Container)
 
 	return bar
+}
+
+func (bar *Bar) AddSeries(series ...*series.BarSeries) {
+	for _, s := range series {
+		c := append(*bar.Series, s)
+		bar.Series = &c
+	}
 }

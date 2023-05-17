@@ -9,5 +9,6 @@ func SingleCharts() {
 	NewBarChart()
 	NewLineChart()
 	NewComplexLineChart()
+	NewLine3DChart()
 
 }

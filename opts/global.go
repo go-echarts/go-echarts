@@ -1077,6 +1077,8 @@ type ViewControl struct {
 	// Rotate Speed, (angle/s).
 	// default 10
 	AutoRotateSpeed float32 `json:"autoRotateSpeed,omitempty"`
+
+	Projection string `json:"projection"`
 }
 
 // Grid Drawing grid in rectangular coordinate.

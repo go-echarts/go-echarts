@@ -4,7 +4,12 @@ import (
 	"github.com/go-echarts/go-echarts/v2/core"
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/primitive"
+	"github.com/go-echarts/go-echarts/v2/util"
 )
+
+var DefaultColors = []string{
+	"#5470c6", "#91cc75", "#fac858", "#ee6666", "#73c0de",
+	"#3ba272", "#fc8452", "#9a60b4", "#ea7ccc"}
 
 // BaseConfiguration represents basic options set needed by all chart types.
 type BaseConfiguration struct {
@@ -25,15 +30,17 @@ type BaseConfiguration struct {
 	// Array of dataset
 	Datasets []*opts.Dataset `json:"dataset,omitempty"`
 
-	DataZooms  []*opts.DataZoom  `json:"datazoom,omitempty"`
-	VisualMaps []*opts.VisualMap `json:"visualmap,omitempty"`
+	DataZooms  []*opts.DataZoom `json:"datazoom,omitempty"`
+	VisualMaps *opts.VisualMap  `json:"visualmap,omitempty"`
 }
 
 func (bc BaseConfiguration) New() *BaseConfiguration {
+
 	return &BaseConfiguration{
 		Title:   &opts.Title{},
 		Legend:  &opts.Legend{},
 		Tooltip: &opts.Tooltip{},
 		Toolbox: &opts.Toolbox{},
+		Colors:  util.StringsConv(DefaultColors...),
 	}
 }

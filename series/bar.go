@@ -5,6 +5,8 @@ import (
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
+type BarSeries0 []*BarSeries
+
 type BarSeries struct {
 	Id   primitive.String `json:"id,omitempty"`
 	Name primitive.String `json:"name,omitempty"`
@@ -14,9 +16,8 @@ type BarSeries struct {
 	Data primitive.Mixed `json:"data"`
 }
 
-func (bs BarSeries) New() *BarSeries {
+func (ls BarSeries) New() *BarSeries {
 	return &BarSeries{
 		Type: types.ChartBar,
 	}
-
 }

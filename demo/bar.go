@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/go-echarts/go-echarts/v2/charts"
+	"github.com/go-echarts/go-echarts/v2/series"
 )
 
 func NewBar() *charts.Bar {
@@ -12,10 +13,15 @@ func NewBar() *charts.Bar {
 
 	bar.XAxis.Data = []string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}
 
-	bar.Series.Name = "Sale"
-	bar.Series.Data = []int{150, 230, 224, 218, 135, 147, 260}
+	s := series.BarSeries{}.New()
+	s.Name = "Sale"
+	s.Data = []int{150, 230, 224, 218, 135, 147, 260}
 
-	bar.Render("bar.html")
+	s1 := series.BarSeries{}.New()
+	s1.Name = "Out"
+	s1.Data = []int{12, 11, 4, 32, 121, 12, 1}
+	bar.AddSeries(s, s1)
+
 	return bar
 }
 
