@@ -74,8 +74,5 @@ func MustTemplate(name string, contents primitive.String) *template.Template {
 		"prettier": prettier(),
 	}).Parse(contents.StringVal()))
 
-	//for _, cont := range contents[1:] {
-	//	tpl = template.Must(tpl.Parse(cont))
-	//}
 	return tpl
 }

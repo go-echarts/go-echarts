@@ -7,7 +7,7 @@ import (
 
 const ReversedTag = "reserved"
 
-// Prettier remove all the empty structs
+// Prettier remove all the empty structs except tag `reserved`
 func Prettier(ptr interface{}) {
 	elem := reflect.ValueOf(ptr).Elem()
 	doPretty(elem)

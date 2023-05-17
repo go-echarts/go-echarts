@@ -10,29 +10,29 @@ import (
 const DefaultPageTitle = "Awesome go-echarts"
 const DefaultEchartsAsset = "https://go-echarts.github.io/go-echarts-assets/assets/echarts.min.js"
 
-// Page represents a page chart.
+// Page represents a page which may contains one or more containers.
 type Page struct {
-	//PageTitle string `default:"Awesome go-echarts"`
+	//Title the HTML title
 	Title primitive.String
 
-	// Assets host
-	//EchartsJsAsset string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
 	JSAssets  *types.OrderedSet
 	CSSAssets *types.OrderedSet
 
 	Templates primitive.String
-	// Containers, one - one
+
 	Containers []*Container
 }
 
 type PageConfig func(p *Page)
 
+// Render Default render
 func (page *Page) Render(file string) {
 	_ = (&DefaultRender{}).Render(file, page)
 }
 
-func (page *Page) RenderWithCustomRender(file string, renderer Render) {
-	_ = renderer.Render(file, page)
+// CustomRender Render by the CustomRender
+func (page *Page) CustomRender(file string, customRender Render) {
+	_ = customRender.Render(file, page)
 }
 
 func NewPage(containers ...*Container) *Page {
@@ -48,6 +48,7 @@ func NewPage(containers ...*Container) *Page {
 }
 
 func (page *Page) AddCharts(charts ...Chart) *Page {
+
 	for _, c := range charts {
 		page.Containers = append(page.Containers, c.GetContainer())
 	}

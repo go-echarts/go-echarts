@@ -15,6 +15,6 @@ func MultiCharts() {
 		NewBaseLine(),
 		NewBar(),
 		NewComplexLine(),
-	).Render("multi-charts.html")
+	).CustomRender("multi-charts.html", &core.DefaultRender{})
 
 }
