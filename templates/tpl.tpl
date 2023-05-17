@@ -1,6 +1,3 @@
-package templates
-
-var Tpl = ` 
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,4 +28,3 @@ var Tpl = `
 
  {{- end }}
 </html>
-`

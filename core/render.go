@@ -65,14 +65,14 @@ func prettier() func(chart interface{}) interface{} {
 }
 
 // MustTemplate creates a new template with the given name and parsed contents.
-func MustTemplate(name string, contents []primitive.String) *template.Template {
+func MustTemplate(name string, contents primitive.String) *template.Template {
 	tpl := template.Must(template.New(name).Funcs(template.FuncMap{
 		"safeJS": func(s interface{}) template.JS {
 			return template.JS(fmt.Sprint(s))
 		},
 		"isSet":    isSet,
 		"prettier": prettier(),
-	}).Parse(contents[0].StringVal()))
+	}).Parse(contents.StringVal()))
 
 	//for _, cont := range contents[1:] {
 	//	tpl = template.Must(tpl.Parse(cont))

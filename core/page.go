@@ -4,6 +4,7 @@ import (
 	"github.com/go-echarts/go-echarts/v2/primitive"
 	"github.com/go-echarts/go-echarts/v2/templates"
 	"github.com/go-echarts/go-echarts/v2/types"
+	"github.com/go-echarts/go-echarts/v2/util"
 )
 
 const DefaultPageTitle = "Awesome go-echarts"
@@ -19,7 +20,7 @@ type Page struct {
 	JSAssets  *types.OrderedSet
 	CSSAssets *types.OrderedSet
 
-	Templates []primitive.String
+	Templates primitive.String
 	// Containers, one - one
 	Containers []*Container
 }
@@ -40,7 +41,7 @@ func NewPage(containers ...*Container) *Page {
 		Title:      DefaultPageTitle,
 		JSAssets:   (&types.OrderedSet{}).Add(DefaultEchartsAsset),
 		CSSAssets:  &types.OrderedSet{},
-		Templates:  []primitive.String{primitive.StringOf(templates.Tpl)},
+		Templates:  util.StrConv(templates.Tpl),
 		Containers: containers,
 	}
 
