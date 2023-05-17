@@ -1,14 +1,5 @@
 package actions
 
-import (
-	"math/rand"
-	"time"
-)
-
-func init() {
-	rand.Seed(time.Now().UnixNano())
-}
-
 // Type kind of dispatch action
 type Type string
 
