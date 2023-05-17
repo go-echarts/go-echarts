@@ -64,29 +64,54 @@ func NewComplexLine() *charts.Line {
 	s.Name = "Highest"
 	s.Data = []int{10, 11, 13, 11, 12, 12, 9}
 
-	d1 := map[string]string{
-		"type": "max",
-		"name": "Max",
-	}
-	d2 := map[string]string{
-		"type": "min",
-		"name": "Min",
+	d1 := &opts.MarkPointNameTypeItem{
+		Name: "Max",
+		Type: "max",
 	}
 
-	s.MarkPoints = &opts.MarkPoints{
+	d2 := &opts.MarkPointNameTypeItem{
+		Name: "Min",
+		Type: "min",
+	}
+
+	s.MarkPoint = &opts.MarkPoint{
 		Data: []interface{}{d1, d2},
 	}
 
-	d3 := map[string]string{
-		"type": "average",
-		"name": "Avg",
+	d3 := &opts.MarkPointNameTypeItem{
+		Name: "Avg",
+		Type: "average",
 	}
 
 	s.MarkLines = &opts.MarkLines{
 		Data: []interface{}{d3},
 	}
 
-	line.AddSeries(s)
+	s1 := series.LineSeries{}.New()
+	s1.Name = "Lowest"
+	s1.Data = []int{1, -2, 2, 5, 3, 2, 0}
+
+	d4 := &opts.MarkPointNameTypeItem{
+		Name:  "Week Lowest",
+		Value: -2,
+		XAxis: 1,
+		YAxis: -1.5,
+	}
+
+	s1.MarkPoint = &opts.MarkPoint{
+		Data: []interface{}{d4},
+	}
+
+	d5 := &opts.MarkPointNameTypeItem{
+		Name: "Avg",
+		Type: "average",
+	}
+
+	s1.MarkLines = &opts.MarkLines{
+		Data: []interface{}{d5},
+	}
+
+	line.AddSeries(s, s1)
 
 	return line
 

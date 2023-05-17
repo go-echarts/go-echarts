@@ -2,6 +2,7 @@ package opts
 
 import (
 	"fmt"
+	"github.com/go-echarts/go-echarts/v2/primitive"
 )
 
 // Label contains options for a label text.
@@ -318,8 +319,8 @@ type MarkAreaNameCoordItem struct {
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
-// MarkPoints represents a series of markpoints.
-type MarkPoints struct {
+// MarkPoint represents a series of markpoints.
+type MarkPoint struct {
 	Data []interface{} `json:"data,omitempty"`
 	MarkPointStyle
 }
@@ -343,7 +344,8 @@ type MarkPointStyle struct {
 // MarkPointNameTypeItem represents type for a MarkPoint.
 type MarkPointNameTypeItem struct {
 	// Name of markpoint
-	Name string `json:"name,omitempty"`
+	Name  string          `json:"name,omitempty"`
+	Value primitive.Mixed `json:"value,omitempty"`
 
 	// Mark point type, options: "average", "min", "max".
 	Type string `json:"type,omitempty"`
@@ -356,6 +358,9 @@ type MarkPointNameTypeItem struct {
 
 	// ItemStyle settings
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	XAxis primitive.Mixed `json:"xAxis,omitempty"`
+	YAxis primitive.Mixed `json:"yAxis,omitempty"`
 }
 
 // MarkPointNameCoordItem represents coordinates for a MarkPoint.

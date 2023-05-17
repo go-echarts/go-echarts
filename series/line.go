@@ -31,7 +31,7 @@ type LineSeries struct {
 	*opts.Emphasis      `json:"emphasis,omitempty"`
 	*opts.MarkLines     `json:"markLine,omitempty"`
 	*opts.MarkAreas     `json:"markArea,omitempty"`
-	*opts.MarkPoints    `json:"markPoint,omitempty"`
+	*opts.MarkPoint     `json:"markPoint,omitempty"`
 	*opts.RippleEffect  `json:"rippleEffect,omitempty"`
 	*opts.LineStyle     `json:"lineStyle,omitempty"`
 	*opts.AreaStyle     `json:"areaStyle,omitempty"`

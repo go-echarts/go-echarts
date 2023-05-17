@@ -400,7 +400,7 @@ type ToolBoxFeatureRestore struct {
 // https://echarts.apache.org/en/option.html#xAxis.axisLabel
 type AxisLabel struct {
 	// Set this to false to prevent the axis label from appearing.
-	Show bool `json:"show"`
+	Show primitive.Bool `json:"show,omitempty"`
 
 	// Interval of Axis label, which is available in category axis.
 	// It uses a strategy that labels do not overlap by default.
@@ -440,8 +440,8 @@ type AxisLabel struct {
 	// }
 	Formatter string `json:"formatter,omitempty"`
 
-	ShowMinLabel bool `json:"showMinLabel"`
-	ShowMaxLabel bool `json:"showMaxLabel"`
+	ShowMinLabel primitive.Bool `json:"showMinLabel,omitempty"`
+	ShowMaxLabel primitive.Bool `json:"showMaxLabel,omitempty"`
 
 	// Color of axis label is set to be axisLine.lineStyle.color by default. Callback function is supported,
 	// in the following format:

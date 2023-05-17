@@ -63,7 +63,9 @@ func NewLine() *Line {
 	return line
 }
 
-func (line *Line) AddSeries(series *series.LineSeries) {
-	c := append(*line.Series, series)
-	line.Series = &c
+func (line *Line) AddSeries(series ...*series.LineSeries) {
+	for _, s := range series {
+		c := append(*line.Series, s)
+		line.Series = &c
+	}
 }
