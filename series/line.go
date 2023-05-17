@@ -1,7 +1,7 @@
 package series
 
 import (
-	"github.com/go-echarts/go-echarts/v2/components"
+	"github.com/go-echarts/go-echarts/v2/opt"
 	"github.com/go-echarts/go-echarts/v2/primitive"
 	"github.com/go-echarts/go-echarts/v2/types"
 )
@@ -24,19 +24,19 @@ type LineSeries struct {
 	Data primitive.Mixed `json:"data"`
 
 	// series options
-	*components.Encode        `json:"encode,omitempty"`
-	*components.ItemStyle     `json:"itemStyle,omitempty"`
-	*components.Label         `json:"label,omitempty"`
-	*components.LabelLine     `json:"labelLine,omitempty"`
-	*components.Emphasis      `json:"emphasis,omitempty"`
-	*components.MarkLines     `json:"markLine,omitempty"`
-	*components.MarkAreas     `json:"markArea,omitempty"`
-	*components.MarkPoint     `json:"markPoint,omitempty"`
-	*components.RippleEffect  `json:"rippleEffect,omitempty"`
-	*components.LineStyle     `json:"lineStyle,omitempty"`
-	*components.AreaStyle     `json:"areaStyle,omitempty"`
-	*components.TextStyle     `json:"textStyle,omitempty"`
-	*components.CircularStyle `json:"circular,omitempty"`
+	*opt.Encode        `json:"encode,omitempty"`
+	*opt.ItemStyle     `json:"itemStyle,omitempty"`
+	*opt.Label         `json:"label,omitempty"`
+	*opt.LabelLine     `json:"labelLine,omitempty"`
+	*opt.Emphasis      `json:"emphasis,omitempty"`
+	*opt.MarkLines     `json:"markLine,omitempty"`
+	*opt.MarkAreas     `json:"markArea,omitempty"`
+	*opt.MarkPoint     `json:"markPoint,omitempty"`
+	*opt.RippleEffect  `json:"rippleEffect,omitempty"`
+	*opt.LineStyle     `json:"lineStyle,omitempty"`
+	*opt.AreaStyle     `json:"areaStyle,omitempty"`
+	*opt.TextStyle     `json:"textStyle,omitempty"`
+	*opt.CircularStyle `json:"circular,omitempty"`
 }
 
 func (ls LineSeries) New() *LineSeries {

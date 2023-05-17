@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/go-echarts/go-echarts/v2/charts"
-	"github.com/go-echarts/go-echarts/v2/components"
+	"github.com/go-echarts/go-echarts/v2/opt"
 	"github.com/go-echarts/go-echarts/v2/series"
 )
 
@@ -23,12 +23,12 @@ func NewBaseLine() *charts.Line {
 	)
 
 	// show Toolbox
-	line.Toolbox.Feature = &components.ToolBoxFeature{
-		SaveAsImage: &components.ToolBoxFeatureSaveAsImage{},
-		Brush:       &components.ToolBoxFeatureBrush{},
-		DataZoom:    &components.ToolBoxFeatureDataZoom{},
-		DataView:    &components.ToolBoxFeatureDataView{},
-		Restore:     &components.ToolBoxFeatureRestore{},
+	line.Toolbox.Feature = &opt.ToolBoxFeature{
+		SaveAsImage: &opt.ToolBoxFeatureSaveAsImage{},
+		Brush:       &opt.ToolBoxFeatureBrush{},
+		DataZoom:    &opt.ToolBoxFeatureDataZoom{},
+		DataView:    &opt.ToolBoxFeatureDataView{},
+		Restore:     &opt.ToolBoxFeatureRestore{},
 	}
 
 	// change container
@@ -48,42 +48,42 @@ func NewComplexLine() *charts.Line {
 
 	line.Tooltip.Trigger = "axis"
 
-	line.Toolbox.Feature = &components.ToolBoxFeature{
-		SaveAsImage: &components.ToolBoxFeatureSaveAsImage{},
-		Brush:       &components.ToolBoxFeatureBrush{},
-		DataZoom:    &components.ToolBoxFeatureDataZoom{},
-		DataView:    &components.ToolBoxFeatureDataView{},
-		Restore:     &components.ToolBoxFeatureRestore{},
+	line.Toolbox.Feature = &opt.ToolBoxFeature{
+		SaveAsImage: &opt.ToolBoxFeatureSaveAsImage{},
+		Brush:       &opt.ToolBoxFeatureBrush{},
+		DataZoom:    &opt.ToolBoxFeatureDataZoom{},
+		DataView:    &opt.ToolBoxFeatureDataView{},
+		Restore:     &opt.ToolBoxFeatureRestore{},
 	}
 
 	line.XAxis.Data = []string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}
 
-	line.YAxis.AxisLabel = &components.AxisLabel{Formatter: "{value} c"}
+	line.YAxis.AxisLabel = &opt.AxisLabel{Formatter: "{value} c"}
 
 	s := series.LineSeries{}.New()
 	s.Name = "Highest"
 	s.Data = []int{10, 11, 13, 11, 12, 12, 9}
 
-	d1 := &components.MarkPointNameTypeItem{
+	d1 := &opt.MarkPointNameTypeItem{
 		Name: "Max",
 		Type: "max",
 	}
 
-	d2 := &components.MarkPointNameTypeItem{
+	d2 := &opt.MarkPointNameTypeItem{
 		Name: "Min",
 		Type: "min",
 	}
 
-	s.MarkPoint = &components.MarkPoint{
+	s.MarkPoint = &opt.MarkPoint{
 		Data: []interface{}{d1, d2},
 	}
 
-	d3 := &components.MarkPointNameTypeItem{
+	d3 := &opt.MarkPointNameTypeItem{
 		Name: "Avg",
 		Type: "average",
 	}
 
-	s.MarkLines = &components.MarkLines{
+	s.MarkLines = &opt.MarkLines{
 		Data: []interface{}{d3},
 	}
 
@@ -91,23 +91,23 @@ func NewComplexLine() *charts.Line {
 	s1.Name = "Lowest"
 	s1.Data = []int{1, -2, 2, 5, 3, 2, 0}
 
-	d4 := &components.MarkPointNameTypeItem{
+	d4 := &opt.MarkPointNameTypeItem{
 		Name:  "Week Lowest",
 		Value: -2,
 		XAxis: 1,
 		YAxis: -1.5,
 	}
 
-	s1.MarkPoint = &components.MarkPoint{
+	s1.MarkPoint = &opt.MarkPoint{
 		Data: []interface{}{d4},
 	}
 
-	d5 := &components.MarkPointNameTypeItem{
+	d5 := &opt.MarkPointNameTypeItem{
 		Name: "Avg",
 		Type: "average",
 	}
 
-	s1.MarkLines = &components.MarkLines{
+	s1.MarkLines = &opt.MarkLines{
 		Data: []interface{}{d5},
 	}
 
