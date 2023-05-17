@@ -1,4 +1,4 @@
-package opts
+package components
 
 // TODO : refactor to /series
 // BarChart

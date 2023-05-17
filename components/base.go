@@ -1,8 +1,7 @@
-package config
+package components
 
 import (
 	"github.com/go-echarts/go-echarts/v2/core"
-	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/primitive"
 	"github.com/go-echarts/go-echarts/v2/util"
 )
@@ -15,10 +14,10 @@ var DefaultColors = []string{
 type BaseConfiguration struct {
 	*core.Page      `json:"-"`
 	*core.Container `json:"-"`
-	*opts.Title     `json:"title,omitempty"`
-	*opts.Legend    `json:"legend,omitempty,reserved"`
-	*opts.Tooltip   `json:"tooltip,omitempty,reserved"`
-	*opts.Toolbox   `json:"toolbox,omitempty"`
+	*Title          `json:"title,omitempty"`
+	*Legend         `json:"legend,omitempty,reserved"`
+	*Tooltip        `json:"tooltip,omitempty,reserved"`
+	*Toolbox        `json:"toolbox,omitempty"`
 
 	Legends []primitive.String `json:"legends,omitempty"`
 	// Colors is the color list of palette.
@@ -28,19 +27,19 @@ type BaseConfiguration struct {
 	//appendColor      []string // append customize color to the Colors(reverse order)
 
 	// Array of dataset
-	Datasets []*opts.Dataset `json:"dataset,omitempty"`
+	Datasets []*Dataset `json:"dataset,omitempty"`
 
-	DataZooms  []*opts.DataZoom `json:"datazoom,omitempty"`
-	VisualMaps *opts.VisualMap  `json:"visualmap,omitempty"`
+	DataZooms  []*DataZoom `json:"datazoom,omitempty"`
+	VisualMaps *VisualMap  `json:"visualmap,omitempty"`
 }
 
 func (bc BaseConfiguration) New() *BaseConfiguration {
 
 	return &BaseConfiguration{
-		Title:   &opts.Title{},
-		Legend:  &opts.Legend{},
-		Tooltip: &opts.Tooltip{},
-		Toolbox: &opts.Toolbox{},
+		Title:   &Title{},
+		Legend:  &Legend{},
+		Tooltip: &Tooltip{},
+		Toolbox: &Toolbox{},
 		Colors:  util.StringsConv(DefaultColors...),
 	}
 }

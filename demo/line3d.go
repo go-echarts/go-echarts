@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/go-echarts/go-echarts/v2/charts"
-	"github.com/go-echarts/go-echarts/v2/opts"
+	"github.com/go-echarts/go-echarts/v2/components"
 	"github.com/go-echarts/go-echarts/v2/series"
 	"math"
 )
@@ -12,7 +12,7 @@ var line3DColor = []string{
 	"#fee090", "#fdae61", "#f46d43", "#d73027", "#a50026",
 }
 
-func genLine3dData() []opts.Chart3DData {
+func genLine3dData() []components.Chart3DData {
 	data := make([][3]float64, 0)
 	for i := 0; i < 25000; i++ {
 		t := float64(i) / 1000
@@ -21,9 +21,9 @@ func genLine3dData() []opts.Chart3DData {
 		)
 	}
 
-	ret := make([]opts.Chart3DData, 0, len(data))
+	ret := make([]components.Chart3DData, 0, len(data))
 	for _, d := range data {
-		ret = append(ret, opts.Chart3DData{Value: []interface{}{d[0], d[1], d[2]}})
+		ret = append(ret, components.Chart3DData{Value: []interface{}{d[0], d[1], d[2]}})
 	}
 	return ret
 
@@ -36,24 +36,24 @@ func NewLine3D() *charts.Line3D {
 	line3d.Page.JSAssets.Add("https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js")
 	line3d.Page.JSAssets.Add("https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js")
 
-	line3d.VisualMaps = &opts.VisualMap{
+	line3d.VisualMaps = &components.VisualMap{
 		Min:       0,
 		Max:       30,
 		Dimension: "2",
-		InRange:   &opts.VisualMapInRange{Color: line3DColor},
+		InRange:   &components.VisualMapInRange{Color: line3DColor},
 		Show:      false,
 	}
 
 	line3d.XAxis3D.Type = "value"
 	line3d.YAxis3D.Type = "value"
 	line3d.ZAxis3D.Type = "value"
-	line3d.Grid3D = &opts.Grid3D{ViewControl: &opts.ViewControl{
+	line3d.Grid3D = &components.Grid3D{ViewControl: &components.ViewControl{
 		Projection: "orthographic",
 	}}
 
 	s := &series.Line3DSeries{
 		Type:      "line3D",
-		LineStyle: &opts.LineStyle{Width: 4},
+		LineStyle: &components.LineStyle{Width: 4},
 		Data:      genLine3dData(),
 	}
 	line3d.AddSeries(s)

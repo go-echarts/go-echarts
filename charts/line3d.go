@@ -1,20 +1,19 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/v2/config"
+	"github.com/go-echarts/go-echarts/v2/components"
 	"github.com/go-echarts/go-echarts/v2/core"
-	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/series"
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
 type Line3DConfiguration struct {
-	*config.BaseConfiguration
+	*components.BaseConfiguration
 	Series  *series.Line3DSeries0 `json:"series,omitempty,reserved"`
-	XAxis3D *opts.XAxis3D         `json:"xAxis3D,omitempty,reserved"`
-	YAxis3D *opts.YAxis3D         `json:"yAxis3D,omitempty,reserved"`
-	ZAxis3D *opts.ZAxis3D         `json:"zAxis3D,omitempty,reserved"`
-	Grid3D  *opts.Grid3D          `json:"grid3D,omitempty,reserved"`
+	XAxis3D *components.XAxis3D   `json:"xAxis3D,omitempty,reserved"`
+	YAxis3D *components.YAxis3D   `json:"yAxis3D,omitempty,reserved"`
+	ZAxis3D *components.ZAxis3D   `json:"zAxis3D,omitempty,reserved"`
+	Grid3D  *components.Grid3D    `json:"grid3D,omitempty,reserved"`
 }
 
 // Line3D represents a line3D chart.
@@ -53,10 +52,10 @@ func NewLine3D() *Line3D {
 	line3D := &Line3D{}
 
 	line3D.Line3DConfiguration = &Line3DConfiguration{
-		BaseConfiguration: config.BaseConfiguration{}.New(),
-		XAxis3D:           &opts.XAxis3D{},
-		YAxis3D:           &opts.YAxis3D{},
-		ZAxis3D:           &opts.ZAxis3D{},
+		BaseConfiguration: components.BaseConfiguration{}.New(),
+		XAxis3D:           &components.XAxis3D{},
+		YAxis3D:           &components.YAxis3D{},
+		ZAxis3D:           &components.ZAxis3D{},
 		Series:            &series.Line3DSeries0{},
 	}
 

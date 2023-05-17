@@ -1,18 +1,17 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/v2/config"
+	"github.com/go-echarts/go-echarts/v2/components"
 	"github.com/go-echarts/go-echarts/v2/core"
-	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/series"
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
 type BarConfiguration struct {
-	*config.BaseConfiguration
+	*components.BaseConfiguration
 	Series *series.BarSeries0 `json:"series,omitempty"`
-	XAxis  *opts.XAxis        `json:"xAxis,omitempty,reserved"`
-	YAxis  *opts.YAxis        `json:"yAxis,omitempty,reserved"`
+	XAxis  *components.XAxis  `json:"xAxis,omitempty,reserved"`
+	YAxis  *components.YAxis  `json:"yAxis,omitempty,reserved"`
 }
 
 // Bar represents a bar chart.
@@ -51,9 +50,9 @@ func NewBar() *Bar {
 	bar := &Bar{}
 
 	bar.BarConfiguration = &BarConfiguration{
-		BaseConfiguration: config.BaseConfiguration{}.New(),
-		XAxis:             opts.XAxis{}.New(),
-		YAxis:             opts.YAxis{}.New(),
+		BaseConfiguration: components.BaseConfiguration{}.New(),
+		XAxis:             components.XAxis{}.New(),
+		YAxis:             components.YAxis{}.New(),
 		Series:            &series.BarSeries0{},
 	}
 

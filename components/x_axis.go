@@ -1,4 +1,4 @@
-package opts
+package components
 
 import "github.com/go-echarts/go-echarts/v2/primitive"
 
