@@ -73,9 +73,3 @@ type XAxis struct {
 	// Settings related to axis pointer.
 	AxisPointer *AxisPointer `json:"axisPointer,omitempty"`
 }
-
-func (xAxis XAxis) New() *XAxis {
-	return &XAxis{
-		Type: "category",
-	}
-}

@@ -2,7 +2,6 @@ package series
 
 import (
 	"github.com/go-echarts/go-echarts/v2/primitive"
-	"github.com/go-echarts/go-echarts/v2/types"
 )
 
 type BarSeries0 []*BarSeries
@@ -14,10 +13,4 @@ type BarSeries struct {
 
 	// series data
 	Data primitive.Mixed `json:"data"`
-}
-
-func (ls BarSeries) New() *BarSeries {
-	return &BarSeries{
-		Type: types.ChartBar,
-	}
 }

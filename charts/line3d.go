@@ -52,7 +52,7 @@ func NewLine3D() *Line3D {
 	line3D := &Line3D{}
 
 	line3D.Line3DConfiguration = &Line3DConfiguration{
-		BaseConfiguration: opt.BaseConfiguration{}.New(),
+		BaseConfiguration: opt.NewBaseConfiguration(),
 		XAxis3D:           &opt.XAxis3D{},
 		YAxis3D:           &opt.YAxis3D{},
 		ZAxis3D:           &opt.ZAxis3D{},
@@ -68,6 +68,7 @@ func NewLine3D() *Line3D {
 
 func (line3D *Line3D) AddSeries(series ...*series.Line3DSeries) {
 	for _, s := range series {
+		s.Type = types.ChartLine3D
 		c := append(*line3D.Series, s)
 		line3D.Series = &c
 	}

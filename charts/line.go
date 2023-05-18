@@ -50,9 +50,9 @@ func NewLine() *Line {
 	line := &Line{}
 
 	line.LineConfiguration = &LineConfiguration{
-		BaseConfiguration: opt.BaseConfiguration{}.New(),
-		XAxis:             opt.XAxis{}.New(),
-		YAxis:             opt.YAxis{}.New(),
+		BaseConfiguration: opt.NewBaseConfiguration(),
+		XAxis:             &opt.XAxis{},
+		YAxis:             &opt.YAxis{},
 		Series:            &series.LineSeries0{},
 	}
 
@@ -64,6 +64,7 @@ func NewLine() *Line {
 
 func (line *Line) AddSeries(series ...*series.LineSeries) {
 	for _, s := range series {
+		s.Type = types.ChartLine
 		c := append(*line.Series, s)
 		line.Series = &c
 	}

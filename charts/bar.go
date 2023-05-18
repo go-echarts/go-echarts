@@ -50,9 +50,9 @@ func NewBar() *Bar {
 	bar := &Bar{}
 
 	bar.BarConfiguration = &BarConfiguration{
-		BaseConfiguration: opt.BaseConfiguration{}.New(),
-		XAxis:             opt.XAxis{}.New(),
-		YAxis:             opt.YAxis{}.New(),
+		BaseConfiguration: opt.NewBaseConfiguration(),
+		XAxis:             &opt.XAxis{},
+		YAxis:             &opt.YAxis{},
 		Series:            &series.BarSeries0{},
 	}
 
@@ -64,6 +64,7 @@ func NewBar() *Bar {
 
 func (bar *Bar) AddSeries(series ...*series.BarSeries) {
 	for _, s := range series {
+		s.Type = types.ChartBar
 		c := append(*bar.Series, s)
 		bar.Series = &c
 	}

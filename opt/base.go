@@ -33,7 +33,7 @@ type BaseConfiguration struct {
 	VisualMaps *VisualMap  `json:"visualmap,omitempty"`
 }
 
-func (bc BaseConfiguration) New() *BaseConfiguration {
+func NewBaseConfiguration() *BaseConfiguration {
 
 	return &BaseConfiguration{
 		Title:   &Title{},
