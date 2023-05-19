@@ -9,11 +9,11 @@ import (
 
 type Line3DConfiguration struct {
 	*opt.BaseConfiguration
-	Series  *series.Line3DSeries0 `json:"series,omitempty,reserved"`
-	XAxis3D *opt.XAxis3D          `json:"xAxis3D,omitempty,reserved"`
-	YAxis3D *opt.YAxis3D          `json:"yAxis3D,omitempty,reserved"`
-	ZAxis3D *opt.ZAxis3D          `json:"zAxis3D,omitempty,reserved"`
-	Grid3D  *opt.Grid3D           `json:"grid3D,omitempty,reserved"`
+	Series  *series.Line3DSeries `json:"series,omitempty,reserved"`
+	XAxis3D *opt.XAxis3D         `json:"xAxis3D,omitempty,reserved"`
+	YAxis3D *opt.YAxis3D         `json:"yAxis3D,omitempty,reserved"`
+	ZAxis3D *opt.ZAxis3D         `json:"zAxis3D,omitempty,reserved"`
+	Grid3D  *opt.Grid3D          `json:"grid3D,omitempty,reserved"`
 }
 
 // Line3D represents a line3D chart.
@@ -56,7 +56,7 @@ func NewLine3D() *Line3D {
 		XAxis3D:           &opt.XAxis3D{},
 		YAxis3D:           &opt.YAxis3D{},
 		ZAxis3D:           &opt.ZAxis3D{},
-		Series:            &series.Line3DSeries0{},
+		Series:            &series.Line3DSeries{},
 	}
 
 	line3D.Container = core.NewContainer(line3D)
@@ -66,7 +66,7 @@ func NewLine3D() *Line3D {
 	return line3D
 }
 
-func (line3D *Line3D) AddSeries(series ...*series.Line3DSeries) {
+func (line3D *Line3D) AddSeries(series ...*series.Line3DSingleSeries) {
 	for _, s := range series {
 		s.Type = types.ChartLine3D
 		*line3D.Series = append(*line3D.Series, s)

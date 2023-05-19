@@ -9,9 +9,9 @@ import (
 
 type LineConfiguration struct {
 	*opt.BaseConfiguration
-	Series *series.LineSeries0 `json:"series,omitempty,reserved"`
-	XAxis  *opt.XAxis          `json:"xAxis,omitempty,reserved"`
-	YAxis  *opt.YAxis          `json:"yAxis,omitempty,reserved"`
+	Series *series.LineSeries `json:"series,omitempty,reserved"`
+	XAxis  *opt.XAxis         `json:"xAxis,omitempty,reserved"`
+	YAxis  *opt.YAxis         `json:"yAxis,omitempty,reserved"`
 }
 
 // Line represents a line chart.
@@ -53,7 +53,7 @@ func NewLine() *Line {
 		BaseConfiguration: opt.NewBaseConfiguration(),
 		XAxis:             &opt.XAxis{},
 		YAxis:             &opt.YAxis{},
-		Series:            &series.LineSeries0{},
+		Series:            &series.LineSeries{},
 	}
 
 	line.Container = core.NewContainer(line)
@@ -62,7 +62,7 @@ func NewLine() *Line {
 	return line
 }
 
-func (line *Line) AddSeries(series ...*series.LineSeries) {
+func (line *Line) AddSeries(series ...*series.LineSingleSeries) {
 	for _, s := range series {
 		s.Type = types.ChartLine
 		*line.Series = append(*line.Series, s)

@@ -6,9 +6,9 @@ import (
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
-type Line3DSeries0 []*Line3DSeries
+type Line3DSeries []*Line3DSingleSeries
 
-type Line3DSeries struct {
+type Line3DSingleSeries struct {
 	Id   primitive.String `json:"id,omitempty"`
 	Name primitive.String `json:"name,omitempty"`
 	Type primitive.String `json:"type,omitempty"`
@@ -39,8 +39,8 @@ type Line3DSeries struct {
 	*opt.CircularStyle `json:"circular,omitempty"`
 }
 
-func (ls Line3DSeries) New() *Line3DSeries {
-	return &Line3DSeries{
+func (ls Line3DSingleSeries) New() *Line3DSingleSeries {
+	return &Line3DSingleSeries{
 		Type: types.ChartLine,
 	}
 }

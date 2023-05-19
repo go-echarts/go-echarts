@@ -4,9 +4,9 @@ import (
 	"github.com/go-echarts/go-echarts/v2/primitive"
 )
 
-type BarSeries0 []*BarSeries
+type BarSeries []*BarSingleSeries
 
-type BarSeries struct {
+type BarSingleSeries struct {
 	Id   primitive.String `json:"id,omitempty"`
 	Name primitive.String `json:"name,omitempty"`
 	Type primitive.String `json:"type,omitempty"`

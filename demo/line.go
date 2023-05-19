@@ -15,7 +15,7 @@ func NewBaseLine() *charts.Line {
 	line.Title.SubText = "Subtitle-01"
 
 	line.XAxis.Data = []string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}
-	s := &series.LineSeries{}
+	s := &series.LineSingleSeries{}
 	s.Data = []int{150, 230, 224, 218, 135, 147, 260}
 
 	line.AddSeries(
@@ -60,7 +60,7 @@ func NewComplexLine() *charts.Line {
 
 	line.YAxis.AxisLabel = &opt.AxisLabel{Formatter: "{value} c"}
 
-	s := &series.LineSeries{}
+	s := &series.LineSingleSeries{}
 	s.Name = "Highest"
 	s.Data = []int{10, 11, 13, 11, 12, 12, 9}
 
@@ -87,7 +87,7 @@ func NewComplexLine() *charts.Line {
 		Data: []interface{}{d3},
 	}
 
-	s1 := &series.LineSeries{}
+	s1 := &series.LineSingleSeries{}
 	s1.Name = "Lowest"
 	s1.Data = []int{1, -2, 2, 5, 3, 2, 0}
 

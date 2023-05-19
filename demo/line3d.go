@@ -51,7 +51,7 @@ func NewLine3D() *charts.Line3D {
 		Projection: "orthographic",
 	}}
 
-	s := &series.Line3DSeries{
+	s := &series.Line3DSingleSeries{
 		Type:      "line3D",
 		LineStyle: &opt.LineStyle{Width: 4},
 		Data:      genLine3dData(),
