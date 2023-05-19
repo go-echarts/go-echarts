@@ -39,20 +39,16 @@ func NewLine3D() *charts.Line3D {
 	line3d.VisualMaps = &opt.VisualMap{
 		Min:       0,
 		Max:       30,
-		Dimension: "2",
+		Dimension: 2,
 		InRange:   &opt.VisualMapInRange{Color: line3DColor},
 		Show:      false,
 	}
 
-	line3d.XAxis3D.Type = "value"
-	line3d.YAxis3D.Type = "value"
-	line3d.ZAxis3D.Type = "value"
 	line3d.Grid3D = &opt.Grid3D{ViewControl: &opt.ViewControl{
 		Projection: "orthographic",
 	}}
 
 	s := &series.Line3DSingleSeries{
-		Type:      "line3D",
 		LineStyle: &opt.LineStyle{Width: 4},
 		Data:      genLine3dData(),
 	}

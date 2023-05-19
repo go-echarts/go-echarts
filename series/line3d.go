@@ -3,7 +3,6 @@ package series
 import (
 	"github.com/go-echarts/go-echarts/v2/opt"
 	"github.com/go-echarts/go-echarts/v2/primitive"
-	"github.com/go-echarts/go-echarts/v2/types"
 )
 
 type Line3DSeries []*Line3DSingleSeries
@@ -37,10 +36,4 @@ type Line3DSingleSeries struct {
 	*opt.AreaStyle     `json:"areaStyle,omitempty"`
 	*opt.TextStyle     `json:"textStyle,omitempty"`
 	*opt.CircularStyle `json:"circular,omitempty"`
-}
-
-func (ls Line3DSingleSeries) New() *Line3DSingleSeries {
-	return &Line3DSingleSeries{
-		Type: types.ChartLine,
-	}
 }
