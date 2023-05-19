@@ -69,7 +69,6 @@ func NewLine3D() *Line3D {
 func (line3D *Line3D) AddSeries(series ...*series.Line3DSeries) {
 	for _, s := range series {
 		s.Type = types.ChartLine3D
-		c := append(*line3D.Series, s)
-		line3D.Series = &c
+		*line3D.Series = append(*line3D.Series, s)
 	}
 }

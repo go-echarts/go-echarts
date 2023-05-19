@@ -65,7 +65,6 @@ func NewBar() *Bar {
 func (bar *Bar) AddSeries(series ...*series.BarSeries) {
 	for _, s := range series {
 		s.Type = types.ChartBar
-		c := append(*bar.Series, s)
-		bar.Series = &c
+		*bar.Series = append(*bar.Series, s)
 	}
 }

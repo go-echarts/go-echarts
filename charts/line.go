@@ -65,7 +65,6 @@ func NewLine() *Line {
 func (line *Line) AddSeries(series ...*series.LineSeries) {
 	for _, s := range series {
 		s.Type = types.ChartLine
-		c := append(*line.Series, s)
-		line.Series = &c
+		*line.Series = append(*line.Series, s)
 	}
 }
