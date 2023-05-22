@@ -7,13 +7,13 @@ import (
 // Container Each chart belongs to a Container, it is 1:1
 type Container struct {
 
-	// Width of canvas
-	Width string `default:"900px"`
+	// Width of container
+	Width string
 
-	// Height of canvas
-	Height string `default:"500px"`
+	// Height of container
+	Height string
 
-	// BackgroundColor of canvas
+	// BackgroundColor of container
 	BackgroundColor string
 
 	// Chart unique ID, as same as the Container Id
@@ -24,6 +24,15 @@ type Container struct {
 
 	// 1:1
 	Chart interface{}
+
+	Events []*Event `json:"-"`
+
+	// Inline styles
+	// Style
+}
+
+func (c *Container) AddEvent(event *Event) {
+	c.Events = append(c.Events, event)
 }
 
 func NewContainer(chart interface{}) *Container {

@@ -20,6 +20,20 @@
     let goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID }}'), "{{ .Theme }}");
     let option_{{ .ChartID | safeJS }} = {{ .Chart | prettier }};
     goecharts_{{ .ChartID | safeJS }}.setOption(option_{{ .ChartID | safeJS }});
+    {{$ChartID := .ChartID}}
+    {{- range .Events }}
+    goecharts_{{ $ChartID | safeJS }}.{{ .EventBinder | safeJS }}(
+    {{- if .EventType }}
+       {{ .EventType }},
+    {{- end }}
+    {{- if .Params }}
+       {{ .Params | safeJS }},
+    {{- end }}
+    {{- if .Action }}
+       {{ .Action | safeJS }},
+     {{- end }}
+    );
+    {{- end }}
 </script>
 <style>
     .container {margin-top:30px; display: flex;justify-content: center;align-items: center;}

@@ -8,7 +8,12 @@ func main() {
 		PageConfig(func(p *core.Page) {
 			p.Title = "My Page Title"
 		}).Charts().
-		AddCharts(NewBar(), NewBaseLine(), NewComplexLine(), NewLine3D()).
+		AddCharts(
+			NewBar(),
+			NewBaseLine(),
+			NewComplexLine(),
+			NewLine3D(),
+		).
 		Render("MyPage.html")
 
 }
