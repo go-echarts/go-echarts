@@ -6,6 +6,8 @@ import (
 )
 
 func main() {
+	//NewBarChart()
+
 	core.New().
 		Page().
 		UseTemplate(&MyPageTplProvider{}).
