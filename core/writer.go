@@ -4,12 +4,11 @@ import (
 	"os"
 )
 
-type DefaultFileWriter struct {
-	File string
+type DefaultWriter struct {
 }
 
-func (dw *DefaultFileWriter) Write(data []byte) {
-	writer, err := os.Create(dw.File)
+func (dw *DefaultWriter) Write(data []byte, dest string) {
+	writer, err := os.Create(dest)
 	if err != nil {
 		panic(err)
 	}

@@ -91,7 +91,7 @@ func (rb *RendererBuilder) Render(f ...string) {
 	}
 
 	if rb.builder.rendererBuilder.renderer == nil {
-		rb.builder.rendererBuilder.renderer = NewDefaultRenderer(file)
+		rb.builder.rendererBuilder.renderer = NewDefaultRenderer()
 	}
 
 	render := rb.builder.rendererBuilder.doBuildRenderer()

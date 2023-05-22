@@ -22,7 +22,7 @@ type Render interface {
 }
 
 type Writer interface {
-	Write(data []byte)
+	Write(data []byte, dest string)
 }
 
 type DefaultRenderer struct {
@@ -33,16 +33,15 @@ type DefaultRenderer struct {
 func (dr *DefaultRenderer) Render(page *Page, dest string) {
 	dr.File = dest
 	data := dr.render.Render(page)
-	dr.writer.Write(data)
+	dr.writer.Write(data, dest)
 }
 
-func NewDefaultRenderer(file string) *DefaultRenderer {
+func NewDefaultRenderer() *DefaultRenderer {
 
 	return &DefaultRenderer{
 		Renderer: Renderer{
 			render: &DefaultRender{},
-			writer: &DefaultFileWriter{File: file},
+			writer: &DefaultWriter{},
 		},
-		File: file,
 	}
 }
