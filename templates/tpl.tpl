@@ -35,10 +35,17 @@
     );
     {{- end }}
 </script>
+
 <style>
     .container {margin-top:30px; display: flex;justify-content: center;align-items: center;}
     .item {margin: auto;}
 </style>
 
- {{- end }}
+{{- end }}
+
+<script>
+{{- range .JSFunctions.Fns }}
+    {{ . | safeJS }}
+{{- end }}
+</script>
 </html>

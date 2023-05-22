@@ -1,3 +1,7 @@
+// Package core
+/**
+An Template Interface for user to build chart easily.
+*/
 package core
 
 type PageTemplateProvider interface {

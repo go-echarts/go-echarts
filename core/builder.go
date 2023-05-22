@@ -1,47 +1,42 @@
 package core
 
-type ChartsBuilder struct {
+type Builder struct {
 	pageBuilder     *PageBuilder
-	chartBuilder    *ChartBuilder
+	chartsBuilder   *ChartsBuilder
 	rendererBuilder *RendererBuilder
 }
 
-func NewCanvas() *ChartsBuilder {
-	return &ChartsBuilder{}
+func New() *Builder {
+	return &Builder{}
 }
 
 type RendererExchangeBuilder struct {
-	builder      *ChartsBuilder
+	builder      *Builder
 	renderer     RenderExposer
 	renderConfig RenderProvider
 	writerConfig WriterProvider
 }
 
 type RendererBuilder struct {
-	builder      *ChartsBuilder
+	builder      *Builder
 	renderer     RenderExposer
 	renderConfig RenderProvider
 	writerConfig WriterProvider
 }
 
 type PageBuilder struct {
-	builder    *ChartsBuilder
+	builder    *Builder
 	page       *Page
 	pageConfig PageConfig
 }
 
-func (cb *ChartsBuilder) Page() *PageBuilder {
+func (cb *Builder) Page() *PageBuilder {
 	cb.pageBuilder = &PageBuilder{
 		builder: cb,
 		page:    NewPage(),
 	}
 	return cb.pageBuilder
 }
-
-//func (pb *PageBuilder) UseTemplate(pageTemplate *Page) *PageBuilder {
-//	pb.page = pageTemplate
-//	return pb
-//}
 
 func (pb *PageBuilder) UseTemplate(provider PageTemplateProvider) *PageBuilder {
 	pb.page = provider.Provide()
@@ -58,22 +53,22 @@ func (pb *PageBuilder) doBuildPage() *Page {
 	return pb.page
 }
 
-func (pb *PageBuilder) Charts() *ChartBuilder {
-	pb.builder.chartBuilder = &ChartBuilder{
+func (pb *PageBuilder) Charts() *ChartsBuilder {
+	pb.builder.chartsBuilder = &ChartsBuilder{
 		builder:    pb.builder,
 		containers: []*Container{},
 	}
-	return pb.builder.chartBuilder
+	return pb.builder.chartsBuilder
 
 }
 
-type ChartBuilder struct {
-	builder    *ChartsBuilder
+// ChartsBuilder TODO template support? charts loader from multi resources?
+type ChartsBuilder struct {
+	builder    *Builder
 	containers []*Container
 }
 
-// AddCharts TODO template support
-func (cb *ChartBuilder) AddCharts(charts ...Chart) *RendererBuilder {
+func (cb *ChartsBuilder) AddCharts(charts ...Chart) *RendererBuilder {
 	for _, chart := range charts {
 		cb.containers = append(cb.containers, chart.GetContainer())
 	}
@@ -85,20 +80,26 @@ func (cb *ChartBuilder) AddCharts(charts ...Chart) *RendererBuilder {
 	return cb.builder.rendererBuilder
 }
 
+// Render Use f... to make this function accept f or not
 func (rb *RendererBuilder) Render(f ...string) {
-	if f == nil {
-		return
-	}
-
-	file := f[0]
-	rb.builder.rendererBuilder.renderer = NewDefaultRenderer(file)
-
 	page := rb.builder.pageBuilder.doBuildPage()
 
+	file := ""
+
+	if f != nil {
+		file = f[0]
+	}
+
+	if rb.builder.rendererBuilder.renderer == nil {
+		rb.builder.rendererBuilder.renderer = NewDefaultRenderer(file)
+	}
+
 	render := rb.builder.rendererBuilder.doBuildRenderer()
-	render.Render(page)
+
+	render.Render(page, file)
 }
 
+// CustomRenderer allow to replace renderer directly, such as PNG renderer plugin mount
 func (rb *RendererBuilder) CustomRenderer(re RenderExposer) *RendererBuilder {
 	if re != nil {
 		rb.renderer = re
@@ -106,6 +107,7 @@ func (rb *RendererBuilder) CustomRenderer(re RenderExposer) *RendererBuilder {
 	return rb
 }
 
+// RendererConfig allow to replace either Render or Writer
 func (rb *RendererBuilder) RendererConfig(renderProvider RenderProvider, writerProvider WriterProvider) *RendererBuilder {
 	if renderProvider != nil {
 		rb.renderConfig = renderProvider

@@ -1,7 +1,10 @@
 package core
 
+type RenderProvider func(old Render) Render
+type WriterProvider func(old Writer) Writer
+
 type RenderExposer interface {
-	Render(page *Page)
+	Render(source *Page, dest string)
 	GetRenderer() *Renderer
 }
 
@@ -13,9 +16,6 @@ type Renderer struct {
 func (r *Renderer) GetRenderer() *Renderer {
 	return r
 }
-
-type RenderProvider func(old Render) Render
-type WriterProvider func(old Writer) Writer
 
 type Render interface {
 	Render(page *Page) []byte
@@ -30,7 +30,8 @@ type DefaultRenderer struct {
 	File string
 }
 
-func (dr *DefaultRenderer) Render(page *Page) {
+func (dr *DefaultRenderer) Render(page *Page, dest string) {
+	dr.File = dest
 	data := dr.render.Render(page)
 	dr.writer.Write(data)
 }

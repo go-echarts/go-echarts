@@ -1,10 +1,14 @@
 package main
 
-import "github.com/go-echarts/go-echarts/v2/core"
+import (
+	"fmt"
+	"github.com/go-echarts/go-echarts/v2/core"
+)
 
 func main() {
-	core.NewCanvas().
-		Page().UseTemplate(&MyPageTplProvider{}).
+	core.New().
+		Page().
+		UseTemplate(&MyPageTplProvider{}).
 		PageConfig(func(p *core.Page) {
 			p.Title = "My Page Title"
 		}).Charts().
@@ -14,8 +18,23 @@ func main() {
 			NewComplexLine(),
 			NewLine3D(),
 		).
-		Render("MyPage.html")
+		Render("gallery.html")
 
+	// CustomRenderer(&MyMockPNGRenderer{}).
+	// Render("gallery.png")
+
+}
+
+type MyMockPNGRenderer struct {
+}
+
+func (mcr *MyMockPNGRenderer) Render(p *core.Page, dest string) {
+	// Process render PNG to dest
+	fmt.Println("Process render PNG to " + dest)
+}
+
+func (mcr *MyMockPNGRenderer) GetRenderer() *core.Renderer {
+	return nil
 }
 
 type MyPageTplProvider struct {
