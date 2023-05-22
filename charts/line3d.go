@@ -21,7 +21,7 @@ type Line3D struct {
 	*Line3DConfiguration
 }
 
-func (line3D *Line3D) GetChartName() string {
+func (line3D *Line3D) GetChartType() string {
 	return types.ChartLine3D
 }
 
@@ -39,15 +39,6 @@ func (line3D *Line3D) GetContainer() *core.Container {
 
 }
 
-func (line3D *Line3D) GetPage() *core.Page {
-	if line3D.Page != nil {
-		return line3D.Page
-	}
-
-	line3D.Page = core.NewPage(line3D.GetContainer())
-	return line3D.Page
-}
-
 func NewLine3D() *Line3D {
 	line3D := &Line3D{}
 
@@ -60,8 +51,6 @@ func NewLine3D() *Line3D {
 	}
 
 	line3D.Container = core.NewContainer(line3D)
-	line3D.Page = core.NewPage(line3D.Container)
-	line3D.Page.JSAssets.Add("https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js")
 
 	return line3D
 }

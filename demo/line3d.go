@@ -31,10 +31,6 @@ func genLine3dData() []opt.Chart3DData {
 
 func NewLine3D() *charts.Line3D {
 	line3d := charts.NewLine3D()
-	// seems the echarts version not match somehow
-	line3d.Page.JSAssets.Reset()
-	line3d.Page.JSAssets.Add("https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js")
-	line3d.Page.JSAssets.Add("https://cdn.jsdelivr.net/npm/echarts-gl/dist/echarts-gl.min.js")
 
 	line3d.VisualMaps = &opt.VisualMap{
 		Min:       0,
@@ -54,11 +50,5 @@ func NewLine3D() *charts.Line3D {
 	}
 	line3d.AddSeries(s)
 	return line3d
-
-}
-
-func NewLine3DChart() {
-
-	NewLine3D().Render("line3d.html")
 
 }

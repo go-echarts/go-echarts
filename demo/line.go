@@ -9,8 +9,6 @@ import (
 func NewBaseLine() *charts.Line {
 	line := charts.NewLine()
 
-	line.JSAssets.Add("My.js")
-
 	line.Title.Text = "Title-Title"
 	line.Title.SubText = "Subtitle-01"
 
@@ -18,9 +16,7 @@ func NewBaseLine() *charts.Line {
 	s := &series.LineSingleSeries{}
 	s.Data = []int{150, 230, 224, 218, 135, 147, 260}
 
-	line.AddSeries(
-		s,
-	)
+	line.AddSeries(s)
 
 	// show Toolbox
 	line.Toolbox.Feature = &opt.ToolBoxFeature{
@@ -34,8 +30,6 @@ func NewBaseLine() *charts.Line {
 	// change container
 	line.Container.ChartID = "customId"
 	line.Container.Theme = "dark"
-	// change page title
-	line.Page.Title = "My go-echarts title"
 	return line
 
 }
@@ -60,6 +54,44 @@ func NewComplexLine() *charts.Line {
 
 	line.YAxis.AxisLabel = &opt.AxisLabel{Formatter: "{value} c"}
 
+	s := buildSeries()
+
+	s1 := buildSeries1()
+
+	line.AddSeries(s, s1)
+
+	return line
+
+}
+
+func buildSeries1() *series.LineSingleSeries {
+	s1 := &series.LineSingleSeries{}
+	s1.Name = "Lowest"
+	s1.Data = []int{1, -2, 2, 5, 3, 2, 0}
+
+	d4 := &opt.MarkPointNameTypeItem{
+		Name:  "Week Lowest",
+		Value: -2,
+		XAxis: 1,
+		YAxis: -1.5,
+	}
+
+	s1.MarkPoint = &opt.MarkPoint{
+		Data: []interface{}{d4},
+	}
+
+	d5 := &opt.MarkPointNameTypeItem{
+		Name: "Avg",
+		Type: "average",
+	}
+
+	s1.MarkLines = &opt.MarkLines{
+		Data: []interface{}{d5},
+	}
+	return s1
+}
+
+func buildSeries() *series.LineSingleSeries {
 	s := &series.LineSingleSeries{}
 	s.Name = "Highest"
 	s.Data = []int{10, 11, 13, 11, 12, 12, 9}
@@ -86,41 +118,5 @@ func NewComplexLine() *charts.Line {
 	s.MarkLines = &opt.MarkLines{
 		Data: []interface{}{d3},
 	}
-
-	s1 := &series.LineSingleSeries{}
-	s1.Name = "Lowest"
-	s1.Data = []int{1, -2, 2, 5, 3, 2, 0}
-
-	d4 := &opt.MarkPointNameTypeItem{
-		Name:  "Week Lowest",
-		Value: -2,
-		XAxis: 1,
-		YAxis: -1.5,
-	}
-
-	s1.MarkPoint = &opt.MarkPoint{
-		Data: []interface{}{d4},
-	}
-
-	d5 := &opt.MarkPointNameTypeItem{
-		Name: "Avg",
-		Type: "average",
-	}
-
-	s1.MarkLines = &opt.MarkLines{
-		Data: []interface{}{d5},
-	}
-
-	line.AddSeries(s, s1)
-
-	return line
-
-}
-
-func NewLineChart() {
-	NewBaseLine().Render("line.html")
-}
-
-func NewComplexLineChart() {
-	NewComplexLine().Render("line-complex.html")
+	return s
 }

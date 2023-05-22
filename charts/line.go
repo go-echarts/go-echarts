@@ -19,7 +19,7 @@ type Line struct {
 	*LineConfiguration
 }
 
-func (line *Line) GetChartName() string {
+func (line *Line) GetChartType() string {
 	return types.ChartLine
 }
 
@@ -37,15 +37,6 @@ func (line *Line) GetContainer() *core.Container {
 
 }
 
-func (line *Line) GetPage() *core.Page {
-	if line.Page != nil {
-		return line.Page
-	}
-
-	line.Page = core.NewPage(line.GetContainer())
-	return line.Page
-}
-
 func NewLine() *Line {
 	line := &Line{}
 
@@ -57,7 +48,6 @@ func NewLine() *Line {
 	}
 
 	line.Container = core.NewContainer(line)
-	line.Page = core.NewPage(line.Container)
 
 	return line
 }

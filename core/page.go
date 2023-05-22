@@ -25,16 +25,6 @@ type Page struct {
 
 type PageConfig func(p *Page)
 
-// Render Default render
-func (page *Page) Render(file string) {
-	_ = (&DefaultRender{}).Render(file, page)
-}
-
-// CustomRender Render by the CustomRender
-func (page *Page) CustomRender(file string, customRender Render) {
-	_ = customRender.Render(file, page)
-}
-
 func NewPage(containers ...*Container) *Page {
 
 	return &Page{

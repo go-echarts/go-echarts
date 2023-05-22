@@ -24,7 +24,3 @@ func NewBar() *charts.Bar {
 
 	return bar
 }
-
-func NewBarChart() {
-	NewBar().Render("bar.html")
-}

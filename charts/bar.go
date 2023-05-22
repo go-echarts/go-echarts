@@ -19,7 +19,7 @@ type Bar struct {
 	*BarConfiguration
 }
 
-func (bar *Bar) GetChartName() string {
+func (bar *Bar) GetChartType() string {
 	return types.ChartBar
 }
 
@@ -37,15 +37,6 @@ func (bar *Bar) GetContainer() *core.Container {
 
 }
 
-func (bar *Bar) GetPage() *core.Page {
-	if bar.Page != nil {
-		return bar.Page
-	}
-
-	bar.Page = core.NewPage(bar.GetContainer())
-	return bar.Page
-}
-
 func NewBar() *Bar {
 	bar := &Bar{}
 
@@ -57,7 +48,6 @@ func NewBar() *Bar {
 	}
 
 	bar.Container = core.NewContainer(bar)
-	bar.Page = core.NewPage(bar.Container)
 
 	return bar
 }

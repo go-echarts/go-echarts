@@ -6,7 +6,6 @@ import (
 	"github.com/go-echarts/go-echarts/v2/primitive"
 	"github.com/go-echarts/go-echarts/v2/util"
 	"html/template"
-	"os"
 	"reflect"
 	"regexp"
 )
@@ -17,28 +16,22 @@ var (
 
 const DefaultTplName = "__GO_ECHARTS__"
 
-type Render interface {
-	Render(file string, page *Page) error
-}
-
 type DefaultRender struct {
 }
 
-func (r *DefaultRender) Render(file string, page *Page) error {
+func (r *DefaultRender) Render(page *Page) []byte {
 
-	f, _ := os.Create(file)
 	tpl := MustTemplate(DefaultTplName, page.Templates)
 
 	var buf bytes.Buffer
 
 	if err := tpl.ExecuteTemplate(&buf, DefaultTplName, page); err != nil {
-		return err
+		panic(err)
 	}
 
 	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
 
-	_, err := f.Write(content)
-	return err
+	return content
 }
 
 // isSet check if the field exist in the chart instance

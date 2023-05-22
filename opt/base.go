@@ -12,7 +12,6 @@ var DefaultColors = []string{
 
 // BaseConfiguration represents basic options set needed by all chart types.
 type BaseConfiguration struct {
-	*core.Page      `json:"-"`
 	*core.Container `json:"-"`
 	*Title          `json:"title,omitempty"`
 	*Legend         `json:"legend,omitempty,reserved"`
