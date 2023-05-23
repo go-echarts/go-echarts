@@ -1,8 +1,8 @@
-// Package core
-/**
-An Template Interface for user to build chart easily.
-*/
 package core
+
+/**
+Template Provider Interface for user to implement templates and build charts easily.
+*/
 
 type PageTemplateProvider interface {
 	Provide() *Page

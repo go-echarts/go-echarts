@@ -2,8 +2,8 @@ package core
 
 import "os"
 
-type RenderProvider func(old Render) Render
-type WriterProvider func(old Writer) Writer
+type RenderProvider func(defaultRender Render) Render
+type WriterProvider func(defaultWriter Writer) Writer
 
 type Render interface {
 	Render(page *Page) []byte

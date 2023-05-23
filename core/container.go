@@ -4,7 +4,7 @@ import (
 	"github.com/go-echarts/go-echarts/v2/util"
 )
 
-// Container Each chart belongs to a Container, it is 1:1
+// Container Each chart map to a Container and vice versa , it is 1:1, they hold each other
 type Container struct {
 
 	// Width of container
@@ -25,6 +25,7 @@ type Container struct {
 	// 1:1
 	Chart interface{}
 
+	// the abstract of all the event which binds to an echarts instance
 	Events []*Event `json:"-"`
 
 	// Inline styles

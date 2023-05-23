@@ -2,9 +2,12 @@ package core
 
 import "github.com/go-echarts/go-echarts/v2/primitive"
 
-// Event mount on chart instance / container
-// myChart.EventBinder("EventType', <params>, function{})
+// Event mount on chart instance
 /**
+Format:
+myChart.EventBinder(<EventType>, <params>, <function{}>)
+
+i.e.
 myChart.on('click', 'series', function() {});
 
 myChart.on('mouseover', { seriesIndex: 1, name: 'xx' }, function() {
@@ -14,7 +17,7 @@ myChart.dispatchAction({
     type: 'downplay',
     seriesIndex: 0,
     dataIndex: currentIndex
-  });
+});
 
 
 */

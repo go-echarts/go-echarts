@@ -20,8 +20,12 @@ func NewFlowGallery() {
 			NewBar(),
 			NewBaseLine(),
 			NewComplexLine(),
-			NewLine3D(),
-		).
+			NewLine3D()).
+		RendererConfig(nil, func(defaultWriter core.Writer) core.Writer {
+			// allow to rewriter Writer
+			return defaultWriter
+
+		}).
 		Render("gallery-flow.html")
 
 }
