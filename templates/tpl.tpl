@@ -10,6 +10,7 @@
     <link href="{{ . }}" rel="stylesheet">
 {{- end }}
 </head>
+{{ $JSFunctions := .JSFunctions }}
 {{- range .Containers }}
 <div class="container">
     <div class="item" id="{{ .ChartID }}" style="width:{{ .Width }};height:{{ .Height }};"></div>
@@ -20,7 +21,7 @@
     let goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID }}'), "{{ .Theme }}");
     let option_{{ .ChartID | safeJS }} = {{ .Chart | prettier }};
     goecharts_{{ .ChartID | safeJS }}.setOption(option_{{ .ChartID | safeJS }});
-    {{$ChartID := .ChartID}}
+    {{ $ChartID := .ChartID }}
     {{- range .Events }}
     goecharts_{{ $ChartID | safeJS }}.{{ .EventBinder | safeJS }}(
     {{- if .EventType }}
@@ -34,6 +35,10 @@
      {{- end }}
     );
     {{- end }}
+
+{{- range $JSFunctions.Fns }}
+    {{ . | safeJS }}
+{{- end }}
 </script>
 
 <style>
@@ -42,10 +47,4 @@
 </style>
 
 {{- end }}
-
-<script>
-{{- range .JSFunctions.Fns }}
-    {{ . | safeJS }}
-{{- end }}
-</script>
 </html>
