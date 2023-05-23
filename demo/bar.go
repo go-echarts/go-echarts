@@ -31,9 +31,3 @@ func NewBar() *charts.Bar {
 
 	return bar
 }
-
-func NewBarChart() {
-
-	p := core.NewPage(NewBar().GetContainer())
-	core.NewDefaultRenderer().Render(p, "bar.html")
-}

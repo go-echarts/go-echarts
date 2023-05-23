@@ -6,20 +6,9 @@ type Builder struct {
 	rendererBuilder *RendererBuilder
 }
 
-func New() *Builder {
-	return &Builder{}
-}
-
-type RendererExchangeBuilder struct {
-	builder      *Builder
-	renderer     RenderExposer
-	renderConfig RenderProvider
-	writerConfig WriterProvider
-}
-
 type RendererBuilder struct {
 	builder      *Builder
-	renderer     RenderExposer
+	renderer     RendererExposer
 	renderConfig RenderProvider
 	writerConfig WriterProvider
 }
@@ -62,7 +51,6 @@ func (pb *PageBuilder) Charts() *ChartsBuilder {
 
 }
 
-// ChartsBuilder TODO template support? charts loader from multi resources?
 type ChartsBuilder struct {
 	builder    *Builder
 	containers []*Container
@@ -96,11 +84,11 @@ func (rb *RendererBuilder) Render(f ...string) {
 
 	render := rb.builder.rendererBuilder.doBuildRenderer()
 
-	render.Render(page, file)
+	render.Resolve(page, file)
 }
 
-// CustomRenderer allow to replace renderer directly, such as PNG renderer plugin mount
-func (rb *RendererBuilder) CustomRenderer(re RenderExposer) *RendererBuilder {
+// CustomRenderer allow to replace whole renderer directly, such as PNG renderer
+func (rb *RendererBuilder) CustomRenderer(re RendererExposer) *RendererBuilder {
 	if re != nil {
 		rb.renderer = re
 	}
@@ -119,15 +107,15 @@ func (rb *RendererBuilder) RendererConfig(renderProvider RenderProvider, writerP
 	return rb
 }
 
-func (rb *RendererBuilder) doBuildRenderer() RenderExposer {
+func (rb *RendererBuilder) doBuildRenderer() RendererExposer {
 	if rb.renderConfig != nil {
 		re := rb.renderer.GetRenderer().render
-		rb.renderer.GetRenderer().render = rb.renderConfig(re)
+		rb.renderer.SetRender(rb.renderConfig(re))
 	}
 
 	if rb.writerConfig != nil {
 		we := rb.renderer.GetRenderer().writer
-		rb.renderer.GetRenderer().writer = rb.writerConfig(we)
+		rb.renderer.SetWriter(rb.writerConfig(we))
 	}
 	return rb.renderer
 }
