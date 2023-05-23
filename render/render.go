@@ -8,8 +8,8 @@ func Render(page *core.Page, dest string) {
 	core.NewDefaultRenderer().Resolve(page, dest)
 }
 
-func RenderWithConfig(config *Config, page *core.Page, dest string) {
-	var renderer core.RendererExposer
+func WithConfig(config *Config, page *core.Page, dest string) {
+	var renderer core.Renderer
 	if config.CustomerRenderer != nil {
 		renderer = config.CustomerRenderer
 	}
@@ -25,7 +25,7 @@ func RenderWithConfig(config *Config, page *core.Page, dest string) {
 }
 
 type Config struct {
-	CustomerRenderer core.RendererExposer
+	CustomerRenderer core.Renderer
 	CustomerRender   core.Render
 	CustomerWriter   core.Writer
 }

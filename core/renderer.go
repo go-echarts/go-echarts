@@ -2,8 +2,8 @@ package core
 
 import "os"
 
-type RenderProvider func(defaultRender Render) Render
-type WriterProvider func(defaultWriter Writer) Writer
+type RenderProvider func(defaultRender Render) (newProvider Render)
+type WriterProvider func(defaultWriter Writer) (newWriter Writer)
 
 type Render interface {
 	Render(page *Page) []byte
@@ -13,25 +13,24 @@ type Writer interface {
 	Write(data []byte, dest string)
 }
 
-// RendererExposer Renderer wrapper interface which exposing Render and GetRenderer return instance
-type RendererExposer interface {
+// Renderer A renderer can render *Page and write to any dest format such as `.html, .png` ...etc.
+type Renderer interface {
 	Resolve(source *Page, dest string)
-	GetRenderer() *Renderer
 	SetRender(r Render)
 	SetWriter(w Writer)
 }
 
-type Renderer struct {
+type DefaultRenderer struct {
 	render Render
 	writer Writer
 }
 
-func (r *Renderer) Resolve(source *Page, dest string) {
+func (r *DefaultRenderer) Resolve(source *Page, dest string) {
 	data := r.Render(source)
 	r.Write(data, dest)
 }
 
-func (r *Renderer) Write(data []byte, dest string) {
+func (r *DefaultRenderer) Write(data []byte, dest string) {
 	writer, err := os.Create(dest)
 	if err != nil {
 		panic(err)
@@ -43,19 +42,18 @@ func (r *Renderer) Write(data []byte, dest string) {
 	}
 }
 
-func (r *Renderer) GetRenderer() *Renderer {
+func (r *DefaultRenderer) GetRenderer() *DefaultRenderer {
 	return r
 }
 
-func (r *Renderer) SetRender(render Render) {
+func (r *DefaultRenderer) SetRender(render Render) {
 	r.render = render
 }
 
-func (r *Renderer) SetWriter(writer Writer) {
+func (r *DefaultRenderer) SetWriter(writer Writer) {
 	r.writer = writer
 }
 
-func NewDefaultRenderer() *Renderer {
-
-	return &Renderer{}
+func NewDefaultRenderer() *DefaultRenderer {
+	return &DefaultRenderer{}
 }

@@ -28,7 +28,7 @@ func NewOptionGalleryWithCustom() {
 
 	p.AddCharts(NewBar())
 
-	render.RenderWithConfig(&render.Config{
+	render.WithConfig(&render.Config{
 		CustomerRenderer: &MyMockPNGRenderer{},
 	}, p, "gallery-png.png")
 

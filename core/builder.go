@@ -8,7 +8,7 @@ type Builder struct {
 
 type RendererBuilder struct {
 	builder      *Builder
-	renderer     RendererExposer
+	renderer     Renderer
 	renderConfig RenderProvider
 	writerConfig WriterProvider
 }
@@ -68,7 +68,7 @@ func (cb *ChartsBuilder) AddCharts(charts ...Chart) *RendererBuilder {
 	return cb.builder.rendererBuilder
 }
 
-// Render Use f... to make this function accept f or not
+// Render Use f... to make this function accept f or not since they may not need the dest with custom renderer
 func (rb *RendererBuilder) Render(f ...string) {
 	page := rb.builder.pageBuilder.doBuildPage()
 
@@ -78,24 +78,26 @@ func (rb *RendererBuilder) Render(f ...string) {
 		file = f[0]
 	}
 
-	if rb.builder.rendererBuilder.renderer == nil {
-		rb.builder.rendererBuilder.renderer = NewDefaultRenderer()
-	}
+	render := rb.builder.rendererBuilder.renderer
 
-	render := rb.builder.rendererBuilder.doBuildRenderer()
+	if render == nil {
+		rb.builder.rendererBuilder.renderer = NewDefaultRenderer()
+		rb.builder.rendererBuilder.doBuildRenderer()
+		render = rb.builder.rendererBuilder.renderer
+	}
 
 	render.Resolve(page, file)
 }
 
 // CustomRenderer allow to replace whole renderer directly, such as PNG renderer
-func (rb *RendererBuilder) CustomRenderer(re RendererExposer) *RendererBuilder {
+func (rb *RendererBuilder) CustomRenderer(re Renderer) *RendererBuilder {
 	if re != nil {
 		rb.renderer = re
 	}
 	return rb
 }
 
-// RendererConfig allow to replace either Render or Writer
+// RendererConfig allow to replace either Render or Writer based on default renderer
 func (rb *RendererBuilder) RendererConfig(renderProvider RenderProvider, writerProvider WriterProvider) *RendererBuilder {
 	if renderProvider != nil {
 		rb.renderConfig = renderProvider
@@ -107,14 +109,14 @@ func (rb *RendererBuilder) RendererConfig(renderProvider RenderProvider, writerP
 	return rb
 }
 
-func (rb *RendererBuilder) doBuildRenderer() RendererExposer {
+func (rb *RendererBuilder) doBuildRenderer() Renderer {
 	if rb.renderConfig != nil {
-		re := rb.renderer.GetRenderer().render
+		re := rb.renderer.(*DefaultRenderer).render
 		rb.renderer.SetRender(rb.renderConfig(re))
 	}
 
 	if rb.writerConfig != nil {
-		we := rb.renderer.GetRenderer().writer
+		we := rb.renderer.(*DefaultRenderer).writer
 		rb.renderer.SetWriter(rb.writerConfig(we))
 	}
 	return rb.renderer

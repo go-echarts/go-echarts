@@ -16,7 +16,7 @@ var (
 
 const DefaultTplName = "__GO_ECHARTS__"
 
-func (r *Renderer) Render(page *Page) []byte {
+func (r *DefaultRenderer) Render(page *Page) []byte {
 
 	tpl := MustTemplate(DefaultTplName, page.Templates)
 
