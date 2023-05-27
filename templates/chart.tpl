@@ -1,6 +1,3 @@
-package templates
-
-var ChartTpl = `
 {{- define "chart" }}
 <!DOCTYPE html>
 <html>
@@ -14,4 +11,3 @@ var ChartTpl = `
 </body>
 </html>
 {{ end }}
-`
