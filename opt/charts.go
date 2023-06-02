@@ -431,7 +431,7 @@ type PieChart struct {
 	RoseType string
 
 	// Center position of Pie chart, the first of which is the horizontal position, and the second is the vertical position.
-	// Percentage is supported. When set in percentage, the item is relative to the container width,
+	// Percentage is supported. When set in percentage, the item is relative to the component width,
 	// and the second item to the height.
 	//
 	// Example:
@@ -443,7 +443,7 @@ type PieChart struct {
 	// Radius of Pie chart. Value can be:
 	// * number: Specify outside radius directly.
 	// * string: For example, '20%', means that the outside radius is 20% of the viewport
-	// size (the little one between width and height of the chart container).
+	// size (the little one between width and height of the chart component).
 	//
 	// Array.<number|string>: The first item specifies the inside radius, and the
 	// second item specifies the outside radius. Each item follows the definitions above.
@@ -633,9 +633,9 @@ type TreeChart struct {
 	// Leaf node special configuration, the leaf node and non-leaf node label location is different.
 	Leaves *TreeLeaves `json:"leaves,omitempty"`
 
-	// Distance between tree component and the sides of the container.
+	// Distance between tree component and the sides of the component.
 	// value can be instant pixel value like 20;
-	// It can also be a percentage value relative to container width like '20%';
+	// It can also be a percentage value relative to component width like '20%';
 	Left   string `json:"left,omitempty"`
 	Right  string `json:"right,omitempty"`
 	Top    string `json:"top,omitempty"`
@@ -694,9 +694,9 @@ type TreeMapChart struct {
 	// Levels provide configration for each node level
 	Levels *[]TreeMapLevel `json:"levels,omitempty"`
 
-	// Distance between treemap component and the sides of the container.
+	// Distance between treemap component and the sides of the component.
 	// value can be instant pixel value like 20;
-	// It can also be a percentage value relative to container width like '20%';
+	// It can also be a percentage value relative to component width like '20%';
 	Left   string `json:"left,omitempty"`
 	Right  string `json:"right,omitempty"`
 	Top    string `json:"top,omitempty"`

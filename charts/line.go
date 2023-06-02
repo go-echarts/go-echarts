@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"github.com/go-echarts/go-echarts/v2/core"
+	"github.com/go-echarts/go-echarts/v2/component"
 	"github.com/go-echarts/go-echarts/v2/opt"
 	"github.com/go-echarts/go-echarts/v2/series"
 	"github.com/go-echarts/go-echarts/v2/types"
@@ -27,12 +27,12 @@ func (line *Line) GetChart() interface{} {
 	return line
 }
 
-func (line *Line) GetContainer() *core.Container {
+func (line *Line) GetContainer() *component.Container {
 	if line.Container != nil {
 		return line.Container
 	}
 
-	line.Container = core.NewContainer(line)
+	line.Container = component.NewContainer(line)
 	return line.Container
 
 }
@@ -47,7 +47,7 @@ func NewLine() *Line {
 		Series:            &series.LineSeries{},
 	}
 
-	line.Container = core.NewContainer(line)
+	line.Container = component.NewContainer(line)
 
 	return line
 }

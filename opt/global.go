@@ -17,29 +17,29 @@ type Legend struct {
 	// "scroll": Scrollable legend. It helps when too many legend items needed to be shown.
 	Type primitive.String `json:"type,omitempty"`
 
-	// Distance between legend component and the left side of the container.
+	// Distance between legend component and the left side of the component.
 	// left value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
+	// value relative to component width like '20%'; and it can also be 'left', 'center', or 'right'.
 	// If the left value is set to be 'left', 'center', or 'right', then the component
 	// will be aligned automatically based on position.
 	Left primitive.String `json:"left,omitempty"`
 
-	// Distance between legend component and the top side of the container.
+	// Distance between legend component and the top side of the component.
 	// top value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
+	// value relative to component width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
 	// If the left value is set to be 'top', 'middle', or 'bottom', then the component
 	// will be aligned automatically based on position.
 	Top primitive.String `json:"top,omitempty"`
 
-	// Distance between legend component and the right side of the container.
+	// Distance between legend component and the right side of the component.
 	// right value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'.
+	// value relative to component width like '20%'.
 	// Adaptive by default.
 	Right primitive.String `json:"right,omitempty"`
 
-	// Distance between legend component and the bottom side of the container.
+	// Distance between legend component and the bottom side of the component.
 	// bottom value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'.
+	// value relative to component width like '20%'.
 	// Adaptive by default.
 	Bottom primitive.String `json:"bottom,omitempty"`
 
@@ -264,29 +264,29 @@ type Toolbox struct {
 	// Options: 'horizontal','vertical'
 	Orient string `json:"orient,omitempty"`
 
-	// Distance between toolbox component and the left side of the container.
+	// Distance between toolbox component and the left side of the component.
 	// left value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
+	// value relative to component width like '20%'; and it can also be 'left', 'center', or 'right'.
 	// If the left value is set to be 'left', 'center', or 'right', then the component
 	// will be aligned automatically based on position.
 	Left string `json:"left,omitempty"`
 
-	// Distance between toolbox component and the top side of the container.
+	// Distance between toolbox component and the top side of the component.
 	// top value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
+	// value relative to component width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
 	// If the left value is set to be 'top', 'middle', or 'bottom', then the component
 	// will be aligned automatically based on position.
 	Top string `json:"top,omitempty"`
 
-	// Distance between toolbox component and the right side of the container.
+	// Distance between toolbox component and the right side of the component.
 	// right value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'.
+	// value relative to component width like '20%'.
 	// Adaptive by default.
 	Right string `json:"right,omitempty"`
 
-	// Distance between toolbox component and the bottom side of the container.
+	// Distance between toolbox component and the bottom side of the component.
 	// bottom value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'.
+	// value relative to component width like '20%'.
 	// Adaptive by default.
 	Bottom string `json:"bottom,omitempty"`
 
@@ -620,28 +620,28 @@ type VisualMap struct {
 	// but it can still perform visual mapping from dataValue to visual channel in chart.
 	Show bool `json:"show"`
 
-	// Distance between visualMap component and the left side of the container.
+	// Distance between visualMap component and the left side of the component.
 	// left value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
+	// value relative to component width like '20%'; and it can also be 'left', 'center', or 'right'.
 	// If the left value is set to be 'left', 'center', or 'right',
 	// then the component will be aligned automatically based on position.
 	Left string `json:"left,omitempty"`
 
-	// Distance between visualMap component and the right side of the container.
+	// Distance between visualMap component and the right side of the component.
 	// right value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'.
+	// value relative to component width like '20%'.
 	Right string `json:"right,omitempty"`
 
-	// Distance between visualMap component and the top side of the container.
+	// Distance between visualMap component and the top side of the component.
 	// top value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
+	// value relative to component width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
 	// If the left value is set to be 'top', 'middle', or 'bottom',
 	// then the component will be aligned automatically based on position.
 	Top string `json:"top,omitempty"`
 
-	// Distance between visualMap component and the bottom side of the container.
+	// Distance between visualMap component and the bottom side of the component.
 	// bottom value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'.
+	// value relative to component width like '20%'.
 	Bottom string `json:"bottom,omitempty"`
 }
 
@@ -736,28 +736,28 @@ type SingleAxis struct {
 	// * 'log' Log axis, suitable for log data.
 	Type string `json:"type,omitempty"`
 
-	// Distance between grid component and the left side of the container.
+	// Distance between grid component and the left side of the component.
 	// left value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
+	// value relative to component width like '20%'; and it can also be 'left', 'center', or 'right'.
 	// If the left value is set to be 'left', 'center', or 'right',
 	// then the component will be aligned automatically based on position.
 	Left string `json:"left,omitempty"`
 
-	// Distance between grid component and the right side of the container.
+	// Distance between grid component and the right side of the component.
 	// right value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'.
+	// value relative to component width like '20%'.
 	Right string `json:"right,omitempty"`
 
-	// Distance between grid component and the top side of the container.
+	// Distance between grid component and the top side of the component.
 	// top value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
+	// value relative to component width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
 	// If the left value is set to be 'top', 'middle', or 'bottom',
 	// then the component will be aligned automatically based on position.
 	Top string `json:"top,omitempty"`
 
-	// Distance between grid component and the bottom side of the container.
+	// Distance between grid component and the bottom side of the component.
 	// bottom value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'.
+	// value relative to component width like '20%'.
 	Bottom string `json:"bottom,omitempty"`
 }
 
@@ -790,7 +790,7 @@ type RadarComponent struct {
 	SplitNumber int `json:"splitNumber,omitempty"`
 
 	// Center position of , the first of which is the horizontal position, and the second is the vertical position.
-	// Percentage is supported. When set in percentage, the item is relative to the container width and height.
+	// Percentage is supported. When set in percentage, the item is relative to the component width and height.
 	Center interface{} `json:"center,omitempty"`
 
 	// Split area of axis in grid area.
@@ -816,30 +816,30 @@ type GeoComponent struct {
 
 // ParallelComponent is the option set for parallel component.
 type ParallelComponent struct {
-	// Distance between parallel component and the left side of the container.
+	// Distance between parallel component and the left side of the component.
 	// Left value can be instant pixel value like 20.
-	// It can also be a percentage value relative to container width like '20%';
+	// It can also be a percentage value relative to component width like '20%';
 	// and it can also be 'left', 'center', or 'right'.
 	// If the left value is set to be 'left', 'center', or 'right',
 	// then the component will be aligned automatically based on position.
 	Left string `json:"left,omitempty"`
 
-	// Distance between parallel component and the top side of the container.
+	// Distance between parallel component and the top side of the component.
 	// Top value can be instant pixel value like 20.
-	// It can also be a percentage value relative to container width like '20%'.
+	// It can also be a percentage value relative to component width like '20%'.
 	// and it can also be 'top', 'middle', or 'bottom'.
 	// If the left value is set to be 'top', 'middle', or 'bottom',
 	// then the component will be aligned automatically based on position.
 	Top string `json:"top,omitempty"`
 
-	// Distance between parallel component and the right side of the container.
+	// Distance between parallel component and the right side of the component.
 	// Right value can be instant pixel value like 20.
-	// It can also be a percentage value relative to container width like '20%'.
+	// It can also be a percentage value relative to component width like '20%'.
 	Right string `json:"right,omitempty"`
 
-	// Distance between parallel component and the bottom side of the container.
+	// Distance between parallel component and the bottom side of the component.
 	// Bottom value can be instant pixel value like 20.
-	// It can also be a percentage value relative to container width like '20%'.
+	// It can also be a percentage value relative to component width like '20%'.
 	Bottom string `json:"bottom,omitempty"`
 }
 
@@ -1048,16 +1048,16 @@ type ViewControl struct {
 // Grid Drawing grid in rectangular coordinate.
 // https://echarts.apache.org/en/option.html#grid
 type Grid struct {
-	// Distance between grid component and the left side of the container.
+	// Distance between grid component and the left side of the component.
 	Left string `json:"left,omitempty"`
 
-	// Distance between grid component and the right side of the container.
+	// Distance between grid component and the right side of the component.
 	Right string `json:"right,omitempty"`
 
-	// Distance between grid component and the top side of the container.
+	// Distance between grid component and the top side of the component.
 	Top string `json:"top,omitempty"`
 
-	// Distance between grid component and the bottom side of the container.
+	// Distance between grid component and the bottom side of the component.
 	Bottom string `json:"bottom,omitempty"`
 
 	// Width of grid component.

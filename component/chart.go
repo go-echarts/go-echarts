@@ -1,4 +1,4 @@
-package core
+package component
 
 // Chart all the chart should implement the basic chart interface
 type Chart interface {

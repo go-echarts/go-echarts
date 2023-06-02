@@ -1,4 +1,4 @@
-package core
+package event
 
 import "github.com/go-echarts/go-echarts/v2/primitive"
 

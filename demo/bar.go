@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/go-echarts/go-echarts/v2/charts"
-	"github.com/go-echarts/go-echarts/v2/core"
+	"github.com/go-echarts/go-echarts/v2/event"
 	"github.com/go-echarts/go-echarts/v2/series"
 )
 
@@ -23,7 +23,7 @@ func NewBar() *charts.Bar {
 	s1.Data = []int{12, 11, 4, 32, 121, 12, 1}
 	bar.AddSeries(s, s1)
 
-	bar.Container.AddEvent(&core.Event{
+	bar.Container.AddEvent(&event.Event{
 		EventBinder: "on",
 		EventType:   "click",
 		Action:      "function(params) {\n   console.log(params.name);\n}",

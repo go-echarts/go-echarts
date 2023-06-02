@@ -1,4 +1,10 @@
-package core
+package canvas
+
+import (
+	"github.com/go-echarts/go-echarts/v2/component"
+	page "github.com/go-echarts/go-echarts/v2/page"
+	"github.com/go-echarts/go-echarts/v2/render"
+)
 
 type Builder struct {
 	pageBuilder     *PageBuilder
@@ -8,36 +14,36 @@ type Builder struct {
 
 type RendererBuilder struct {
 	builder      *Builder
-	renderer     Renderer
-	renderConfig RenderProvider
-	writerConfig WriterProvider
+	renderer     render.Renderer
+	renderConfig render.RenderProvider
+	writerConfig render.WriterProvider
 }
 
 type PageBuilder struct {
 	builder    *Builder
-	page       *Page
-	pageConfig PageConfig
+	page       *page.Page
+	pageConfig page.Config
 }
 
 func (cb *Builder) Page() *PageBuilder {
 	cb.pageBuilder = &PageBuilder{
 		builder: cb,
-		page:    NewPage(),
+		page:    page.NewPage(),
 	}
 	return cb.pageBuilder
 }
 
-func (pb *PageBuilder) UseTemplate(provider PageTemplateProvider) *PageBuilder {
+func (pb *PageBuilder) UseTemplate(provider page.TemplateProvider) *PageBuilder {
 	pb.page = provider.Provide()
 	return pb
 }
 
-func (pb *PageBuilder) PageConfig(config PageConfig) *PageBuilder {
+func (pb *PageBuilder) PageConfig(config page.Config) *PageBuilder {
 	pb.pageConfig = config
 	return pb
 }
 
-func (pb *PageBuilder) doBuildPage() *Page {
+func (pb *PageBuilder) doBuildPage() *page.Page {
 	pb.page.Config(pb.pageConfig)
 	return pb.page
 }
@@ -45,7 +51,7 @@ func (pb *PageBuilder) doBuildPage() *Page {
 func (pb *PageBuilder) Charts() *ChartsBuilder {
 	pb.builder.chartsBuilder = &ChartsBuilder{
 		builder:    pb.builder,
-		containers: []*Container{},
+		containers: []*component.Container{},
 	}
 	return pb.builder.chartsBuilder
 
@@ -53,10 +59,10 @@ func (pb *PageBuilder) Charts() *ChartsBuilder {
 
 type ChartsBuilder struct {
 	builder    *Builder
-	containers []*Container
+	containers []*component.Container
 }
 
-func (cb *ChartsBuilder) AddCharts(charts ...Chart) *RendererBuilder {
+func (cb *ChartsBuilder) AddCharts(charts ...component.Chart) *RendererBuilder {
 	for _, chart := range charts {
 		cb.containers = append(cb.containers, chart.GetContainer())
 	}
@@ -90,15 +96,15 @@ func (rb *RendererBuilder) Render(f ...string) {
 }
 
 // CustomRenderer allow to replace whole renderer directly, such as PNG renderer
-func (rb *RendererBuilder) CustomRenderer(re Renderer) *RendererBuilder {
+func (rb *RendererBuilder) CustomRenderer(re render.Renderer) *RendererBuilder {
 	if re != nil {
 		rb.renderer = re
 	}
 	return rb
 }
 
-// RendererConfig allow to replace either Render or Writer based on default renderer
-func (rb *RendererBuilder) RendererConfig(renderProvider RenderProvider, writerProvider WriterProvider) *RendererBuilder {
+// RendererConfig allow to replace either Render or IWriter based on default renderer
+func (rb *RendererBuilder) RendererConfig(renderProvider render.RenderProvider, writerProvider render.WriterProvider) *RendererBuilder {
 	if renderProvider != nil {
 		rb.renderConfig = renderProvider
 	}
@@ -109,15 +115,19 @@ func (rb *RendererBuilder) RendererConfig(renderProvider RenderProvider, writerP
 	return rb
 }
 
-func (rb *RendererBuilder) doBuildRenderer() Renderer {
+func (rb *RendererBuilder) doBuildRenderer() render.Renderer {
 	if rb.renderConfig != nil {
-		re := rb.renderer.(*DefaultRenderer).render
+		re := rb.renderer.(*render.DefaultRenderer).GetRender()
 		rb.renderer.SetRender(rb.renderConfig(re))
 	}
 
 	if rb.writerConfig != nil {
-		we := rb.renderer.(*DefaultRenderer).writer
+		we := rb.renderer.(*render.DefaultRenderer).GetWriter()
 		rb.renderer.SetWriter(rb.writerConfig(we))
 	}
 	return rb.renderer
+}
+
+func NewDefaultRenderer() *render.DefaultRenderer {
+	return &render.DefaultRenderer{}
 }

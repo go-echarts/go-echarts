@@ -36,29 +36,29 @@ type Title struct {
 
 	// SubTarget
 
-	// Distance between title component and the top side of the container.
+	// Distance between title component and the top side of the component.
 	// top value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
+	// value relative to component width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
 	// If the left value is set to be 'top', 'middle', or 'bottom',
 	// then the component will be aligned automatically based on position.
 	Top primitive.String `json:"top,omitempty"`
 
-	// Distance between title component and the bottom side of the container.
+	// Distance between title component and the bottom side of the component.
 	// bottom value can be instant pixel value like 20;
-	// it can also be a percentage value relative to container width like '20%'.
+	// it can also be a percentage value relative to component width like '20%'.
 	// Adaptive by default.
 	Bottom primitive.String `json:"bottom,omitempty"`
 
-	// Distance between title component and the left side of the container.
+	// Distance between title component and the left side of the component.
 	// left value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
+	// value relative to component width like '20%'; and it can also be 'left', 'center', or 'right'.
 	// If the left value is set to be 'left', 'center', or 'right',
 	// then the component will be aligned automatically based on position.
 	Left primitive.String `json:"left,omitempty"`
 
-	// Distance between title component and the right side of the container.
+	// Distance between title component and the right side of the component.
 	// right value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'.
+	// value relative to component width like '20%'.
 	// Adaptive by default.
 	Right primitive.String `json:"right,omitempty"`
 }

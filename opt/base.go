@@ -1,7 +1,7 @@
 package opt
 
 import (
-	"github.com/go-echarts/go-echarts/v2/core"
+	"github.com/go-echarts/go-echarts/v2/component"
 	"github.com/go-echarts/go-echarts/v2/primitive"
 	"github.com/go-echarts/go-echarts/v2/util"
 )
@@ -12,11 +12,11 @@ var DefaultColors = []string{
 
 // BaseConfiguration represents basic options set needed by all chart types.
 type BaseConfiguration struct {
-	*core.Container `json:"-"`
-	*Title          `json:"title,omitempty"`
-	*Legend         `json:"legend,omitempty,reserved"`
-	*Tooltip        `json:"tooltip,omitempty,reserved"`
-	*Toolbox        `json:"toolbox,omitempty"`
+	*component.Container `json:"-"`
+	*Title               `json:"title,omitempty"`
+	*Legend              `json:"legend,omitempty,reserved"`
+	*Tooltip             `json:"tooltip,omitempty,reserved"`
+	*Toolbox             `json:"toolbox,omitempty"`
 
 	Legends []primitive.String `json:"legends,omitempty"`
 	// Colors is the color list of palette.

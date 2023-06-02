@@ -27,7 +27,7 @@ func NewBaseLine() *charts.Line {
 		Restore:     &opt.ToolBoxFeatureRestore{},
 	}
 
-	// change container
+	// change component
 	line.Container.ChartID = "customId"
 	line.Container.Theme = "dark"
 	return line
