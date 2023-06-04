@@ -395,15 +395,13 @@ func WithMarkLineNameYAxisItemOpts(opt ...opts.MarkLineNameYAxisItem) SeriesOpts
 	}
 }
 
-// WithMarkAreaNameTypeItemOpts sets the type of the MarkArea.
-func WithMarkAreaNameTypeItemOpts(opt ...opts.MarkAreaNameTypeItem) SeriesOpts {
+// WithMarkAreaDataItem adds a row to data of the MarkArea.
+func WithMarkAreaDataItem(a, b opts.MarkAreaDataItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkAreas == nil {
 			s.MarkAreas = &opts.MarkAreas{}
 		}
-		for _, o := range opt {
-			s.MarkAreas.Data = append(s.MarkAreas.Data, o)
-		}
+		s.MarkAreas.Data = append(s.MarkAreas.Data, []interface{}{a, b})
 	}
 }
 
@@ -415,53 +413,6 @@ func WithMarkAreaStyleOpts(opt opts.MarkAreaStyle) SeriesOpts {
 		}
 
 		s.MarkAreas.MarkAreaStyle = opt
-	}
-}
-
-// WithMarkAreaNameCoordItemOpts sets the coordinates of the MarkLine.
-func WithMarkAreaNameCoordItemOpts(opt ...opts.MarkAreaNameCoordItem) SeriesOpts {
-	type MANameCoord struct {
-		Name      string          `json:"name,omitempty"`
-		ItemStyle *opts.ItemStyle `json:"itemStyle"`
-		Coord     []interface{}   `json:"coord"`
-	}
-	return func(s *SingleSeries) {
-		if s.MarkAreas == nil {
-			s.MarkAreas = &opts.MarkAreas{}
-		}
-		for _, o := range opt {
-			s.MarkAreas.Data = append(
-				s.MarkAreas.Data,
-				[]MANameCoord{
-					{Name: o.Name, ItemStyle: o.ItemStyle, Coord: o.Coordinate0},
-					{Coord: o.Coordinate1},
-				},
-			)
-		}
-	}
-}
-
-// WithMarkAreaNameXAxisItemOpts sets the X axis of the MarkLine.
-func WithMarkAreaNameXAxisItemOpts(opt ...opts.MarkAreaNameXAxisItem) SeriesOpts {
-	return func(s *SingleSeries) {
-		if s.MarkAreas == nil {
-			s.MarkAreas = &opts.MarkAreas{}
-		}
-		for _, o := range opt {
-			s.MarkAreas.Data = append(s.MarkAreas.Data, o)
-		}
-	}
-}
-
-// WithMarkAreaNameYAxisItemOpts sets the Y axis of the MarkLine.
-func WithMarkAreaNameYAxisItemOpts(opt ...opts.MarkAreaNameYAxisItem) SeriesOpts {
-	return func(s *SingleSeries) {
-		if s.MarkAreas == nil {
-			s.MarkAreas = &opts.MarkAreas{}
-		}
-		for _, o := range opt {
-			s.MarkAreas.Data = append(s.MarkAreas.Data, o)
-		}
 	}
 }
 
