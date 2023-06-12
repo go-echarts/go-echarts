@@ -416,8 +416,8 @@ func WithMarkAreaStyleOpts(opt opts.MarkAreaStyle) SeriesOpts {
 	}
 }
 
-// WithMarkPointNameTypeItemOpts sets the type of the MarkPoint.
-func WithMarkPointNameTypeItemOpts(opt ...opts.MarkPointNameTypeItem) SeriesOpts {
+// WithMarkPointDataItem sets the data of the MarkPoint.
+func WithMarkPointDataItem(opt ...opts.MarkPointDataItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkPoints == nil {
 			s.MarkPoints = &opts.MarkPoints{}
@@ -436,18 +436,6 @@ func WithMarkPointStyleOpts(opt opts.MarkPointStyle) SeriesOpts {
 		}
 
 		s.MarkPoints.MarkPointStyle = opt
-	}
-}
-
-// WithMarkPointNameCoordItemOpts sets the coordinated of the MarkPoint.
-func WithMarkPointNameCoordItemOpts(opt ...opts.MarkPointNameCoordItem) SeriesOpts {
-	return func(s *SingleSeries) {
-		if s.MarkPoints == nil {
-			s.MarkPoints = &opts.MarkPoints{}
-		}
-		for _, o := range opt {
-			s.MarkPoints.Data = append(s.MarkPoints.Data, o)
-		}
 	}
 }
 

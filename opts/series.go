@@ -335,8 +335,8 @@ type MarkPointStyle struct {
 	Label *Label `json:"label,omitempty"`
 }
 
-// MarkPointNameTypeItem represents type for a MarkPoint.
-type MarkPointNameTypeItem struct {
+// MarkPointDataItem represents data for a MarkPoint.
+type MarkPointDataItem struct {
 	// Name of markpoint
 	Name string `json:"name,omitempty"`
 
@@ -351,30 +351,16 @@ type MarkPointNameTypeItem struct {
 
 	// ItemStyle settings
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
-}
-
-// MarkPointNameCoordItem represents coordinates for a MarkPoint.
-type MarkPointNameCoordItem struct {
-	// Name of markpoint
-	Name string `json:"name,omitempty"`
 
 	// Mark point coordinate
+	// https://echarts.apache.org/en/option.html#series-candlestick.markPoint.data.coord
 	Coordinate []interface{} `json:"coord,omitempty"`
 
 	// Value in mark point
 	Value string `json:"value,omitempty"`
 
-	// Works only when type is assigned.
-	// It is used to state the dimension used to calculate maximum value or minimum value.
-	// It may be the direct name of a dimension, like x,
-	// or angle for line charts, or open, or close for candlestick charts.
-	ValueDim string `json:"valueDim,omitempty"`
-
 	// Mark point text options.
 	Label *Label `json:"label,omitempty"`
-
-	// ItemStyle settings
-	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 
 	// Symbol type
 	// Options: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
@@ -385,6 +371,23 @@ type MarkPointNameCoordItem struct {
 
 	// Symbol rotate.
 	SymbolRotate float32 `json:"symbolRotate,omitempty"`
+
+	// Y axis data
+	YAxis interface{} `json:"yAxis,omitempty"`
+
+	// X axis data
+	XAxis interface{} `json:"xAxis,omitempty"`
+
+	// x value on screen coordinate system, can be pixel number (like 5), or percent value (like '20%').
+	X interface{} `json:"x,omitempty"`
+
+	// y value on screen coordinate system, can be pixel number (like 5), or percent value (like '20%').
+	Y interface{} `json:"y,omitempty"`
+
+	// Emphasis settings in this series data.
+	Emphasis *Emphasis `json:"emphasis,omitempty"`
+
+	Blur *Blur `json:"blur,omitempty"`
 }
 
 // RippleEffect is the option set for the ripple effect.
