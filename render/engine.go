@@ -23,9 +23,7 @@ const (
 	ModPage  = "page"
 )
 
-var (
-	pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
-)
+var pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 
 type pageRender struct {
 	c      interface{}
@@ -105,12 +103,13 @@ func isSet(name string, data interface{}) bool {
 
 // MustTemplate creates a new template with the given name and parsed contents.
 func MustTemplate(name string, contents []string) *template.Template {
-	tpl := template.Must(template.New(name).Parse(contents[0])).Funcs(template.FuncMap{
+	tpl := template.New(name).Funcs(template.FuncMap{
 		"safeJS": func(s interface{}) template.JS {
 			return template.JS(fmt.Sprint(s))
 		},
 		"isSet": isSet,
 	})
+	tpl = template.Must(tpl.Parse(contents[0]))
 
 	for _, cont := range contents[1:] {
 		tpl = template.Must(tpl.Parse(cont))
