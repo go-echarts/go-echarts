@@ -679,6 +679,14 @@ type XAxis struct {
 	// Name of axis.
 	Name string `json:"name,omitempty"`
 
+	// Location of axis name.
+	//
+	// Options:
+	// 'start'
+	// 'middle' or 'center'
+	// 'end'
+	NameLocation string `json:"nameLocation,omitempty"`
+
 	// Type of axis.
 	// Option:
 	// * 'value': Numerical axis, suitable for continuous data.
@@ -750,6 +758,14 @@ type XAxis struct {
 type YAxis struct {
 	// Name of axis.
 	Name string `json:"name,omitempty"`
+
+	// Location of axis name.
+	//
+	// Options:
+	// 'start'
+	// 'middle' or 'center'
+	// 'end'
+	NameLocation string `json:"nameLocation,omitempty"`
 
 	// Type of axis.
 	// Option:
