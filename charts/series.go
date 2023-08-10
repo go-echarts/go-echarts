@@ -32,11 +32,18 @@ type SingleSeries struct {
 	Draggable          bool        `json:"draggable,omitempty"`
 	FocusNodeAdjacency bool        `json:"focusNodeAdjacency,omitempty"`
 
+	// KLine
+	BarWidth    string `json:"barWidth,omitempty"`
+	BarMinWidth string `json:"barMinWidth,omitempty"`
+	BarMaxWidth string `json:"barMaxWidth,omitempty"`
+
 	// Line
 	Step         interface{} `json:"step,omitempty"`
 	Smooth       bool        `json:"smooth"`
 	ConnectNulls bool        `json:"connectNulls"`
 	ShowSymbol   bool        `json:"showSymbol"`
+	Symbol       string      `json:"symbol,omitempty"`
+	Color        string      `json:"color,omitempty"`
 
 	// Liquid
 	IsLiquidOutline bool `json:"outline,omitempty"`
@@ -52,7 +59,7 @@ type SingleSeries struct {
 	Radius   interface{} `json:"radius,omitempty"`
 
 	// Scatter
-	SymbolSize float32 `json:"symbolSize,omitempty"`
+	SymbolSize interface{} `json:"symbolSize,omitempty"`
 
 	// Tree
 	Orient            string      `json:"orient,omitempty"`
@@ -79,7 +86,7 @@ type SingleSeries struct {
 	Sort                    string `json:"sort,omitempty"`
 	RenderLabelForZeroData  bool   `json:"renderLabelForZeroData"`
 	SelectedMode            bool   `json:"selectedMode"`
-	Animation               bool   `json:"animation"`
+	Animation               bool   `json:"animation" default:"true"`
 	AnimationThreshold      int    `json:"animationThreshold,omitempty"`
 	AnimationDuration       int    `json:"animationDuration,omitempty"`
 	AnimationEasing         string `json:"animationEasing,omitempty"`
@@ -89,7 +96,8 @@ type SingleSeries struct {
 	AnimationDelayUpdate    int    `json:"animationDelayUpdate,omitempty"`
 
 	// series data
-	Data interface{} `json:"data"`
+	Data         interface{} `json:"data,omitempty"`
+	DatasetIndex int         `json:"datasetIndex,omitempty"`
 
 	// series options
 	*opts.Encode        `json:"encode,omitempty"`
@@ -108,6 +116,12 @@ type SingleSeries struct {
 }
 
 type SeriesOpts func(s *SingleSeries)
+
+func WithSeriesAnimation(enable bool) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.Animation = enable
+	}
+}
 
 // WithLabelOpts sets the label.
 func WithLabelOpts(opt opts.Label) SeriesOpts {
@@ -222,10 +236,22 @@ func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 		s.Stack = opt.Stack
 		s.Smooth = opt.Smooth
 		s.ShowSymbol = opt.ShowSymbol
+		s.Symbol = opt.Symbol
+		s.SymbolSize = opt.SymbolSize
 		s.Step = opt.Step
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
 		s.ConnectNulls = opt.ConnectNulls
+		s.Color = opt.Color
+	}
+}
+
+// WithLineChartOpts sets the LineChart option.
+func WithKlineChartOpts(opt opts.KlineChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.BarWidth = opt.BarWidth
+		s.BarMinWidth = opt.BarMinWidth
+		s.BarMaxWidth = opt.BarMaxWidth
 	}
 }
 
@@ -337,7 +363,10 @@ func WithMarkLineNameCoordItemOpts(opt ...opts.MarkLineNameCoordItem) SeriesOpts
 			s.MarkLines = &opts.MarkLines{}
 		}
 		for _, o := range opt {
-			s.MarkLines.Data = append(s.MarkLines.Data, []MLNameCoord{{Name: o.Name, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
+			s.MarkLines.Data = append(
+				s.MarkLines.Data,
+				[]MLNameCoord{{Name: o.Name, Coord: o.Coordinate0}, {Coord: o.Coordinate1}},
+			)
 		}
 	}
 }
@@ -401,7 +430,13 @@ func WithMarkAreaNameCoordItemOpts(opt ...opts.MarkAreaNameCoordItem) SeriesOpts
 			s.MarkAreas = &opts.MarkAreas{}
 		}
 		for _, o := range opt {
-			s.MarkAreas.Data = append(s.MarkAreas.Data, []MANameCoord{{Name: o.Name, ItemStyle: o.ItemStyle, Coord: o.Coordinate0}, {Coord: o.Coordinate1}})
+			s.MarkAreas.Data = append(
+				s.MarkAreas.Data,
+				[]MANameCoord{
+					{Name: o.Name, ItemStyle: o.ItemStyle, Coord: o.Coordinate0},
+					{Coord: o.Coordinate1},
+				},
+			)
 		}
 	}
 }
@@ -465,6 +500,12 @@ func WithMarkPointNameCoordItemOpts(opt ...opts.MarkPointNameCoordItem) SeriesOp
 	}
 }
 
+func (s *SingleSeries) InitSeriesDefaultOpts(c BaseConfiguration) {
+	opts.SetDefaultValue(s)
+	// some special inherited options from BaseConfiguration
+	s.Animation = c.Animation
+}
+
 func (s *SingleSeries) ConfigureSeriesOpts(options ...SeriesOpts) {
 	for _, opt := range options {
 		opt(s)
@@ -492,5 +533,12 @@ func (ms *MultiSeries) SetSeriesOptions(opts ...SeriesOpts) {
 func WithEncodeOpts(opt opts.Encode) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Encode = &opt
+	}
+}
+
+// WithDatasetIndex sets the datasetIndex option.
+func WithDatasetIndex(index int) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.DatasetIndex = index
 	}
 }

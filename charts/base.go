@@ -23,7 +23,6 @@ type BaseConfiguration struct {
 	opts.Tooltip      `json:"tooltip"`
 	opts.Toolbox      `json:"toolbox"`
 	opts.Title        `json:"title"`
-	opts.Dataset      `json:"dataset"`
 	opts.Polar        `json:"polar"`
 	opts.AngleAxis    `json:"angleAxis"`
 	opts.RadiusAxis   `json:"radiusAxis"`
@@ -54,6 +53,12 @@ type BaseConfiguration struct {
 	// from this list as the colors of series.
 	Colors      []string
 	appendColor []string // append customize color to the Colors(reverse order)
+
+	// Animation whether enable the animation, default true
+	Animation bool `json:"animation" default:"true"`
+
+	// Array of datasets, managed by AddDataset()
+	DatasetList []opts.Dataset `json:"dataset,omitempty"`
 
 	DataZoomList  []opts.DataZoom  `json:"datazoom,omitempty"`
 	VisualMapList []opts.VisualMap `json:"visualmap,omitempty"`
@@ -111,15 +116,23 @@ func (ba *BaseActions) JSONNotEscapedAction() template.HTML {
 
 func (bc *BaseConfiguration) json() map[string]interface{} {
 	obj := map[string]interface{}{
-		"title":   bc.Title,
-		"legend":  bc.Legend,
-		"tooltip": bc.Tooltip,
-		"series":  bc.MultiSeries,
-		"dataset": bc.Dataset,
+		"title":     bc.Title,
+		"legend":    bc.Legend,
+		"animation": bc.Animation,
+		"tooltip":   bc.Tooltip,
+		"series":    bc.MultiSeries,
+	}
+	// if only one item, use it directly instead of an Array
+	if len(bc.DatasetList) == 1 {
+		obj["dataset"] = bc.DatasetList[0]
+	} else if len(bc.DatasetList) > 1 {
+		obj["dataset"] = bc.DatasetList
+
 	}
 	if bc.AxisPointer != nil {
 		obj["axisPointer"] = bc.AxisPointer
 	}
+
 	if bc.hasPolar {
 		obj["polar"] = bc.Polar
 		obj["angleAxis"] = bc.AngleAxis
@@ -191,11 +204,22 @@ func (bc *BaseConfiguration) GetAssets() opts.Assets {
 	return bc.Assets
 }
 
+// AddDataset adds a Dataset to this chart
+func (bc *BaseConfiguration) AddDataset(dataset ...opts.Dataset) {
+	bc.DatasetList = append(bc.DatasetList, dataset...)
+}
+
+// FillDefaultValues fill default values for chart options.
+func (bc *BaseConfiguration) FillDefaultValues() {
+	opts.SetDefaultValue(bc)
+}
+
 func (bc *BaseConfiguration) initBaseConfiguration() {
 	bc.initSeriesColors()
 	bc.InitAssets()
 	bc.initXYAxis()
 	bc.Initialization.Validate()
+	bc.FillDefaultValues()
 }
 
 func (bc *BaseConfiguration) initSeriesColors() {
@@ -281,6 +305,13 @@ func WithPolarOps(opt opts.Polar) GlobalOpts {
 func WithTitleOpts(opt opts.Title) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Title = opt
+	}
+}
+
+// WithAnimation enable or disable the animation.
+func WithAnimation() GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.Animation = false
 	}
 }
 

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"html/template"
 	"io"
+	"reflect"
 	"regexp"
 
 	tpls "github.com/go-echarts/go-echarts/v2/templates"
@@ -22,9 +23,7 @@ const (
 	ModPage  = "page"
 )
 
-var (
-	pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
-)
+var pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 
 type pageRender struct {
 	c      interface{}
@@ -86,13 +85,31 @@ func (r *chartRender) Render(w io.Writer) error {
 	return err
 }
 
+// isSet check if the field exist in the chart instance
+// Shamed copy from https://stackoverflow.com/questions/44675087/golang-template-variable-isset
+func isSet(name string, data interface{}) bool {
+	v := reflect.ValueOf(data)
+
+	if v.Kind() == reflect.Ptr {
+		v = v.Elem()
+	}
+
+	if v.Kind() != reflect.Struct {
+		return false
+	}
+
+	return v.FieldByName(name).IsValid()
+}
+
 // MustTemplate creates a new template with the given name and parsed contents.
 func MustTemplate(name string, contents []string) *template.Template {
-	tpl := template.Must(template.New(name).Parse(contents[0])).Funcs(template.FuncMap{
+	tpl := template.New(name).Funcs(template.FuncMap{
 		"safeJS": func(s interface{}) template.JS {
 			return template.JS(fmt.Sprint(s))
 		},
+		"isSet": isSet,
 	})
+	tpl = template.Must(tpl.Parse(contents[0]))
 
 	for _, cont := range contents[1:] {
 		tpl = template.Must(tpl.Parse(cont))

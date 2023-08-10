@@ -324,6 +324,31 @@ type LineChart struct {
 
 	// Whether to show symbol. It would be shown during tooltip hover.
 	ShowSymbol bool
+
+	// Icon types provided by ECharts includes
+	//  'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	// Full documentation: https://echarts.apache.org/en/option.html#series-line.symbol
+	Symbol string
+
+	// symbol size. It can be set to single numbers like 10, or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10.
+	// Full documentation: https://echarts.apache.org/en/option.html#series-line.symbolSize
+	SymbolSize interface{}
+
+	// color for Line series. it affects Line series including symbols, unlike LineStyle.Color
+	Color string
+}
+
+// LineChart is the options set for a chandlestick chart.
+// https://echarts.apache.org/en/option.html#series-candlestick
+type KlineChart struct {
+	// Specify bar width. Absolute value (like 10) or percentage (like '20%', according to band width) can be used. Auto adapt by default.
+	BarWidth string
+
+	// Specify bar min width. Absolute value (like 10) or percentage (like '20%', according to band width) can be used. Auto adapt by default.
+	BarMinWidth string
+
+	// Specify bar max width. Absolute value (like 10) or percentage (like '20%', according to band width) can be used. Auto adapt by default.
+	BarMaxWidth string
 }
 
 // LineData
