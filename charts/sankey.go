@@ -13,7 +13,7 @@ type Sankey struct {
 }
 
 // Type returns the chart type.
-func (Sankey) Type() string { return types.ChartSankey }
+func (*Sankey) Type() string { return types.ChartSankey }
 
 // NewSankey creates a new sankey chart.
 func NewSankey() *Sankey {

@@ -13,7 +13,7 @@ type TreeMap struct {
 }
 
 // Type returns the chart type.
-func (TreeMap) Type() string { return types.ChartTreeMap }
+func (*TreeMap) Type() string { return types.ChartTreeMap }
 
 // NewTreeMap creates a new TreeMap chart instance.
 func NewTreeMap() *TreeMap {

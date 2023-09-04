@@ -16,7 +16,7 @@ type Geo struct {
 }
 
 // Type returns the chart type.
-func (Geo) Type() string { return types.ChartGeo }
+func (*Geo) Type() string { return types.ChartGeo }
 
 var geoFormatter = `function (params) {
 		return params.name + ' : ' + params.value[2];

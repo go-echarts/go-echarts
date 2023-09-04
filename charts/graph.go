@@ -13,7 +13,7 @@ type Graph struct {
 }
 
 // Type returns the chart type.
-func (Graph) Type() string { return types.ChartGraph }
+func (*Graph) Type() string { return types.ChartGraph }
 
 // NewGraph creates a new graph chart.
 func NewGraph() *Graph {

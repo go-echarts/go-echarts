@@ -244,9 +244,9 @@ func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
 	}
 }
 
-func (bc *BaseActions) setBaseGlobalActions(opts ...GlobalActions) {
+func (ba *BaseActions) setBaseGlobalActions(opts ...GlobalActions) {
 	for _, opt := range opts {
-		opt(bc)
+		opt(ba)
 	}
 }
 

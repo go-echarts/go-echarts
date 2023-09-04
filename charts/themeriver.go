@@ -13,7 +13,7 @@ type ThemeRiver struct {
 }
 
 // Type returns the chart type.
-func (ThemeRiver) Type() string { return types.ChartThemeRiver }
+func (*ThemeRiver) Type() string { return types.ChartThemeRiver }
 
 // NewThemeRiver creates a new theme river chart.
 func NewThemeRiver() *ThemeRiver {

@@ -14,7 +14,7 @@ type Bar struct {
 }
 
 // Type returns the chart type.
-func (Bar) Type() string { return types.ChartBar }
+func (*Bar) Type() string { return types.ChartBar }
 
 // NewBar creates a new bar chart instance.
 func NewBar() *Bar {

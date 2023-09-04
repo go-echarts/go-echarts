@@ -12,7 +12,7 @@ type Line struct {
 }
 
 // Type returns the chart type.
-func (Line) Type() string { return types.ChartLine }
+func (*Line) Type() string { return types.ChartLine }
 
 // NewLine creates a new line chart.
 func NewLine() *Line {

@@ -12,7 +12,7 @@ type Bar3D struct {
 }
 
 // Type returns the chart type.
-func (Bar3D) Type() string { return types.ChartBar3D }
+func (*Bar3D) Type() string { return types.ChartBar3D }
 
 // NewBar3D creates a new 3D bar chart.
 func NewBar3D() *Bar3D {

@@ -12,7 +12,7 @@ type Scatter3D struct {
 }
 
 // Type returns the chart type.
-func (Scatter3D) Type() string { return types.ChartScatter3D }
+func (*Scatter3D) Type() string { return types.ChartScatter3D }
 
 // NewScatter3D creates a new 3D scatter chart.
 func NewScatter3D() *Scatter3D {
