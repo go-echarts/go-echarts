@@ -31,6 +31,7 @@ type SingleSeries struct {
 	EdgeLabel          interface{} `json:"edgeLabel,omitempty"`
 	Draggable          bool        `json:"draggable,omitempty"`
 	FocusNodeAdjacency bool        `json:"focusNodeAdjacency,omitempty"`
+	SymbolKeepAspect   bool        `json:"symbolKeepAspect,omitempty"`
 
 	// KLine
 	BarWidth    string `json:"barWidth,omitempty"`
@@ -218,6 +219,7 @@ func WithGraphChartOpts(opt opts.GraphChart) SeriesOpts {
 		s.FocusNodeAdjacency = opt.FocusNodeAdjacency
 		s.Categories = opt.Categories
 		s.EdgeLabel = opt.EdgeLabel
+		s.SymbolKeepAspect = opt.SymbolKeepAspect
 	}
 }
 

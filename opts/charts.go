@@ -201,6 +201,9 @@ type GraphChart struct {
 
 	// EdgeLabel is the properties of an label of edge.
 	EdgeLabel *EdgeLabel `json:"edgeLabel"`
+
+	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
+	SymbolKeepAspect bool
 }
 
 // GraphNode represents a data node in graph chart.
