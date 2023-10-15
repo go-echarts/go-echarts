@@ -239,6 +239,9 @@ type GraphNode struct {
 
 	// The style of this node.
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	// The tooltip of this node.
+	Tooltip *Tooltip `json:"tooltip,omitempty"`
 }
 
 // GraphLink represents relationship between two data nodes.
