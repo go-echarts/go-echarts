@@ -488,6 +488,9 @@ type RadarData struct {
 
 	// Value of a single data item.
 	Value interface{} `json:"value,omitempty"`
+
+	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
+	SymbolKeepAspect bool
 }
 
 // SankeyLink represents relationship between two data nodes.
