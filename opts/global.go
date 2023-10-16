@@ -12,6 +12,11 @@ import (
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
+const (
+	EchartsJS             = "echarts.min.js"
+	Compatible3DEchartsJS = "echarts@4.min.js"
+)
+
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }
@@ -1274,7 +1279,7 @@ type Assets struct {
 
 // InitAssets inits the static assets storage.
 func (opt *Assets) InitAssets() {
-	opt.JSAssets.Init("echarts.min.js")
+	opt.JSAssets.Init(EchartsJS)
 	opt.CSSAssets.Init()
 
 	opt.CustomizedJSAssets.Init()
