@@ -245,6 +245,7 @@ func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 		s.YAxisIndex = opt.YAxisIndex
 		s.ConnectNulls = opt.ConnectNulls
 		s.Color = opt.Color
+		s.SymbolKeepAspect = opt.SymbolKeepAspect
 	}
 }
 
@@ -271,6 +272,7 @@ func WithScatterChartOpts(opt opts.ScatterChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
+		s.SymbolKeepAspect = opt.SymbolKeepAspect
 	}
 }
 
@@ -304,6 +306,7 @@ func WithTreeOpts(opt opts.TreeChart) SeriesOpts {
 		s.Left = opt.Left
 		s.Top = opt.Top
 		s.Bottom = opt.Bottom
+		s.SymbolKeepAspect = opt.SymbolKeepAspect
 	}
 }
 
