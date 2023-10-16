@@ -19,5 +19,25 @@ func (o *OrderedSet) Add(item string) {
 	if !o.filter[item] {
 		o.filter[item] = true
 		o.Values = append(o.Values, item)
+	} else {
+		idx := indexOf(item, o.Values)
+		o.Values[idx] = item
 	}
+}
+
+func (o *OrderedSet) Remove(item string) {
+	if o.filter[item] {
+		o.filter[item] = false
+		idx := indexOf(item, o.Values)
+		o.Values = append(o.Values[:idx], o.Values[idx+1:]...)
+	}
+}
+
+func indexOf(element string, data []string) int {
+	for k, v := range data {
+		if element == v {
+			return k
+		}
+	}
+	return -1
 }
