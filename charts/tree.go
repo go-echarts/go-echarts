@@ -13,7 +13,7 @@ type Tree struct {
 }
 
 // Type returns the chart type.
-func (Tree) Type() string { return types.ChartTree }
+func (*Tree) Type() string { return types.ChartTree }
 
 // NewTree creates a new Tree chart instance.
 func NewTree() *Tree {

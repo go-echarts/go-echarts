@@ -12,7 +12,7 @@ type Kline struct {
 }
 
 // Type returns the chart type.
-func (Kline) Type() string { return types.ChartKline }
+func (*Kline) Type() string { return types.ChartKline }
 
 // NewKLine creates a new kline chart.
 func NewKLine() *Kline {

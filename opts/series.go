@@ -613,7 +613,6 @@ func HSLAColor(h, s, l, a float32) string {
 // EdgeLabel is the properties of an label of edge.
 // https://echarts.apache.org/en/option.html#series-graph.edgeLabel
 type EdgeLabel struct {
-
 	// Show is true to show label on edge.
 	Show bool `json:"show,omitempty"`
 
@@ -685,4 +684,14 @@ type Encode struct {
 	X interface{} `json:"x"`
 
 	Y interface{} `json:"y"`
+
+	Tooltip interface{} `json:"tooltip,omitempty"`
+
+	SeriesName interface{} `json:"seriesName,omitempty"`
+
+	ItemID interface{} `json:"itemId,omitempty"`
+
+	ItemName interface{} `json:"itemName,omitempty"`
+
+	ItemGroupID interface{} `json:"itemGroupId,omitempty"`
 }

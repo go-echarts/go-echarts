@@ -12,7 +12,7 @@ type Scatter struct {
 }
 
 // Type returns the chart type.
-func (Scatter) Type() string { return types.ChartScatter }
+func (*Scatter) Type() string { return types.ChartScatter }
 
 // NewScatter creates a new scatter chart.
 func NewScatter() *Scatter {

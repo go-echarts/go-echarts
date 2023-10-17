@@ -13,7 +13,7 @@ type Gauge struct {
 }
 
 // Type returns the chart type.
-func (Gauge) Type() string { return types.ChartGauge }
+func (*Gauge) Type() string { return types.ChartGauge }
 
 // NewGauge creates a new gauge chart.
 func NewGauge() *Gauge {

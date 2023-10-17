@@ -12,6 +12,11 @@ import (
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
+const (
+	EchartsJS             = "echarts.min.js"
+	Compatible3DEchartsJS = "echarts@4.min.js"
+)
+
 func init() {
 	rand.Seed(time.Now().UnixNano())
 }
@@ -679,6 +684,14 @@ type XAxis struct {
 	// Name of axis.
 	Name string `json:"name,omitempty"`
 
+	// Location of axis name.
+	//
+	// Options:
+	// 'start'
+	// 'middle' or 'center'
+	// 'end'
+	NameLocation string `json:"nameLocation,omitempty"`
+
 	// Type of axis.
 	// Option:
 	// * 'value': Numerical axis, suitable for continuous data.
@@ -750,6 +763,14 @@ type XAxis struct {
 type YAxis struct {
 	// Name of axis.
 	Name string `json:"name,omitempty"`
+
+	// Location of axis name.
+	//
+	// Options:
+	// 'start'
+	// 'middle' or 'center'
+	// 'end'
+	NameLocation string `json:"nameLocation,omitempty"`
 
 	// Type of axis.
 	// Option:
@@ -1258,7 +1279,7 @@ type Assets struct {
 
 // InitAssets inits the static assets storage.
 func (opt *Assets) InitAssets() {
-	opt.JSAssets.Init("echarts.min.js")
+	opt.JSAssets.Init(EchartsJS)
 	opt.CSSAssets.Init()
 
 	opt.CustomizedJSAssets.Init()

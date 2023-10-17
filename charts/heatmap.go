@@ -12,7 +12,7 @@ type HeatMap struct {
 }
 
 // Type returns the chart type.
-func (HeatMap) Type() string { return types.ChartHeatMap }
+func (*HeatMap) Type() string { return types.ChartHeatMap }
 
 // NewHeatMap creates a new heatmap chart.
 func NewHeatMap() *HeatMap {

@@ -12,7 +12,7 @@ type BoxPlot struct {
 }
 
 // Type returns the chart type.
-func (BoxPlot) Type() string { return types.ChartBoxPlot }
+func (*BoxPlot) Type() string { return types.ChartBoxPlot }
 
 // NewBoxPlot creates a new boxplot chart.
 func NewBoxPlot() *BoxPlot {

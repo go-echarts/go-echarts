@@ -13,7 +13,7 @@ type WordCloud struct {
 }
 
 // Type returns the chart type.
-func (WordCloud) Type() string { return types.ChartWordCloud }
+func (*WordCloud) Type() string { return types.ChartWordCloud }
 
 var wcTextColor = `function () {
 	return 'rgb(' + [

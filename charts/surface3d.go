@@ -12,7 +12,7 @@ type Surface3D struct {
 }
 
 // Type returns the chart type.
-func (Surface3D) Type() string { return types.ChartSurface3D }
+func (*Surface3D) Type() string { return types.ChartSurface3D }
 
 // NewSurface3D creates a new 3d surface chart.
 func NewSurface3D() *Surface3D {
