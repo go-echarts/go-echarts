@@ -10,6 +10,9 @@ import (
 type Radar struct {
 	BaseConfiguration
 	BaseActions
+
+	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
+	SymbolKeepAspect bool
 }
 
 // Type returns the chart type.
@@ -26,7 +29,7 @@ func NewRadar() *Radar {
 
 // AddSeries adds new data sets.
 func (c *Radar) AddSeries(name string, data []opts.RadarData, options ...SeriesOpts) *Radar {
-	series := SingleSeries{Name: name, Type: types.ChartRadar, Data: data}
+	series := SingleSeries{Name: name, Type: types.ChartRadar, Data: data, SymbolKeepAspect: c.SymbolKeepAspect}
 	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	c.legends = append(c.legends, name)

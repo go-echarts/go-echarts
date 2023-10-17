@@ -201,6 +201,9 @@ type GraphChart struct {
 
 	// EdgeLabel is the properties of an label of edge.
 	EdgeLabel *EdgeLabel `json:"edgeLabel"`
+
+	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
+	SymbolKeepAspect bool
 }
 
 // GraphNode represents a data node in graph chart.
@@ -339,6 +342,9 @@ type LineChart struct {
 
 	// color for Line series. it affects Line series including symbols, unlike LineStyle.Color
 	Color string
+
+	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
+	SymbolKeepAspect bool
 }
 
 // LineChart is the options set for a chandlestick chart.
@@ -521,6 +527,9 @@ type ScatterChart struct {
 
 	// Index of x axis to combine with, which is useful for multiple y axes in one chart.
 	YAxisIndex int
+
+	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
+	SymbolKeepAspect bool
 }
 
 // ScatterData
@@ -642,6 +651,9 @@ type TreeChart struct {
 	Right  string `json:"right,omitempty"`
 	Top    string `json:"top,omitempty"`
 	Bottom string `json:"bottom,omitempty"`
+
+	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
+	SymbolKeepAspect bool
 }
 
 type TreeData struct {
