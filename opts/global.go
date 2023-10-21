@@ -13,8 +13,9 @@ import (
 )
 
 const (
-	EchartsJS             = "echarts.min.js"
-	Compatible3DEchartsJS = "echarts@4.min.js"
+	EchartsJS = "echarts.min.js"
+	// CompatibleEchartsJS The 3d charts and 3rd charts not support in v5+ echarts version, back to v4 (v4.9.0)
+	CompatibleEchartsJS = "echarts@4.min.js"
 )
 
 func init() {

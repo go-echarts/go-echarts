@@ -27,6 +27,7 @@ func NewWordCloud() *WordCloud {
 	c := &WordCloud{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.JSAssets.Add(opts.CompatibleEchartsJS)
 	c.JSAssets.Add("echarts-wordcloud.min.js")
 	return c
 }

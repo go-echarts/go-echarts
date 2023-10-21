@@ -3,7 +3,6 @@ package components
 import (
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/render"
-	"strings"
 )
 
 type Layout string
@@ -49,7 +48,6 @@ func (page *Page) SetLayout(layout Layout) *Page {
 
 // AddCharts adds new charts to the page.
 func (page *Page) AddCharts(charts ...Charter) *Page {
-	page.compatibleEchartsResourcesFor3DChart()
 	for i := 0; i < len(charts); i++ {
 		assets := charts[i].GetAssets()
 		for _, v := range assets.JSAssets.Values {
@@ -69,14 +67,4 @@ func (page *Page) AddCharts(charts ...Charter) *Page {
 func (page *Page) Validate() {
 	page.Initialization.Validate()
 	page.Assets.Validate(page.AssetsHost)
-}
-
-// compatibleEchartsResourcesFor3DChart The 3D charts not work for echarts v5+, add v4+ resources
-func (page *Page) compatibleEchartsResourcesFor3DChart() {
-	for _, chart := range page.Charts {
-		chartType := chart.Type()
-		if strings.Contains(chartType, "3D") {
-			page.JSAssets.Add(opts.Compatible3DEchartsJS)
-		}
-	}
 }

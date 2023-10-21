@@ -20,6 +20,7 @@ func NewLiquid() *Liquid {
 	c := &Liquid{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.JSAssets.Add(opts.CompatibleEchartsJS)
 	c.JSAssets.Add("echarts-liquidfill.min.js")
 	return c
 }
