@@ -9,7 +9,7 @@ import (
 
 func TestWordCloudAssetsBeforeRender(t *testing.T) {
 	wc := NewWordCloud()
-	assert.Equal(t, []string{"echarts.min.js", "echarts-wordcloud.min.js"}, wc.JSAssets.Values)
+	assert.Equal(t, []string{"echarts.min.js", "echarts@v4.min.js", "echarts-wordcloud.min.js"}, wc.JSAssets.Values)
 }
 
 func TestWordCloudAssetsAfterRender(t *testing.T) {
