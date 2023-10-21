@@ -16,5 +16,5 @@ func TestWordCloudAssetsAfterRender(t *testing.T) {
 	wc := NewWordCloud()
 	err := wc.Render(ioutil.Discard)
 	assert.NoError(t, err)
-	assert.Equal(t, []string{host + "echarts.min.js", host + "echarts-wordcloud.min.js"}, wc.JSAssets.Values)
+	assert.Equal(t, []string{host + "echarts.min.js", host + "echarts@4.min.js", host + "echarts-wordcloud.min.js"}, wc.JSAssets.Values)
 }
