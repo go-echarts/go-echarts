@@ -487,7 +487,7 @@ type ToolBoxFeatureSaveAsImage struct {
 	// hen 'png' (default) and 'jpeg' are supported.
 	// If the renderer is set to be 'svg' when when chart initialized, then only 'svg' is supported
 	// for type ('svg' type is supported since v4.8.0).
-	Type string `json:"png,omitempty"`
+	Type string `json:"type,omitempty" default:"png"`
 
 	// Name to save the image, whose default value is title.text.
 	Name string `json:"name,omitempty"`
