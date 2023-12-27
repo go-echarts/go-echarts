@@ -28,6 +28,7 @@ type BaseConfiguration struct {
 	opts.RadiusAxis   `json:"radiusAxis"`
 	opts.Brush        `json:"brush"`
 	*opts.AxisPointer `json:"axisPointer"`
+	Calendar          []*opts.Calendar `json:"calendar"`
 
 	render.Renderer        `json:"-"`
 	opts.Initialization    `json:"-"`
@@ -194,6 +195,10 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 
 	if bc.hasBrush {
 		obj["brush"] = bc.Brush
+	}
+
+	if bc.Calendar != nil {
+		obj["calendar"] = bc.Calendar
 	}
 
 	return obj

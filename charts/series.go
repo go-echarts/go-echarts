@@ -118,6 +118,12 @@ type SingleSeries struct {
 
 type SeriesOpts func(s *SingleSeries)
 
+func WithCoordinateSystem(cs string) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.CoordSystem = cs
+	}
+}
+
 func WithSeriesAnimation(enable bool) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Animation = enable

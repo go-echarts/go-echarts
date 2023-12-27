@@ -37,6 +37,13 @@ func (c *HeatMap) AddSeries(name string, data []opts.HeatMapData, options ...Ser
 	return c
 }
 
+// AddCalendar adds the calendar configuration to the chart.
+func (c *HeatMap) AddCalendar(calendar ...*opts.Calendar) *HeatMap {
+	c.Calendar = append(c.Calendar, calendar...)
+	c.hasXYAxis = false
+	return c
+}
+
 // Validate validates the given configuration.
 func (c *HeatMap) Validate() {
 	c.Assets.Validate(c.AssetsHost)
