@@ -114,6 +114,9 @@ type SingleSeries struct {
 	*opts.AreaStyle     `json:"areaStyle,omitempty"`
 	*opts.TextStyle     `json:"textStyle,omitempty"`
 	*opts.CircularStyle `json:"circular,omitempty"`
+
+	// Calendar
+	CalendarIndex int `json:"calendarIndex,omitempty"`
 }
 
 type SeriesOpts func(s *SingleSeries)
@@ -121,6 +124,12 @@ type SeriesOpts func(s *SingleSeries)
 func WithCoordinateSystem(cs string) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.CoordSystem = cs
+	}
+}
+
+func WithCalendarIndex(index int) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.CalendarIndex = index
 	}
 }
 
