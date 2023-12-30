@@ -1337,8 +1337,8 @@ type Calendar struct {
 	// Height of grid component. Adaptive by default.
 	Height string `json:"height,omitempty"`
 
-	// Specify selected range, that is, the dataValue corresponding to the two handles.
-	Range []float32 `json:"range,omitempty"`
+	// Required, range of Calendar coordinates, support multiple formats.
+	Range []string `json:"range,omitempty"`
 
 	// The size of each rect of calendar coordinates.
 	CellSize string `json:"cellSize,omitempty"`
