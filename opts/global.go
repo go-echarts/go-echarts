@@ -693,6 +693,9 @@ type XAxis struct {
 	// 'end'
 	NameLocation string `json:"nameLocation,omitempty"`
 
+	// Gap between axis name and axis line.
+	NameGap int `json:"nameGap,omitempty"`
+
 	// Type of axis.
 	// Option:
 	// * 'value': Numerical axis, suitable for continuous data.
@@ -772,6 +775,9 @@ type YAxis struct {
 	// 'middle' or 'center'
 	// 'end'
 	NameLocation string `json:"nameLocation,omitempty"`
+
+	// Gap between axis name and axis line.
+	NameGap int `json:"nameGap,omitempty"`
 
 	// Type of axis.
 	// Option:
