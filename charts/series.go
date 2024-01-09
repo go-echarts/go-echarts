@@ -96,6 +96,9 @@ type SingleSeries struct {
 	AnimationEasingUpdate   string `json:"animationEasingUpdate,omitempty"`
 	AnimationDelayUpdate    int    `json:"animationDelayUpdate,omitempty"`
 
+	// Custom
+	RenderItem string `json:"renderItem,omitempty"`
+
 	// series data
 	Data         interface{} `json:"data,omitempty"`
 	DatasetIndex int         `json:"datasetIndex,omitempty"`
@@ -560,5 +563,14 @@ func WithEncodeOpts(opt opts.Encode) SeriesOpts {
 func WithDatasetIndex(index int) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.DatasetIndex = index
+	}
+}
+
+// WithCustomChartOpts sets the CustomChart option.
+func WithCustomChartOpts(opt opts.CustomChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.XAxisIndex = opt.XAxisIndex
+		s.YAxisIndex = opt.YAxisIndex
+		s.RenderItem = opt.RenderItem
 	}
 }
