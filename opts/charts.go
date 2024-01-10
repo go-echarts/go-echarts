@@ -736,3 +736,36 @@ type SunBurstData struct {
 	// sub item of data item
 	Children []*SunBurstData `json:"children,omitempty"`
 }
+
+// CustomChart is the options set for a custom chart.
+// https://echarts.apache.org/en/option.html#series-custom
+type CustomChart struct {
+	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
+	XAxisIndex int
+
+	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
+	YAxisIndex int
+
+	// Custom series requires developers to write a render logic by themselves in JavaScript.
+	// This render logic is called RenderItem. Use opts.FuncOpts to embed JavaScript.
+	RenderItem string
+}
+
+// CustomData
+// https://echarts.apache.org/en/option.html#series-custom.data
+type CustomData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+
+	// ItemStyle settings in this series data.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	// Emphasis settings in this series data.
+	Emphasis *Emphasis `json:"emphasis,omitempty"`
+
+	// Tooltip settings in this series data.
+	Tooltip *Tooltip `json:"tooltip,omitempty"`
+}

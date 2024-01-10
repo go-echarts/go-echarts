@@ -92,7 +92,7 @@ func (rc *RectChart) SetDispatchActions(options ...GlobalActions) *RectChart {
 
 // Overlap composes multiple charts into one single canvas.
 // It is only suited for some of the charts which are in rectangular coordinate.
-// Supported charts: Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
+// Supported charts: Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap/Custom
 func (rc *RectChart) Overlap(a ...Overlaper) {
 	for i := 0; i < len(a); i++ {
 		rc.MultiSeries = append(rc.MultiSeries, a[i].overlap()...)
