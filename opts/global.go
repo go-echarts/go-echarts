@@ -1,6 +1,8 @@
 package opts
 
 import (
+	"bytes"
+	"encoding/json"
 	"fmt"
 	"math/rand"
 	"reflect"
@@ -463,7 +465,7 @@ type ToolBoxFeature struct {
 	SaveAsImage *ToolBoxFeatureSaveAsImage `json:"saveAsImage,omitempty"`
 
 	// Data brush
-	Brush *ToolBoxFeatureBrush `json:"brush"`
+	Brush *ToolBoxFeatureBrush `json:"brush,omitempty"`
 
 	// Data area zooming, which only supports rectangular coordinate by now.
 	DataZoom *ToolBoxFeatureDataZoom `json:"dataZoom,omitempty"`
@@ -473,6 +475,64 @@ type ToolBoxFeature struct {
 
 	// Restore configuration item.
 	Restore *ToolBoxFeatureRestore `json:"restore,omitempty"`
+
+	// User-defined tools. They have to start with "my".
+	UserDefined map[string]ToolBoxFeatureUserDefined `json:"-"`
+}
+
+func (f ToolBoxFeature) MarshalJSON() ([]byte, error) {
+	type ToolBoxFeature_ ToolBoxFeature
+
+	buff := new(bytes.Buffer)
+	enc := json.NewEncoder(buff)
+	enc.SetEscapeHTML(false)
+
+	err := enc.Encode(ToolBoxFeature_(f))
+	if err != nil {
+		return nil, err
+	}
+	// Remove trailing newline.
+	buff.Truncate(buff.Len() - 1)
+
+	if len(f.UserDefined) == 0 {
+		return buff.Bytes(), nil
+	}
+
+	user := new(bytes.Buffer)
+	enc = json.NewEncoder(user)
+	enc.SetEscapeHTML(false)
+
+	err = enc.Encode(f.UserDefined)
+	if err != nil {
+		return nil, err
+	}
+	// Remove trailing newline.
+	user.Truncate(user.Len() - 1)
+
+	// Remove trailing "}".
+	buff.Truncate(buff.Len() - 1)
+	_, _ = buff.WriteString(",")
+	// Remove prefix "{".
+	_, _ = user.ReadByte()
+	// Copy user-defined tools over.
+	_, _ = buff.ReadFrom(user)
+	return buff.Bytes(), nil
+}
+
+// ToolBoxFeatureUserDefined is the option fro user-defined tools.
+// https://echarts.apache.org/en/option.html#toolbox.feature
+type ToolBoxFeatureUserDefined struct {
+	// Whether to show the tool.
+	Show bool `json:"show"`
+
+	// Title for the tool.
+	Title string `json:"title,omitempty"`
+
+	// Icon for the tool.
+	Icon string `json:"icon,omitempty"`
+
+	// On click handler in JavaScript. Use opts.FuncOpts to embed JavaScript.
+	OnClick string `json:"onclick,omitempty"`
 }
 
 // ToolBoxFeatureSaveAsImage is the option for saving chart as image.
