@@ -74,7 +74,7 @@ v1 and v2 are incompatible which means that you cannot upgrade go-echarts from v
 worth trying that new version.
 
 Especially, we choose release the `rc` version before a standard release.
-The `rc` version may contains little update changes, if you upgrade your projects cross the `rc` versions, maybe needs little adjust.
+The `rc` version may contains little update changes, if you upgrade your projects cross the `rc` versions, maybe need little adjust.
 
 ### ✨ Features
 
