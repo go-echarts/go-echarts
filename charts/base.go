@@ -3,6 +3,7 @@ package charts
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/go-echarts/go-echarts/v2/types"
 	"html/template"
 
 	"github.com/go-echarts/go-echarts/v2/actions"
@@ -56,7 +57,7 @@ type BaseConfiguration struct {
 	appendColor []string // append customize color to the Colors(reverse order)
 
 	// Animation whether enable the animation, default true
-	Animation bool `json:"animation" default:"true"`
+	Animation types.Bool `json:"animation,omitempty" default:"true"`
 
 	// Array of datasets, managed by AddDataset()
 	DatasetList []opts.Dataset `json:"dataset,omitempty"`
@@ -157,9 +158,7 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 		obj["singleAxis"] = bc.SingleAxis
 	}
 
-	if bc.Toolbox.Show {
-		obj["toolbox"] = bc.Toolbox
-	}
+	obj["toolbox"] = bc.Toolbox
 
 	if len(bc.DataZoomList) > 0 {
 		obj["dataZoom"] = bc.DataZoomList
@@ -316,7 +315,7 @@ func WithTitleOpts(opt opts.Title) GlobalOpts {
 // WithAnimation enable or disable the animation.
 func WithAnimation() GlobalOpts {
 	return func(bc *BaseConfiguration) {
-		bc.Animation = false
+		bc.Animation = opts.Bool(false)
 	}
 }
 

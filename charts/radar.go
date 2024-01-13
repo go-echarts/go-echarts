@@ -12,7 +12,7 @@ type Radar struct {
 	BaseActions
 
 	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
-	SymbolKeepAspect bool
+	SymbolKeepAspect types.Bool
 }
 
 // Type returns the chart type.

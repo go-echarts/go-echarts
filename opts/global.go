@@ -173,7 +173,7 @@ type Title struct {
 type Legend struct {
 	// Whether to show the Legend, default true.
 	// Once you set other options, need to manually set it to true
-	Show types.Bool `json:"show" default:"true"`
+	Show types.Bool `json:"show,omitempty" default:"true"`
 
 	// Type of legend. Optional values:
 	// "plain": Simple legend. (default)
@@ -222,7 +222,7 @@ type Legend struct {
 	// var selected = map[string]bool{}
 	// selected["series1"] = true
 	// selected["series2"] = false
-	Selected map[string]types.Bool `json:"selected,omitempty"`
+	Selected map[string]bool `json:"selected,omitempty"`
 
 	// Selected mode of legend, which controls whether series can be toggled displaying by clicking legends.
 	// It is enabled by default, and you may set it to be false to disabled it.
@@ -278,7 +278,7 @@ type Legend struct {
 // https://echarts.apache.org/en/option.html#tooltip
 type Tooltip struct {
 	// Whether to show the tooltip component, including tooltip floating layer and axisPointer.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Type of triggering.
 	// Options:
@@ -385,7 +385,7 @@ type AxisPointer struct {
 
 	Axis string `json:"axis,omitempty"`
 
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	Label *Label `json:"label,omitempty"`
 }
@@ -421,7 +421,7 @@ type BrushOutOfBrush struct {
 // https://echarts.apache.org/en/option.html#toolbox
 type Toolbox struct {
 	// Whether to show toolbox component.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// The layout orientation of toolbox's icon.
 	// Options: 'horizontal','vertical'
@@ -523,7 +523,7 @@ func (f ToolBoxFeature) MarshalJSON() ([]byte, error) {
 // https://echarts.apache.org/en/option.html#toolbox.feature
 type ToolBoxFeatureUserDefined struct {
 	// Whether to show the tool.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Title for the tool.
 	Title string `json:"title,omitempty"`
@@ -539,7 +539,7 @@ type ToolBoxFeatureUserDefined struct {
 // https://echarts.apache.org/en/option.html#toolbox.feature.saveAsImage
 type ToolBoxFeatureSaveAsImage struct {
 	// Whether to show the tool.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// toolbox.feature.saveAsImage. type = 'png'
 	// File suffix of the image saved.

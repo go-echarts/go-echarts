@@ -45,11 +45,11 @@ type SunburstChart struct {
 	// Sorting method that sectors use based on value
 	Sort string `json:"sort,omitempty"`
 	// If there is no name, whether need to render it.
-	RenderLabelForZeroData types.Bool `json:"renderLabelForZeroData"`
+	RenderLabelForZeroData types.Bool `json:"renderLabelForZeroData,omitempty"`
 	// Selected mode
-	SelectedMode types.Bool `json:"selectedMode"`
+	SelectedMode types.Bool `json:"selectedMode,omitempty"`
 	// Whether to enable animation.
-	Animation types.Bool `json:"animation"`
+	Animation types.Bool `json:"animation,omitempty"`
 	// Whether to set graphic number threshold to animation
 	AnimationThreshold int `json:"animationThreshold,omitempty"`
 	// Duration of the first animation
@@ -630,7 +630,7 @@ type TreeChart struct {
 	// Whether to enable mouse zooming and translating. false by default.
 	// If either zooming or translating is wanted, it can be set to 'scale' or 'move'.
 	// Otherwise, set it to be true to enable both.
-	Roam types.Bool `json:"roam"`
+	Roam types.Bool `json:"roam,omitempty"`
 
 	// Subtree collapses and expands interaction, default true.
 	ExpandAndCollapse types.Bool `json:"expandAndCollapse,omitempty"`
@@ -689,14 +689,14 @@ type TreeData struct {
 
 type TreeMapChart struct {
 	// Whether to enable animation.
-	Animation types.Bool `json:"animation"`
+	Animation types.Bool `json:"animation,omitempty"`
 
 	// leafDepth represents how many levels are shown at most. For example, when leafDepth is set to 1, only one level will be shown.
 	// leafDepth is null/undefined by default, which means that "drill down" is disabled.
 	LeafDepth int `json:"leafDeapth,omitempty"`
 
 	// Roam describes whether to enable mouse zooming and translating. false by default.
-	Roam types.Bool `json:"roam"`
+	Roam types.Bool `json:"roam,omitempty"`
 
 	// Label decribes the style of the label in each node.
 	Label *Label `json:"label,omitempty"`
