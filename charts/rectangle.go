@@ -105,7 +105,7 @@ func (rc *RectChart) Validate() {
 	rc.XAxisList[0].Data = rc.xAxisData
 	// Make sure that the labels of Y axis show correctly
 	for i := 0; i < len(rc.YAxisList); i++ {
-		rc.YAxisList[i].AxisLabel.Show = true
+		rc.YAxisList[i].AxisLabel.Show = opts.Bool(true)
 	}
 	rc.Assets.Validate(rc.AssetsHost)
 }
