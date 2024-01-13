@@ -1112,24 +1112,6 @@ type Calendar struct {
 	Silent types.Bool `json:"silent,omitempty"`
 }
 
-type PolarAxisBase struct {
-	ID           string     `json:"id,omitempty"`
-	PolarIndex   int        `json:"polarIndex,omitempty"`
-	StartAngle   float64    `json:"startAngle,omitempty"`
-	Type         string     `json:"type,omitempty"`
-	BoundaryGap  types.Bool `json:"boundaryGap,omitempty"`
-	Min          float64    `json:"min,omitempty"`
-	Max          float64    `json:"max,omitempty"`
-	Scale        types.Bool `json:"scale,omitempty"`
-	SplitNumber  int        `json:"splitNumber,omitempty"`
-	MinInterval  float64    `json:"minInterval,omitempty"`
-	MaxInterval  float64    `json:"maxInterval,omitempty"`
-	Interval     float64    `json:"interval,omitempty"`
-	LogBase      float64    `json:"logBase,omitempty"`
-	Silent       types.Bool `json:"silent,omitempty"`
-	TriggerEvent types.Bool `json:"triggerEvent,omitempty"`
-}
-
 var newlineTabPat = regexp.MustCompile(`\n|\t`)
 var commentPat = regexp.MustCompile(`(//.*)\n`)
 
