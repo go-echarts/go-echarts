@@ -173,7 +173,7 @@ type Title struct {
 type Legend struct {
 	// Whether to show the Legend, default true.
 	// Once you set other options, need to manually set it to true
-	Show bool `json:"show" default:"true"`
+	Show types.Bool `json:"show" default:"true"`
 
 	// Type of legend. Optional values:
 	// "plain": Simple legend. (default)
@@ -222,7 +222,7 @@ type Legend struct {
 	// var selected = map[string]bool{}
 	// selected["series1"] = true
 	// selected["series2"] = false
-	Selected map[string]bool `json:"selected,omitempty"`
+	Selected map[string]types.Bool `json:"selected,omitempty"`
 
 	// Selected mode of legend, which controls whether series can be toggled displaying by clicking legends.
 	// It is enabled by default, and you may set it to be false to disabled it.
@@ -278,7 +278,7 @@ type Legend struct {
 // https://echarts.apache.org/en/option.html#tooltip
 type Tooltip struct {
 	// Whether to show the tooltip component, including tooltip floating layer and axisPointer.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// Type of triggering.
 	// Options:
@@ -300,7 +300,7 @@ type Tooltip struct {
 
 	// Whether mouse is allowed to enter the floating layer of tooltip, whose default value is false.
 	// If you need to interact in the tooltip like with links or buttons, it can be set as true.
-	Enterable bool `json:"enterable,omitempty"`
+	Enterable types.Bool `json:"enterable,omitempty"`
 
 	// The content formatter of tooltip's floating layer which supports string template and callback function.
 	//
@@ -379,13 +379,13 @@ type AxisPointer struct {
 
 	// 	Whether snap to point automatically. The default value is auto determined.
 	// This feature usually makes sense in value axis and time axis, where tiny points can be seeked automatically.
-	Snap bool `json:"snap,omitempty"`
+	Snap types.Bool `json:"snap,omitempty"`
 
 	Link []AxisPointerLink `json:"link,omitempty"`
 
 	Axis string `json:"axis,omitempty"`
 
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	Label *Label `json:"label,omitempty"`
 }
@@ -421,7 +421,7 @@ type BrushOutOfBrush struct {
 // https://echarts.apache.org/en/option.html#toolbox
 type Toolbox struct {
 	// Whether to show toolbox component.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// The layout orientation of toolbox's icon.
 	// Options: 'horizontal','vertical'
@@ -523,7 +523,7 @@ func (f ToolBoxFeature) MarshalJSON() ([]byte, error) {
 // https://echarts.apache.org/en/option.html#toolbox.feature
 type ToolBoxFeatureUserDefined struct {
 	// Whether to show the tool.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// Title for the tool.
 	Title string `json:"title,omitempty"`
@@ -539,7 +539,7 @@ type ToolBoxFeatureUserDefined struct {
 // https://echarts.apache.org/en/option.html#toolbox.feature.saveAsImage
 type ToolBoxFeatureSaveAsImage struct {
 	// Whether to show the tool.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// toolbox.feature.saveAsImage. type = 'png'
 	// File suffix of the image saved.
@@ -574,7 +574,7 @@ type ToolBoxFeatureBrush struct {
 // https://echarts.apache.org/en/option.html#toolbox.feature.dataZoom
 type ToolBoxFeatureDataZoom struct {
 	// Whether to show the tool.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	//Defines which yAxis should be controlled. By default, it controls all y axes.
 	//If it is set to be false, then no y axis is controlled.
@@ -592,7 +592,7 @@ type ToolBoxFeatureDataZoom struct {
 // https://echarts.apache.org/en/option.html#toolbox.feature.dataView
 type ToolBoxFeatureDataView struct {
 	// Whether to show the tool.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// title for the tool.
 	Title string `json:"title,omitempty"`
@@ -609,7 +609,7 @@ type ToolBoxFeatureDataView struct {
 // https://echarts.apache.org/en/option.html#toolbox.feature.restore
 type ToolBoxFeatureRestore struct {
 	// Whether to show the tool.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// title for the tool.
 	Title string `json:"title,omitempty"`
@@ -619,7 +619,7 @@ type ToolBoxFeatureRestore struct {
 // https://echarts.apache.org/en/option.html#xAxis.axisLabel
 type AxisLabel struct {
 	// Set this to false to prevent the axis label from appearing.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// Interval of Axis label, which is available in category axis.
 	// It uses a strategy that labels do not overlap by default.
@@ -629,7 +629,7 @@ type AxisLabel struct {
 	Interval string `json:"interval,omitempty"`
 
 	// Set this to true so the axis labels face the inside direction.
-	Inside bool `json:"inside,omitempty"`
+	Inside types.Bool `json:"inside,omitempty"`
 
 	// Rotation degree of axis label, which is especially useful when there is no enough space for category axis.
 	// Rotation degree is from -90 to 90.
@@ -659,8 +659,8 @@ type AxisLabel struct {
 	// }
 	Formatter string `json:"formatter,omitempty"`
 
-	ShowMinLabel bool `json:"showMinLabel"`
-	ShowMaxLabel bool `json:"showMaxLabel"`
+	ShowMinLabel types.Bool `json:"showMinLabel"`
+	ShowMaxLabel types.Bool `json:"showMaxLabel"`
 
 	// Color of axis label is set to be axisLine.lineStyle.color by default. Callback function is supported,
 	// in the following format:
@@ -695,30 +695,30 @@ type AxisLabel struct {
 
 type AxisTick struct {
 	// Set this to false to prevent the axis tick from showing.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// interval of axisTick, which is available in category axis. is set to be the same as axisLabel.interval by default.
 	// It uses a strategy that labels do not overlap by default.
 	// You may set it to be 0 to display all labels compulsively.
 	// If it is set to be 1, it means that labels are shown once after one label. And if it is set to be 2, it means labels are shown once after two labels, and so on.
 	// On the other hand, you can control by callback function, whose format is shown below:
-	// (index:number, value: string) => boolean
+	// (index:number, value: string) => types.Boolean
 	// The first parameter is index of category, and the second parameter is the name of category. The return values decides whether to display label.
 	Interval string `json:"interval,omitempty"`
 
 	// Align axis tick with label, which is available only when boundaryGap is set to be true in category axis.
-	AlignWithLabel bool `json:"alignWithLabel,omitempty"`
+	AlignWithLabel types.Bool `json:"alignWithLabel,omitempty"`
 }
 
 // AxisLine controls settings related to axis line.
 // https://echarts.apache.org/en/option.html#yAxis.axisLine
 type AxisLine struct {
 	// Set this to false to prevent the axis line from showing.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// Specifies whether X or Y axis lies on the other's origin position, where value is 0 on axis.
 	// Valid only if the other axis is of value type, and contains 0 value.
-	OnZero bool `json:"onZero,omitempty"`
+	OnZero types.Bool `json:"onZero,omitempty"`
 
 	// When multiple axes exists, this option can be used to specify which axis can be "onZero" to.
 	OnZeroAxisIndex int `json:"onZeroAxisIndex,omitempty"`
@@ -769,7 +769,7 @@ type XAxis struct {
 	Type string `json:"type,omitempty"`
 
 	// Set this to false to prevent the axis from showing.
-	Show bool `json:"show,omitempty"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Category data, available in type: 'category' axis.
 	Data interface{} `json:"data,omitempty"`
@@ -784,7 +784,7 @@ type XAxis struct {
 	// When it is set to be true, the axis may not contain zero position,
 	// which is useful in the scatter chart for both value axes.
 	// This configuration item is unavailable when the min and max are set.
-	Scale bool `json:"scale,omitempty"`
+	Scale types.Bool `json:"scale,omitempty"`
 
 	// The minimum value of axis.
 	// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
@@ -852,7 +852,7 @@ type YAxis struct {
 	Type string `json:"type,omitempty"`
 
 	// Set this to false to prevent the axis from showing.
-	Show bool `json:"show,omitempty"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Category data, available in type: 'category' axis.
 	Data interface{} `json:"data,omitempty"`
@@ -867,7 +867,7 @@ type YAxis struct {
 	// When it is set to be true, the axis may not contain zero position,
 	// which is useful in the scatter chart for both value axes.
 	// This configuration item is unavailable when the min and max are set.
-	Scale bool `json:"scale,omitempty"`
+	Scale types.Bool `json:"scale,omitempty"`
 
 	// The minimum value of axis.
 	// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
@@ -927,7 +927,7 @@ type TextStyle struct {
 // SplitArea is the option set for a split area.
 type SplitArea struct {
 	// Set this to true to show the splitArea.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// Split area style.
 	AreaStyle *AreaStyle `json:"areaStyle,omitempty"`
@@ -936,13 +936,13 @@ type SplitArea struct {
 // SplitLine is the option set for a split line.
 type SplitLine struct {
 	// Set this to true to show the splitLine.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// Split line style.
 	LineStyle *LineStyle `json:"lineStyle,omitempty"`
 
 	// Align split line with label, which is available only when boundaryGap is set to be true in category axis.
-	AlignWithLabel bool `json:"alignWithLabel,omitempty"`
+	AlignWithLabel types.Bool `json:"alignWithLabel,omitempty"`
 }
 
 // Used to customize how to slice continuous data, and some specific view style for some pieces.
@@ -971,7 +971,7 @@ type VisualMap struct {
 	Type string `json:"type,omitempty" default:"continuous"`
 
 	// Whether show handles, which can be dragged to adjust "selected range".
-	Calculable bool `json:"calculable"`
+	Calculable types.Bool `json:"calculable"`
 
 	// Specify the min dataValue for the visualMap component.
 	// [visualMap.min, visualMax.max] make up the domain of visual mapping.
@@ -999,7 +999,7 @@ type VisualMap struct {
 	// Whether to show visualMap-piecewise component. If set as false,
 	// visualMap-piecewise component will not show,
 	// but it can still perform visual mapping from dataValue to visual channel in chart.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// Distance between visualMap component and the left side of the container.
 	// left value can be instant pixel value like 20; it can also be a percentage
@@ -1199,7 +1199,7 @@ type GeoComponent struct {
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 
 	// Set this to true, to prevent interaction with the axis.
-	Silent bool `json:"silent,omitempty"`
+	Silent types.Bool `json:"silent,omitempty"`
 }
 
 // ParallelComponent is the option set for parallel component.
@@ -1246,7 +1246,7 @@ type ParallelAxis struct {
 	Max interface{} `json:"max,omitempty"`
 
 	// Compulsively set segmentation interval for axis.
-	Inverse bool `json:"inverse,omitempty"`
+	Inverse types.Bool `json:"inverse,omitempty"`
 
 	// Location of axis name. Options: "start", "middle", "center", "end"
 	// default "end"
@@ -1266,7 +1266,7 @@ type ParallelAxis struct {
 // CalendarLabel is the option set for a calendar label: DayLabel, MonthLabel, YearLabel.
 type CalendarLabel struct {
 	// Whether to show the label.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// The margin between the month label and the axis line.
 	Margin float64 `json:"margin,omitempty"`
@@ -1373,10 +1373,10 @@ type CalendarLabel struct {
 	Overflow string `json:"overflow,omitempty"`
 
 	// Ellipsis
-	Ellipsis bool `json:"ellipsis,omitempty"`
+	Ellipsis types.Bool `json:"ellipsis,omitempty"`
 
 	// Silent
-	Silent bool `json:"silent,omitempty"`
+	Silent types.Bool `json:"silent,omitempty"`
 }
 
 // Calendar is the option set for a calendar component.
@@ -1430,7 +1430,7 @@ type Calendar struct {
 	YearLabel *CalendarLabel `json:"yearLabel,omitempty"`
 
 	// Whether to ignore mouse events. Default value is false, for triggering and responding to mouse events.
-	Silent bool `json:"silent,omitempty"`
+	Silent types.Bool `json:"silent,omitempty"`
 }
 
 // Polar Bar options
@@ -1444,36 +1444,36 @@ type Polar struct {
 }
 
 type PolarAxisBase struct {
-	ID           string  `json:"id,omitempty"`
-	PolarIndex   int     `json:"polarIndex,omitempty"`
-	StartAngle   float64 `json:"startAngle,omitempty"`
-	Type         string  `json:"type,omitempty"`
-	BoundaryGap  bool    `json:"boundaryGap,omitempty"`
-	Min          float64 `json:"min,omitempty"`
-	Max          float64 `json:"max,omitempty"`
-	Scale        bool    `json:"scale,omitempty"`
-	SplitNumber  int     `json:"splitNumber,omitempty"`
-	MinInterval  float64 `json:"minInterval,omitempty"`
-	MaxInterval  float64 `json:"maxInterval,omitempty"`
-	Interval     float64 `json:"interval,omitempty"`
-	LogBase      float64 `json:"logBase,omitempty"`
-	Silent       bool    `json:"silent,omitempty"`
-	TriggerEvent bool    `json:"triggerEvent,omitempty"`
+	ID           string     `json:"id,omitempty"`
+	PolarIndex   int        `json:"polarIndex,omitempty"`
+	StartAngle   float64    `json:"startAngle,omitempty"`
+	Type         string     `json:"type,omitempty"`
+	BoundaryGap  types.Bool `json:"boundaryGap,omitempty"`
+	Min          float64    `json:"min,omitempty"`
+	Max          float64    `json:"max,omitempty"`
+	Scale        types.Bool `json:"scale,omitempty"`
+	SplitNumber  int        `json:"splitNumber,omitempty"`
+	MinInterval  float64    `json:"minInterval,omitempty"`
+	MaxInterval  float64    `json:"maxInterval,omitempty"`
+	Interval     float64    `json:"interval,omitempty"`
+	LogBase      float64    `json:"logBase,omitempty"`
+	Silent       types.Bool `json:"silent,omitempty"`
+	TriggerEvent types.Bool `json:"triggerEvent,omitempty"`
 }
 
 type AngleAxis struct {
 	PolarAxisBase
-	Clockwise bool `json:"clockwise,omitempty"`
+	Clockwise types.Bool `json:"clockwise,omitempty"`
 }
 
 type RadiusAxis struct {
 	PolarAxisBase
-	Name          string    `json:"name,omitempty"`
-	NameLocation  string    `json:"nameLocation,omitempty"`
-	NameTextStyle TextStyle `json:"nameTextStyle,omitempty"`
-	NameGap       float64   `json:"nameGap,omitempty"`
-	NameRadius    float64   `json:"nameRotate,omitempty"`
-	Inverse       bool      `json:"inverse,omitempty"`
+	Name          string     `json:"name,omitempty"`
+	NameLocation  string     `json:"nameLocation,omitempty"`
+	NameTextStyle TextStyle  `json:"nameTextStyle,omitempty"`
+	NameGap       float64    `json:"nameGap,omitempty"`
+	NameRadius    float64    `json:"nameRotate,omitempty"`
+	Inverse       types.Bool `json:"inverse,omitempty"`
 }
 
 var newlineTabPat = regexp.MustCompile(`\n|\t`)
@@ -1562,7 +1562,7 @@ func (opt *Assets) Validate(host string) {
 // XAxis3D contains options for X axis in the 3D coordinate.
 type XAxis3D struct {
 	// Whether to display the x-axis.
-	Show bool `json:"show,omitempty"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// The name of the axis.
 	Name string `json:"name,omitempty"`
@@ -1609,7 +1609,7 @@ type XAxis3D struct {
 // YAxis3D contains options for Y axis in the 3D coordinate.
 type YAxis3D struct {
 	// Whether to display the y-axis.
-	Show bool `json:"show,omitempty"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// The name of the axis.
 	Name string `json:"name,omitempty"`
@@ -1656,7 +1656,7 @@ type YAxis3D struct {
 // ZAxis3D contains options for Z axis in the 3D coordinate.
 type ZAxis3D struct {
 	// Whether to display the z-axis.
-	Show bool `json:"show,omitempty"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// The name of the axis.
 	Name string `json:"name,omitempty"`
@@ -1703,7 +1703,7 @@ type ZAxis3D struct {
 // Grid3D contains options for the 3D coordinate.
 type Grid3D struct {
 	// Whether to show the coordinate.
-	Show bool `json:"show,omitempty"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// 3D Cartesian coordinates width
 	// default 100
@@ -1724,7 +1724,7 @@ type Grid3D struct {
 // ViewControl contains options for view controlling.
 type ViewControl struct {
 	// Whether to rotate automatically.
-	AutoRotate bool `json:"autoRotate,omitempty"`
+	AutoRotate types.Bool `json:"autoRotate,omitempty"`
 
 	// Rotate Speed, (angle/s).
 	// default 10
@@ -1749,7 +1749,7 @@ type Grid struct {
 	// Width of grid component.
 	Width string `json:"width,omitempty"`
 
-	ContainLabel bool `json:"containLabel,omitempty"`
+	ContainLabel types.Bool `json:"containLabel,omitempty"`
 
 	// Height of grid component. Adaptive by default.
 	Height string `json:"height,omitempty"`

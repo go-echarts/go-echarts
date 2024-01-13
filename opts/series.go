@@ -2,13 +2,14 @@ package opts
 
 import (
 	"fmt"
+	"github.com/go-echarts/go-echarts/v2/types"
 )
 
 // Label contains options for a label text.
 // https://echarts.apache.org/en/option.html#series-line.label
 type Label struct {
 	// Whether to show label.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 
 	// Color is the text color.
 	// If set as "auto", the color will assigned as visual color, such as series color.
@@ -105,13 +106,13 @@ type Label struct {
 // LabelLine Configuration of label guide line.
 type LabelLine struct {
 	// Whether to show the label guide line.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show"`
 	// Whether to show the label guide line above the corresponding element.
-	ShowAbove bool `json:"showAbove"`
+	ShowAbove types.Bool `json:"showAbove"`
 	// The length of the second segment of guide line.
 	Length2 float64 `json:"length2,omitempty"`
 	// smoothness of guide line.
-	Smooth bool `json:"smooth"`
+	Smooth types.Bool `json:"smooth"`
 	// Minimum turn angle between two segments of guide line
 	MinTurnAngle float64 `json:"minTurnAngle,omitempty"`
 	// The style of label line
@@ -177,7 +178,7 @@ type MarkLineStyle struct {
 
 // CircularStyle contains styling options for circular layout.
 type CircularStyle struct {
-	RotateLabel bool `json:"rotateLabel,omitempty"`
+	RotateLabel types.Bool `json:"rotateLabel,omitempty"`
 }
 
 // MarkLineNameTypeItem represents type for a MarkLine.
@@ -508,7 +509,7 @@ type TreeMapLevel struct {
 // https://echarts.apache.org/en/option.html#series-treemap.upperLabel
 type UpperLabel struct {
 	// Show is true to show upper label.
-	Show bool `json:"show,omitempty"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Position is the label's position.
 	// * top
@@ -616,7 +617,7 @@ func HSLAColor(h, s, l, a float32) string {
 // https://echarts.apache.org/en/option.html#series-graph.edgeLabel
 type EdgeLabel struct {
 	// Show is true to show label on edge.
-	Show bool `json:"show,omitempty"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Position is the label's position in line of edge.
 	// * "start"
