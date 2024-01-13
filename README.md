@@ -65,6 +65,9 @@ The go-echarts project is being developed under v2 version and the active codeba
 
 v1 and v2 are incompatible which means that you cannot upgrade go-echarts from v1 to v2 smoothly. But I think it is worth trying that new version.
 
+Especially, we choose release the `rc` version before a standard release.
+The `rc` version may contains little update changes, if you use the `rc` version, maybe needs little adjust.
+
 ### ✨ Features
 
 * Clean and comprehensive API.
