@@ -1,8 +1,14 @@
 package opts
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
 
 const funcMarker = "__f__"
+
+var newlineTabPat = regexp.MustCompile(`\n|\t`)
+var commentPat = regexp.MustCompile(`(//.*)\n`)
 
 type JSFunctions struct {
 	Fns []string

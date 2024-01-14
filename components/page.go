@@ -17,7 +17,9 @@ const (
 type Charter interface {
 	Type() string
 	GetAssets() opts.Assets
+	// FillDefaultValues fill default values and would be overridden if any struct fields has been manually set
 	FillDefaultValues()
+	// Validate a validator as well as a post processor before render
 	Validate()
 }
 

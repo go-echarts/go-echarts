@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"github.com/go-echarts/go-echarts/v2/types"
+	"github.com/go-echarts/go-echarts/v2/util"
 	"html/template"
 
 	"github.com/go-echarts/go-echarts/v2/actions"
@@ -219,7 +220,7 @@ func (bc *BaseConfiguration) AddDataset(dataset ...opts.Dataset) {
 
 // FillDefaultValues fill default values for chart options.
 func (bc *BaseConfiguration) FillDefaultValues() {
-	opts.SetDefaultValue(bc)
+	util.SetDefaultValue(bc)
 }
 
 func (bc *BaseConfiguration) initBaseConfiguration() {

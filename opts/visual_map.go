@@ -84,3 +84,21 @@ type VisualMapInRange struct {
 	// Symbol size.
 	SymbolSize float32 `json:"symbolSize,omitempty"`
 }
+
+// Piece Used to customize how to slice continuous data, and some specific view style for some pieces.
+type Piece struct {
+	Min float32 `json:"min,omitempty"`
+
+	Max float32 `json:"max,omitempty"`
+
+	Lt float32 `json:"lt,omitempty"`
+
+	Lte float32 `json:"lte,omitempty"`
+
+	Gt float32 `json:"gt,omitempty"`
+
+	Gte float32 `json:"gte,omitempty"`
+
+	// Symbol color
+	Color string `json:"color,omitempty"`
+}
