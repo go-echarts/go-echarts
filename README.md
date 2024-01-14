@@ -36,7 +36,7 @@ The development of [go-echarts](https://github.com/go-echarts/go-echarts) aims t
 provide a simple yet powerful data visualization library for Golang.   
 [Apache ECharts](https://echarts.apache.org/) is an awesome charting and visualization library,
 it supports adorable chart types and various interactive features.
-There are many language bindings for Echarts, such as [pyecharts](https://github.com/pyecharts/pyecharts), 
+There are many language bindings for Echarts, such as [pyecharts](https://github.com/pyecharts/pyecharts),
 which `go-echarts` learns and has evolved a lot from.
 
 [中文 README](README_CN.md)
@@ -76,8 +76,11 @@ The go-echarts project is being developed under v2 version and the active codeba
 v1 and v2 are incompatible which means that you cannot upgrade go-echarts from v1 to v2 smoothly. But I think it is
 worth trying that new version.
 
-Especially, we choose release the `rc` version before a standard release.
-The `rc` version may contains little update changes, if you upgrade your projects cross the `rc` versions, maybe need little adjust.
+Especially, when there contains mino changes (usually in enhancement), we will release the `rc` version before a
+standard
+release.
+So, if you upgrade your projects cross the `rc` versions, maybe
+need little adjust.
 
 ### ✨ Features
 
@@ -89,7 +92,8 @@ The `rc` version may contains little update changes, if you upgrade your project
 
 ### 📝 Usage
 
-It's easy to get started with go-echarts with [go-echarts/examples](https://github.com/go-echarts/examples) and [GoDocs](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).   
+It's easy to get started with go-echarts with [go-echarts/examples](https://github.com/go-echarts/examples)
+and [GoDocs](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
 
 In this example, we create a simple bar chart with only a few lines of code.
 
