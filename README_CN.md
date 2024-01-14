@@ -23,6 +23,9 @@
         <a href="https://pkg.go.dev/github.com/go-echarts/go-echarts/v2">
         <img src="https://godoc.org/github.com/go-echarts/go-echarts?status.svg" alt="GoDoc">
     </a>
+    <a href="https://echarts.apache.org/">
+        <img src="https://img.shields.io/badge/echarts-_v5.4.3-orange" alt="echartsVersion">
+    </a>
 </p>
 
 > 如果一门语言可以用来写爬虫，那么它就需要一个优雅的数据可视化库。 --- by dongdong

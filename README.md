@@ -23,6 +23,9 @@
     <a href="https://pkg.go.dev/github.com/go-echarts/go-echarts/v2">
         <img src="https://godoc.org/github.com/go-echarts/go-echarts?status.svg" alt="GoDoc">
     </a>
+    <a href="https://echarts.apache.org/">
+        <img src="https://img.shields.io/badge/echarts-_v5.4.3-orange" alt="echartsVersion">
+    </a>
 </p>
 
 > If a language can be used to build web scrapers, it definitely needs to provide a graceful data visualization
