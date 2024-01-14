@@ -23,3 +23,18 @@ type RadarComponent struct {
 	// Split line of axis in grid area.
 	SplitLine *SplitLine `json:"splitLine,omitempty"`
 }
+
+// Indicator is the option set for a radar chart.
+type Indicator struct {
+	// Indicator name
+	Name string `json:"name,omitempty"`
+
+	// The maximum value of indicator. It is an optional configuration, but we recommend to set it manually.
+	Max float32 `json:"max,omitempty"`
+
+	// The minimum value of indicator. It is an optional configuration, with default value of 0.
+	Min float32 `json:"min,omitempty"`
+
+	// Specify a color the indicator.
+	Color string `json:"color,omitempty"`
+}
