@@ -38,7 +38,7 @@ type VisualMap struct {
 	// Whether to show visualMap-piecewise component. If set as false,
 	// visualMap-piecewise component will not show,
 	// but it can still perform visual mapping from dataValue to visual channel in chart.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Distance between visualMap component and the left side of the container.
 	// left value can be instant pixel value like 20; it can also be a percentage

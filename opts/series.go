@@ -9,7 +9,7 @@ import (
 // https://echarts.apache.org/en/option.html#series-line.label
 type Label struct {
 	// Whether to show label.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Color is the text color.
 	// If set as "auto", the color will assigned as visual color, such as series color.
@@ -106,13 +106,13 @@ type Label struct {
 // LabelLine Configuration of label guide line.
 type LabelLine struct {
 	// Whether to show the label guide line.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 	// Whether to show the label guide line above the corresponding element.
 	ShowAbove types.Bool `json:"showAbove"`
 	// The length of the second segment of guide line.
 	Length2 float64 `json:"length2,omitempty"`
 	// smoothness of guide line.
-	Smooth types.Bool `json:"smooth"`
+	Smooth types.Bool `json:"smooth,omitempty"`
 	// Minimum turn angle between two segments of guide line
 	MinTurnAngle float64 `json:"minTurnAngle,omitempty"`
 	// The style of label line

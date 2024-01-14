@@ -57,7 +57,7 @@ type BaseConfiguration struct {
 	appendColor []string // append customize color to the Colors(reverse order)
 
 	// Animation whether enable the animation, default true
-	Animation types.Bool `json:"animation,omitempty" default:"true"`
+	Animation types.Bool `json:"animation,omitempty"`
 
 	// Array of datasets, managed by AddDataset()
 	DatasetList []opts.Dataset `json:"dataset,omitempty"`
@@ -118,12 +118,16 @@ func (ba *BaseActions) JSONNotEscapedAction() template.HTML {
 
 func (bc *BaseConfiguration) json() map[string]interface{} {
 	obj := map[string]interface{}{
-		"title":     bc.Title,
-		"legend":    bc.Legend,
-		"animation": bc.Animation,
-		"tooltip":   bc.Tooltip,
-		"series":    bc.MultiSeries,
+		"title":   bc.Title,
+		"legend":  bc.Legend,
+		"tooltip": bc.Tooltip,
+		"series":  bc.MultiSeries,
 	}
+
+	if bc.Animation != nil {
+		obj["animation"] = bc.Animation
+	}
+
 	// if only one item, use it directly instead of an Array
 	if len(bc.DatasetList) == 1 {
 		obj["dataset"] = bc.DatasetList[0]
@@ -313,9 +317,9 @@ func WithTitleOpts(opt opts.Title) GlobalOpts {
 }
 
 // WithAnimation enable or disable the animation.
-func WithAnimation() GlobalOpts {
+func WithAnimation(enable bool) GlobalOpts {
 	return func(bc *BaseConfiguration) {
-		bc.Animation = opts.Bool(false)
+		bc.Animation = opts.Bool(enable)
 	}
 }
 
