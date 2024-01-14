@@ -115,7 +115,7 @@ func randByte() byte {
 // https://echarts.apache.org/en/option.html#xAxis.axisLabel
 type AxisLabel struct {
 	// Set this to false to prevent the axis label from appearing.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Interval of Axis label, which is available in category axis.
 	// It uses a strategy that labels do not overlap by default.
@@ -191,7 +191,7 @@ type AxisLabel struct {
 
 type AxisTick struct {
 	// Set this to false to prevent the axis tick from showing.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// interval of axisTick, which is available in category axis. is set to be the same as axisLabel.interval by default.
 	// It uses a strategy that labels do not overlap by default.
@@ -210,7 +210,7 @@ type AxisTick struct {
 // https://echarts.apache.org/en/option.html#yAxis.axisLine
 type AxisLine struct {
 	// Set this to false to prevent the axis line from showing.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Specifies whether X or Y axis lies on the other's origin position, where value is 0 on axis.
 	// Valid only if the other axis is of value type, and contains 0 value.
@@ -263,7 +263,7 @@ type TextStyle struct {
 // SplitArea is the option set for a split area.
 type SplitArea struct {
 	// Set this to true to show the splitArea.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Split area style.
 	AreaStyle *AreaStyle `json:"areaStyle,omitempty"`
@@ -272,7 +272,7 @@ type SplitArea struct {
 // SplitLine is the option set for a split line.
 type SplitLine struct {
 	// Set this to true to show the splitLine.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Split line style.
 	LineStyle *LineStyle `json:"lineStyle,omitempty"`
@@ -299,56 +299,6 @@ type Piece struct {
 	Color string `json:"color,omitempty"`
 }
 
-// SingleAxis is the option set for single axis.
-// https://echarts.apache.org/en/option.html#singleAxis
-type SingleAxis struct {
-	// The minimum value of axis.
-	// It can be set to a special value 'dataMin' so that the minimum value on this axis is set to be the minimum label.
-	// It will be automatically computed to make sure axis tick is equally distributed when not set.
-	Min interface{} `json:"min,omitempty"`
-
-	// The maximum value of axis.
-	// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
-	// It will be automatically computed to make sure axis tick is equally distributed when not set.
-	Max interface{} `json:"max,omitempty"`
-
-	// Type of axis.
-	// Option:
-	// * 'value': Numerical axis, suitable for continuous data.
-	// * 'category': Category axis, suitable for discrete category data.
-	//   Category data can be auto retrieved from series.data or dataset.source,
-	//   or can be specified via xAxis.data.
-	// * 'time' Time axis, suitable for continuous time series data. As compared to value axis,
-	//   it has a better formatting for time and a different tick calculation method. For example,
-	//   it decides to use month, week, day or hour for tick based on the range of span.
-	// * 'log' Log axis, suitable for log data.
-	Type string `json:"type,omitempty"`
-
-	// Distance between grid component and the left side of the container.
-	// left value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
-	// If the left value is set to be 'left', 'center', or 'right',
-	// then the component will be aligned automatically based on position.
-	Left string `json:"left,omitempty"`
-
-	// Distance between grid component and the right side of the container.
-	// right value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'.
-	Right string `json:"right,omitempty"`
-
-	// Distance between grid component and the top side of the container.
-	// top value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'; and it can also be 'top', 'middle', or 'bottom'.
-	// If the left value is set to be 'top', 'middle', or 'bottom',
-	// then the component will be aligned automatically based on position.
-	Top string `json:"top,omitempty"`
-
-	// Distance between grid component and the bottom side of the container.
-	// bottom value can be instant pixel value like 20; it can also be a percentage
-	// value relative to container width like '20%'.
-	Bottom string `json:"bottom,omitempty"`
-}
-
 // Indicator is the option set for a radar chart.
 type Indicator struct {
 	// Indicator name
@@ -362,237 +312,6 @@ type Indicator struct {
 
 	// Specify a color the the indicator.
 	Color string `json:"color,omitempty"`
-}
-
-// ParallelComponent is the option set for parallel component.
-type ParallelComponent struct {
-	// Distance between parallel component and the left side of the container.
-	// Left value can be instant pixel value like 20.
-	// It can also be a percentage value relative to container width like '20%';
-	// and it can also be 'left', 'center', or 'right'.
-	// If the left value is set to be 'left', 'center', or 'right',
-	// then the component will be aligned automatically based on position.
-	Left string `json:"left,omitempty"`
-
-	// Distance between parallel component and the top side of the container.
-	// Top value can be instant pixel value like 20.
-	// It can also be a percentage value relative to container width like '20%'.
-	// and it can also be 'top', 'middle', or 'bottom'.
-	// If the left value is set to be 'top', 'middle', or 'bottom',
-	// then the component will be aligned automatically based on position.
-	Top string `json:"top,omitempty"`
-
-	// Distance between parallel component and the right side of the container.
-	// Right value can be instant pixel value like 20.
-	// It can also be a percentage value relative to container width like '20%'.
-	Right string `json:"right,omitempty"`
-
-	// Distance between parallel component and the bottom side of the container.
-	// Bottom value can be instant pixel value like 20.
-	// It can also be a percentage value relative to container width like '20%'.
-	Bottom string `json:"bottom,omitempty"`
-}
-
-// ParallelAxis is the option set for a parallel axis.
-type ParallelAxis struct {
-	// Dimension index of coordinate axis.
-	Dim int `json:"dim,omitempty"`
-
-	// Name of axis.
-	Name string `json:"name,omitempty"`
-
-	// The maximum value of axis.
-	// It can be set to a special value 'dataMax' so that the minimum value on this axis is set to be the maximum label.
-	// It will be automatically computed to make sure axis tick is equally distributed when not set.
-	// In category axis, it can also be set as the ordinal number.
-	Max interface{} `json:"max,omitempty"`
-
-	// Compulsively set segmentation interval for axis.
-	Inverse types.Bool `json:"inverse,omitempty"`
-
-	// Location of axis name. Options: "start", "middle", "center", "end"
-	// default "end"
-	NameLocation string `json:"nameLocation,omitempty"`
-
-	// Type of axis.
-	// Options：
-	// "value"：Numerical axis, suitable for continuous data.
-	// "category" Category axis, suitable for discrete category data. Category data can be auto retrieved from series.
-	// "log"  Log axis, suitable for log data.
-	Type string `json:"type,omitempty"`
-
-	// Category data，works on (type: "category").
-	Data interface{} `json:"data,omitempty"`
-}
-
-// CalendarLabel is the option set for a calendar label: DayLabel, MonthLabel, YearLabel.
-type CalendarLabel struct {
-	// Whether to show the label.
-	Show types.Bool `json:"show"`
-
-	// The margin between the month label and the axis line.
-	Margin float64 `json:"margin,omitempty"`
-
-	// Position of year.
-	// Default: when orient is set as horizontal, position is left when orient is set as vertical, position is top.
-	// Options: 'left', 'right', 'top', 'bottom'
-	Position string `json:"position,omitempty"`
-
-	// Text color.
-	Color string `json:"color,omitempty"`
-
-	// Font style.
-	// Options: 'normal', 'italic', 'oblique'
-	FontStyle string `json:"fontStyle,omitempty"`
-
-	// Font weight.
-	// Options: 'normal', 'bold', 'bolder', 'lighter', 100 | 200 | 300 | 400...
-	FontWeight string `json:"fontWeight,omitempty"`
-
-	// Font family.
-	FontFamily string `json:"fontFamily,omitempty"`
-
-	// Font size.
-	FontSize int `json:"fontSize,omitempty"`
-
-	// Horizontal alignment of text, automatic by default.
-	// Options: 'left', 'center', 'right'
-	Align string `json:"align,omitempty"`
-
-	// Vertical alignment of text, automatic by default.
-	// Options: 'top', 'middle', 'bottom'
-	VerticalAlign string `json:"verticalAlign,omitempty"`
-
-	// Line height of text.
-	LineHeight int `json:"lineHeight,omitempty"`
-
-	// Background color of label, which is transparent by default.
-	BackgroundColor string `json:"backgroundColor,omitempty"`
-
-	// Border color of label.
-	BorderColor string `json:"borderColor,omitempty"`
-
-	// Border width of label.
-	BorderWidth int `json:"borderWidth,omitempty"`
-
-	// Border radius of label.
-	BorderRadius int `json:"borderRadius,omitempty"`
-
-	// Border type of label.
-	// Options: 'solid', 'dashed', 'dotted'
-	BorderType string `json:"borderType,omitempty"`
-
-	// Border dash offset of label.
-	BorderDashOffset int `json:"borderDashOffset,omitempty"`
-
-	// Padding
-	Padding int `json:"padding,omitempty"`
-
-	// Shadow blur of text block.
-	ShadowBlur int `json:"shadowBlur,omitempty"`
-
-	// Shadow color of text block.
-	ShadowColor string `json:"shadowColor,omitempty"`
-
-	// Shadow X offset of text block.
-	ShadowOffsetX int `json:"shadowOffsetX,omitempty"`
-
-	// Shadow Y offset of text block.
-	ShadowOffsetY int `json:"shadowOffsetY,omitempty"`
-
-	// Width
-	Width int `json:"width,omitempty"`
-
-	// Height
-	Height int `json:"height,omitempty"`
-
-	// Text border color.
-	TextBorderColor string `json:"textBorderColor,omitempty"`
-
-	// Text border width.
-	TextBorderWidth int `json:"textBorderWidth,omitempty"`
-
-	// Text border type
-	// Options: 'solid', 'dashed', 'dotted'
-	TextBorderType string `json:"textBorderType,omitempty"`
-
-	// Text border dash offset.
-	TextBorderDashOffset int `json:"textBorderDashOffset,omitempty"`
-
-	// Text shadow color.
-	TextShadowColor string `json:"textShadowColor,omitempty"`
-
-	// Text shadow blur.
-	TextShadowBlur int `json:"textShadowBlur,omitempty"`
-
-	// Text shadow X offset.
-	TextShadowOffsetX int `json:"textShadowOffsetX,omitempty"`
-
-	// Text shadow Y offset.
-	TextShadowOffsetY int `json:"textShadowOffsetY,omitempty"`
-
-	// Overflow
-	Overflow string `json:"overflow,omitempty"`
-
-	// Ellipsis
-	Ellipsis types.Bool `json:"ellipsis,omitempty"`
-
-	// Silent
-	Silent types.Bool `json:"silent,omitempty"`
-}
-
-// Calendar is the option set for a calendar component.
-// This works with the calendar coordinate system, and it is a heatmap calendar.
-type Calendar struct {
-	ID     string `json:"id,omitempty"`
-	Zlevel int    `json:"zlevel,omitempty"`
-	Z      int    `json:"z,omitempty"`
-	// Distance between grid component and the left side of the container.
-	Left string `json:"left,omitempty"`
-
-	// Distance between grid component and the right side of the container.
-	Right string `json:"right,omitempty"`
-
-	// Distance between grid component and the top side of the container.
-	Top string `json:"top,omitempty"`
-
-	// Distance between grid component and the bottom side of the container.
-	Bottom string `json:"bottom,omitempty"`
-
-	// Width of grid component.
-	Width string `json:"width,omitempty"`
-
-	// Height of grid component. Adaptive by default.
-	Height string `json:"height,omitempty"`
-
-	// Required, range of Calendar coordinates, support multiple formats.
-	Range []string `json:"range,omitempty"`
-
-	// The size of each rect of calendar coordinates.
-	CellSize string `json:"cellSize,omitempty"`
-
-	// The layout orientation of legend.
-	// Options: 'horizontal', 'vertical'
-	Orient string `json:"orient,omitempty"`
-
-	// Split line of X axis in grid area.
-	SplitLine *SplitLine `json:"splitLine,omitempty"`
-
-	// Graphic style of Map Area Border, emphasis is the style when it is highlighted,
-	// like being hovered by mouse, or highlighted via legend connect.
-	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
-
-	// Day Label
-	DayLabel *CalendarLabel `json:"dayLabel,omitempty"`
-
-	// Month Label
-	MonthLabel *CalendarLabel `json:"monthLabel,omitempty"`
-
-	// Year Label
-	YearLabel *CalendarLabel `json:"yearLabel,omitempty"`
-
-	// Whether to ignore mouse events. Default value is false, for triggering and responding to mouse events.
-	Silent types.Bool `json:"silent,omitempty"`
 }
 
 var newlineTabPat = regexp.MustCompile(`\n|\t`)

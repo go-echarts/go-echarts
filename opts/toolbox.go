@@ -163,7 +163,7 @@ type ToolBoxFeatureBrush struct {
 // https://echarts.apache.org/en/option.html#toolbox.feature.dataZoom
 type ToolBoxFeatureDataZoom struct {
 	// Whether to show the tool.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	//Defines which yAxis should be controlled. By default, it controls all y axes.
 	//If it is set to be false, then no y axis is controlled.
@@ -181,7 +181,7 @@ type ToolBoxFeatureDataZoom struct {
 // https://echarts.apache.org/en/option.html#toolbox.feature.dataView
 type ToolBoxFeatureDataView struct {
 	// Whether to show the tool.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// title for the tool.
 	Title string `json:"title,omitempty"`
@@ -198,7 +198,7 @@ type ToolBoxFeatureDataView struct {
 // https://echarts.apache.org/en/option.html#toolbox.feature.restore
 type ToolBoxFeatureRestore struct {
 	// Whether to show the tool.
-	Show types.Bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// title for the tool.
 	Title string `json:"title,omitempty"`
