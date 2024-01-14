@@ -84,3 +84,129 @@ type XAxis struct {
 	// Settings related to axis pointer.
 	AxisPointer *AxisPointer `json:"axisPointer,omitempty"`
 }
+
+// AxisLabel settings related to axis label .
+// https://echarts.apache.org/en/option.html#xAxis.axisLabel
+// https://echarts.apache.org/en/option.html#yAxis.axisLabel
+type AxisLabel struct {
+	// Set this to false to prevent the axis label from appearing.
+	Show types.Bool `json:"show,omitempty"`
+
+	// Interval of Axis label, which is available in category axis.
+	// It uses a strategy that labels do not overlap by default.
+	// You may set it to be 0 to display all labels compulsively.
+	// If it is set to be 1, it means that labels are shown once after one label.
+	// And if it is set to be 2, it means labels are shown once after two labels, and so on.
+	Interval string `json:"interval,omitempty"`
+
+	// Set this to true so the axis labels face the inside direction.
+	Inside types.Bool `json:"inside,omitempty"`
+
+	// Rotation degree of axis label, which is especially useful when there is no enough space for category axis.
+	// Rotation degree is from -90 to 90.
+	Rotate float64 `json:"rotate,omitempty"`
+
+	// The margin between the axis label and the axis line.
+	Margin float64 `json:"margin,omitempty"`
+
+	// Formatter of axis label, which supports string template and callback function.
+	//
+	// Example:
+	//
+	// Use string template; template variable is the default label of axis {value}
+	// formatter: '{value} kg'
+	//
+	// Use callback function; function parameters are axis index
+	//
+	//
+	//  formatter: function (value, index) {
+	//    // Formatted to be month/day; display year only in the first label
+	//    var date = new Date(value);
+	//    var texts = [(date.getMonth() + 1), date.getDate()];
+	//    if (idx === 0) {
+	//        texts.unshift(date.getYear());
+	//    }
+	//    return texts.join('/');
+	// }
+	Formatter string `json:"formatter,omitempty"`
+
+	ShowMinLabel types.Bool `json:"showMinLabel"`
+	ShowMaxLabel types.Bool `json:"showMaxLabel"`
+
+	// Color of axis label is set to be axisLine.lineStyle.color by default. Callback function is supported,
+	// in the following format:
+	//
+	// (val: string) => Color
+	// Parameter is the text of label, and return value is the color. See the following example:
+	//
+	// textStyle: {
+	//    color: function (value, index) {
+	//        return value >= 0 ? 'green' : 'red';
+	//    }
+	// }
+	Color string `json:"color,omitempty"`
+
+	// axis label font style
+	FontStyle string `json:"fontStyle,omitempty"`
+	// axis label font weight
+	FontWeight string `json:"fontWeight,omitempty"`
+	// axis label font family
+	FontFamily string `json:"fontFamily,omitempty"`
+	// axis label font size
+	FontSize string `json:"fontSize,omitempty"`
+	// Horizontal alignment of axis label
+	Align string `json:"align,omitempty"`
+	// Vertical alignment of axis label
+	VerticalAlign string `json:"verticalAlign,omitempty"`
+	// Line height of the axis label
+	LineHeight string `json:"lineHeight,omitempty"`
+
+	BackgroundColor string `json:"backgroundColor,omitempty"`
+}
+
+type AxisTick struct {
+	// Set this to false to prevent the axis tick from showing.
+	Show types.Bool `json:"show,omitempty"`
+
+	// interval of axisTick, which is available in category axis. is set to be the same as axisLabel.interval by default.
+	// It uses a strategy that labels do not overlap by default.
+	// You may set it to be 0 to display all labels compulsively.
+	// If it is set to be 1, it means that labels are shown once after one label. And if it is set to be 2, it means labels are shown once after two labels, and so on.
+	// On the other hand, you can control by callback function, whose format is shown below:
+	// (index:number, value: string) => types.Boolean
+	// The first parameter is index of category, and the second parameter is the name of category. The return values decides whether to display label.
+	Interval string `json:"interval,omitempty"`
+
+	// Align axis tick with label, which is available only when boundaryGap is set to be true in category axis.
+	AlignWithLabel types.Bool `json:"alignWithLabel,omitempty"`
+}
+
+// AxisLine controls settings related to axis line.
+// https://echarts.apache.org/en/option.html#xAxis.axisLine
+// https://echarts.apache.org/en/option.html#yAxis.axisLine
+type AxisLine struct {
+	// Set this to false to prevent the axis line from showing.
+	Show types.Bool `json:"show,omitempty"`
+
+	// Specifies whether X or Y axis lies on the other's origin position, where value is 0 on axis.
+	// Valid only if the other axis is of value type, and contains 0 value.
+	OnZero types.Bool `json:"onZero,omitempty"`
+
+	// When multiple axes exists, this option can be used to specify which axis can be "onZero" to.
+	OnZeroAxisIndex int `json:"onZeroAxisIndex,omitempty"`
+
+	// Symbol of the two ends of the axis. It could be a string, representing the same symbol for two ends; or an array
+	// with two string elements, representing the two ends separately. It's set to be 'none' by default, meaning no
+	//arrow for either end. If it is set to be 'arrow', there shall be two arrows. If there should only one arrow
+	//at the end, it should set to be ['none', 'arrow'].
+	Symbol string `json:"symbol,omitempty"`
+
+	// Size of the arrows at two ends. The first is the width perpendicular to the axis, the next is the width parallel to the axis.
+	SymbolSize []float64 `json:"symbolSize,omitempty"`
+
+	// Arrow offset of axis. If is array, the first number is the offset of the arrow at the beginning, and the second
+	// number is the offset of the arrow at the end. If is number, it means the arrows have the same offset.
+	SymbolOffset []float64 `json:"symbolOffset,omitempty"`
+
+	LineStyle *LineStyle `json:"lineStyle,omitempty"`
+}
