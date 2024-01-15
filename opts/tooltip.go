@@ -85,7 +85,7 @@ type Tooltip struct {
 	//    // the percentage of pie chart
 	//    percent: number,
 	// }
-	Formatter string `json:"formatter,omitempty"`
+	Formatter types.FuncStr `json:"formatter,omitempty"`
 
 	ValueFormatter string `json:"valueFormatter,omitempty"`
 

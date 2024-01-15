@@ -2,6 +2,7 @@ package opts
 
 import (
 	"fmt"
+	"github.com/go-echarts/go-echarts/v2/types"
 	"regexp"
 )
 
@@ -22,8 +23,8 @@ func (f *JSFunctions) AddJSFuncs(fn ...string) {
 }
 
 // FuncOpts returns a string suitable for options expecting pure JavaScript code insertion.
-func FuncOpts(fn string) string {
-	return replaceJsFuncs(fn)
+func FuncOpts(fn string) types.FuncStr {
+	return types.FuncStr(replaceJsFuncs(fn))
 }
 
 // FuncStripCommentsOpts returns a string suitable for options expecting JavaScript code,
