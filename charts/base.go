@@ -3,6 +3,7 @@ package charts
 import (
 	"bytes"
 	"encoding/json"
+	"github.com/go-echarts/go-echarts/v2/event"
 	"github.com/go-echarts/go-echarts/v2/types"
 	"github.com/go-echarts/go-echarts/v2/util"
 	"html/template"
@@ -65,6 +66,8 @@ type BaseConfiguration struct {
 
 	DataZoomList  []opts.DataZoom  `json:"datazoom,omitempty"`
 	VisualMapList []opts.VisualMap `json:"visualmap,omitempty"`
+
+	EventInterceptors []event.EventInterceptor `json:"-"`
 
 	// ParallelAxisList represents the component list which is the coordinate axis for parallel coordinate.
 	ParallelAxisList []opts.ParallelAxis
@@ -349,6 +352,12 @@ func WithTooltipOpts(opt opts.Tooltip) GlobalOpts {
 func WithLegendOpts(opt opts.Legend) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Legend = opt
+	}
+}
+
+func WithMouseEventInterceptors(interceptors ...event.EventInterceptor) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.EventInterceptors = append(bc.EventInterceptors, interceptors...)
 	}
 }
 
