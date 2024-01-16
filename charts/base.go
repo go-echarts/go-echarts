@@ -355,7 +355,7 @@ func WithLegendOpts(opt opts.Legend) GlobalOpts {
 	}
 }
 
-func WithMouseEventInterceptors(interceptors ...event.EventInterceptor) GlobalOpts {
+func WithEventInterceptors(interceptors ...event.EventInterceptor) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.EventInterceptors = append(bc.EventInterceptors, interceptors...)
 	}
