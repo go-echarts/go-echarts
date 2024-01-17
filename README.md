@@ -238,4 +238,4 @@ lovely [contributors](https://github.com/go-echarts/go-echarts/graphs/contributo
 
 ### 📃 License
 
-MIT [©chenjiandongx](https://github.com/chenjiandongx)
+MIT [LICENSE](https://github.com/go-echarts/go-echarts/blob/master/LICENSE)
