@@ -201,4 +201,4 @@ func main() {
 
 ### 📃 License
 
-MIT [LICENSE](https://github.com/go-echarts/go-echarts/blob/master/LICENSE)
+MIT [©go-echarts](https://github.com/go-echarts/go-echarts/blob/master/LICENSE)
