@@ -2,7 +2,7 @@ package event
 
 import "github.com/go-echarts/go-echarts/v2/types"
 
-// EventInterceptor is the abstract of events in echarts
+// Listener is the abstract of events listening in echarts
 // see https://echarts.apache.org/handbook/en/concepts/event
 // which allow to listen special mouse and components event
 // example:
@@ -10,17 +10,17 @@ import "github.com/go-echarts/go-echarts/v2/types"
 //	bar := charts.NewBar()
 //	JFunc := ` (params) => alert(params.name) `
 //	bar.SetGlobalOptions(
-//	charts.WithEventInterceptors(
-//	       event.EventInterceptor{
+//	charts.WithEventListeners(
+//	       event.Listener{
 //	         EventName: "click",
 //	         Handler:   opts.FuncOpts(JFunc),
 //	       },
-//	       event.EventInterceptor{
+//	       event.Listener{
 //	         EventName: "mouseup",
 //	         Query:     "'series'",
 //	         Handler:   opts.FuncOpts(JFunc),
 //	       },
-//	       event.EventInterceptor{
+//	       event.Listener{
 //	         EventName: "mouseover",
 //	         Query:     "{ seriesName: 'go-echarts' }",
 //	         Handler:   opts.FuncOpts(JFunc),
@@ -28,7 +28,7 @@ import "github.com/go-echarts/go-echarts/v2/types"
 //
 // ),
 // )
-type EventInterceptor struct {
+type Listener struct {
 	EventName string
 	Query     types.FuncStr
 	Handler   types.FuncStr

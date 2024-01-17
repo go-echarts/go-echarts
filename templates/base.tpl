@@ -5,7 +5,7 @@
 
 <script type="text/javascript">
     "use strict";
-    let goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID | safeJS }}'), "{{ .Theme }}", { renderer: "{{ .Renderer }}" });
+    let goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID | safeJS }}'), "{{ .Theme }}", { renderer: "{{  .Initialization.Renderer }}" });
     let option_{{ .ChartID | safeJS }} = {{ .JSONNotEscaped | safeJS }};
     {{ if isSet  "BaseActions" . }}
 	let action_{{ .ChartID | safeJS }} = {{ .JSONNotEscapedAction | safeJS }};
@@ -13,11 +13,11 @@
     goecharts_{{ .ChartID | safeJS }}.setOption(option_{{ .ChartID | safeJS }});
  	goecharts_{{ .ChartID | safeJS }}.dispatchAction(action_{{ .ChartID | safeJS }});
 
-  {{- range  $interceptor := .EventInterceptors }}
+  {{- range  $listener := .EventListeners }}
     {{if .Query  }}
-    goecharts_{{ $.ChartID | safeJS }}.on({{ $interceptor.EventName }}, {{ $interceptor.Query | safeJS }},{{ $interceptor.Handler | safeJS }});
+    goecharts_{{ $.ChartID | safeJS }}.on({{ $listener.EventName }}, {{ $listener.Query | safeJS }},{{ $listener.Handler | safeJS }});
     {{ else }}
-    goecharts_{{ $.ChartID | safeJS }}.on({{ $interceptor.EventName }},{{ $interceptor.Handler | safeJS }})
+    goecharts_{{ $.ChartID | safeJS }}.on({{ $listener.EventName }},{{ $listener.Handler | safeJS }})
     {{ end }}
   {{- end }}
 
