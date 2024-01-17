@@ -224,7 +224,7 @@ the [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
 
 ### Ecosystem
 
-> The selection lists awesome projects which integrate with go-echarts specially.
+> The section lists awesome projects which integrate with go-echarts specially.
 
 - [templ](https://github.com/a-h/templ) A language for writing HTML user interfaces in Go. 
 
