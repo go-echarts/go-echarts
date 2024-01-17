@@ -1,5 +1,7 @@
 package opts
 
+import "github.com/go-echarts/go-echarts/v2/types"
+
 // BarChart
 // https://echarts.apache.org/en/option.html#series-bar
 type BarChart struct {
@@ -30,8 +32,8 @@ type BarChart struct {
 	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
 	YAxisIndex int
 
-	ShowBackground bool
-	RoundCap       bool
+	ShowBackground types.Bool
+	RoundCap       types.Bool
 	CoordSystem    string
 }
 
@@ -43,11 +45,11 @@ type SunburstChart struct {
 	// Sorting method that sectors use based on value
 	Sort string `json:"sort,omitempty"`
 	// If there is no name, whether need to render it.
-	RenderLabelForZeroData bool `json:"renderLabelForZeroData"`
+	RenderLabelForZeroData types.Bool `json:"renderLabelForZeroData,omitempty"`
 	// Selected mode
-	SelectedMode bool `json:"selectedMode"`
+	SelectedMode types.Bool `json:"selectedMode,omitempty"`
 	// Whether to enable animation.
-	Animation bool `json:"animation"`
+	Animation types.Bool `json:"animation,omitempty"`
 	// Whether to set graphic number threshold to animation
 	AnimationThreshold int `json:"animationThreshold,omitempty"`
 	// Duration of the first animation
@@ -175,7 +177,7 @@ type GraphChart struct {
 	// Whether to enable mouse zooming and translating. false by default.
 	// If either zooming or translating is wanted, it can be set to 'scale' or 'move'.
 	// Otherwise, set it to be true to enable both.
-	Roam bool
+	Roam types.Bool
 
 	// EdgeSymbol is the symbols of two ends of edge line.
 	// * 'circle'
@@ -189,10 +191,10 @@ type GraphChart struct {
 	EdgeSymbolSize interface{}
 
 	// Draggable allows you to move the nodes with the mouse if they are not fixed.
-	Draggable bool
+	Draggable types.Bool
 
 	// Whether to focus/highlight the hover node and it's adjacencies.
-	FocusNodeAdjacency bool
+	FocusNodeAdjacency types.Bool
 
 	// The categories of node, which is optional. If there is a classification of nodes,
 	// the category of each node can be assigned through data[i].category.
@@ -203,7 +205,7 @@ type GraphChart struct {
 	EdgeLabel *EdgeLabel `json:"edgeLabel"`
 
 	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
-	SymbolKeepAspect bool
+	SymbolKeepAspect types.Bool
 }
 
 // GraphNode represents a data node in graph chart.
@@ -222,7 +224,7 @@ type GraphNode struct {
 	Value float32 `json:"value,omitempty"`
 
 	// If node are fixed when doing force directed layout.
-	Fixed bool `json:"fixed,omitempty"`
+	Fixed types.Bool `json:"fixed,omitempty"`
 
 	// Index of category which the data item belongs to.
 	Category interface{} `json:"category,omitempty"`
@@ -311,9 +313,9 @@ type LineChart struct {
 	Stack string
 
 	// Whether to show as smooth curve.
-	// If is typed in boolean, then it means whether to enable smoothing. If is
+	// If is typed in types.Boolean, then it means whether to enable smoothing. If is
 	// typed in number, valued from 0 to 1, then it means smoothness. A smaller value makes it less smooth.
-	Smooth bool
+	Smooth types.Bool
 
 	// Whether to show as a step line. It can be true, false. Or 'start', 'middle', 'end'.
 	// Which will configure the turn point of step line.
@@ -326,10 +328,10 @@ type LineChart struct {
 	YAxisIndex int
 
 	// Whether to connect the line across null points.
-	ConnectNulls bool
+	ConnectNulls types.Bool
 
 	// Whether to show symbol. It would be shown during tooltip hover.
-	ShowSymbol bool
+	ShowSymbol types.Bool
 
 	// Icon types provided by ECharts includes
 	//  'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
@@ -344,7 +346,7 @@ type LineChart struct {
 	Color string
 
 	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
-	SymbolKeepAspect bool
+	SymbolKeepAspect types.Bool
 }
 
 // LineChart is the options set for a chandlestick chart.
@@ -394,10 +396,10 @@ type LiquidChart struct {
 	Shape string
 
 	// Whether to show outline
-	IsShowOutline bool
+	IsShowOutline types.Bool
 
 	// Whether to stop animation
-	IsWaveAnimation bool
+	IsWaveAnimation types.Bool
 }
 
 // LiquidData
@@ -468,7 +470,7 @@ type PieData struct {
 	Value interface{} `json:"value,omitempty"`
 
 	// Whether the data item is selected.
-	Selected bool `json:"selected,omitempty"`
+	Selected types.Bool `json:"selected,omitempty"`
 
 	// The label configuration of a single sector.
 	Label *Label `json:"label,omitempty"`
@@ -529,7 +531,7 @@ type ScatterChart struct {
 	YAxisIndex int
 
 	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
-	SymbolKeepAspect bool
+	SymbolKeepAspect types.Bool
 }
 
 // ScatterData
@@ -628,10 +630,10 @@ type TreeChart struct {
 	// Whether to enable mouse zooming and translating. false by default.
 	// If either zooming or translating is wanted, it can be set to 'scale' or 'move'.
 	// Otherwise, set it to be true to enable both.
-	Roam bool `json:"roam"`
+	Roam types.Bool `json:"roam,omitempty"`
 
 	// Subtree collapses and expands interaction, default true.
-	ExpandAndCollapse bool `json:"expandAndCollapse,omitempty"`
+	ExpandAndCollapse types.Bool `json:"expandAndCollapse,omitempty"`
 
 	// The initial level (depth) of the tree. The root node is the 0th layer, then the first layer, the second layer, ... , until the leaf node.
 	// This configuration item is primarily used in conjunction with collapsing and expansion interactions.
@@ -653,7 +655,7 @@ type TreeChart struct {
 	Bottom string `json:"bottom,omitempty"`
 
 	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
-	SymbolKeepAspect bool
+	SymbolKeepAspect types.Bool
 }
 
 type TreeData struct {
@@ -676,7 +678,7 @@ type TreeData struct {
 	SymbolSize interface{} `json:"symbolSize,omitempty"`
 
 	// If set as `true`, the node is collapsed in the initialization.
-	Collapsed bool `json:"collapsed,omitempty"`
+	Collapsed types.Bool `json:"collapsed,omitempty"`
 
 	// LineStyle settings in this series data.
 	LineStyle *LineStyle `json:"lineStyle,omitempty"`
@@ -687,14 +689,14 @@ type TreeData struct {
 
 type TreeMapChart struct {
 	// Whether to enable animation.
-	Animation bool `json:"animation"`
+	Animation types.Bool `json:"animation,omitempty"`
 
 	// leafDepth represents how many levels are shown at most. For example, when leafDepth is set to 1, only one level will be shown.
 	// leafDepth is null/undefined by default, which means that "drill down" is disabled.
 	LeafDepth int `json:"leafDeapth,omitempty"`
 
 	// Roam describes whether to enable mouse zooming and translating. false by default.
-	Roam bool `json:"roam"`
+	Roam types.Bool `json:"roam,omitempty"`
 
 	// Label decribes the style of the label in each node.
 	Label *Label `json:"label,omitempty"`
@@ -735,4 +737,37 @@ type SunBurstData struct {
 	Value float64 `json:"value,omitempty"`
 	// sub item of data item
 	Children []*SunBurstData `json:"children,omitempty"`
+}
+
+// CustomChart is the options set for a custom chart.
+// https://echarts.apache.org/en/option.html#series-custom
+type CustomChart struct {
+	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
+	XAxisIndex int
+
+	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
+	YAxisIndex int
+
+	// Custom series requires developers to write a render logic by themselves in JavaScript.
+	// This render logic is called RenderItem. Use opts.FuncOpts to embed JavaScript.
+	RenderItem string
+}
+
+// CustomData
+// https://echarts.apache.org/en/option.html#series-custom.data
+type CustomData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+
+	// ItemStyle settings in this series data.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	// Emphasis settings in this series data.
+	Emphasis *Emphasis `json:"emphasis,omitempty"`
+
+	// Tooltip settings in this series data.
+	Tooltip *Tooltip `json:"tooltip,omitempty"`
 }

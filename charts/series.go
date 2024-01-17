@@ -1,6 +1,10 @@
 package charts
 
-import "github.com/go-echarts/go-echarts/v2/opts"
+import (
+	"github.com/go-echarts/go-echarts/v2/opts"
+	"github.com/go-echarts/go-echarts/v2/types"
+	"github.com/go-echarts/go-echarts/v2/util"
+)
 
 type SingleSeries struct {
 	Name string `json:"name,omitempty"`
@@ -12,10 +16,10 @@ type SingleSeries struct {
 	YAxisIndex int    `json:"yAxisIndex,omitempty"`
 
 	// Bar
-	BarGap         string `json:"barGap,omitempty"`
-	BarCategoryGap string `json:"barCategoryGap,omitempty"`
-	ShowBackground bool   `json:"showBackground,omitempty"`
-	RoundCap       bool   `json:"roundCap,omitempty"`
+	BarGap         string     `json:"barGap,omitempty"`
+	BarCategoryGap string     `json:"barCategoryGap,omitempty"`
+	ShowBackground types.Bool `json:"showBackground,omitempty"`
+	RoundCap       types.Bool `json:"roundCap,omitempty"`
 
 	// Bar3D
 	Shading string `json:"shading,omitempty"`
@@ -25,13 +29,13 @@ type SingleSeries struct {
 	Layout             string      `json:"layout,omitempty"`
 	Force              interface{} `json:"force,omitempty"`
 	Categories         interface{} `json:"categories,omitempty"`
-	Roam               bool        `json:"roam,omitempty"`
+	Roam               types.Bool  `json:"roam,omitempty"`
 	EdgeSymbol         interface{} `json:"edgeSymbol,omitempty"`
 	EdgeSymbolSize     interface{} `json:"edgeSymbolSize,omitempty"`
 	EdgeLabel          interface{} `json:"edgeLabel,omitempty"`
-	Draggable          bool        `json:"draggable,omitempty"`
-	FocusNodeAdjacency bool        `json:"focusNodeAdjacency,omitempty"`
-	SymbolKeepAspect   bool        `json:"symbolKeepAspect,omitempty"`
+	Draggable          types.Bool  `json:"draggable,omitempty"`
+	FocusNodeAdjacency types.Bool  `json:"focusNodeAdjacency,omitempty"`
+	SymbolKeepAspect   types.Bool  `json:"symbolKeepAspect,omitempty"`
 
 	// KLine
 	BarWidth    string `json:"barWidth,omitempty"`
@@ -40,15 +44,15 @@ type SingleSeries struct {
 
 	// Line
 	Step         interface{} `json:"step,omitempty"`
-	Smooth       bool        `json:"smooth"`
-	ConnectNulls bool        `json:"connectNulls"`
-	ShowSymbol   bool        `json:"showSymbol"`
+	Smooth       types.Bool  `json:"smooth,omitempty"`
+	ConnectNulls types.Bool  `json:"connectNulls,omitempty"`
+	ShowSymbol   types.Bool  `json:"showSymbol,omitempty"`
 	Symbol       string      `json:"symbol,omitempty"`
 	Color        string      `json:"color,omitempty"`
 
 	// Liquid
-	IsLiquidOutline bool `json:"outline,omitempty"`
-	IsWaveAnimation bool `json:"waveAnimation"`
+	IsLiquidOutline types.Bool `json:"outline,omitempty"`
+	IsWaveAnimation types.Bool `json:"waveAnimation,omitempty"`
 
 	// Map
 	MapType     string `json:"map,omitempty"`
@@ -64,7 +68,7 @@ type SingleSeries struct {
 
 	// Tree
 	Orient            string      `json:"orient,omitempty"`
-	ExpandAndCollapse bool        `json:"expandAndCollapse,omitempty"`
+	ExpandAndCollapse types.Bool  `json:"expandAndCollapse,omitempty"`
 	InitialTreeDepth  int         `json:"initialTreeDepth,omitempty"`
 	Leaves            interface{} `json:"leaves,omitempty"`
 	Left              string      `json:"left,omitempty"`
@@ -83,18 +87,21 @@ type SingleSeries struct {
 	RotationRange []float32 `json:"rotationRange,omitempty"`
 
 	// Sunburst
-	NodeClick               string `json:"nodeClick,omitempty"`
-	Sort                    string `json:"sort,omitempty"`
-	RenderLabelForZeroData  bool   `json:"renderLabelForZeroData"`
-	SelectedMode            bool   `json:"selectedMode"`
-	Animation               bool   `json:"animation" default:"true"`
-	AnimationThreshold      int    `json:"animationThreshold,omitempty"`
-	AnimationDuration       int    `json:"animationDuration,omitempty"`
-	AnimationEasing         string `json:"animationEasing,omitempty"`
-	AnimationDelay          int    `json:"animationDelay,omitempty"`
-	AnimationDurationUpdate int    `json:"animationDurationUpdate,omitempty"`
-	AnimationEasingUpdate   string `json:"animationEasingUpdate,omitempty"`
-	AnimationDelayUpdate    int    `json:"animationDelayUpdate,omitempty"`
+	NodeClick               string     `json:"nodeClick,omitempty"`
+	Sort                    string     `json:"sort,omitempty"`
+	RenderLabelForZeroData  types.Bool `json:"renderLabelForZeroData,omitempty"`
+	SelectedMode            types.Bool `json:"selectedMode,omitempty"`
+	Animation               types.Bool `json:"animation,omitempty" default:"true"`
+	AnimationThreshold      int        `json:"animationThreshold,omitempty"`
+	AnimationDuration       int        `json:"animationDuration,omitempty"`
+	AnimationEasing         string     `json:"animationEasing,omitempty"`
+	AnimationDelay          int        `json:"animationDelay,omitempty"`
+	AnimationDurationUpdate int        `json:"animationDurationUpdate,omitempty"`
+	AnimationEasingUpdate   string     `json:"animationEasingUpdate,omitempty"`
+	AnimationDelayUpdate    int        `json:"animationDelayUpdate,omitempty"`
+
+	// Custom
+	RenderItem string `json:"renderItem,omitempty"`
 
 	// series data
 	Data         interface{} `json:"data,omitempty"`
@@ -114,13 +121,28 @@ type SingleSeries struct {
 	*opts.AreaStyle     `json:"areaStyle,omitempty"`
 	*opts.TextStyle     `json:"textStyle,omitempty"`
 	*opts.CircularStyle `json:"circular,omitempty"`
+
+	// Calendar
+	CalendarIndex int `json:"calendarIndex,omitempty"`
 }
 
 type SeriesOpts func(s *SingleSeries)
 
+func WithCoordinateSystem(cs string) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.CoordSystem = cs
+	}
+}
+
+func WithCalendarIndex(index int) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.CalendarIndex = index
+	}
+}
+
 func WithSeriesAnimation(enable bool) SeriesOpts {
 	return func(s *SingleSeries) {
-		s.Animation = enable
+		s.Animation = opts.Bool(enable)
 	}
 }
 
@@ -445,7 +467,7 @@ func WithMarkPointStyleOpts(opt opts.MarkPointStyle) SeriesOpts {
 }
 
 func (s *SingleSeries) InitSeriesDefaultOpts(c BaseConfiguration) {
-	opts.SetDefaultValue(s)
+	util.SetDefaultValue(s)
 	// some special inherited options from BaseConfiguration
 	s.Animation = c.Animation
 }
@@ -484,5 +506,14 @@ func WithEncodeOpts(opt opts.Encode) SeriesOpts {
 func WithDatasetIndex(index int) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.DatasetIndex = index
+	}
+}
+
+// WithCustomChartOpts sets the CustomChart option.
+func WithCustomChartOpts(opt opts.CustomChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.XAxisIndex = opt.XAxisIndex
+		s.YAxisIndex = opt.YAxisIndex
+		s.RenderItem = opt.RenderItem
 	}
 }

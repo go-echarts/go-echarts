@@ -23,11 +23,21 @@
     <a href="https://pkg.go.dev/github.com/go-echarts/go-echarts/v2">
         <img src="https://godoc.org/github.com/go-echarts/go-echarts?status.svg" alt="GoDoc">
     </a>
+    <a href="https://echarts.apache.org/">
+        <img src="https://img.shields.io/badge/echarts-_v5.4.3-orange" alt="echartsVersion">
+    </a>
 </p>
 
-> If a language can be used to build web scrapers, it definitely needs to provide a graceful data visualization library. --- by dongdong.
+> If a language can be used to build web scrapers, it definitely needs to provide a graceful data visualization
+> library. --- by dongdong.
 
-In the Golang ecosystem, there are not many choices for data visualization libraries. The development of [go-echarts](https://github.com/go-echarts/go-echarts) aims to provide a simple yet powerful data visualization library for Golang. [Apache ECharts](https://echarts.apache.org/) is an outstanding charting and visualization library, it supports adorable chart types and various interactive features. There are many language bindings for Echarts, for example, [pyecharts](https://github.com/pyecharts/pyecharts). go-echarts learns from pyecharts and has evolved a lot.
+In the Golang ecosystem, there are not many choices for data visualization libraries.
+The development of [go-echarts](https://github.com/go-echarts/go-echarts) aims to
+provide a simple yet powerful data visualization library for Golang.   
+[Apache ECharts](https://echarts.apache.org/) is an awesome charting and visualization library,
+it supports adorable chart types and various interactive features.
+There are many language bindings for Echarts, such as [pyecharts](https://github.com/pyecharts/pyecharts),
+which `go-echarts` learns and has evolved a lot from.
 
 [中文 README](README_CN.md)
 
@@ -61,9 +71,16 @@ require github.com/go-echarts/go-echarts/v2
 
 ### ⏳ Version
 
-The go-echarts project is being developed under v2 version and the active codebase is on the master branch now.
+The go-echarts project is being developed under v2 version and the active codebase is on the master branch.
 
-v1 and v2 are incompatible which means that you cannot upgrade go-echarts from v1 to v2 smoothly. But I think it is worth trying that new version.
+v1 and v2 are incompatible which means that you cannot upgrade go-echarts from v1 to v2 smoothly. But I think it is
+worth trying that new version.
+
+Especially, when there contains mino changes (usually in enhancement), we will release the `rc` version before a
+standard
+release.
+So, if you upgrade your projects cross the `rc` versions, maybe
+need little adjust.
 
 ### ✨ Features
 
@@ -75,7 +92,10 @@ v1 and v2 are incompatible which means that you cannot upgrade go-echarts from v
 
 ### 📝 Usage
 
-It's easy to get started with go-echarts. In this example, we create a simple bar chart with only a few lines of code.
+It's easy to get started with go-echarts with [go-echarts/examples](https://github.com/go-echarts/examples)
+and [GoDocs](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
+
+In this example, we create a simple bar chart with only a few lines of code.
 
 ```golang
 package main
@@ -170,7 +190,6 @@ func main() {
 
 ![image](https://user-images.githubusercontent.com/19553554/98436642-044cb600-2118-11eb-9f35-784948a92cb5.png)
 
-
 ### 🔖 Gallery
 
 <div align="center">
@@ -200,18 +219,29 @@ func main() {
 <img src="https://user-images.githubusercontent.com/19553554/52349544-c2ce3900-2a61-11e9-82af-28aaaaae0d67.gif" width="33%" alt="overlap"/>
 </div>
 
-For more information, please refer to [go-echarts/examples](https://github.com/go-echarts/examples) and the [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
+For more information, please refer to [go-echarts/examples](https://github.com/go-echarts/examples) and
+the [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
+
+### Ecosystem
+
+> The section lists awesome projects which integrate with go-echarts specially.
+
+- [templ](https://github.com/a-h/templ) A language for writing HTML user interfaces in Go. 
 
 ### 💡 Contributing
 
-go-echarts is an open source project and built on the top of other open-source projects, hence we are always very happy to have contributions, whether for typo fix, bug fix or big new features. Please do not ever hesitate to ask a question or send a pull request.
+go-echarts is an open source project and built on the top of other open-source projects, hence we are always very happy
+to have contributions, whether for typo fix, bug fix or big new features. Please do not ever hesitate to ask a question
+or send a pull request.
 
-We strongly value documentation and integration with other projects so we are very glad to accept improvements for these aspects.
+We strongly value documentation and integration with other projects so we are very glad to accept improvements for these
+aspects.
 
 ### 😉 Authors
 
-Code with ❤️ by [chenjiandongx](https://github.com/chenjiandongx) / [Koooooo-7](https://github.com/Koooooo-7) and lovely [contributors](https://github.com/go-echarts/go-echarts/graphs/contributors)
+Code with ❤️ by [chenjiandongx](https://github.com/chenjiandongx) / [Koooooo-7](https://github.com/Koooooo-7) and
+lovely [contributors](https://github.com/go-echarts/go-echarts/graphs/contributors)
 
 ### 📃 License
 
-MIT [©chenjiandongx](https://github.com/chenjiandongx)
+MIT [©go-echarts](https://github.com/go-echarts/go-echarts/blob/master/LICENSE)
