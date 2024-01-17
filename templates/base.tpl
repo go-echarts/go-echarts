@@ -13,6 +13,14 @@
     goecharts_{{ .ChartID | safeJS }}.setOption(option_{{ .ChartID | safeJS }});
  	goecharts_{{ .ChartID | safeJS }}.dispatchAction(action_{{ .ChartID | safeJS }});
 
+  {{- range  $interceptor := .EventInterceptors }}
+    {{if .Query  }}
+    goecharts_{{ $.ChartID | safeJS }}.on({{ $interceptor.EventName }}, {{ $interceptor.Query | safeJS }},{{ $interceptor.Handler | safeJS }});
+    {{ else }}
+    goecharts_{{ $.ChartID | safeJS }}.on({{ $interceptor.EventName }},{{ $interceptor.Handler | safeJS }})
+    {{ end }}
+  {{- end }}
+
     {{- range .JSFunctions.Fns }}
     {{ . | safeJS }}
     {{- end }}
