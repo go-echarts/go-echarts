@@ -67,7 +67,8 @@ type BaseConfiguration struct {
 	DataZoomList  []opts.DataZoom  `json:"datazoom,omitempty"`
 	VisualMapList []opts.VisualMap `json:"visualmap,omitempty"`
 
-	EventListeners []event.Listener `json:"-"`
+	EventListeners   []event.Listener     `json:"-"`
+	ActionDispatcher []actions.Dispatcher `json:"-"`
 
 	// ParallelAxisList represents the component list which is the coordinate axis for parallel coordinate.
 	ParallelAxisList []opts.ParallelAxis
@@ -358,6 +359,12 @@ func WithLegendOpts(opt opts.Legend) GlobalOpts {
 func WithEventListeners(listeners ...event.Listener) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.EventListeners = append(bc.EventListeners, listeners...)
+	}
+}
+
+func WithActionDispatchers(dispatchers ...actions.Dispatcher) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.ActionDispatcher = append(bc.ActionDispatcher, dispatchers...)
 	}
 }
 

@@ -59,8 +59,8 @@ require github.com/go-echarts/go-echarts/v2
 
 go-echarts 现在有 v1 和 v2 两个大版本，v1 版本的代码位于 v1 分支下，v2 代码位于 master 分支下。两个大版本是不兼容的，且 v1 不会再维护了，所以欢迎使用 v2 版本。
 
-特别的，当有一些小的改动时（通常做的部分重构）会先发布rc版本，表示这是一个待发布的新的可能有小改懂的版本（非breaking）。
-如果跨rc版本进行已有的项目升级是，可能需要小调整一下代码。
+特别的，当有一些小的改动时（通常做的部分重构）会先发布rc版本，表示这是一个待发布的新的可能有小改动的版本（非breaking）。
+如果跨rc版本对已有的项目直接升级时，可能需要小调整一下代码。
 
 ### ✨ 特性
 
@@ -201,4 +201,4 @@ func main() {
 
 ### 📃 License
 
-MIT [©chenjiandongx](https://github.com/chenjiandongx)
+MIT [LICENSE](https://github.com/go-echarts/go-echarts/blob/master/LICENSE)

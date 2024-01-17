@@ -21,6 +21,11 @@
     {{ end }}
   {{- end }}
 
+  {{- range $index, $action  := .ActionDispatcher }}
+	const action_{{ $index | safeJS }} = {{ $action }};
+ 	goecharts_{{ $.ChartID | safeJS }}.dispatchAction(action_{{ $index | safeJS }});
+  {{- end }}
+
     {{- range .JSFunctions.Fns }}
     {{ . | safeJS }}
     {{- end }}
