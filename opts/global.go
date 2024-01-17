@@ -34,6 +34,9 @@ type Initialization struct {
 
 	// Theme of chart
 	Theme string `default:"white"`
+
+	// Renderer
+	Renderer string `default:"canvas"`
 }
 
 // Validate validates the initialization configurations.

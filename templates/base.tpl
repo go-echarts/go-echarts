@@ -5,7 +5,7 @@
 
 <script type="text/javascript">
     "use strict";
-    let goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID | safeJS }}'), "{{ .Theme }}");
+    let goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID | safeJS }}'), "{{ .Theme }}", { renderer: "{{ .Renderer }}" });
     let option_{{ .ChartID | safeJS }} = {{ .JSONNotEscaped | safeJS }};
     {{ if isSet  "BaseActions" . }}
 	let action_{{ .ChartID | safeJS }} = {{ .JSONNotEscapedAction | safeJS }};
