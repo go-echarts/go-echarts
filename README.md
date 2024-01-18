@@ -222,6 +222,12 @@ func main() {
 For more information, please refer to [go-echarts/examples](https://github.com/go-echarts/examples) and
 the [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
 
+### Ecosystem
+
+> The section lists awesome projects which integrate with go-echarts specially.
+
+- [templ](https://github.com/a-h/templ) A language for writing HTML user interfaces in Go. 
+
 ### 💡 Contributing
 
 go-echarts is an open source project and built on the top of other open-source projects, hence we are always very happy
