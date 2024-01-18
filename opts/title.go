@@ -64,8 +64,8 @@ type Title struct {
 	// Adaptive by default.
 	Bottom string `json:"bottom,omitempty"`
 
-	// BackgroundColor Background color of title, which is transparent by default.
-	BackgroundColor string `json:"backgroundColor,omitempty"`
+	// TitleBackgroundColor Background color of title, which is transparent by default.
+	TitleBackgroundColor string `json:"backgroundColor,omitempty"`
 
 	// BorderColor Border color of title. Support the same color format as backgroundColor.
 	BorderColor string `json:"borderColor,omitempty"`
