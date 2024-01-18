@@ -750,7 +750,7 @@ type CustomChart struct {
 
 	// Custom series requires developers to write a render logic by themselves in JavaScript.
 	// This render logic is called RenderItem. Use opts.FuncOpts to embed JavaScript.
-	RenderItem string
+	RenderItem types.FuncStr
 }
 
 // CustomData

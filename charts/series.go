@@ -101,7 +101,7 @@ type SingleSeries struct {
 	AnimationDelayUpdate    int        `json:"animationDelayUpdate,omitempty"`
 
 	// Custom
-	RenderItem string `json:"renderItem,omitempty"`
+	RenderItem types.FuncStr `json:"renderItem,omitempty"`
 
 	// series data
 	Data         interface{} `json:"data,omitempty"`
