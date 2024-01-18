@@ -2,13 +2,13 @@
 
 # Description
 
-> Please share your ideas and awesome changes.
+> Please share your ideas and awesome changes to let us know more
 
 
 <!-- Please include a summary of the change or which issue is fixed. Please also include relevant motivation and context.
 List any dependencies/documents that are required for this change is a plus.
 
-Fixes # (issue)
+Fixes # (issue number if exists)
 -->
 
 ---
@@ -20,14 +20,15 @@ Fixes # (issue)
 - [ ] Breaking change (Would cause existing functionality to not work as expected)
 - [ ] Others
 
+<!-- details -->
 ---
 
 # Examples:
 
-If there contains a branch new features of chart, are you willing to submit a PR
+If there contains new features of charts, are you willing to submit a PR
 on [go-echarts/Examples](https://github.com/go-echarts/examples)?
 > This is absolutely not required, but we are happy to see that you could share or update the related
-> charts examples to more users.
+> charts' examples to benefit more users.
 
 - [ ] Yes, I am willing to submit a PR on [Examples](https://github.com/go-echarts/examples)!
 
