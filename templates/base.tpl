@@ -7,11 +7,11 @@
     "use strict";
     let goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID | safeJS }}'), "{{ .Theme }}", { renderer: "{{  .Initialization.Renderer }}" });
     let option_{{ .ChartID | safeJS }} = {{ .JSONNotEscaped | safeJS }};
-    {{ if isSet  "BaseActions" . }}
+    {{ if isSetAction .BaseActions.Type }}
 	let action_{{ .ChartID | safeJS }} = {{ .JSONNotEscapedAction | safeJS }};
+ 	goecharts_{{ .ChartID | safeJS }}.dispatchAction(action_{{ .ChartID | safeJS }});
     {{ end }}
     goecharts_{{ .ChartID | safeJS }}.setOption(option_{{ .ChartID | safeJS }});
- 	goecharts_{{ .ChartID | safeJS }}.dispatchAction(action_{{ .ChartID | safeJS }});
 
   {{- range  $listener := .EventListeners }}
     {{if .Query  }}
