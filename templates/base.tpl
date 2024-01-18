@@ -15,14 +15,14 @@
 
   {{- range  $listener := .EventListeners }}
     {{if .Query  }}
-    goecharts_{{ $.ChartID | safeJS }}.on({{ $listener.EventName }}, {{ $listener.Query | safeJS }},{{ $listener.Handler | safeJS }});
+    goecharts_{{ $.ChartID | safeJS }}.on({{ $listener.EventName }}, {{ $listener.Query | safeJS }}, {{ injectInstance $listener.Handler "%MY_ECHARTS%"  $.ChartID | safeJS }});
     {{ else }}
-    goecharts_{{ $.ChartID | safeJS }}.on({{ $listener.EventName }},{{ $listener.Handler | safeJS }})
+    goecharts_{{ $.ChartID | safeJS }}.on({{ $listener.EventName }}, {{ injectInstance $listener.Handler "%MY_ECHARTS%"  $.ChartID | safeJS }})
     {{ end }}
   {{- end }}
 
     {{- range .JSFunctions.Fns }}
-    {{ . | safeJS }}
+    {{ injectInstance . "%MY_ECHARTS%"  $.ChartID  | safeJS }}
     {{- end }}
 </script>
 {{ end }}

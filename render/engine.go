@@ -3,12 +3,13 @@ package render
 import (
 	"bytes"
 	"fmt"
+	tpls "github.com/go-echarts/go-echarts/v2/templates"
+	"github.com/go-echarts/go-echarts/v2/types"
 	"html/template"
 	"io"
 	"reflect"
 	"regexp"
-
-	tpls "github.com/go-echarts/go-echarts/v2/templates"
+	"strings"
 )
 
 // Renderer
@@ -21,6 +22,10 @@ type Renderer interface {
 const (
 	ModChart = "chart"
 	ModPage  = "page"
+	// EchartsInstancePrefix the default prefix for each echarts instance
+	EchartsInstancePrefix = "goecharts_"
+	// EchartsInstancePlaceholder a placeholder for types.FuncStr inject echarts instance
+	EchartsInstancePlaceholder = "%MY_ECHARTS%"
 )
 
 var pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
@@ -108,6 +113,10 @@ func MustTemplate(name string, contents []string) *template.Template {
 			return template.JS(fmt.Sprint(s))
 		},
 		"isSet": isSet,
+		"injectInstance": func(funcStr types.FuncStr, echartsInstancePlaceholder string, chartID string) string {
+			instance := EchartsInstancePrefix + chartID
+			return strings.Replace(string(funcStr), echartsInstancePlaceholder, instance, -1)
+		},
 	})
 	tpl = template.Must(tpl.Parse(contents[0]))
 
