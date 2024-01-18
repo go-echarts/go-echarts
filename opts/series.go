@@ -155,6 +155,19 @@ type ItemStyle struct {
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
+
+	// ShadowBlur Size of shadow blur.
+	// This attribute should be used along with shadowColor,shadowOffsetX, shadowOffsetY to set shadow to component.
+	ShadowBlur int `json:"shadowBlur,omitempty"`
+
+	// ShadowColor Shadow color. Support same format as color.
+	ShadowColor string `json:"shadowColor,omitempty"`
+
+	// ShadowOffsetX Offset distance on the horizontal direction of shadow.
+	ShadowOffsetX int `json:"shadowOffsetX,omitempty"`
+
+	// ShadowOffsetY Offset distance on the vertical direction of shadow.
+	ShadowOffsetY int `json:"shadowOffsetY,omitempty"`
 }
 
 // MarkLines represents a series of marklines.
