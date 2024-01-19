@@ -14,7 +14,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: '1.16'
+          go-version: '1.18'
       - name: Do format
         run: |
           go install golang.org/x/tools/cmd/goimports@latest
@@ -36,7 +36,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: '1.16'
+          go-version: '1.18'
 
       - name: Test
         run: go test -v ./...
@@ -49,7 +49,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: '1.16'
+          go-version: '1.18'
 
       - name: Test
         run: go test -v ./...
