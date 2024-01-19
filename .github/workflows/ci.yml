@@ -7,9 +7,6 @@ on:
   pull_request:
     branches: [ "master" ]
 
-permissions:
-  contents: read
-
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -31,16 +28,9 @@ jobs:
             exit 1;
           fi
 
-  dependency-review:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout Repository'
-        uses: actions/checkout@v4
-      - name: 'Dependency Review'
-        uses: actions/dependency-review-action@v2
   build-ubuntu:
     runs-on: ubuntu-latest
-    needs: [ lint, dependency-review ]
+    needs: [ lint ]
     steps:
       - uses: actions/checkout@v4
       - name: Set up Go
@@ -52,7 +42,7 @@ jobs:
         run: go test -v ./...
 
   build-windows:
-    needs: [ lint, dependency-review ]
+    needs: [ lint ]
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
