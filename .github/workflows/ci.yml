@@ -1,5 +1,6 @@
 name: Build & Test
 
+
 on:
   push:
     branches: [ "master" ]
@@ -7,26 +8,50 @@ on:
     branches: [ "master" ]
 
 jobs:
-  build-ubuntu:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: '^1.16'
+          go-version: '1.18'
+      - name: Do format
+        run: |
+          go install golang.org/x/tools/cmd/goimports@latest
+          ./build.sh format 
+          git status
+      - name: Check format
+        run: |
+          if [[ $(git status --porcelain) ]]; then
+            echo "Error: Please format files via ./build.sh format first ";
+            echo "Found not format files:"
+            git status --porcelain
+            exit 1;
+          fi
+
+  build-ubuntu:
+    runs-on: ubuntu-latest
+    needs: [ lint ]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.18'
 
       - name: Test
         run: go test -v ./...
 
   build-windows:
+    needs: [ lint ]
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: '^1.16'
+          go-version: '1.18'
 
       - name: Test
         run: go test -v ./...
