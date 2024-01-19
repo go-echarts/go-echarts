@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"io"
 
-	tpls "github.com/go-echarts/go-echarts/v2/templates"
+	"github.com/go-echarts/go-echarts/v2/templates"
 )
 
 type pageRender struct {
@@ -23,7 +23,7 @@ func (r *pageRender) Render(w io.Writer) error {
 		fn()
 	}
 
-	contents := []string{tpls.HeaderTpl, tpls.BaseTpl, tpls.PageTpl}
+	contents := []string{templates.HeaderTpl, templates.BaseTpl, templates.PageTpl}
 	tpl := MustTemplate(ModPage, contents)
 
 	var buf bytes.Buffer

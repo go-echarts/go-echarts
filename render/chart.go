@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"io"
 
-	tpls "github.com/go-echarts/go-echarts/v2/templates"
+	"github.com/go-echarts/go-echarts/v2/templates"
 )
 
 type chartRender struct {
@@ -23,7 +23,7 @@ func (r *chartRender) Render(w io.Writer) error {
 		fn()
 	}
 
-	contents := []string{tpls.HeaderTpl, tpls.BaseTpl, tpls.ChartTpl}
+	contents := []string{templates.HeaderTpl, templates.BaseTpl, templates.ChartTpl}
 	tpl := MustTemplate(ModChart, contents)
 
 	var buf bytes.Buffer
