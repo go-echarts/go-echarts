@@ -33,6 +33,7 @@ jobs:
 
   dependency-review:
     runs-on: ubuntu-latest
+    needs: [ init ]
     steps:
       - name: 'Checkout Repository'
         uses: actions/checkout@v4
