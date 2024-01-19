@@ -25,6 +25,8 @@ jobs:
         run: |
           if [[ $(git status --porcelain) ]]; then
             echo "Error: Please format files via ./build.sh format first ";
+            echo "Found not format files:"
+            git status --porcelain
             exit 1;
           fi
 
