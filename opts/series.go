@@ -2,6 +2,7 @@ package opts
 
 import (
 	"fmt"
+
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 

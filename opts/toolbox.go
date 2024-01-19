@@ -3,6 +3,7 @@ package opts
 import (
 	"bytes"
 	"encoding/json"
+
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
