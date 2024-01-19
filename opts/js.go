@@ -2,8 +2,9 @@ package opts
 
 import (
 	"fmt"
-	"github.com/go-echarts/go-echarts/v2/types"
 	"regexp"
+
+	"github.com/go-echarts/go-echarts/v2/types"
 )
 
 const funcMarker = "__f__"
