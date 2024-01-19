@@ -226,21 +226,20 @@ the [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
 
 > The section lists awesome projects which integrate with go-echarts specially.
 
-- [templ](https://github.com/a-h/templ) A language for writing HTML user interfaces in Go. 
+- [templ](https://github.com/a-h/templ) A language for writing HTML user interfaces in Go.
 
-### 💡 Contributing
+### 💡 Contribution
 
-go-echarts is an open source project and built on the top of other open-source projects, hence we are always very happy
-to have contributions, whether for typo fix, bug fix or big new features. Please do not ever hesitate to ask a question
-or send a pull request.
+go-echarts is an open source project and built on the top of other open-source projects.
+Welcome all the kinds of contributions. No matter it is for typo fix, bug fix or big new features.
+Please do not hesitate to ask a question or send a pull request.
 
-We strongly value documentation and integration with other projects so we are very glad to accept improvements for these
+We strongly value documentation and integration with other projects, so we are very glad to accept improvements for these
 aspects.
 
-### 😉 Authors
+### ❤️ Contributors
 
-Code with ❤️ by [chenjiandongx](https://github.com/chenjiandongx) / [Koooooo-7](https://github.com/Koooooo-7) and
-lovely [contributors](https://github.com/go-echarts/go-echarts/graphs/contributors)
+![contributors](https://contrib.rocks/image?repo=go-echarts/go-echarts)
 
 ### 📃 License
 
