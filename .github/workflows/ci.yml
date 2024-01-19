@@ -23,7 +23,7 @@ jobs:
       - name: Check format
         run: |
           if [[ $(git status --porcelain) ]]; then
-            echo "Error: Please format files ";
+            echo "Error: Please format files via ./build.sh format first ";
             exit 1;
           fi
   
