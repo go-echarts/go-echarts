@@ -3,7 +3,7 @@ name: Build & Test
 
 on:
   push:
-    branches: [ "master", "format-action" ]
+    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
