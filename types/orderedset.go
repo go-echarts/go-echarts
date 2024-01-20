@@ -52,3 +52,9 @@ func (o *OrderedSet) Size() int {
 func (o *OrderedSet) Contains(item string) bool {
 	return o.filter[item] != nil
 }
+
+func (o *OrderedSet) Clear() {
+	o.filter = make(map[string]*Index)
+	o.cur = 0
+	o.Values = []string{}
+}

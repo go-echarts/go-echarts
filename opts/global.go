@@ -33,6 +33,9 @@ type Initialization struct {
 	// Assets host
 	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
 
+	// Custom host
+	CustomAssetsHost string
+
 	// Theme of chart
 	Theme string `default:"white"`
 
@@ -66,6 +69,22 @@ func (opt *Assets) InitAssets() {
 
 	opt.CustomizedJSAssets.Init()
 	opt.CustomizedCSSAssets.Init()
+}
+
+// ClearPresetAssets clear both the preset JS and CSS static assets.
+func (opt *Assets) ClearPresetAssets() {
+	opt.ClearPresetJSAssets()
+	opt.ClearPresetCSSAssets()
+}
+
+// ClearPresetJSAssets only clear all the preset JS static assets.
+func (opt *Assets) ClearPresetJSAssets() {
+	opt.JSAssets.Clear()
+}
+
+// ClearPresetCSSAssets only clear all the preset CSS static assets.
+func (opt *Assets) ClearPresetCSSAssets() {
+	opt.CSSAssets.Clear()
 }
 
 // AddCustomizedJSAssets adds the customized javascript assets which will not be added the `host` prefix.
