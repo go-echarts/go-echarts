@@ -122,7 +122,7 @@ type ToolBoxFeatureUserDefined struct {
 	Icon string `json:"icon,omitempty"`
 
 	// On click handler in JavaScript. Use opts.FuncOpts to embed JavaScript.
-	OnClick string `json:"onclick,omitempty"`
+	OnClick types.FuncStr `json:"onclick,omitempty"`
 }
 
 // ToolBoxFeatureSaveAsImage is the option for saving chart as image.
