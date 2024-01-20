@@ -12,6 +12,20 @@
 - Generate echarts required options and datasets based on go programs.
 - Mount options to echarts' instance and render all in one place.
 
+# What go-echarts changed:
+
+### Types
+
+echarts is a pure JS lib which provide lots of flexible abilities on types and functions.But go-echarts
+is not feasible to achieve it in a simple way.
+Besides, some of the options have default values which may not consistent with go types.
+So, we change some types follow this guideline for now:
+
+- If the bool option with default(missing) value `(true)`, define it `*bool`(`types.Bool`i) and provide the
+  handy func `opts.Bool()` to do convert easily.
+- If the option is `string|string array` or `number|number arrary`, define it in `type arrary` or `interface{}`.
+- If the options is a complex struct, define it `interface` or providing an usable function, convert it then.
+
 # Where to find options I need?
 
 go-echarts' options are almost align to [echarts' official options](https://echarts.apache.org/en/option.html#title).  
