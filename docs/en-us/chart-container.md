@@ -23,4 +23,34 @@ We hold the `Charter` instances in program level for `Chart Container` and `Page
 
 ## Chart Container
 
+A Chart Container is made for a single chart.
+The templates it required:
+
+- header.tpl
+- base.tpl
+- chart.tpl
+
+It allows to customize the asserts on JS and CSS.  
+Because it is only one chart which means it is associated with single echarts container also.  
+Any change only applies to the single chart, directly and plain.
+
 ## Page Container
+
+A Page Container is made for multi chart.  
+The templates it required:
+
+- header.tpl
+- base.tpl
+- page.tpl
+
+It allows to customize the assets on JS and CSS on page level and charts level.  
+Because it contains multi charts in one page, it is associated with multi echarts containers also.  
+There support layout types:
+
+- 'none'
+- 'center'
+- 'flex'
+
+Any changes on page level should align to chart level, otherwise, it may has side effect.
+
+!> Known issue: Only clear preset assets on page level, the charts level's preset assets will replenish it instead.  
