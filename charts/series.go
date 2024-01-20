@@ -146,6 +146,12 @@ func WithSeriesAnimation(enable bool) SeriesOpts {
 	}
 }
 
+func WithSeriesSymbolKeepAspect(enable bool) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.SymbolKeepAspect = opts.Bool(enable)
+	}
+}
+
 // WithLabelOpts sets the label.
 func WithLabelOpts(opt opts.Label) SeriesOpts {
 	return func(s *SingleSeries) {
