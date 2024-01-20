@@ -8,3 +8,6 @@
 - Examples
 - Advanced
 - Ecosystems
+- Release
+    - [Version Control](en-us/version-contrl)
+    - [Releases](en-us/release)
