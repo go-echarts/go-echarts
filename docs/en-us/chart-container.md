@@ -17,7 +17,7 @@ The `Container` is more close to a `HTML` page result in go-echarts.
 - On single chart, it only has the single Chart Container with Chart Render.
 - On multi charts, it only has the single Page Container with Page Render.
 
-!> **There is no `1:n` relationship between Chart Container and Page Container.**
+!> **There is no `1:n` strict relationship between Chart Container and Page Container.**
 
 We hold the `Charter` instances in program level for `Chart Container` and `Page Container`, it is more straightforward.
 

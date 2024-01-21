@@ -16,10 +16,10 @@
 
 ## Option Types
 
-echarts is a pure JS lib which provide lots of flexible abilities on types and functions.But go-echarts
-is not feasible to achieve it in a simple way.
-Besides, some of the options have default values which may not consistent with go types.
-So, we change some types follow this guideline for now:
+echarts is a pure JS lib which provides lots of flexible abilities on types and functions. 
+In golang, go-echarts is not feasible to achieve it in a simple way.
+Besides, some of the options may have default values which may not consistent with go types.
+Therefore, we change some types following this guideline for now:
 
 - If the bool option with default(missing) value `(true)`, define it `*bool`(`types.Bool`) and provide the
   handy func `opts.Bool()` to do convert easily.
@@ -33,7 +33,7 @@ So, we change some types follow this guideline for now:
 
 Since go-echarts renders the options to charts pure in go,
 there is no way to apply JS functions either on echarts options or echarts instance directly.  
-So, we provide the ability to insert pure JS function strings
+Instead, we provide the ability to insert pure JS function string
 and some useful functional wrapper api to help users do operations on echarts and echarts instance.  
 The type of those kind of `Function String` is `types.FuncStr`.
 
