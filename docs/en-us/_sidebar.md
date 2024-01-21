@@ -2,8 +2,17 @@
     - [Setup go-echarts](en-us/)
 - Concepts
     - [Dive into go-echarts](en-us/dive-into)
-    - [Chart Container](en-us/chart-container)
-    - [Chart Options](en-us/chart-options)
+    - [Chart Container](en-us/chart-container.md)
     - [Event and Action](en-us/event-and-action)
-- Ecosystem
-    - [Awesome resources](en-us/ecosystem)
+
+<!--
+TODO:
+    - [Chart Options](en-us/chart-options)
+- Examples
+- Advanced
+- Ecosystems
+- Showcases
+- Release
+    - [Version Control](en-us/version-contrl)
+    - [Releases](en-us/release)
+-->
