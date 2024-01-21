@@ -13,10 +13,17 @@ const (
 	CompatibleEchartsJS = "echarts@4.min.js"
 )
 
-// Initialization contains options for the canvas.
-type Initialization struct {
+type PageConfiguration struct {
 	// HTML title
 	PageTitle string `default:"Awesome go-echarts"`
+	// Assets host
+	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
+	// Custom host
+	CustomAssetsHost string
+}
+
+// Initialization contains options for the canvas.
+type Initialization struct {
 
 	// Width of canvas
 	Width string `default:"900px"`
@@ -30,17 +37,18 @@ type Initialization struct {
 	// Chart unique ID
 	ChartID string
 
-	// Assets host
-	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
-
-	// Custom host
-	CustomAssetsHost string
-
 	// Theme of chart
 	Theme string `default:"white"`
 
 	// Renderer
 	Renderer string `default:"canvas"`
+
+	// Page configurations duplicate, a shortcut for single chart build with page settings
+	PageTitle string `default:"Awesome go-echarts"`
+	// Assets host
+	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
+	// Custom host
+	CustomAssetsHost string
 }
 
 // Validate validates the initialization configurations.
