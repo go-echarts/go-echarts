@@ -5,9 +5,5 @@
     - [Chart Container](en-us/chart-container)
     - [Chart Options](en-us/chart-options)
     - [Event and Action](en-us/event-and-action)
-- Examples
-- Advanced
-- Ecosystems
-- Release
-    - [Version Control](en-us/version-contrl)
-    - [Releases](en-us/release)
+- Ecosystem
+    - [Awesome resources](en-us/ecosystem)
