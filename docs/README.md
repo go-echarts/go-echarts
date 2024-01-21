@@ -24,19 +24,7 @@
 
 # 🔰 Installation
 
-Classic way to get go-echarts
-
-```shell
-# this may be a stupid way to use v2 go-echarts without gomod(GO111MODULE=off) because of
-# the next generation version management system... 🐶
-# if you get a better workaround, please let me know....
-
-$ go get -u github.com/go-echarts/go-echarts/...
-$ cd $go-echarts-project
-$ mkdir v2 && mv charts components datasets opts render templates types v2
-```
-
-Use gomod style
+## gomod
 
 ```shell
 $ go get -u github.com/go-echarts/go-echarts/v2/...
@@ -48,6 +36,16 @@ OR
 # go.mod
 
 require github.com/go-echarts/go-echarts/v2
+```
+
+## classic to get go-echarts
+
+```shell
+# this may be a crude way to use v2 go-echarts without gomod(GO111MODULE=off)
+
+$ go get -u github.com/go-echarts/go-echarts/...
+$ cd $go-echarts-project
+$ mkdir v2 && mv charts components datasets opts render templates types v2
 ```
 
 # ⏳ Version Control
@@ -78,6 +76,5 @@ Welcome all the kinds of contributions. No matter it is for typo fix, bug fix or
 Please do not hesitate to ask a question or send a pull request.
 
 We strongly value documentation and integration with other projects, so we are very glad to accept improvements for
-these
-aspects.
+these aspects.
 
