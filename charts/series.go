@@ -128,6 +128,15 @@ type SingleSeries struct {
 
 type SeriesOpts func(s *SingleSeries)
 
+type SingleSeriesOptFunc func(s *SingleSeries)
+
+// WithSeriesOpts If the WithXXX helper method is not good enough, use this directly!
+func WithSeriesOpts(opf SingleSeriesOptFunc) SeriesOpts {
+	return func(s *SingleSeries) {
+		opf(s)
+	}
+}
+
 func WithCoordinateSystem(cs string) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.CoordSystem = cs

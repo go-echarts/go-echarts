@@ -24,19 +24,7 @@
 
 # 🔰 Installation
 
-Classic way to get go-echarts
-
-```shell
-# this may be a stupid way to use v2 go-echarts without gomod(GO111MODULE=off) because of
-# the next generation version management system... 🐶
-# if you get a better workaround, please let me know....
-
-$ go get -u github.com/go-echarts/go-echarts/...
-$ cd $go-echarts-project
-$ mkdir v2 && mv charts components datasets opts render templates types v2
-```
-
-Use gomod style
+## gomod
 
 ```shell
 $ go get -u github.com/go-echarts/go-echarts/v2/...
@@ -50,6 +38,16 @@ OR
 require github.com/go-echarts/go-echarts/v2
 ```
 
+## classic to get go-echarts
+
+```shell
+# this may be a crude way to use v2 go-echarts without gomod(GO111MODULE=off)
+
+$ go get -u github.com/go-echarts/go-echarts/...
+$ cd $go-echarts-project
+$ mkdir v2 && mv charts components datasets opts render templates types v2
+```
+
 # ⏳ Version Control
 
 The go-echarts project is being developed under v2 version and the active codebase is on the master branch.
@@ -57,7 +55,7 @@ The go-echarts project is being developed under v2 version and the active codeba
 v1 and v2 are incompatible which means that you cannot upgrade go-echarts from v1 to v2 smoothly. But I think it is
 worth trying that new version.
 
-Especially, when there contains mino changes (usually in enhancement), we will release the `rc` version before a
+!> Especially, when there contains mino changes (usually in enhancement), we will release the `rc` version before a
 standard
 release.
 So, if you upgrade your projects cross the `rc` versions, maybe
@@ -78,6 +76,5 @@ Welcome all the kinds of contributions. No matter it is for typo fix, bug fix or
 Please do not hesitate to ask a question or send a pull request.
 
 We strongly value documentation and integration with other projects, so we are very glad to accept improvements for
-these
-aspects.
+these aspects.
 

@@ -21,18 +21,19 @@
         subMaxLevel: 3,
         auto2top: true,
         homepage: 'en-us/README.md',
-        // search: {
-        //     placeholder: {
-        //         '/': 'Search',
-        //         '/zh-cn/': '搜索',
-        //         '/en-us/': 'Type to search'
-        //     },
-        //     noData: {
-        //         '/': 'Not Found',
-        //         '/zh-cn/': '找不到结果',
-        //         '/en-us/': 'No Results'
-        //     }
-        // },
+        search: {
+            placeholder: {
+                '/': 'Search',
+                '/zh-cn/': '搜索',
+                '/en-us/': 'Type to search'
+            },
+            noData: {
+                '/': 'Not Found',
+                '/zh-cn/': '找不到结果',
+                '/en-us/': 'No Results'
+            },
+            pathNamespaces: ['/en-us', '/zh-cn'],
+        },
         plugins: [
             function (hook) {
                 var footer = [
@@ -51,6 +52,7 @@
     }
 </script>
 <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-go.min.js"></script>
 </body>
 </html>
