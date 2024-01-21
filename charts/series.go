@@ -128,12 +128,12 @@ type SingleSeries struct {
 
 type SeriesOpts func(s *SingleSeries)
 
-type SingleSeriesOperator func(s *SingleSeries)
+type SingleSeriesOptFunc func(s *SingleSeries)
 
 // WithSeriesOpts If the WithXXX helper method is not good enough, use this directly!
-func WithSeriesOpts(ssr SingleSeriesOperator) SeriesOpts {
+func WithSeriesOpts(opf SingleSeriesOptFunc) SeriesOpts {
 	return func(s *SingleSeries) {
-		ssr(s)
+		opf(s)
 	}
 }
 
