@@ -70,7 +70,104 @@ A full example on bar chart:
 
 ## Action
 
-The `Action` is the target to implement `myChart.dispatchAction({ type: '' })`, which is used to trigger the behavior.
+The `Action` is considered to implement `myChart.dispatchAction({ type: '' })`, which is used to trigger the behavior.
 It allows to manually trigger events on charts to make the chart dynamic.
 
-## More
+To be honest, it is hard to implement the full functions since we can not run all things
+like a pure JS.
+Considering for a chart lib, the target is not implement a echarts engine in go.  
+Unfortunately, we hasn't provide a action api yet, for the *static* `dispatchAction`.
+
+!> So, is it done?  
+** Actually, we do have one more thing...**
+Although it seems a little tricky, enough as a workaround.
+
+With the power of `%MY_ECHARTS` (see `dive-into` chapter),
+you get the echarts instance, you get the world.
+
+!> Talk is cheap, show you the code :)  
+
+The implementation of the example in
+echarts [Writing Code to Trigger Component Action Manually](https://echarts.apache.org/handbook/en/concepts/event).
+
+```go
+var (
+	itemCntPie = 5
+	data       = []string{"Direct Access", "Email Marketing", "Affiliate Ads ", "Video Ads", "Search Engines"}
+)
+
+func generatePieItems() []opts.PieData {
+    items := make([]opts.PieData, 0)
+    for i := 0; i < itemCntPie; i++ {
+    items = append(items, opts.PieData{Name: data[i], Value: rand.Intn(500)})
+}
+return items
+
+func PieWithDispatchAction() *charts.Pie {
+	const actionWithEchartsInstance = `
+		let currentIndex = -1;
+		setInterval(function() {
+		  const myChart = %MY_ECHARTS%;
+		  var dataLen = myChart.getOption().series[0].data.length;
+		  myChart.dispatchAction({
+			type: 'downplay',
+			seriesIndex: 0,
+			dataIndex: currentIndex
+		  });
+		  currentIndex = (currentIndex + 1) % dataLen;
+		  myChart.dispatchAction({
+			type: 'highlight',
+			seriesIndex: 0,
+			dataIndex: currentIndex
+		  });
+		  myChart.dispatchAction({
+			type: 'showTip',
+			seriesIndex: 0,
+			dataIndex: currentIndex
+		  });
+		}, 1000);
+`
+
+	pie := charts.NewPie()
+	pie.AddJSFuncStrs(actionWithEchartsInstance)
+	pie.SetGlobalOptions(
+		charts.WithTitleOpts(opts.Title{
+			Title: "dispatchAction pie",
+		}),
+		charts.WithTooltipOpts(opts.Tooltip{
+			Trigger:   "item",
+			Formatter: "{a} <br/>{b} : {c} ({d}%)",
+		}),
+		charts.WithLegendOpts(opts.Legend{
+			Left:   "left",
+			Orient: "vertical",
+		}),
+	)
+
+	pie.AddSeries("pie action", generatePieItems()).
+		SetSeriesOptions(
+			charts.WithLabelOpts(opts.Label{
+				Show:      opts.Bool(true),
+				Formatter: "{b}: {c}",
+			}),
+			charts.WithPieChartOpts(opts.PieChart{
+				Radius: []string{"55%"},
+				Center: []string{"50%", "60%"},
+			}),
+
+			charts.WithEmphasisOpts(opts.Emphasis{
+				ItemStyle: &opts.ItemStyle{
+					ShadowBlur:    10,
+					ShadowOffsetX: 0,
+					ShadowColor:   "rgba(0, 0, 0, 0.5)",
+				},
+			}),
+		)
+
+	return pie
+
+}
+
+```
+
+
