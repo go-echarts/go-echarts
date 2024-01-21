@@ -103,7 +103,7 @@ All the resources are hosted in [go-echarts-assets](https://github.com/go-echart
 itself.
 
 If you want to use your custom echarts resources.
-You could find in the [jsdelivr of echarts](https://www.jsdelivr.com/package/npm/echarts) or other CDN providers.
+You could find in the [jsdelivr of echarts](https://www.jsdelivr.com/package/npm/echarts) or other CDN providers.  
 Besides, you can set your own assets host as well.
 
 We support 2 ways to customize the echarts resources.

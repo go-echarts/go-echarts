@@ -78,9 +78,8 @@ like a pure JS.
 Considering for a chart lib, the target is not implement a echarts engine in go.  
 Unfortunately, we hasn't provide a action api yet, for the *static* `dispatchAction`.
 
-!> So, is it done?  
-** Actually, we do have one more thing...**
-Although it seems a little tricky, enough as a workaround.
+So, is it no way to make it?  
+**Actually, we do have one more thing...**  
 
 With the power of `%MY_ECHARTS` (see `dive-into` chapter),
 you get the echarts instance, you get the world.
@@ -170,4 +169,4 @@ func PieWithDispatchAction() *charts.Pie {
 
 ```
 
-
+Although it seems a little tricky, enough as a workaround. If you really need it.
