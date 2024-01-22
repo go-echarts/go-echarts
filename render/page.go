@@ -19,6 +19,12 @@ func NewPageRender(c interface{}, before ...func()) Renderer {
 
 // Render renders the page into the given io.Writer.
 func (r *pageRender) Render(w io.Writer) error {
+	content := r.RenderContent()
+	_, err := w.Write(content)
+	return err
+}
+
+func (r *pageRender) RenderContent() []byte {
 	for _, fn := range r.before {
 		fn()
 	}
@@ -31,8 +37,5 @@ func (r *pageRender) Render(w io.Writer) error {
 		panic(err)
 	}
 
-	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
-
-	_, err := w.Write(content)
-	return err
+	return pat.ReplaceAll(buf.Bytes(), []byte(""))
 }

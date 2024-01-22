@@ -19,6 +19,13 @@ func NewChartRender(c interface{}, before ...func()) Renderer {
 
 // Render renders the chart into the given io.Writer.
 func (r *chartRender) Render(w io.Writer) error {
+
+	content := r.RenderContent()
+	_, err := w.Write(content)
+	return err
+}
+
+func (r *chartRender) RenderContent() []byte {
 	for _, fn := range r.before {
 		fn()
 	}
@@ -28,11 +35,8 @@ func (r *chartRender) Render(w io.Writer) error {
 
 	var buf bytes.Buffer
 	if err := tpl.ExecuteTemplate(&buf, ModChart, r.c); err != nil {
-		return err
+		panic(err)
 	}
 
-	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
-
-	_, err := w.Write(content)
-	return err
+	return pat.ReplaceAll(buf.Bytes(), []byte(""))
 }

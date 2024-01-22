@@ -27,6 +27,7 @@ var pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 // you can define your own render logic easily.
 type Renderer interface {
 	Render(w io.Writer) error
+	RenderContent() []byte
 }
 
 // isSet check if the field exist in the chart instance
