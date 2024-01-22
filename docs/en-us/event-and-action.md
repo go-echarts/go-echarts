@@ -87,7 +87,9 @@ you get the echarts instance, you get the world.
 !> Talk is cheap, show you the code :)  
 
 The implementation of the example in
-echarts [Writing Code to Trigger Component Action Manually](https://echarts.apache.org/handbook/en/concepts/event).
+echarts [Writing Code to Trigger Component Action Manually](https://echarts.apache.org/handbook/en/concepts/event). 
+![image](https://github.com/go-echarts/go-echarts/assets/33706142/dbfc22af-b628-4f3c-951d-2021e0f0e52b)
+
 
 ```go
 var (
