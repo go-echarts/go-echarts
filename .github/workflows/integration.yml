@@ -25,7 +25,7 @@ jobs:
       - name: Replace dependency and server
         run: |
           echo "replace github.com/go-echarts/go-echarts/v2 => ../../go-echarts" >> examples/go.mod
-          sed '/ListenAndServe/d' -i filename
+          sed '/ListenAndServe/d' -i examples/main.go
       - name: Check Examples changed files
         run: |
           cat examples/go.mod
