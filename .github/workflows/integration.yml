@@ -1,0 +1,23 @@
+name: Build & Test
+
+on:
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+  checkout-example:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Checkout another repository
+        uses: actions/checkout@v2
+        with:
+          repository: 'go-echarts/examples'
+          path: 'examples'
+      - name: Check repos
+        run: |
+          ls -l
+#      - name: Set up Go
+#        uses: actions/setup-go@v3
+#        with:
+#          go-version: '1.18'
