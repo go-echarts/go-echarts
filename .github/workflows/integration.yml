@@ -21,6 +21,7 @@ jobs:
       - name: Check repos
         run: |
           ls -l
+          ls examples/
       - name: Replace dependency and server
         run: |
           echo "replace github.com/go-echarts/go-echarts/v2 => ../../go-echarts" >> examples/go.mod
