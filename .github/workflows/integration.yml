@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.18'
       - name: Checkout another repository
         uses: actions/checkout@v2
         with:
@@ -17,7 +21,12 @@ jobs:
       - name: Check repos
         run: |
           ls -l
-#      - name: Set up Go
-#        uses: actions/setup-go@v3
-#        with:
-#          go-version: '1.18'
+      - name: Replace dependency and server
+        run: |
+          echo "replace github.com/go-echarts/go-echarts/v2 => ../../go-echarts" >> examples/go.mod
+          sed '/ListenAndServe/d' -i filename
+      - name: Check Examples changed files
+        run: |
+          cat examples/go.mod
+          cat examples/main.go
+          
