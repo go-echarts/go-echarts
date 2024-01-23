@@ -35,19 +35,41 @@ type Polar struct {
 }
 
 type PolarAxisBase struct {
-	ID           string     `json:"id,omitempty"`
-	PolarIndex   int        `json:"polarIndex,omitempty"`
-	StartAngle   float64    `json:"startAngle,omitempty"`
-	Type         string     `json:"type,omitempty"`
-	BoundaryGap  types.Bool `json:"boundaryGap,omitempty"`
-	Min          float64    `json:"min,omitempty"`
-	Max          float64    `json:"max,omitempty"`
-	Scale        types.Bool `json:"scale,omitempty"`
-	SplitNumber  int        `json:"splitNumber,omitempty"`
-	MinInterval  float64    `json:"minInterval,omitempty"`
-	MaxInterval  float64    `json:"maxInterval,omitempty"`
-	Interval     float64    `json:"interval,omitempty"`
-	LogBase      float64    `json:"logBase,omitempty"`
-	Silent       types.Bool `json:"silent,omitempty"`
+	ID string `json:"id,omitempty"`
+	// PolarIndex Index of radial axis in polar coordinate. It's the first axis by default.
+	PolarIndex int `json:"polarIndex,omitempty"`
+	// Type of axis.
+	//Option:
+	// 'value' Numerical axis, suitable for continuous data.
+	// 'category' Category axis, suitable for discrete category data.
+	// 'time' Time axis, suitable for continuous time series data.
+	// 'log' Log axis, suitable for log data.
+	Type        string     `json:"type,omitempty"`
+	StartAngle  float64    `json:"startAngle,omitempty"`
+	BoundaryGap types.Bool `json:"boundaryGap,omitempty"`
+	Min         float64    `json:"min,omitempty"`
+	Max         float64    `json:"max,omitempty"`
+	Scale       types.Bool `json:"scale,omitempty"`
+	SplitNumber int        `json:"splitNumber,omitempty"`
+	MinInterval float64    `json:"minInterval,omitempty"`
+	MaxInterval float64    `json:"maxInterval,omitempty"`
+	Interval    float64    `json:"interval,omitempty"`
+	// LogBase Base of logarithm, which is valid only for numeric axes with type: 'log'.
+	LogBase float64 `json:"logBase,omitempty"`
+	// Silent Set this to true, to prevent interaction with the axis.
+	Silent types.Bool `json:"silent,omitempty"`
+	// TriggerEvent Set this to true to enable triggering events.
+	// Parameters of the event include:
+	//{
+	//    // Component type: xAxis, yAxis, radiusAxis, angleAxis
+	//    // Each of which has an attribute for index, e.g., xAxisIndex for xAxis
+	//    componentType: string,
+	//    // Value on axis before being formatted.
+	//    // Click on value label to trigger event.
+	//    value: '',
+	//    // Name of axis.
+	//    // Click on laben name to trigger event.
+	//    name: ''
+	//}
 	TriggerEvent types.Bool `json:"triggerEvent,omitempty"`
 }
