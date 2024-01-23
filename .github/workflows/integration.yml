@@ -30,4 +30,11 @@ jobs:
         run: |
           cat examples/go.mod
           cat examples/main.go
+      - name: Run Examples generate html files
+        run: |
+          go run examples/main.go
+      - name: Check Examples generate html files
+        run: |
+          ls examples/examples/
+      
           
