@@ -26,16 +26,21 @@ jobs:
           ls -l
           echo "Example repo ==>"
           ls examples/
-      - name: Run Examples generate original html files on tag
+      - name: Jump into Examples repo
         run: |
           cd examples
+      - name: Run Examples generate original html files on tag
+        run: |
+          echo "Currently working on go-echarts version ===>"
+          cat go.mod
           go mod tidy
           go run . true
       - name: Check Examples generate html files and mv as snapshot
         run: |
-          ls examples/examples/html
-          mv examples/examples/html examples/examples/snapshot
-          ls examples/examples/snapshot
+          ls examples/html/
+          mkdir -p examples/snapshot
+          mv examples/html/*.html examples/snapshot/
+          ls examples/snapshot/
 
       - name: Replace dependency and server
         run: |
@@ -49,6 +54,6 @@ jobs:
           go run . false
       - name: Check Examples generate html files
         run: |
-          ls examples/examples/html
+          ls examples/html/
       
           
