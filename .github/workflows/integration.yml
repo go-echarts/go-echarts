@@ -1,6 +1,7 @@
 name: Integration test
 
 on:
+  push: [ integration-action ]
   workflow_dispatch:
   workflow_call:
 
