@@ -22,19 +22,29 @@ jobs:
           path: 'examples'
       - name: Check repos
         run: |
-          echo "Main repo"
+          echo "Main repo ==>"
           ls -l
-          echo "Example repo"
+          echo "Example repo ==>"
           ls examples/
-      - name: Replace dependency and server
-        run: |
-          echo "replace github.com/go-echarts/go-echarts/v2 => ../../go-echarts" >> examples/go.mod
-      - name: Check Examples changed files
-        run: |
-          cat examples/go.mod
-      - name: Run Examples generate html files
+      - name: Run Examples generate original html files on tag
         run: |
           cd examples
+          go mod tidy
+          go run . true
+      - name: Check Examples generate html files and mv as snapshot
+        run: |
+          ls examples/examples/html
+          mv examples/examples/html examples/examples/snapshot
+          ls examples/examples/snapshot
+
+      - name: Replace dependency and server
+        run: |
+          echo "replace github.com/go-echarts/go-echarts/v2 => ../../go-echarts" >> go.mod
+      - name: Check Examples changed files
+        run: |
+          cat go.mod
+      - name: Run Examples generate html files
+        run: |
           go mod tidy
           go run . false
       - name: Check Examples generate html files
