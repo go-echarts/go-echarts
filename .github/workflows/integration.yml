@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'go-echarts/examples'
+#         remove
+          ref: 'v2.4-rc'
           path: 'examples'
       - name: Check repos
         run: |
