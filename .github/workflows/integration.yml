@@ -41,21 +41,29 @@ jobs:
           mv examples/html/*.html examples/snapshot/
           ls examples/snapshot/
 
-      - name: Replace dependency and server
+      - name: Replace dependency as local
         run: |
           cd examples
           echo "replace github.com/go-echarts/go-echarts/v2 => ../../go-echarts" >> go.mod
+
       - name: Check Examples changed files
         run: |
           cd examples
           cat go.mod
+
       - name: Run Examples generate html files
         run: |
           cd examples
           go mod tidy
           go run . false
-      - name: Check Examples generate html files
+
+      - name: Check all Examples snapshot and generate html files done
         run: |
+          echo "Currently  examples/examples/snapshot/ html files size ===>"
+          echo $(find examples/examples/snapshot/ -type f -name "*.html" | wc -l)
+          echo "Currently  examples/examples/html/ html files size ===>"
+          echo $(find examples/examples/html/ -type f -name "*.html" | wc -l)
+          echo "Currently  examples/examples/snapshot/ html details ===>"
+          ls examples/examples/snapshot/
+          echo "Currently  examples/examples/html/ html details ===>"
           ls examples/examples/html/
-      
-          
