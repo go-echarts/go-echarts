@@ -78,7 +78,7 @@ jobs:
           echo "Currently  examples/examples/html/ html details ===>"
           ls examples/examples/html/
 
-      - name: Compare generated file counts
+      - name: Compare generated file counts mismatch
         if: ${{ steps.check-generated-size.outputs.SNAPSHOT_FILE_SIZE != steps.check-generated-size.outputs.GENERATED_FILE_SIZE }}
         run: |
           echo ${{ steps.check-generated-size.outputs.SNAPSHOT_FILE_SIZE }}
