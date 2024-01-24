@@ -35,7 +35,7 @@ jobs:
           echo "Currently working on go-echarts version ===>"
           cat go.mod
           go mod tidy
-          go run main.go true
+          go run main.go false
       - name: Check Examples generate html files and mv as snapshot
         run: |
           ls examples/html/
