@@ -9,10 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
           go-version: '1.18'
+
       - name: Checkout another repository
         uses: actions/checkout@v4
         with:
@@ -20,12 +22,14 @@ jobs:
           #         remove
           ref: 'v2.4-rc'
           path: 'examples'
+
       - name: Check repos
         run: |
           echo "Main repo ==>"
           ls -l
           echo "Example repo ==>"
           ls examples/
+
       - name: Run Examples generate original html files on tag
         run: |
           cd examples
@@ -33,6 +37,7 @@ jobs:
           cat go.mod
           go mod tidy
           go run . false
+
       - name: Check Examples generate html files and mv as snapshot
         run: |
           cd examples
@@ -58,12 +63,21 @@ jobs:
           go run . false
 
       - name: Check all Examples snapshot and generate html files done
+        id: check-generated-size
         run: |
           echo "Currently  examples/examples/snapshot/ html files size ===>"
           echo $(find examples/examples/snapshot/ -type f -name "*.html" | wc -l)
+          echo "SNAPSHOT_FILE_SIZE=$(find examples/examples/snapshot/ -type f -name "*.html" | wc -l)" >> $GITHUB_ENV
           echo "Currently  examples/examples/html/ html files size ===>"
           echo $(find examples/examples/html/ -type f -name "*.html" | wc -l)
+          echo "GENERATED_FILE_SIZE=$(find examples/examples/html/ -type f -name "*.html" | wc -l)" >> $GITHUB_ENV
           echo "Currently  examples/examples/snapshot/ html details ===>"
           ls examples/examples/snapshot/
           echo "Currently  examples/examples/html/ html details ===>"
           ls examples/examples/html/
+
+      - name: Compare generated file counts
+        if: { { steps.check-generated-size.outputs.SNAPSHOT_FILE_SIZE != steps.check-generated-size.outputs.GENERATED_FILE_SIZE } }
+        run: |
+          echo "Error: Generated HTML File counts are different! Please check!"
+          exit 1
