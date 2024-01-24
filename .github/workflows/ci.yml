@@ -18,7 +18,7 @@ jobs:
       - name: Do format
         run: |
           go install golang.org/x/tools/cmd/goimports@latest
-          ./build.sh format 
+          ./build.sh format
           git status
       - name: Check format
         run: |
