@@ -54,3 +54,7 @@ jobs:
 
       - name: Test
         run: go test -v ./...
+
+  integration-test:
+    needs: [ build-ubuntu, build-windows ]
+    uses: go-echarts/go-echarts-pipeline/.github/workflows/integration.yml@main
