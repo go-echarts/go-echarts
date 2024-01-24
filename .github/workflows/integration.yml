@@ -81,5 +81,7 @@ jobs:
       - name: Compare generated file counts
         if: ${{ steps.check-generated-size.outputs.SNAPSHOT_FILE_SIZE != steps.check-generated-sze.outputs.GENERATED_FILE_SIZE }}
         run: |
+          echo ${{ steps.check-generated-size.outputs.SNAPSHOT_FILE_SIZE }}
+          echo ${{ steps.check-generated-sze.outputs.GENERATED_FILE_SIZE }}
           echo "Error: Generated HTML File counts are different! Please check!"
           exit 1
