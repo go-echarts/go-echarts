@@ -5,7 +5,7 @@ on:
   workflow_call:
 
 jobs:
-  checkout-example:
+  checkout-examples:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,9 +17,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'go-echarts/examples'
+          path: 'examples'
       - name: Check repos
         run: |
+          echo "Main repo"
           ls -l
+          echo "Example repo"
           ls examples/
       - name: Replace dependency and server
         run: |
@@ -34,6 +37,6 @@ jobs:
           go run examples/main.go
       - name: Check Examples generate html files
         run: |
-          ls examples/examples/
+          ls examples/examples/examples/html
       
           
