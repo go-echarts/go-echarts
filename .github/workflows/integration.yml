@@ -29,12 +29,13 @@ jobs:
       - name: Jump into Examples repo
         run: |
           cd examples
+          ls -l
       - name: Run Examples generate original html files on tag
         run: |
           echo "Currently working on go-echarts version ===>"
           cat go.mod
           go mod tidy
-          go run . true
+          go run main.go true
       - name: Check Examples generate html files and mv as snapshot
         run: |
           ls examples/html/
@@ -51,7 +52,7 @@ jobs:
       - name: Run Examples generate html files
         run: |
           go mod tidy
-          go run . false
+          go run main.go false
       - name: Check Examples generate html files
         run: |
           ls examples/html/
