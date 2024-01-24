@@ -7,4 +7,4 @@ on:
 
 jobs:
   integration-test:
-    uses: go-echarts/go-echarts-pipeline/workflows/.github/integration.yml@main
+    uses: go-echarts/go-echarts-pipeline/.github/workflows/integration.yml@main
