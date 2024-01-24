@@ -34,7 +34,9 @@ jobs:
           cat examples/main.go
       - name: Run Examples generate html files
         run: |
-          go run examples/main.go
+          cd examples
+          go mod tidy
+          go run .
       - name: Check Examples generate html files
         run: |
           ls examples/examples/examples/html
