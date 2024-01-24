@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: 'go-echarts/examples'
-#         remove
+          #         remove
           ref: 'v2.4-rc'
           path: 'examples'
       - name: Check repos
@@ -29,16 +29,14 @@ jobs:
       - name: Replace dependency and server
         run: |
           echo "replace github.com/go-echarts/go-echarts/v2 => ../../go-echarts" >> examples/go.mod
-          sed '/ListenAndServe/d' -i examples/main.go
       - name: Check Examples changed files
         run: |
           cat examples/go.mod
-          cat examples/main.go
       - name: Run Examples generate html files
         run: |
           cd examples
           go mod tidy
-          go run .
+          go run . false
       - name: Check Examples generate html files
         run: |
           ls examples/examples/examples/html
