@@ -39,6 +39,6 @@ jobs:
           go run . false
       - name: Check Examples generate html files
         run: |
-          ls examples/examples/examples/html
+          ls examples/examples/html
       
           
