@@ -87,10 +87,10 @@ type SingleSeries struct {
 	RotationRange []float32 `json:"rotationRange,omitempty"`
 
 	// Sunburst
-	NodeClick               string     `json:"nodeClick,omitempty"`
-	Sort                    string     `json:"sort,omitempty"`
-	RenderLabelForZeroData  types.Bool `json:"renderLabelForZeroData,omitempty"`
-	SelectedMode            types.Bool `json:"selectedMode,omitempty"`
+	NodeClick string `json:"nodeClick,omitempty"`
+	Sort      string `json:"sort,omitempty"`
+
+	// Animation related configs
 	Animation               types.Bool `json:"animation,omitempty" default:"true"`
 	AnimationThreshold      int        `json:"animationThreshold,omitempty"`
 	AnimationDuration       int        `json:"animationDuration,omitempty"`
@@ -99,6 +99,8 @@ type SingleSeries struct {
 	AnimationDurationUpdate int        `json:"animationDurationUpdate,omitempty"`
 	AnimationEasingUpdate   string     `json:"animationEasingUpdate,omitempty"`
 	AnimationDelayUpdate    int        `json:"animationDelayUpdate,omitempty"`
+	RenderLabelForZeroData  types.Bool `json:"renderLabelForZeroData,omitempty"`
+	SelectedMode            types.Bool `json:"selectedMode,omitempty"`
 
 	// Custom
 	RenderItem types.FuncStr `json:"renderItem,omitempty"`
@@ -107,9 +109,11 @@ type SingleSeries struct {
 	Data         interface{} `json:"data,omitempty"`
 	DatasetIndex int         `json:"datasetIndex,omitempty"`
 
-	// Shared
-	Large          types.Bool `json:"large,omitempty"`
-	LargeThreshold int        `json:"largeThreshold,omitempty"`
+	// Shared below =====================================================
+	Large               types.Bool `json:"large,omitempty"`
+	LargeThreshold      int        `json:"largeThreshold,omitempty"`
+	HoverLayerThreshold int        `json:"hoverLayerThreshold,omitempty"`
+	UseUTC              types.Bool `json:"useUTC,omitempty"`
 
 	// series options
 	*opts.Encode        `json:"encode,omitempty"`
