@@ -107,6 +107,10 @@ type SingleSeries struct {
 	Data         interface{} `json:"data,omitempty"`
 	DatasetIndex int         `json:"datasetIndex,omitempty"`
 
+	// Shared
+	Large          types.Bool `json:"large,omitempty"`
+	LargeThreshold int        `json:"largeThreshold,omitempty"`
+
 	// series options
 	*opts.Encode        `json:"encode,omitempty"`
 	*opts.ItemStyle     `json:"itemStyle,omitempty"`
