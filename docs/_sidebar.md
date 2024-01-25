@@ -3,12 +3,13 @@
 - Concepts
     - [Dive into go-echarts](en-us/dive-into)
     - [Chart Container](en-us/chart-container)
-    - [Chart Options](en-us/chart-options)
     - [Event and Action](en-us/event-and-action)
+- Chart Options
+    - [Summary](en-us/options/summary)
 - Advanced
     - [Render to Image](en-us/render-to-image)
 - Showcases
-  - [Examples](en-us/examples.md)
+    - [Examples](en-us/examples)
 
 <!--
 TODO:
