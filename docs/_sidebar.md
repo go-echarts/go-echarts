@@ -17,6 +17,11 @@
     - [boxplot](en-us/charts/boxplot)
     - [heatmap](en-us/charts/heatmap)
     - [graph](en-us/charts/graph)
+    - [tree](en-us/charts/tree)
+    - [treemap](en-us/charts/treemap)
+    - [sunburst](en-us/charts/sunburst)
+    - [parallel](en-us/charts/parallel)
+    - [sankey](en-us/charts/sankey)
 
 [//]: # (- Chart Options)
 
