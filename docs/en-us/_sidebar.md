@@ -11,13 +11,4 @@
     - [Render to Image](en-us/render-to-image)
 - Showcases
     - [Examples](en-us/examples)
-
-<!--
-TODO:
-    - [Chart Options](en-us/chart-options)
-- Ecosystems
-- Showcases
-- Release
-    - [Version Control](en-us/version-contrl)
-    - [Releases](en-us/release)
--->
+        - [bar](en-us/charts/bar)
