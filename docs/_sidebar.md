@@ -4,10 +4,12 @@
     - [Dive into go-echarts](en-us/dive-into)
     - [Chart Container](en-us/chart-container)
     - [Event and Action](en-us/event-and-action)
-- Chart Options
-    - [Options](en-us/options/options)
-    - [Series](en-us/options/series)
 - Advanced
     - [Render to Image](en-us/render-to-image)
 - Showcases
-    - [Examples](en-us/examples)
+    - [bar](en-us/charts/bar)
+    - [line](en-us/charts/line)
+
+[//]: # (- Chart Options)
+
+[//]: # (  - [Series]&#40;en-us/options/series&#41;)
