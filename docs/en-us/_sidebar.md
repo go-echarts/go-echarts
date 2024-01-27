@@ -12,3 +12,4 @@
 - Showcases
     - [Examples](en-us/examples)
         - [bar](en-us/charts/bar)
+        - [line](en-us/charts/line)

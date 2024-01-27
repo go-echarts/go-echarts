@@ -5,7 +5,8 @@
     - [Chart Container](en-us/chart-container)
     - [Event and Action](en-us/event-and-action)
 - Chart Options
-    - [Summary](en-us/options/summary)
+    - [Options](en-us/options/options)
+    - [Series](en-us/options/series)
 - Advanced
     - [Render to Image](en-us/render-to-image)
 - Showcases
