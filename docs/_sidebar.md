@@ -29,6 +29,8 @@
     - [Scatter3D](en-us/charts/scatter3d)
     - [Surface3D](en-us/charts/surface3d)
     - [Line3D](en-us/charts/line3d)
+    - [Liquid](en-us/charts/liquid)
+    - [WordCloud](en-us/charts/wordcloud)
 
 [//]: # (- Chart Options)
 
