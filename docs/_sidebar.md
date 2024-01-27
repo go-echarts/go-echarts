@@ -7,8 +7,12 @@
 - Advanced
     - [Render to Image](en-us/render-to-image)
 - Showcases
-    - [bar](en-us/charts/bar)
-    - [line](en-us/charts/line)
+    - [Line](en-us/charts/line)
+    - [Bar](en-us/charts/bar)
+    - [Pie](en-us/charts/pie)
+    - [Scatter](en-us/charts/scatter)
+    - [Geo/Map](en-us/charts/map)
+    - [Candlestick/Kline](en-us/charts/kline)
 
 [//]: # (- Chart Options)
 
