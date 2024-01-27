@@ -13,6 +13,10 @@
     - [Scatter](en-us/charts/scatter)
     - [Geo/Map](en-us/charts/map)
     - [Candlestick/Kline](en-us/charts/kline)
+    - [radar](en-us/charts/radar)
+    - [boxplot](en-us/charts/boxplot)
+    - [heatmap](en-us/charts/heatmap)
+    - [graph](en-us/charts/graph)
 
 [//]: # (- Chart Options)
 
