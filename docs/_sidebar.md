@@ -25,6 +25,10 @@
     - [Funnel](en-us/charts/funnel)
     - [Gauge](en-us/charts/gauge)
     - [ThemeRiver](en-us/charts/themeriver)
+    - [Bar3D](en-us/charts/bar3d)
+    - [Scatter3D](en-us/charts/scatter3d)
+    - [Surface3D](en-us/charts/surface3d)
+    - [Line3D](en-us/charts/line3d)
 
 [//]: # (- Chart Options)
 
