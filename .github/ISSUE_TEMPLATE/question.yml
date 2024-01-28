@@ -7,23 +7,27 @@
 
 name: '❓Question'
 title: '[Question]'
+labels: [ "question" ]
 description: Something you don't know or its behavior confuse you
 body:
   - type: textarea
     attributes:
-      label: Explain Details
+      label: Describe your question
       placeholder: Please explain it in details, why how and what.
     validations:
       required: true
 
-  - type: markdown
+  - type: textarea
     attributes:
-      value: Please share your code pieces for details if you have
+      label: Code pieces of your question
+      placeholder: Please share your code pieces for details if you have.
+    validations:
+      required: false
 
   - type: input
     attributes:
       label: go-echarts version
-      description: Which version is it you use now?
+      description: Which version is it you use now? eg (latest, v2.3.3)
     validations:
       required: true
 
