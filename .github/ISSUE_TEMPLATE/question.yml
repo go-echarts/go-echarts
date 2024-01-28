@@ -11,20 +11,21 @@ description: Something you don't know or its behavior confuse you
 body:
   - type: textarea
     attributes:
-      value: |
-        Please explain it in details, why how and what.
+      label: Explain Details
+      placeholder: Please explain it in details, why how and what.
     validations:
       required: true
 
   - type: markdown
     attributes:
       label: What did you do
-      description: >
-        What's your code pieces if you have ?
+      description: Please share your code for more details if you have
+      placeholder: What's your code pieces?
 
   - type: input
     attributes:
       label: go-echarts version
-      description: >
-        Which version did you find this problem?
+      description: Which version did you find this problem?
+    validations:
+      required: true
 
