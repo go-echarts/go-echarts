@@ -8,7 +8,7 @@
 name: '🐛Bug Report'
 title: '[Bug]'
 labels: [ "bug" ]
-description: Something lose consistence of options or render to wrong result
+description: Something loses the consistences of options/render-result or other wrong stuff
 body:
   - type: textarea
     attributes:
