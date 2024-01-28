@@ -18,14 +18,12 @@ body:
 
   - type: markdown
     attributes:
-      label: What did you do
-      description: Please share your code for more details if you have
-      placeholder: What's your code pieces?
+      value: Please share your code pieces for details if you have
 
   - type: input
     attributes:
       label: go-echarts version
-      description: Which version did you find this problem?
+      description: Which version is it you use now?
     validations:
       required: true
 
