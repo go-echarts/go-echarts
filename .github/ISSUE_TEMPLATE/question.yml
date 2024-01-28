@@ -1,0 +1,30 @@
+#
+# Before you report a question, make sure you already
+# - Checked the go-echarts official docs
+# - May check the go-echarts and echarts related issues also
+# - May search the related solutions via Google or ChatGPT
+#
+
+name: '❓Question'
+title: '[Question]'
+description: Something you don't know or its behavior confuse you
+body:
+  - type: textarea
+    attributes:
+      value: |
+        Please explain it in details, why how and what.
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      label: What did you do
+      description: >
+        What's your code pieces if you have ?
+
+  - type: input
+    attributes:
+      label: go-echarts version
+      description: >
+        Which version did you find this problem?
+
