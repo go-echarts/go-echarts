@@ -90,18 +90,6 @@ type SingleSeries struct {
 	NodeClick string `json:"nodeClick,omitempty"`
 	Sort      string `json:"sort,omitempty"`
 
-	// Animation related configs
-	Animation               types.Bool `json:"animation,omitempty" default:"true"`
-	AnimationThreshold      int        `json:"animationThreshold,omitempty"`
-	AnimationDuration       int        `json:"animationDuration,omitempty"`
-	AnimationEasing         string     `json:"animationEasing,omitempty"`
-	AnimationDelay          int        `json:"animationDelay,omitempty"`
-	AnimationDurationUpdate int        `json:"animationDurationUpdate,omitempty"`
-	AnimationEasingUpdate   string     `json:"animationEasingUpdate,omitempty"`
-	AnimationDelayUpdate    int        `json:"animationDelayUpdate,omitempty"`
-	RenderLabelForZeroData  types.Bool `json:"renderLabelForZeroData,omitempty"`
-	SelectedMode            types.Bool `json:"selectedMode,omitempty"`
-
 	// Custom
 	RenderItem types.FuncStr `json:"renderItem,omitempty"`
 
@@ -114,6 +102,18 @@ type SingleSeries struct {
 	LargeThreshold      int        `json:"largeThreshold,omitempty"`
 	HoverLayerThreshold int        `json:"hoverLayerThreshold,omitempty"`
 	UseUTC              types.Bool `json:"useUTC,omitempty"`
+
+	// Animation related configs
+	Animation               types.Bool `json:"animation,omitempty" default:"true"`
+	AnimationThreshold      int        `json:"animationThreshold,omitempty"`
+	AnimationDuration       int        `json:"animationDuration,omitempty"`
+	AnimationEasing         string     `json:"animationEasing,omitempty"`
+	AnimationDelay          int        `json:"animationDelay,omitempty"`
+	AnimationDurationUpdate int        `json:"animationDurationUpdate,omitempty"`
+	AnimationEasingUpdate   string     `json:"animationEasingUpdate,omitempty"`
+	AnimationDelayUpdate    int        `json:"animationDelayUpdate,omitempty"`
+	RenderLabelForZeroData  types.Bool `json:"renderLabelForZeroData,omitempty"`
+	SelectedMode            types.Bool `json:"selectedMode,omitempty"`
 
 	// series options
 	*opts.Encode        `json:"encode,omitempty"`
