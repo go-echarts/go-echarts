@@ -37,7 +37,9 @@ type SingleSeries struct {
 	FocusNodeAdjacency types.Bool  `json:"focusNodeAdjacency,omitempty"`
 	SymbolKeepAspect   types.Bool  `json:"symbolKeepAspect,omitempty"`
 
-	// KLine
+	// BarWidth The width options of the bar. Adaptive when not specified.
+	// Can be an absolute value like 40 or a percent value like '60%'.
+	// Configurable charts: bar | kline
 	BarWidth    string `json:"barWidth,omitempty"`
 	BarMinWidth string `json:"barMinWidth,omitempty"`
 	BarMaxWidth string `json:"barMaxWidth,omitempty"`
@@ -211,7 +213,7 @@ func WithLineStyleOpts(opt opts.LineStyle) SeriesOpts {
 	}
 }
 
-// With CircularStyle Opts
+// WithCircularStyleOpts With CircularStyle Opts
 func WithCircularStyleOpts(opt opts.CircularStyle) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.CircularStyle = &opt
