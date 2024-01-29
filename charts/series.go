@@ -291,7 +291,6 @@ func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
 		s.ConnectNulls = opt.ConnectNulls
-		s.Color = opt.Color
 		s.SymbolKeepAspect = opt.SymbolKeepAspect
 	}
 }
