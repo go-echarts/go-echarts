@@ -305,50 +305,6 @@ type KlineData struct {
 	Value interface{} `json:"value,omitempty"`
 }
 
-// LineChart is the options set for a line chart.
-// https://echarts.apache.org/en/option.html#series-line
-type LineChart struct {
-	// If stack the value. On the same category axis, the series with the same stack name would be put on top of each other.
-	// The effect of the below example could be seen through stack switching of toolbox on the top right corner:
-	Stack string
-
-	// Whether to show as smooth curve.
-	// If is typed in types.Boolean, then it means whether to enable smoothing. If is
-	// typed in number, valued from 0 to 1, then it means smoothness. A smaller value makes it less smooth.
-	Smooth types.Bool
-
-	// Whether to show as a step line. It can be true, false. Or 'start', 'middle', 'end'.
-	// Which will configure the turn point of step line.
-	Step interface{}
-
-	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
-	XAxisIndex int
-
-	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
-	YAxisIndex int
-
-	// Whether to connect the line across null points.
-	ConnectNulls types.Bool
-
-	// Whether to show symbol. It would be shown during tooltip hover.
-	ShowSymbol types.Bool
-
-	// Icon types provided by ECharts includes
-	//  'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
-	// Full documentation: https://echarts.apache.org/en/option.html#series-line.symbol
-	Symbol string
-
-	// symbol size. It can be set to single numbers like 10, or use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10.
-	// Full documentation: https://echarts.apache.org/en/option.html#series-line.symbolSize
-	SymbolSize interface{}
-
-	// color for Line series. it affects Line series including symbols, unlike LineStyle.Color
-	Color string
-
-	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
-	SymbolKeepAspect types.Bool
-}
-
 // LineChart is the options set for a chandlestick chart.
 // https://echarts.apache.org/en/option.html#series-candlestick
 type KlineChart struct {
