@@ -37,22 +37,28 @@
         plugins: [
             function (hook) {
                 const rawApi = "https://raw.githubusercontent.com/go-echarts/examples/master/examples/"
+                const fetchTask = []
                 hook.beforeEach((html, next) => {
-                    var regex = /\[ExamplesCODE\s?=\s?(.*)\]/g;
+                    const regex = /\[ExamplesCODE\s?=\s?(.*)\]/g;
                     html.replace(regex, function (match, content) {
                         const api = rawApi + content;
                         // fetch content
-                        fetch(api)
+                        const task = fetch(api)
                             .then(resp => resp.text())
                             .then(data => {
-                                console.log(data)
                                 html = html.replace(match, data);
-                                next(html)
                             });
+                        fetchTask.push(task)
                     });
-                    next(html)
+
+                    if (fetchTask.length === 0) {
+                        next(html)
+                    } else {
+                        Promise.all(fetchTask).then(() => next(html))
+                    }
                 });
-                var footer = [
+
+                const footer = [
                     '<hr/>',
                     '<footer>',
                     '<span><a href="https://github.com/go-echarts"> &copy;go-echarts</a></span>&nbsp;',
