@@ -47,8 +47,6 @@ type SingleSeries struct {
 	// Line
 	ColorBy string `json:"colorBy,omitempty"`
 	// Line
-	CoordinateSystem string `json:"coordinateSystem,omitempty"`
-	// Line
 	PolarIndex int `json:"polarIndex,omitempty"`
 	// Line
 	Step interface{} `json:"step,omitempty"`
@@ -67,7 +65,8 @@ type SingleSeries struct {
 	IsWaveAnimation types.Bool `json:"waveAnimation,omitempty"`
 
 	// Map
-	MapType     string `json:"map,omitempty"`
+	MapType string `json:"map,omitempty"`
+	// Map | Line
 	CoordSystem string `json:"coordinateSystem,omitempty"`
 
 	// Pie
@@ -292,7 +291,7 @@ func WithHeatMapChartOpts(opt opts.HeatMapChart) SeriesOpts {
 func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.ColorBy = opt.ColorBy
-		s.CoordinateSystem = opt.CoordinateSystem
+		s.CoordSystem = opt.CoordinateSystem
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
 		s.PolarIndex = opt.PolarIndex
