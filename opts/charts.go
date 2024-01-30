@@ -2,41 +2,6 @@ package opts
 
 import "github.com/go-echarts/go-echarts/v2/types"
 
-// BarChart
-// https://echarts.apache.org/en/option.html#series-bar
-type BarChart struct {
-	Type string
-	// Name of stack. On the same category axis, the series with the
-	// same stack name would be put on top of each other.
-	Stack string
-
-	// The gap between bars between different series, is a percent value like '30%',
-	// which means 30% of the bar width.
-	// Set barGap as '-100%' can overlap bars that belong to different series,
-	// which is useful when putting a series of bar as background.
-	// In a single coordinate system, this attribute is shared by multiple 'bar' series.
-	// This attribute should be set on the last 'bar' series in the coordinate system,
-	// then it will be adopted by all 'bar' series in the coordinate system.
-	BarGap string
-
-	// The bar gap of a single series, defaults to be 20% of the category gap,
-	// can be set as a fixed value.
-	// In a single coordinate system, this attribute is shared by multiple 'bar' series.
-	// This attribute should be set on the last 'bar' series in the coordinate system,
-	// then it will be adopted by all 'bar' series in the coordinate system.
-	BarCategoryGap string
-
-	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
-	XAxisIndex int
-
-	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
-	YAxisIndex int
-
-	ShowBackground types.Bool
-	RoundCap       types.Bool
-	CoordSystem    string
-}
-
 // SunburstChart
 // https://echarts.apache.org/en/option.html#series-sunburst
 type SunburstChart struct {
