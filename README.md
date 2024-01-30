@@ -26,17 +26,20 @@
     <a href="https://echarts.apache.org/">
         <img src="https://img.shields.io/badge/echarts-_v5.4.3-orange" alt="echartsVersion">
     </a>
+    <a href="https://go-echarts.github.io/go-echarts">
+        <img src="https://img.shields.io/badge/docs-_handbook-blue" alt="handbook">
+    </a>
 </p>
 
 > If a language can be used to build web scrapers, it definitely needs to provide a graceful data visualization
 > library. --- by dongdong.
 
-In the Golang ecosystem, there are not many choices for data visualization libraries.
+In the Golang ecosystem, there are not many choices for data visualization libraries.  
 The development of [go-echarts](https://github.com/go-echarts/go-echarts) aims to
 provide a simple yet powerful data visualization library for Golang.   
 [Apache ECharts](https://echarts.apache.org/) is an awesome charting and visualization library,
 it supports adorable chart types and various interactive features.
-There are many language bindings for Echarts, such as [pyecharts](https://github.com/pyecharts/pyecharts),
+and there have many program languages interactive with Echarts, such as [pyecharts](https://github.com/pyecharts/pyecharts),
 which `go-echarts` learns and has evolved a lot from.
 
 [中文 README](README_CN.md)
@@ -92,7 +95,7 @@ need little adjust.
 
 ### 📝 Usage
 
-It's easy to get started with go-echarts with [go-echarts/examples](https://github.com/go-echarts/examples)
+It's easy to get started with go-echarts with the [handbook](https://go-echarts.github.io/go-echarts), [go-echarts/examples](https://github.com/go-echarts/examples)
 and [GoDocs](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
 
 In this example, we create a simple bar chart with only a few lines of code.
@@ -234,7 +237,8 @@ go-echarts is an open source project and built on the top of other open-source p
 Welcome all the kinds of contributions. No matter it is for typo fix, bug fix or big new features.
 Please do not hesitate to ask a question or send a pull request.
 
-We strongly value documentation and integration with other projects, so we are very glad to accept improvements for these
+We strongly value documentation and integration with other projects, so we are very glad to accept improvements for
+these
 aspects.
 
 ### ❤️ Contributors
