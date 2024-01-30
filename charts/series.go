@@ -291,7 +291,7 @@ func WithHeatMapChartOpts(opt opts.HeatMapChart) SeriesOpts {
 func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.ColorBy = opt.ColorBy
-		s.CoordSystem = opt.CoordinateSystem
+		s.CoordSystem = opt.CoordSystem
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
 		s.PolarIndex = opt.PolarIndex

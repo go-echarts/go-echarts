@@ -15,7 +15,7 @@ type LineChart struct {
 	//  yAxisIndex to assign the corresponding axis component.
 	//
 	// 'polar' Use polar coordinates, with polarIndex to assign the corresponding polar coordinate component.
-	CoordinateSystem string
+	CoordSystem string
 
 	// Index of x-axis to combine with, which is useful for multiple x axes in one chart.
 	XAxisIndex int
