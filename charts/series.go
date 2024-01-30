@@ -45,12 +45,22 @@ type SingleSeries struct {
 	BarMaxWidth string `json:"barMaxWidth,omitempty"`
 
 	// Line
-	Step         interface{} `json:"step,omitempty"`
-	Smooth       types.Bool  `json:"smooth,omitempty"`
-	ConnectNulls types.Bool  `json:"connectNulls,omitempty"`
-	ShowSymbol   types.Bool  `json:"showSymbol,omitempty"`
-	Symbol       string      `json:"symbol,omitempty"`
-	Color        string      `json:"color,omitempty"`
+	ColorBy string `json:"colorBy,omitempty"`
+	// Line
+	CoordinateSystem string `json:"coordinateSystem,omitempty"`
+	// Line
+	PolarIndex int `json:"polarIndex,omitempty"`
+	// Line
+	Step interface{} `json:"step,omitempty"`
+	// Line
+	Smooth types.Bool `json:"smooth,omitempty"`
+	// Line
+	ConnectNulls types.Bool `json:"connectNulls,omitempty"`
+	// Line
+	ShowSymbol types.Bool `json:"showSymbol,omitempty"`
+	// Line
+	Symbol string `json:"symbol,omitempty"`
+	Color  string `json:"color,omitempty"`
 
 	// Liquid
 	IsLiquidOutline types.Bool `json:"outline,omitempty"`
@@ -281,17 +291,19 @@ func WithHeatMapChartOpts(opt opts.HeatMapChart) SeriesOpts {
 // WithLineChartOpts sets the LineChart option.
 func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 	return func(s *SingleSeries) {
-		s.YAxisIndex = opt.YAxisIndex
-		s.Stack = opt.Stack
-		s.Smooth = opt.Smooth
-		s.ShowSymbol = opt.ShowSymbol
-		s.Symbol = opt.Symbol
-		s.SymbolSize = opt.SymbolSize
-		s.Step = opt.Step
+		s.ColorBy = opt.ColorBy
+		s.CoordinateSystem = opt.CoordinateSystem
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
-		s.ConnectNulls = opt.ConnectNulls
+		s.PolarIndex = opt.PolarIndex
+		s.Symbol = opt.Symbol
+		s.SymbolSize = opt.SymbolSize
 		s.SymbolKeepAspect = opt.SymbolKeepAspect
+		s.ShowSymbol = opt.ShowSymbol
+		s.Stack = opt.Stack
+		s.Smooth = opt.Smooth
+		s.ConnectNulls = opt.ConnectNulls
+		s.Step = opt.Step
 	}
 }
 
