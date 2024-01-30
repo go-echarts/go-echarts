@@ -11,9 +11,12 @@ type SingleSeries struct {
 	Type string `json:"type,omitempty"`
 
 	// Rectangular charts
-	Stack      string `json:"stack,omitempty"`
-	XAxisIndex int    `json:"xAxisIndex,omitempty"`
-	YAxisIndex int    `json:"yAxisIndex,omitempty"`
+	// Line
+	Stack string `json:"stack,omitempty"`
+	// Line
+	XAxisIndex int `json:"xAxisIndex,omitempty"`
+	// Line
+	YAxisIndex int `json:"yAxisIndex,omitempty"`
 
 	// Bar
 	BarGap         string     `json:"barGap,omitempty"`
@@ -35,7 +38,8 @@ type SingleSeries struct {
 	EdgeLabel          interface{} `json:"edgeLabel,omitempty"`
 	Draggable          types.Bool  `json:"draggable,omitempty"`
 	FocusNodeAdjacency types.Bool  `json:"focusNodeAdjacency,omitempty"`
-	SymbolKeepAspect   types.Bool  `json:"symbolKeepAspect,omitempty"`
+	// Line
+	SymbolKeepAspect types.Bool `json:"symbolKeepAspect,omitempty"`
 
 	// BarWidth The width options of the bar. Adaptive when not specified.
 	// Can be an absolute value like 40 or a percent value like '60%'.
@@ -74,7 +78,7 @@ type SingleSeries struct {
 	Center   interface{} `json:"center,omitempty"`
 	Radius   interface{} `json:"radius,omitempty"`
 
-	// Scatter
+	// Line | Scatter
 	SymbolSize interface{} `json:"symbolSize,omitempty"`
 
 	// Tree
