@@ -61,7 +61,7 @@ type SingleSeries struct {
 	CoordSystem string `json:"coordinateSystem,omitempty"`
 
 	// Pie
-	RoseType interface{} `json:"roseType,omitempty"`
+	RoseType string      `json:"roseType,omitempty"`
 	Center   interface{} `json:"center,omitempty"`
 	Radius   interface{} `json:"radius,omitempty"`
 
