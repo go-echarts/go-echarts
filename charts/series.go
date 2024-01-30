@@ -11,18 +11,21 @@ type SingleSeries struct {
 	Type string `json:"type,omitempty"`
 
 	// Rectangular charts
-	// Line
+	// Line | Bar
 	Stack string `json:"stack,omitempty"`
-	// Line
+	// Line | Bar
 	XAxisIndex int `json:"xAxisIndex,omitempty"`
-	// Line
+	// Line | Bar
 	YAxisIndex int `json:"yAxisIndex,omitempty"`
 
 	// Bar
-	BarGap         string     `json:"barGap,omitempty"`
-	BarCategoryGap string     `json:"barCategoryGap,omitempty"`
+	BarGap string `json:"barGap,omitempty"`
+	// Bar
+	BarCategoryGap string `json:"barCategoryGap,omitempty"`
+	// Bar
 	ShowBackground types.Bool `json:"showBackground,omitempty"`
-	RoundCap       types.Bool `json:"roundCap,omitempty"`
+	// Bar
+	RoundCap types.Bool `json:"roundCap,omitempty"`
 
 	// Bar3D
 	Shading string `json:"shading,omitempty"`
@@ -48,9 +51,9 @@ type SingleSeries struct {
 	BarMinWidth string `json:"barMinWidth,omitempty"`
 	BarMaxWidth string `json:"barMaxWidth,omitempty"`
 
-	// Line
+	// Line | Bar
 	ColorBy string `json:"colorBy,omitempty"`
-	// Line
+	// Line | Bar
 	PolarIndex int `json:"polarIndex,omitempty"`
 	// Line
 	Step interface{} `json:"step,omitempty"`
@@ -70,7 +73,7 @@ type SingleSeries struct {
 
 	// Map
 	MapType string `json:"map,omitempty"`
-	// Map | Line
+	// Map | Line | Bar
 	CoordSystem string `json:"coordinateSystem,omitempty"`
 
 	// Pie
@@ -238,14 +241,16 @@ func WithCircularStyleOpts(opt opts.CircularStyle) SeriesOpts {
 // WithBarChartOpts sets the BarChart option.
 func WithBarChartOpts(opt opts.BarChart) SeriesOpts {
 	return func(s *SingleSeries) {
+		s.ColorBy = opt.ColorBy
+		s.CoordSystem = opt.CoordSystem
+		s.XAxisIndex = opt.XAxisIndex
+		s.YAxisIndex = opt.YAxisIndex
+		s.PolarIndex = opt.PolarIndex
+		s.RoundCap = opt.RoundCap
+		s.ShowBackground = opt.ShowBackground
 		s.Stack = opt.Stack
 		s.BarGap = opt.BarGap
 		s.BarCategoryGap = opt.BarCategoryGap
-		s.XAxisIndex = opt.XAxisIndex
-		s.YAxisIndex = opt.YAxisIndex
-		s.ShowBackground = opt.ShowBackground
-		s.RoundCap = opt.RoundCap
-		s.CoordSystem = opt.CoordSystem
 	}
 }
 
