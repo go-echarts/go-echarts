@@ -51,7 +51,7 @@ type SingleSeries struct {
 	BarMinWidth string `json:"barMinWidth,omitempty"`
 	BarMaxWidth string `json:"barMaxWidth,omitempty"`
 
-	// Line | Bar
+	// Line | Bar | Pie
 	ColorBy string `json:"colorBy,omitempty"`
 	// Line | Bar
 	PolarIndex int `json:"polarIndex,omitempty"`
@@ -73,13 +73,15 @@ type SingleSeries struct {
 
 	// Map
 	MapType string `json:"map,omitempty"`
-	// Map | Line | Bar
+	// Map | Line | Bar | Pie
 	CoordSystem string `json:"coordinateSystem,omitempty"`
 
 	// Pie
-	RoseType string      `json:"roseType,omitempty"`
-	Center   interface{} `json:"center,omitempty"`
-	Radius   interface{} `json:"radius,omitempty"`
+	RoseType string `json:"roseType,omitempty"`
+	// Pie
+	Center interface{} `json:"center,omitempty"`
+	// Pie
+	Radius interface{} `json:"radius,omitempty"`
 
 	// Line | Scatter
 	SymbolSize interface{} `json:"symbolSize,omitempty"`
@@ -327,6 +329,8 @@ func WithKlineChartOpts(opt opts.KlineChart) SeriesOpts {
 // WithPieChartOpts sets the PieChart option.
 func WithPieChartOpts(opt opts.PieChart) SeriesOpts {
 	return func(s *SingleSeries) {
+		s.ColorBy = opt.ColorBy
+		s.CoordSystem = opt.CoordSystem
 		s.RoseType = opt.RoseType
 		s.Center = opt.Center
 		s.Radius = opt.Radius
