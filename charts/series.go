@@ -13,9 +13,9 @@ type SingleSeries struct {
 	// Rectangular charts
 	// Line | Bar
 	Stack string `json:"stack,omitempty"`
-	// Line | Bar
+	// Line | Bar | Scatter
 	XAxisIndex int `json:"xAxisIndex,omitempty"`
-	// Line | Bar
+	// Line | Bar | Scatter
 	YAxisIndex int `json:"yAxisIndex,omitempty"`
 
 	// Bar
@@ -51,7 +51,7 @@ type SingleSeries struct {
 	BarMinWidth string `json:"barMinWidth,omitempty"`
 	BarMaxWidth string `json:"barMaxWidth,omitempty"`
 
-	// Line | Bar | Pie
+	// Line | Bar | Pie | Scatter
 	ColorBy string `json:"colorBy,omitempty"`
 	// Line | Bar
 	PolarIndex int `json:"polarIndex,omitempty"`
@@ -63,7 +63,7 @@ type SingleSeries struct {
 	ConnectNulls types.Bool `json:"connectNulls,omitempty"`
 	// Line
 	ShowSymbol types.Bool `json:"showSymbol,omitempty"`
-	// Line
+	// Line | Scatter
 	Symbol string `json:"symbol,omitempty"`
 	Color  string `json:"color,omitempty"`
 
@@ -73,7 +73,7 @@ type SingleSeries struct {
 
 	// Map
 	MapType string `json:"map,omitempty"`
-	// Map | Line | Bar | Pie
+	// Map | Line | Bar | Pie | Scatter
 	CoordSystem string `json:"coordinateSystem,omitempty"`
 
 	// Pie
@@ -340,8 +340,12 @@ func WithPieChartOpts(opt opts.PieChart) SeriesOpts {
 // WithScatterChartOpts sets the ScatterChart option.
 func WithScatterChartOpts(opt opts.ScatterChart) SeriesOpts {
 	return func(s *SingleSeries) {
+		s.ColorBy = opt.ColorBy
+		s.CoordSystem = opt.CoordSystem
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
+		s.Symbol = opt.Symbol
+		s.SymbolSize = opt.SymbolSize
 		s.SymbolKeepAspect = opt.SymbolKeepAspect
 	}
 }
