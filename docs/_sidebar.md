@@ -6,6 +6,12 @@
     - [Event and Action](en-us/event-and-action)
 - Advanced
     - [Render to Image](en-us/render-to-image)
+- Chart Configration
+  - [Global](en-us/options/global)
+
+[//]: # (  - [Series]&#40;en-us/options/series&#41;)
+
+[//]: # (  - [Options]&#40;en-us/options/options&#41;)
 - Showcases
     - [Line](en-us/charts/line)
     - [Bar](en-us/charts/bar)
@@ -32,6 +38,3 @@
     - [Liquid](en-us/charts/liquid)
     - [WordCloud](en-us/charts/wordcloud)
 
-[//]: # (- Chart Options)
-
-[//]: # (  - [Series]&#40;en-us/options/series&#41;)
