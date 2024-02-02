@@ -6,8 +6,8 @@ import (
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
-// Label contains options for a label text.
-// https://echarts.apache.org/en/option.html#series-line.label
+// Label contains options for a label text, it is a generic label config for all label needs.
+// i.e. https://echarts.apache.org/en/option.html#series-line.label
 type Label struct {
 	// Whether to show label.
 	Show types.Bool `json:"show,omitempty"`
