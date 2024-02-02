@@ -29,4 +29,5 @@ const (
 	ChartTree          = "tree"
 	ChartTreeMap       = "treemap"
 	ChartSunburst      = "sunburst"
+	ChartCustom        = "custom"
 )

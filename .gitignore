@@ -14,3 +14,6 @@
 # IDE
 .idea/
 .vscode/
+examples/
+go-echarts-pipeline/
+snapshot-chromedp/

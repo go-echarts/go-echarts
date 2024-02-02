@@ -5,6 +5,10 @@ import (
 	"encoding/json"
 	"html/template"
 
+	"github.com/go-echarts/go-echarts/v2/event"
+	"github.com/go-echarts/go-echarts/v2/types"
+	"github.com/go-echarts/go-echarts/v2/util"
+
 	"github.com/go-echarts/go-echarts/v2/actions"
 	"github.com/go-echarts/go-echarts/v2/datasets"
 	"github.com/go-echarts/go-echarts/v2/opts"
@@ -23,12 +27,12 @@ type BaseConfiguration struct {
 	opts.Tooltip      `json:"tooltip"`
 	opts.Toolbox      `json:"toolbox"`
 	opts.Title        `json:"title"`
-	opts.Dataset      `json:"dataset"`
 	opts.Polar        `json:"polar"`
 	opts.AngleAxis    `json:"angleAxis"`
 	opts.RadiusAxis   `json:"radiusAxis"`
 	opts.Brush        `json:"brush"`
 	*opts.AxisPointer `json:"axisPointer"`
+	Calendar          []*opts.Calendar `json:"calendar"`
 
 	render.Renderer        `json:"-"`
 	opts.Initialization    `json:"-"`
@@ -55,8 +59,16 @@ type BaseConfiguration struct {
 	Colors      []string
 	appendColor []string // append customize color to the Colors(reverse order)
 
+	// Animation whether enable the animation, default true
+	Animation types.Bool `json:"animation,omitempty"`
+
+	// Array of datasets, managed by AddDataset()
+	DatasetList []opts.Dataset `json:"dataset,omitempty"`
+
 	DataZoomList  []opts.DataZoom  `json:"datazoom,omitempty"`
 	VisualMapList []opts.VisualMap `json:"visualmap,omitempty"`
+
+	EventListeners []event.Listener `json:"-"`
 
 	// ParallelAxisList represents the component list which is the coordinate axis for parallel coordinate.
 	ParallelAxisList []opts.ParallelAxis
@@ -115,11 +127,23 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 		"legend":  bc.Legend,
 		"tooltip": bc.Tooltip,
 		"series":  bc.MultiSeries,
-		"dataset": bc.Dataset,
+	}
+
+	if bc.Animation != nil {
+		obj["animation"] = bc.Animation
+	}
+
+	// if only one item, use it directly instead of an Array
+	if len(bc.DatasetList) == 1 {
+		obj["dataset"] = bc.DatasetList[0]
+	} else if len(bc.DatasetList) > 1 {
+		obj["dataset"] = bc.DatasetList
+
 	}
 	if bc.AxisPointer != nil {
 		obj["axisPointer"] = bc.AxisPointer
 	}
+
 	if bc.hasPolar {
 		obj["polar"] = bc.Polar
 		obj["angleAxis"] = bc.AngleAxis
@@ -143,9 +167,7 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 		obj["singleAxis"] = bc.SingleAxis
 	}
 
-	if bc.Toolbox.Show {
-		obj["toolbox"] = bc.Toolbox
-	}
+	obj["toolbox"] = bc.Toolbox
 
 	if len(bc.DataZoomList) > 0 {
 		obj["dataZoom"] = bc.DataZoomList
@@ -183,6 +205,10 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 		obj["brush"] = bc.Brush
 	}
 
+	if bc.Calendar != nil {
+		obj["calendar"] = bc.Calendar
+	}
+
 	return obj
 }
 
@@ -191,9 +217,14 @@ func (bc *BaseConfiguration) GetAssets() opts.Assets {
 	return bc.Assets
 }
 
+// AddDataset adds a Dataset to this chart
+func (bc *BaseConfiguration) AddDataset(dataset ...opts.Dataset) {
+	bc.DatasetList = append(bc.DatasetList, dataset...)
+}
+
 // FillDefaultValues fill default values for chart options.
 func (bc *BaseConfiguration) FillDefaultValues() {
-	opts.SetDefaultValue(bc)
+	util.SetDefaultValue(bc)
 }
 
 func (bc *BaseConfiguration) initBaseConfiguration() {
@@ -226,9 +257,9 @@ func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
 	}
 }
 
-func (bc *BaseActions) setBaseGlobalActions(opts ...GlobalActions) {
+func (ba *BaseActions) setBaseGlobalActions(opts ...GlobalActions) {
 	for _, opt := range opts {
-		opt(bc)
+		opt(ba)
 	}
 }
 
@@ -290,6 +321,13 @@ func WithTitleOpts(opt opts.Title) GlobalOpts {
 	}
 }
 
+// WithAnimation enable or disable the animation.
+func WithAnimation(enable bool) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.Animation = opts.Bool(enable)
+	}
+}
+
 // WithToolboxOpts sets the toolbox.
 func WithToolboxOpts(opt opts.Toolbox) GlobalOpts {
 	return func(bc *BaseConfiguration) {
@@ -315,6 +353,12 @@ func WithTooltipOpts(opt opts.Tooltip) GlobalOpts {
 func WithLegendOpts(opt opts.Legend) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Legend = opt
+	}
+}
+
+func WithEventListeners(listeners ...event.Listener) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.EventListeners = append(bc.EventListeners, listeners...)
 	}
 }
 

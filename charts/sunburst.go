@@ -13,7 +13,7 @@ type Sunburst struct {
 }
 
 // Type returns the chart type.
-func (Sunburst) Type() string { return types.ChartSunburst }
+func (*Sunburst) Type() string { return types.ChartSunburst }
 
 // NewSunburst creates a new sunburst chart instance.
 func NewSunburst() *Sunburst {

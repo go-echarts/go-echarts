@@ -3,6 +3,7 @@ package components
 import (
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/render"
+	"github.com/go-echarts/go-echarts/v2/util"
 )
 
 type Layout string
@@ -17,17 +18,19 @@ const (
 type Charter interface {
 	Type() string
 	GetAssets() opts.Assets
+	// FillDefaultValues fill default values and would be overridden if any struct fields has been manually set
 	FillDefaultValues()
+	// Validate a validator as well as a post processor before render
 	Validate()
 }
 
 // Page represents a page chart.
 type Page struct {
 	render.Renderer
-	opts.Initialization
+	opts.PageConfiguration
 	opts.Assets
 
-	Charts []interface{}
+	Charts []Charter
 	Layout Layout
 }
 
@@ -40,13 +43,23 @@ func NewPage() *Page {
 	return page
 }
 
+func (page *Page) SetPageTitle(title string) *Page {
+	page.PageConfiguration.PageTitle = title
+	return page
+}
+
+func (page *Page) SetAssetsHost(assetsHost string) *Page {
+	page.PageConfiguration.AssetsHost = assetsHost
+	return page
+}
+
 // SetLayout sets the layout of the Page.
 func (page *Page) SetLayout(layout Layout) *Page {
 	page.Layout = layout
 	return page
 }
 
-// AddCharts adds new charts to the page.
+// AddCharts adds new charts to the page and merge assets.
 func (page *Page) AddCharts(charts ...Charter) *Page {
 	for i := 0; i < len(charts); i++ {
 		assets := charts[i].GetAssets()
@@ -65,6 +78,6 @@ func (page *Page) AddCharts(charts ...Charter) *Page {
 
 // Validate validates the given configuration.
 func (page *Page) Validate() {
-	page.Initialization.Validate()
+	util.SetDefaultValue(page)
 	page.Assets.Validate(page.AssetsHost)
 }

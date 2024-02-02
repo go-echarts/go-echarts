@@ -2,13 +2,15 @@ package opts
 
 import (
 	"fmt"
+
+	"github.com/go-echarts/go-echarts/v2/types"
 )
 
 // Label contains options for a label text.
 // https://echarts.apache.org/en/option.html#series-line.label
 type Label struct {
 	// Whether to show label.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Color is the text color.
 	// If set as "auto", the color will assigned as visual color, such as series color.
@@ -105,13 +107,13 @@ type Label struct {
 // LabelLine Configuration of label guide line.
 type LabelLine struct {
 	// Whether to show the label guide line.
-	Show bool `json:"show"`
+	Show types.Bool `json:"show,omitempty"`
 	// Whether to show the label guide line above the corresponding element.
-	ShowAbove bool `json:"showAbove"`
+	ShowAbove types.Bool `json:"showAbove"`
 	// The length of the second segment of guide line.
 	Length2 float64 `json:"length2,omitempty"`
 	// smoothness of guide line.
-	Smooth bool `json:"smooth"`
+	Smooth types.Bool `json:"smooth,omitempty"`
 	// Minimum turn angle between two segments of guide line
 	MinTurnAngle float64 `json:"minTurnAngle,omitempty"`
 	// The style of label line
@@ -154,6 +156,19 @@ type ItemStyle struct {
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
+
+	// ShadowBlur Size of shadow blur.
+	// This attribute should be used along with shadowColor,shadowOffsetX, shadowOffsetY to set shadow to component.
+	ShadowBlur int `json:"shadowBlur,omitempty"`
+
+	// ShadowColor Shadow color. Support same format as color.
+	ShadowColor string `json:"shadowColor,omitempty"`
+
+	// ShadowOffsetX Offset distance on the horizontal direction of shadow.
+	ShadowOffsetX int `json:"shadowOffsetX,omitempty"`
+
+	// ShadowOffsetY Offset distance on the vertical direction of shadow.
+	ShadowOffsetY int `json:"shadowOffsetY,omitempty"`
 }
 
 // MarkLines represents a series of marklines.
@@ -177,7 +192,7 @@ type MarkLineStyle struct {
 
 // CircularStyle contains styling options for circular layout.
 type CircularStyle struct {
-	RotateLabel bool `json:"rotateLabel,omitempty"`
+	RotateLabel types.Bool `json:"rotateLabel,omitempty"`
 }
 
 // MarkLineNameTypeItem represents type for a MarkLine.
@@ -508,7 +523,7 @@ type TreeMapLevel struct {
 // https://echarts.apache.org/en/option.html#series-treemap.upperLabel
 type UpperLabel struct {
 	// Show is true to show upper label.
-	Show bool `json:"show,omitempty"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Position is the label's position.
 	// * top
@@ -615,9 +630,8 @@ func HSLAColor(h, s, l, a float32) string {
 // EdgeLabel is the properties of an label of edge.
 // https://echarts.apache.org/en/option.html#series-graph.edgeLabel
 type EdgeLabel struct {
-
 	// Show is true to show label on edge.
-	Show bool `json:"show,omitempty"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Position is the label's position in line of edge.
 	// * "start"
@@ -687,4 +701,14 @@ type Encode struct {
 	X interface{} `json:"x"`
 
 	Y interface{} `json:"y"`
+
+	Tooltip interface{} `json:"tooltip,omitempty"`
+
+	SeriesName interface{} `json:"seriesName,omitempty"`
+
+	ItemID interface{} `json:"itemId,omitempty"`
+
+	ItemName interface{} `json:"itemName,omitempty"`
+
+	ItemGroupID interface{} `json:"itemGroupId,omitempty"`
 }

@@ -39,6 +39,7 @@ func WithGrid3DOpts(opt opts.Grid3D) GlobalOpts {
 }
 
 func (c *Chart3D) initChart3D() {
+	c.JSAssets.Add(opts.CompatibleEchartsJS)
 	c.JSAssets.Add("echarts-gl.min.js")
 	c.has3DAxis = true
 }

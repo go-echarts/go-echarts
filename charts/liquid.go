@@ -13,13 +13,14 @@ type Liquid struct {
 }
 
 // Type returns the chart type.
-func (Liquid) Type() string { return types.ChartLiquid }
+func (*Liquid) Type() string { return types.ChartLiquid }
 
 // NewLiquid creates a new liquid chart.
 func NewLiquid() *Liquid {
 	c := &Liquid{}
 	c.initBaseConfiguration()
 	c.Renderer = render.NewChartRender(c, c.Validate)
+	c.JSAssets.Add(opts.CompatibleEchartsJS)
 	c.JSAssets.Add("echarts-liquidfill.min.js")
 	return c
 }

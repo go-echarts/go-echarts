@@ -1,90 +1,33 @@
 package render
 
 import (
-	"bytes"
 	"fmt"
 	"html/template"
 	"io"
 	"reflect"
 	"regexp"
+	"strings"
 
-	tpls "github.com/go-echarts/go-echarts/v2/templates"
+	"github.com/go-echarts/go-echarts/v2/types"
 )
+
+const (
+	ModChart = "chart"
+	ModPage  = "page"
+	// EchartsInstancePrefix the default prefix for each echarts instance
+	EchartsInstancePrefix = "goecharts_"
+	// EchartsInstancePlaceholder a placeholder for types.FuncStr inject echarts instance
+	EchartsInstancePlaceholder = "%MY_ECHARTS%"
+)
+
+var pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 
 // Renderer
 // Any kinds of charts have their render implementation and
 // you can define your own render logic easily.
 type Renderer interface {
 	Render(w io.Writer) error
-}
-
-const (
-	ModChart = "chart"
-	ModPage  = "page"
-)
-
-var (
-	pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
-)
-
-type pageRender struct {
-	c      interface{}
-	before []func()
-}
-
-// NewPageRender returns a render implementation for Page.
-func NewPageRender(c interface{}, before ...func()) Renderer {
-	return &pageRender{c: c, before: before}
-}
-
-// Render renders the page into the given io.Writer.
-func (r *pageRender) Render(w io.Writer) error {
-	for _, fn := range r.before {
-		fn()
-	}
-
-	contents := []string{tpls.HeaderTpl, tpls.BaseTpl, tpls.PageTpl}
-	tpl := MustTemplate(ModPage, contents)
-
-	var buf bytes.Buffer
-	if err := tpl.ExecuteTemplate(&buf, ModPage, r.c); err != nil {
-		return err
-	}
-
-	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
-
-	_, err := w.Write(content)
-	return err
-}
-
-type chartRender struct {
-	c      interface{}
-	before []func()
-}
-
-// NewChartRender returns a render implementation for Chart.
-func NewChartRender(c interface{}, before ...func()) Renderer {
-	return &chartRender{c: c, before: before}
-}
-
-// Render renders the chart into the given io.Writer.
-func (r *chartRender) Render(w io.Writer) error {
-	for _, fn := range r.before {
-		fn()
-	}
-
-	contents := []string{tpls.HeaderTpl, tpls.BaseTpl, tpls.ChartTpl}
-	tpl := MustTemplate(ModChart, contents)
-
-	var buf bytes.Buffer
-	if err := tpl.ExecuteTemplate(&buf, ModChart, r.c); err != nil {
-		return err
-	}
-
-	content := pat.ReplaceAll(buf.Bytes(), []byte(""))
-
-	_, err := w.Write(content)
-	return err
+	RenderContent() []byte
 }
 
 // isSet check if the field exist in the chart instance
@@ -103,14 +46,29 @@ func isSet(name string, data interface{}) bool {
 	return v.FieldByName(name).IsValid()
 }
 
+// isSetAction a filter to indicate whether render dispatchAction before v2.4
+func isSetAction(actionType interface{}) bool {
+	t := fmt.Sprintf("%v", actionType)
+	if t == "" {
+		return false
+	}
+	return true
+}
+
 // MustTemplate creates a new template with the given name and parsed contents.
 func MustTemplate(name string, contents []string) *template.Template {
-	tpl := template.Must(template.New(name).Parse(contents[0])).Funcs(template.FuncMap{
+	tpl := template.New(name).Funcs(template.FuncMap{
 		"safeJS": func(s interface{}) template.JS {
 			return template.JS(fmt.Sprint(s))
 		},
-		"isSet": isSet,
+		"isSet":       isSet,
+		"isSetAction": isSetAction,
+		"injectInstance": func(funcStr types.FuncStr, echartsInstancePlaceholder string, chartID string) string {
+			instance := EchartsInstancePrefix + chartID
+			return strings.Replace(string(funcStr), echartsInstancePlaceholder, instance, -1)
+		},
 	})
+	tpl = template.Must(tpl.Parse(contents[0]))
 
 	for _, cont := range contents[1:] {
 		tpl = template.Must(tpl.Parse(cont))

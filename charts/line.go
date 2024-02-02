@@ -12,7 +12,7 @@ type Line struct {
 }
 
 // Type returns the chart type.
-func (Line) Type() string { return types.ChartLine }
+func (*Line) Type() string { return types.ChartLine }
 
 // NewLine creates a new line chart.
 func NewLine() *Line {
@@ -32,6 +32,7 @@ func (c *Line) SetXAxis(x interface{}) *Line {
 // AddSeries adds the new series.
 func (c *Line) AddSeries(name string, data []opts.LineData, options ...SeriesOpts) *Line {
 	series := SingleSeries{Name: name, Type: types.ChartLine, Data: data}
+	series.InitSeriesDefaultOpts(c.BaseConfiguration)
 	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
 	return c

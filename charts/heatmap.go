@@ -12,7 +12,7 @@ type HeatMap struct {
 }
 
 // Type returns the chart type.
-func (HeatMap) Type() string { return types.ChartHeatMap }
+func (*HeatMap) Type() string { return types.ChartHeatMap }
 
 // NewHeatMap creates a new heatmap chart.
 func NewHeatMap() *HeatMap {
@@ -34,6 +34,13 @@ func (c *HeatMap) AddSeries(name string, data []opts.HeatMapData, options ...Ser
 	series := SingleSeries{Name: name, Type: types.ChartHeatMap, Data: data}
 	series.ConfigureSeriesOpts(options...)
 	c.MultiSeries = append(c.MultiSeries, series)
+	return c
+}
+
+// AddCalendar adds the calendar configuration to the chart.
+func (c *HeatMap) AddCalendar(calendar ...*opts.Calendar) *HeatMap {
+	c.Calendar = append(c.Calendar, calendar...)
+	c.hasXYAxis = false
 	return c
 }
 

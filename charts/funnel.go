@@ -13,7 +13,7 @@ type Funnel struct {
 }
 
 // Type returns the chart type.
-func (Funnel) Type() string { return types.ChartFunnel }
+func (*Funnel) Type() string { return types.ChartFunnel }
 
 // NewFunnel creates a new funnel chart.
 func NewFunnel() *Funnel {

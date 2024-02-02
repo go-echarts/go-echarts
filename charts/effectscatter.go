@@ -12,7 +12,7 @@ type EffectScatter struct {
 }
 
 // Type returns the chart type.
-func (EffectScatter) Type() string { return types.ChartEffectScatter }
+func (*EffectScatter) Type() string { return types.ChartEffectScatter }
 
 // NewEffectScatter creates a new effect scatter chart.
 func NewEffectScatter() *EffectScatter {

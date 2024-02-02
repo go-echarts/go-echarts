@@ -1,0 +1,38 @@
+#
+# Before you report a bug, make sure you already
+# - Checked the go-echarts official docs
+# - May check the go-echarts and echarts related issues also
+# - Make sure which go-echarts version you used, and may try the latest version if possible
+#
+
+name: '🐛 Bug Report'
+title: '[Bug]'
+labels: [ "bug" ]
+description: Something loses the consistences of options/render-result or other wrong stuff
+body:
+  - type: textarea
+    attributes:
+      label: Describe the issue
+      placeholder: Please explain it in details, why how and what.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: How to reproduce this issue
+      placeholder: How to reproduce the problem? you could attach or link a access resources as well.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Other information
+      placeholder: Anything else you want attach on if it needs
+
+  - type: input
+    attributes:
+      label: go-echarts version
+      description: Which version is it you use now? e.g. v2.3.3
+    validations:
+      required: true
+

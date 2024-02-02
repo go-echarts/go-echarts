@@ -1,0 +1,33 @@
+#
+# Before you report a question, make sure you already
+# - Checked the go-echarts official docs
+# - May check the go-echarts and echarts related issues also
+# - May search the related solutions via Google or ChatGPT
+#
+
+name: '❓Question'
+title: '[Question]'
+labels: [ "question" ]
+description: Something you don't know or its behavior confuse you
+body:
+  - type: textarea
+    attributes:
+      label: Describe your question
+      placeholder: Please explain it in details, why how and what.
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Code pieces of your question
+      placeholder: Please share your code pieces for details if you have.
+    validations:
+      required: false
+
+  - type: input
+    attributes:
+      label: go-echarts version
+      description: Which version is it you use now? e.g. v2.3.3
+    validations:
+      required: true
+

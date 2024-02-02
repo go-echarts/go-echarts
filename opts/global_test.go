@@ -3,6 +3,8 @@ package opts
 import (
 	"testing"
 
+	"github.com/go-echarts/go-echarts/v2/util"
+
 	"github.com/stretchr/testify/assert"
 )
 
@@ -26,7 +28,7 @@ func TestAssets(t *testing.T) {
 func TestGenerateUniqueID(t *testing.T) {
 	var old string
 	for i := 0; i < 10; i++ {
-		new := generateUniqueID()
+		new := util.GenerateUniqueID()
 		assert.NotSame(t, old, new)
 		old = new
 	}

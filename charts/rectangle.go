@@ -84,7 +84,7 @@ func (rc *RectChart) SetGlobalOptions(options ...GlobalOpts) *RectChart {
 	return rc
 }
 
-//SetDispatchActions sets actions for the RectChart instance.
+// SetDispatchActions sets actions for the RectChart instance.
 func (rc *RectChart) SetDispatchActions(options ...GlobalActions) *RectChart {
 	rc.RectConfiguration.setRectGlobalActions(options...)
 	return rc
@@ -92,7 +92,7 @@ func (rc *RectChart) SetDispatchActions(options ...GlobalActions) *RectChart {
 
 // Overlap composes multiple charts into one single canvas.
 // It is only suited for some of the charts which are in rectangular coordinate.
-// Supported charts: Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap
+// Supported charts: Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap/Custom
 func (rc *RectChart) Overlap(a ...Overlaper) {
 	for i := 0; i < len(a); i++ {
 		rc.MultiSeries = append(rc.MultiSeries, a[i].overlap()...)
@@ -105,7 +105,7 @@ func (rc *RectChart) Validate() {
 	rc.XAxisList[0].Data = rc.xAxisData
 	// Make sure that the labels of Y axis show correctly
 	for i := 0; i < len(rc.YAxisList); i++ {
-		rc.YAxisList[i].AxisLabel.Show = true
+		rc.YAxisList[i].AxisLabel.Show = opts.Bool(true)
 	}
 	rc.Assets.Validate(rc.AssetsHost)
 }
