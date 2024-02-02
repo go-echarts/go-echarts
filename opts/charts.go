@@ -414,44 +414,6 @@ type SankeyNode struct {
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
-// ScatterChart is the option set for a scatter chart.
-// https://echarts.apache.org/en/option.html#series-scatter
-type ScatterChart struct {
-	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
-	XAxisIndex int
-
-	// Index of x axis to combine with, which is useful for multiple y axes in one chart.
-	YAxisIndex int
-
-	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
-	SymbolKeepAspect types.Bool
-}
-
-// ScatterData
-// https://echarts.apache.org/en/option.html#series-scatter.data
-type ScatterData struct {
-	// Name of data item.
-	Name string `json:"name,omitempty"`
-
-	// Value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-
-	// Symbol
-	Symbol string `json:"symbol,omitempty"`
-
-	// SymbolSize
-	SymbolSize int `json:"symbolSize,omitempty"`
-
-	// SymbolRotate
-	SymbolRotate int `json:"symbolRotate,omitempty"`
-
-	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
-	XAxisIndex int `json:"xAxisIndex,omitempty"`
-
-	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
-	YAxisIndex int `json:"yAxisIndex,omitempty"`
-}
-
 // ThemeRiverData
 // https://echarts.apache.org/en/option.html#series-themeRiver
 type ThemeRiverData struct {
