@@ -145,3 +145,79 @@ As per these characteristics, we separate the `option` into two things, the `Opt
 - `Series`
   How does each dataset styles and showing.
 
+## Create Chart in go-echarts
+
+Now, let me explain how to create a chart instance in go-echarts.
+
+```go
+func PieWithDispatchAction() *charts.Pie {
+	// define a pureJS function which you want embed it in the HTML page
+	const actionWithEchartsInstance = `
+		let currentIndex = -1;
+		setInterval(function() {
+		  const myChart = %MY_ECHARTS%;
+		  var dataLen = myChart.getOption().series[0].data.length;
+		  myChart.dispatchAction({
+			type: 'downplay',
+			seriesIndex: 0,
+			dataIndex: currentIndex
+		  });
+		  currentIndex = (currentIndex + 1) % dataLen;
+		  myChart.dispatchAction({
+			type: 'highlight',
+			seriesIndex: 0,
+			dataIndex: currentIndex
+		  });
+		  myChart.dispatchAction({
+			type: 'showTip',
+			seriesIndex: 0,
+			dataIndex: currentIndex
+		  });
+		}, 1000);
+`
+
+	// new a chart instance
+	pie := charts.NewPie()
+	// Add custom JSFunc
+	pie.AddJSFuncStrs(actionWithEchartsInstance)
+	// Add GlobalOptions including assets and `Options` (how the chart show)
+	// There is lots of options you can put it in, ensure it works for you chart type tho.
+	pie.SetGlobalOptions(
+		charts.WithTitleOpts(opts.Title{
+			Title: "dispatchAction pie",
+		}),
+		charts.WithTooltipOpts(opts.Tooltip{
+			Trigger:   "item",
+			Formatter: "{a} <br/>{b} : {c} ({d}%)",
+		}),
+		charts.WithLegendOpts(opts.Legend{
+			Left:   "left",
+			Orient: "vertical",
+		}),
+	)
+    
+	// Add Series, the datasets and the `Series` options (how the series show)
+	pie.AddSeries("pie action", generatePieItems()).
+		SetSeriesOptions(
+			charts.WithLabelOpts(opts.Label{
+				Show:      opts.Bool(true),
+				Formatter: "{b}: {c}",
+			}),
+			charts.WithPieChartOpts(opts.PieChart{
+				Radius: []string{"55%"},
+				Center: []string{"50%", "60%"},
+			}),
+
+			charts.WithEmphasisOpts(opts.Emphasis{
+				ItemStyle: &opts.ItemStyle{
+					ShadowBlur:    10,
+					ShadowOffsetX: 0,
+					ShadowColor:   "rgba(0, 0, 0, 0.5)",
+				},
+			}),
+		)
+
+	return pie
+}
+```
+
