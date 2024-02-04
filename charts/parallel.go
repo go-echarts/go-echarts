@@ -9,7 +9,6 @@ import (
 // Parallel represents a parallel axis.
 type Parallel struct {
 	BaseConfiguration
-	BaseActions
 }
 
 // Type returns the chart type.
@@ -35,12 +34,6 @@ func (c *Parallel) AddSeries(name string, data []opts.ParallelData, options ...S
 // SetGlobalOptions sets options for the Parallel instance.
 func (c *Parallel) SetGlobalOptions(options ...GlobalOpts) *Parallel {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
-	return c
-}
-
-// SetDispatchActions sets actions for the Radar instance.
-func (c *Parallel) SetDispatchActions(actions ...GlobalActions) *Parallel {
-	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 

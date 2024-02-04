@@ -12,7 +12,6 @@ import (
 // Geo represents a geo chart.
 type Geo struct {
 	BaseConfiguration
-	BaseActions
 }
 
 // Type returns the chart type.
@@ -57,12 +56,6 @@ func (c *Geo) extendValue(region string, v float32) []float32 {
 // SetGlobalOptions sets options for the Geo instance.
 func (c *Geo) SetGlobalOptions(options ...GlobalOpts) *Geo {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
-	return c
-}
-
-// SetDispatchActions sets actions for the Geo instance.
-func (c *Geo) SetDispatchActions(actions ...GlobalActions) *Geo {
-	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 

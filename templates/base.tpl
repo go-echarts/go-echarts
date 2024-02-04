@@ -20,12 +20,5 @@
     {{- range .JSFunctions.Fns }}
     {{ injectInstance . "%MY_ECHARTS%"  $.ChartID  | safeJS }}
     {{- end }}
-
-    {{ if isSet  "BaseActions" . }}
-    {{ if isSetAction .BaseActions.Type }}
-	let action_{{ .ChartID | safeJS }} = {{ .JSONNotEscapedAction | safeJS }};
- 	goecharts_{{ .ChartID | safeJS }}.dispatchAction(action_{{ .ChartID | safeJS }});
-    {{ end }}
-    {{ end }}
 </script>
 {{ end }}

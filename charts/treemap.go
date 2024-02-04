@@ -9,7 +9,6 @@ import (
 // TreeMap represents a TreeMap chart.
 type TreeMap struct {
 	BaseConfiguration
-	BaseActions
 }
 
 // Type returns the chart type.
@@ -34,12 +33,6 @@ func (c *TreeMap) AddSeries(name string, data []opts.TreeMapNode, options ...Ser
 // SetGlobalOptions sets options for the TreeMap instance.
 func (c *TreeMap) SetGlobalOptions(options ...GlobalOpts) *TreeMap {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
-	return c
-}
-
-// SetDispatchActions sets actions for the TreeMap instance.
-func (c *TreeMap) SetDispatchActions(actions ...GlobalActions) *TreeMap {
-	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 

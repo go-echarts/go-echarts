@@ -46,23 +46,13 @@ func isSet(name string, data interface{}) bool {
 	return v.FieldByName(name).IsValid()
 }
 
-// isSetAction a filter to indicate whether render dispatchAction before v2.4
-func isSetAction(actionType interface{}) bool {
-	t := fmt.Sprintf("%v", actionType)
-	if t == "" {
-		return false
-	}
-	return true
-}
-
 // MustTemplate creates a new template with the given name and parsed contents.
 func MustTemplate(name string, contents []string) *template.Template {
 	tpl := template.New(name).Funcs(template.FuncMap{
 		"safeJS": func(s interface{}) template.JS {
 			return template.JS(fmt.Sprint(s))
 		},
-		"isSet":       isSet,
-		"isSetAction": isSetAction,
+		"isSet": isSet,
 		"injectInstance": func(funcStr types.FuncStr, echartsInstancePlaceholder string, chartID string) string {
 			instance := EchartsInstancePrefix + chartID
 			return strings.Replace(string(funcStr), echartsInstancePlaceholder, instance, -1)
