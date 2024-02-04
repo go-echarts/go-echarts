@@ -49,9 +49,9 @@ which `go-echarts` learns and has evolved a lot from.
 Classic way to get go-echarts
 
 ```shell
-# this may be a stupid way to use v2 go-echarts without gomod(GO111MODULE=off) because of
-# the next generation version management system... 🐶
-# if you get a better workaround, please let me know....
+# this may be not a good choice to use v2 go-echarts without gomod(GO111MODULE=off), the 
+# the next generation version management system 
+# Technically, you can use go-echarts in the way below, if you get a better workaround, please let me know....
 
 $ go get -u github.com/go-echarts/go-echarts/...
 $ cd $go-echarts-project
@@ -222,7 +222,7 @@ func main() {
 <img src="https://user-images.githubusercontent.com/19553554/52349544-c2ce3900-2a61-11e9-82af-28aaaaae0d67.gif" width="33%" alt="overlap"/>
 </div>
 
-For more information, please refer to [go-echarts/examples](https://github.com/go-echarts/examples) and
+For more information, please refer to [handbook](https://go-echarts.github.io/go-echarts/), [go-echarts/examples](https://github.com/go-echarts/examples) and
 the [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
 
 ### Ecosystem
