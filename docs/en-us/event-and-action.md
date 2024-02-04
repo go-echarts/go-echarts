@@ -49,21 +49,21 @@ A full example on bar chart:
     bar := charts.NewBar()
     JFunc := ` (params) => alert(params.name) `
     bar.SetGlobalOptions(
-        charts.WithEventListeners(
-        event.Listener{
-        EventName: "click",
-        Handler:   opts.FuncOpts(JFunc),
-    },
-        event.Listener{
-        EventName: "mouseup",
-        Query:     "'series'",
-        Handler:   opts.FuncOpts(JFunc),
-    },
-        event.Listener{
-        EventName: "mouseover",
-        Query:     "{ seriesName: 'go-echarts' }",
-        Handler:   opts.FuncOpts(JFunc),
-    }
+            charts.WithEventListeners(
+            event.Listener{
+            EventName: "click",
+            Handler:   opts.FuncOpts(JFunc),
+        },
+            event.Listener{
+            EventName: "mouseup",
+            Query:     "'series'",
+            Handler:   opts.FuncOpts(JFunc),
+        },
+            event.Listener{
+            EventName: "mouseover",
+            Query:     "{ seriesName: 'go-echarts' }",
+            Handler:   opts.FuncOpts(JFunc),
+        }
     )
 
 ```
@@ -75,14 +75,16 @@ It allows to manually trigger events on charts to make the chart dynamic.
 
 To be honest, it is hard to implement the full functions since we can not run all things
 like a pure JS.
-Considering for a chart lib, the target is not implement a echarts engine in go.  
-Unfortunately, we hasn't provide a action api yet, for the *static* `dispatchAction`.
+Considering for a chart lib, the target is not implement an echarts engine in go.  
+On the one hand, the `action`/`animation` things are moreover the `charts` scope, on the other hand, there is
+hard to decide where to put the `dispatchAction` part, inside other JS functions? or a static one?
+Hence, we haven't provided an action api yet, for the *static* `dispatchAction`.
 
 So, is it no way to make it?  
-**Actually, we do have one more thing...**  
+?> **Actually, we do have one more thing...**  
 
 With the power of `%MY_ECHARTS` (see `dive-into` chapter),
-you get the echarts instance, you get the world.
+absolutely, when you hold the echarts instance, you get the whole world.
 
 !> Talk is cheap, show you the code :)  
 
@@ -168,6 +170,16 @@ func PieWithDispatchAction() *charts.Pie {
 	return pie
 
 }
+
+```
+
+So, you can make the `dispatchAction` purely in JS insertion instead of building some go types.
+
+```js
+const myChart = %MY_ECHARTS%;
+myChart.dispatchAction({
+    ...
+});
 
 ```
 
