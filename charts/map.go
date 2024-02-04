@@ -10,7 +10,6 @@ import (
 // Map represents a map chart.
 type Map struct {
 	BaseConfiguration
-	BaseActions
 
 	mapType string
 }
@@ -43,12 +42,6 @@ func (c *Map) AddSeries(name string, data []opts.MapData, options ...SeriesOpts)
 // SetGlobalOptions sets options for the Map instance.
 func (c *Map) SetGlobalOptions(options ...GlobalOpts) *Map {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
-	return c
-}
-
-// SetDispatchActions sets actions for the Radar instance.
-func (c *Map) SetDispatchActions(actions ...GlobalActions) *Map {
-	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 
