@@ -248,5 +248,5 @@ In go-echarts:
     bar.Overlap(line)
 ```
 
-It will add the line's all series into bar's and the `Options` all obtained of bar's. 
+It will add the line's all series into bar's and the `Options` is only obtained from bar's. 
 
