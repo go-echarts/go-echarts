@@ -518,7 +518,7 @@ type TreeData struct {
 	Name string `json:"name,omitempty"`
 
 	// Value of the data item.
-	Value int `json:"value,omitempty"`
+	Value interface{} `json:"value,omitempty"`
 
 	Children []*TreeData `json:"children,omitempty"`
 
