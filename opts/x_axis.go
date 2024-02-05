@@ -179,7 +179,7 @@ type AxisLabel struct {
 	// axis label font family
 	FontFamily string `json:"fontFamily,omitempty"`
 	// axis label font size
-	FontSize string `json:"fontSize,omitempty"`
+	FontSize int `json:"fontSize,omitempty"`
 	// Horizontal alignment of axis label
 	Align string `json:"align,omitempty"`
 	// Vertical alignment of axis label
