@@ -350,6 +350,19 @@ func WithScatterChartOpts(opt opts.ScatterChart) SeriesOpts {
 	}
 }
 
+// WithEffectScatterChartOpts sets the ScatterChart option.
+func WithEffectScatterChartOpts(opt opts.EffectScatter) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.ColorBy = opt.ColorBy
+		s.CoordSystem = opt.CoordSystem
+		s.XAxisIndex = opt.XAxisIndex
+		s.YAxisIndex = opt.YAxisIndex
+		s.Symbol = opt.Symbol
+		s.SymbolSize = opt.SymbolSize
+		s.SymbolKeepAspect = opt.SymbolKeepAspect
+	}
+}
+
 // WithLiquidChartOpts sets the LiquidChart option.
 func WithLiquidChartOpts(opt opts.LiquidChart) SeriesOpts {
 	return func(s *SingleSeries) {
