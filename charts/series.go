@@ -351,7 +351,7 @@ func WithScatterChartOpts(opt opts.ScatterChart) SeriesOpts {
 }
 
 // WithEffectScatterChartOpts sets the ScatterChart option.
-func WithEffectScatterChartOpts(opt opts.EffectScatter) SeriesOpts {
+func WithEffectScatterChartOpts(opt opts.EffectScatterChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.ColorBy = opt.ColorBy
 		s.CoordSystem = opt.CoordSystem

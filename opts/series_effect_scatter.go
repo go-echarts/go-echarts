@@ -4,7 +4,7 @@ import "github.com/go-echarts/go-echarts/v2/types"
 
 // EffectScatterChart is the option set for a effectScatter chart.
 // https://echarts.apache.org/en/option.html#series-effectScatter
-type EffectScatter struct {
+type EffectScatterChart struct {
 	// ColorBy The policy to take color from option.color. Valid values:
 	// 'series': assigns the colors in the palette by series, so that all data in the same series are in the same color;
 	// 'data': assigns colors in the palette according to data items, with each data item using a different color.
