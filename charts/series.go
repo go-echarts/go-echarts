@@ -96,6 +96,9 @@ type SingleSeries struct {
 	Top               string      `json:"top,omitempty"`
 	Bottom            string      `json:"bottom,omitempty"`
 
+	// Radar
+	RadarIndex int `json:"radarIndex,omitempty"`
+
 	// TreeMap
 	LeafDepth  int         `json:"leafDepth,omitempty"`
 	Levels     interface{} `json:"levels,omitempty"`
@@ -357,6 +360,17 @@ func WithEffectScatterChartOpts(opt opts.EffectScatterChart) SeriesOpts {
 		s.CoordSystem = opt.CoordSystem
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
+		s.Symbol = opt.Symbol
+		s.SymbolSize = opt.SymbolSize
+		s.SymbolKeepAspect = opt.SymbolKeepAspect
+	}
+}
+
+// WithRadarChartOpts sets the RadarChart option.
+func WithRadarChartOpts(opt opts.RadarChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.ColorBy = opt.ColorBy
+		s.RadarIndex = opt.RadarIndex
 		s.Symbol = opt.Symbol
 		s.SymbolSize = opt.SymbolSize
 		s.SymbolKeepAspect = opt.SymbolKeepAspect
