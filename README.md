@@ -8,25 +8,25 @@
 </p>
 
 <p align="center">
-    <a href="https://github.com/go-echarts/go-echarts/actions/workflows/ci.yml">
+    <a href="https://github.com/go-echarts/go-echarts/actions/workflows/ci.yml" style="text-decoration: none;">
         <img src="https://github.com/go-echarts/go-echarts/actions/workflows/ci.yml/badge.svg" alt="Build Status">
     </a>
-    <a href="https://goreportcard.com/report/github.com/go-echarts/go-echarts">
+    <a href="https://goreportcard.com/report/github.com/go-echarts/go-echarts" style="text-decoration: none;">
         <img src="https://goreportcard.com/badge/github.com/go-echarts/go-echarts" alt="Go Report Card">
     </a>
-	<a href="https://github.com/go-echarts/go-echarts/pulls">
+	<a href="https://github.com/go-echarts/go-echarts/pulls" style="text-decoration: none;">
         <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions welcome">
     </a>
-    <a href="https://opensource.org/licenses/MIT">
+    <a href="https://opensource.org/licenses/MIT" style="text-decoration: none;">>
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT License">
     </a>
-    <a href="https://pkg.go.dev/github.com/go-echarts/go-echarts/v2">
+    <a href="https://pkg.go.dev/github.com/go-echarts/go-echarts/v2" style="text-decoration: none;">
         <img src="https://godoc.org/github.com/go-echarts/go-echarts?status.svg" alt="GoDoc">
     </a>
-    <a href="https://echarts.apache.org/">
+    <a href="https://echarts.apache.org/" style="text-decoration: none;">
         <img src="https://img.shields.io/badge/echarts-_v5.4.3-orange" alt="echartsVersion">
     </a>
-    <a href="https://go-echarts.github.io/go-echarts">
+    <a href="https://go-echarts.github.io/go-echarts" style="text-decoration: none;">
         <img src="https://img.shields.io/badge/docs-_handbook-blue" alt="handbook">
     </a>
 </p>

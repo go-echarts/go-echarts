@@ -7,21 +7,6 @@
     <em>🎨 The adorable charts library for Golang.</em>
 </p>
 
-<p align="center">
-	<a href="https://github.com/go-echarts/go-echarts/pulls">
-        <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions welcome">
-    </a>
-    <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT License">
-    </a>
-    <a href="https://pkg.go.dev/github.com/go-echarts/go-echarts/v2">
-        <img src="https://godoc.org/github.com/go-echarts/go-echarts?status.svg" alt="GoDoc">
-    </a>
-    <a href="https://echarts.apache.org/">
-        <img src="https://img.shields.io/badge/echarts-_v5.4.3-orange" alt="echartsVersion">
-    </a>
-</p>
-
 # 🔰 Installation
 
 ## gomod
