@@ -42,8 +42,6 @@
                 const fetchTasks = []
                 hook.beforeEach((html, next) => {
                     html.replace(exampleRegex, function (match, tag, path) {
-                        console.log(tag)
-                        console.log(path)
                         const rawApi = tag === "Examples" ? rawExampleApi : rawConfigApi
                         const api = rawApi + path;
                         // fetch content
@@ -65,8 +63,8 @@
                 const footer = [
                     '<hr/>',
                     '<footer>',
-                    '<span><a href="https://github.com/go-echarts"> &copy;go-echarts</a></span>&nbsp;',
-                    '<span>This doc powered by <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.</span>',
+                    '<span> &copy; MIT<a href="https://github.com/go-echarts"> go-echarts </a></span>&nbsp;',
+                    '<span>powered by <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.</span>',
                     '</footer>'
                 ].join('');
 
