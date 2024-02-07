@@ -36,25 +36,29 @@
         },
         plugins: [
             function (hook) {
-                const rawApi = "https://raw.githubusercontent.com/go-echarts/examples/master/examples/"
-                const fetchTask = []
+                const exampleRegex = /\[(Examples|GoEcharts)CODE\s?=\s?(.*)\]/g;
+                const rawExampleApi = "https://raw.githubusercontent.com/go-echarts/examples/master/examples/"
+                const rawConfigApi = "https://raw.githubusercontent.com/go-echarts/go-echarts/master"
+                const fetchTasks = []
                 hook.beforeEach((html, next) => {
-                    const regex = /\[ExamplesCODE\s?=\s?(.*)\]/g;
-                    html.replace(regex, function (match, content) {
-                        const api = rawApi + content;
+                    html.replace(exampleRegex, function (match, tag, path) {
+                        console.log(tag)
+                        console.log(path)
+                        const rawApi = tag === "Examples" ? rawExampleApi : rawConfigApi
+                        const api = rawApi + path;
                         // fetch content
                         const task = fetch(api)
                             .then(resp => resp.text())
                             .then(data => {
                                 html = html.replace(match, data);
                             });
-                        fetchTask.push(task)
+                        fetchTasks.push(task)
                     });
 
-                    if (fetchTask.length === 0) {
+                    if (fetchTasks.length === 0) {
                         next(html)
                     } else {
-                        Promise.all(fetchTask).then(() => next(html))
+                        Promise.all(fetchTasks).then(() => next(html))
                     }
                 });
 

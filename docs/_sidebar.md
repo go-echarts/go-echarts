@@ -6,12 +6,11 @@
     - [Event and Action](en-us/event-and-action)
 - Advanced
     - [Render to Image](en-us/render-to-image)
+- [Ecosystem](en-us/ecosystem)
 - Chart Configration
   - [Global](en-us/options/global)
-
-[//]: # (  - [Series]&#40;en-us/options/series&#41;)
-
-[//]: # (  - [Options]&#40;en-us/options/options&#41;)
+  - [Series](en-us/options/series)
+  - [Options](en-us/options/options)
 - Showcases
     - [Line](en-us/charts/line)
     - [Bar](en-us/charts/bar)
