@@ -36,8 +36,10 @@
         },
         plugins: [
             function (hook) {
+
                 const exampleRegex = /\[(Examples|GoEcharts)CODE\s?=\s?(.*)\]/g;
                 const rawExampleApi = "https://raw.githubusercontent.com/go-echarts/examples/master/examples/"
+                // no / suffix, need path start with / e.g. /opt/geo.go
                 const rawConfigApi = "https://raw.githubusercontent.com/go-echarts/go-echarts/master"
                 const fetchTasks = []
                 hook.beforeEach((html, next) => {
