@@ -41,7 +41,7 @@ type SingleSeries struct {
 	EdgeLabel          interface{} `json:"edgeLabel,omitempty"`
 	Draggable          types.Bool  `json:"draggable,omitempty"`
 	FocusNodeAdjacency types.Bool  `json:"focusNodeAdjacency,omitempty"`
-	// Line
+	// Line | Radar
 	SymbolKeepAspect types.Bool `json:"symbolKeepAspect,omitempty"`
 
 	// BarWidth The width options of the bar. Adaptive when not specified.
@@ -51,7 +51,7 @@ type SingleSeries struct {
 	BarMinWidth string `json:"barMinWidth,omitempty"`
 	BarMaxWidth string `json:"barMaxWidth,omitempty"`
 
-	// Line | Bar | Pie | Scatter
+	// Line | Bar | Pie | Scatter | Radar
 	ColorBy string `json:"colorBy,omitempty"`
 	// Line | Bar
 	PolarIndex int `json:"polarIndex,omitempty"`
@@ -63,7 +63,7 @@ type SingleSeries struct {
 	ConnectNulls types.Bool `json:"connectNulls,omitempty"`
 	// Line
 	ShowSymbol types.Bool `json:"showSymbol,omitempty"`
-	// Line | Scatter
+	// Line | Scatter | Radar
 	Symbol string `json:"symbol,omitempty"`
 	Color  string `json:"color,omitempty"`
 
@@ -83,7 +83,7 @@ type SingleSeries struct {
 	// Pie
 	Radius interface{} `json:"radius,omitempty"`
 
-	// Line | Scatter
+	// Line | Scatter | Radar
 	SymbolSize interface{} `json:"symbolSize,omitempty"`
 
 	// Tree
@@ -95,6 +95,9 @@ type SingleSeries struct {
 	Right             string      `json:"right,omitempty"`
 	Top               string      `json:"top,omitempty"`
 	Bottom            string      `json:"bottom,omitempty"`
+
+	// Radar
+	RadarIndex int `json:"radarIndex,omitempty"`
 
 	// TreeMap
 	LeafDepth  int         `json:"leafDepth,omitempty"`
@@ -357,6 +360,17 @@ func WithEffectScatterChartOpts(opt opts.EffectScatterChart) SeriesOpts {
 		s.CoordSystem = opt.CoordSystem
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
+		s.Symbol = opt.Symbol
+		s.SymbolSize = opt.SymbolSize
+		s.SymbolKeepAspect = opt.SymbolKeepAspect
+	}
+}
+
+// WithRadarChartOpts sets the RadarChart option.
+func WithRadarChartOpts(opt opts.RadarChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.ColorBy = opt.ColorBy
+		s.RadarIndex = opt.RadarIndex
 		s.Symbol = opt.Symbol
 		s.SymbolSize = opt.SymbolSize
 		s.SymbolKeepAspect = opt.SymbolKeepAspect
