@@ -608,6 +608,37 @@ type CustomChart struct {
 	RenderItem types.FuncStr
 }
 
+// Progress is the options set for progress.
+type Progress struct {
+	// Wether to show the progress
+	Show types.Bool `json:"show,omitempty"`
+	// Width of the progress in px
+	Width int `json:"width,omitempty"`
+}
+
+// Detail is the options set for detail (e.g. on a gauge).
+type Detail struct {
+	// The content formatter of value
+	//
+	// 1. String template
+	// The template variable is {value}.
+	//
+	// 2. Callback function
+	// The format of callback function:
+	// (value: number) => string
+	Formatter types.FuncStr `json:"formatter,omitempty"`
+
+	// Font size of the value in px
+	FontSize int `json:"fontSize,omitempty"`
+
+	// Value position relative to the center of chart
+	// OffceCenter is provided as [x, y] where x and y are either a number (px, provided
+    // as string) or a percentage.
+	// Positive values move the chart value to [right, bottom], negative values vice
+	// versa.
+	OffsetCenter [2]string `json:"offsetCenter,omitempty"`
+}
+
 // CustomData
 // https://echarts.apache.org/en/option.html#series-custom.data
 type CustomData struct {

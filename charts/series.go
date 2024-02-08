@@ -120,6 +120,11 @@ type SingleSeries struct {
 	Data         interface{} `json:"data,omitempty"`
 	DatasetIndex int         `json:"datasetIndex,omitempty"`
 
+	// Gauge
+	Progress *opts.Progress `json:"progress,omitempty"`
+	AxisTick *opts.AxisTick `json:"axisTick,omitempty"`
+	Detail   *opts.Detail  `json:"detail,omitempty"`
+
 	// Shared below =====================================================
 	Large               types.Bool `json:"large,omitempty"`
 	LargeThreshold      int        `json:"largeThreshold,omitempty"`
@@ -127,7 +132,7 @@ type SingleSeries struct {
 	UseUTC              types.Bool `json:"useUTC,omitempty"`
 
 	// Animation related configs
-	Animation               types.Bool `json:"animation,omitempty" default:"true"`
+	Animation               types.Bool `json:"animation,omitempty"               default:"true"`
 	AnimationThreshold      int        `json:"animationThreshold,omitempty"`
 	AnimationDuration       int        `json:"animationDuration,omitempty"`
 	AnimationEasing         string     `json:"animationEasing,omitempty"`
@@ -655,5 +660,26 @@ func WithCustomChartOpts(opt opts.CustomChart) SeriesOpts {
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
 		s.RenderItem = opt.RenderItem
+	}
+}
+
+// WithProgressOpts sets the Progress option.
+func WithProgressOpts(opt opts.Progress) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.Progress = &opt
+	}
+}
+
+// WithAxisTickOpts sets the AxisTick option.
+func WithAxisTickOpts(opt opts.AxisTick) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.AxisTick = &opt
+	}
+}
+
+// WithDetailsOpts sets the Detail option.
+func WithDetailOpts(opt opts.Detail) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.Detail = &opt
 	}
 }
