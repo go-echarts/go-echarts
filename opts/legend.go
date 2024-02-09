@@ -13,7 +13,7 @@ type Legend struct {
 
 	// Whether to show the Legend, default true.
 	// Once you set other options, need to manually set it to true
-	Show types.Bool `json:"show,omitempty" default:"true"`
+	Show types.Bool `json:"show,omitempty"`
 
 	// Distance between legend component and the left side of the container.
 	// left value can be instant pixel value like 20; it can also be a percentage
