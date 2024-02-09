@@ -17,7 +17,7 @@
 	<a href="https://github.com/go-echarts/go-echarts/pulls" style="text-decoration: none;">
         <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" alt="Contributions welcome">
     </a>
-    <a href="https://opensource.org/licenses/MIT" style="text-decoration: none;">>
+    <a href="https://opensource.org/licenses/MIT" style="text-decoration: none;">
         <img src="https://img.shields.io/badge/License-MIT-brightgreen.svg" alt="MIT License">
     </a>
     <a href="https://pkg.go.dev/github.com/go-echarts/go-echarts/v2" style="text-decoration: none;">
