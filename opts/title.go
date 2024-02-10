@@ -85,5 +85,5 @@ type Title struct {
 	// as string) or a percentage.
 	// Positive values move the chart value to [right, bottom], negative values vice
 	// versa.
-	OffsetCenter [2]string `json:"offsetCenter,omitempty"`
+	OffsetCenter []string `json:"offsetCenter,omitempty"`
 }
