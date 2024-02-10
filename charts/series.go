@@ -120,6 +120,12 @@ type SingleSeries struct {
 	Data         interface{} `json:"data,omitempty"`
 	DatasetIndex int         `json:"datasetIndex,omitempty"`
 
+	// Gauge
+	Progress *opts.Progress `json:"progress,omitempty"`
+	AxisTick *opts.AxisTick `json:"axisTick,omitempty"`
+	Detail   *opts.Detail   `json:"detail,omitempty"`
+	Title    *opts.Title    `json:"title,omitempty"`
+
 	// Shared below =====================================================
 	Large               types.Bool `json:"large,omitempty"`
 	LargeThreshold      int        `json:"largeThreshold,omitempty"`
