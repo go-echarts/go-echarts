@@ -79,4 +79,11 @@ type Title struct {
 	// borderRadius: [5, 5, 0, 0] // (clockwise upper left, upper right, bottom right and bottom left)
 	// FYI, use [1] is same to number 1
 	BorderRadius []int `json:"borderRadius,omitempty"`
+
+	// Value position relative to the center of chart
+	// OffceCenter is provided as [x, y] where x and y are either a number (px, provided
+	// as string) or a percentage.
+	// Positive values move the chart value to [right, bottom], negative values vice
+	// versa.
+	OffsetCenter [2]string `json:"offsetCenter,omitempty"`
 }
