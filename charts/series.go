@@ -662,24 +662,3 @@ func WithCustomChartOpts(opt opts.CustomChart) SeriesOpts {
 		s.RenderItem = opt.RenderItem
 	}
 }
-
-// WithProgressOpts sets the Progress option.
-func WithProgressOpts(opt opts.Progress) SeriesOpts {
-	return func(s *SingleSeries) {
-		s.Progress = &opt
-	}
-}
-
-// WithAxisTickOpts sets the AxisTick option.
-func WithAxisTickOpts(opt opts.AxisTick) SeriesOpts {
-	return func(s *SingleSeries) {
-		s.AxisTick = &opt
-	}
-}
-
-// WithDetailsOpts sets the Detail option.
-func WithDetailOpts(opt opts.Detail) SeriesOpts {
-	return func(s *SingleSeries) {
-		s.Detail = &opt
-	}
-}
