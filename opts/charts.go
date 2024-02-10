@@ -270,7 +270,7 @@ type KlineData struct {
 	Value interface{} `json:"value,omitempty"`
 }
 
-// LineChart is the options set for a chandlestick chart.
+// KlineChart is the options set for a chandlestick chart.
 // https://echarts.apache.org/en/option.html#series-candlestick
 type KlineChart struct {
 	// Specify bar width. Absolute value (like 10) or percentage (like '20%', according to band width) can be used. Auto adapt by default.
@@ -445,7 +445,6 @@ type WordCloudChart struct {
 	RotationRange []float32
 }
 
-// WordCloudData
 type WordCloudData struct {
 	// Name of data item.
 	Name string `json:"name,omitempty"`

@@ -126,7 +126,6 @@ type SingleSeries struct {
 	Detail   *opts.Detail   `json:"detail,omitempty"`
 	Title    *opts.Title    `json:"title,omitempty"`
 
-	// Shared below =====================================================
 	Large               types.Bool `json:"large,omitempty"`
 	LargeThreshold      int        `json:"largeThreshold,omitempty"`
 	HoverLayerThreshold int        `json:"hoverLayerThreshold,omitempty"`

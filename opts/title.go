@@ -80,8 +80,9 @@ type Title struct {
 	// FYI, use [1] is same to number 1
 	BorderRadius []int `json:"borderRadius,omitempty"`
 
+	// Gauge
 	// Value position relative to the center of chart
-	// OffceCenter is provided as [x, y] where x and y are either a number (px, provided
+	// OffsetCenter is provided as [x, y] where x and y are either a number (px, provided
 	// as string) or a percentage.
 	// Positive values move the chart value to [right, bottom], negative values vice
 	// versa.

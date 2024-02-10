@@ -450,7 +450,7 @@ type AreaStyle struct {
 	Opacity float32 `json:"opacity,omitempty"`
 }
 
-// Configuration items about force-directed layout. Force-directed layout simulates
+// GraphForce Configuration items about force-directed layout. Force-directed layout simulates
 // spring/charge model, which will add a repulsion between 2 nodes and add a attraction
 // between 2 nodes of each edge. In each iteration nodes will move under the effect
 // of repulsion and attraction. After several iterations, the nodes will be static in a
@@ -480,7 +480,7 @@ type GraphForce struct {
 	EdgeLength float32 `json:"edgeLength,omitempty"`
 }
 
-// Leaf node special configuration, the leaf node and non-leaf node label location is different.
+// TreeLeaves Leaf node special configuration, the leaf node and non-leaf node label location is different.
 type TreeLeaves struct {
 	// The style setting of the text label in a single bar.
 	Label *Label `json:"label,omitempty"`
@@ -695,7 +695,7 @@ type EdgeLabel struct {
 	Formatter string `json:"formatter,omitempty"`
 }
 
-// Define what is encoded to for each dimension of data
+// Encode Define what is encoded to for each dimension of data
 // https://echarts.apache.org/en/option.html#series-candlestick.encode
 type Encode struct {
 	X interface{} `json:"x"`
