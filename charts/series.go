@@ -133,7 +133,7 @@ type SingleSeries struct {
 	UseUTC              types.Bool `json:"useUTC,omitempty"`
 
 	// Animation related configs
-	Animation               types.Bool `json:"animation,omitempty"               default:"true"`
+	Animation               types.Bool `json:"animation,omitempty"`
 	AnimationThreshold      int        `json:"animationThreshold,omitempty"`
 	AnimationDuration       int        `json:"animationDuration,omitempty"`
 	AnimationEasing         string     `json:"animationEasing,omitempty"`
