@@ -123,7 +123,7 @@ type SingleSeries struct {
 	// Gauge
 	Progress *opts.Progress `json:"progress,omitempty"`
 	AxisTick *opts.AxisTick `json:"axisTick,omitempty"`
-	Detail   *opts.Detail  `json:"detail,omitempty"`
+	Detail   *opts.Detail   `json:"detail,omitempty"`
 
 	// Shared below =====================================================
 	Large               types.Bool `json:"large,omitempty"`
@@ -132,7 +132,7 @@ type SingleSeries struct {
 	UseUTC              types.Bool `json:"useUTC,omitempty"`
 
 	// Animation related configs
-	Animation               types.Bool `json:"animation,omitempty"`
+	Animation               types.Bool `json:"animation,omitempty"               default:"true"`
 	AnimationThreshold      int        `json:"animationThreshold,omitempty"`
 	AnimationDuration       int        `json:"animationDuration,omitempty"`
 	AnimationEasing         string     `json:"animationEasing,omitempty"`
