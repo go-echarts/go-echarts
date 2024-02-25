@@ -81,7 +81,7 @@ hard to decide where to put the `dispatchAction` part, inside other JS functions
 Hence, we haven't provided an action api yet, for the *static* `dispatchAction`.
 
 So, is it no way to make it?  
-?> **Actually, we do have one more thing...**  
+#### *Actually, we do have one more thing...*
 
 With the power of `%MY_ECHARTS` (see `dive-into` chapter),
 absolutely, when you hold the echarts instance, you get the whole world.

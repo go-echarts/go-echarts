@@ -250,3 +250,10 @@ In go-echarts:
 
 It will add the line's all series into bar's and the `Options` is only obtained from bar's. 
 
+As you can see, there is two parts of the charts function.
+- SetGlobalOptions
+- SetSeriesOptions
+
+They map to what the configs we mentioned early with lots of `WithXXX` helper functions.
+Normally, the `WithXXX` helper functions should meet your needs.
+And you can set those options all from the Charts' instance side either.
