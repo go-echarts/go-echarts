@@ -506,15 +506,13 @@ func WithMarkLineNameYAxisItemOpts(opt ...opts.MarkLineNameYAxisItem) SeriesOpts
 	}
 }
 
-// WithMarkAreaNameTypeItemOpts sets the type of the MarkArea.
-func WithMarkAreaNameTypeItemOpts(opt ...opts.MarkAreaNameTypeItem) SeriesOpts {
+// WithMarkAreaDataItem adds a row to data of the MarkArea.
+func WithMarkAreaDataItem(a, b opts.MarkAreaDataItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkAreas == nil {
 			s.MarkAreas = &opts.MarkAreas{}
 		}
-		for _, o := range opt {
-			s.MarkAreas.Data = append(s.MarkAreas.Data, o)
-		}
+		s.MarkAreas.Data = append(s.MarkAreas.Data, []interface{}{a, b})
 	}
 }
 
@@ -529,55 +527,8 @@ func WithMarkAreaStyleOpts(opt opts.MarkAreaStyle) SeriesOpts {
 	}
 }
 
-// WithMarkAreaNameCoordItemOpts sets the coordinates of the MarkLine.
-func WithMarkAreaNameCoordItemOpts(opt ...opts.MarkAreaNameCoordItem) SeriesOpts {
-	type MANameCoord struct {
-		Name      string          `json:"name,omitempty"`
-		ItemStyle *opts.ItemStyle `json:"itemStyle"`
-		Coord     []interface{}   `json:"coord"`
-	}
-	return func(s *SingleSeries) {
-		if s.MarkAreas == nil {
-			s.MarkAreas = &opts.MarkAreas{}
-		}
-		for _, o := range opt {
-			s.MarkAreas.Data = append(
-				s.MarkAreas.Data,
-				[]MANameCoord{
-					{Name: o.Name, ItemStyle: o.ItemStyle, Coord: o.Coordinate0},
-					{Coord: o.Coordinate1},
-				},
-			)
-		}
-	}
-}
-
-// WithMarkAreaNameXAxisItemOpts sets the X axis of the MarkLine.
-func WithMarkAreaNameXAxisItemOpts(opt ...opts.MarkAreaNameXAxisItem) SeriesOpts {
-	return func(s *SingleSeries) {
-		if s.MarkAreas == nil {
-			s.MarkAreas = &opts.MarkAreas{}
-		}
-		for _, o := range opt {
-			s.MarkAreas.Data = append(s.MarkAreas.Data, o)
-		}
-	}
-}
-
-// WithMarkAreaNameYAxisItemOpts sets the Y axis of the MarkLine.
-func WithMarkAreaNameYAxisItemOpts(opt ...opts.MarkAreaNameYAxisItem) SeriesOpts {
-	return func(s *SingleSeries) {
-		if s.MarkAreas == nil {
-			s.MarkAreas = &opts.MarkAreas{}
-		}
-		for _, o := range opt {
-			s.MarkAreas.Data = append(s.MarkAreas.Data, o)
-		}
-	}
-}
-
-// WithMarkPointNameTypeItemOpts sets the type of the MarkPoint.
-func WithMarkPointNameTypeItemOpts(opt ...opts.MarkPointNameTypeItem) SeriesOpts {
+// WithMarkPointDataItem sets the data of the MarkPoint.
+func WithMarkPointDataItem(opt ...opts.MarkPointDataItem) SeriesOpts {
 	return func(s *SingleSeries) {
 		if s.MarkPoints == nil {
 			s.MarkPoints = &opts.MarkPoints{}
@@ -596,18 +547,6 @@ func WithMarkPointStyleOpts(opt opts.MarkPointStyle) SeriesOpts {
 		}
 
 		s.MarkPoints.MarkPointStyle = opt
-	}
-}
-
-// WithMarkPointNameCoordItemOpts sets the coordinated of the MarkPoint.
-func WithMarkPointNameCoordItemOpts(opt ...opts.MarkPointNameCoordItem) SeriesOpts {
-	return func(s *SingleSeries) {
-		if s.MarkPoints == nil {
-			s.MarkPoints = &opts.MarkPoints{}
-		}
-		for _, o := range opt {
-			s.MarkPoints.Data = append(s.MarkPoints.Data, o)
-		}
 	}
 }
 

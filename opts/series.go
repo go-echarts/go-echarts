@@ -120,6 +120,16 @@ type LabelLine struct {
 	LineStyle *LineStyle `json:"lineStyle,omitempty"`
 }
 
+// Blur is the style when it is blurred.
+type Blur struct {
+
+	// the blur style of item
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	// the blur style of label
+	Label *Label `json:"label,omitempty"`
+}
+
 // Emphasis is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect.
 type Emphasis struct {
 	// the emphasis style of label
@@ -273,8 +283,7 @@ type MarkAreaStyle struct {
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
-// MarkAreaNameTypeItem represents type for a MarkArea.
-type MarkAreaNameTypeItem struct {
+type MarkAreaDataItem struct {
 	// Mark area name.
 	Name string `json:"name,omitempty"`
 
@@ -289,48 +298,34 @@ type MarkAreaNameTypeItem struct {
 
 	// ItemStyle settings
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
-}
 
-// MarkAreaNameYAxisItem defines a MarkArea on a Y axis.
-type MarkAreaNameYAxisItem struct {
-	// Mark area name
-	Name string `json:"name,omitempty"`
+	// Specify the dimension on which min, max, average are calculated, available when type used.
+	// The value can be 0 (means xAxis, radiusAxis) or 1 (means yAxis, angleAxis),
+	// using the dimension of the first axis by default.
+	ValueIndex int `json:"valueIndex,omitempty"`
 
 	// Y axis data
 	YAxis interface{} `json:"yAxis,omitempty"`
-}
-
-// MarkAreaNameXAxisItem defines a MarkArea on a X axis.
-type MarkAreaNameXAxisItem struct {
-	// Mark area name
-	Name string `json:"name,omitempty"`
 
 	// X axis data
 	XAxis interface{} `json:"xAxis,omitempty"`
-}
-
-// MarkAreaNameCoordItem represents coordinates for a MarkArea.
-type MarkAreaNameCoordItem struct {
-	// Mark area name
-	Name string `json:"name,omitempty"`
-
-	// Mark area start coordinate
-	Coordinate0 []interface{}
-
-	// Mark area end coordinate
-	Coordinate1 []interface{}
-
-	// Works only when type is assigned.
-	// It is used to state the dimension used to calculate maximum value or minimum value.
-	// It may be the direct name of a dimension, like x,
-	// or angle for line charts, or open, or close for candlestick charts.
-	ValueDim string `json:"valueDim,omitempty"`
 
 	// Mark point text options.
 	Label *Label `json:"label,omitempty"`
 
-	// ItemStyle settings
-	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+	// The format is [start coordinate, end coordinate], where the coordinate system can be x, y on cartesian, or radius, angle on polar.
+	Coord []interface{} `json:"coord,omitempty"`
+
+	// x value on screen coordinate system, can be pixel number (like 5), or percent value (like '20%').
+	X interface{} `json:"x,omitempty"`
+
+	// y value on screen coordinate system, can be pixel number (like 5), or percent value (like '20%').
+	Y interface{} `json:"y,omitempty"`
+
+	// Emphasis settings in this series data.
+	Emphasis *Emphasis `json:"emphasis,omitempty"`
+
+	Blur *Blur `json:"blur,omitempty"`
 }
 
 // MarkPoints represents a series of markpoints.
@@ -355,8 +350,8 @@ type MarkPointStyle struct {
 	Label *Label `json:"label,omitempty"`
 }
 
-// MarkPointNameTypeItem represents type for a MarkPoint.
-type MarkPointNameTypeItem struct {
+// MarkPointDataItem represents data for a MarkPoint.
+type MarkPointDataItem struct {
 	// Name of markpoint
 	Name string `json:"name,omitempty"`
 
@@ -371,30 +366,16 @@ type MarkPointNameTypeItem struct {
 
 	// ItemStyle settings
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
-}
-
-// MarkPointNameCoordItem represents coordinates for a MarkPoint.
-type MarkPointNameCoordItem struct {
-	// Name of markpoint
-	Name string `json:"name,omitempty"`
 
 	// Mark point coordinate
+	// https://echarts.apache.org/en/option.html#series-candlestick.markPoint.data.coord
 	Coordinate []interface{} `json:"coord,omitempty"`
 
 	// Value in mark point
 	Value string `json:"value,omitempty"`
 
-	// Works only when type is assigned.
-	// It is used to state the dimension used to calculate maximum value or minimum value.
-	// It may be the direct name of a dimension, like x,
-	// or angle for line charts, or open, or close for candlestick charts.
-	ValueDim string `json:"valueDim,omitempty"`
-
 	// Mark point text options.
 	Label *Label `json:"label,omitempty"`
-
-	// ItemStyle settings
-	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 
 	// Symbol type
 	// Options: "circle", "rect", "roundRect", "triangle", "diamond", "pin", "arrow", "none"
@@ -405,6 +386,23 @@ type MarkPointNameCoordItem struct {
 
 	// Symbol rotate.
 	SymbolRotate float32 `json:"symbolRotate,omitempty"`
+
+	// Y axis data
+	YAxis interface{} `json:"yAxis,omitempty"`
+
+	// X axis data
+	XAxis interface{} `json:"xAxis,omitempty"`
+
+	// x value on screen coordinate system, can be pixel number (like 5), or percent value (like '20%').
+	X interface{} `json:"x,omitempty"`
+
+	// y value on screen coordinate system, can be pixel number (like 5), or percent value (like '20%').
+	Y interface{} `json:"y,omitempty"`
+
+	// Emphasis settings in this series data.
+	Emphasis *Emphasis `json:"emphasis,omitempty"`
+
+	Blur *Blur `json:"blur,omitempty"`
 }
 
 // RippleEffect is the option set for the ripple effect.
