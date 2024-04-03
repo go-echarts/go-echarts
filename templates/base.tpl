@@ -1,8 +1,10 @@
-{{- define "base" }}
+{{- define "base_element" -}}
 <div class="container">
     <div class="item" id="{{ .ChartID }}" style="width:{{ .Initialization.Width }};height:{{ .Initialization.Height }};"></div>
 </div>
+{{- end -}}
 
+{{- define "base_script" -}}
 <script type="text/javascript">
     "use strict";
     let goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID | safeJS }}'), "{{ .Theme }}", { renderer: "{{  .Initialization.Renderer }}" });
@@ -21,4 +23,9 @@
     {{ injectInstance . "%MY_ECHARTS%"  $.ChartID  | safeJS }}
     {{- end }}
 </script>
-{{ end }}
+{{- end -}}
+
+{{- define "base" }}
+    {{- template "base_element" . }}
+    {{- template "base_script" . }}
+{{- end }}
