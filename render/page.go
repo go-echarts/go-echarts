@@ -39,3 +39,29 @@ func (r *pageRender) RenderContent() []byte {
 
 	return pat.ReplaceAll(buf.Bytes(), []byte(""))
 }
+
+func (r *pageRender) RenderSnippet() ChartSnippet {
+	for _, fn := range r.before {
+		fn()
+	}
+
+	elementTpl := MustTemplate(ModPage, []string{templates.BaseTpl, templates.BaseElementTpl, templates.BaseElementsTpl})
+
+	var snippet ChartSnippet
+	var elementBuf bytes.Buffer
+
+	if err := elementTpl.ExecuteTemplate(&elementBuf, ModPage, r.c); err != nil {
+		panic(err)
+	}
+	snippet.Element = string(pat.ReplaceAll(elementBuf.Bytes(), []byte("")))
+
+	scriptTpl := MustTemplate(ModPage, []string{templates.BaseTpl, templates.BaseScriptTpl, templates.BaseScriptsTpl})
+	var scriptBuf bytes.Buffer
+
+	if err := scriptTpl.ExecuteTemplate(&scriptBuf, ModPage, r.c); err != nil {
+		panic(err)
+	}
+	snippet.Script = string(pat.ReplaceAll(scriptBuf.Bytes(), []byte("")))
+
+	return snippet
+}

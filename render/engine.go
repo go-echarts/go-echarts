@@ -22,12 +22,18 @@ const (
 
 var pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 
+type ChartSnippet struct {
+	Element string
+	Script  string
+}
+
 // Renderer
 // Any kinds of charts have their render implementation and
 // you can define your own render logic easily.
 type Renderer interface {
 	Render(w io.Writer) error
 	RenderContent() []byte
+	RenderSnippet() ChartSnippet
 }
 
 // isSet check if the field exist in the chart instance
