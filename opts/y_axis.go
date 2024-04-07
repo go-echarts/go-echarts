@@ -59,6 +59,23 @@ type YAxis struct {
 	// It will be automatically computed to make sure axis tick is equally distributed when not set.
 	Max interface{} `json:"max,omitempty"`
 
+	// Minimum gap between split lines.
+	//
+	// For example, it can be set to be 1 to make sure axis label is show as integer.
+	// {
+	//    minInterval: 1
+	// }
+	// It is available only for axis of type 'value' or 'time'.
+	MinInterval float64 `json:"minInterval,omitempty"`
+
+	// Maximum gap between split lines.
+	// For example, in time axis (type is 'time'), it can be set to be 3600 * 24 * 1000 to make sure that the gap between axis labels is less than or equal to one day.
+	//{
+	//    maxInterval: 3600 * 1000 * 24
+	//}
+	// It is available only for axis of type 'value' or 'time'.
+	MaxInterval float64 `json:"maxInterval,omitempty"`
+
 	// The index of grid which the Y axis belongs to. Defaults to be in the first grid.
 	// default 0
 	GridIndex int `json:"gridIndex,omitempty"`
