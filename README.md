@@ -227,7 +227,8 @@ the [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
 
 > The section lists awesome projects which integrate with go-echarts specially.
 
-- [templ](https://github.com/a-h/templ) A language for writing HTML user interfaces in Go.
+- [templ](https://github.com/a-h/templ) A language for writing HTML user interfaces in Go. You can use `go-echarts` as its components.
+- [`GoNB`](https://github.com/janpfeifer/gonb) A Go Notebook Kernel for Jupyter. You can run `go-echarts` inside of it smoothly, see [examples](https://janpfeifer.github.io/gonb-echarts/).
 
 ### 💡 Contribution
 
