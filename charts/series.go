@@ -325,7 +325,7 @@ func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 	}
 }
 
-// WithLineChartOpts sets the LineChart option.
+// WithKlineChartOpts sets the LineChart option.
 func WithKlineChartOpts(opt opts.KlineChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.BarWidth = opt.BarWidth
