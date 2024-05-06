@@ -102,9 +102,10 @@ var (
 func generatePieItems() []opts.PieData {
     items := make([]opts.PieData, 0)
     for i := 0; i < itemCntPie; i++ {
-    items = append(items, opts.PieData{Name: data[i], Value: rand.Intn(500)})
+        items = append(items, opts.PieData{Name: data[i], Value: rand.Intn(500)})
+    }
+    return items
 }
-return items
 
 func PieWithDispatchAction() *charts.Pie {
 	const actionWithEchartsInstance = `
