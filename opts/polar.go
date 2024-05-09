@@ -25,10 +25,10 @@ type Polar struct {
 	//   center: [400, 300]
 	// Set to relative percent
 	//   center: ['50%', '50%']
-	Center [2]string `json:"center,omitempty"`
+	Center []string `json:"center,omitempty"`
 
 	// Radius of Polar coordinate. Value can be:
-	Radius [2]string `json:"radius,omitempty"`
+	Radius []string `json:"radius,omitempty"`
 
 	// Tooltip settings in the coordinate system component.
 	Tooltip Tooltip `json:"tooltip,omitempty"`
