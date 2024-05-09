@@ -262,6 +262,8 @@ func WithBrush(opt opts.Brush) GlobalOpts {
 func WithPolarOps(opt opts.Polar) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Polar = opt
+		bc.hasPolar = true
+		bc.hasXYAxis = false
 	}
 }
 
