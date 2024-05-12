@@ -223,13 +223,6 @@ func main() {
 For more information, please refer to [handbook](https://go-echarts.github.io/go-echarts/), [go-echarts/examples](https://github.com/go-echarts/examples) and
 the [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
 
-### Ecosystem
-
-> The section lists awesome projects which integrate with go-echarts specially.
-
-- [templ](https://github.com/a-h/templ) A language for writing HTML user interfaces in Go. You can use `go-echarts` as its components.
-- [`GoNB`](https://github.com/janpfeifer/gonb) A Go Notebook Kernel for Jupyter. You can run `go-echarts` inside of it smoothly, see [examples](https://janpfeifer.github.io/gonb-echarts/).
-
 ### 💡 Contribution
 
 go-echarts is an open source project and built on the top of other open-source projects.
