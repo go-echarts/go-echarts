@@ -9,8 +9,7 @@
 - [Ecosystem](en-us/ecosystem)
 - Chart Configration
   - [Global](en-us/options/global)
-
-[//]: # (  - [Series]&#40;en-us/options/series&#41;)
+  - [Series](en-us/options/series)
 
 [//]: # (  - [Options]&#40;en-us/options/options&#41;)
 - Showcases
