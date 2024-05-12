@@ -8,8 +8,7 @@
     - [Render to Image](en-us/render-to-image)
 - Chart Configration
   - [Global](en-us/options/global)
-
-[//]: # (  - [Series]&#40;en-us/options/series&#41;)
+  - [Series](en-us/options/series)
 
 [//]: # (  - [Options]&#40;en-us/options/options&#41;)
 - [Ecosystem](en-us/ecosystem)
