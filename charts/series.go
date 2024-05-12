@@ -125,8 +125,8 @@ type SingleSeries struct {
 	AxisTick *opts.AxisTick `json:"axisTick,omitempty"`
 	Detail   *opts.Detail   `json:"detail,omitempty"`
 	Title    *opts.Title    `json:"title,omitempty"`
-	MinValue int            `json:"min,omitempty"`
-	MaxValue int            `json:"max,omitempty"`
+	Min      int            `json:"min,omitempty"`
+	Max      int            `json:"max,omitempty"`
 
 	Large               types.Bool `json:"large,omitempty"`
 	LargeThreshold      int        `json:"largeThreshold,omitempty"`
@@ -662,12 +662,5 @@ func WithCustomChartOpts(opt opts.CustomChart) SeriesOpts {
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
 		s.RenderItem = opt.RenderItem
-	}
-}
-
-func WithGaugeOpts(opt opts.Gauge) SeriesOpts {
-	return func(s *SingleSeries) {
-		s.MinValue = opt.MinValue
-		s.MaxValue = opt.MaxValue
 	}
 }
