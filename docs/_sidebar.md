@@ -6,13 +6,13 @@
     - [Event and Action](en-us/event-and-action)
 - Advanced
     - [Render to Image](en-us/render-to-image)
-- [Ecosystem](en-us/ecosystem)
 - Chart Configration
   - [Global](en-us/options/global)
 
 [//]: # (  - [Series]&#40;en-us/options/series&#41;)
 
 [//]: # (  - [Options]&#40;en-us/options/options&#41;)
+- [Ecosystem](en-us/ecosystem)
 - Showcases
     - [Line](en-us/charts/line)
     - [Bar](en-us/charts/bar)
@@ -38,4 +38,3 @@
     - [Line3D](en-us/charts/line3d)
     - [Liquid](en-us/charts/liquid)
     - [WordCloud](en-us/charts/wordcloud)
-
