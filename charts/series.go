@@ -125,6 +125,8 @@ type SingleSeries struct {
 	AxisTick *opts.AxisTick `json:"axisTick,omitempty"`
 	Detail   *opts.Detail   `json:"detail,omitempty"`
 	Title    *opts.Title    `json:"title,omitempty"`
+	Min      int            `json:"min,omitempty"`
+	Max      int            `json:"max,omitempty"`
 
 	Large               types.Bool `json:"large,omitempty"`
 	LargeThreshold      int        `json:"largeThreshold,omitempty"`
