@@ -8,7 +8,7 @@
 <script type="text/javascript">
     "use strict";
     let goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID | safeJS }}'), "{{ .Theme }}", { renderer: "{{  .Initialization.Renderer }}" });
-    let option_{{ .ChartID | safeJS }} = {{ .JSONNotEscaped | safeJS }};
+    let option_{{ .ChartID | safeJS }} = {{ template "base_option" . }}
     goecharts_{{ .ChartID | safeJS }}.setOption(option_{{ .ChartID | safeJS }});
 
   {{- range  $listener := .EventListeners }}
@@ -24,6 +24,10 @@
     {{- end }}
 </script>
 {{- end -}}
+
+{{- define "base_option" }}
+    {{- .JSONNotEscaped | safeJS }}
+{{- end }};
 
 {{- define "base" }}
     {{- template "base_element" . }}

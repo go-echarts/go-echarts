@@ -1,1 +1,1 @@
-{{template "base_script" .}}
+{{- template "base_script" . }}

@@ -25,6 +25,7 @@ var pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 type ChartSnippet struct {
 	Element string
 	Script  string
+	Option  string
 }
 
 // Renderer

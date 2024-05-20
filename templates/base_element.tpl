@@ -1,2 +1,3 @@
-{{template "base_element" .}}
+{{- template "base_element" .}}
+
     

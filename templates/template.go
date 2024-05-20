@@ -19,11 +19,8 @@ var PageTpl string
 //go:embed base_element.tpl
 var BaseElementTpl string
 
-//go:embed base_elements.tpl
-var BaseElementsTpl string
-
 //go:embed base_script.tpl
 var BaseScriptTpl string
 
-//go:embed base_scripts.tpl
-var BaseScriptsTpl string
+//go:embed base_option.tpl
+var BaseOptionTpl string
