@@ -2,8 +2,9 @@ package render
 
 import (
 	"bytes"
-	"github.com/go-echarts/go-echarts/v2/templates"
 	"html"
+
+	"github.com/go-echarts/go-echarts/v2/templates"
 )
 
 type chartRender struct {

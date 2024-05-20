@@ -2,6 +2,7 @@ package render
 
 import (
 	"bytes"
+
 	"github.com/go-echarts/go-echarts/v2/templates"
 )
 
