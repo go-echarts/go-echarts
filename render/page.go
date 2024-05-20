@@ -2,12 +2,13 @@ package render
 
 import (
 	"bytes"
+	"io"
 
 	"github.com/go-echarts/go-echarts/v2/templates"
 )
 
 type pageRender struct {
-	DefaultRender
+	BaseRender
 	c      interface{}
 	before []func()
 }
@@ -15,6 +16,13 @@ type pageRender struct {
 // NewPageRender returns a render implementation for Page.
 func NewPageRender(c interface{}, before ...func()) Renderer {
 	return &pageRender{c: c, before: before}
+}
+
+// Render renders the chart(s) into the given io.Writer.
+func (r *pageRender) Render(w io.Writer) error {
+	content := r.RenderContent()
+	_, err := w.Write(content)
+	return err
 }
 
 func (r *pageRender) RenderContent() []byte {

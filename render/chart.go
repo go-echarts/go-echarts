@@ -3,12 +3,13 @@ package render
 import (
 	"bytes"
 	"html"
+	"io"
 
 	"github.com/go-echarts/go-echarts/v2/templates"
 )
 
 type chartRender struct {
-	DefaultRender
+	BaseRender
 	c interface{}
 	// before the pre-process functions for chart, it only calls once to support multi renders
 	before []func()
@@ -17,6 +18,13 @@ type chartRender struct {
 // NewChartRender returns a render implementation for Chart.
 func NewChartRender(c interface{}, before ...func()) Renderer {
 	return &chartRender{c: c, before: before}
+}
+
+// Render renders the chart(s) into the given io.Writer.
+func (r *chartRender) Render(w io.Writer) error {
+	content := r.RenderContent()
+	_, err := w.Write(content)
+	return err
 }
 
 func (r *chartRender) RenderContent() []byte {
