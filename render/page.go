@@ -8,6 +8,7 @@ import (
 )
 
 type pageRender struct {
+	BaseRender
 	c      interface{}
 	before []func()
 }
@@ -17,7 +18,7 @@ func NewPageRender(c interface{}, before ...func()) Renderer {
 	return &pageRender{c: c, before: before}
 }
 
-// Render renders the page into the given io.Writer.
+// Render renders the chart(s) into the given io.Writer.
 func (r *pageRender) Render(w io.Writer) error {
 	content := r.RenderContent()
 	_, err := w.Write(content)

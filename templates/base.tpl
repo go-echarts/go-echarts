@@ -1,12 +1,14 @@
-{{- define "base" }}
+{{- define "base_element" -}}
 <div class="container">
     <div class="item" id="{{ .ChartID }}" style="width:{{ .Initialization.Width }};height:{{ .Initialization.Height }};"></div>
 </div>
+{{- end -}}
 
+{{- define "base_script" -}}
 <script type="text/javascript">
     "use strict";
     let goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID | safeJS }}'), "{{ .Theme }}", { renderer: "{{  .Initialization.Renderer }}" });
-    let option_{{ .ChartID | safeJS }} = {{ .JSONNotEscaped | safeJS }};
+    let option_{{ .ChartID | safeJS }} = {{ template "base_option" . }}
     goecharts_{{ .ChartID | safeJS }}.setOption(option_{{ .ChartID | safeJS }});
 
   {{- range  $listener := .EventListeners }}
@@ -21,4 +23,13 @@
     {{ injectInstance . "%MY_ECHARTS%"  $.ChartID  | safeJS }}
     {{- end }}
 </script>
-{{ end }}
+{{- end -}}
+
+{{- define "base_option" }}
+    {{- .JSONNotEscaped | safeJS }}
+{{- end }};
+
+{{- define "base" }}
+    {{- template "base_element" . }}
+    {{- template "base_script" . }}
+{{- end }}
