@@ -4,6 +4,7 @@
     - [Dive into go-echarts](en-us/dive-into)
     - [Chart Container](en-us/chart-container)
     - [Event and Action](en-us/event-and-action)
+    - [Chart Render](en-us/render)
 - Advanced
     - [Render to Image](en-us/render-to-image)
 - Chart Configration
