@@ -10,3 +10,4 @@
 
 [GitHub](https://github.com/go-echarts/go-echarts)
 [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2)
+[Examples](https://github.com/go-echarts/examples)
