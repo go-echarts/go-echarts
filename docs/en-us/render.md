@@ -21,21 +21,7 @@ Underlying, it depends on the `RenderContent() []byte` to generate the chart byt
 ## `RenderContent() []byte`
 
 The `RenderContent() []byte` uses templates to generate the chart bytes streaming.
-i.e.
-> The `BaseRender` is a base Render with default implementations of Renderer.
-> It helps you can only implement your own necessary functions of `Renderer`.
 
-```go
-type chartRender struct {
-    BaseRender
-    c interface{}
-    // before the pre-process functions for chart render, it only calls once to support multi renders
-    before []func ()
-}
-
-```
-
-!> You need run the `before` functions to make sure all the charts options set in place.
 
 ## `RenderSnippet() ChartSnippet`
 
@@ -84,3 +70,23 @@ e.g.
 
 ```
 
+## Custom Renderer
+You can implement the `Renderer` all by yourself, such as
+[MyRender Example](https://github.com/go-echarts/examples/blob/master/examples/renderer.go).  
+If you just want to use one of the `Renderer` functions, you can use th `BaseRender`. e.g.
+
+> The `BaseRender` is a base Render with default implementations of Renderer.
+> It helps you can only implement your own necessary functions of `Renderer`.
+
+```go
+type chartRender struct {
+    BaseRender
+	// chart instance
+    c interface{}
+    // before the pre-process functions for chart render, it should only call once to support multi renders
+    before []func ()
+}
+
+```
+
+!> You need run the `before` functions to make sure all the charts options set in place.
