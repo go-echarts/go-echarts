@@ -629,6 +629,8 @@ func (s *SingleSeries) ConfigureSeriesOpts(options ...SeriesOpts) {
 type MultiSeries []SingleSeries
 
 // SetSeriesOptions sets options for all the series.
+// NOTE:
+// It should be called after AddSeries, otherwise, the Options is no place to add on.
 // Previous options will be overwrote every time hence setting them on the `AddSeries` if you want
 // to customize each series individually
 //
