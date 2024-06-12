@@ -554,6 +554,39 @@ func WithMarkAreaNameCoordItemOpts(opt ...opts.MarkAreaNameCoordItem) SeriesOpts
 	}
 }
 
+// WithMarkAreaData0 sets the markArea.data.0
+func WithMarkAreaData0(data0 opts.MarkAreaData0) SeriesOpts {
+	return func(s *SingleSeries) {
+		if s.MarkAreas == nil {
+			s.MarkAreas = &opts.MarkAreas{}
+		}
+		s.MarkAreas.Data = append(s.MarkAreas.Data, data0)
+	}
+}
+
+// WithMarkAreaData1 sets the markArea.data.1
+func WithMarkAreaData1(data1 opts.MarkAreaData1) SeriesOpts {
+	return func(s *SingleSeries) {
+		if s.MarkAreas == nil {
+			s.MarkAreas = &opts.MarkAreas{}
+		}
+		s.MarkAreas.Data = append(s.MarkAreas.Data, data1)
+	}
+}
+
+// WithMarkAreaData sets the markArea.data each item as array
+// See https://echarts.apache.org/en/option.html#series-candlestick.markArea.data
+func WithMarkAreaData(datas ...[]opts.MarkAreaData) SeriesOpts {
+	return func(s *SingleSeries) {
+		if s.MarkAreas == nil {
+			s.MarkAreas = &opts.MarkAreas{}
+		}
+		for _, d := range datas {
+			s.MarkAreas.Data = append(s.MarkAreas.Data, d)
+		}
+	}
+}
+
 // WithMarkAreaNameXAxisItemOpts sets the X axis of the MarkLine.
 func WithMarkAreaNameXAxisItemOpts(opt ...opts.MarkAreaNameXAxisItem) SeriesOpts {
 	return func(s *SingleSeries) {
