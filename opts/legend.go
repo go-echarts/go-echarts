@@ -134,4 +134,7 @@ type Legend struct {
 
 	// Legend text style.
 	TextStyle *TextStyle `json:"textStyle,omitempty"`
+
+	// ItemStyle  item style.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
