@@ -1,9 +1,10 @@
 package opts
 
 import (
+	"strings"
+
 	"github.com/go-echarts/go-echarts/v2/types"
 	"github.com/go-echarts/go-echarts/v2/util"
-	"strings"
 )
 
 const (
@@ -12,10 +13,17 @@ const (
 	CompatibleEchartsJS = "echarts@4.min.js"
 )
 
-// Initialization contains options for the canvas.
-type Initialization struct {
+type PageConfiguration struct {
 	// HTML title
 	PageTitle string `default:"Awesome go-echarts"`
+	// Assets host
+	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
+	// Custom host
+	CustomAssetsHost string
+}
+
+// Initialization contains options for the canvas.
+type Initialization struct {
 
 	// Width of canvas
 	Width string `default:"900px"`
@@ -29,14 +37,18 @@ type Initialization struct {
 	// Chart unique ID
 	ChartID string
 
-	// Assets host
-	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
-
 	// Theme of chart
 	Theme string `default:"white"`
 
 	// Renderer
 	Renderer string `default:"canvas"`
+
+	// Page configurations duplicate, a shortcut for single chart build with page settings
+	PageTitle string `default:"Awesome go-echarts"`
+	// Assets host
+	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
+	// Custom host
+	CustomAssetsHost string
 }
 
 // Validate validates the initialization configurations.
@@ -65,6 +77,22 @@ func (opt *Assets) InitAssets() {
 
 	opt.CustomizedJSAssets.Init()
 	opt.CustomizedCSSAssets.Init()
+}
+
+// ClearPresetAssets clear both the preset JS and CSS static assets.
+func (opt *Assets) ClearPresetAssets() {
+	opt.ClearPresetJSAssets()
+	opt.ClearPresetCSSAssets()
+}
+
+// ClearPresetJSAssets only clear all the preset JS static assets.
+func (opt *Assets) ClearPresetJSAssets() {
+	opt.JSAssets.Clear()
+}
+
+// ClearPresetCSSAssets only clear all the preset CSS static assets.
+func (opt *Assets) ClearPresetCSSAssets() {
+	opt.CSSAssets.Clear()
 }
 
 // AddCustomizedJSAssets adds the customized javascript assets which will not be added the `host` prefix.

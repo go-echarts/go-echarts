@@ -1,8 +1,9 @@
 package opts
 
 import (
-	"github.com/go-echarts/go-echarts/v2/util"
 	"testing"
+
+	"github.com/go-echarts/go-echarts/v2/util"
 
 	"github.com/stretchr/testify/assert"
 )

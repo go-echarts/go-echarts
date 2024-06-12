@@ -9,7 +9,6 @@ import (
 // ThemeRiver represents a theme river chart.
 type ThemeRiver struct {
 	BaseConfiguration
-	BaseActions
 }
 
 // Type returns the chart type.
@@ -39,12 +38,6 @@ func (c *ThemeRiver) AddSeries(name string, data []opts.ThemeRiverData, options 
 // SetGlobalOptions sets options for the ThemeRiver instance.
 func (c *ThemeRiver) SetGlobalOptions(options ...GlobalOpts) *ThemeRiver {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
-	return c
-}
-
-// SetDispatchActions sets actions for the ThemeRiver instance.
-func (c *ThemeRiver) SetDispatchActions(actions ...GlobalActions) *ThemeRiver {
-	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 

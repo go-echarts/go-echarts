@@ -11,15 +11,21 @@ type SingleSeries struct {
 	Type string `json:"type,omitempty"`
 
 	// Rectangular charts
-	Stack      string `json:"stack,omitempty"`
-	XAxisIndex int    `json:"xAxisIndex,omitempty"`
-	YAxisIndex int    `json:"yAxisIndex,omitempty"`
+	// Line | Bar
+	Stack string `json:"stack,omitempty"`
+	// Line | Bar | Scatter
+	XAxisIndex int `json:"xAxisIndex,omitempty"`
+	// Line | Bar | Scatter
+	YAxisIndex int `json:"yAxisIndex,omitempty"`
 
 	// Bar
-	BarGap         string     `json:"barGap,omitempty"`
-	BarCategoryGap string     `json:"barCategoryGap,omitempty"`
+	BarGap string `json:"barGap,omitempty"`
+	// Bar
+	BarCategoryGap string `json:"barCategoryGap,omitempty"`
+	// Bar
 	ShowBackground types.Bool `json:"showBackground,omitempty"`
-	RoundCap       types.Bool `json:"roundCap,omitempty"`
+	// Bar
+	RoundCap types.Bool `json:"roundCap,omitempty"`
 
 	// Bar3D
 	Shading string `json:"shading,omitempty"`
@@ -35,35 +41,49 @@ type SingleSeries struct {
 	EdgeLabel          interface{} `json:"edgeLabel,omitempty"`
 	Draggable          types.Bool  `json:"draggable,omitempty"`
 	FocusNodeAdjacency types.Bool  `json:"focusNodeAdjacency,omitempty"`
-	SymbolKeepAspect   types.Bool  `json:"symbolKeepAspect,omitempty"`
+	// Line | Radar
+	SymbolKeepAspect types.Bool `json:"symbolKeepAspect,omitempty"`
 
-	// KLine
+	// BarWidth The width options of the bar. Adaptive when not specified.
+	// Can be an absolute value like 40 or a percent value like '60%'.
+	// Configurable charts: bar | kline
 	BarWidth    string `json:"barWidth,omitempty"`
 	BarMinWidth string `json:"barMinWidth,omitempty"`
 	BarMaxWidth string `json:"barMaxWidth,omitempty"`
 
+	// Line | Bar | Pie | Scatter | Radar
+	ColorBy string `json:"colorBy,omitempty"`
+	// Line | Bar
+	PolarIndex int `json:"polarIndex,omitempty"`
 	// Line
-	Step         interface{} `json:"step,omitempty"`
-	Smooth       types.Bool  `json:"smooth,omitempty"`
-	ConnectNulls types.Bool  `json:"connectNulls,omitempty"`
-	ShowSymbol   types.Bool  `json:"showSymbol,omitempty"`
-	Symbol       string      `json:"symbol,omitempty"`
-	Color        string      `json:"color,omitempty"`
+	Step interface{} `json:"step,omitempty"`
+	// Line
+	Smooth types.Bool `json:"smooth,omitempty"`
+	// Line
+	ConnectNulls types.Bool `json:"connectNulls,omitempty"`
+	// Line
+	ShowSymbol types.Bool `json:"showSymbol,omitempty"`
+	// Line | Scatter | Radar
+	Symbol string `json:"symbol,omitempty"`
+	Color  string `json:"color,omitempty"`
 
 	// Liquid
 	IsLiquidOutline types.Bool `json:"outline,omitempty"`
 	IsWaveAnimation types.Bool `json:"waveAnimation,omitempty"`
 
 	// Map
-	MapType     string `json:"map,omitempty"`
+	MapType string `json:"map,omitempty"`
+	// Map | Line | Bar | Pie | Scatter
 	CoordSystem string `json:"coordinateSystem,omitempty"`
 
 	// Pie
-	RoseType interface{} `json:"roseType,omitempty"`
-	Center   interface{} `json:"center,omitempty"`
-	Radius   interface{} `json:"radius,omitempty"`
+	RoseType string `json:"roseType,omitempty"`
+	// Pie
+	Center interface{} `json:"center,omitempty"`
+	// Pie
+	Radius interface{} `json:"radius,omitempty"`
 
-	// Scatter
+	// Line | Scatter | Radar
 	SymbolSize interface{} `json:"symbolSize,omitempty"`
 
 	// Tree
@@ -76,6 +96,9 @@ type SingleSeries struct {
 	Top               string      `json:"top,omitempty"`
 	Bottom            string      `json:"bottom,omitempty"`
 
+	// Radar
+	RadarIndex int `json:"radarIndex,omitempty"`
+
 	// TreeMap
 	LeafDepth  int         `json:"leafDepth,omitempty"`
 	Levels     interface{} `json:"levels,omitempty"`
@@ -87,11 +110,31 @@ type SingleSeries struct {
 	RotationRange []float32 `json:"rotationRange,omitempty"`
 
 	// Sunburst
-	NodeClick               string     `json:"nodeClick,omitempty"`
-	Sort                    string     `json:"sort,omitempty"`
-	RenderLabelForZeroData  types.Bool `json:"renderLabelForZeroData,omitempty"`
-	SelectedMode            types.Bool `json:"selectedMode,omitempty"`
-	Animation               types.Bool `json:"animation,omitempty" default:"true"`
+	NodeClick string `json:"nodeClick,omitempty"`
+	Sort      string `json:"sort,omitempty"`
+
+	// Custom
+	RenderItem types.FuncStr `json:"renderItem,omitempty"`
+
+	// series data
+	Data         interface{} `json:"data,omitempty"`
+	DatasetIndex int         `json:"datasetIndex,omitempty"`
+
+	// Gauge
+	Progress *opts.Progress `json:"progress,omitempty"`
+	AxisTick *opts.AxisTick `json:"axisTick,omitempty"`
+	Detail   *opts.Detail   `json:"detail,omitempty"`
+	Title    *opts.Title    `json:"title,omitempty"`
+	Min      int            `json:"min,omitempty"`
+	Max      int            `json:"max,omitempty"`
+
+	Large               types.Bool `json:"large,omitempty"`
+	LargeThreshold      int        `json:"largeThreshold,omitempty"`
+	HoverLayerThreshold int        `json:"hoverLayerThreshold,omitempty"`
+	UseUTC              types.Bool `json:"useUTC,omitempty"`
+
+	// Animation related configs
+	Animation               types.Bool `json:"animation,omitempty"`
 	AnimationThreshold      int        `json:"animationThreshold,omitempty"`
 	AnimationDuration       int        `json:"animationDuration,omitempty"`
 	AnimationEasing         string     `json:"animationEasing,omitempty"`
@@ -99,13 +142,8 @@ type SingleSeries struct {
 	AnimationDurationUpdate int        `json:"animationDurationUpdate,omitempty"`
 	AnimationEasingUpdate   string     `json:"animationEasingUpdate,omitempty"`
 	AnimationDelayUpdate    int        `json:"animationDelayUpdate,omitempty"`
-
-	// Custom
-	RenderItem string `json:"renderItem,omitempty"`
-
-	// series data
-	Data         interface{} `json:"data,omitempty"`
-	DatasetIndex int         `json:"datasetIndex,omitempty"`
+	RenderLabelForZeroData  types.Bool `json:"renderLabelForZeroData,omitempty"`
+	SelectedMode            types.Bool `json:"selectedMode,omitempty"`
 
 	// series options
 	*opts.Encode        `json:"encode,omitempty"`
@@ -128,6 +166,15 @@ type SingleSeries struct {
 
 type SeriesOpts func(s *SingleSeries)
 
+type SingleSeriesOptFunc func(s *SingleSeries)
+
+// WithSeriesOpts If the WithXXX helper method is not good enough, use this directly!
+func WithSeriesOpts(opf SingleSeriesOptFunc) SeriesOpts {
+	return func(s *SingleSeries) {
+		opf(s)
+	}
+}
+
 func WithCoordinateSystem(cs string) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.CoordSystem = cs
@@ -143,6 +190,12 @@ func WithCalendarIndex(index int) SeriesOpts {
 func WithSeriesAnimation(enable bool) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Animation = opts.Bool(enable)
+	}
+}
+
+func WithSeriesSymbolKeepAspect(enable bool) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.SymbolKeepAspect = opts.Bool(enable)
 	}
 }
 
@@ -188,7 +241,7 @@ func WithLineStyleOpts(opt opts.LineStyle) SeriesOpts {
 	}
 }
 
-// With CircularStyle Opts
+// WithCircularStyleOpts With CircularStyle Opts
 func WithCircularStyleOpts(opt opts.CircularStyle) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.CircularStyle = &opt
@@ -200,14 +253,16 @@ func WithCircularStyleOpts(opt opts.CircularStyle) SeriesOpts {
 // WithBarChartOpts sets the BarChart option.
 func WithBarChartOpts(opt opts.BarChart) SeriesOpts {
 	return func(s *SingleSeries) {
+		s.ColorBy = opt.ColorBy
+		s.CoordSystem = opt.CoordSystem
+		s.XAxisIndex = opt.XAxisIndex
+		s.YAxisIndex = opt.YAxisIndex
+		s.PolarIndex = opt.PolarIndex
+		s.RoundCap = opt.RoundCap
+		s.ShowBackground = opt.ShowBackground
 		s.Stack = opt.Stack
 		s.BarGap = opt.BarGap
 		s.BarCategoryGap = opt.BarCategoryGap
-		s.XAxisIndex = opt.XAxisIndex
-		s.YAxisIndex = opt.YAxisIndex
-		s.ShowBackground = opt.ShowBackground
-		s.RoundCap = opt.RoundCap
-		s.CoordSystem = opt.CoordSystem
 	}
 }
 
@@ -256,18 +311,19 @@ func WithHeatMapChartOpts(opt opts.HeatMapChart) SeriesOpts {
 // WithLineChartOpts sets the LineChart option.
 func WithLineChartOpts(opt opts.LineChart) SeriesOpts {
 	return func(s *SingleSeries) {
-		s.YAxisIndex = opt.YAxisIndex
-		s.Stack = opt.Stack
-		s.Smooth = opt.Smooth
-		s.ShowSymbol = opt.ShowSymbol
-		s.Symbol = opt.Symbol
-		s.SymbolSize = opt.SymbolSize
-		s.Step = opt.Step
+		s.ColorBy = opt.ColorBy
+		s.CoordSystem = opt.CoordSystem
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
-		s.ConnectNulls = opt.ConnectNulls
-		s.Color = opt.Color
+		s.PolarIndex = opt.PolarIndex
+		s.Symbol = opt.Symbol
+		s.SymbolSize = opt.SymbolSize
 		s.SymbolKeepAspect = opt.SymbolKeepAspect
+		s.ShowSymbol = opt.ShowSymbol
+		s.Stack = opt.Stack
+		s.Smooth = opt.Smooth
+		s.ConnectNulls = opt.ConnectNulls
+		s.Step = opt.Step
 	}
 }
 
@@ -283,6 +339,8 @@ func WithKlineChartOpts(opt opts.KlineChart) SeriesOpts {
 // WithPieChartOpts sets the PieChart option.
 func WithPieChartOpts(opt opts.PieChart) SeriesOpts {
 	return func(s *SingleSeries) {
+		s.ColorBy = opt.ColorBy
+		s.CoordSystem = opt.CoordSystem
 		s.RoseType = opt.RoseType
 		s.Center = opt.Center
 		s.Radius = opt.Radius
@@ -292,8 +350,36 @@ func WithPieChartOpts(opt opts.PieChart) SeriesOpts {
 // WithScatterChartOpts sets the ScatterChart option.
 func WithScatterChartOpts(opt opts.ScatterChart) SeriesOpts {
 	return func(s *SingleSeries) {
+		s.ColorBy = opt.ColorBy
+		s.CoordSystem = opt.CoordSystem
 		s.XAxisIndex = opt.XAxisIndex
 		s.YAxisIndex = opt.YAxisIndex
+		s.Symbol = opt.Symbol
+		s.SymbolSize = opt.SymbolSize
+		s.SymbolKeepAspect = opt.SymbolKeepAspect
+	}
+}
+
+// WithEffectScatterChartOpts sets the ScatterChart option.
+func WithEffectScatterChartOpts(opt opts.EffectScatterChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.ColorBy = opt.ColorBy
+		s.CoordSystem = opt.CoordSystem
+		s.XAxisIndex = opt.XAxisIndex
+		s.YAxisIndex = opt.YAxisIndex
+		s.Symbol = opt.Symbol
+		s.SymbolSize = opt.SymbolSize
+		s.SymbolKeepAspect = opt.SymbolKeepAspect
+	}
+}
+
+// WithRadarChartOpts sets the RadarChart option.
+func WithRadarChartOpts(opt opts.RadarChart) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.ColorBy = opt.ColorBy
+		s.RadarIndex = opt.RadarIndex
+		s.Symbol = opt.Symbol
+		s.SymbolSize = opt.SymbolSize
 		s.SymbolKeepAspect = opt.SymbolKeepAspect
 	}
 }
@@ -482,7 +568,9 @@ func (s *SingleSeries) ConfigureSeriesOpts(options ...SeriesOpts) {
 type MultiSeries []SingleSeries
 
 // SetSeriesOptions sets options for all the series.
-// Previous options will be overwrote every time hence setting them on the `AddSeries` if you want
+// NOTE:
+// It should be called after AddSeries, otherwise, the Options is no place to add on.
+// Previous options will be overwritten every time hence setting them on the `AddSeries` if you want
 // to customize each series individually
 //
 //	here -> ↓ <-

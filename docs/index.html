@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>go-echarts</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="description" content="The adorable charts library for Golang.">
+    <meta name="keywords" content="documentation,go-echarts,echarts,github">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8J06Y8KKE8"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-8J06Y8KKE8');
+</script>
+<body>
+<div id="app">Loading ...</div>
+<script>
+    window.$docsify = {
+        name: 'go-echarts',
+        repo: 'https://github.com/go-echarts/go-echarts',
+        coverpage: true,
+        loadSidebar: true,
+        loadNavbar: true,
+        maxLevel: 4,
+        subMaxLevel: 3,
+        auto2top: true,
+        homepage: 'en-us/README.md',
+        search: {
+            placeholder: {
+                '/': 'Search',
+                '/zh-cn/': '搜索',
+                '/en-us/': 'Type to search'
+            },
+            noData: {
+                '/': 'Not Found',
+                '/zh-cn/': '找不到结果',
+                '/en-us/': 'No Results'
+            },
+            pathNamespaces: ['/en-us', '/zh-cn'],
+        },
+        plugins: [
+            function (hook) {
+
+                const exampleRegex = /\[(Examples|GoEcharts)CODE\s?=\s?(.*)\]/g;
+                const rawExampleApi = "https://raw.githubusercontent.com/go-echarts/examples/master/examples/"
+                // no / suffix, need path start with / e.g. /opt/geo.go
+                const rawConfigApi = "https://raw.githubusercontent.com/go-echarts/go-echarts/master"
+                const fetchTasks = []
+                hook.beforeEach((html, next) => {
+                    html.replace(exampleRegex, function (match, tag, path) {
+                        const rawApi = tag === "Examples" ? rawExampleApi : rawConfigApi
+                        const api = rawApi + path;
+                        // fetch content
+                        const task = fetch(api)
+                            .then(resp => resp.text())
+                            .then(data => {
+                                html = html.replace(match, data);
+                            });
+                        fetchTasks.push(task)
+                    });
+
+                    if (fetchTasks.length === 0) {
+                        next(html)
+                    } else {
+                        Promise.all(fetchTasks).then(() => next(html))
+                    }
+                });
+
+                const footer = [
+                    '<hr/>',
+                    '<footer>',
+                    '<span> &copy; MIT<a href="https://github.com/go-echarts"> go-echarts </a></span>&nbsp;',
+                    '<span>powered by <a href="https://github.com/docsifyjs/docsify" target="_blank">docsify</a>.</span>',
+                    '</footer>'
+                ].join('');
+
+                hook.afterEach(function (html) {
+                    return html + footer
+                })
+            }
+        ]
+    }
+</script>
+<script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-go.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
+<script src="https://unpkg.com/docsify-copy-code@2"></script>
+</body>
+</html>

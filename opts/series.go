@@ -2,11 +2,12 @@ package opts
 
 import (
 	"fmt"
+
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
-// Label contains options for a label text.
-// https://echarts.apache.org/en/option.html#series-line.label
+// Label contains options for a label text, it is a generic label config for all label needs.
+// i.e. https://echarts.apache.org/en/option.html#series-line.label
 type Label struct {
 	// Whether to show label.
 	Show types.Bool `json:"show,omitempty"`
@@ -165,6 +166,19 @@ type ItemStyle struct {
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
 	Opacity float32 `json:"opacity,omitempty"`
+
+	// ShadowBlur Size of shadow blur.
+	// This attribute should be used along with shadowColor,shadowOffsetX, shadowOffsetY to set shadow to component.
+	ShadowBlur int `json:"shadowBlur,omitempty"`
+
+	// ShadowColor Shadow color. Support same format as color.
+	ShadowColor string `json:"shadowColor,omitempty"`
+
+	// ShadowOffsetX Offset distance on the horizontal direction of shadow.
+	ShadowOffsetX int `json:"shadowOffsetX,omitempty"`
+
+	// ShadowOffsetY Offset distance on the vertical direction of shadow.
+	ShadowOffsetY int `json:"shadowOffsetY,omitempty"`
 }
 
 // MarkLines represents a series of marklines.
@@ -434,7 +448,7 @@ type AreaStyle struct {
 	Opacity float32 `json:"opacity,omitempty"`
 }
 
-// Configuration items about force-directed layout. Force-directed layout simulates
+// GraphForce Configuration items about force-directed layout. Force-directed layout simulates
 // spring/charge model, which will add a repulsion between 2 nodes and add a attraction
 // between 2 nodes of each edge. In each iteration nodes will move under the effect
 // of repulsion and attraction. After several iterations, the nodes will be static in a
@@ -464,7 +478,7 @@ type GraphForce struct {
 	EdgeLength float32 `json:"edgeLength,omitempty"`
 }
 
-// Leaf node special configuration, the leaf node and non-leaf node label location is different.
+// TreeLeaves Leaf node special configuration, the leaf node and non-leaf node label location is different.
 type TreeLeaves struct {
 	// The style setting of the text label in a single bar.
 	Label *Label `json:"label,omitempty"`
@@ -679,7 +693,7 @@ type EdgeLabel struct {
 	Formatter string `json:"formatter,omitempty"`
 }
 
-// Define what is encoded to for each dimension of data
+// Encode Define what is encoded to for each dimension of data
 // https://echarts.apache.org/en/option.html#series-candlestick.encode
 type Encode struct {
 	X interface{} `json:"x"`

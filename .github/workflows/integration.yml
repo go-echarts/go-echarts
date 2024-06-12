@@ -1,0 +1,15 @@
+name: Integration test
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref-example:
+        description: 'Ref Examples branch (default is master)'
+        required: false
+        default: 'master'
+
+jobs:
+  integration-test:
+    uses: go-echarts/go-echarts-pipeline/.github/workflows/integration.yml@main
+    with:
+      ref-branch: ${{ github.event.inputs.ref-example }}

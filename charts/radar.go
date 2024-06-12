@@ -9,7 +9,6 @@ import (
 // Radar represents a radar chart.
 type Radar struct {
 	BaseConfiguration
-	BaseActions
 
 	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
 	SymbolKeepAspect types.Bool
@@ -39,12 +38,6 @@ func (c *Radar) AddSeries(name string, data []opts.RadarData, options ...SeriesO
 // SetGlobalOptions sets options for the Radar instance.
 func (c *Radar) SetGlobalOptions(options ...GlobalOpts) *Radar {
 	c.BaseConfiguration.setBaseGlobalOptions(options...)
-	return c
-}
-
-// SetDispatchActions sets actions for the Radar instance.
-func (c *Radar) SetDispatchActions(actions ...GlobalActions) *Radar {
-	c.BaseActions.setBaseGlobalActions(actions...)
 	return c
 }
 

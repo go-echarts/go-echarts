@@ -6,14 +6,14 @@ import "github.com/go-echarts/go-echarts/v2/types"
 // Legend component shows symbol, color and name of different series. You can click legends to toggle displaying series in the chart.
 // https://echarts.apache.org/en/option.html#legend
 type Legend struct {
-	// Whether to show the Legend, default true.
-	// Once you set other options, need to manually set it to true
-	Show types.Bool `json:"show,omitempty" default:"true"`
-
 	// Type of legend. Optional values:
 	// "plain": Simple legend. (default)
 	// "scroll": Scrollable legend. It helps when too many legend items needed to be shown.
-	Type string `json:"type"`
+	Type string `json:"type,omitempty"`
+
+	// Whether to show the Legend, default true.
+	// Once you set other options, need to manually set it to true
+	Show types.Bool `json:"show,omitempty"`
 
 	// Distance between legend component and the left side of the container.
 	// left value can be instant pixel value like 20; it can also be a percentage
@@ -41,28 +41,21 @@ type Legend struct {
 	// Adaptive by default.
 	Bottom string `json:"bottom,omitempty"`
 
-	// Data array of legend. An array item is usually a name representing string.
-	// set Data as []string{} if you wants to hide the legend.
-	Data interface{} `json:"data,omitempty"`
+	// Width of legend component. Adaptive by default.
+	Width string `json:"width,omitempty"`
+
+	// Height of legend component. Adaptive by default.
+	Height string `json:"height,omitempty"`
 
 	// The layout orientation of legend.
 	// Options: 'horizontal', 'vertical'
 	Orient string `json:"orient,omitempty"`
 
-	// Legend color when not selected.
-	InactiveColor string `json:"inactiveColor,omitempty"`
-
-	// State table of selected legend.
-	// example:
-	// var selected = map[string]bool{}
-	// selected["series1"] = true
-	// selected["series2"] = false
-	Selected map[string]bool `json:"selected,omitempty"`
-
-	// Selected mode of legend, which controls whether series can be toggled displaying by clicking legends.
-	// It is enabled by default, and you may set it to be false to disabled it.
-	// Besides, it can be set to 'single' or 'multiple', for single selection and multiple selection.
-	SelectedMode string `json:"selectedMode,omitempty"`
+	// Legend marker and text aligning.
+	// By default, it automatically calculates from component location and orientation.
+	// When left value of this component is 'right' and orient is 'vertical', it would be aligned to 'right'.
+	// Options: auto/left/right
+	Align string `json:"align,omitempty"`
 
 	// Legend space around content. The unit is px.
 	// Default values for each position are 5.
@@ -81,6 +74,52 @@ type Legend struct {
 	//    ]
 	Padding interface{} `json:"padding,omitempty"`
 
+	// Formatter is used to format label of legend, which supports string template and callback function.
+	// Example:
+	//
+	//  using string template, the template variable is legend name {name}
+	//  formatter: 'Legend {name}'
+	//  using callback function
+	//  formatter: function (name) {
+	//     return 'Legend ' + name;
+	//  }
+	Formatter types.FuncStr `json:"formatter,omitempty"`
+
+	// Selected mode of legend, which controls whether series can be toggled displaying by clicking legends.
+	// It is enabled by default, and you may set it to be false to disabled it.
+	// Besides, it can be set to 'single' or 'multiple', for single selection and multiple selection.
+	SelectedMode string `json:"selectedMode,omitempty"`
+
+	// Icon of the legend items.
+	// Icon types provided by ECharts includes
+	// 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
+	// An image URL example:
+	//   'image://http://example.website/a/b.png'
+	// A dataURI example:
+	//
+	// 'image://data:image/gif;base64,KOY......'
+	// Icons can be set to arbitrary vector path via 'path://' in ECharts.
+	// As compared with a raster image, vector paths prevent jagging and blurring when scaled, and have better control over changing colors.
+	// For example:
+	//
+	// 'path://M30.9,53.2C16.8,...'
+	Icon string `json:"icon,omitempty"`
+
+	// Data array of legend. An array item is usually a name representing string.
+	// set Data as []string{} if you wants to hide the legend.
+	Data interface{} `json:"data,omitempty"`
+
+	// Legend color when not selected.
+	InactiveColor string `json:"inactiveColor,omitempty"`
+
+	// State table of selected legend.
+	// example:
+	// var selected = map[string]bool{}
+	// selected["series1"] = true
+	// selected["series2"] = false
+	Selected map[string]bool `json:"selected,omitempty"`
+
 	// Image width of legend symbol.
 	ItemWidth int `json:"itemWidth,omitempty"`
 
@@ -92,18 +131,6 @@ type Legend struct {
 
 	// Legend Y position, right/left/center
 	Y string `json:"y,omitempty"`
-
-	// Width of legend component. Adaptive by default.
-	Width string `json:"width,omitempty"`
-
-	// Height of legend component. Adaptive by default.
-	Height string `json:"height,omitempty"`
-
-	// Legend marker and text aligning.
-	// By default, it automatically calculates from component location and orientation.
-	// When left value of this component is 'right' and orient is 'vertical', it would be aligned to 'right'.
-	// Options: auto/left/right
-	Align string `json:"align,omitempty"`
 
 	// Legend text style.
 	TextStyle *TextStyle `json:"textStyle,omitempty"`

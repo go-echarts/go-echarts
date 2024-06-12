@@ -5,6 +5,28 @@ import "github.com/go-echarts/go-echarts/v2/types"
 // XAxis is the option set for X axis.
 // https://echarts.apache.org/en/option.html#xAxis
 type XAxis struct {
+
+	// Set this to false to prevent the axis from showing.
+	Show types.Bool `json:"show,omitempty"`
+
+	// Position The position of x axis.
+	// options:
+	// 'top'
+	// 'bottom'
+	Position string `json:"position,omitempty"`
+
+	// Type of axis.
+	// Option:
+	// * 'value': Numerical axis, suitable for continuous data.
+	// * 'category': Category axis, suitable for discrete category data.
+	//   Category data can be auto retrieved from series.data or dataset.source,
+	//   or can be specified via xAxis.data.
+	// * 'time' Time axis, suitable for continuous time series data. As compared to value axis,
+	//   it has a better formatting for time and a different tick calculation method. For example,
+	//   it decides to use month, week, day or hour for tick based on the range of span.
+	// * 'log' Log axis, suitable for log data.
+	Type string `json:"type,omitempty"`
+
 	// Name of axis.
 	Name string `json:"name,omitempty"`
 
@@ -19,20 +41,9 @@ type XAxis struct {
 	// Gap between axis name and axis line.
 	NameGap int `json:"nameGap,omitempty"`
 
-	// Type of axis.
-	// Option:
-	// * 'value': Numerical axis, suitable for continuous data.
-	// * 'category': Category axis, suitable for discrete category data.
-	//   Category data can be auto retrieved from series.data or dataset.source,
-	//   or can be specified via xAxis.data.
-	// * 'time' Time axis, suitable for continuous time series data. As compared to value axis,
-	//   it has a better formatting for time and a different tick calculation method. For example,
-	//   it decides to use month, week, day or hour for tick based on the range of span.
-	// * 'log' Log axis, suitable for log data.
-	Type string `json:"type,omitempty"`
-
-	// Set this to false to prevent the axis from showing.
-	Show types.Bool `json:"show,omitempty"`
+	// Inverse Set this to true to invert the axis.
+	// Default false
+	Inverse types.Bool `json:"inverse,omitempty"`
 
 	// Category data, available in type: 'category' axis.
 	Data interface{} `json:"data,omitempty"`
@@ -64,6 +75,21 @@ type XAxis struct {
 
 	// Maximum gap between split lines. For 'time' axis, MaxInterval is in unit of milliseconds.
 	MaxInterval float64 `json:"maxInterval,omitempty"`
+
+	// TriggerEvent Set this to true to enable triggering events, default false
+	// Parameters of the event include:
+	//{
+	//    // Component type: xAxis, yAxis, radiusAxis, angleAxis
+	//    // Each of which has an attribute for index, e.g., xAxisIndex for xAxis
+	//    componentType: string,
+	//    // Value on axis before being formatted.
+	//    // Click on value label to trigger event.
+	//    value: '',
+	//    // Name of axis.
+	//    // Click on laben name to trigger event.
+	//    name: ''
+	//}
+	TriggerEvent types.Bool `json:"triggerEvent,omitempty"`
 
 	// The index of grid which the x axis belongs to. Defaults to be in the first grid.
 	// default 0
@@ -153,7 +179,7 @@ type AxisLabel struct {
 	// axis label font family
 	FontFamily string `json:"fontFamily,omitempty"`
 	// axis label font size
-	FontSize string `json:"fontSize,omitempty"`
+	FontSize int `json:"fontSize,omitempty"`
 	// Horizontal alignment of axis label
 	Align string `json:"align,omitempty"`
 	// Vertical alignment of axis label

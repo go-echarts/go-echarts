@@ -3,12 +3,12 @@ package charts
 import (
 	"bytes"
 	"encoding/json"
+	"html/template"
+
 	"github.com/go-echarts/go-echarts/v2/event"
 	"github.com/go-echarts/go-echarts/v2/types"
 	"github.com/go-echarts/go-echarts/v2/util"
-	"html/template"
 
-	"github.com/go-echarts/go-echarts/v2/actions"
 	"github.com/go-echarts/go-echarts/v2/datasets"
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/render"
@@ -16,9 +16,6 @@ import (
 
 // GlobalOpts sets the Global options for charts.
 type GlobalOpts func(bc *BaseConfiguration)
-
-// GlobalActions sets the Global actions for charts
-type GlobalActions func(ba *BaseActions)
 
 // BaseConfiguration represents an option set needed by all chart types.
 type BaseConfiguration struct {
@@ -84,12 +81,6 @@ type BaseConfiguration struct {
 	GridList []opts.Grid `json:"grid,omitempty"`
 }
 
-// BaseActions represents a dispatchAction set needed by all chart types.
-type BaseActions struct {
-	actions.Type  `json:"type,omitempty"`
-	actions.Areas `json:"areas,omitempty"`
-}
-
 // JSON wraps all the options to a map so that it could be used in the base template
 //
 // Get data in bytes
@@ -101,17 +92,6 @@ func (bc *BaseConfiguration) JSON() map[string]interface{} {
 // JSONNotEscaped works like method JSON, but it returns a marshaled object whose characters will not be escaped in the template
 func (bc *BaseConfiguration) JSONNotEscaped() template.HTML {
 	obj := bc.json()
-	buff := bytes.NewBufferString("")
-	enc := json.NewEncoder(buff)
-	enc.SetEscapeHTML(false)
-	enc.Encode(obj)
-
-	return template.HTML(buff.String())
-}
-
-// JSONNotEscapedAction works like method JSON, but it returns a marshaled object whose characters will not be escaped in the template
-func (ba *BaseActions) JSONNotEscapedAction() template.HTML {
-	obj := ba.json()
 	buff := bytes.NewBufferString("")
 	enc := json.NewEncoder(buff)
 	enc.SetEscapeHTML(false)
@@ -256,34 +236,6 @@ func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
 	}
 }
 
-func (ba *BaseActions) setBaseGlobalActions(opts ...GlobalActions) {
-	for _, opt := range opts {
-		opt(ba)
-	}
-}
-
-func (ba *BaseActions) json() map[string]interface{} {
-	obj := map[string]interface{}{
-		"type":  ba.Type,
-		"areas": ba.Areas,
-	}
-	return obj
-}
-
-// WithAreas sets the areas of the action
-func WithAreas(act actions.Areas) GlobalActions {
-	return func(ba *BaseActions) {
-		ba.Areas = act
-	}
-}
-
-// WithType sets the type of the action
-func WithType(act actions.Type) GlobalActions {
-	return func(ba *BaseActions) {
-		ba.Type = act
-	}
-}
-
 // WithAngleAxisOps sets the angle of the axis.
 func WithAngleAxisOps(opt opts.AngleAxis) GlobalOpts {
 	return func(bc *BaseConfiguration) {
@@ -310,6 +262,8 @@ func WithBrush(opt opts.Brush) GlobalOpts {
 func WithPolarOps(opt opts.Polar) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Polar = opt
+		bc.hasPolar = true
+		bc.hasXYAxis = false
 	}
 }
 
