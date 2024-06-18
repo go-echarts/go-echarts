@@ -198,6 +198,12 @@ type MarkLineStyle struct {
 
 	// Mark line text options.
 	Label *Label `json:"label,omitempty"`
+
+	LineStyle *LineStyle `json:"lineStyle,omitempty"`
+
+	Emphasis *Emphasis `json:"emphasis,omitempty"`
+
+	Blur *Blur `json:"blur,omitempty"`
 }
 
 // CircularStyle contains styling options for circular layout.
