@@ -8,12 +8,16 @@
 - Advanced
     - [Render to Image](en-us/render-to-image)
 - Chart Configration
-  - [Global](en-us/options/global)
-  - [Series](en-us/options/series)
-
-[//]: # (  - [Options]&#40;en-us/options/options&#41;)
+    - [Global Option Summary](en-us/options/global)
+    - [Series Option Summary](en-us/options/series)
+    - Options
+        - [title](en-us/options/title)
+        - [grid](en-us/options/grid)
+        - [legend](en-us/options/legend)
+        - [xAxis](en-us/options/xAxis)
+        - [yAxis](en-us/options/yAxis)
 - [Ecosystem](en-us/ecosystem)
-- Showcases
+- Examples with sample code
     - [Line](en-us/charts/line)
     - [Bar](en-us/charts/bar)
     - [Pie](en-us/charts/pie)
