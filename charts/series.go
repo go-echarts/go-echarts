@@ -199,6 +199,19 @@ func WithSeriesSymbolKeepAspect(enable bool) SeriesOpts {
 	}
 }
 
+func WithAnimationOpts(opt opts.Animation) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.Animation = opt.Animation
+		s.AnimationThreshold = opt.AnimationThreshold
+		s.AnimationDuration = opt.AnimationDuration
+		s.AnimationEasing = opt.AnimationEasing
+		s.AnimationDelay = opt.AnimationDelay
+		s.AnimationDurationUpdate = opt.AnimationDurationUpdate
+		s.AnimationEasingUpdate = opt.AnimationEasingUpdate
+		s.AnimationDelayUpdate = opt.AnimationDelayUpdate
+	}
+}
+
 // WithLabelOpts sets the label.
 func WithLabelOpts(opt opts.Label) SeriesOpts {
 	return func(s *SingleSeries) {
