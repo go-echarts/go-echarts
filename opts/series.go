@@ -139,6 +139,18 @@ type Emphasis struct {
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
+// Animation represents animation behaviors of series.
+type Animation struct {
+	Animation               types.Bool `json:"animation,omitempty"`
+	AnimationThreshold      int        `json:"animationThreshold,omitempty"`
+	AnimationDuration       int        `json:"animationDuration,omitempty"`
+	AnimationEasing         string     `json:"animationEasing,omitempty"`
+	AnimationDelay          int        `json:"animationDelay,omitempty"`
+	AnimationDurationUpdate int        `json:"animationDurationUpdate,omitempty"`
+	AnimationEasingUpdate   string     `json:"animationEasingUpdate,omitempty"`
+	AnimationDelayUpdate    int        `json:"animationDelayUpdate,omitempty"`
+}
+
 // ItemStyle represents a style of an item.
 type ItemStyle struct {
 	// Color of chart
