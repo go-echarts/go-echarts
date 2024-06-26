@@ -139,23 +139,16 @@ type Emphasis struct {
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 }
 
+// Animation represents animation behaviors of series.
 type Animation struct {
-	// Whether to enable animation.
-	Animation types.Bool `json:"animation,omitempty"`
-	// Whether to set graphic number threshold to animation
-	AnimationThreshold int
-	// Duration of the first animation
-	AnimationDuration int
-	// Easing method used for the first animation
-	AnimationEasing string
-	// Delay before updating the first animation
-	AnimationDelay int
-	// Time for animation to complete
-	AnimationDurationUpdate int `json:"animationDurationUpdate,omitempty"`
-	// Easing method used for animation.
-	AnimationEasingUpdate string `json:"animationEasingUpdate,omitempty"`
-	// Delay before updating animation
-	AnimationDelayUpdate int `json:"animationDelayUpdate,omitempty"`
+	Animation               types.Bool `json:"animation,omitempty"`
+	AnimationThreshold      int        `json:"animationThreshold,omitempty"`
+	AnimationDuration       int        `json:"animationDuration,omitempty"`
+	AnimationEasing         string     `json:"animationEasing,omitempty"`
+	AnimationDelay          int        `json:"animationDelay,omitempty"`
+	AnimationDurationUpdate int        `json:"animationDurationUpdate,omitempty"`
+	AnimationEasingUpdate   string     `json:"animationEasingUpdate,omitempty"`
+	AnimationDelayUpdate    int        `json:"animationDelayUpdate,omitempty"`
 }
 
 // ItemStyle represents a style of an item.
