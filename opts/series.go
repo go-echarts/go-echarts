@@ -236,6 +236,8 @@ type MarkLineNameTypeItem struct {
 	// It may be the direct name of a dimension, like x,
 	// or angle for line charts, or open, or close for candlestick charts.
 	ValueDim string `json:"valueDim,omitempty"`
+
+	LineStyle *LineStyle `json:"lineStyle,omitempty"`
 }
 
 // MarkLineNameYAxisItem defines a MarkLine on a Y axis.
