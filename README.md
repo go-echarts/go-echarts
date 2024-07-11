@@ -40,7 +40,7 @@ provide a simple yet powerful data visualization library for Golang.
 [Apache ECharts](https://echarts.apache.org/) is an awesome charting and visualization library,
 it supports adorable chart types and various interactive features.
 and there have many program languages interactive with Echarts, such as [pyecharts](https://github.com/pyecharts/pyecharts),
-which `go-echarts` learns and has evolved a lot from.
+which `go-echarts` learns and has evolved a lot from, and the [echarts4j](https://github.com/Koooooo-7/echarts4j) either.
 
 [中文 README](README_CN.md)
 
