@@ -12,6 +12,7 @@ const (
 	PageNoneLayout   Layout = "none"
 	PageCenterLayout Layout = "center"
 	PageFlexLayout   Layout = "flex"
+	PageFullLayout   Layout = "full"
 )
 
 // Charter represents a chart value which provides its type, assets and can be validated.

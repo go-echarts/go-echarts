@@ -16,6 +16,12 @@
     <style> .box { justify-content:center; display:flex; flex-wrap:wrap } </style>
     <div class="box"> {{- range .Charts }} {{ template "base" . }} {{- end }} </div>
 {{ end }}
+
+{{ if eq .Layout "full" }}
+    <style> .container {height: 100vh;} .item {margin: auto;} </style>
+    {{- range .Charts }} {{ template "base" . }} {{- end }}
+{{ end }}
+
 </body>
 </html>
 {{ end }}
