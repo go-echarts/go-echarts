@@ -225,6 +225,9 @@ type GraphLink struct {
 
 	// Label for this link.
 	Label *EdgeLabel `json:"label,omitempty"`
+
+	// LineStyle settings in this series data.
+	LineStyle *LineStyle `json:"lineStyle,omitempty"`
 }
 
 // GraphCategory represents a category for data nodes.
@@ -235,6 +238,9 @@ type GraphLink struct {
 type GraphCategory struct {
 	// Name of category, which is used to correspond with legend and the content of tooltip.
 	Name string `json:"name"`
+
+	// The style of this node.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 
 	// The label style of node in this category.
 	Label *Label `json:"label,omitempty"`
