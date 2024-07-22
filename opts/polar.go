@@ -39,7 +39,7 @@ type PolarAxisBase struct {
 	// PolarIndex Index of radial axis in polar coordinate. It's the first axis by default.
 	PolarIndex int `json:"polarIndex,omitempty"`
 	// Type of axis.
-	//Option:
+	// Option:
 	// 'value' Numerical axis, suitable for continuous data.
 	// 'category' Category axis, suitable for discrete category data.
 	// 'time' Time axis, suitable for continuous time series data.

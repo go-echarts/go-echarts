@@ -9,8 +9,10 @@ import (
 
 const funcMarker = "__f__"
 
-var newlineTabPat = regexp.MustCompile(`\n|\t`)
-var commentPat = regexp.MustCompile(`(//.*)\n`)
+var (
+	newlineTabPat = regexp.MustCompile(`\n|\t`)
+	commentPat    = regexp.MustCompile(`(//.*)\n`)
+)
 
 type JSFunctions struct {
 	Fns []types.FuncStr

@@ -5,7 +5,6 @@ import "github.com/go-echarts/go-echarts/v2/types"
 // AxisPointer is the option set for an axisPointer component
 // https://echarts.apache.org/en/option.html#axisPointer
 type AxisPointer struct {
-
 	// Indicator type.
 	// Options:
 	//   - 'line' line indicator.

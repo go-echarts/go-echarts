@@ -117,7 +117,6 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 		obj["dataset"] = bc.DatasetList[0]
 	} else if len(bc.DatasetList) > 1 {
 		obj["dataset"] = bc.DatasetList
-
 	}
 	if bc.AxisPointer != nil {
 		obj["axisPointer"] = bc.AxisPointer
@@ -355,7 +354,6 @@ func WithGeoComponentOpts(opt opts.GeoComponent) GlobalOpts {
 		bc.GeoComponent = opt
 		bc.JSAssets.Add("maps/" + datasets.MapFileNames[opt.Map] + ".js")
 	}
-
 }
 
 // WithParallelComponentOpts sets the parallel component.
