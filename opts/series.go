@@ -615,7 +615,6 @@ func HSLAColor(h, s, l, a float32) string {
 // EdgeLabel is the properties of an label of edge.
 // https://echarts.apache.org/en/option.html#series-graph.edgeLabel
 type EdgeLabel struct {
-
 	// Show is true to show label on edge.
 	Show bool `json:"show,omitempty"`
 

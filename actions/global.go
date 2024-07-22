@@ -16,8 +16,7 @@ type Type string
 // If Areas is empty, all of the select-boxes will be deleted.
 // The first area.
 type Areas struct {
-
-	//BrushType Optional: 'polygon', 'rect', 'lineX', 'lineY'
+	// BrushType Optional: 'polygon', 'rect', 'lineX', 'lineY'
 	BrushType string `json:"brushType,omitempty"`
 
 	// CoordRange Only for "coordinate system area", define the area with the

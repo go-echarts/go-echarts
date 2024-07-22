@@ -23,9 +23,7 @@ const (
 	ModPage  = "page"
 )
 
-var (
-	pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
-)
+var pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 
 type pageRender struct {
 	c      interface{}

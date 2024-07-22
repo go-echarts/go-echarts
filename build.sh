@@ -12,7 +12,8 @@ function pre_check() {
 }
 
 function format() {
-    go fmt ./... && ls -d */ | xargs goimports -w
+    # go install mvdan.cc/gofumpt@latest
+    gofumpt ./... && ls -d */ | xargs goimports -w
 }
 
 function test() {

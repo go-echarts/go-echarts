@@ -371,7 +371,6 @@ func WithGeoComponentOpts(opt opts.GeoComponent) GlobalOpts {
 		bc.GeoComponent = opt
 		bc.JSAssets.Add("maps/" + datasets.MapFileNames[opt.Map] + ".js")
 	}
-
 }
 
 // WithParallelComponentOpts sets the parallel component.

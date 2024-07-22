@@ -358,7 +358,6 @@ type Tooltip struct {
 // AxisPointer is the option set for an axisPointer component
 // https://echarts.apache.org/en/option.html#axisPointer
 type AxisPointer struct {
-
 	// Indicator type.
 	// Options:
 	//   - 'line' line indicator.
@@ -386,14 +385,13 @@ type AxisPointerLink struct {
 // Brush is an area-selecting component, with which user can select part of data from a chart to display in detail, or do calculations with them.
 // https://echarts.apache.org/en/option.html#brush
 type Brush struct {
-
-	//XAxisIndex Assigns which of the xAxisIndex can use brush selecting.
+	// XAxisIndex Assigns which of the xAxisIndex can use brush selecting.
 	XAxisIndex interface{} `json:"xAxisIndex,omitempty"`
 
-	//Brushlink is a mapping of dataIndex. So data of every series with brushLink should be guaranteed to correspond to the other.
+	// Brushlink is a mapping of dataIndex. So data of every series with brushLink should be guaranteed to correspond to the other.
 	Brushlink interface{} `json:"brushlink,omitempty"`
 
-	//OutOfBrush Defines visual effects of items out of selection
+	// OutOfBrush Defines visual effects of items out of selection
 	OutOfBrush *BrushOutOfBrush `json:"outOfBrush,omitempty"`
 }
 
@@ -487,8 +485,7 @@ type ToolBoxFeatureSaveAsImage struct {
 // ToolBoxFeatureBrush  brush-selecting icon.
 // https://echarts.apache.org/en/option.html#toolbox.feature.brush
 type ToolBoxFeatureBrush struct {
-
-	//Icons used, whose values are:
+	// Icons used, whose values are:
 	// 'rect': Enabling selecting with rectangle area.
 	// 'polygon': Enabling selecting with any shape.
 	// 'lineX': Enabling horizontal selecting.
@@ -504,10 +501,10 @@ type ToolBoxFeatureDataZoom struct {
 	// Whether to show the tool.
 	Show bool `json:"show"`
 
-	//Defines which yAxis should be controlled. By default, it controls all y axes.
-	//If it is set to be false, then no y axis is controlled.
-	//If it is set to be then it controls axis with axisIndex of 3.
-	//If it is set to be [0, 3], it controls the x-axes with axisIndex of 0 and 3.
+	// Defines which yAxis should be controlled. By default, it controls all y axes.
+	// If it is set to be false, then no y axis is controlled.
+	// If it is set to be then it controls axis with axisIndex of 3.
+	// If it is set to be [0, 3], it controls the x-axes with axisIndex of 0 and 3.
 	YAxisIndex interface{} `json:"yAxisIndex,omitempty"`
 
 	// Restored and zoomed title text.
@@ -651,8 +648,8 @@ type AxisLine struct {
 
 	// Symbol of the two ends of the axis. It could be a string, representing the same symbol for two ends; or an array
 	// with two string elements, representing the two ends separately. It's set to be 'none' by default, meaning no
-	//arrow for either end. If it is set to be 'arrow', there shall be two arrows. If there should only one arrow
-	//at the end, it should set to be ['none', 'arrow'].
+	// arrow for either end. If it is set to be 'arrow', there shall be two arrows. If there should only one arrow
+	// at the end, it should set to be ['none', 'arrow'].
 	Symbol string `json:"symbol,omitempty"`
 
 	// Size of the arrows at two ends. The first is the width perpendicular to the axis, the next is the width parallel to the axis.
@@ -1457,6 +1454,6 @@ type Grid struct {
 // More importantly, it enables data encoding from data to visual, which brings convenience in some scenarios.
 // https://echarts.apache.org/en/option.html#dataset.id
 type Dataset struct {
-	//source
+	// source
 	Source interface{} `json:"source"`
 }
