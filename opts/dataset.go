@@ -4,6 +4,6 @@ package opts
 // More importantly, it enables data encoding from data to visual, which brings convenience in some scenarios.
 // https://echarts.apache.org/en/option.html#dataset
 type Dataset struct {
-	//source
+	// source
 	Source interface{} `json:"source"`
 }

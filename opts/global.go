@@ -24,7 +24,6 @@ type PageConfiguration struct {
 
 // Initialization contains options for the canvas.
 type Initialization struct {
-
 	// Width of canvas
 	Width string `default:"900px"`
 

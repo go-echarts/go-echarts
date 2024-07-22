@@ -149,8 +149,7 @@ type ToolBoxFeatureSaveAsImage struct {
 // ToolBoxFeatureBrush  brush-selecting icon.
 // https://echarts.apache.org/en/option.html#toolbox.feature.brush
 type ToolBoxFeatureBrush struct {
-
-	//Icons used, whose values are:
+	// Icons used, whose values are:
 	// 'rect': Enabling selecting with rectangle area.
 	// 'polygon': Enabling selecting with any shape.
 	// 'lineX': Enabling horizontal selecting.
@@ -166,10 +165,10 @@ type ToolBoxFeatureDataZoom struct {
 	// Whether to show the tool.
 	Show types.Bool `json:"show,omitempty"`
 
-	//Defines which yAxis should be controlled. By default, it controls all y axes.
-	//If it is set to be false, then no y axis is controlled.
-	//If it is set to be then it controls axis with axisIndex of 3.
-	//If it is set to be [0, 3], it controls the x-axes with axisIndex of 0 and 3.
+	// Defines which yAxis should be controlled. By default, it controls all y axes.
+	// If it is set to be false, then no y axis is controlled.
+	// If it is set to be then it controls axis with axisIndex of 3.
+	// If it is set to be [0, 3], it controls the x-axes with axisIndex of 0 and 3.
 	YAxisIndex interface{} `json:"yAxisIndex,omitempty"`
 
 	// Restored and zoomed title text.

@@ -122,7 +122,6 @@ type LabelLine struct {
 
 // Blur Configurations of blur state. Whether to blur follows the series.
 type Blur struct {
-
 	// the blur style of item
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 
