@@ -180,7 +180,7 @@ type AxisLabel struct {
 	AlignMaxLabel string `json:"alignMaxLabel,omitempty"`
 
 	// Whether to hide overlapped labels.
-	HideOverlap types.Bool `json:"hideOverlap"`
+	HideOverlap types.Bool `json:"hideOverlap,omitempty"`
 
 	// Color of axis label is set to be axisLine.lineStyle.color by default. Callback function is supported,
 	// in the following format:
