@@ -16,6 +16,13 @@ type DataZoom struct {
 	// default 100
 	End float32 `json:"end,omitempty"`
 
+	// Specify whether the layout of dataZoom component is horizontal or vertical. What's more, it indicates whether the horizontal axis or vertical axis is controlled by default in catesian coordinate system.
+	//
+	// Valid values:
+	// 'horizontal': horizontal.
+	// 'vertical': vertical.
+	Orient string `json:"orient,omitempty"`
+
 	// Specify the frame rate of views refreshing, with unit millisecond (ms).
 	// If animation set as true and animationDurationUpdate set as bigger than 0,
 	// you can keep throttle as the default value 100 (or set it as a value bigger than 0),

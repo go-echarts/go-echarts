@@ -159,6 +159,29 @@ type AxisLabel struct {
 	ShowMinLabel types.Bool `json:"showMinLabel"`
 	ShowMaxLabel types.Bool `json:"showMaxLabel"`
 
+	// Alignment of the label of the min tick. If set to be null, it's the same with other labels .
+	//
+	// Options are:
+	//
+	// 'left'
+	// 'center'
+	// 'right'
+	// null (default)
+	AlignMinLabel string `json:"alignMinLabel,omitempty"`
+
+	// Alignment of the label of the max tick. If set to be null, it's the same with other labels .
+	//
+	// Options are:
+	//
+	// 'left'
+	// 'center'
+	// 'right'
+	// null (default)
+	AlignMaxLabel string `json:"alignMaxLabel,omitempty"`
+
+	// Whether to hide overlapped labels.
+	HideOverlap types.Bool `json:"hideOverlap,omitempty"`
+
 	// Color of axis label is set to be axisLine.lineStyle.color by default. Callback function is supported,
 	// in the following format:
 	//
@@ -188,6 +211,24 @@ type AxisLabel struct {
 	LineHeight string `json:"lineHeight,omitempty"`
 
 	BackgroundColor string `json:"backgroundColor,omitempty"`
+
+	// Width of text block.
+	Width int `json:"width,omitempty"`
+
+	// Height of text block.
+	Height int `json:"height,omitempty"`
+
+	// Determine how to display the text when it's overflow. Available when width is set.
+	//
+	// 'truncate' Truncate the text and trailing with ellipsis.
+	// 'break' Break by word
+	// 'breakAll' Break by character.
+	Overflow string `json:"overflow,omitempty"`
+
+	// Ellipsis to be displayed when overflow is set to truncate.
+	//
+	// 'truncate' Truncate the overflow lines.
+	Ellipsis string `json:"ellipsis,omitempty"`
 }
 
 type AxisTick struct {
