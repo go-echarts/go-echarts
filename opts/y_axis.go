@@ -8,6 +8,12 @@ type YAxis struct {
 	// Name of axis.
 	Name string `json:"name,omitempty"`
 
+	// Position the position of y-axis.
+	//options:
+	//'left' (default)
+	//'right'
+	Position string `json:"position,omitempty"`
+
 	// Location of axis name.
 	//
 	// Options:
