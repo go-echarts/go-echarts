@@ -153,7 +153,7 @@ type AxisLabel struct {
 	//    }
 	//    return texts.join('/');
 	// }
-	Formatter string `json:"formatter,omitempty"`
+	Formatter types.FuncStr `json:"formatter,omitempty"`
 
 	ShowMinLabel types.Bool `json:"showMinLabel"`
 	ShowMaxLabel types.Bool `json:"showMaxLabel"`
