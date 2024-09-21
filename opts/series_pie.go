@@ -1,5 +1,7 @@
 package opts
 
+import "github.com/go-echarts/go-echarts/v2/types"
+
 // PieChart is the option set for a pie chart.
 // https://echarts.apache.org/en/option.html#series-pie
 type PieChart struct {
@@ -38,4 +40,26 @@ type PieChart struct {
 	// Array.<number|string>: The first item specifies the inside radius, and the
 	// second item specifies the outside radius. Each item follows the definitions above.
 	Radius interface{}
+}
+
+// PieData
+// https://echarts.apache.org/en/option.html#series-pie.data
+type PieData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+
+	// Whether the data item is selected.
+	Selected types.Bool `json:"selected,omitempty"`
+
+	// The label configuration of a single sector.
+	Label *Label `json:"label,omitempty"`
+
+	// Graphic style of , emphasis is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	// tooltip settings in this series data.
+	Tooltip *Tooltip `json:"tooltip,omitempty"`
 }

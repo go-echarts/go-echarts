@@ -31,25 +31,6 @@ type SunburstChart struct {
 	AnimationDelayUpdate int `json:"animationDelayUpdate,omitempty"`
 }
 
-// BarData
-// https://echarts.apache.org/en/option.html#series-bar.data
-type BarData struct {
-	// Name of data item.
-	Name string `json:"name,omitempty"`
-
-	// Value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-
-	// The style setting of the text label in a single bar.
-	Label *Label `json:"label,omitempty"`
-
-	// ItemStyle settings in this series data.
-	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
-
-	// Tooltip settings in this series data.
-	Tooltip *Tooltip `json:"tooltip,omitempty"`
-}
-
 // Bar3DChart is the option set for a 3D bar chart.
 type Bar3DChart struct {
 	// Shading is the coloring effect of 3D graphics in 3D Bar.
@@ -85,16 +66,6 @@ type BoxPlotData struct {
 
 	// Tooltip settings in this series data.
 	Tooltip *Tooltip `json:"tooltip,omitempty"`
-}
-
-// EffectScatterData
-// https://echarts.apache.org/en/option.html#series-effectScatter.data
-type EffectScatterData struct {
-	// Name of data item.
-	Name string `json:"name,omitempty"`
-
-	// Value of a single data item.
-	Value interface{} `json:"value,omitempty"`
 }
 
 // FunnelData
@@ -289,31 +260,6 @@ type KlineChart struct {
 	BarMaxWidth string
 }
 
-// LineData
-// https://echarts.apache.org/en/option.html#series-line.data
-type LineData struct {
-	// Name of data item.
-	Name string `json:"name,omitempty"`
-
-	// Value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-
-	// Symbol of single data.
-	// Icon types provided by ECharts includes 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
-	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
-	Symbol string `json:"symbol,omitempty"`
-
-	// single data symbol size. It can be set to single numbers like 10, or
-	// use an array to represent width and height. For example, [20, 10] means symbol width is 20, and height is10
-	SymbolSize int `json:"symbolSize,omitempty"`
-
-	// Index of x axis to combine with, which is useful for multiple x axes in one chart.
-	XAxisIndex int `json:"XAxisIndex,omitempty"`
-
-	// Index of y axis to combine with, which is useful for multiple y axes in one chart.
-	YAxisIndex int `json:"YAxisIndex,omitempty"`
-}
-
 // LiquidChart
 // reference https://github.com/ecomfe/echarts-liquidfill
 type LiquidChart struct {
@@ -352,38 +298,6 @@ type MapData struct {
 // ParallelData
 // https://echarts.apache.org/en/option.html#series-parallel.data
 type ParallelData struct {
-	// Name of data item.
-	Name string `json:"name,omitempty"`
-
-	// Value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-}
-
-// PieData
-// https://echarts.apache.org/en/option.html#series-pie.data
-type PieData struct {
-	// Name of data item.
-	Name string `json:"name,omitempty"`
-
-	// Value of a single data item.
-	Value interface{} `json:"value,omitempty"`
-
-	// Whether the data item is selected.
-	Selected types.Bool `json:"selected,omitempty"`
-
-	// The label configuration of a single sector.
-	Label *Label `json:"label,omitempty"`
-
-	// Graphic style of , emphasis is the style when it is highlighted, like being hovered by mouse, or highlighted via legend connect.
-	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
-
-	// tooltip settings in this series data.
-	Tooltip *Tooltip `json:"tooltip,omitempty"`
-}
-
-// RadarData
-// https://echarts.apache.org/en/option.html#series-radar
-type RadarData struct {
 	// Name of data item.
 	Name string `json:"name,omitempty"`
 

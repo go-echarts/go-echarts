@@ -52,3 +52,22 @@ type BarChart struct {
 	// then it will be adopted by all 'bar' series in the coordinate system.
 	BarCategoryGap string
 }
+
+// BarData
+// https://echarts.apache.org/en/option.html#series-bar.data
+type BarData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+
+	// The style setting of the text label in a single bar.
+	Label *Label `json:"label,omitempty"`
+
+	// ItemStyle settings in this series data.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	// Tooltip settings in this series data.
+	Tooltip *Tooltip `json:"tooltip,omitempty"`
+}
