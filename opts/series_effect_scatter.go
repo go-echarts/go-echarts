@@ -35,3 +35,13 @@ type EffectScatterChart struct {
 	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
 	SymbolKeepAspect types.Bool
 }
+
+// EffectScatterData
+// https://echarts.apache.org/en/option.html#series-effectScatter.data
+type EffectScatterData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+}

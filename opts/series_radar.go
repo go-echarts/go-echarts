@@ -22,3 +22,13 @@ type RadarChart struct {
 	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
 	SymbolKeepAspect types.Bool
 }
+
+// RadarData
+// https://echarts.apache.org/en/option.html#series-radar
+type RadarData struct {
+	// Name of data item.
+	Name string `json:"name,omitempty"`
+
+	// Value of a single data item.
+	Value interface{} `json:"value,omitempty"`
+}
