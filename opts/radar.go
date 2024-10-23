@@ -22,6 +22,9 @@ type RadarComponent struct {
 
 	// Split line of axis in grid area.
 	SplitLine *SplitLine `json:"splitLine,omitempty"`
+
+	// AxisLine controls settings related to axis line.
+	AxisLine *AxisLine `json:"axisLine,omitempty"`
 }
 
 // Indicator is the option set for a radar chart.
