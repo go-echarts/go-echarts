@@ -558,6 +558,45 @@ type Detail struct {
 	OffsetCenter []string `json:"offsetCenter,omitempty"`
 }
 
+// Pointer is the options set for Pointer (e.g. on a gauge).
+type Pointer struct {
+	// Whether to show the pointer.
+	Show types.Bool `json:"show,omitempty"` // Whether to show the pointer.
+
+	// Whether to show the pointer above detail and title.
+	ShowAbove types.Bool `json:"ShowAbove,omitempty"`
+
+	// Icon of the legend items.
+	// Icon types provided by ECharts includes
+	// 'circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow', 'none'
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
+	// An image URL example:
+	//   'image://http://example.website/a/b.png'
+	// A dataURI example:
+	//
+	// 'image://data:image/gif;base64,KOY......'
+	// Icons can be set to arbitrary vector path via 'path://' in ECharts.
+	// As compared with a raster image, vector paths prevent jagging and blurring when scaled, and have better control over changing colors.
+	// For example:
+	//
+	// 'path://M30.9,53.2C16.8,...'
+	Icon string `json:"icon,omitempty"`
+
+	// Gauge
+	// Value position relative to the center of chart
+	// OffsetCenter is provided as [x, y] where x and y are either a number (px, provided
+	// as string) or a percentage.
+	// Positive values move the chart value to [right, bottom], negative values vice
+	// versa.
+	OffsetCenter []string `json:"offsetCenter,omitempty"`
+
+	// The length of pointer which could be absolute value and also the percentage relative to radius.
+	Length float64 `json:"length,omitempty"`
+
+	// The style of pointer.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+}
+
 // CustomData
 // https://echarts.apache.org/en/option.html#series-custom.data
 type CustomData struct {
