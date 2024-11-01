@@ -27,7 +27,7 @@ type RadarComponent struct {
 	AxisLine *AxisLine `json:"axisLine,omitempty"`
 
 	// The start angle of coordinate, which is the angle of the first indicator axis.
-	StartAngle float64 `json:"startAngle,omitempty"`
+	StartAngle int `json:"startAngle,omitempty"`
 }
 
 // Indicator is the option set for a radar chart.
