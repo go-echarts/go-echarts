@@ -560,10 +560,10 @@ type Detail struct {
 
 // Pointer is the options set for Pointer (e.g. on a gauge).
 type Pointer struct {
-	// Whether to show the pointer.
-	Show types.Bool `json:"show,omitempty"` // Whether to show the pointer.
+	// Whether to show the pointer, default true.
+	Show types.Bool `json:"show,omitempty"`
 
-	// Whether to show the pointer above detail and title.
+	// Whether to show the pointer above detail and title, default true.
 	ShowAbove types.Bool `json:"ShowAbove,omitempty"`
 
 	// Icon of the legend items.
@@ -590,8 +590,8 @@ type Pointer struct {
 	// versa.
 	OffsetCenter []string `json:"offsetCenter,omitempty"`
 
-	// The length of pointer which could be absolute value and also the percentage relative to radius.
-	Length float64 `json:"length,omitempty"`
+	// The length of pointer which could be absolute value and also the percentage relative to radius, e.g. '60' or '60%'.
+	Length string `json:"length,omitempty"`
 
 	// The style of pointer.
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
