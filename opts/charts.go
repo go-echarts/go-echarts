@@ -533,7 +533,7 @@ type Progress struct {
 	Show types.Bool `json:"show,omitempty"`
 
 	// Whether the progress overlaps when there are multiple groups of data, default is true.
-	OverLap types.Bool `json:"overlap,omitempty"`
+	Overlap types.Bool `json:"overlap,omitempty"`
 
 	// Width of the progress in px
 	Width int `json:"width,omitempty"`
