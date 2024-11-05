@@ -56,7 +56,7 @@ type AxisName struct {
 	Show types.Bool `json:"show,omitempty"`
 
 	// The formatter of indicator's name, using string template, the template variable should be the indicator's name {value}
-	Formatter string `json:"formatter,omitempty"`
+	Formatter types.FuncStr `json:"formatter,omitempty"`
 
 	// Font color
 	Color string `json:"color,omitempty"`
