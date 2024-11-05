@@ -159,6 +159,9 @@ type ItemStyle struct {
 	// Kline Down candle color
 	Color0 string `json:"color0,omitempty"`
 
+	// Geo area filling color
+	AreaColor string `json:"areaColor,omitempty"`
+
 	// BorderColor is the hart border color
 	// Kline  Up candle border color
 	BorderColor string `json:"borderColor,omitempty"`
