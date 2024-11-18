@@ -67,6 +67,12 @@ type BaseConfiguration struct {
 	AnimationEasingUpdate   string        `json:"animationEasingUpdate,omitempty"`
 	AnimationDelayUpdate    types.FuncStr `json:"animationDelayUpdate,omitempty"`
 
+	//Progressive specifies the amount of graphic elements that can be rendered within a frame (about 16ms) if "progressive rendering" enabled.
+	//By default, progressive is auto-enabled when data amount is bigger than progressiveThreshold
+	Progressive types.Int `json:"progressive,omitempty"`
+	//ProgressiveThreshold number If current data amount is over the threshold, "progressive rendering" is enabled, default 3000
+	ProgressiveTreshold types.Int `json:"progressiveTreshold,omitempty"`
+
 	// Array of datasets, managed by AddDataset()
 	DatasetList []opts.Dataset `json:"dataset,omitempty"`
 
@@ -119,6 +125,15 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 
 	if bc.Animation != nil {
 		obj["animation"] = bc.Animation
+	}
+
+	if bc.Progressive != nil {
+		obj["progressive"] = bc.Animation
+
+	}
+
+	if bc.ProgressiveTreshold != nil {
+		obj["progressiveTreshold"] = bc.ProgressiveTreshold
 	}
 
 	// if only one item, use it directly instead of an Array
@@ -286,6 +301,20 @@ func WithTitleOpts(opt opts.Title) GlobalOpts {
 func WithAnimation(enable bool) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.Animation = opts.Bool(enable)
+	}
+}
+
+// WithProgressive allows to set amount of graphic elements rendered in a frame
+func WithProgressive(opt int) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.Progressive = opts.Int(opt)
+	}
+}
+
+// Allows to set treshold for progressive rendering
+func WithProgressiveThreshold(opt int) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.ProgressiveTreshold = opts.Int(opt)
 	}
 }
 
