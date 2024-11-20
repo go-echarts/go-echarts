@@ -17,24 +17,28 @@ The seamless function is
     render.MakeChartSnapshot(myChart.RenderContent(), "my-chart.png")
 ```
 
-Furthermore, if you wanna get it all by yourself, a fully `SnapshotConfig` config here.
+Furthermore, if you want to get it all by yourself, a fully `SnapshotConfig` config here.
 
 ```go
 type SnapshotConfig struct {
-// RenderContent the content bytes of charts after rendered
-RenderContent []byte
-// Path the path to save image
-Path string
-// FileName image name
-FileName string
-// Suffix image format, png, jpeg
-Suffix string
-// Quality the generated image quality, aka pixelRatio
-Quality int
-// KeepHtml whether keep the generated html also, default false
-KeepHtml bool
-// HtmlPath where to keep the generated html, default same to image path
-HtmlPath string
+    // RenderContent the content bytes of charts after rendered
+    RenderContent []byte
+    // Path the path to save image
+    Path string
+    // FileName image name
+    FileName string
+    // Suffix image format, png, jpeg
+    Suffix string
+    // Quality the generated image quality, aka pixelRatio
+    Quality int
+    // KeepHtml whether keep the generated html also, default false
+    KeepHtml bool
+    // HtmlPath where to keep the generated html, default same to image path
+    HtmlPath string
+    // Timeout  the timeout config
+    Timeout time.Duration
+    // MultiCharts Only enable it when you have multi charts in the single page, better to set larger quality
+    MultiCharts bool
 }
 ```
 
