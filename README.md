@@ -176,10 +176,11 @@ func httpserver(w http.ResponseWriter, _ *http.Request) {
 		}))
 
 	// Put data into instance
+        needSmooth := true
 	line.SetXAxis([]string{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"}).
 		AddSeries("Category A", generateLineItems()).
 		AddSeries("Category B", generateLineItems()).
-		SetSeriesOptions(charts.WithLineChartOpts(opts.LineChart{Smooth: true}))
+		SetSeriesOptions(charts.WithLineChartOpts(opts.LineChart{Smooth: &needSmooth}))
 	line.Render(w)
 }
 
