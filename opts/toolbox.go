@@ -119,6 +119,8 @@ type ToolBoxFeatureUserDefined struct {
 	Title string `json:"title,omitempty"`
 
 	// Icon for the tool.
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
+	// Icons can be also set to arbitrary vector path via 'path://', like ''path://M30.9,53.2C16.8,53.2,5.3,41......'
 	Icon string `json:"icon,omitempty"`
 
 	// On click handler in JavaScript. Use opts.FuncOpts to embed JavaScript.
@@ -144,6 +146,11 @@ type ToolBoxFeatureSaveAsImage struct {
 
 	// Title for the tool.
 	Title string `json:"title,omitempty"`
+
+	// Icon for the tool.
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
+	// Icons can be also set to arbitrary vector path via 'path://', like ''path://M30.9,53.2C16.8,53.2,5.3,41......'
+	Icon string `json:"icon,omitempty"`
 }
 
 // ToolBoxFeatureBrush  brush-selecting icon.
@@ -171,6 +178,13 @@ type ToolBoxFeatureDataZoom struct {
 	// If it is set to be [0, 3], it controls the x-axes with axisIndex of 0 and 3.
 	YAxisIndex interface{} `json:"yAxisIndex,omitempty"`
 
+	// Icon for the tool.
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
+	// Icons can be also set to arbitrary vector path via 'path://', like ''path://M30.9,53.2C16.8,53.2,5.3,41......'
+	// m["zoom"] = "image://url.."
+	// m["back"] = "path://M78..."
+	Icon map[string]string `json:"icon"`
+
 	// Restored and zoomed title text.
 	// m["zoom"] = "area zooming"
 	// m["back"] = "restore area zooming"
@@ -185,6 +199,11 @@ type ToolBoxFeatureDataView struct {
 
 	// title for the tool.
 	Title string `json:"title,omitempty"`
+
+	// Icon for the tool.
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
+	// Icons can be also set to arbitrary vector path via 'path://', like ''path://M30.9,53.2C16.8,53.2,5.3,41......'
+	Icon string `json:"icon,omitempty"`
 
 	// There are 3 names in data view
 	// you could set them like this: []string["data view", "turn off", "refresh"]
@@ -202,4 +221,9 @@ type ToolBoxFeatureRestore struct {
 
 	// title for the tool.
 	Title string `json:"title,omitempty"`
+
+	// Icon for the tool.
+	// It can be set to an image with 'image://url' , in which URL is the link to an image, or dataURI of an image.
+	// Icons can be also set to arbitrary vector path via 'path://', like ''path://M30.9,53.2C16.8,53.2,5.3,41......'
+	Icon string `json:"icon,omitempty"`
 }
