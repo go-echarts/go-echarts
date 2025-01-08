@@ -100,6 +100,9 @@ type XAxis struct {
 	// Split line of X axis in grid area.
 	SplitLine *SplitLine `json:"splitLine,omitempty"`
 
+	// Settings related to axis line.
+	AxisLine *AxisLine `json:"axisLine,omitempty"`
+
 	// Settings related to axis label.
 	AxisLabel *AxisLabel `json:"axisLabel,omitempty"`
 
