@@ -6,6 +6,7 @@ import (
 
 type Overlaper interface {
 	overlap() MultiSeries
+	getRectChart() *RectChart
 }
 
 // XYAxis represent the X and Y axis in the rectangular coordinates.
@@ -73,6 +74,10 @@ func (rc *RectChart) overlap() MultiSeries {
 	return rc.MultiSeries
 }
 
+func (rc *RectChart) getRectChart() *RectChart {
+	return rc
+}
+
 // SetGlobalOptions sets options for the RectChart instance.
 func (rc *RectChart) SetGlobalOptions(options ...GlobalOpts) *RectChart {
 	rc.RectConfiguration.setRectGlobalOptions(options...)
@@ -84,6 +89,18 @@ func (rc *RectChart) SetGlobalOptions(options ...GlobalOpts) *RectChart {
 // Supported charts: Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap/Custom
 func (rc *RectChart) Overlap(a ...Overlaper) {
 	for i := 0; i < len(a); i++ {
+		rc.MultiSeries = append(rc.MultiSeries, a[i].overlap()...)
+	}
+}
+
+// OverlapWithYAxis extend Overlap with the Y axis
+func (rc *RectChart) OverlapWithYAxis(a ...Overlaper) {
+	for i := 0; i < len(a); i++ {
+		rect := a[i].getRectChart()
+		rect.MultiSeries.SetSeriesOptions(WithSeriesOpts(func(s *SingleSeries) {
+			s.YAxisIndex = len(rc.YAxisList)
+		}))
+		rc.ExtendYAxis(rect.YAxisList...)
 		rc.MultiSeries = append(rc.MultiSeries, a[i].overlap()...)
 	}
 }
