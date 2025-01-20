@@ -38,6 +38,13 @@ type Title struct {
 	// TextStyle of the sub title.
 	SubtitleStyle *TextStyle `json:"subtextStyle,omitempty"`
 
+	// The horizontal align of the component (including "text" and "subtext").
+	// Optional values: 'auto', 'left', 'right', 'center'.
+	TextAlign string `json:"textAlign ,omitempty"`
+	// The vertical align of the component (including "text" and "subtext").
+	// Optional values: 'auto', 'top', 'bottom', 'middle'.
+	TextVerticalAlign string `json:"textVerticalAlign,omitempty"`
+
 	// Distance between title component and the left side of the container.
 	// left value can be instant pixel value like 20; it can also be a percentage
 	// value relative to container width like '20%'; and it can also be 'left', 'center', or 'right'.
