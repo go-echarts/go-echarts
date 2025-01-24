@@ -89,6 +89,12 @@ type Tooltip struct {
 
 	ValueFormatter string `json:"valueFormatter,omitempty"`
 
+	// The border color of tooltip's floating layer.
+	BorderColor string `json:"borderColor,omitempty"`
+
+	// The background color of tooltip's floating layer. e.g. 'rgba(50,50,50,0.7)'
+	BackgroundColor string `json:"backgroundColor,omitempty"`
+
 	// Configuration item for axisPointer
 	AxisPointer *AxisPointer `json:"axisPointer,omitempty"`
 }
