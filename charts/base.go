@@ -195,8 +195,8 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 		obj["color"] = bc.Colors
 	}
 
-	if bc.BackgroundColor != "" {
-		obj["backgroundColor"] = bc.BackgroundColor
+	if bc.Initialization.BackgroundColor != "" {
+		obj["backgroundColor"] = bc.Initialization.BackgroundColor
 	}
 
 	if len(bc.GridList) > 0 {
