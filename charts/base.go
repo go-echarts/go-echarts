@@ -3,13 +3,14 @@ package charts
 import (
 	"bytes"
 	"encoding/json"
+	"html/template"
+
 	"github.com/go-echarts/go-echarts/v2/datasets"
 	"github.com/go-echarts/go-echarts/v2/event"
 	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/render"
 	"github.com/go-echarts/go-echarts/v2/types"
 	"github.com/go-echarts/go-echarts/v2/util"
-	"html/template"
 )
 
 var defaultConfigurationVisitor ConfigurationVisitor = BaseConfigurationVisitor{}
