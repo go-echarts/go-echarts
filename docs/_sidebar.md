@@ -6,6 +6,7 @@
     - [Event and Action](en-us/event-and-action)
     - [Chart Render](en-us/render)
 - Advanced
+    - [ConfigurationVisitor](en-us/visitor)
     - [Render to Image](en-us/render-to-image)
 - Chart Configration
     - [Global Option Summary](en-us/options/global)

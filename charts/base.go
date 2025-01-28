@@ -80,8 +80,8 @@ type BaseConfiguration struct {
 	DataZoomList  []opts.DataZoom  `json:"datazoom,omitempty"`
 	VisualMapList []opts.VisualMap `json:"visualmap,omitempty"`
 
-	EventListeners       []event.Listener     `json:"-"`
-	configurationVisitor ConfigurationVisitor `json:"-"`
+	EventListeners       []event.Listener `json:"-"`
+	configurationVisitor ConfigurationVisitor
 
 	// ParallelAxisList represents the component list which is the coordinate axis for parallel coordinate.
 	ParallelAxisList []opts.ParallelAxis
