@@ -14,5 +14,8 @@
 {{- range .CustomizedCSSAssets.Values }}
     <link href="{{ . }}" rel="stylesheet">
 {{- end }}
+{{- range .CustomizedHeaders.Values }}
+    {{ . | safeHTML }}
+{{- end }}
 </head>
 {{ end }}

@@ -39,6 +39,9 @@ type Renderer interface {
 // MustTemplate creates a new template with the given name and parsed contents.
 func MustTemplate(name string, contents []string) *template.Template {
 	tpl := template.New(name).Funcs(template.FuncMap{
+		"safeHTML": func(s interface{}) template.HTML {
+			return template.HTML(fmt.Sprint(s))
+		},
 		"safeJS": func(s interface{}) template.JS {
 			return template.JS(fmt.Sprint(s))
 		},
