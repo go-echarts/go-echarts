@@ -17,12 +17,14 @@ func TestAssets(t *testing.T) {
 
 	assetsEntity.JSAssets.Add("jquery.min.js")
 	assetsEntity.AddCustomizedJSAssets("http://myhost/my.assets.js")
+	assetsEntity.AddCustomizedHeaders(`<script src="assets/go-echarts/example.js"></script>`)
 
 	const host = "https://go-echarts.github.io/go-echarts-assets/assets/"
 
 	assetsEntity.Validate(host)
 	assert.Equal(t, []string{host + "echarts.min.js", host + "jquery.min.js"}, assetsEntity.JSAssets.Values)
 	assert.Equal(t, []string{"http://myhost/my.assets.js"}, assetsEntity.CustomizedJSAssets.Values)
+	assert.Equal(t, []string{`<script src="assets/go-echarts/example.js"></script>`}, assetsEntity.CustomizedHeaders.Values)
 }
 
 func TestGenerateUniqueID(t *testing.T) {

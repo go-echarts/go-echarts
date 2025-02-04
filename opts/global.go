@@ -16,10 +16,9 @@ const (
 type PageConfiguration struct {
 	// HTML title
 	PageTitle string `default:"Awesome go-echarts"`
+
 	// Assets host
 	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
-	// Custom host
-	CustomAssetsHost string
 }
 
 // Initialization contains options for the canvas.
@@ -44,10 +43,9 @@ type Initialization struct {
 
 	// Page configurations duplicate, a shortcut for single chart build with page settings
 	PageTitle string `default:"Awesome go-echarts"`
+
 	// Assets host
 	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
-	// Custom host
-	CustomAssetsHost string
 }
 
 // Validate validates the initialization configurations.
@@ -67,6 +65,7 @@ type Assets struct {
 
 	CustomizedJSAssets  types.OrderedSet
 	CustomizedCSSAssets types.OrderedSet
+	CustomizedHeaders   types.OrderedSet
 }
 
 // InitAssets inits the static assets' storage.
@@ -76,6 +75,7 @@ func (opt *Assets) InitAssets() {
 
 	opt.CustomizedJSAssets.Init()
 	opt.CustomizedCSSAssets.Init()
+	opt.CustomizedHeaders.Init()
 }
 
 // ClearPresetAssets clear both the preset JS and CSS static assets.
@@ -105,6 +105,14 @@ func (opt *Assets) AddCustomizedJSAssets(assets ...string) {
 func (opt *Assets) AddCustomizedCSSAssets(assets ...string) {
 	for i := 0; i < len(assets); i++ {
 		opt.CustomizedCSSAssets.Add(assets[i])
+	}
+}
+
+// AddCustomizedHeaders adds the customized headers, should be valid with header tag, e.g.
+// <script src="assets/go-echarts/example.js"></script>
+func (opt *Assets) AddCustomizedHeaders(headers ...string) {
+	for i := 0; i < len(headers); i++ {
+		opt.CustomizedHeaders.Add(headers[i])
 	}
 }
 

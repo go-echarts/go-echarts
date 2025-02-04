@@ -71,6 +71,11 @@ func (page *Page) AddCharts(charts ...Charter) *Page {
 		for _, v := range assets.CSSAssets.Values {
 			page.CSSAssets.Add(v)
 		}
+
+		for _, v := range assets.CustomizedHeaders.Values {
+			page.CustomizedHeaders.Add(v)
+		}
+	
 		charts[i].Validate()
 		page.Charts = append(page.Charts, charts[i])
 	}
