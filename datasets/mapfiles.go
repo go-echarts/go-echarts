@@ -1,6 +1,6 @@
 package datasets
 
-var MapFileNames = map[string]string{
+var PresetMapFileNames = map[string]string{
 	"china":       "china",
 	"world":       "world",
 	"广东":          "guangdong",
