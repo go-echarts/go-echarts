@@ -28,7 +28,10 @@ func NewMap() *Map {
 // RegisterMapType registers the given mapType.
 func (c *Map) RegisterMapType(mapType string) {
 	c.mapType = mapType
-	c.JSAssets.Add("maps/" + datasets.MapFileNames[mapType] + ".js")
+	mapFile, preset := datasets.PresetMapFileNames[mapType]
+	if preset {
+		c.JSAssets.Add("maps/" + mapFile + ".js")
+	}
 }
 
 // AddSeries adds new data sets.

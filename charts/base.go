@@ -402,7 +402,10 @@ func WithRadarComponentOpts(opt opts.RadarComponent) GlobalOpts {
 func WithGeoComponentOpts(opt opts.GeoComponent) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.GeoComponent = opt
-		bc.JSAssets.Add("maps/" + datasets.MapFileNames[opt.Map] + ".js")
+		mapFile, preset := datasets.PresetMapFileNames[opt.Map]
+		if preset {
+			bc.JSAssets.Add("maps/" + mapFile + ".js")
+		}
 	}
 }
 
