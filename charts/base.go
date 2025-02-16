@@ -53,8 +53,7 @@ type BaseConfiguration struct {
 	// Colors is the color list of palette.
 	// If no color is set in series, the colors would be adopted sequentially and circularly
 	// from this list as the colors of series.
-	Colors      []string
-	appendColor []string // append customize color to the Colors(reverse order)
+	Colors []string
 
 	// Animation configs
 	// Animation whether enable the animation, default true
@@ -72,7 +71,7 @@ type BaseConfiguration struct {
 	//By default, progressive is auto-enabled when data amount is bigger than progressiveThreshold
 	Progressive types.Int `json:"progressive,omitempty"`
 	//ProgressiveThreshold number If current data amount is over the threshold, "progressive rendering" is enabled, default 3000
-	ProgressiveTreshold types.Int `json:"progressiveTreshold,omitempty"`
+	ProgressiveThreshold types.Int `json:"progressiveThreshold,omitempty"`
 
 	// Array of datasets, managed by AddDataset()
 	DatasetList []opts.Dataset `json:"dataset,omitempty"`
@@ -116,7 +115,7 @@ func (bc *BaseConfiguration) JSONNotEscaped() template.HTML {
 	buff := bytes.NewBufferString("")
 	enc := json.NewEncoder(buff)
 	enc.SetEscapeHTML(false)
-	enc.Encode(obj)
+	_ = enc.Encode(obj)
 
 	return template.HTML(buff.String())
 }
@@ -143,8 +142,8 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 
 	}
 
-	if bc.ProgressiveTreshold != nil {
-		obj["progressiveTreshold"] = bc.ProgressiveTreshold
+	if bc.ProgressiveThreshold != nil {
+		obj["progressiveThreshold"] = bc.ProgressiveThreshold
 	}
 
 	// if only one item, use it directly instead of an Array
@@ -323,10 +322,10 @@ func WithProgressive(opt int) GlobalOpts {
 	}
 }
 
-// Allows to set treshold for progressive rendering
+// WithProgressiveThreshold Allows to set treshold for progressive rendering
 func WithProgressiveThreshold(opt int) GlobalOpts {
 	return func(bc *BaseConfiguration) {
-		bc.ProgressiveTreshold = opts.Int(opt)
+		bc.ProgressiveThreshold = opts.Int(opt)
 	}
 }
 
