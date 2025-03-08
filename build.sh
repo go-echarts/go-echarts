@@ -13,6 +13,7 @@ function pre_check() {
 
 function format() {
     # go install mvdan.cc/gofumpt@latest
+    # go install golang.org/x/tools/cmd/goimports@v0.18.0
     go fmt ./... && ls -d */ | xargs goimports -w
 }
 
