@@ -1,8 +1,9 @@
 package types
 
-// Bool a wrapper type of *bool, use opts.Bool to simply convert it.
 type (
-	Bool   *bool
+	// Bool a wrapper type of *bool, use opts.Bool to simply convert it.
+	Bool *bool
+	// Int a wrapper type of *int, use opts.Int to simply convert it.
 	Int    *int
 	Float  *float32
 	String string
