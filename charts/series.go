@@ -96,6 +96,11 @@ type SingleSeries struct {
 	Top               string      `json:"top,omitempty"`
 	Bottom            string      `json:"bottom,omitempty"`
 
+	// Sankey
+	NodeWidth types.Int `json:"nodeWidth,omitempty"`
+	NodeGap   types.Int `json:"nodeGap,omitempty"`
+	NodeAlign string    `json:"nodeAlign,omitempty"`
+
 	// Radar
 	RadarIndex int `json:"radarIndex,omitempty"`
 
