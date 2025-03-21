@@ -29,6 +29,7 @@ type BaseConfiguration struct {
 	opts.RadiusAxis   `json:"radiusAxis"`
 	opts.Brush        `json:"brush"`
 	*opts.AxisPointer `json:"axisPointer"`
+	*opts.Aria        `json:"aria"`
 	Calendar          []*opts.Calendar `json:"calendar"`
 
 	render.Renderer        `json:"-"`
@@ -154,6 +155,10 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 	}
 	if bc.AxisPointer != nil {
 		obj["axisPointer"] = visitor.VisitAxisPointer(bc.AxisPointer)
+	}
+
+	if bc.Aria != nil {
+		obj["aria"] = visitor.VisitAria(bc.Aria)
 	}
 
 	if bc.hasPolar {
@@ -448,5 +453,11 @@ func WithGridOpts(opt ...opts.Grid) GlobalOpts {
 func WithAxisPointerOpts(opt *opts.AxisPointer) GlobalOpts {
 	return func(bc *BaseConfiguration) {
 		bc.AxisPointer = opt
+	}
+}
+
+func WithAriaOpts(opt *opts.Aria) GlobalOpts {
+	return func(bc *BaseConfiguration) {
+		bc.Aria = opt
 	}
 }

@@ -15,6 +15,7 @@ type ConfigurationVisitor interface {
 	VisitSeriesOpt(series MultiSeries) interface{}
 	VisitDatasets(datasets ...opts.Dataset) interface{}
 	VisitAxisPointer(axisPointer *opts.AxisPointer) interface{}
+	VisitAria(axisPointer *opts.Aria) interface{}
 	VisitPolar(polar opts.Polar) interface{}
 	VisitAngleAxis(angleAxis opts.AngleAxis) interface{}
 	VisitRadiusAxis(radiusAxis opts.RadiusAxis) interface{}
@@ -67,6 +68,10 @@ func (b BaseConfigurationVisitor) VisitDatasets(datasets ...opts.Dataset) interf
 
 func (b BaseConfigurationVisitor) VisitAxisPointer(axisPointer *opts.AxisPointer) interface{} {
 	return axisPointer
+}
+
+func (b BaseConfigurationVisitor) VisitAria(aria *opts.Aria) interface{} {
+	return aria
 }
 
 func (b BaseConfigurationVisitor) VisitPolar(polar opts.Polar) interface{} {
