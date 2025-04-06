@@ -51,6 +51,9 @@ type BarChart struct {
 	// This attribute should be set on the last 'bar' series in the coordinate system,
 	// then it will be adopted by all 'bar' series in the coordinate system.
 	BarCategoryGap string
+
+	// Specify bar width. Absolute value (like 10) or percentage (like '20%', according to band width) can be used. Auto adapt by default.
+	BarWidth string
 }
 
 // BarData
