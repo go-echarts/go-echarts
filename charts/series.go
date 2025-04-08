@@ -287,6 +287,7 @@ func WithBarChartOpts(opt opts.BarChart) SeriesOpts {
 		s.Stack = opt.Stack
 		s.BarGap = opt.BarGap
 		s.BarCategoryGap = opt.BarCategoryGap
+		s.BarWidth = opt.BarWidth
 	}
 }
 
