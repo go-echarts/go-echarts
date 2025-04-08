@@ -248,6 +248,8 @@ type AxisTick struct {
 
 	// Align axis tick with label, which is available only when boundaryGap is set to be true in category axis.
 	AlignWithLabel types.Bool `json:"alignWithLabel,omitempty"`
+
+	LineStyle *LineStyle `json:"lineStyle,omitempty"`
 }
 
 // AxisLine controls settings related to axis line.
