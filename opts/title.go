@@ -40,7 +40,7 @@ type Title struct {
 
 	// The horizontal align of the component (including "text" and "subtext").
 	// Optional values: 'auto', 'left', 'right', 'center'.
-	TextAlign string `json:"textAlign ,omitempty"`
+	TextAlign string `json:"textAlign,omitempty"`
 	// The vertical align of the component (including "text" and "subtext").
 	// Optional values: 'auto', 'top', 'bottom', 'middle'.
 	TextVerticalAlign string `json:"textVerticalAlign,omitempty"`
