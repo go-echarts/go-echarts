@@ -88,11 +88,12 @@ Normally, you don't need it when you don't need do functions on chart, since go-
 
 ---
 
-# Where to find options you need
+# Where to find options you need  
 
 go-echarts' options are almost align to [echarts' official options](https://echarts.apache.org/en/option.html#title).  
 If you want to find the options of your specific charts, all in the echarts options list.  
 And if you find some options go-echarts hasn't supported yet, kindly create a PR or raise an option request.
+
 ---
 
 # Where to find custom echarts resources
