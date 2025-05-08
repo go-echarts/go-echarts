@@ -54,7 +54,8 @@ There support layout types:
 
 Any changes on page level should compatible to chart level, otherwise, it may has side effect.
 
-!> Attention :
+!> **Attention**
 
 - In `Page Container`, all the config for page related options on chart level will be ignored, such as `PageTitile`.
-- Only clear preset assets on page level, the charts level's preset assets will replenish it, maybe you need clear both.  
+- If you want to reset Page assets entirely, only clear preset assets on page level might not work，since the charts level's preset assets
+  will replenish it。you need clear all the page assets related options in both Page and Charts level.  
