@@ -9,7 +9,7 @@ import (
 type SingleSeries struct {
 	Name string `json:"name,omitempty"`
 	Type string `json:"type,omitempty"`
-	Id   string `json:"id,omitempty"`
+	SeriesId string `json:"id,omitempty"`
 
 	// Rectangular charts
 	// Line | Bar
@@ -187,9 +187,9 @@ func WithSeriesOpts(opf SingleSeriesOptFunc) SeriesOpts {
 	}
 }
 
-func WithId(id string) SeriesOpts {
+func WithSeriesId(id string) SeriesOpts {
 	return func(s *SingleSeries) {
-		s.Id = id
+		s.SeriesId = id
 	}
 }
 
