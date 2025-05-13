@@ -9,7 +9,7 @@ import (
 type SingleSeries struct {
 	Name string `json:"name,omitempty"`
 	Type string `json:"type,omitempty"`
-	Id string `json:"id,omitempty"`
+	Id   string `json:"id,omitempty"`
 
 	// Rectangular charts
 	// Line | Bar
