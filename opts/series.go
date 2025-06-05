@@ -516,7 +516,7 @@ type AreaStyle struct {
 	Origin string `json:"origin,omitempty"`
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
-	Opacity float32 `json:"opacity,omitempty"`
+	Opacity float32 `json:"opacity"`
 }
 
 // GraphForce Configuration items about force-directed layout. Force-directed layout simulates
