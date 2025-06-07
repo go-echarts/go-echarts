@@ -1,8 +1,9 @@
 name: Build & Test
 
 on:
-  push:
-    branches: [ "master" ]
+# disable integration test run for breaking changes adoption
+#  push:
+#    branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
