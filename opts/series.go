@@ -179,7 +179,7 @@ type ItemStyle struct {
 	GapWidth float32 `json:"gapWidth,omitempty"`
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
-	Opacity float32 `json:"opacity,omitempty"`
+	Opacity types.Float `json:"opacity,omitempty"`
 
 	// ShadowBlur Size of shadow blur.
 	// This attribute should be used along with shadowColor,shadowOffsetX, shadowOffsetY to set shadow to component.
@@ -493,7 +493,7 @@ type LineStyle struct {
 	Type string `json:"type,omitempty"`
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
-	Opacity float32 `json:"opacity,omitempty"`
+	Opacity types.Float `json:"opacity,omitempty"`
 
 	// Curveness of edge. The values from 0 to 1 could be set.
 	// it would be larger as the the value becomes larger. default 0
@@ -516,7 +516,7 @@ type AreaStyle struct {
 	Origin string `json:"origin,omitempty"`
 
 	// Opacity of the component. Supports value from 0 to 1, and the component will not be drawn when set to 0.
-	Opacity float32 `json:"opacity"`
+	Opacity types.Float `json:"opacity,omitempty"`
 }
 
 // GraphForce Configuration items about force-directed layout. Force-directed layout simulates
