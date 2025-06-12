@@ -260,13 +260,8 @@ func (bc *BaseConfiguration) initSeriesColors() {
 	}
 }
 
-func (bc *BaseConfiguration) insertSeriesColors(colors []string) {
-	reversed := reverseSlice(colors)
-	for i := 0; i < len(reversed); i++ {
-		bc.Colors = append(bc.Colors, "")
-		copy(bc.Colors[1:], bc.Colors[0:])
-		bc.Colors[0] = reversed[i]
-	}
+func (bc *BaseConfiguration) setSeriesColors(colors []string) {
+	bc.Colors = colors
 }
 
 func (bc *BaseConfiguration) setBaseGlobalOptions(opts ...GlobalOpts) {
@@ -430,16 +425,8 @@ func WithParallelAxisList(opt []opts.ParallelAxis) GlobalOpts {
 // WithColorsOpts sets the color.
 func WithColorsOpts(opt opts.Colors) GlobalOpts {
 	return func(bc *BaseConfiguration) {
-		bc.insertSeriesColors(opt)
+		bc.setSeriesColors(opt)
 	}
-}
-
-// reverseSlice reverses the string slice.
-func reverseSlice(s []string) []string {
-	for i, j := 0, len(s)-1; i < j; i, j = i+1, j-1 {
-		s[i], s[j] = s[j], s[i]
-	}
-	return s
 }
 
 // WithGridOpts sets the List of the grid.
