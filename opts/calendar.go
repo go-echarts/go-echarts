@@ -61,6 +61,8 @@ type CalendarLabel struct {
 	// Whether to show the label.
 	Show types.Bool `json:"show,omitempty"`
 
+	FirstDay int `json:"firstDay,omitempty"`
+
 	// The margin between the month label and the axis line.
 	Margin float64 `json:"margin,omitempty"`
 
