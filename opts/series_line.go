@@ -46,8 +46,6 @@ type LineChart struct {
 	Stack string
 
 	// Whether to show as smooth curve.
-	// If is typed in types.Boolean, then it means whether to enable smoothing. If is
-	// typed in number, valued from 0 to 1, then it means smoothness. A smaller value makes it less smooth.
 	Smooth types.Bool
 
 	// Whether to connect the line across null points.
