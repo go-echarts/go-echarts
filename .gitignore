@@ -18,3 +18,4 @@ examples/
 go-echarts-pipeline/
 snapshot-chromedp/
 go.work*
+/test_issue/

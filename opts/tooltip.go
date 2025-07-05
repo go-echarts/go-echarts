@@ -87,6 +87,8 @@ type Tooltip struct {
 	// }
 	Formatter types.FuncStr `json:"formatter,omitempty"`
 
+	// ValueFormatter Callback function for formatting the value section in tooltip.
+	// valueFormatter: (value) => '$' + value.toFixed(2)
 	ValueFormatter string `json:"valueFormatter,omitempty"`
 
 	// The content formatter of tooltip's floating layer which supports string template and callback function.
