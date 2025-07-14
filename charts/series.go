@@ -171,6 +171,7 @@ type SingleSeries struct {
 	*opts.AreaStyle     `json:"areaStyle,omitempty"`
 	*opts.TextStyle     `json:"textStyle,omitempty"`
 	*opts.CircularStyle `json:"circular,omitempty"`
+	*opts.SeriesTooltip `json:"tooltip,omitempty"`
 
 	// Calendar
 	CalendarIndex int `json:"calendarIndex,omitempty"`
@@ -276,6 +277,13 @@ func WithLineStyleOpts(opt opts.LineStyle) SeriesOpts {
 func WithCircularStyleOpts(opt opts.CircularStyle) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.CircularStyle = &opt
+	}
+}
+
+// WithSeriesTooltipOpts With Tooltip Opts
+func WithSeriesTooltipOpts(opt opts.SeriesTooltip) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.SeriesTooltip = &opt
 	}
 }
 
