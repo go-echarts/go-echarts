@@ -35,7 +35,7 @@ type Initialization struct {
 	// Chart unique ID
 	ChartID string
 
-	// Theme of chart
+	// Theme of chart, preset themes in types.Theme<...>
 	Theme string `default:"white"`
 
 	// Renderer
