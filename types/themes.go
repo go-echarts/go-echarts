@@ -15,3 +15,14 @@ const (
 	ThemeWesteros      = "westeros"
 	ThemeWonderland    = "wonderland"
 )
+
+func PresetTheme(theme string) bool {
+	switch theme {
+	case ThemeChalk, ThemeEssos, ThemeInfographic, ThemeMacarons,
+		ThemePurplePassion, ThemeRoma, ThemeRomantic, ThemeShine,
+		ThemeVintage, ThemeWalden, ThemeWesteros, ThemeWonderland:
+		return true
+	default:
+		return false
+	}
+}

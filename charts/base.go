@@ -369,7 +369,8 @@ func WithInitializationOpts(opt opts.Initialization) GlobalOpts {
 		bc.Initialization = opt
 		if bc.Initialization.Theme != "" &&
 			bc.Initialization.Theme != "white" &&
-			bc.Initialization.Theme != "dark" {
+			bc.Initialization.Theme != "dark" &&
+			types.PresetTheme(opt.Theme) {
 			bc.JSAssets.Add("themes/" + opt.Theme + ".js")
 		}
 		bc.Initialization.Validate()
