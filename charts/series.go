@@ -161,6 +161,7 @@ type SingleSeries struct {
 	*opts.Encode        `json:"encode,omitempty"`
 	*opts.ItemStyle     `json:"itemStyle,omitempty"`
 	*opts.Label         `json:"label,omitempty"`
+	*opts.LabelLayout   `json:"labelLayout,omitempty"`
 	*opts.LabelLine     `json:"labelLine,omitempty"`
 	*opts.Emphasis      `json:"emphasis,omitempty"`
 	*opts.MarkLines     `json:"markLine,omitempty"`
@@ -235,6 +236,20 @@ func WithAnimationOpts(opt opts.Animation) SeriesOpts {
 func WithLabelOpts(opt opts.Label) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Label = &opt
+	}
+}
+
+// WithLabelLayoutOpts sets the label.
+func WithLabelLayoutOpts(opt opts.LabelLayout) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.LabelLayout = &opt
+	}
+}
+
+// WithLabelLineOpts sets the label.
+func WithLabelLineOpts(opt opts.LabelLine) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.LabelLine = &opt
 	}
 }
 
