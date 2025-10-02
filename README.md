@@ -46,18 +46,6 @@ which `go-echarts` learns and has evolved a lot from, and the [echarts4j](https:
 
 ### 🔰 Installation
 
-Classic way to get go-echarts
-
-```shell
-# this may be not a good choice to use v2 go-echarts without gomod(GO111MODULE=off), the 
-# next generation version management system 
-# Technically, you could use go-echarts in the way below, if you have a better workaround, please let us know....
-
-$ go get -u github.com/go-echarts/go-echarts/...
-$ cd $go-echarts-project
-$ mkdir v2 && mv charts components datasets opts render templates types v2
-```
-
 Use gomod style
 
 ```shell
@@ -71,17 +59,6 @@ OR
 
 require github.com/go-echarts/go-echarts/v2
 ```
-
-### ⏳ Version
-
-The go-echarts project is being developed under v2 version and the active codebase is on the master branch.
-
-v1 and v2 are incompatible which means that you cannot upgrade go-echarts from v1 to v2 smoothly. But I think it is
-worth trying that new version.
-
-Especially, when there contains mino changes (usually in enhancement), we will release the `rc` version before a
-standard release.
-So, if you upgrade your projects cross the `rc` versions, maybe need little adjust, and I believe it is worthy to do.
 
 ### ✨ Features
 
