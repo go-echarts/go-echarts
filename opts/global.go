@@ -41,6 +41,9 @@ type Initialization struct {
 	// Renderer
 	Renderer string `default:"canvas"`
 
+	// Wether to create a ResizeObserver to observe the chart and make calls to echartsInstance.resize()
+	Resize bool `default:"false"`
+
 	// Page configurations duplicate, a shortcut for single chart build with page settings
 	PageTitle string `default:"Awesome go-echarts"`
 

@@ -19,6 +19,12 @@
     {{ end }}
   {{- end }}
 
+  {{if $.Initialization.Resize -}}
+    new ResizeObserver((charts) => charts.forEach(c => {
+      echarts.getInstanceByDom(c.target).resize();
+    })).observe(document.getElementById('{{$.ChartID  | safeJS}}'));
+  {{- end -}}
+
     {{- range .JSFunctions.Fns }}
     {{ injectInstance . "%MY_ECHARTS%"  $.ChartID  | safeJS }}
     {{- end }}
