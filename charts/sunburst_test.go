@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"io/ioutil"
+	"io"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +14,7 @@ func TestSunburstAssetsBeforeRender(t *testing.T) {
 
 func TestSunburstAssetsAfterRender(t *testing.T) {
 	sunburst := NewSunburst()
-	err := sunburst.Render(ioutil.Discard)
+	err := sunburst.Render(io.Discard)
 	assert.NoError(t, err)
 	assert.Equal(t, []string{host + "echarts.min.js"}, sunburst.JSAssets.Values)
 }
