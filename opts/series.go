@@ -120,6 +120,17 @@ type LabelLine struct {
 	LineStyle *LineStyle `json:"lineStyle,omitempty"`
 }
 
+// LabelLayout Unified layout configuration of labels
+type LabelLayout struct {
+	// HideOverlap Whether to hide the overlapped labels.
+	HideOverlap types.Bool `json:"hideOverlap,omitempty"`
+	// MoveOverlap Whether to hide move the overlapped labels to avoid overlapping.
+	// Currently supported configurations:
+	// 'shiftX' Place the labels on horizontal direction sequencely, used when aligned horizontally.
+	// 'shiftY' Place the labels on vertical direction sequencely, used when aligned vertically.
+	MoveOverlap string `json:"moveOverlap,omitempty"`
+}
+
 // Blur Configurations of blur state. Whether to blur follows the series.
 type Blur struct {
 	// the blur style of item
@@ -780,4 +791,84 @@ type Encode struct {
 	ItemName interface{} `json:"itemName,omitempty"`
 
 	ItemGroupID interface{} `json:"itemGroupId,omitempty"`
+}
+
+// SeriesTooltip is the option set for a tooltip component within series.
+// e.g. https://echarts.apache.org/en/option.html#series-line.tooltip
+type SeriesTooltip struct {
+	// The content formatter of tooltip's floating layer which supports string template and callback function.
+	//
+	// 1. String template
+	// The template variables are {a}, {b}, {c}, {d} and {e}, which stands for series name,
+	// data name and data value and ect. When trigger is set to be 'axis', there may be data from multiple series.
+	// In this time, series index can be refereed as {a0}, {a1}, or {a2}.
+	// {a}, {b}, {c}, {d} have different meanings for different series types:
+	//
+	// * Line (area) charts, bar (column) charts, K charts: {a} for series name,
+	//   {b} for category name, {c} for data value, {d} for none;
+	// * Scatter (bubble) charts: {a} for series name, {b} for data name, {c} for data value, {d} for none;
+	// * Map: {a} for series name, {b} for area name, {c} for merging data, {d} for none;
+	// * Pie charts, gauge charts, funnel charts: {a} for series name, {b} for data item name,
+	//   {c} for data value, {d} for percentage.
+	//
+	// 2. Callback function
+	// The format of callback function:
+	// (params: Object|Array, ticket: string, callback: (ticket: string, html: string)) => string
+	// The first parameter params is the data that the formatter needs. Its format is shown as follows:
+	// {
+	//    componentType: 'series',
+	//    // Series type
+	//    seriesType: string,
+	//    // Series index in option.series
+	//    seriesIndex: number,
+	//    // Series name
+	//    seriesName: string,
+	//    // Data name, or category name
+	//    name: string,
+	//    // Data index in input data array
+	//    dataIndex: number,
+	//    // Original data as input
+	//    data: Object,
+	//    // Value of data. In most series it is the same as data.
+	//    // But in some series it is some part of the data (e.g., in map, radar)
+	//    value: number|Array|Object,
+	//    // encoding info of coordinate system
+	//    // Key: coord, like ('x' 'y' 'radius' 'angle')
+	//    // value: Must be an array, not null/undefined. Contain dimension indices, like:
+	//    // {
+	//    //     x: [2] // values on dimension index 2 are mapped to x axis.
+	//    //     y: [0] // values on dimension index 0 are mapped to y axis.
+	//    // }
+	//    encode: Object,
+	//    // dimension names list
+	//    dimensionNames: Array<String>,
+	//    // data dimension index, for example 0 or 1 or 2 ...
+	//    // Only work in `radar` series.
+	//    dimensionIndex: number,
+	//    // Color of data
+	//    color: string,
+	//
+	//    // the percentage of pie chart
+	//    percent: number,
+	// }
+	Formatter types.FuncStr `json:"formatter,omitempty"`
+
+	// ValueFormatter Callback function for formatting the value section in tooltip.
+	// valueFormatter: (value) => '$' + value.toFixed(2)
+	ValueFormatter string `json:"valueFormatter,omitempty"`
+
+	// The content formatter of tooltip's floating layer which supports string template and callback function.
+	// See https://echarts.apache.org/en/option.html#grid.tooltip.position
+	// May be a string ("inside", "top", "bottom", "left", "right") or a function of form:
+	//   (point: Array, params: Object|Array.<Object>, dom: HTMLDomElement, rect: Object, size: Object) => Array
+	Position types.FuncStr `json:"position,omitempty"`
+
+	// The border color of tooltip's floating layer.
+	BorderColor string `json:"borderColor,omitempty"`
+
+	// The background color of tooltip's floating layer. e.g. 'rgba(50,50,50,0.7)'
+	BackgroundColor string `json:"backgroundColor,omitempty"`
+
+	// Text style
+	TextStyle *TextStyle `json:"textStyle,omitempty"`
 }

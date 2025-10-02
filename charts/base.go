@@ -102,8 +102,8 @@ func (bc *BaseConfiguration) Accept(visitor ConfigurationVisitor) {
 	bc.configurationVisitor = visitor
 }
 
-// JSON wraps all the options to a map so that it could be used in the base template
-//
+// JSON wraps all the options to a map so that it could be used in the base template.
+// You should call `bar.Validate()` before call this method to ensure the series data set in place
 // Get data in bytes
 // bs, _ : = json.Marshal(bar.JSON())
 func (bc *BaseConfiguration) JSON() map[string]interface{} {
@@ -111,6 +111,7 @@ func (bc *BaseConfiguration) JSON() map[string]interface{} {
 }
 
 // JSONNotEscaped works like method JSON, but it returns a marshaled object whose characters will not be escaped in the template
+// You should call `<chart>.Validate()` before call this method to ensure the series data set in place
 func (bc *BaseConfiguration) JSONNotEscaped() template.HTML {
 	obj := bc.json()
 	buff := bytes.NewBufferString("")
@@ -369,7 +370,8 @@ func WithInitializationOpts(opt opts.Initialization) GlobalOpts {
 		bc.Initialization = opt
 		if bc.Initialization.Theme != "" &&
 			bc.Initialization.Theme != "white" &&
-			bc.Initialization.Theme != "dark" {
+			bc.Initialization.Theme != "dark" &&
+			types.PresetTheme(opt.Theme) {
 			bc.JSAssets.Add("themes/" + opt.Theme + ".js")
 		}
 		bc.Initialization.Validate()

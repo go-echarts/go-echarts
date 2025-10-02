@@ -161,6 +161,7 @@ type SingleSeries struct {
 	*opts.Encode        `json:"encode,omitempty"`
 	*opts.ItemStyle     `json:"itemStyle,omitempty"`
 	*opts.Label         `json:"label,omitempty"`
+	*opts.LabelLayout   `json:"labelLayout,omitempty"`
 	*opts.LabelLine     `json:"labelLine,omitempty"`
 	*opts.Emphasis      `json:"emphasis,omitempty"`
 	*opts.MarkLines     `json:"markLine,omitempty"`
@@ -171,6 +172,7 @@ type SingleSeries struct {
 	*opts.AreaStyle     `json:"areaStyle,omitempty"`
 	*opts.TextStyle     `json:"textStyle,omitempty"`
 	*opts.CircularStyle `json:"circular,omitempty"`
+	*opts.SeriesTooltip `json:"tooltip,omitempty"`
 
 	// Calendar
 	CalendarIndex int `json:"calendarIndex,omitempty"`
@@ -237,6 +239,20 @@ func WithLabelOpts(opt opts.Label) SeriesOpts {
 	}
 }
 
+// WithLabelLayoutOpts sets the label.
+func WithLabelLayoutOpts(opt opts.LabelLayout) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.LabelLayout = &opt
+	}
+}
+
+// WithLabelLineOpts sets the label.
+func WithLabelLineOpts(opt opts.LabelLine) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.LabelLine = &opt
+	}
+}
+
 // WithEmphasisOpts sets the emphasis.
 func WithEmphasisOpts(opt opts.Emphasis) SeriesOpts {
 	return func(s *SingleSeries) {
@@ -276,6 +292,13 @@ func WithLineStyleOpts(opt opts.LineStyle) SeriesOpts {
 func WithCircularStyleOpts(opt opts.CircularStyle) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.CircularStyle = &opt
+	}
+}
+
+// WithSeriesTooltipOpts With Tooltip Opts
+func WithSeriesTooltipOpts(opt opts.SeriesTooltip) SeriesOpts {
+	return func(s *SingleSeries) {
+		s.SeriesTooltip = &opt
 	}
 }
 
