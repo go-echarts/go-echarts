@@ -1,0 +1,1 @@
+{{- template "chart_id" . }}

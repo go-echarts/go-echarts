@@ -61,6 +61,13 @@ func (r *chartRender) RenderSnippet() ChartSnippet {
 	}
 	snippet.Element = string(pat.ReplaceAll(elementBuf.Bytes(), []byte("")))
 
+	chartIdTpl := MustTemplate(ModChart, []string{templates.BaseTpl, templates.ChartIDTpl})
+	var chartIdBuf bytes.Buffer
+	if err := chartIdTpl.ExecuteTemplate(&chartIdBuf, ModChart, r.c); err != nil {
+		panic(err)
+	}
+	snippet.ChartID = chartIdBuf.String()
+
 	scriptTpl := MustTemplate(ModChart, []string{templates.BaseTpl, templates.BaseScriptTpl})
 	var scriptBuf bytes.Buffer
 	if err := scriptTpl.ExecuteTemplate(&scriptBuf, ModChart, r.c); err != nil {

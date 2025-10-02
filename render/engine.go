@@ -23,6 +23,7 @@ var pat = regexp.MustCompile(`(__f__")|("__f__)|(__f__)`)
 
 type ChartSnippet struct {
 	Element string
+	ChartID string
 	Script  string
 	Option  string
 }

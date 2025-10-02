@@ -33,3 +33,7 @@
     {{- template "base_element" . }}
     {{- template "base_script" . }}
 {{- end }}
+
+{{- define "chart_id" -}}
+{{$.ChartID}}
+{{- end -}}

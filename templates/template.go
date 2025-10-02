@@ -10,6 +10,9 @@ var BaseTpl string
 //go:embed chart.tpl
 var ChartTpl string
 
+//go:embed chart_id.tpl
+var ChartIDTpl string
+
 //go:embed header.tpl
 var HeaderTpl string
 
