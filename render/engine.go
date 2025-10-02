@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"html/template"
 	"io"
+	"reflect"
 	"regexp"
 	"strings"
 
@@ -44,6 +45,17 @@ func MustTemplate(name string, contents []string) *template.Template {
 		},
 		"safeJS": func(s interface{}) template.JS {
 			return template.JS(fmt.Sprint(s))
+		},
+		"deref": func(v interface{}) interface{} {
+			rv := reflect.ValueOf(v)
+			if rv.Kind() == reflect.Ptr {
+				if rv.IsNil() {
+					return nil // nil pointer stays nil
+				}
+				return rv.Elem().Interface()
+			}
+			// not a pointer, return as-is
+			return v
 		},
 		"injectInstance": func(funcStr types.FuncStr, echartsInstancePlaceholder string, chartID string) string {
 			instance := EchartsInstancePrefix + chartID

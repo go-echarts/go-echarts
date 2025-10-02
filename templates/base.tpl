@@ -19,7 +19,7 @@
     {{ end }}
   {{- end }}
 
-  {{if $.Initialization.Resize -}}
+  {{if eq (deref $.Initialization.Resize) true -}}
     new ResizeObserver((charts) => charts.forEach(c => {
       echarts.getInstanceByDom(c.target).resize();
     })).observe(document.getElementById('{{$.ChartID  | safeJS}}'));

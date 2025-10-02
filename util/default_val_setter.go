@@ -35,7 +35,7 @@ func setField(field reflect.Value, defaultVal string) {
 			field.Set(reflect.ValueOf(defaultVal).Convert(field.Type()))
 		}
 	case reflect.Bool:
-		if val, err := strconv.ParseBool(defaultVal); err == nil && !field.Bool() {
+		if val, err := strconv.ParseBool(defaultVal); err == nil {
 			field.Set(reflect.ValueOf(val).Convert(field.Type()))
 		}
 	}
