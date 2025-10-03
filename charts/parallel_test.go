@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"io/ioutil"
+	"io"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +14,7 @@ func TestParallelAssetsBeforeRender(t *testing.T) {
 
 func TestParallelAssetsAfterRender(t *testing.T) {
 	parallel := NewParallel()
-	err := parallel.Render(ioutil.Discard)
+	err := parallel.Render(io.Discard)
 	assert.NoError(t, err)
 	assert.Equal(t, []string{host + "echarts.min.js"}, parallel.JSAssets.Values)
 }
