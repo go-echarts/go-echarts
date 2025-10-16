@@ -503,13 +503,21 @@ type TreeMapNode struct {
 	Children []TreeMapNode `json:"children,omitempty"`
 }
 
-// SunBurstData data
+// SunBurstData holds the data structure of series-sunburst.data is like tree.
+// https://echarts.apache.org/en/option.html#series-sunburst.data
 type SunBurstData struct {
-	// Name of data item.
+	// Name displayed in each sector.
 	Name string `json:"name,omitempty"`
-	// Value of data item.
+	// Value for each item. If contains children, value can be left unset, and sum of children values will be used in this case.
 	Value float64 `json:"value,omitempty"`
-	// sub item of data item
+	// ItemStyle specifies the style of the sector of the sunburst chart.
+	// You can specify the style of all sectors with series.itemStyle, or specify the style of each level of sectors with
+	// series.levels.itemStyle, or specify a specific style for each sector with series.data.itemStyle. The priority is
+	// from low to high, that is, if series.data.itemStyle is defined, it will override series.itemStyle and series.levels.itemStyle.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+	// Tooltip configures the tool-tip settings in this series data.
+	Tooltip *Tooltip `json:"tooltip,omitempty"`
+	// Children are the children nodes defined recursively.
 	Children []*SunBurstData `json:"children,omitempty"`
 }
 
