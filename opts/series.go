@@ -147,6 +147,18 @@ type Emphasis struct {
 
 	// the emphasis style of item
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	// Focus configures the behavior of a Sunburst chart when a user interacts with the data.
+	// When the data is highlighted, whether to fade out of other data to focus the highlighted.
+	// The following configurations are supported:
+	//   'none' Do not fade out other data, it's by default.
+	//   'self' Only focus (not fade out) the element of the currently highlighted data.
+	//   'series' Focus on all elements of the series which the currently highlighted data belongs to.
+	//   'ancestor' Focus on all ancestor nodes.
+	//   'descendant' Focus on all descendants nodes.
+	//   'relative' Focus on all ancestor and descendants nodes. (Since v5.6.0)
+	// https://echarts.apache.org/en/option.html#series-sunburst.emphasis.focus
+	Focus string `json:"focus,omitempty"`
 }
 
 // Animation represents animation behaviors of series.
