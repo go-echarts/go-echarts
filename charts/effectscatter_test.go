@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"io/ioutil"
+	"io"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +14,7 @@ func TestEffectScatterAssetsBeforeRender(t *testing.T) {
 
 func TestEffectScatterAssetsAfterRender(t *testing.T) {
 	effectScatter := NewEffectScatter()
-	err := effectScatter.Render(ioutil.Discard)
+	err := effectScatter.Render(io.Discard)
 	assert.NoError(t, err)
 	assert.Equal(t, []string{host + "echarts.min.js"}, effectScatter.JSAssets.Values)
 }

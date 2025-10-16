@@ -120,6 +120,17 @@ type LabelLine struct {
 	LineStyle *LineStyle `json:"lineStyle,omitempty"`
 }
 
+// LabelLayout Unified layout configuration of labels
+type LabelLayout struct {
+	// HideOverlap Whether to hide the overlapped labels.
+	HideOverlap types.Bool `json:"hideOverlap,omitempty"`
+	// MoveOverlap Whether to hide move the overlapped labels to avoid overlapping.
+	// Currently supported configurations:
+	// 'shiftX' Place the labels on horizontal direction sequencely, used when aligned horizontally.
+	// 'shiftY' Place the labels on vertical direction sequencely, used when aligned vertically.
+	MoveOverlap string `json:"moveOverlap,omitempty"`
+}
+
 // Blur Configurations of blur state. Whether to blur follows the series.
 type Blur struct {
 	// the blur style of item

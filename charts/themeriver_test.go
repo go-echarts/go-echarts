@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"io/ioutil"
+	"io"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +14,7 @@ func TestThemeRiverAssetsBeforeRender(t *testing.T) {
 
 func TestThemeRiverAssetsAfterRender(t *testing.T) {
 	themeRiver := NewThemeRiver()
-	err := themeRiver.Render(ioutil.Discard)
+	err := themeRiver.Render(io.Discard)
 	assert.NoError(t, err)
 	assert.Equal(t, []string{host + "echarts.min.js"}, themeRiver.JSAssets.Values)
 }
