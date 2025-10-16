@@ -185,6 +185,9 @@ type ItemStyle struct {
 	// Geo area filling color
 	AreaColor string `json:"areaColor,omitempty"`
 
+	// BorderRadius configures the radius of items in the chart.
+	BorderRadius string `json:"borderRadius,omitempty"`
+
 	// BorderColor is the hart border color
 	// Kline  Up candle border color
 	BorderColor string `json:"borderColor,omitempty"`
