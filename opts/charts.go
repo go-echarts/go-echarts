@@ -517,6 +517,10 @@ type SunBurstData struct {
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
 	// Tooltip configures the tool-tip settings in this series data.
 	Tooltip *Tooltip `json:"tooltip,omitempty"`
+	// Label configures the style of the label of the sector.
+	Label *Label `json:"label,omitempty"`
+	// Emphasis configures the emphasis state.
+	Emphasis *Emphasis `json:"emphasis,omitempty"`
 	// Children are the children nodes defined recursively.
 	Children []*SunBurstData `json:"children,omitempty"`
 }
