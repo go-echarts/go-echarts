@@ -572,7 +572,9 @@ type GraphForce struct {
 	// It can be an array to represent the range of edge length. In this case edge with larger
 	// value will be shorter, which means two nodes are closer. And edge with smaller value will be longer.
 	// default 30
-	EdgeLength float32 `json:"edgeLength,omitempty"`
+	// It can be an array to represent the range of edge length. In this case edge with larger value will
+	// be shorter, which means two nodes are closer. And edge with smaller value will be longer.
+	EdgeLength interface{} `json:"edgeLength,omitempty"`
 }
 
 // TreeLeaves Leaf node special configuration, the leaf node and non-leaf node label location is different.

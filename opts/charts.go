@@ -142,6 +142,16 @@ type GraphChart struct {
 
 	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
 	SymbolKeepAspect types.Bool
+
+	// Animation determines whether to enable animation.
+	Animation types.Bool
+
+	// Emphasis contains configurations of emphasis state.
+	Emphasis *Emphasis
+
+	// LineStyle controls the style of edge line. lineStyle.color can be 'source' or 'target',
+	// which will use the color of source node or target node.
+	LineStyle *LineStyle
 }
 
 // GraphNode represents a data node in graph chart.
