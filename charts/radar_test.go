@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"io/ioutil"
+	"io"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +14,7 @@ func TestRadarAssetsBeforeRender(t *testing.T) {
 
 func TestRadarAssetsAfterRender(t *testing.T) {
 	radar := NewRadar()
-	err := radar.Render(ioutil.Discard)
+	err := radar.Render(io.Discard)
 	assert.NoError(t, err)
 	assert.Equal(t, []string{host + "echarts.min.js"}, radar.JSAssets.Values)
 }

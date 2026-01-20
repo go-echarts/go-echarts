@@ -147,6 +147,18 @@ type Emphasis struct {
 
 	// the emphasis style of item
 	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+
+	// Focus configures the behavior of a Sunburst chart when a user interacts with the data.
+	// When the data is highlighted, whether to fade out of other data to focus the highlighted.
+	// The following configurations are supported:
+	//   'none' Do not fade out other data, it's by default.
+	//   'self' Only focus (not fade out) the element of the currently highlighted data.
+	//   'series' Focus on all elements of the series which the currently highlighted data belongs to.
+	//   'ancestor' Focus on all ancestor nodes.
+	//   'descendant' Focus on all descendants nodes.
+	//   'relative' Focus on all ancestor and descendants nodes. (Since v5.6.0)
+	// https://echarts.apache.org/en/option.html#series-sunburst.emphasis.focus
+	Focus string `json:"focus,omitempty"`
 }
 
 // Animation represents animation behaviors of series.
@@ -172,6 +184,9 @@ type ItemStyle struct {
 
 	// Geo area filling color
 	AreaColor string `json:"areaColor,omitempty"`
+
+	// BorderRadius configures the radius of items in the chart.
+	BorderRadius string `json:"borderRadius,omitempty"`
 
 	// BorderColor is the hart border color
 	// Kline  Up candle border color
@@ -557,7 +572,9 @@ type GraphForce struct {
 	// It can be an array to represent the range of edge length. In this case edge with larger
 	// value will be shorter, which means two nodes are closer. And edge with smaller value will be longer.
 	// default 30
-	EdgeLength float32 `json:"edgeLength,omitempty"`
+	// It can be an array to represent the range of edge length. In this case edge with larger value will
+	// be shorter, which means two nodes are closer. And edge with smaller value will be longer.
+	EdgeLength interface{} `json:"edgeLength,omitempty"`
 }
 
 // TreeLeaves Leaf node special configuration, the leaf node and non-leaf node label location is different.
@@ -855,7 +872,7 @@ type SeriesTooltip struct {
 
 	// ValueFormatter Callback function for formatting the value section in tooltip.
 	// valueFormatter: (value) => '$' + value.toFixed(2)
-	ValueFormatter string `json:"valueFormatter,omitempty"`
+	ValueFormatter types.FuncStr `json:"valueFormatter,omitempty"`
 
 	// The content formatter of tooltip's floating layer which supports string template and callback function.
 	// See https://echarts.apache.org/en/option.html#grid.tooltip.position

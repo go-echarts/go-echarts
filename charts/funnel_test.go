@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"io/ioutil"
+	"io"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +14,7 @@ func TestFunnelAssetsBeforeRender(t *testing.T) {
 
 func TestFunnelAssetsAfterRender(t *testing.T) {
 	funnel := NewFunnel()
-	err := funnel.Render(ioutil.Discard)
+	err := funnel.Render(io.Discard)
 	assert.NoError(t, err)
 	assert.Equal(t, []string{host + "echarts.min.js"}, funnel.JSAssets.Values)
 }

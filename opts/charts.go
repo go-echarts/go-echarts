@@ -142,6 +142,16 @@ type GraphChart struct {
 
 	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
 	SymbolKeepAspect types.Bool
+
+	// Animation determines whether to enable animation.
+	Animation types.Bool
+
+	// Emphasis contains configurations of emphasis state.
+	Emphasis *Emphasis
+
+	// LineStyle controls the style of edge line. lineStyle.color can be 'source' or 'target',
+	// which will use the color of source node or target node.
+	LineStyle *LineStyle
 }
 
 // GraphNode represents a data node in graph chart.
@@ -503,13 +513,25 @@ type TreeMapNode struct {
 	Children []TreeMapNode `json:"children,omitempty"`
 }
 
-// SunBurstData data
+// SunBurstData holds the data structure of series-sunburst.data is like tree.
+// https://echarts.apache.org/en/option.html#series-sunburst.data
 type SunBurstData struct {
-	// Name of data item.
+	// Name displayed in each sector.
 	Name string `json:"name,omitempty"`
-	// Value of data item.
+	// Value for each item. If contains children, value can be left unset, and sum of children values will be used in this case.
 	Value float64 `json:"value,omitempty"`
-	// sub item of data item
+	// ItemStyle specifies the style of the sector of the sunburst chart.
+	// You can specify the style of all sectors with series.itemStyle, or specify the style of each level of sectors with
+	// series.levels.itemStyle, or specify a specific style for each sector with series.data.itemStyle. The priority is
+	// from low to high, that is, if series.data.itemStyle is defined, it will override series.itemStyle and series.levels.itemStyle.
+	ItemStyle *ItemStyle `json:"itemStyle,omitempty"`
+	// Tooltip configures the tool-tip settings in this series data.
+	Tooltip *Tooltip `json:"tooltip,omitempty"`
+	// Label configures the style of the label of the sector.
+	Label *Label `json:"label,omitempty"`
+	// Emphasis configures the emphasis state.
+	Emphasis *Emphasis `json:"emphasis,omitempty"`
+	// Children are the children nodes defined recursively.
 	Children []*SunBurstData `json:"children,omitempty"`
 }
 

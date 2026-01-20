@@ -8,7 +8,11 @@ type XAxis struct {
 	// Set this to false to prevent the axis from showing.
 	Show types.Bool `json:"show,omitempty"`
 
-	// Position The position of x axis.
+	// AlignTicks turned on to automatically align ticks when multiple numeric y axes.
+	// Only available for axes of type 'value' and 'log'.
+	AlignTicks types.Bool `json:"alignTicks,omitempty"`
+
+	// Position The position of x-axis.
 	// options:
 	// 'top'
 	// 'bottom'

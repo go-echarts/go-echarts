@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"io/ioutil"
+	"io"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +14,7 @@ func TestHeatMapAssetsBeforeRender(t *testing.T) {
 
 func TestHeatMapAssetsAfterRender(t *testing.T) {
 	heatMap := NewHeatMap()
-	err := heatMap.Render(ioutil.Discard)
+	err := heatMap.Render(io.Discard)
 	assert.NoError(t, err)
 	assert.Equal(t, []string{host + "echarts.min.js"}, heatMap.JSAssets.Values)
 }

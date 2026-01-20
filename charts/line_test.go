@@ -1,7 +1,7 @@
 package charts
 
 import (
-	"io/ioutil"
+	"io"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -14,7 +14,7 @@ func TestLineAssetsBeforeRender(t *testing.T) {
 
 func TestLineAssetsAfterRender(t *testing.T) {
 	line := NewLine()
-	err := line.Render(ioutil.Discard)
+	err := line.Render(io.Discard)
 	assert.NoError(t, err)
 	assert.Equal(t, []string{host + "echarts.min.js"}, line.JSAssets.Values)
 }
