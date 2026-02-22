@@ -9,6 +9,6 @@ type (
 	String string
 )
 
-// FuncStr a pure JavaScrip function string or special formatted string
+// FuncStr a pure JavaScript function string or special formatted string
 // use opts.FuncOpts or opts.FuncStripCommentsOpts to embed JavaScript.
 type FuncStr string
