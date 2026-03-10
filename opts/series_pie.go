@@ -40,6 +40,15 @@ type PieChart struct {
 	// Array.<number|string>: The first item specifies the inside radius, and the
 	// second item specifies the outside radius. Each item follows the definitions above.
 	Radius interface{}
+
+	// PadAngle is the interval angle between pie sectors.
+	// Requires Apache ECharts 5.6.0 or newer.
+	//
+	// Example:
+	//
+	// Set to a number in degrees ->> padAngle: 5
+	// No gap between sectors is the default behavior when this option is omitted.
+	PadAngle float64
 }
 
 // PieData
