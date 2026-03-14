@@ -33,6 +33,11 @@ type XAxis struct {
 	// * 'log' Log axis, suitable for log data.
 	Type string `json:"type,omitempty"`
 
+	// BoundaryGap is only available for category axis. true by default.
+	// When true, category labels sit at the left of each band and data points sit in the center.
+	// When false, the first and last categories reach the axis edges and data points align with their labels.
+	BoundaryGap types.Bool `json:"boundaryGap,omitempty"`
+
 	// Name of axis.
 	Name string `json:"name,omitempty"`
 
