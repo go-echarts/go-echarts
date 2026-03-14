@@ -83,6 +83,8 @@ type SingleSeries struct {
 	Center interface{} `json:"center,omitempty"`
 	// Pie
 	Radius interface{} `json:"radius,omitempty"`
+	// Pie
+	PadAngle float64 `json:"padAngle,omitempty"`
 
 	// Line | Scatter | Radar
 	SymbolSize interface{} `json:"symbolSize,omitempty"`
@@ -399,6 +401,7 @@ func WithPieChartOpts(opt opts.PieChart) SeriesOpts {
 		s.RoseType = opt.RoseType
 		s.Center = opt.Center
 		s.Radius = opt.Radius
+		s.PadAngle = opt.PadAngle
 	}
 }
 
