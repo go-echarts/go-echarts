@@ -136,7 +136,7 @@ type SingleSeries struct {
 	// series with many data points.
 	// Set progressive to 0 to disable progressive rendering.
 	Progressive          types.Int `json:"progressive"`
-	ProgressiveThreshold int       `json:"progressiveThreshold"`
+	ProgressiveThreshold types.Int `json:"progressiveThreshold"`
 
 	// Gauge
 	Progress   *opts.Progress  `json:"progress,omitempty"`
