@@ -135,8 +135,8 @@ type SingleSeries struct {
 	// different canvas layers to avoid blocking the UI thread of the browser for
 	// series with many data points.
 	// Set progressive to 0 to disable progressive rendering.
-	Progressive          types.Int `json:"progressive"`
-	ProgressiveThreshold types.Int `json:"progressiveThreshold"`
+	Progressive          types.Int `json:"progressive,omitempty"`
+	ProgressiveThreshold types.Int `json:"progressiveThreshold,omitempty"`
 
 	// Gauge
 	Progress   *opts.Progress  `json:"progress,omitempty"`
