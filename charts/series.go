@@ -128,6 +128,16 @@ type SingleSeries struct {
 	Data         interface{} `json:"data,omitempty"`
 	DatasetIndex int         `json:"datasetIndex,omitempty"`
 
+	// Bar | Lines | Scatter | Heatmap | Parallel | Candlestick
+	// Progressive specifies the amount of graphic elements that can be rendered
+	// within a frame (about 16ms) if "progressive rendering" is enabled.
+	// "Progressive rendering" processes and renders data chunk by chunk on
+	// different canvas layers to avoid blocking the UI thread of the browser for
+	// series with many data points.
+	// Set progressive to 0 to disable progressive rendering.
+	Progressive          types.Int `json:"progressive,omitempty"`
+	ProgressiveThreshold types.Int `json:"progressiveThreshold,omitempty"`
+
 	// Gauge
 	Progress   *opts.Progress  `json:"progress,omitempty"`
 	AxisTick   *opts.AxisTick  `json:"axisTick,omitempty"`
