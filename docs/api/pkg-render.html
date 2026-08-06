@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>render</title>
+<link rel="stylesheet" href="sourcey-godoc.css">
+<meta name="generator" content="sourcey-godoc 0.2.1">
+<link rel="canonical" href="https://go-echarts.github.io/go-echarts/api/pkg-render.html">
+</head>
+<body><div class="shell">
+<aside><p class="brand">sourcey-godoc</p><p class="module"><code>github.com/go-echarts/go-echarts/v2</code></p><ul class="nav"><li><a href="index.html">Overview</a></li><li><a href="pkg-charts.html">charts</a></li><li><a href="pkg-components.html">components</a></li><li><a href="pkg-datasets.html">datasets</a></li><li><a href="pkg-event.html">event</a></li><li><a href="pkg-opts.html">opts</a></li><li><a href="pkg-render.html">render</a></li><li><a href="pkg-templates.html">templates</a></li><li><a href="pkg-types.html">types</a></li><li><a href="pkg-util.html">util</a></li></ul></aside>
+<main><h1>render</h1><p class="import-path"><code>import "github.com/go-echarts/go-echarts/v2/render"</code></p><p class="source-meta">Generated with <a href="https://github.com/sourcey/sourcey/tree/5c699ac3ee2f251c083be8f9deb1b345c52c4a6d/go/sourcey-godoc">sourcey-godoc 0.2.1</a> · <a href="https://github.com/go-echarts/go-echarts/tree/3f3cf9579987d520eef191d3f9b7d8c47d234276/render">Source: render</a> at <code>3f3cf9579987</code></p><h2 id="constants">Constants</h2><section id="const-ModChart"><pre><code>const (
+	ModChart = &#34;chart&#34;
+	ModPage  = &#34;page&#34;
+	// EchartsInstancePrefix the default prefix for each echarts instance
+	EchartsInstancePrefix = &#34;goecharts_&#34;
+	// EchartsInstancePlaceholder a placeholder for types.FuncStr inject echarts instance
+	EchartsInstancePlaceholder = &#34;%MY_ECHARTS%&#34;
+)</code></pre></section><section id="const-ModPage"></section><section id="const-EchartsInstancePrefix"></section><section id="const-EchartsInstancePlaceholder"></section><h2 id="functions">Functions</h2><section id="func-MustTemplate"><h3>func MustTemplate(name string, contents []string) *template.Template</h3><div class="doc"><p>MustTemplate creates a new template with the given name and parsed contents.
+</div></section><section id="func-NewChartRender"><h3>func NewChartRender(c interface{}, before ...func()) Renderer</h3><div class="doc"><p>NewChartRender returns a render implementation for Chart.
+</div></section><section id="func-NewPageRender"><h3>func NewPageRender(c interface{}, before ...func()) Renderer</h3><div class="doc"><p>NewPageRender returns a render implementation for Page.
+</div></section><h2 id="types">Types</h2><section id="type-BaseRender"><h3>type BaseRender</h3><div class="doc"><p>BaseRender the default implementation of Renderer, make it easier to extend Renderer for individual render function
+</div><pre><code>type BaseRender struct{}</code></pre><section id="func-RenderContent"><h3>func  RenderContent() []byte</h3></section><section id="func-RenderSnippet"><h3>func  RenderSnippet() ChartSnippet</h3></section></section><section id="type-ChartSnippet"><h3>type ChartSnippet</h3><pre><code>type ChartSnippet struct {
+	Element string
+	Script  string
+	Option  string
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>Element string</code></li><li><code>Script string</code></li><li><code>Option string</code></li></ul></section><section id="type-Renderer"><h3>type Renderer</h3><div class="doc"><p>Renderer
+Any kinds of charts have their render implementation and
+you can define your own render logic easily.
+</div><pre><code>type Renderer interface {
+	Render(w io.Writer) error
+	RenderContent() []byte
+	RenderSnippet() ChartSnippet
+}</code></pre><h4>Methods</h4><ul class="field-list"><li><code>Render func(w io.Writer) error</code></li><li><code>RenderContent func() []byte</code></li><li><code>RenderSnippet func() ChartSnippet</code></li></ul></section></main>
+</div></body>
+</html>

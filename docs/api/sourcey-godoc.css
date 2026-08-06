@@ -1,0 +1,78 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f8f8f5;
+  --fg: #161616;
+  --muted: #656565;
+  --border: #deded8;
+  --panel: #ffffff;
+  --accent: #2558d4;
+  --code-bg: #f1f1ed;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111111;
+    --fg: #f3f3ef;
+    --muted: #a7a7a0;
+    --border: #30302c;
+    --panel: #171717;
+    --accent: #8eadff;
+    --code-bg: #20201c;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.shell {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  min-height: 100vh;
+}
+aside {
+  border-right: 1px solid var(--border);
+  padding: 28px 22px;
+  background: var(--panel);
+}
+main {
+  max-width: 1040px;
+  padding: 44px min(6vw, 72px);
+}
+.brand { font-weight: 700; margin: 0 0 8px; }
+.module { color: var(--muted); font-size: 0.9rem; word-break: break-all; }
+.nav { list-style: none; margin: 24px 0 0; padding: 0; }
+.nav li { margin: 6px 0; }
+h1, h2, h3 { line-height: 1.2; }
+h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 12px; }
+h2 { margin-top: 44px; padding-top: 20px; border-top: 1px solid var(--border); }
+h3 { margin-top: 28px; }
+.import-path, .synopsis, .meta { color: var(--muted); }
+.card {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px 0;
+  background: var(--panel);
+}
+pre {
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+}
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+.doc { max-width: 78ch; }
+.field-list { padding-left: 18px; }
+.field-list li { margin: 8px 0; }
+@media (max-width: 780px) {
+  .shell { display: block; }
+  aside { border-right: 0; border-bottom: 1px solid var(--border); }
+  main { padding: 28px 20px; }
+}
+.source-meta{margin:.65rem 0 1.2rem;color:#5a6573;font-size:.9rem}.source-meta a{color:inherit;text-decoration:underline}
