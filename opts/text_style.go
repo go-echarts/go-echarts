@@ -115,6 +115,12 @@ type TextStyle struct {
 	// And they can be set to different values with left, right, top, and bottom.
 	Padding interface{} `json:"padding,omitempty"`
 
+	// Rich holds the styles of the rich text fragments, keyed by the name
+	// referenced in a `{name|content}` marker inside the text. Each fragment
+	// reuses TextStyle so the same styling fields are available.
+	// See https://echarts.apache.org/en/option.html#title.textStyle.rich
+	Rich map[string]*TextStyle `json:"rich,omitempty"`
+
 	// compatible for WordCloud
 	Normal *TextStyle `json:"normal,omitempty"`
 }
