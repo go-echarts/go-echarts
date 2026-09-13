@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>charts</title>
+<link rel="stylesheet" href="sourcey-godoc.css">
+<meta name="generator" content="sourcey-godoc 0.2.1">
+<link rel="canonical" href="https://go-echarts.github.io/go-echarts/api/pkg-charts.html">
+</head>
+<body><div class="shell">
+<aside><p class="brand">sourcey-godoc</p><p class="module"><code>github.com/go-echarts/go-echarts/v2</code></p><ul class="nav"><li><a href="index.html">Overview</a></li><li><a href="pkg-charts.html">charts</a></li><li><a href="pkg-components.html">components</a></li><li><a href="pkg-datasets.html">datasets</a></li><li><a href="pkg-event.html">event</a></li><li><a href="pkg-opts.html">opts</a></li><li><a href="pkg-render.html">render</a></li><li><a href="pkg-templates.html">templates</a></li><li><a href="pkg-types.html">types</a></li><li><a href="pkg-util.html">util</a></li></ul></aside>
+<main><h1>charts</h1><p class="import-path"><code>import "github.com/go-echarts/go-echarts/v2/charts"</code></p><p class="source-meta">Generated with <a href="https://github.com/sourcey/sourcey/tree/5c699ac3ee2f251c083be8f9deb1b345c52c4a6d/go/sourcey-godoc">sourcey-godoc 0.2.1</a> · <a href="https://github.com/go-echarts/go-echarts/tree/3f3cf9579987d520eef191d3f9b7d8c47d234276/charts">Source: charts</a> at <code>3f3cf9579987</code></p><h2 id="functions">Functions</h2><section id="func-NewBar"><h3>func NewBar() *Bar</h3><div class="doc"><p>NewBar creates a new bar chart instance.
+</div></section><section id="func-NewBar3D"><h3>func NewBar3D() *Bar3D</h3><div class="doc"><p>NewBar3D creates a new 3D bar chart.
+</div></section><section id="func-NewBoxPlot"><h3>func NewBoxPlot() *BoxPlot</h3><div class="doc"><p>NewBoxPlot creates a new boxplot chart.
+</div></section><section id="func-NewCustom"><h3>func NewCustom() *Custom</h3><div class="doc"><p>NewCustom creates a new Custom chart.
+</div></section><section id="func-NewEffectScatter"><h3>func NewEffectScatter() *EffectScatter</h3><div class="doc"><p>NewEffectScatter creates a new effect scatter chart.
+</div></section><section id="func-NewFunnel"><h3>func NewFunnel() *Funnel</h3><div class="doc"><p>NewFunnel creates a new funnel chart.
+</div></section><section id="func-NewGauge"><h3>func NewGauge() *Gauge</h3><div class="doc"><p>NewGauge creates a new gauge chart.
+</div></section><section id="func-NewGeo"><h3>func NewGeo() *Geo</h3><div class="doc"><p>NewGeo creates a new geo chart.
+</div></section><section id="func-NewGraph"><h3>func NewGraph() *Graph</h3><div class="doc"><p>NewGraph creates a new graph chart.
+</div></section><section id="func-NewHeatMap"><h3>func NewHeatMap() *HeatMap</h3><div class="doc"><p>NewHeatMap creates a new heatmap chart.
+</div></section><section id="func-NewKLine"><h3>func NewKLine() *Kline</h3><div class="doc"><p>NewKLine creates a new kline chart.
+</div></section><section id="func-NewLine"><h3>func NewLine() *Line</h3><div class="doc"><p>NewLine creates a new line chart.
+</div></section><section id="func-NewLine3D"><h3>func NewLine3D() *Line3D</h3><div class="doc"><p>NewLine3D creates a new 3D line chart.
+</div></section><section id="func-NewLiquid"><h3>func NewLiquid() *Liquid</h3><div class="doc"><p>NewLiquid creates a new liquid chart.
+</div></section><section id="func-NewMap"><h3>func NewMap() *Map</h3><div class="doc"><p>NewMap creates a new map chart.
+</div></section><section id="func-NewParallel"><h3>func NewParallel() *Parallel</h3><div class="doc"><p>NewParallel creates a new parallel instance.
+</div></section><section id="func-NewPie"><h3>func NewPie() *Pie</h3><div class="doc"><p>NewPie creates a new pie chart.
+</div></section><section id="func-NewRadar"><h3>func NewRadar() *Radar</h3><div class="doc"><p>NewRadar creates a new radar chart.
+</div></section><section id="func-NewSankey"><h3>func NewSankey() *Sankey</h3><div class="doc"><p>NewSankey creates a new sankey chart.
+</div></section><section id="func-NewScatter"><h3>func NewScatter() *Scatter</h3><div class="doc"><p>NewScatter creates a new scatter chart.
+</div></section><section id="func-NewScatter3D"><h3>func NewScatter3D() *Scatter3D</h3><div class="doc"><p>NewScatter3D creates a new 3D scatter chart.
+</div></section><section id="func-NewSunburst"><h3>func NewSunburst() *Sunburst</h3><div class="doc"><p>NewSunburst creates a new sunburst chart instance.
+</div></section><section id="func-NewSurface3D"><h3>func NewSurface3D() *Surface3D</h3><div class="doc"><p>NewSurface3D creates a new 3d surface chart.
+</div></section><section id="func-NewThemeRiver"><h3>func NewThemeRiver() *ThemeRiver</h3><div class="doc"><p>NewThemeRiver creates a new theme river chart.
+</div></section><section id="func-NewTree"><h3>func NewTree() *Tree</h3><div class="doc"><p>NewTree creates a new Tree chart instance.
+</div></section><section id="func-NewTreeMap"><h3>func NewTreeMap() *TreeMap</h3><div class="doc"><p>NewTreeMap creates a new TreeMap chart instance.
+</div></section><section id="func-NewWordCloud"><h3>func NewWordCloud() *WordCloud</h3><div class="doc"><p>NewWordCloud creates a new word cloud chart.
+</div></section><section id="func-WithAngleAxisOps"><h3>func WithAngleAxisOps(opt opts.AngleAxis) GlobalOpts</h3><div class="doc"><p>WithAngleAxisOps sets the angle of the axis.
+</div></section><section id="func-WithAnimation"><h3>func WithAnimation(enable bool) GlobalOpts</h3><div class="doc"><p>WithAnimation enable or disable the animation.
+</div></section><section id="func-WithAnimationOpts"><h3>func WithAnimationOpts(opt opts.Animation) SeriesOpts</h3></section><section id="func-WithAreaStyleOpts"><h3>func WithAreaStyleOpts(opt opts.AreaStyle) SeriesOpts</h3><div class="doc"><p>WithAreaStyleOpts sets the area style.
+</div></section><section id="func-WithAriaOpts"><h3>func WithAriaOpts(opt *opts.Aria) GlobalOpts</h3></section><section id="func-WithAxisPointerOpts"><h3>func WithAxisPointerOpts(opt *opts.AxisPointer) GlobalOpts</h3><div class="doc"><p>WithAxisPointerOpts sets the axis pointer.
+</div></section><section id="func-WithBar3DChartOpts"><h3>func WithBar3DChartOpts(opt opts.Bar3DChart) SeriesOpts</h3><div class="doc"><p>WithBar3DChartOpts sets the Bar3DChart option.
+</div></section><section id="func-WithBarChartOpts"><h3>func WithBarChartOpts(opt opts.BarChart) SeriesOpts</h3><div class="doc"><p>WithBarChartOpts sets the BarChart option.
+</div></section><section id="func-WithBrush"><h3>func WithBrush(opt opts.Brush) GlobalOpts</h3><div class="doc"><p>WithBrush sets the Brush.
+</div></section><section id="func-WithCalendarIndex"><h3>func WithCalendarIndex(index int) SeriesOpts</h3></section><section id="func-WithCircularStyleOpts"><h3>func WithCircularStyleOpts(opt opts.CircularStyle) SeriesOpts</h3><div class="doc"><p>WithCircularStyleOpts With CircularStyle Opts
+</div></section><section id="func-WithColorsOpts"><h3>func WithColorsOpts(opt opts.Colors) GlobalOpts</h3><div class="doc"><p>WithColorsOpts sets the color.
+</div></section><section id="func-WithCoordinateSystem"><h3>func WithCoordinateSystem(cs string) SeriesOpts</h3></section><section id="func-WithCustomChartOpts"><h3>func WithCustomChartOpts(opt opts.CustomChart) SeriesOpts</h3><div class="doc"><p>WithCustomChartOpts sets the CustomChart option.
+</div></section><section id="func-WithDataZoomOpts"><h3>func WithDataZoomOpts(opt ...opts.DataZoom) GlobalOpts</h3><div class="doc"><p>WithDataZoomOpts sets the list of the zoom data.
+</div></section><section id="func-WithDatasetIndex"><h3>func WithDatasetIndex(index int) SeriesOpts</h3><div class="doc"><p>WithDatasetIndex sets the datasetIndex option.
+</div></section><section id="func-WithEffectScatterChartOpts"><h3>func WithEffectScatterChartOpts(opt opts.EffectScatterChart) SeriesOpts</h3><div class="doc"><p>WithEffectScatterChartOpts sets the ScatterChart option.
+</div></section><section id="func-WithEmphasisOpts"><h3>func WithEmphasisOpts(opt opts.Emphasis) SeriesOpts</h3><div class="doc"><p>WithEmphasisOpts sets the emphasis.
+</div></section><section id="func-WithEncodeOpts"><h3>func WithEncodeOpts(opt opts.Encode) SeriesOpts</h3><div class="doc"><p>WithEncodeOpts Set encodes for dataSets
+</div></section><section id="func-WithEventListeners"><h3>func WithEventListeners(listeners ...event.Listener) GlobalOpts</h3></section><section id="func-WithGeoComponentOpts"><h3>func WithGeoComponentOpts(opt opts.GeoComponent) GlobalOpts</h3><div class="doc"><p>WithGeoComponentOpts sets the geo component.
+</div></section><section id="func-WithGraphChartOpts"><h3>func WithGraphChartOpts(opt opts.GraphChart) SeriesOpts</h3><div class="doc"><p>WithGraphChartOpts sets the GraphChart option.
+</div></section><section id="func-WithGrid3DOpts"><h3>func WithGrid3DOpts(opt opts.Grid3D) GlobalOpts</h3><div class="doc"><p>WithGrid3DOpts sets the grid of the Chart3D instance.
+</div></section><section id="func-WithGridOpts"><h3>func WithGridOpts(opt ...opts.Grid) GlobalOpts</h3><div class="doc"><p>WithGridOpts sets the List of the grid.
+</div></section><section id="func-WithHeatMapChartOpts"><h3>func WithHeatMapChartOpts(opt opts.HeatMapChart) SeriesOpts</h3><div class="doc"><p>WithHeatMapChartOpts sets the HeatMapChart option.
+</div></section><section id="func-WithInitializationOpts"><h3>func WithInitializationOpts(opt opts.Initialization) GlobalOpts</h3><div class="doc"><p>WithInitializationOpts sets the initialization.
+</div></section><section id="func-WithItemStyleOpts"><h3>func WithItemStyleOpts(opt opts.ItemStyle) SeriesOpts</h3><div class="doc"><p>WithItemStyleOpts sets the item style.
+</div></section><section id="func-WithKlineChartOpts"><h3>func WithKlineChartOpts(opt opts.KlineChart) SeriesOpts</h3><div class="doc"><p>WithLineChartOpts sets the LineChart option.
+</div></section><section id="func-WithLabelLayoutOpts"><h3>func WithLabelLayoutOpts(opt opts.LabelLayout) SeriesOpts</h3><div class="doc"><p>WithLabelLayoutOpts sets the label.
+</div></section><section id="func-WithLabelLineOpts"><h3>func WithLabelLineOpts(opt opts.LabelLine) SeriesOpts</h3><div class="doc"><p>WithLabelLineOpts sets the label.
+</div></section><section id="func-WithLabelOpts"><h3>func WithLabelOpts(opt opts.Label) SeriesOpts</h3><div class="doc"><p>WithLabelOpts sets the label.
+</div></section><section id="func-WithLegendOpts"><h3>func WithLegendOpts(opt opts.Legend) GlobalOpts</h3><div class="doc"><p>WithLegendOpts sets the legend.
+</div></section><section id="func-WithLineChartOpts"><h3>func WithLineChartOpts(opt opts.LineChart) SeriesOpts</h3><div class="doc"><p>WithLineChartOpts sets the LineChart option.
+</div></section><section id="func-WithLineStyleOpts"><h3>func WithLineStyleOpts(opt opts.LineStyle) SeriesOpts</h3><div class="doc"><p>WithLineStyleOpts sets the line style.
+</div></section><section id="func-WithLiquidChartOpts"><h3>func WithLiquidChartOpts(opt opts.LiquidChart) SeriesOpts</h3><div class="doc"><p>WithLiquidChartOpts sets the LiquidChart option.
+</div></section><section id="func-WithMarkAreaData"><h3>func WithMarkAreaData(datas ...[]opts.MarkAreaData) SeriesOpts</h3><div class="doc"><p>WithMarkAreaData sets the markArea.data each item as array
+See <a href="https://echarts.apache.org/en/option.html#series-candlestick.markArea.data">https://echarts.apache.org/en/option.html#series-candlestick.markArea.data</a>
+</div></section><section id="func-WithMarkAreaData0"><h3>func WithMarkAreaData0(data0 opts.MarkAreaData0) SeriesOpts</h3><div class="doc"><p>WithMarkAreaData0 sets the markArea.data.0
+</div></section><section id="func-WithMarkAreaData1"><h3>func WithMarkAreaData1(data1 opts.MarkAreaData1) SeriesOpts</h3><div class="doc"><p>WithMarkAreaData1 sets the markArea.data.1
+</div></section><section id="func-WithMarkAreaNameCoordItemOpts"><h3>func WithMarkAreaNameCoordItemOpts(opt ...opts.MarkAreaNameCoordItem) SeriesOpts</h3><div class="doc"><p>WithMarkAreaNameCoordItemOpts sets the coordinates of the MarkLine.
+</div></section><section id="func-WithMarkAreaNameTypeItemOpts"><h3>func WithMarkAreaNameTypeItemOpts(opt ...opts.MarkAreaNameTypeItem) SeriesOpts</h3><div class="doc"><p>WithMarkAreaNameTypeItemOpts sets the type of the MarkArea.
+</div></section><section id="func-WithMarkAreaNameXAxisItemOpts"><h3>func WithMarkAreaNameXAxisItemOpts(opt ...opts.MarkAreaNameXAxisItem) SeriesOpts</h3><div class="doc"><p>WithMarkAreaNameXAxisItemOpts sets the X axis of the MarkLine.
+</div></section><section id="func-WithMarkAreaNameYAxisItemOpts"><h3>func WithMarkAreaNameYAxisItemOpts(opt ...opts.MarkAreaNameYAxisItem) SeriesOpts</h3><div class="doc"><p>WithMarkAreaNameYAxisItemOpts sets the Y axis of the MarkLine.
+</div></section><section id="func-WithMarkAreaStyleOpts"><h3>func WithMarkAreaStyleOpts(opt opts.MarkAreaStyle) SeriesOpts</h3><div class="doc"><p>WithMarkAreaStyleOpts sets the style of the MarkArea.
+</div></section><section id="func-WithMarkLineNameCoordItemOpts"><h3>func WithMarkLineNameCoordItemOpts(opt ...opts.MarkLineNameCoordItem) SeriesOpts</h3><div class="doc"><p>WithMarkLineNameCoordItemOpts sets the coordinates of the MarkLine.
+</div></section><section id="func-WithMarkLineNameTypeItemOpts"><h3>func WithMarkLineNameTypeItemOpts(opt ...opts.MarkLineNameTypeItem) SeriesOpts</h3><div class="doc"><p>WithMarkLineNameTypeItemOpts sets the type of the MarkLine.
+</div></section><section id="func-WithMarkLineNameXAxisItemOpts"><h3>func WithMarkLineNameXAxisItemOpts(opt ...opts.MarkLineNameXAxisItem) SeriesOpts</h3><div class="doc"><p>WithMarkLineNameXAxisItemOpts sets the X axis of the MarkLine.
+</div></section><section id="func-WithMarkLineNameYAxisItemOpts"><h3>func WithMarkLineNameYAxisItemOpts(opt ...opts.MarkLineNameYAxisItem) SeriesOpts</h3><div class="doc"><p>WithMarkLineNameYAxisItemOpts sets the Y axis of the MarkLine.
+</div></section><section id="func-WithMarkLineStyleOpts"><h3>func WithMarkLineStyleOpts(opt opts.MarkLineStyle) SeriesOpts</h3><div class="doc"><p>WithMarkLineStyleOpts sets the style of the MarkLine.
+</div></section><section id="func-WithMarkPointNameCoordItemOpts"><h3>func WithMarkPointNameCoordItemOpts(opt ...opts.MarkPointNameCoordItem) SeriesOpts</h3><div class="doc"><p>WithMarkPointNameCoordItemOpts sets the coordinated of the MarkPoint.
+</div></section><section id="func-WithMarkPointNameTypeItemOpts"><h3>func WithMarkPointNameTypeItemOpts(opt ...opts.MarkPointNameTypeItem) SeriesOpts</h3><div class="doc"><p>WithMarkPointNameTypeItemOpts sets the type of the MarkPoint.
+</div></section><section id="func-WithMarkPointStyleOpts"><h3>func WithMarkPointStyleOpts(opt opts.MarkPointStyle) SeriesOpts</h3><div class="doc"><p>WithMarkPointStyleOpts sets the style of the MarkPoint.
+</div></section><section id="func-WithParallelAxisList"><h3>func WithParallelAxisList(opt []opts.ParallelAxis) GlobalOpts</h3><div class="doc"><p>WithParallelAxisList sets the list of the parallel axis.
+</div></section><section id="func-WithParallelComponentOpts"><h3>func WithParallelComponentOpts(opt opts.ParallelComponent) GlobalOpts</h3><div class="doc"><p>WithParallelComponentOpts sets the parallel component.
+</div></section><section id="func-WithPieChartOpts"><h3>func WithPieChartOpts(opt opts.PieChart) SeriesOpts</h3><div class="doc"><p>WithPieChartOpts sets the PieChart option.
+</div></section><section id="func-WithPolarOps"><h3>func WithPolarOps(opt opts.Polar) GlobalOpts</h3><div class="doc"><p>WithPolarOps sets the polar.
+</div></section><section id="func-WithProgressive"><h3>func WithProgressive(opt int) GlobalOpts</h3><div class="doc"><p>WithProgressive allows to set amount of graphic elements rendered in a frame
+</div></section><section id="func-WithProgressiveThreshold"><h3>func WithProgressiveThreshold(opt int) GlobalOpts</h3><div class="doc"><p>WithProgressiveThreshold Allows to set treshold for progressive rendering
+</div></section><section id="func-WithRadarChartOpts"><h3>func WithRadarChartOpts(opt opts.RadarChart) SeriesOpts</h3><div class="doc"><p>WithRadarChartOpts sets the RadarChart option.
+</div></section><section id="func-WithRadarComponentOpts"><h3>func WithRadarComponentOpts(opt opts.RadarComponent) GlobalOpts</h3><div class="doc"><p>WithRadarComponentOpts sets the component of the radar.
+</div></section><section id="func-WithRadiusAxisOps"><h3>func WithRadiusAxisOps(opt opts.RadiusAxis) GlobalOpts</h3><div class="doc"><p>WithRadiusAxisOps sets the radius of the axis.
+</div></section><section id="func-WithRippleEffectOpts"><h3>func WithRippleEffectOpts(opt opts.RippleEffect) SeriesOpts</h3><div class="doc"><p>WithRippleEffectOpts sets the ripple effect.
+</div></section><section id="func-WithScatterChartOpts"><h3>func WithScatterChartOpts(opt opts.ScatterChart) SeriesOpts</h3><div class="doc"><p>WithScatterChartOpts sets the ScatterChart option.
+</div></section><section id="func-WithSeriesAnimation"><h3>func WithSeriesAnimation(enable bool) SeriesOpts</h3></section><section id="func-WithSeriesId"><h3>func WithSeriesId(id string) SeriesOpts</h3></section><section id="func-WithSeriesOpts"><h3>func WithSeriesOpts(opf SingleSeriesOptFunc) SeriesOpts</h3><div class="doc"><p>WithSeriesOpts If the WithXXX helper method is not good enough, use this directly!
+</div></section><section id="func-WithSeriesSymbolKeepAspect"><h3>func WithSeriesSymbolKeepAspect(enable bool) SeriesOpts</h3></section><section id="func-WithSeriesTooltipOpts"><h3>func WithSeriesTooltipOpts(opt opts.SeriesTooltip) SeriesOpts</h3><div class="doc"><p>WithSeriesTooltipOpts With Tooltip Opts
+</div></section><section id="func-WithSingleAxisOpts"><h3>func WithSingleAxisOpts(opt opts.SingleAxis) GlobalOpts</h3><div class="doc"><p>WithSingleAxisOpts sets the single axis.
+</div></section><section id="func-WithSunburstOpts"><h3>func WithSunburstOpts(opt opts.SunburstChart) SeriesOpts</h3><div class="doc"><p>WithSunburstOpts sets the SunburstChart option.
+</div></section><section id="func-WithTitleOpts"><h3>func WithTitleOpts(opt opts.Title) GlobalOpts</h3><div class="doc"><p>WithTitleOpts sets the title.
+</div></section><section id="func-WithToolboxOpts"><h3>func WithToolboxOpts(opt opts.Toolbox) GlobalOpts</h3><div class="doc"><p>WithToolboxOpts sets the toolbox.
+</div></section><section id="func-WithTooltipOpts"><h3>func WithTooltipOpts(opt opts.Tooltip) GlobalOpts</h3><div class="doc"><p>WithTooltipOpts sets the tooltip.
+</div></section><section id="func-WithTreeMapOpts"><h3>func WithTreeMapOpts(opt opts.TreeMapChart) SeriesOpts</h3><div class="doc"><p>WithTreeMapOpts sets the TreeMapChart options.
+</div></section><section id="func-WithTreeOpts"><h3>func WithTreeOpts(opt opts.TreeChart) SeriesOpts</h3><div class="doc"><p>WithTreeOpts sets the TreeChart option.
+</div></section><section id="func-WithVisualMapOpts"><h3>func WithVisualMapOpts(opt ...opts.VisualMap) GlobalOpts</h3><div class="doc"><p>WithVisualMapOpts sets the List of the visual map.
+</div></section><section id="func-WithWorldCloudChartOpts"><h3>func WithWorldCloudChartOpts(opt opts.WordCloudChart) SeriesOpts</h3><div class="doc"><p>WithWorldCloudChartOpts sets the WorldCloudChart option.
+</div></section><section id="func-WithXAxis3DOpts"><h3>func WithXAxis3DOpts(opt opts.XAxis3D) GlobalOpts</h3><div class="doc"><p>WithXAxis3DOpts sets the X axis of the Chart3D instance.
+</div></section><section id="func-WithXAxisOpts"><h3>func WithXAxisOpts(opt opts.XAxis, index ...int) GlobalOpts</h3><div class="doc"><p>WithXAxisOpts sets the X axis.
+</div></section><section id="func-WithYAxis3DOpts"><h3>func WithYAxis3DOpts(opt opts.YAxis3D) GlobalOpts</h3><div class="doc"><p>WithYAxis3DOpts sets the Y axis of the Chart3D instance.
+</div></section><section id="func-WithYAxisOpts"><h3>func WithYAxisOpts(opt opts.YAxis, index ...int) GlobalOpts</h3><div class="doc"><p>WithYAxisOpts sets the Y axis.
+</div></section><section id="func-WithZAxis3DOpts"><h3>func WithZAxis3DOpts(opt opts.ZAxis3D) GlobalOpts</h3><div class="doc"><p>WithZAxis3DOpts sets the Z axis of the Chart3D instance.
+</div></section><h2 id="types">Types</h2><section id="type-Bar"><h3>type Bar</h3><div class="doc"><p>Bar represents a bar chart.
+</div><pre><code>type Bar struct {
+	RectChart
+	// contains filtered or unexported fields
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>RectChart</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.BarData, options ...SeriesOpts) *Bar</h3><div class="doc"><p>AddSeries adds the new series.
+</div></section><section id="func-EnablePolarType"><h3>func  EnablePolarType() *Bar</h3><div class="doc"><p>EnablePolarType enables the polar bar.
+</div></section><section id="func-SetXAxis"><h3>func  SetXAxis(x interface{}) *Bar</h3><div class="doc"><p>SetXAxis sets the X axis.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section><section id="func-XYReversal"><h3>func  XYReversal() *Bar</h3><div class="doc"><p>XYReversal checks if X axis and Y axis are reversed.
+</div></section></section><section id="type-Bar3D"><h3>type Bar3D</h3><div class="doc"><p>Bar3D represents a 3D bar chart.
+</div><pre><code>type Bar3D struct {
+	Chart3D
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>Chart3D</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.Chart3DData, options ...SeriesOpts) *Bar3D</h3><div class="doc"><p>AddSeries adds the new series.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section></section><section id="type-BaseConfiguration"><h3>type BaseConfiguration</h3><div class="doc"><p>BaseConfiguration represents an option set needed by all chart types.
+</div><pre><code>type BaseConfiguration struct {
+	opts.Legend       `json:&#34;legend&#34;`
+	opts.Tooltip      `json:&#34;tooltip&#34;`
+	opts.Toolbox      `json:&#34;toolbox&#34;`
+	opts.Title        `json:&#34;title&#34;`
+	opts.Polar        `json:&#34;polar&#34;`
+	opts.AngleAxis    `json:&#34;angleAxis&#34;`
+	opts.RadiusAxis   `json:&#34;radiusAxis&#34;`
+	opts.Brush        `json:&#34;brush&#34;`
+	*opts.AxisPointer `json:&#34;axisPointer&#34;`
+	*opts.Aria        `json:&#34;aria&#34;`
+	Calendar          []*opts.Calendar `json:&#34;calendar&#34;`
+
+	render.Renderer        `json:&#34;-&#34;`
+	opts.Initialization    `json:&#34;-&#34;`
+	opts.Assets            `json:&#34;-&#34;`
+	opts.RadarComponent    `json:&#34;-&#34;`
+	opts.GeoComponent      `json:&#34;-&#34;`
+	opts.ParallelComponent `json:&#34;-&#34;`
+	opts.JSFunctions       `json:&#34;-&#34;`
+	opts.SingleAxis        `json:&#34;-&#34;`
+
+	MultiSeries
+	XYAxis
+
+	opts.XAxis3D
+	opts.YAxis3D
+	opts.ZAxis3D
+	opts.Grid3D
+	opts.Grid
+
+	// Colors is the color list of palette.
+	// If no color is set in series, the colors would be adopted sequentially and circularly
+	// from this list as the colors of series.
+	Colors []string
+
+	// Animation configs
+	// Animation whether enable the animation, default true
+	Animation          types.Bool `json:&#34;animation,omitempty&#34;`
+	AnimationThreshold types.Int  `json:&#34;animationThreshold,omitempty&#34;`
+	// AnimationDuration defined as types.FuncStr for more flexibilities, so are other related options
+	AnimationDuration       types.FuncStr `json:&#34;animationDuration,omitempty&#34;`
+	AnimationEasing         string        `json:&#34;animationEasing,omitempty&#34;`
+	AnimationDelay          types.FuncStr `json:&#34;animationDelay,omitempty&#34;`
+	AnimationDurationUpdate types.FuncStr `json:&#34;animationDurationUpdate,omitempty&#34;`
+	AnimationEasingUpdate   string        `json:&#34;animationEasingUpdate,omitempty&#34;`
+	AnimationDelayUpdate    types.FuncStr `json:&#34;animationDelayUpdate,omitempty&#34;`
+
+	//Progressive specifies the amount of graphic elements that can be rendered within a frame (about 16ms) if &#34;progressive rendering&#34; enabled.
+	//By default, progressive is auto-enabled when data amount is bigger than progressiveThreshold
+	Progressive types.Int `json:&#34;progressive,omitempty&#34;`
+	//ProgressiveThreshold number If current data amount is over the threshold, &#34;progressive rendering&#34; is enabled, default 3000
+	ProgressiveThreshold types.Int `json:&#34;progressiveThreshold,omitempty&#34;`
+
+	// Array of datasets, managed by AddDataset()
+	DatasetList []opts.Dataset `json:&#34;dataset,omitempty&#34;`
+
+	DataZoomList  []opts.DataZoom  `json:&#34;datazoom,omitempty&#34;`
+	VisualMapList []opts.VisualMap `json:&#34;visualmap,omitempty&#34;`
+
+	EventListeners []event.Listener `json:&#34;-&#34;`
+
+	// ParallelAxisList represents the component list which is the coordinate axis for parallel coordinate.
+	ParallelAxisList []opts.ParallelAxis
+
+	GridList []opts.Grid `json:&#34;grid,omitempty&#34;`
+	// contains filtered or unexported fields
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>opts.Legend</code> <code>`json:&#34;legend&#34;`</code></li><li><code>opts.Tooltip</code> <code>`json:&#34;tooltip&#34;`</code></li><li><code>opts.Toolbox</code> <code>`json:&#34;toolbox&#34;`</code></li><li><code>opts.Title</code> <code>`json:&#34;title&#34;`</code></li><li><code>opts.Polar</code> <code>`json:&#34;polar&#34;`</code></li><li><code>opts.AngleAxis</code> <code>`json:&#34;angleAxis&#34;`</code></li><li><code>opts.RadiusAxis</code> <code>`json:&#34;radiusAxis&#34;`</code></li><li><code>opts.Brush</code> <code>`json:&#34;brush&#34;`</code></li><li><code>*opts.AxisPointer</code> <code>`json:&#34;axisPointer&#34;`</code></li><li><code>*opts.Aria</code> <code>`json:&#34;aria&#34;`</code></li><li><code>Calendar []*opts.Calendar</code> <code>`json:&#34;calendar&#34;`</code></li><li><code>render.Renderer</code> <code>`json:&#34;-&#34;`</code></li><li><code>opts.Initialization</code> <code>`json:&#34;-&#34;`</code></li><li><code>opts.Assets</code> <code>`json:&#34;-&#34;`</code></li><li><code>opts.RadarComponent</code> <code>`json:&#34;-&#34;`</code></li><li><code>opts.GeoComponent</code> <code>`json:&#34;-&#34;`</code></li><li><code>opts.ParallelComponent</code> <code>`json:&#34;-&#34;`</code></li><li><code>opts.JSFunctions</code> <code>`json:&#34;-&#34;`</code></li><li><code>opts.SingleAxis</code> <code>`json:&#34;-&#34;`</code></li><li><code>MultiSeries</code></li><li><code>XYAxis</code></li><li><code>opts.XAxis3D</code></li><li><code>opts.YAxis3D</code></li><li><code>opts.ZAxis3D</code></li><li><code>opts.Grid3D</code></li><li><code>opts.Grid</code></li><li><code>Colors []string</code><div class="doc"><p>Colors is the color list of palette.
+If no color is set in series, the colors would be adopted sequentially and circularly
+from this list as the colors of series.
+</div></li><li><code>Animation types.Bool</code> <code>`json:&#34;animation,omitempty&#34;`</code><div class="doc"><p>Animation configs
+Animation whether enable the animation, default true
+</div></li><li><code>AnimationThreshold types.Int</code> <code>`json:&#34;animationThreshold,omitempty&#34;`</code></li><li><code>AnimationDuration types.FuncStr</code> <code>`json:&#34;animationDuration,omitempty&#34;`</code><div class="doc"><p>AnimationDuration defined as types.FuncStr for more flexibilities, so are other related options
+</div></li><li><code>AnimationEasing string</code> <code>`json:&#34;animationEasing,omitempty&#34;`</code></li><li><code>AnimationDelay types.FuncStr</code> <code>`json:&#34;animationDelay,omitempty&#34;`</code></li><li><code>AnimationDurationUpdate types.FuncStr</code> <code>`json:&#34;animationDurationUpdate,omitempty&#34;`</code></li><li><code>AnimationEasingUpdate string</code> <code>`json:&#34;animationEasingUpdate,omitempty&#34;`</code></li><li><code>AnimationDelayUpdate types.FuncStr</code> <code>`json:&#34;animationDelayUpdate,omitempty&#34;`</code></li><li><code>Progressive types.Int</code> <code>`json:&#34;progressive,omitempty&#34;`</code><div class="doc"><p>Progressive specifies the amount of graphic elements that can be rendered within a frame (about 16ms) if &quot;progressive rendering&quot; enabled.
+By default, progressive is auto-enabled when data amount is bigger than progressiveThreshold
+</div></li><li><code>ProgressiveThreshold types.Int</code> <code>`json:&#34;progressiveThreshold,omitempty&#34;`</code><div class="doc"><p>ProgressiveThreshold number If current data amount is over the threshold, &quot;progressive rendering&quot; is enabled, default 3000
+</div></li><li><code>DatasetList []opts.Dataset</code> <code>`json:&#34;dataset,omitempty&#34;`</code><div class="doc"><p>Array of datasets, managed by AddDataset()
+</div></li><li><code>DataZoomList []opts.DataZoom</code> <code>`json:&#34;datazoom,omitempty&#34;`</code></li><li><code>VisualMapList []opts.VisualMap</code> <code>`json:&#34;visualmap,omitempty&#34;`</code></li><li><code>EventListeners []event.Listener</code> <code>`json:&#34;-&#34;`</code></li><li><code>ParallelAxisList []opts.ParallelAxis</code><div class="doc"><p>ParallelAxisList represents the component list which is the coordinate axis for parallel coordinate.
+</div></li><li><code>GridList []opts.Grid</code> <code>`json:&#34;grid,omitempty&#34;`</code></li></ul><section id="func-Accept"><h3>func  Accept(visitor ConfigurationVisitor)</h3></section><section id="func-AddDataset"><h3>func  AddDataset(dataset ...opts.Dataset)</h3><div class="doc"><p>AddDataset adds a Dataset to this chart
+</div></section><section id="func-FillDefaultValues"><h3>func  FillDefaultValues()</h3><div class="doc"><p>FillDefaultValues fill default values for chart options.
+</div></section><section id="func-GetAssets"><h3>func  GetAssets() opts.Assets</h3><div class="doc"><p>GetAssets returns the Assets options.
+</div></section><section id="func-JSON"><h3>func  JSON() map[string]interface{}</h3><div class="doc"><p>JSON wraps all the options to a map so that it could be used in the base template.
+You should call `bar.Validate()` before call this method to ensure the series data set in place
+Get data in bytes
+bs, _ : = json.Marshal(bar.JSON())
+</div></section><section id="func-JSONNotEscaped"><h3>func  JSONNotEscaped() template.HTML</h3><div class="doc"><p>JSONNotEscaped works like method JSON, but it returns a marshaled object whose characters will not be escaped in the template
+You should call `&lt;chart&gt;.Validate()` before call this method to ensure the series data set in place
+</div></section></section><section id="type-BaseConfigurationVisitor"><h3>type BaseConfigurationVisitor</h3><div class="doc"><p>BaseConfigurationVisitor a default visitor, noop
+</div><pre><code>type BaseConfigurationVisitor struct {
+}</code></pre><section id="func-Visit"><h3>func  Visitor) Visit(chart map[string]interface{})</h3></section><section id="func-VisitAngleAxis"><h3>func  VisitAngleAxis(angleAxis opts.AngleAxis) interface{}</h3></section><section id="func-VisitAria"><h3>func  VisitAria(aria *opts.Aria) interface{}</h3></section><section id="func-VisitAxisPointer"><h3>func  VisitAxisPointer(axisPointer *opts.AxisPointer) interface{}</h3></section><section id="func-VisitBrush"><h3>func  VisitBrush(brush opts.Brush) interface{}</h3></section><section id="func-VisitCalendar"><h3>func  VisitCalendar(calendar []*opts.Calendar) interface{}</h3></section><section id="func-VisitDataZooms"><h3>func  VisitDataZooms(dataZooms []opts.DataZoom) interface{}</h3></section><section id="func-VisitDatasets"><h3>func  VisitDatasets(datasets ...opts.Dataset) interface{}</h3></section><section id="func-VisitGeo"><h3>func  VisitGeo(geo opts.GeoComponent) interface{}</h3></section><section id="func-VisitGrid"><h3>func  VisitGrid(grid []opts.Grid) interface{}</h3></section><section id="func-VisitGrid3D"><h3>func  VisitGrid3D(grid3D opts.Grid3D) interface{}</h3></section><section id="func-VisitLegendOpt"><h3>func  VisitLegendOpt(legend opts.Legend) interface{}</h3></section><section id="func-VisitParallel"><h3>func  VisitParallel(parallel opts.ParallelComponent) interface{}</h3></section><section id="func-VisitParallelAxis"><h3>func  VisitParallelAxis(parallelAxes []opts.ParallelAxis) interface{}</h3></section><section id="func-VisitPolar"><h3>func  VisitPolar(polar opts.Polar) interface{}</h3></section><section id="func-VisitRadar"><h3>func  VisitRadar(radar opts.RadarComponent) interface{}</h3></section><section id="func-VisitRadiusAxis"><h3>func  VisitRadiusAxis(radiusAxis opts.RadiusAxis) interface{}</h3></section><section id="func-VisitSeriesOpt"><h3>func  VisitSeriesOpt(series MultiSeries) interface{}</h3></section><section id="func-VisitSingleAxis"><h3>func  VisitSingleAxis(singleAxis opts.SingleAxis) interface{}</h3></section><section id="func-VisitTitleOpt"><h3>func  VisitTitleOpt(title opts.Title) interface{}</h3></section><section id="func-VisitToolbox"><h3>func  VisitToolbox(toolbox opts.Toolbox) interface{}</h3></section><section id="func-VisitTooltipOpt"><h3>func  VisitTooltipOpt(tooltip opts.Tooltip) interface{}</h3></section><section id="func-VisitVisualMaps"><h3>func  VisitVisualMaps(visualMaps []opts.VisualMap) interface{}</h3></section><section id="func-VisitXAxis"><h3>func  VisitXAxis(xAxis []opts.XAxis) interface{}</h3></section><section id="func-VisitXAxis3D"><h3>func  VisitXAxis3D(xAxis3D opts.XAxis3D) interface{}</h3></section><section id="func-VisitYAxis"><h3>func  VisitYAxis(yAxis []opts.YAxis) interface{}</h3></section><section id="func-VisitYAxis3D"><h3>func  VisitYAxis3D(yAxis3D opts.YAxis3D) interface{}</h3></section><section id="func-VisitZAxis3D"><h3>func  VisitZAxis3D(zAxis3D opts.ZAxis3D) interface{}</h3></section></section><section id="type-BoxPlot"><h3>type BoxPlot</h3><div class="doc"><p>BoxPlot represents a boxplot chart.
+</div><pre><code>type BoxPlot struct {
+	RectChart
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>RectChart</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.BoxPlotData, options ...SeriesOpts) *BoxPlot</h3><div class="doc"><p>AddSeries adds the new series.
+</div></section><section id="func-SetXAxis"><h3>func  SetXAxis(x interface{}) *BoxPlot</h3><div class="doc"><p>SetXAxis adds the X axis.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Chart3D"><h3>type Chart3D</h3><div class="doc"><p>Chart3D is a chart in 3D coordinates.
+</div><pre><code>type Chart3D struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Chart3D</h3><div class="doc"><p>SetGlobalOptions sets options for the Chart3D instance.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-ConfigurationVisitor"><h3>type ConfigurationVisitor</h3><div class="doc"><p>ConfigurationVisitor visitor, also the transformer.
+Allow to visit and modify/enhance chart options before rendering, even though the option structure isn&apos;t built-in.
+</div><pre><code>type ConfigurationVisitor interface {
+	// Visit called after all builtin options settled
+	Visit(chart map[string]interface{})
+	VisitTitleOpt(title opts.Title) interface{}
+	VisitLegendOpt(legend opts.Legend) interface{}
+	VisitTooltipOpt(tooltip opts.Tooltip) interface{}
+	VisitSeriesOpt(series MultiSeries) interface{}
+	VisitDatasets(datasets ...opts.Dataset) interface{}
+	VisitAxisPointer(axisPointer *opts.AxisPointer) interface{}
+	VisitAria(axisPointer *opts.Aria) interface{}
+	VisitPolar(polar opts.Polar) interface{}
+	VisitAngleAxis(angleAxis opts.AngleAxis) interface{}
+	VisitRadiusAxis(radiusAxis opts.RadiusAxis) interface{}
+	VisitGeo(geo opts.GeoComponent) interface{}
+	VisitRadar(radar opts.RadarComponent) interface{}
+	VisitParallel(parallel opts.ParallelComponent) interface{}
+	VisitParallelAxis(parallelAxes []opts.ParallelAxis) interface{}
+	VisitSingleAxis(singleAxis opts.SingleAxis) interface{}
+	VisitToolbox(toolbox opts.Toolbox) interface{}
+	VisitDataZooms(dataZooms []opts.DataZoom) interface{}
+	VisitVisualMaps(visualMaps []opts.VisualMap) interface{}
+	VisitXAxis(xAxis []opts.XAxis) interface{}
+	VisitYAxis(yAxis []opts.YAxis) interface{}
+	VisitGrid(grid []opts.Grid) interface{}
+	VisitXAxis3D(xAxis3D opts.XAxis3D) interface{}
+	VisitYAxis3D(yAxis3D opts.YAxis3D) interface{}
+	VisitZAxis3D(zAxis3D opts.ZAxis3D) interface{}
+	VisitGrid3D(grid3D opts.Grid3D) interface{}
+	VisitBrush(brush opts.Brush) interface{}
+	VisitCalendar(calendar []*opts.Calendar) interface{}
+}</code></pre><h4>Methods</h4><ul class="field-list"><li><code>Visit func(chart map[string]interface{})</code><div class="doc"><p>Visit called after all builtin options settled
+</div></li><li><code>VisitTitleOpt func(title opts.Title) interface{}</code></li><li><code>VisitLegendOpt func(legend opts.Legend) interface{}</code></li><li><code>VisitTooltipOpt func(tooltip opts.Tooltip) interface{}</code></li><li><code>VisitSeriesOpt func(series MultiSeries) interface{}</code></li><li><code>VisitDatasets func(datasets ...opts.Dataset) interface{}</code></li><li><code>VisitAxisPointer func(axisPointer *opts.AxisPointer) interface{}</code></li><li><code>VisitAria func(axisPointer *opts.Aria) interface{}</code></li><li><code>VisitPolar func(polar opts.Polar) interface{}</code></li><li><code>VisitAngleAxis func(angleAxis opts.AngleAxis) interface{}</code></li><li><code>VisitRadiusAxis func(radiusAxis opts.RadiusAxis) interface{}</code></li><li><code>VisitGeo func(geo opts.GeoComponent) interface{}</code></li><li><code>VisitRadar func(radar opts.RadarComponent) interface{}</code></li><li><code>VisitParallel func(parallel opts.ParallelComponent) interface{}</code></li><li><code>VisitParallelAxis func(parallelAxes []opts.ParallelAxis) interface{}</code></li><li><code>VisitSingleAxis func(singleAxis opts.SingleAxis) interface{}</code></li><li><code>VisitToolbox func(toolbox opts.Toolbox) interface{}</code></li><li><code>VisitDataZooms func(dataZooms []opts.DataZoom) interface{}</code></li><li><code>VisitVisualMaps func(visualMaps []opts.VisualMap) interface{}</code></li><li><code>VisitXAxis func(xAxis []opts.XAxis) interface{}</code></li><li><code>VisitYAxis func(yAxis []opts.YAxis) interface{}</code></li><li><code>VisitGrid func(grid []opts.Grid) interface{}</code></li><li><code>VisitXAxis3D func(xAxis3D opts.XAxis3D) interface{}</code></li><li><code>VisitYAxis3D func(yAxis3D opts.YAxis3D) interface{}</code></li><li><code>VisitZAxis3D func(zAxis3D opts.ZAxis3D) interface{}</code></li><li><code>VisitGrid3D func(grid3D opts.Grid3D) interface{}</code></li><li><code>VisitBrush func(brush opts.Brush) interface{}</code></li><li><code>VisitCalendar func(calendar []*opts.Calendar) interface{}</code></li></ul></section><section id="type-Custom"><h3>type Custom</h3><div class="doc"><p>Custom represents a custom chart.
+</div><pre><code>type Custom struct {
+	RectChart
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>RectChart</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.CustomData, options ...SeriesOpts) *Custom</h3><div class="doc"><p>AddSeries adds the new series.
+</div></section><section id="func-SetXAxis"><h3>func  SetXAxis(x interface{}) *Custom</h3><div class="doc"><p>SetXAxis adds the X axis.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-EffectScatter"><h3>type EffectScatter</h3><div class="doc"><p>EffectScatter represents an effect scatter chart.
+</div><pre><code>type EffectScatter struct {
+	RectChart
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>RectChart</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.EffectScatterData, options ...SeriesOpts) *EffectScatter</h3><div class="doc"><p>AddSeries adds the Y axis.
+</div></section><section id="func-SetXAxis"><h3>func  SetXAxis(x interface{}) *EffectScatter</h3><div class="doc"><p>SetXAxis adds the X axis.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Funnel"><h3>type Funnel</h3><div class="doc"><p>Funnel represents a funnel chart.
+</div><pre><code>type Funnel struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.FunnelData, options ...SeriesOpts) *Funnel</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Funnel</h3><div class="doc"><p>SetGlobalOptions sets options for the Funnel instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Gauge"><h3>type Gauge</h3><div class="doc"><p>Gauge represents a gauge chart.
+</div><pre><code>type Gauge struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.GaugeData, options ...SeriesOpts) *Gauge</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Gauge</h3><div class="doc"><p>SetGlobalOptions sets options for the Gauge instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Geo"><h3>type Geo</h3><div class="doc"><p>Geo represents a geo chart.
+</div><pre><code>type Geo struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name, geoType string, data []opts.GeoData, options ...SeriesOpts) *Geo</h3><div class="doc"><p>AddSeries adds new data sets.
+geoType options:
+* types.ChartScatter
+* types.ChartEffectScatter
+* types.ChartHeatMap
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Geo</h3><div class="doc"><p>SetGlobalOptions sets options for the Geo instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-GlobalOpts"><h3>type GlobalOpts</h3><div class="doc"><p>GlobalOpts sets the Global options for charts.
+</div><pre><code>type GlobalOpts func(bc *BaseConfiguration)</code></pre></section><section id="type-Graph"><h3>type Graph</h3><div class="doc"><p>Graph represents a graph chart.
+</div><pre><code>type Graph struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, nodes []opts.GraphNode, links []opts.GraphLink, options ...SeriesOpts) *Graph</h3><div class="doc"><p>AddSeries adds the new series.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Graph</h3><div class="doc"><p>SetGlobalOptions sets options for the Graph instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-HeatMap"><h3>type HeatMap</h3><div class="doc"><p>HeatMap represents a heatmap chart.
+</div><pre><code>type HeatMap struct {
+	RectChart
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>RectChart</code></li></ul><section id="func-AddCalendar"><h3>func  AddCalendar(calendar ...*opts.Calendar) *HeatMap</h3><div class="doc"><p>AddCalendar adds the calendar configuration to the chart.
+</div></section><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.HeatMapData, options ...SeriesOpts) *HeatMap</h3><div class="doc"><p>AddSeries adds the new series.
+</div></section><section id="func-SetXAxis"><h3>func  SetXAxis(x interface{}) *HeatMap</h3><div class="doc"><p>SetXAxis adds the X axis.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Kline"><h3>type Kline</h3><div class="doc"><p>Kline represents a kline chart.
+</div><pre><code>type Kline struct {
+	RectChart
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>RectChart</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.KlineData, options ...SeriesOpts) *Kline</h3><div class="doc"><p>AddSeries adds the new series.
+</div></section><section id="func-SetXAxis"><h3>func  SetXAxis(xAxis interface{}) *Kline</h3><div class="doc"><p>SetXAxis adds the X axis.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Line"><h3>type Line</h3><div class="doc"><p>Line represents a line chart.
+</div><pre><code>type Line struct {
+	RectChart
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>RectChart</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.LineData, options ...SeriesOpts) *Line</h3><div class="doc"><p>AddSeries adds the new series.
+</div></section><section id="func-SetXAxis"><h3>func  SetXAxis(x interface{}) *Line</h3><div class="doc"><p>SetXAxis adds the X axis.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Line3D"><h3>type Line3D</h3><div class="doc"><p>Line3D represents a 3D line chart.
+</div><pre><code>type Line3D struct {
+	Chart3D
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>Chart3D</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.Chart3DData, options ...SeriesOpts) *Line3D</h3><div class="doc"><p>AddSeries adds the new series.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section></section><section id="type-Liquid"><h3>type Liquid</h3><div class="doc"><p>Liquid represents a liquid chart.
+</div><pre><code>type Liquid struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.LiquidData, options ...SeriesOpts) *Liquid</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Liquid</h3><div class="doc"><p>SetGlobalOptions sets options for the Liquid instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Map"><h3>type Map</h3><div class="doc"><p>Map represents a map chart.
+</div><pre><code>type Map struct {
+	BaseConfiguration
+	// contains filtered or unexported fields
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.MapData, options ...SeriesOpts) *Map</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-RegisterMapType"><h3>func  RegisterMapType(mapType string)</h3><div class="doc"><p>RegisterMapType registers the given mapType.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Map</h3><div class="doc"><p>SetGlobalOptions sets options for the Map instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-MultiSeries"><h3>type MultiSeries</h3><div class="doc"><p>MultiSeries represents multiple series.
+</div><pre><code>type MultiSeries []SingleSeries</code></pre><section id="func-SetSeriesOptions"><h3>func  SetSeriesOptions(opts ...SeriesOpts)</h3><div class="doc"><p>SetSeriesOptions sets options for all the series.
+NOTE:
+It should be called after AddSeries, otherwise, the Options is no place to add on.
+Previous options will be overwritten every time hence setting them on the `AddSeries` if you want
+to customize each series individually
+<pre>here -&gt; ↓ &lt;-
+</pre>
+<p>func (c *Bar) AddSeries(name string, data []opts.BarData, options ...SeriesOpts)
+</div></section></section><section id="type-Overlaper"><h3>type Overlaper</h3><pre><code>type Overlaper interface {
+	// contains filtered or unexported methods
+}</code></pre></section><section id="type-Parallel"><h3>type Parallel</h3><div class="doc"><p>Parallel represents a parallel axis.
+</div><pre><code>type Parallel struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.ParallelData, options ...SeriesOpts) *Parallel</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Parallel</h3><div class="doc"><p>SetGlobalOptions sets options for the Parallel instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Pie"><h3>type Pie</h3><div class="doc"><p>Pie represents a pie chart.
+</div><pre><code>type Pie struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.PieData, options ...SeriesOpts) *Pie</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Pie</h3><div class="doc"><p>SetGlobalOptions sets options for the Pie instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Radar"><h3>type Radar</h3><div class="doc"><p>Radar represents a radar chart.
+</div><pre><code>type Radar struct {
+	BaseConfiguration
+
+	// SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
+	SymbolKeepAspect types.Bool
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li><li><code>SymbolKeepAspect types.Bool</code><div class="doc"><p>SymbolKeepAspect is whether to keep aspect for symbols in the form of path://.
+</div></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.RadarData, options ...SeriesOpts) *Radar</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Radar</h3><div class="doc"><p>SetGlobalOptions sets options for the Radar instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-RectAggregator"><h3>type RectAggregator</h3><div class="doc"><p>RectAggregator is a binary operator for the RectChart merge function
+</div><pre><code>type RectAggregator func(this *RectChart, that *RectChart) *RectChart</code></pre></section><section id="type-RectChart"><h3>type RectChart</h3><div class="doc"><p>RectChart is a chart in RectChart coordinate.
+</div><pre><code>type RectChart struct {
+	RectConfiguration
+	// contains filtered or unexported fields
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>RectConfiguration</code></li></ul><section id="func-Aggregate"><h3>func  Aggregate(aggregator RectAggregator, charts ...Overlaper)</h3><div class="doc"><p>Aggregate aggregation multiple rect charts into one single canvas.
+An aggregator will merge all charts in orders into the final one.
+It is only suited for some of the charts which are in rectangular coordinate.
+</div></section><section id="func-Overlap"><h3>func  Overlap(a ...Overlaper)</h3><div class="doc"><p>Overlap composes multiple charts&apos; Series data into one single canvas.
+It is only suited for some of the charts which are in rectangular coordinate.
+Supported charts: Bar/BoxPlot/Line/Scatter/EffectScatter/Kline/HeatMap/Custom
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *RectChart</h3><div class="doc"><p>SetGlobalOptions sets options for the RectChart instance.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-RectConfiguration"><h3>type RectConfiguration</h3><div class="doc"><p>RectConfiguration contains options for the rectangular coordinates.
+</div><pre><code>type RectConfiguration struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul></section><section id="type-Sankey"><h3>type Sankey</h3><div class="doc"><p>Sankey represents a sankey chart.
+</div><pre><code>type Sankey struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, nodes []opts.SankeyNode, links []opts.SankeyLink, options ...SeriesOpts) *Sankey</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Sankey</h3><div class="doc"><p>SetGlobalOptions sets options for the Sankey instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Scatter"><h3>type Scatter</h3><div class="doc"><p>Scatter represents a scatter chart.
+</div><pre><code>type Scatter struct {
+	RectChart
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>RectChart</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.ScatterData, options ...SeriesOpts) *Scatter</h3><div class="doc"><p>AddSeries adds the new series.
+</div></section><section id="func-SetXAxis"><h3>func  SetXAxis(x interface{}) *Scatter</h3><div class="doc"><p>SetXAxis adds the X axis.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Scatter3D"><h3>type Scatter3D</h3><div class="doc"><p>Scatter3D represents a 3D scatter chart.
+</div><pre><code>type Scatter3D struct {
+	Chart3D
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>Chart3D</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.Chart3DData, options ...SeriesOpts) *Scatter3D</h3><div class="doc"><p>AddSeries adds the new series.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section></section><section id="type-SeriesOpts"><h3>type SeriesOpts</h3><pre><code>type SeriesOpts func(s *SingleSeries)</code></pre></section><section id="type-SingleSeries"><h3>type SingleSeries</h3><pre><code>type SingleSeries struct {
+	Name string `json:&#34;name,omitempty&#34;`
+	Type string `json:&#34;type,omitempty&#34;`
+	Id   string `json:&#34;id,omitempty&#34;`
+
+	// Rectangular charts
+	// Line | Bar
+	Stack string `json:&#34;stack,omitempty&#34;`
+	// Line | Bar | Scatter
+	XAxisIndex int `json:&#34;xAxisIndex,omitempty&#34;`
+	// Line | Bar | Scatter
+	YAxisIndex int `json:&#34;yAxisIndex,omitempty&#34;`
+
+	// Bar
+	BarGap string `json:&#34;barGap,omitempty&#34;`
+	// Bar
+	BarCategoryGap string `json:&#34;barCategoryGap,omitempty&#34;`
+	// Bar
+	ShowBackground types.Bool `json:&#34;showBackground,omitempty&#34;`
+	// Bar
+	RoundCap types.Bool `json:&#34;roundCap,omitempty&#34;`
+
+	// Bar3D
+	Shading string `json:&#34;shading,omitempty&#34;`
+
+	// Graph
+	Links              interface{} `json:&#34;links,omitempty&#34;`
+	Layout             string      `json:&#34;layout,omitempty&#34;`
+	Force              interface{} `json:&#34;force,omitempty&#34;`
+	Categories         interface{} `json:&#34;categories,omitempty&#34;`
+	Roam               types.Bool  `json:&#34;roam,omitempty&#34;`
+	EdgeSymbol         interface{} `json:&#34;edgeSymbol,omitempty&#34;`
+	EdgeSymbolSize     interface{} `json:&#34;edgeSymbolSize,omitempty&#34;`
+	EdgeLabel          interface{} `json:&#34;edgeLabel,omitempty&#34;`
+	Draggable          types.Bool  `json:&#34;draggable,omitempty&#34;`
+	FocusNodeAdjacency types.Bool  `json:&#34;focusNodeAdjacency,omitempty&#34;`
+	// Line | Radar
+	SymbolKeepAspect types.Bool `json:&#34;symbolKeepAspect,omitempty&#34;`
+
+	// BarWidth The width options of the bar. Adaptive when not specified.
+	// Can be an absolute value like 40 or a percent value like &#39;60%&#39;.
+	// Configurable charts: bar | kline
+	BarWidth    string `json:&#34;barWidth,omitempty&#34;`
+	BarMinWidth string `json:&#34;barMinWidth,omitempty&#34;`
+	BarMaxWidth string `json:&#34;barMaxWidth,omitempty&#34;`
+
+	// Line | Bar | Pie | Scatter | Radar
+	ColorBy string `json:&#34;colorBy,omitempty&#34;`
+	// Line | Bar
+	PolarIndex int `json:&#34;polarIndex,omitempty&#34;`
+	// Line
+	Step interface{} `json:&#34;step,omitempty&#34;`
+	// Line
+	Smooth types.Bool `json:&#34;smooth,omitempty&#34;`
+	// Line
+	ConnectNulls types.Bool `json:&#34;connectNulls,omitempty&#34;`
+	// Line
+	ShowSymbol types.Bool `json:&#34;showSymbol,omitempty&#34;`
+	// Line | Scatter | Radar
+	Symbol string `json:&#34;symbol,omitempty&#34;`
+	Color  string `json:&#34;color,omitempty&#34;`
+
+	// Liquid
+	IsLiquidOutline types.Bool `json:&#34;outline,omitempty&#34;`
+	IsWaveAnimation types.Bool `json:&#34;waveAnimation,omitempty&#34;`
+
+	// Map
+	MapType string `json:&#34;map,omitempty&#34;`
+	// Map | Line | Bar | Pie | Scatter
+	CoordSystem string `json:&#34;coordinateSystem,omitempty&#34;`
+
+	// Pie
+	RoseType string `json:&#34;roseType,omitempty&#34;`
+	// Pie
+	Center interface{} `json:&#34;center,omitempty&#34;`
+	// Pie
+	Radius interface{} `json:&#34;radius,omitempty&#34;`
+	// Pie
+	PadAngle float64 `json:&#34;padAngle,omitempty&#34;`
+
+	// Line | Scatter | Radar
+	SymbolSize interface{} `json:&#34;symbolSize,omitempty&#34;`
+
+	// Tree
+	Orient            string      `json:&#34;orient,omitempty&#34;`
+	ExpandAndCollapse types.Bool  `json:&#34;expandAndCollapse,omitempty&#34;`
+	InitialTreeDepth  int         `json:&#34;initialTreeDepth,omitempty&#34;`
+	Leaves            interface{} `json:&#34;leaves,omitempty&#34;`
+	Left              string      `json:&#34;left,omitempty&#34;`
+	Right             string      `json:&#34;right,omitempty&#34;`
+	Top               string      `json:&#34;top,omitempty&#34;`
+	Bottom            string      `json:&#34;bottom,omitempty&#34;`
+
+	// Sankey
+	NodeWidth types.Int `json:&#34;nodeWidth,omitempty&#34;`
+	NodeGap   types.Int `json:&#34;nodeGap,omitempty&#34;`
+	NodeAlign string    `json:&#34;nodeAlign,omitempty&#34;`
+
+	// Radar
+	RadarIndex int `json:&#34;radarIndex,omitempty&#34;`
+
+	// TreeMap
+	LeafDepth  int         `json:&#34;leafDepth,omitempty&#34;`
+	Levels     interface{} `json:&#34;levels,omitempty&#34;`
+	UpperLabel interface{} `json:&#34;upperLabel,omitempty&#34;`
+
+	// WordCloud
+	Shape         string    `json:&#34;shape,omitempty&#34;`
+	SizeRange     []float32 `json:&#34;sizeRange,omitempty&#34;`
+	RotationRange []float32 `json:&#34;rotationRange,omitempty&#34;`
+
+	// Sunburst
+	NodeClick string `json:&#34;nodeClick,omitempty&#34;`
+	Sort      string `json:&#34;sort,omitempty&#34;`
+
+	// Custom
+	RenderItem types.FuncStr `json:&#34;renderItem,omitempty&#34;`
+
+	// series data
+	Data         interface{} `json:&#34;data,omitempty&#34;`
+	DatasetIndex int         `json:&#34;datasetIndex,omitempty&#34;`
+
+	// Bar | Lines | Scatter | Heatmap | Parallel | Candlestick
+	// Progressive specifies the amount of graphic elements that can be rendered
+	// within a frame (about 16ms) if &#34;progressive rendering&#34; is enabled.
+	// &#34;Progressive rendering&#34; processes and renders data chunk by chunk on
+	// different canvas layers to avoid blocking the UI thread of the browser for
+	// series with many data points.
+	// Set progressive to 0 to disable progressive rendering.
+	Progressive          types.Int `json:&#34;progressive,omitempty&#34;`
+	ProgressiveThreshold types.Int `json:&#34;progressiveThreshold,omitempty&#34;`
+
+	// Gauge
+	Progress   *opts.Progress  `json:&#34;progress,omitempty&#34;`
+	AxisTick   *opts.AxisTick  `json:&#34;axisTick,omitempty&#34;`
+	AxisLabel  *opts.AxisLabel `json:&#34;axisLabel,omitempty&#34;`
+	AxisLine   *opts.AxisLine  `json:&#34;axisLine,omitempty&#34;`
+	Pointer    *opts.Pointer   `json:&#34;pointer,omitempty&#34;`
+	SplitLine  *opts.SplitLine `json:&#34;splitLine,omitempty&#34;`
+	Detail     *opts.Detail    `json:&#34;detail,omitempty&#34;`
+	Title      *opts.Title     `json:&#34;title,omitempty&#34;`
+	Min        int             `json:&#34;min,omitempty&#34;`
+	Max        int             `json:&#34;max,omitempty&#34;`
+	StartAngle float64         `json:&#34;startAngle,omitempty&#34;`
+	EndAngle   float64         `json:&#34;endAngle,omitempty&#34;`
+
+	Large               types.Bool `json:&#34;large,omitempty&#34;`
+	LargeThreshold      int        `json:&#34;largeThreshold,omitempty&#34;`
+	HoverLayerThreshold int        `json:&#34;hoverLayerThreshold,omitempty&#34;`
+	UseUTC              types.Bool `json:&#34;useUTC,omitempty&#34;`
+
+	// Animation related configs
+	Animation               types.Bool `json:&#34;animation,omitempty&#34;`
+	AnimationThreshold      int        `json:&#34;animationThreshold,omitempty&#34;`
+	AnimationDuration       int        `json:&#34;animationDuration,omitempty&#34;`
+	AnimationEasing         string     `json:&#34;animationEasing,omitempty&#34;`
+	AnimationDelay          int        `json:&#34;animationDelay,omitempty&#34;`
+	AnimationDurationUpdate int        `json:&#34;animationDurationUpdate,omitempty&#34;`
+	AnimationEasingUpdate   string     `json:&#34;animationEasingUpdate,omitempty&#34;`
+	AnimationDelayUpdate    int        `json:&#34;animationDelayUpdate,omitempty&#34;`
+	RenderLabelForZeroData  types.Bool `json:&#34;renderLabelForZeroData,omitempty&#34;`
+	SelectedMode            types.Bool `json:&#34;selectedMode,omitempty&#34;`
+
+	// series options
+	*opts.Encode        `json:&#34;encode,omitempty&#34;`
+	*opts.ItemStyle     `json:&#34;itemStyle,omitempty&#34;`
+	*opts.Label         `json:&#34;label,omitempty&#34;`
+	*opts.LabelLayout   `json:&#34;labelLayout,omitempty&#34;`
+	*opts.LabelLine     `json:&#34;labelLine,omitempty&#34;`
+	*opts.Emphasis      `json:&#34;emphasis,omitempty&#34;`
+	*opts.MarkLines     `json:&#34;markLine,omitempty&#34;`
+	*opts.MarkAreas     `json:&#34;markArea,omitempty&#34;`
+	*opts.MarkPoints    `json:&#34;markPoint,omitempty&#34;`
+	*opts.RippleEffect  `json:&#34;rippleEffect,omitempty&#34;`
+	*opts.LineStyle     `json:&#34;lineStyle,omitempty&#34;`
+	*opts.AreaStyle     `json:&#34;areaStyle,omitempty&#34;`
+	*opts.TextStyle     `json:&#34;textStyle,omitempty&#34;`
+	*opts.CircularStyle `json:&#34;circular,omitempty&#34;`
+	*opts.SeriesTooltip `json:&#34;tooltip,omitempty&#34;`
+
+	// Calendar
+	CalendarIndex int `json:&#34;calendarIndex,omitempty&#34;`
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>Name string</code> <code>`json:&#34;name,omitempty&#34;`</code></li><li><code>Type string</code> <code>`json:&#34;type,omitempty&#34;`</code></li><li><code>Id string</code> <code>`json:&#34;id,omitempty&#34;`</code></li><li><code>Stack string</code> <code>`json:&#34;stack,omitempty&#34;`</code><div class="doc"><p>Rectangular charts
+Line | Bar
+</div></li><li><code>XAxisIndex int</code> <code>`json:&#34;xAxisIndex,omitempty&#34;`</code><div class="doc"><p>Line | Bar | Scatter
+</div></li><li><code>YAxisIndex int</code> <code>`json:&#34;yAxisIndex,omitempty&#34;`</code><div class="doc"><p>Line | Bar | Scatter
+</div></li><li><code>BarGap string</code> <code>`json:&#34;barGap,omitempty&#34;`</code><div class="doc"><p>Bar
+</div></li><li><code>BarCategoryGap string</code> <code>`json:&#34;barCategoryGap,omitempty&#34;`</code><div class="doc"><p>Bar
+</div></li><li><code>ShowBackground types.Bool</code> <code>`json:&#34;showBackground,omitempty&#34;`</code><div class="doc"><p>Bar
+</div></li><li><code>RoundCap types.Bool</code> <code>`json:&#34;roundCap,omitempty&#34;`</code><div class="doc"><p>Bar
+</div></li><li><code>Shading string</code> <code>`json:&#34;shading,omitempty&#34;`</code><div class="doc"><p>Bar3D
+</div></li><li><code>Links interface{}</code> <code>`json:&#34;links,omitempty&#34;`</code><div class="doc"><p>Graph
+</div></li><li><code>Layout string</code> <code>`json:&#34;layout,omitempty&#34;`</code></li><li><code>Force interface{}</code> <code>`json:&#34;force,omitempty&#34;`</code></li><li><code>Categories interface{}</code> <code>`json:&#34;categories,omitempty&#34;`</code></li><li><code>Roam types.Bool</code> <code>`json:&#34;roam,omitempty&#34;`</code></li><li><code>EdgeSymbol interface{}</code> <code>`json:&#34;edgeSymbol,omitempty&#34;`</code></li><li><code>EdgeSymbolSize interface{}</code> <code>`json:&#34;edgeSymbolSize,omitempty&#34;`</code></li><li><code>EdgeLabel interface{}</code> <code>`json:&#34;edgeLabel,omitempty&#34;`</code></li><li><code>Draggable types.Bool</code> <code>`json:&#34;draggable,omitempty&#34;`</code></li><li><code>FocusNodeAdjacency types.Bool</code> <code>`json:&#34;focusNodeAdjacency,omitempty&#34;`</code></li><li><code>SymbolKeepAspect types.Bool</code> <code>`json:&#34;symbolKeepAspect,omitempty&#34;`</code><div class="doc"><p>Line | Radar
+</div></li><li><code>BarWidth string</code> <code>`json:&#34;barWidth,omitempty&#34;`</code><div class="doc"><p>BarWidth The width options of the bar. Adaptive when not specified.
+Can be an absolute value like 40 or a percent value like &apos;60%&apos;.
+Configurable charts: bar | kline
+</div></li><li><code>BarMinWidth string</code> <code>`json:&#34;barMinWidth,omitempty&#34;`</code></li><li><code>BarMaxWidth string</code> <code>`json:&#34;barMaxWidth,omitempty&#34;`</code></li><li><code>ColorBy string</code> <code>`json:&#34;colorBy,omitempty&#34;`</code><div class="doc"><p>Line | Bar | Pie | Scatter | Radar
+</div></li><li><code>PolarIndex int</code> <code>`json:&#34;polarIndex,omitempty&#34;`</code><div class="doc"><p>Line | Bar
+</div></li><li><code>Step interface{}</code> <code>`json:&#34;step,omitempty&#34;`</code><div class="doc"><p>Line
+</div></li><li><code>Smooth types.Bool</code> <code>`json:&#34;smooth,omitempty&#34;`</code><div class="doc"><p>Line
+</div></li><li><code>ConnectNulls types.Bool</code> <code>`json:&#34;connectNulls,omitempty&#34;`</code><div class="doc"><p>Line
+</div></li><li><code>ShowSymbol types.Bool</code> <code>`json:&#34;showSymbol,omitempty&#34;`</code><div class="doc"><p>Line
+</div></li><li><code>Symbol string</code> <code>`json:&#34;symbol,omitempty&#34;`</code><div class="doc"><p>Line | Scatter | Radar
+</div></li><li><code>Color string</code> <code>`json:&#34;color,omitempty&#34;`</code></li><li><code>IsLiquidOutline types.Bool</code> <code>`json:&#34;outline,omitempty&#34;`</code><div class="doc"><p>Liquid
+</div></li><li><code>IsWaveAnimation types.Bool</code> <code>`json:&#34;waveAnimation,omitempty&#34;`</code></li><li><code>MapType string</code> <code>`json:&#34;map,omitempty&#34;`</code><div class="doc"><p>Map
+</div></li><li><code>CoordSystem string</code> <code>`json:&#34;coordinateSystem,omitempty&#34;`</code><div class="doc"><p>Map | Line | Bar | Pie | Scatter
+</div></li><li><code>RoseType string</code> <code>`json:&#34;roseType,omitempty&#34;`</code><div class="doc"><p>Pie
+</div></li><li><code>Center interface{}</code> <code>`json:&#34;center,omitempty&#34;`</code><div class="doc"><p>Pie
+</div></li><li><code>Radius interface{}</code> <code>`json:&#34;radius,omitempty&#34;`</code><div class="doc"><p>Pie
+</div></li><li><code>PadAngle float64</code> <code>`json:&#34;padAngle,omitempty&#34;`</code><div class="doc"><p>Pie
+</div></li><li><code>SymbolSize interface{}</code> <code>`json:&#34;symbolSize,omitempty&#34;`</code><div class="doc"><p>Line | Scatter | Radar
+</div></li><li><code>Orient string</code> <code>`json:&#34;orient,omitempty&#34;`</code><div class="doc"><p>Tree
+</div></li><li><code>ExpandAndCollapse types.Bool</code> <code>`json:&#34;expandAndCollapse,omitempty&#34;`</code></li><li><code>InitialTreeDepth int</code> <code>`json:&#34;initialTreeDepth,omitempty&#34;`</code></li><li><code>Leaves interface{}</code> <code>`json:&#34;leaves,omitempty&#34;`</code></li><li><code>Left string</code> <code>`json:&#34;left,omitempty&#34;`</code></li><li><code>Right string</code> <code>`json:&#34;right,omitempty&#34;`</code></li><li><code>Top string</code> <code>`json:&#34;top,omitempty&#34;`</code></li><li><code>Bottom string</code> <code>`json:&#34;bottom,omitempty&#34;`</code></li><li><code>NodeWidth types.Int</code> <code>`json:&#34;nodeWidth,omitempty&#34;`</code><div class="doc"><p>Sankey
+</div></li><li><code>NodeGap types.Int</code> <code>`json:&#34;nodeGap,omitempty&#34;`</code></li><li><code>NodeAlign string</code> <code>`json:&#34;nodeAlign,omitempty&#34;`</code></li><li><code>RadarIndex int</code> <code>`json:&#34;radarIndex,omitempty&#34;`</code><div class="doc"><p>Radar
+</div></li><li><code>LeafDepth int</code> <code>`json:&#34;leafDepth,omitempty&#34;`</code><div class="doc"><p>TreeMap
+</div></li><li><code>Levels interface{}</code> <code>`json:&#34;levels,omitempty&#34;`</code></li><li><code>UpperLabel interface{}</code> <code>`json:&#34;upperLabel,omitempty&#34;`</code></li><li><code>Shape string</code> <code>`json:&#34;shape,omitempty&#34;`</code><div class="doc"><p>WordCloud
+</div></li><li><code>SizeRange []float32</code> <code>`json:&#34;sizeRange,omitempty&#34;`</code></li><li><code>RotationRange []float32</code> <code>`json:&#34;rotationRange,omitempty&#34;`</code></li><li><code>NodeClick string</code> <code>`json:&#34;nodeClick,omitempty&#34;`</code><div class="doc"><p>Sunburst
+</div></li><li><code>Sort string</code> <code>`json:&#34;sort,omitempty&#34;`</code></li><li><code>RenderItem types.FuncStr</code> <code>`json:&#34;renderItem,omitempty&#34;`</code><div class="doc"><p>Custom
+</div></li><li><code>Data interface{}</code> <code>`json:&#34;data,omitempty&#34;`</code><div class="doc"><p>series data
+</div></li><li><code>DatasetIndex int</code> <code>`json:&#34;datasetIndex,omitempty&#34;`</code></li><li><code>Progressive types.Int</code> <code>`json:&#34;progressive,omitempty&#34;`</code><div class="doc"><p>Bar | Lines | Scatter | Heatmap | Parallel | Candlestick
+Progressive specifies the amount of graphic elements that can be rendered
+within a frame (about 16ms) if &quot;progressive rendering&quot; is enabled.
+&quot;Progressive rendering&quot; processes and renders data chunk by chunk on
+different canvas layers to avoid blocking the UI thread of the browser for
+series with many data points.
+Set progressive to 0 to disable progressive rendering.
+</div></li><li><code>ProgressiveThreshold types.Int</code> <code>`json:&#34;progressiveThreshold,omitempty&#34;`</code></li><li><code>Progress *opts.Progress</code> <code>`json:&#34;progress,omitempty&#34;`</code><div class="doc"><p>Gauge
+</div></li><li><code>AxisTick *opts.AxisTick</code> <code>`json:&#34;axisTick,omitempty&#34;`</code></li><li><code>AxisLabel *opts.AxisLabel</code> <code>`json:&#34;axisLabel,omitempty&#34;`</code></li><li><code>AxisLine *opts.AxisLine</code> <code>`json:&#34;axisLine,omitempty&#34;`</code></li><li><code>Pointer *opts.Pointer</code> <code>`json:&#34;pointer,omitempty&#34;`</code></li><li><code>SplitLine *opts.SplitLine</code> <code>`json:&#34;splitLine,omitempty&#34;`</code></li><li><code>Detail *opts.Detail</code> <code>`json:&#34;detail,omitempty&#34;`</code></li><li><code>Title *opts.Title</code> <code>`json:&#34;title,omitempty&#34;`</code></li><li><code>Min int</code> <code>`json:&#34;min,omitempty&#34;`</code></li><li><code>Max int</code> <code>`json:&#34;max,omitempty&#34;`</code></li><li><code>StartAngle float64</code> <code>`json:&#34;startAngle,omitempty&#34;`</code></li><li><code>EndAngle float64</code> <code>`json:&#34;endAngle,omitempty&#34;`</code></li><li><code>Large types.Bool</code> <code>`json:&#34;large,omitempty&#34;`</code></li><li><code>LargeThreshold int</code> <code>`json:&#34;largeThreshold,omitempty&#34;`</code></li><li><code>HoverLayerThreshold int</code> <code>`json:&#34;hoverLayerThreshold,omitempty&#34;`</code></li><li><code>UseUTC types.Bool</code> <code>`json:&#34;useUTC,omitempty&#34;`</code></li><li><code>Animation types.Bool</code> <code>`json:&#34;animation,omitempty&#34;`</code><div class="doc"><p>Animation related configs
+</div></li><li><code>AnimationThreshold int</code> <code>`json:&#34;animationThreshold,omitempty&#34;`</code></li><li><code>AnimationDuration int</code> <code>`json:&#34;animationDuration,omitempty&#34;`</code></li><li><code>AnimationEasing string</code> <code>`json:&#34;animationEasing,omitempty&#34;`</code></li><li><code>AnimationDelay int</code> <code>`json:&#34;animationDelay,omitempty&#34;`</code></li><li><code>AnimationDurationUpdate int</code> <code>`json:&#34;animationDurationUpdate,omitempty&#34;`</code></li><li><code>AnimationEasingUpdate string</code> <code>`json:&#34;animationEasingUpdate,omitempty&#34;`</code></li><li><code>AnimationDelayUpdate int</code> <code>`json:&#34;animationDelayUpdate,omitempty&#34;`</code></li><li><code>RenderLabelForZeroData types.Bool</code> <code>`json:&#34;renderLabelForZeroData,omitempty&#34;`</code></li><li><code>SelectedMode types.Bool</code> <code>`json:&#34;selectedMode,omitempty&#34;`</code></li><li><code>*opts.Encode</code> <code>`json:&#34;encode,omitempty&#34;`</code><div class="doc"><p>series options
+</div></li><li><code>*opts.ItemStyle</code> <code>`json:&#34;itemStyle,omitempty&#34;`</code></li><li><code>*opts.Label</code> <code>`json:&#34;label,omitempty&#34;`</code></li><li><code>*opts.LabelLayout</code> <code>`json:&#34;labelLayout,omitempty&#34;`</code></li><li><code>*opts.LabelLine</code> <code>`json:&#34;labelLine,omitempty&#34;`</code></li><li><code>*opts.Emphasis</code> <code>`json:&#34;emphasis,omitempty&#34;`</code></li><li><code>*opts.MarkLines</code> <code>`json:&#34;markLine,omitempty&#34;`</code></li><li><code>*opts.MarkAreas</code> <code>`json:&#34;markArea,omitempty&#34;`</code></li><li><code>*opts.MarkPoints</code> <code>`json:&#34;markPoint,omitempty&#34;`</code></li><li><code>*opts.RippleEffect</code> <code>`json:&#34;rippleEffect,omitempty&#34;`</code></li><li><code>*opts.LineStyle</code> <code>`json:&#34;lineStyle,omitempty&#34;`</code></li><li><code>*opts.AreaStyle</code> <code>`json:&#34;areaStyle,omitempty&#34;`</code></li><li><code>*opts.TextStyle</code> <code>`json:&#34;textStyle,omitempty&#34;`</code></li><li><code>*opts.CircularStyle</code> <code>`json:&#34;circular,omitempty&#34;`</code></li><li><code>*opts.SeriesTooltip</code> <code>`json:&#34;tooltip,omitempty&#34;`</code></li><li><code>CalendarIndex int</code> <code>`json:&#34;calendarIndex,omitempty&#34;`</code><div class="doc"><p>Calendar
+</div></li></ul><section id="func-ConfigureSeriesOpts"><h3>func  ConfigureSeriesOpts(options ...SeriesOpts)</h3></section><section id="func-InitSeriesDefaultOpts"><h3>func  InitSeriesDefaultOpts(c BaseConfiguration)</h3></section></section><section id="type-SingleSeriesOptFunc"><h3>type SingleSeriesOptFunc</h3><pre><code>type SingleSeriesOptFunc func(s *SingleSeries)</code></pre></section><section id="type-Sunburst"><h3>type Sunburst</h3><div class="doc"><p>Sunburst represents a sunburst chart.
+</div><pre><code>type Sunburst struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.SunBurstData, options ...SeriesOpts) *Sunburst</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Sunburst</h3><div class="doc"><p>SetGlobalOptions sets options for the Pie instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Surface3D"><h3>type Surface3D</h3><div class="doc"><p>Surface3D represents a 3D surface chart.
+</div><pre><code>type Surface3D struct {
+	Chart3D
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>Chart3D</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.Chart3DData, options ...SeriesOpts) *Surface3D</h3><div class="doc"><p>AddSeries adds the new series.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section></section><section id="type-ThemeRiver"><h3>type ThemeRiver</h3><div class="doc"><p>ThemeRiver represents a theme river chart.
+</div><pre><code>type ThemeRiver struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.ThemeRiverData, options ...SeriesOpts) *ThemeRiver</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *ThemeRiver</h3><div class="doc"><p>SetGlobalOptions sets options for the ThemeRiver instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-Tree"><h3>type Tree</h3><div class="doc"><p>Tree represents a Tree chart.
+</div><pre><code>type Tree struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.TreeData, options ...SeriesOpts) *Tree</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *Tree</h3><div class="doc"><p>SetGlobalOptions sets options for the Tree instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-TreeMap"><h3>type TreeMap</h3><div class="doc"><p>TreeMap represents a TreeMap chart.
+</div><pre><code>type TreeMap struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.TreeMapNode, options ...SeriesOpts) *TreeMap</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *TreeMap</h3><div class="doc"><p>SetGlobalOptions sets options for the TreeMap instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-WordCloud"><h3>type WordCloud</h3><div class="doc"><p>WordCloud represents a word cloud chart.
+</div><pre><code>type WordCloud struct {
+	BaseConfiguration
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>BaseConfiguration</code></li></ul><section id="func-AddSeries"><h3>func  AddSeries(name string, data []opts.WordCloudData, options ...SeriesOpts) *WordCloud</h3><div class="doc"><p>AddSeries adds new data sets.
+</div></section><section id="func-SetGlobalOptions"><h3>func  SetGlobalOptions(options ...GlobalOpts) *WordCloud</h3><div class="doc"><p>SetGlobalOptions sets options for the WordCloud instance.
+</div></section><section id="func-Type"><h3>func  Type() string</h3><div class="doc"><p>Type returns the chart type.
+</div></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section><section id="type-XYAxis"><h3>type XYAxis</h3><div class="doc"><p>XYAxis represent the X and Y axis in the rectangular coordinates.
+</div><pre><code>type XYAxis struct {
+	XAxisList []opts.XAxis `json:&#34;xaxis&#34;`
+	YAxisList []opts.YAxis `json:&#34;yaxis&#34;`
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>XAxisList []opts.XAxis</code> <code>`json:&#34;xaxis&#34;`</code></li><li><code>YAxisList []opts.YAxis</code> <code>`json:&#34;yaxis&#34;`</code></li></ul><section id="func-ExtendXAxis"><h3>func  ExtendXAxis(xAxis ...opts.XAxis)</h3><div class="doc"><p>ExtendXAxis adds new X axes.
+</div></section><section id="func-ExtendYAxis"><h3>func  ExtendYAxis(yAxis ...opts.YAxis)</h3><div class="doc"><p>ExtendYAxis adds new Y axes.
+</div></section></section></main>
+</div></body>
+</html>
