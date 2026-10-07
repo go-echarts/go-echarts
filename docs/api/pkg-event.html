@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>event</title>
+<link rel="stylesheet" href="sourcey-godoc.css">
+<meta name="generator" content="sourcey-godoc 0.2.1">
+<link rel="canonical" href="https://go-echarts.github.io/go-echarts/api/pkg-event.html">
+</head>
+<body><div class="shell">
+<aside><p class="brand">sourcey-godoc</p><p class="module"><code>github.com/go-echarts/go-echarts/v2</code></p><ul class="nav"><li><a href="index.html">Overview</a></li><li><a href="pkg-charts.html">charts</a></li><li><a href="pkg-components.html">components</a></li><li><a href="pkg-datasets.html">datasets</a></li><li><a href="pkg-event.html">event</a></li><li><a href="pkg-opts.html">opts</a></li><li><a href="pkg-render.html">render</a></li><li><a href="pkg-templates.html">templates</a></li><li><a href="pkg-types.html">types</a></li><li><a href="pkg-util.html">util</a></li></ul></aside>
+<main><h1>event</h1><p class="import-path"><code>import "github.com/go-echarts/go-echarts/v2/event"</code></p><p class="source-meta">Generated with <a href="https://github.com/sourcey/sourcey/tree/5c699ac3ee2f251c083be8f9deb1b345c52c4a6d/go/sourcey-godoc">sourcey-godoc 0.2.1</a> · <a href="https://github.com/go-echarts/go-echarts/tree/3f3cf9579987d520eef191d3f9b7d8c47d234276/event">Source: event</a> at <code>3f3cf9579987</code></p><h2 id="types">Types</h2><section id="type-Listener"><h3>type Listener</h3><div class="doc"><p>Listener is the abstract of events listening in echarts
+see <a href="https://echarts.apache.org/handbook/en/concepts/event">https://echarts.apache.org/handbook/en/concepts/event</a>
+which allow to listen special mouse and components event
+example:
+<pre>bar := charts.NewBar()
+JFunc := ` (params) =&gt; alert(params.name) `
+bar.SetGlobalOptions(
+charts.WithEventListeners(
+       event.Listener{
+         EventName: &quot;click&quot;,
+         Handler:   opts.FuncOpts(JFunc),
+       },
+       event.Listener{
+         EventName: &quot;mouseup&quot;,
+         Query:     &quot;&apos;series&apos;&quot;,
+         Handler:   opts.FuncOpts(JFunc),
+       },
+       event.Listener{
+         EventName: &quot;mouseover&quot;,
+         Query:     &quot;{ seriesName: &apos;go-echarts&apos; }&quot;,
+         Handler:   opts.FuncOpts(JFunc),
+       },
+</pre>
+<p>),
+)
+</div><pre><code>type Listener struct {
+	EventName string
+	Query     types.FuncStr
+	Handler   types.FuncStr
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>EventName string</code></li><li><code>Query types.FuncStr</code></li><li><code>Handler types.FuncStr</code></li></ul></section></main>
+</div></body>
+</html>

@@ -1,0 +1,13 @@
+# go-echarts v2.7.2 API Reference
+
+Module: `github.com/go-echarts/go-echarts/v2`
+
+- [charts](pkg-charts.html)
+- [components](pkg-components.html)
+- [datasets](pkg-datasets.html)
+- [event](pkg-event.html)
+- [opts](pkg-opts.html)
+- [render](pkg-render.html)
+- [templates](pkg-templates.html)
+- [types](pkg-types.html)
+- [util](pkg-util.html)
