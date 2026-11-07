@@ -140,8 +140,7 @@ func (bc *BaseConfiguration) json() map[string]interface{} {
 	}
 
 	if bc.Progressive != nil {
-		obj["progressive"] = bc.Animation
-
+		obj["progressive"] = bc.Progressive
 	}
 
 	if bc.ProgressiveThreshold != nil {
