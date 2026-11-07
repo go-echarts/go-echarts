@@ -1,3 +1,5 @@
+{{- define "script_attributes" -}}{{- end -}}
+{{- define "style_attributes" -}}{{- end -}}
 {{- define "base_element" -}}
 <div class="container">
     <div class="item" id="{{ .ChartID }}" style="width:{{ .Initialization.Width }};height:{{ .Initialization.Height }};"></div>
@@ -5,7 +7,7 @@
 {{- end -}}
 
 {{- define "base_script" -}}
-<script type="text/javascript">
+<script{{ template "script_attributes" . }} type="text/javascript">
     "use strict";
     let goecharts_{{ .ChartID | safeJS }} = echarts.init(document.getElementById('{{ .ChartID | safeJS }}'), "{{ .Theme }}", { renderer: "{{  .Initialization.Renderer }}" });
     let option_{{ .ChartID | safeJS }} = {{ template "base_option" . }}

@@ -1,12 +1,13 @@
+{{- define "script_attributes" -}}{{- end -}}
 {{ define "header" }}
 <head>
     <meta charset="utf-8">
     <title>{{ .PageTitle }}</title>
 {{- range .JSAssets.Values }}
-    <script src="{{ . }}"></script>
+    <script{{ template "script_attributes" . }} src="{{ . }}"></script>
 {{- end }}
 {{- range .CustomizedJSAssets.Values }}
-    <script src="{{ . }}"></script>
+    <script{{ template "script_attributes" . }} src="{{ . }}"></script>
 {{- end }}
 {{- range .CSSAssets.Values }}
     <link href="{{ . }}" rel="stylesheet">

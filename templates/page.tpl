@@ -8,17 +8,17 @@
 {{ end }}
 
 {{ if eq .Layout "center" }}
-    <style> .container {display: flex;justify-content: center;align-items: center;} .item {margin: auto;} </style>
+    <style{{ template "style_attributes" . }}> .container {display: flex;justify-content: center;align-items: center;} .item {margin: auto;} </style>
     {{- range .Charts }} {{ template "base" . }} {{- end }}
 {{ end }}
 
 {{ if eq .Layout "flex" }}
-    <style> .box { justify-content:center; display:flex; flex-wrap:wrap } </style>
+    <style{{ template "style_attributes" . }}> .box { justify-content:center; display:flex; flex-wrap:wrap } </style>
     <div class="box"> {{- range .Charts }} {{ template "base" . }} {{- end }} </div>
 {{ end }}
 
 {{ if eq .Layout "full" }}
-    <style> .container {height: 100vh;} .item {margin: auto;} </style>
+    <style{{ template "style_attributes" . }}> .container {height: 100vh;} .item {margin: auto;} </style>
     {{- range .Charts }} {{ template "base" . }} {{- end }}
 {{ end }}
 

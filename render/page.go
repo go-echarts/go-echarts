@@ -31,7 +31,7 @@ func (r *pageRender) RenderContent() []byte {
 	}
 
 	contents := []string{templates.HeaderTpl, templates.BaseTpl, templates.PageTpl}
-	tpl := MustTemplate(ModPage, contents)
+	tpl := mustTemplateFor(ModPage, contents, r.c)
 
 	var buf bytes.Buffer
 	if err := tpl.ExecuteTemplate(&buf, ModPage, r.c); err != nil {

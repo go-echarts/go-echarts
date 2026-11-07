@@ -54,6 +54,12 @@ func (page *Page) SetAssetsHost(assetsHost string) *Page {
 	return page
 }
 
+// SetTemplateOptions sets the templates and data used for the entire page.
+func (page *Page) SetTemplateOptions(options *opts.TemplateOptions) *Page {
+	page.PageConfiguration.Templates = options
+	return page
+}
+
 // SetLayout sets the layout of the Page.
 func (page *Page) SetLayout(layout Layout) *Page {
 	page.Layout = layout

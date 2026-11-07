@@ -76,6 +76,10 @@ go-echarts 现在有 v1 和 v2 两个大版本，v1 版本的代码位于 v1 分
 使用`go-echarts`
 可以参考[handbook](https://go-echarts.github.io/go-echarts), [go-echarts/examples](https://github.com/go-echarts/examples)
 和 [GoDocs](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).  
+
+如需按图表或页面覆盖 HTML 模板、注入自定义数据，或通过 script/style 属性扩展点添加 CSP nonce，
+请参考[模板定制文档](docs/en-us/render.md#template-customization)。
+
 仅需要几行核心代码就可画出美观的图表
 
 ```golang

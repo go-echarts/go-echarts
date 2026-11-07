@@ -96,6 +96,10 @@ So, if you upgrade your projects cross the `rc` versions, maybe need little adju
 It's easy to get started with go-echarts with the [handbook](https://go-echarts.github.io/go-echarts), [go-echarts/examples](https://github.com/go-echarts/examples)
 and [GoDocs](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
 
+For per-chart and per-page HTML template overrides, custom template data, and
+script/style attribute hooks (such as CSP nonces), see
+[Template customization](docs/en-us/render.md#template-customization).
+
 In this example, we create a simple bar chart with only a few lines of code.
 
 ```golang

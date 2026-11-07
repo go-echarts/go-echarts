@@ -4,7 +4,7 @@
     {{- template "header" . }}
 <body>
     {{- template "base" . }}
-<style>
+<style{{ template "style_attributes" . }}>
     .container {margin-top:30px; display: flex;justify-content: center;align-items: center;}
     .item {margin: auto;}
 </style>

@@ -35,7 +35,7 @@ func (r *chartRender) RenderContent() []byte {
 	r.before = []func(){}
 
 	contents := []string{templates.HeaderTpl, templates.BaseTpl, templates.ChartTpl}
-	tpl := MustTemplate(ModChart, contents)
+	tpl := mustTemplateFor(ModChart, contents, r.c)
 
 	var buf bytes.Buffer
 	if err := tpl.ExecuteTemplate(&buf, ModChart, r.c); err != nil {
@@ -54,21 +54,21 @@ func (r *chartRender) RenderSnippet() ChartSnippet {
 
 	var snippet ChartSnippet
 
-	elementTpl := MustTemplate(ModChart, []string{templates.BaseTpl, templates.BaseElementTpl})
+	elementTpl := mustTemplateFor(ModChart, []string{templates.BaseTpl, templates.BaseElementTpl}, r.c)
 	var elementBuf bytes.Buffer
 	if err := elementTpl.ExecuteTemplate(&elementBuf, ModChart, r.c); err != nil {
 		panic(err)
 	}
 	snippet.Element = string(pat.ReplaceAll(elementBuf.Bytes(), []byte("")))
 
-	scriptTpl := MustTemplate(ModChart, []string{templates.BaseTpl, templates.BaseScriptTpl})
+	scriptTpl := mustTemplateFor(ModChart, []string{templates.BaseTpl, templates.BaseScriptTpl}, r.c)
 	var scriptBuf bytes.Buffer
 	if err := scriptTpl.ExecuteTemplate(&scriptBuf, ModChart, r.c); err != nil {
 		panic(err)
 	}
 	snippet.Script = string(pat.ReplaceAll(scriptBuf.Bytes(), []byte("")))
 
-	optionTpl := MustTemplate(ModChart, []string{templates.BaseTpl, templates.BaseOptionTpl})
+	optionTpl := mustTemplateFor(ModChart, []string{templates.BaseTpl, templates.BaseOptionTpl}, r.c)
 	var optionBuf bytes.Buffer
 	if err := optionTpl.ExecuteTemplate(&optionBuf, ModChart, r.c); err != nil {
 		panic(err)

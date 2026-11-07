@@ -7,6 +7,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/go-echarts/go-echarts/v2/opts"
 	"github.com/go-echarts/go-echarts/v2/types"
 )
 
@@ -38,7 +39,25 @@ type Renderer interface {
 
 // MustTemplate creates a new template with the given name and parsed contents.
 func MustTemplate(name string, contents []string) *template.Template {
+	return mustTemplate(name, contents, nil)
+}
+
+func mustTemplateFor(name string, contents []string, c interface{}) *template.Template {
+	var options *opts.TemplateOptions
+	if provider, ok := c.(interface{ GetTemplateOptions() *opts.TemplateOptions }); ok {
+		options = provider.GetTemplateOptions()
+	}
+	return mustTemplate(name, contents, options)
+}
+
+func mustTemplate(name string, contents []string, options *opts.TemplateOptions) *template.Template {
 	tpl := template.New(name).Funcs(template.FuncMap{
+		"renderValue": func(key string) interface{} {
+			if options == nil {
+				return nil
+			}
+			return options.Data[key]
+		},
 		"safeHTML": func(s interface{}) template.HTML {
 			return template.HTML(fmt.Sprint(s))
 		},
@@ -54,6 +73,11 @@ func MustTemplate(name string, contents []string) *template.Template {
 
 	for _, cont := range contents[1:] {
 		tpl = template.Must(tpl.Parse(cont))
+	}
+	if options != nil {
+		for _, override := range options.Overrides {
+			tpl = template.Must(tpl.Parse(override))
+		}
 	}
 	return tpl
 }

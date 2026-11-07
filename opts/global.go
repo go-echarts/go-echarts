@@ -19,6 +19,9 @@ type PageConfiguration struct {
 
 	// Assets host
 	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
+
+	// Templates applies to the whole page, including all child charts.
+	Templates *TemplateOptions
 }
 
 // Initialization contains options for the canvas.
@@ -46,6 +49,10 @@ type Initialization struct {
 
 	// Assets host
 	AssetsHost string `default:"https://go-echarts.github.io/go-echarts-assets/assets/"`
+
+	// Templates customizes standalone chart and snippet rendering.
+	// When rendered inside a Page, the page's template options are used instead.
+	Templates *TemplateOptions
 }
 
 // Validate validates the initialization configurations.
