@@ -8,6 +8,9 @@
 - Advanced
     - [ConfigurationVisitor](en-us/visitor)
     - [Render to Image](en-us/render-to-image)
+- API Reference
+    - [Sourcey API Reference](https://go-echarts.github.io/go-echarts/api/)
+    - [pkg.go.dev](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2)
 - Chart Configration
     - [Global Option Summary](en-us/options/global)
     - [Series Option Summary](en-us/options/series)

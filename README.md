@@ -220,8 +220,7 @@ func main() {
 <img src="https://user-images.githubusercontent.com/19553554/52349544-c2ce3900-2a61-11e9-82af-28aaaaae0d67.gif" width="33%" alt="overlap"/>
 </div>
 
-For more information, please refer to [handbook](https://go-echarts.github.io/go-echarts/), [go-echarts/examples](https://github.com/go-echarts/examples) and
-the [GoDoc](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
+For more information, please refer to the [handbook](https://go-echarts.github.io/go-echarts/), the [Sourcey API reference](https://go-echarts.github.io/go-echarts/api/), [go-echarts/examples](https://github.com/go-echarts/examples), and [pkg.go.dev](https://pkg.go.dev/github.com/go-echarts/go-echarts/v2).
 
 ### 💡 Contribution
 

@@ -19,3 +19,5 @@ go-echarts-pipeline/
 snapshot-chromedp/
 go.work*
 /test_issue/
+__pycache__/
+*.py[cod]

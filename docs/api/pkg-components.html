@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>components</title>
+<link rel="stylesheet" href="sourcey-godoc.css">
+<meta name="generator" content="sourcey-godoc 0.2.1">
+<link rel="canonical" href="https://go-echarts.github.io/go-echarts/api/pkg-components.html">
+</head>
+<body><div class="shell">
+<aside><p class="brand">sourcey-godoc</p><p class="module"><code>github.com/go-echarts/go-echarts/v2</code></p><ul class="nav"><li><a href="index.html">Overview</a></li><li><a href="pkg-charts.html">charts</a></li><li><a href="pkg-components.html">components</a></li><li><a href="pkg-datasets.html">datasets</a></li><li><a href="pkg-event.html">event</a></li><li><a href="pkg-opts.html">opts</a></li><li><a href="pkg-render.html">render</a></li><li><a href="pkg-templates.html">templates</a></li><li><a href="pkg-types.html">types</a></li><li><a href="pkg-util.html">util</a></li></ul></aside>
+<main><h1>components</h1><p class="import-path"><code>import "github.com/go-echarts/go-echarts/v2/components"</code></p><p class="source-meta">Generated with <a href="https://github.com/sourcey/sourcey/tree/5c699ac3ee2f251c083be8f9deb1b345c52c4a6d/go/sourcey-godoc">sourcey-godoc 0.2.1</a> · <a href="https://github.com/go-echarts/go-echarts/tree/3f3cf9579987d520eef191d3f9b7d8c47d234276/components">Source: components</a> at <code>3f3cf9579987</code></p><h2 id="constants">Constants</h2><section id="const-PageNoneLayout"><pre><code>const (
+	PageNoneLayout   Layout = &#34;none&#34;
+	PageCenterLayout Layout = &#34;center&#34;
+	PageFlexLayout   Layout = &#34;flex&#34;
+	PageFullLayout   Layout = &#34;full&#34;
+)</code></pre></section><section id="const-PageCenterLayout"></section><section id="const-PageFlexLayout"></section><section id="const-PageFullLayout"></section><h2 id="functions">Functions</h2><section id="func-NewPage"><h3>func NewPage() *Page</h3><div class="doc"><p>NewPage creates a new page.
+</div></section><h2 id="types">Types</h2><section id="type-Charter"><h3>type Charter</h3><div class="doc"><p>Charter represents a chart value which provides its type, assets and can be validated.
+</div><pre><code>type Charter interface {
+	Type() string
+	GetAssets() opts.Assets
+	// FillDefaultValues fill default values and would be overridden if any struct fields has been manually set
+	FillDefaultValues()
+	// Validate a validator as well as a post processor before render
+	Validate()
+}</code></pre><h4>Methods</h4><ul class="field-list"><li><code>Type func() string</code></li><li><code>GetAssets func() opts.Assets</code></li><li><code>FillDefaultValues func()</code><div class="doc"><p>FillDefaultValues fill default values and would be overridden if any struct fields has been manually set
+</div></li><li><code>Validate func()</code><div class="doc"><p>Validate a validator as well as a post processor before render
+</div></li></ul></section><section id="type-Layout"><h3>type Layout</h3><pre><code>type Layout string</code></pre></section><section id="type-Page"><h3>type Page</h3><div class="doc"><p>Page represents a page chart.
+</div><pre><code>type Page struct {
+	render.Renderer
+	opts.PageConfiguration
+	opts.Assets
+
+	Charts []Charter
+	Layout Layout
+}</code></pre><h4>Fields</h4><ul class="field-list"><li><code>render.Renderer</code></li><li><code>opts.PageConfiguration</code></li><li><code>opts.Assets</code></li><li><code>Charts []Charter</code></li><li><code>Layout Layout</code></li></ul><section id="func-AddCharts"><h3>func  AddCharts(charts ...Charter) *Page</h3><div class="doc"><p>AddCharts adds new charts to the page and merge assets.
+</div></section><section id="func-SetAssetsHost"><h3>func  SetAssetsHost(assetsHost string) *Page</h3></section><section id="func-SetLayout"><h3>func  SetLayout(layout Layout) *Page</h3><div class="doc"><p>SetLayout sets the layout of the Page.
+</div></section><section id="func-SetPageTitle"><h3>func  SetPageTitle(title string) *Page</h3></section><section id="func-Validate"><h3>func  Validate()</h3><div class="doc"><p>Validate validates the given configuration.
+</div></section></section></main>
+</div></body>
+</html>
