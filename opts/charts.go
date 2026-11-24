@@ -702,7 +702,7 @@ type Pointer struct {
 	Show types.Bool `json:"show,omitempty"`
 
 	// Whether to show the pointer above detail and title, default true.
-	ShowAbove types.Bool `json:"ShowAbove,omitempty"`
+	ShowAbove types.Bool `json:"showAbove,omitempty"`
 
 	// Icon of the legend items.
 	// Icon types provided by ECharts includes
