@@ -108,9 +108,10 @@ type SingleSeries struct {
 	RadarIndex int `json:"radarIndex,omitempty"`
 
 	// TreeMap
-	LeafDepth  int         `json:"leafDepth,omitempty"`
-	Levels     interface{} `json:"levels,omitempty"`
-	UpperLabel interface{} `json:"upperLabel,omitempty"`
+	ColorMappingBy string      `json:"colorMappingBy,omitempty"`
+	LeafDepth      int         `json:"leafDepth,omitempty"`
+	Levels         interface{} `json:"levels,omitempty"`
+	UpperLabel     interface{} `json:"upperLabel,omitempty"`
 
 	// WordCloud
 	Shape         string    `json:"shape,omitempty"`
@@ -491,6 +492,10 @@ func WithTreeMapOpts(opt opts.TreeMapChart) SeriesOpts {
 	return func(s *SingleSeries) {
 		s.Animation = opt.Animation
 		s.LeafDepth = opt.LeafDepth
+		s.ColorMappingBy = opt.ColorMappingBy
+		if opt.Label != nil {
+			s.Label = opt.Label
+		}
 		s.Roam = opt.Roam
 		s.Levels = opt.Levels
 		s.UpperLabel = opt.UpperLabel
